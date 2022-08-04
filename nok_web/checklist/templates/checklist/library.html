@@ -1,0 +1,177 @@
+{%  extends 'base.html' %}          <!--Указываю какой шаблон хочу наследовать-->
+
+{% comment %}
+{% block title %}
+Библиотека :: {{ block.super }}        <!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+{% endcomment %}
+
+{% block columns_lib %}
+
+
+
+<form style="float: left" action="{% url 'library' %}" method="post">
+    <h3>Добавление департамента</h3>
+    {% csrf_token %}                         <!--Обязательный тег - токин котрый автоматически добавляется к форме для защиты ее от подделки-->
+
+
+
+    {{ form.non_field.erroes }}                                   <!--Обработка общих ошибок-->
+    <div class="form-group">                                      <!--Пример ручного рендеринга. Более гибкий вариант-->
+        <p>
+            <label for="{{ form.name_of_department.id_for_label }}">Департамент: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.name_of_department }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.name_of_department.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.address.id_for_label }}">Адрес: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.address }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.address.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.tel.id_for_label }}">Телефон: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.tel }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.tel.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.website.id_for_label }}">Сайт: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.website }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.website.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.email.id_for_label }}">Email: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.email }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.email.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.fio_responsible.id_for_label }}">ФИО Ответственного: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.fio_responsible }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.fio_responsible.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.region_id.id_for_label }}">Регион: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.region_id }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.region_id.errors }}
+        </div>
+        </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Добавить департамент</button>
+</form>
+
+
+
+<form style="float: left" action="{% url 'library' %}" method="post">
+    <h3>Добавление организации</h3>
+    {% csrf_token %}                         <!--Обязательный тег - токин котрый автоматически добавляется к форме для защиты ее от подделки-->
+
+
+
+    {{ form.non_field.erroes }}                                   <!--Обработка общих ошибок-->
+    <div class="form-group">                                      <!--Пример ручного рендеринга. Более гибкий вариант-->
+        <p>
+            <label for="{{ form.name_of_department.id_for_label }}">Департамент: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.name_of_department }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.name_of_department.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.address.id_for_label }}">Адрес: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.address }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.address.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.tel.id_for_label }}">Телефон: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.tel }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.tel.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.website.id_for_label }}">Сайт: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.website }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.website.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.email.id_for_label }}">Email: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.email }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.email.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.fio_responsible.id_for_label }}">ФИО Ответственного: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.fio_responsible }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.fio_responsible.errors }}
+        </div>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <p>
+            <label for="{{ form.region_id.id_for_label }}">Регион: </label>                      <!--Связываю label с соответствующим полем моей формы-->
+            {{ form.region_id }}
+        <div class="invalid-feedback">                                                      <!--Обработка ошибок валидации-->
+            {{ form.region_id.errors }}
+        </div>
+        </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Добавить департамент</button>
+</form>
+
+
+
+{% endblock %}

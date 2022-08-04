@@ -9,7 +9,7 @@ urlpatterns = [
 
     # path('', HomeNews.as_view(), name='home'),         # примеры регистрации маршрута для контроллера классов
     # path('category/<int:category_id>/', NewsByCategory.as_view(), name='category'),     # В скобках NewsByCategory.as_view() можно передавать дополнительные параметры
-    # path('news/<int:pk>/', ViewNews.as_view(), name='view_news'),
+    path('library/', CreateChecklist.as_view(), name='library'),
     # path('news/add-news/', CreateNews.as_view(), name='add-news'),
 
 

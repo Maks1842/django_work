@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}          <!--Указываю какой шаблон хочу наследовать-->
+
+{% block title %}
+{{ title }} :: {{ block.super }}        <!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+
+
+{% block content %}
+{% for item in news %}
+<div class="card mb-3">
+    <div class="card-header">
+        <h1>Здесь закомментирован url</h1>
+        {% comment %}
+        {# Категория: <a href="{% url 'category' item.category.pk %}"> {{ item.category }}</a>   ####Вариант 1 #}
+        Категория: <a href="{{ item.category.get_absolute_url }}"> {{ item.category }}</a>       {# Основной вариант #}
+        {% endcomment %}
+    </div>
+    <h1>Здесь закомментирован url photo</h1>
+    {% comment %}
+    <div class="card-body">
+        <div class="media">
+            {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="" width="350" class="mr-3">
+            {% endif %}
+            <div class="media-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">{{ item.content|safe|linebreaks|truncatewords:30 }}</p>          <!--После знака "|" задаются необходимые фильтры (пример: |truncatewords: 30 )-->
+                <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+            </div>
+        </div>
+    </div>
+    {% endcomment %}
+</div>
+{% endfor %}
+{% endblock %}
