@@ -7,15 +7,19 @@ body{
 }
 
 .columns_lib{
-      float: left; /*Задаем обтекание*/
+
+}
+/*
+.columns_lib_2{
+      float: right; /*Задаем обтекание*/
       /*line-height: 120px;/*Высота строки +  верт. центрирования текста*/
       /*font-size: 40px;
       background: dodgerblue;
       color: white;*/
-      margin-top: 10px;
+/*      margin-top: 20px;
       width: 100%; /*Фиксируем ширину блока*/
-      margin-left: 20px;
-      margin-right: 20px;
+/*      margin-right: 20px;
       text-align: left; /*Центрируем текст по горизонтали*/
-
+/*
 }
+*/

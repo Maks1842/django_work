@@ -1,23 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">
-        <img src="/media/лейбл НОК.png" width="210" height="70" class="d-inline-block align-top" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/media/лейбл НОК.png" width="210" height="70" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Чек лист </a></li>
-            <li class="nav-item active"><a class="nav-link" href="/">Список актов</a></li>
-            <li class="nav-item active"><a class="nav-link" href="/">Акт</a> </li>
-            <li class="nav-item active"><a class="nav-link" href="{% url 'library' %}">Библиотека</a></li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Чек лист </a></li>
+                <li class="nav-item active"><a class="nav-link" href="/">Список актов</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/">Акт</a> </li>
+                <li class="nav-item active"><a class="nav-link" href="/">Админка</a></li>
 
 
-        </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
-            <button class="btn btn-outline-success" type="submit">Поиск</button>
-        </form>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+            </form>
+        </div>
     </div>
 </nav>
