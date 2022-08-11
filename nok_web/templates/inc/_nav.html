@@ -1,25 +1,99 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            <img src="/media/лейбл НОК.png" width="210" height="70" class="d-inline-block align-top" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav id="page_wrap">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Чек лист </a></li>
-                <li class="nav-item active"><a class="nav-link" href="/">Список актов</a></li>
-                <li class="nav-item active"><a class="nav-link" href="/">Акт</a> </li>
-                <li class="nav-item active"><a class="nav-link" href="/">Админка</a></li>
+    <div id="page">
+        <!-- Шапка начало -->
+        <div id="page_header">
 
+            <div id="menubtn">
+                <div id="menubtn-line">
+                    <div class="menubtn-line"></div>
+                    <div class="menubtn-line"></div>
+                    <div class="menubtn-line"></div>
+                </div>
+                МЕНЮ
+            </div>
 
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
-                <button class="btn btn-outline-success" type="submit">Поиск</button>
-            </form>
+            <a href="{% url 'home' %}" id="logo">
+                <img src="/media/лейбл НОК.png" width="210" height="70">
+            </a>
+
+            <div id="header_searsh">
+                <form action="/" method="get">
+                    <input
+                            type="text"
+                            name="searchword"
+                            id="search_text"
+                            value=""
+                            placeholder="Искать департамент, организацию"
+                            autocomplete="off"
+                    >
+                    <input type="submit" name="search_btn" id="search_btn" value="&#xf002">
+                </form>
+            </div>
+
+            <div id="header_time">
+                <div id="header_time_in" datetime="2022-06-18 16:37:03">
+                    <div id="header_time_time">16:37</div>
+                    <div id="header_time_date">11.08.2022</div>
+                </div>
+
+            </div>
+
+            <div id="header_user">
+                <div id="header_user_btn">
+
+                    <span id="header_user_btn_name">
+                        {% if request.user.is_authenticated %}
+                        Добро пожаловать, {{ user.username }} | <a href="{% url 'logout' %}">Выход</a>   <!-- ... или ссылка на выход  -->
+                        {% else %}
+                        <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
+                        {% endif %}
+                    </span>
+
+                </div>
+            </div>
+            <!-- Шапка конец -->
+
+            <!-- Центр начало -->
+            <div id="page_center" class=" ">
+
+                <!-- Левая колонка начало -->
+                <div id="page_center_left">
+                    <div class="page_center_menu" id="page_center_menu_left">
+                        <ul>
+                            <li>
+                                <a href="{% url 'home' %}" class="tooltip_right_link ">
+                                    <span class="pcl_p1">&#xf0cb</span>
+                                    <span class="pcl_p2">Чеклист</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'departments' %}" class="tooltip_right_link ">
+                                    <span class="pcl_p1">&#xf19c</span>
+                                    <span class="pcl_p2">Реестр организаций</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'organisation' %}" class="tooltip_right_link ">
+                                    <span class="pcl_p1">&#xf2c3</span>
+                                    <span class="pcl_p2">Документ</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin" class="tooltip_right_link ">
+                                    <span class="pcl_p1">&#xf1c0</span>
+                                    <span class="pcl_p2" >Админка</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <!-- Левая колонка конец -->
+
+            </div>
+            <!-- Центр конец -->
         </div>
     </div>
 </nav>

@@ -6,13 +6,6 @@
 
 
 
-{% block content1 %}
-{% for item in departments %}
-<div class="card mb-3">
-    <div class="card-header">
-        <h1>Здесь закомментирован url</h1>
-        Категория: <a href="{{ item.department_name.get_absolute_url }}"> {{ item.department_name }}</a>
-    </div>
-</div>
-{% endfor %}
+{% block content %}
+Главная страница
 {% endblock %}

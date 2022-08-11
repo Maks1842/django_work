@@ -1,0 +1,14 @@
+{%  extends 'base.html' %}          <!--Указываю какой шаблон хочу наследовать-->
+
+{% block title %}
+Login :: {{ block.super }}        <!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary btn-block">Авторизация</button>
+</form>
+{% endblock %}

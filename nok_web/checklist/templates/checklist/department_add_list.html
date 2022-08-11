@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}          <!--Указываю какой шаблон хочу наследовать-->
+
+{% block title %}
+{{ department.title }} :: {{ block.super }}        <!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+
+{% block content_detail %}
+DETAILS
+{% for item in object_list %}
+<div class="card mb-3">
+    <div class="card-header">
+        <a href="{{ item.department_name.get_absolute_url }}"> {{ item.department_name }}</a>
+        <a href="{{ item.address.get_absolute_url }}"> {{ item.address }}</a>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-header">
+        <a href="{{ item.email.get_absolute_url }}"> {{ item.email }}</a>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-header">
+        <select>
+        <option value="{{ item.email.get_absolute_url }}" > {{ item.region }}</option>
+        </select>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

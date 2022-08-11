@@ -9,11 +9,18 @@ class RegionAdmin(admin.ModelAdmin):
     list_filter = ('region_name', 'is_deleted')                                   # Возможность фильтровать поля
 
 
+class Type_DepartmentsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type', 'is_deleted')
+    search_fields = ('type', 'is_deleted')
+    list_editable = ('type', 'is_deleted')
+    list_filter = ('type', 'is_deleted')
+
+
 class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'is_deleted')
-    search_fields = ('department_name', 'address', 'parent', 'region', 'is_deleted')
-    list_editable = ('department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'is_deleted')
-    list_filter = ('department_name', 'address', 'parent', 'region', 'is_deleted')
+    list_display = ('id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted')
+    search_fields = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted')
+    list_editable = ('department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted')
+    list_filter = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted')
 
 
 class Department_PersonsAdmin(admin.ModelAdmin):
@@ -23,11 +30,18 @@ class Department_PersonsAdmin(admin.ModelAdmin):
     list_filter = ('department', 'is_deleted')
 
 
+class Type_OrganisationsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type', 'is_deleted')
+    search_fields = ('type', 'is_deleted')
+    list_editable = ('type', 'is_deleted')
+    list_filter = ('type', 'is_deleted')
+
+
 class OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted')
-    search_fields = ('organisation_name', 'address', 'parent', 'department', 'quota', 'is_deleted')
-    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted')
-    list_filter = ('organisation_name', 'address', 'parent', 'department', 'quota', 'is_deleted')
+    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
+    search_fields = ('organisation_name', 'address', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
+    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
+    list_filter = ('organisation_name', 'address', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
 
 
 class Organisation_PersonsAdmin(admin.ModelAdmin):
@@ -129,8 +143,10 @@ class VersionsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Regions, RegionAdmin)            #!!!Важно соблюдать последовательность регистрации моделей
+admin.site.register(Type_Departments, Type_DepartmentsAdmin)
 admin.site.register(Departments, DepartmentAdmin)
 admin.site.register(Department_Persons, Department_PersonsAdmin)
+admin.site.register(Type_Organisations, Type_OrganisationsAdmin)
 admin.site.register(Organisations, OrganisationsAdmin)
 admin.site.register(Organisation_Persons, Organisation_PersonsAdmin)
 admin.site.register(Quota, QuotaAdmin)

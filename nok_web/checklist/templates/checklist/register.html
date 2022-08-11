@@ -1,0 +1,20 @@
+{%  extends 'base.html' %}          <!--Указываю какой шаблон хочу наследовать-->
+
+{% block title %}
+Регистрация :: {{ block.super }}        <!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Регистрация</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
+
+</form>
+
+{% endblock %}
