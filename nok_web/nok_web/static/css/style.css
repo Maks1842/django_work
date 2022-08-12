@@ -1,3 +1,44 @@
+/**** Для первого варианта Навбара ******/
+
+body{
+    background-color: #F8F8F8;
+}
+
+.errorlist{
+    color: red;
+}
+
+.nav-bar{
+    background-color: #56cbe9;
+}
+
+.nav-padding{
+    padding-left: 20px;
+}
+
+.nav-text{
+	font-size: 18px;
+    color: #000000 !important;
+}
+
+.nav_searsh{
+ 	width: 100%;
+ }
+
+.search_btn{
+	font-family: "FontAwesome";
+	font-size: 16px;
+	color: #000000;
+}
+
+ .nav-padding_login{
+    padding-right: 50px;
+}
+
+
+
+
+/**** Для второго варианта Навбара ******/
 /**/
 @font-face {
 	font-family: "RobotoRegular";
@@ -24,17 +65,7 @@
 
 
 
-body{
-    background-color: #F8F8F8;
-}
 
-.errorlist{
-    color: red;
-}
-
-.columns_lib{
-
-}
 
 /**/
 #page_wrap {

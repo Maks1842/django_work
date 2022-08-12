@@ -1,5 +1,44 @@
-<nav id="page_wrap">
+<!-- Вариант 1. Бутстрап -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid nav-bar">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="/media/лейбл НОК.png" alt="" width="210" height="70">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item nav-padding"><a class="nav-link nav-text" href="{% url 'home' %}">Чеклист</a></li>
+                <li class="nav-item nav-padding"><a class="nav-link nav-text" href="{% url 'departments' %}">Реестр организаций</a></li>
+                <li class="nav-item nav-padding"><a class="nav-link nav-text" href="{% url 'organisation' %}">Документ</a></li>
+                <li class="nav-item nav-padding"><a class="nav-link nav-text" href="/admin">Админка</a></li>
 
+            </ul>
+            <form class="col-md-4 me-auto" role="search" action="/" method="get">
+                <input class="form-control nav_searsh" type="search" placeholder="Искать департамент, организацию">
+                <input type="submit" name="search_btn" class="search_btn" value="&#xf002">
+            </form>
+
+            <span class="navbar-text nav-padding_login">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link">Добро пожаловать, {{ user.username }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Выход</a></li>
+                {% else %}
+                <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+{% comment %}
+<!-- Вариант 2. Самописный -->
+<nav id="page_wrap">
     <div id="page">
         <!-- Шапка начало -->
         <div id="page_header">
@@ -17,7 +56,7 @@
                 <img src="/media/лейбл НОК.png" width="210" height="70">
             </a>
 
-            <div id="header_searsh">
+            <div id="header_searsh*">
                 <form action="/" method="get">
                     <input
                             type="text"
@@ -91,9 +130,10 @@
                     </div>
                 </div>
                 <!-- Левая колонка конец -->
-
             </div>
             <!-- Центр конец -->
         </div>
     </div>
 </nav>
+
+{% endcomment %}
