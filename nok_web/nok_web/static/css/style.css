@@ -1,42 +1,78 @@
 /**** Для первого варианта Навбара ******/
 
+
+/* General style */
+html{
+	font-size: 16px;
+}
+
 body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: #000;
     background-color: #F8F8F8;
+    min-width: 320px;                           /*Минимальная ширина для мобильного устройства*/
 }
 
-.errorlist{
-    color: red;
+img{                                            /*Общие настройки адаптивности для изображений*/
+	max-width: 100%;
+	height: auto;
 }
 
-.nav-bar{
-    background-color: #56cbe9;
+section{                                        /*Общие настройки для всех секций*/
+	padding: 50px 0;                            /*Отступы*/
 }
 
-.nav-padding{
-    padding-left: 20px;
+a{
+	color: #000;
 }
 
+a:hover{                                        /*Изменение стиля ссылки при наведении курсора*/
+	color: #0000FF;
+}
+
+/* END General style */
+
+/* Header */
+.container-fluid{
+	background-color: #56cbe9;
+}
+
+.navbar-nav .nav-item .nav-link{
+	padding-left: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #000;
+	text-transform: uppercase;
+}
+
+.top-menu li a::after{                        /*Подчеркивание элемента*/
+	content: '';
+	display: block;
+	width: 100%;
+	background-color: #000;
+	height: 1px;
+	transition: all .3s;
+	transform: scale(0);                     /*Пока не навили курсор - линии не видно*/
+}
+.top-menu li a:hover:after{
+	transform: scale(1);                     /*Навили курсор - линию видно*/
+}
+
+
+
+/* END Header */
+
+
+
+
+/*
 .nav-text{
 	font-size: 18px;
     color: #000000 !important;
 }
-
-.nav_searsh{
- 	width: 100%;
- }
-
-.search_btn{
-	font-family: "FontAwesome";
-	font-size: 16px;
-	color: #000000;
-}
-
- .nav-padding_login{
-    padding-right: 50px;
-}
-
-
-
+*/
 
 /**** Для второго варианта Навбара ******/
 /**/

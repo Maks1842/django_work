@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 
-from .models import Departments, Regions
+from .models import *
 from .forms import UserRegisterForm, UserLoginForm
 # from .utils import MyMixin
 from django.contrib import messages
@@ -12,7 +12,13 @@ from django.contrib.auth import login, logout
 
 
 def index(request):
-    return render(request, 'checklist/index.html')
+    regions = Regions.objects.all()
+    type_departments = Type_Departments.objects.all()
+    context = {
+        'regions': regions,
+        'type_departments': type_departments
+    }
+    return render(request, 'checklist/checklist.html', context)
 
 
 # Регистрация пользователя
