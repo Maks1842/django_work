@@ -278,3 +278,7 @@ class VersionsForm(forms.ModelForm):
             'active': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
+
+
+class DateForm(forms.Form):
+    date = forms.DateField(input_formats=['%d/%m/%Y'])

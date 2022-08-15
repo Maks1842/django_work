@@ -11,16 +11,6 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 
 
-def index(request):
-    regions = Regions.objects.all()
-    type_departments = Type_Departments.objects.all()
-    context = {
-        'regions': regions,
-        'type_departments': type_departments
-    }
-    return render(request, 'checklist/checklist.html', context)
-
-
 # Регистрация пользователя
 def register(request):
     if request.method == 'POST':
@@ -61,6 +51,33 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+
+
+
+def region_view(request):
+    regions = Regions.objects.order_by('pk')
+    departments = Departments.objects.order_by('pk')
+    context = {
+        'regions': regions,
+        'departments': departments,
+    }
+    return render(request, 'checklist/select_list.html', context)
+
+
+def question_view(request):
+    form_sections = Form_Sections.objects.order_by('pk')
+    questions = Questions.objects.order_by('pk')
+    question_values = Question_Values.objects.order_by('pk')
+    context = {
+        'form_sections': form_sections,
+        'questions': questions,
+        'question_values': question_values,
+    }
+    return render(request, 'checklist/check_list.html', context)
+
+
+
 
 
 class HomeDepartments(ListView):

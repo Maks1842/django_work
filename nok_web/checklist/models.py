@@ -162,8 +162,8 @@ class Forms(models.Model):
     name = models.CharField(max_length=150, verbose_name='Наименование формы Акта/Отчета')
     created_at = models.DateField(verbose_name='Дата формы')
     departments = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департаменты_id')
-    templates = models.ForeignKey('Templates', on_delete=models.PROTECT, null=True, verbose_name='Шаблоны_id')
-    version = models.ForeignKey('Versions', on_delete=models.PROTECT, null=True, verbose_name='Версия_id')
+    templates = models.ForeignKey('Templates', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Шаблоны_id')
+    version = models.ForeignKey('Versions', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Версия_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -195,7 +195,7 @@ class Form_Sections(models.Model):
 
 
 class Questions(models.Model):
-    name = models.CharField(max_length=250, verbose_name='Вопросы')
+    name = models.CharField(max_length=500, verbose_name='Вопросы')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
