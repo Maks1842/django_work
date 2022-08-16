@@ -73,17 +73,17 @@ class FormsAdmin(admin.ModelAdmin):
 
 
 class Form_SectionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'version', 'order_num', 'parent', 'forms', 'is_deleted')
-    search_fields = ('name', 'version', 'order_num', 'parent', 'forms', 'is_deleted')
-    list_editable = ('name', 'version', 'order_num', 'parent', 'forms', 'is_deleted')
-    list_filter = ('name', 'version', 'order_num', 'parent', 'forms', 'is_deleted')
+    list_display = ('id', 'name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
+    search_fields = ('name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
+    list_editable = ('name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
+    list_filter = ('name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
 
 
 class QuestionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'is_deleted')
-    search_fields = ('name', 'is_deleted')
-    list_editable = ('name', 'is_deleted')
-    list_filter = ('name', 'is_deleted')
+    list_display = ('id', 'name', 'form_sections', 'is_deleted')
+    search_fields = ('name', 'form_sections', 'is_deleted')
+    list_editable = ('name', 'form_sections', 'is_deleted')
+    list_filter = ('name', 'form_sections', 'is_deleted')
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):

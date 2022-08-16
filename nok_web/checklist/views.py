@@ -54,7 +54,7 @@ def user_logout(request):
 
 
 
-
+# Тренировочная вьюха
 def region_view(request):
     regions = Regions.objects.order_by('pk')
     departments = Departments.objects.order_by('pk')
@@ -64,7 +64,16 @@ def region_view(request):
     }
     return render(request, 'checklist/select_list.html', context)
 
+# Тренировочная вьюха
+def organisation_view(request, organisations_id):                  # Откуда приходит позиционный элемент organisations_id??? Из html ???
+    organisations = Organisations.objects.get(pk=organisations_id)
+    # organisations = Organisations.objects.order_by('pk')
+    context = {
+        'organisations': organisations,
+    }
+    return render(request, 'checklist/select_list.html', context)
 
+# Тренировочная вьюха
 def question_view(request):
     form_sections = Form_Sections.objects.order_by('pk')
     questions = Questions.objects.order_by('pk')
@@ -79,7 +88,7 @@ def question_view(request):
 
 
 
-
+# Тренировочная вьюха
 class HomeDepartments(ListView):
     model = Departments
     template_name = 'checklist/department_list.html'
@@ -90,7 +99,7 @@ class HomeDepartments(ListView):
         context['title'] = 'Главная страница'
         return context
 
-
+# Тренировочная вьюха
 class LibDepartments(ListView):
     model = Departments
     template_name = 'checklist/department_add_list.html'

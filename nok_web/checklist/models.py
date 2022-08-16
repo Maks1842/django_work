@@ -177,11 +177,12 @@ class Forms(models.Model):
 
 
 class Form_Sections(models.Model):
-    name = models.CharField(max_length=250, verbose_name='Наименование разделов')
+    name = models.CharField(max_length=500, verbose_name='Наименование разделов')
     version = models.CharField(max_length=20, verbose_name='Версия раздела')
     order_num = models.IntegerField(verbose_name='Порядковый номер')
     parent = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent_id')
     forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
+    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -196,6 +197,7 @@ class Form_Sections(models.Model):
 
 class Questions(models.Model):
     name = models.CharField(max_length=500, verbose_name='Вопросы')
+    form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, verbose_name='Наименование разделов_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
