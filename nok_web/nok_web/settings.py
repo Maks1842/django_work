@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'checklist.apps.ChecklistConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

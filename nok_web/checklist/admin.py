@@ -66,10 +66,10 @@ class TemplatesAdmin(admin.ModelAdmin):
 
 
 class FormsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'version', 'created_at', 'departments', 'templates', 'is_deleted')
-    search_fields = ('name', 'version', 'created_at', 'departments', 'templates', 'is_deleted')
-    list_editable = ('name', 'version', 'created_at', 'departments', 'templates', 'is_deleted')
-    list_filter = ('name', 'version', 'created_at', 'departments', 'templates', 'is_deleted')
+    list_display = ('id', 'name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
+    search_fields = ('name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
+    list_editable = ('name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
+    list_filter = ('name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
 
 
 class Form_SectionsAdmin(admin.ModelAdmin):

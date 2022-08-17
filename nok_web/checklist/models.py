@@ -161,7 +161,7 @@ class Templates(models.Model):
 class Forms(models.Model):
     name = models.CharField(max_length=150, verbose_name='Наименование формы Акта/Отчета')
     created_at = models.DateField(verbose_name='Дата формы')
-    departments = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департаменты_id')
+    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип департамента_id')
     templates = models.ForeignKey('Templates', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Шаблоны_id')
     version = models.ForeignKey('Versions', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Версия_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
@@ -182,7 +182,7 @@ class Form_Sections(models.Model):
     order_num = models.IntegerField(verbose_name='Порядковый номер')
     parent = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent_id')
     forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
-    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
+    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип департамента_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -197,7 +197,7 @@ class Form_Sections(models.Model):
 
 class Questions(models.Model):
     name = models.CharField(max_length=500, verbose_name='Вопросы')
-    form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, verbose_name='Наименование разделов_id')
+    form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -238,7 +238,7 @@ class Form_Sections_Question(models.Model):
 
 
 class Recommendations(models.Model):
-    name = models.CharField(max_length=250, verbose_name='Рекоммендации')
+    name = models.CharField(max_length=500, verbose_name='Рекоммендации')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -252,7 +252,7 @@ class Recommendations(models.Model):
 
 
 class Forms_Recommendations(models.Model):
-    free_value = models.CharField(max_length=250, verbose_name='Рекомендации в свободной форме')
+    free_value = models.CharField(max_length=300, verbose_name='Рекомендации в свободной форме')
     answers = models.ForeignKey('Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Ответы_id')
     forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
     form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, verbose_name='Разделы_id')

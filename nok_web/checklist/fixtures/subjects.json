@@ -1,0 +1,458 @@
+[
+{
+  "model": "checklist.regions",
+  "pk": 1,
+  "fields": {
+    "region_name": "Ставропольский край",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.regions",
+  "pk": 2,
+  "fields": {
+    "region_name": "Краснодарский край",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.regions",
+  "pk": 3,
+  "fields": {
+    "region_name": "Чеченская республика",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_departments",
+  "pk": 1,
+  "fields": {
+    "type": "Здравоохранение",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_departments",
+  "pk": 2,
+  "fields": {
+    "type": "Культура",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_departments",
+  "pk": 3,
+  "fields": {
+    "type": "Образование",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 1,
+  "fields": {
+    "department_name": "Министерство культуры СК",
+    "address": "г. Ставрополь",
+    "phone": "798789798",
+    "website": "йцукйцук",
+    "email": "stav@mk.ru",
+    "parent": null,
+    "region": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 2,
+  "fields": {
+    "department_name": "Министерство образования КК",
+    "address": "г. Краснодар",
+    "phone": "132465",
+    "website": "яыпяи",
+    "email": "obr@kr.ru",
+    "parent": null,
+    "region": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 3,
+  "fields": {
+    "department_name": "Министерство здравоохранения СК",
+    "address": "г. Ставрополь",
+    "phone": "798456",
+    "website": "фыпфап",
+    "email": "mz@stav.ru",
+    "parent": null,
+    "region": 1,
+    "type_departments": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 4,
+  "fields": {
+    "department_name": "Министерство культуры КК",
+    "address": "г. Краснодар",
+    "phone": "49489",
+    "website": "цаып",
+    "email": "mk@kk.ru",
+    "parent": null,
+    "region": 2,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 5,
+  "fields": {
+    "department_name": "Министерство культуры ЧР",
+    "address": "г. Грозный",
+    "phone": "9+41848",
+    "website": "ыфпяи",
+    "email": "wert@sg.com",
+    "parent": null,
+    "region": 3,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 6,
+  "fields": {
+    "department_name": "Министерство здравоохранения КК",
+    "address": "г. Краснодар",
+    "phone": "9+845",
+    "website": "впытр",
+    "email": "mk@kk.ru",
+    "parent": null,
+    "region": 2,
+    "type_departments": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.departments",
+  "pk": 7,
+  "fields": {
+    "department_name": "Министерство здравоохранения ЧР",
+    "address": "г. Грозный",
+    "phone": "984651",
+    "website": "чствар",
+    "email": "asdf@mail.ru",
+    "parent": null,
+    "region": 3,
+    "type_departments": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 1,
+  "fields": {
+    "type": "Здание культурного наследия",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisations",
+  "pk": 1,
+  "fields": {
+    "organisation_name": "Краеведческий музей",
+    "address": "г. Краснодар",
+    "phone": "195961",
+    "website": "воаыр",
+    "email": "qwr@mail.ru",
+    "parent": null,
+    "department": 4,
+    "quota": 1,
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisations",
+  "pk": 2,
+  "fields": {
+    "organisation_name": "Атамань",
+    "address": "ст-ца Тамань",
+    "phone": "6923121",
+    "website": "вавао",
+    "email": "asdf@mail.ru",
+    "parent": null,
+    "department": 4,
+    "quota": 1,
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisations",
+  "pk": 3,
+  "fields": {
+    "organisation_name": "Музей Моя История",
+    "address": "г. Ставрополь",
+    "phone": "41564",
+    "website": "ыавпви",
+    "email": "asdf@mail.ru",
+    "parent": null,
+    "department": 1,
+    "quota": 4,
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisations",
+  "pk": 4,
+  "fields": {
+    "organisation_name": "Филармония",
+    "address": "г. Ставрополь",
+    "phone": "156",
+    "website": "фыав",
+    "email": "qwr@mail.ru",
+    "parent": null,
+    "department": 1,
+    "quota": 3,
+    "type_organisations": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.quota",
+  "pk": 1,
+  "fields": {
+    "quota": 600
+  }
+},
+{
+  "model": "checklist.quota",
+  "pk": 2,
+  "fields": {
+    "quota": 500
+  }
+},
+{
+  "model": "checklist.quota",
+  "pk": 3,
+  "fields": {
+    "quota": 450
+  }
+},
+{
+  "model": "checklist.quota",
+  "pk": 4,
+  "fields": {
+    "quota": 550
+  }
+},
+{
+  "model": "checklist.forms",
+  "pk": 1,
+  "fields": {
+    "name": "Акт осмотра - Культура",
+    "created_at": "2022-08-15",
+    "type_departments": 2,
+    "templates": null,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 1,
+  "fields": {
+    "name": "по показателю 1.1",
+    "version": "1",
+    "order_num": 1,
+    "parent": 6,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 2,
+  "fields": {
+    "name": "по показателю 1.2",
+    "version": "1",
+    "order_num": 1,
+    "parent": 6,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 3,
+  "fields": {
+    "name": "по показателю 2.1",
+    "version": "1",
+    "order_num": 1,
+    "parent": 7,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 4,
+  "fields": {
+    "name": "по показателю 3.1",
+    "version": "1",
+    "order_num": 1,
+    "parent": null,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 5,
+  "fields": {
+    "name": "по показателю 3.2",
+    "version": "1",
+    "order_num": 1,
+    "parent": null,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 6,
+  "fields": {
+    "name": "Критерий 1 «Открытость и доступность информации об организации культуры»:",
+    "version": "1",
+    "order_num": 1,
+    "parent": null,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 7,
+  "fields": {
+    "name": "Критерий 2 «Комфортность условий предоставления услуг»:",
+    "version": "1",
+    "order_num": 1,
+    "parent": null,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 8,
+  "fields": {
+    "name": "I. Общая информация об организации культуры",
+    "version": "1",
+    "order_num": 1,
+    "parent": 1,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 9,
+  "fields": {
+    "name": "II. Информация о деятельности организации культуры",
+    "version": "1",
+    "order_num": 1,
+    "parent": 1,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 10,
+  "fields": {
+    "name": "III. Информация о независимой оценке качества",
+    "version": "1",
+    "order_num": 1,
+    "parent": 1,
+    "forms": 1,
+    "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 1,
+  "fields": {
+    "name": "Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты",
+    "form_sections": 8,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 2,
+  "fields": {
+    "name": "Место нахождения организации культуры и ее филиалов (при наличии)",
+    "form_sections": 8,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 3,
+  "fields": {
+    "name": "Дата создания организации культуры, сведения об учредителе/учредителях, контактные телефоны, адрес сайта, адреса электронной почты учредителя/учредителей",
+    "form_sections": 8,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 4,
+  "fields": {
+    "name": "Виды предоставляемых услуг организацией культуры",
+    "form_sections": 9,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 5,
+  "fields": {
+    "name": "Перечень оказываемых платных услуг (при наличии)*; цены (тарифы) на услуги (при наличии платных услуг), копии документов о порядке предоставления услуг за плату, нормативных правовых актов, устанавливающих цены (тарифы) на услуги (при наличии платных услуг)*",
+    "form_sections": 9,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 1,
+  "fields": {
+    "value_name": "Да",
+    "questions": 1
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 2,
+  "fields": {
+    "value_name": "Нет",
+    "questions": 1
+  }
+}
+]
