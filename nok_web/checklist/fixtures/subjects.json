@@ -24,6 +24,30 @@
   }
 },
 {
+  "model": "checklist.regions",
+  "pk": 4,
+  "fields": {
+    "region_name": "Дагестан",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.regions",
+  "pk": 6,
+  "fields": {
+    "region_name": "Ростовская область",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.regions",
+  "pk": 8,
+  "fields": {
+    "region_name": "Ингушетия",
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.type_departments",
   "pk": 1,
   "fields": {
@@ -143,12 +167,26 @@
   "fields": {
     "department_name": "Министерство здравоохранения ЧР",
     "address": "г. Грозный",
-    "phone": "984651",
+    "phone": "99999999",
     "website": "чствар",
     "email": "asdf@mail.ru",
     "parent": null,
     "region": 3,
     "type_departments": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.department_persons",
+  "pk": 1,
+  "fields": {
+    "first_name": "Ольга",
+    "second_name": "Гугуце",
+    "last_name": "Валерьева",
+    "position": "Директор",
+    "phone": "798798798",
+    "email": "1234@sdf.ru",
+    "department": 1,
     "is_deleted": false
   }
 },
@@ -221,6 +259,20 @@
     "department": 1,
     "quota": 3,
     "type_organisations": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 1,
+  "fields": {
+    "first_name": "Иван",
+    "second_name": "Ухыф",
+    "last_name": "Урбоков",
+    "position": "Как директор",
+    "phone": "79856",
+    "email": "",
+    "organisation": 1,
     "is_deleted": false
   }
 },
@@ -453,6 +505,36 @@
   "fields": {
     "value_name": "Нет",
     "questions": 1
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 1,
+  "fields": {
+    "questions": 3,
+    "forms": 1,
+    "order_num": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 2,
+  "fields": {
+    "questions": 2,
+    "forms": 1,
+    "order_num": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 3,
+  "fields": {
+    "questions": 1,
+    "forms": 1,
+    "order_num": 1,
+    "is_deleted": false
   }
 }
 ]
