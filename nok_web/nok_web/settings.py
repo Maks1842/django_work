@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-44hsp-3%ta4t(v1lf_667i#yg6aq)6&7&9r+jeq%$dn8i)&ts4'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", []).split(" ")
 
 
 # Application definition
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'nok_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nok_web_db',
-        'USER': 'my_user',
-        'PASSWORD': 'kms7350',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.postgresql'),
+        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'nok_web_db')),
+        'USER': os.environ.get("SQL_USER", 'my_user'),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", 'kms7350'),
+        'HOST': os.environ.get("SQL_HOST", "127.0.0.1"),
+        'PORT': os.environ.get("SQL_PORT", '5432'),
     }
 }
 
@@ -136,4 +136,4 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = os.environ.get("INTERNAL_IPS", ['127.0.0.1']).split(" ")
