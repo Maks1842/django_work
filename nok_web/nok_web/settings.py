@@ -137,3 +137,11 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = os.environ.get("INTERNAL_IPS", ['127.0.0.1']).split(" ")
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',           # В боевом режиме, чтобы на отображалась страница настроек, СТРОКУ ЗАКОММЕНТИРОВАТЬ
+    ]
+}

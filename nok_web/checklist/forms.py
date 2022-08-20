@@ -20,7 +20,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ['username', 'email', 'password1', 'password2']
 
 
 class RegionsForm(forms.ModelForm):
@@ -144,12 +144,12 @@ class TemplatesForm(forms.ModelForm):
 class FormsForm(forms.ModelForm):
     class Meta:
         model = Forms
-        fields = ['name', 'version', 'created_at', 'departments', 'templates', 'is_deleted']
+        fields = ['name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted']
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control"}),
             'version': forms.TextInput(attrs={"class": "form-control"}),
             'created_at': forms.DateInput(attrs={"class": "form-control"}),
-            'departments': forms.Select(attrs={"class": "form-control"}),
+            'type_departments': forms.Select(attrs={"class": "form-control"}),
             'templates': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
@@ -281,6 +281,3 @@ class VersionsForm(forms.ModelForm):
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
 
-
-class DateForm(forms.Form):
-    date = forms.DateField(input_formats=['%d/%m/%Y'])
