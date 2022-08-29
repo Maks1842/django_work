@@ -128,6 +128,20 @@ class Signed_DociumentsAdmin(admin.ModelAdmin):
     list_filter = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
 
 
+class CommentsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'free_value', 'forms', 'is_deleted')
+    search_fields = ('free_value', 'forms', 'is_deleted')
+    list_editable = ('free_value', 'forms', 'is_deleted')
+    list_filter = ('free_value', 'forms', 'is_deleted')
+
+
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    search_fields = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    list_filter = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
+
+
 class EvaluationAdmin(admin.ModelAdmin):
     list_display = ('id', 'date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
     search_fields = ('date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
@@ -160,6 +174,8 @@ admin.site.register(Recommendations, RecommendationsAdmin)
 admin.site.register(Forms_Recommendations, Forms_RecommendationsAdmin)
 admin.site.register(Answers, AnswersAdmin)
 admin.site.register(Signed_Dociuments, Signed_DociumentsAdmin)
+admin.site.register(Comments, CommentsAdmin)
+admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Evaluation, EvaluationAdmin)
 admin.site.register(Versions, VersionsAdmin)
 

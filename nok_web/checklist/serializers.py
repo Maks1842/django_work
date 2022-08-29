@@ -7,15 +7,6 @@ class RegionsSerializer(serializers.ModelSerializer):
         model = Regions
         fields = ['id', 'region_name', 'is_deleted']
 
-    # def create(self, validated_data):
-    #     return Regions.objects.create(**validated_data)
-    #
-    # def update(self, instance, validated_data):
-    #     instance.region_name = validated_data.get('region_name', instance.region_name)
-    #     instance.is_deleted = validated_data.get('is_deleted', instance.is_deleted)
-    #     instance.save()
-    #     return instance
-
 
 class Type_DepartmentsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -117,6 +108,18 @@ class Signed_DociumentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Signed_Dociuments
         fields = ['id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+
+
+class CommentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comments
+        fields = ['id', 'free_value', 'forms', 'is_deleted']
+
+
+class PhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photo
+        fields = ['id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
 
 
 class EvaluationSerializer(serializers.ModelSerializer):
