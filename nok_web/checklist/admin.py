@@ -80,10 +80,10 @@ class Form_SectionsAdmin(admin.ModelAdmin):
 
 
 class QuestionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'form_sections', 'is_deleted')
-    search_fields = ('name', 'form_sections', 'is_deleted')
-    list_editable = ('name', 'form_sections', 'is_deleted')
-    list_filter = ('name', 'form_sections', 'is_deleted')
+    list_display = ('id', 'name', 'form_sections', 'type_answers', 'is_deleted')
+    search_fields = ('name', 'form_sections', 'type_answers', 'is_deleted')
+    list_editable = ('name', 'form_sections', 'type_answers', 'is_deleted')
+    list_filter = ('name', 'form_sections', 'type_answers', 'is_deleted')
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):
@@ -156,6 +156,13 @@ class VersionsAdmin(admin.ModelAdmin):
     list_filter = ('table_name', 'version', 'active', 'is_deleted')
 
 
+class Type_AnswersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type')
+    search_fields = ('type',)
+    list_editable = ('type',)
+    list_filter = ('type',)
+
+
 admin.site.register(Regions, RegionAdmin)            #!!!Важно соблюдать последовательность регистрации моделей
 admin.site.register(Type_Departments, Type_DepartmentsAdmin)
 admin.site.register(Departments, DepartmentAdmin)
@@ -178,4 +185,5 @@ admin.site.register(Comments, CommentsAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Evaluation, EvaluationAdmin)
 admin.site.register(Versions, VersionsAdmin)
+admin.site.register(Type_Answers, Type_AnswersAdmin)
 

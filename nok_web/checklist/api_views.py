@@ -466,8 +466,18 @@ class QuestionsViewSet(viewsets.ModelViewSet):
         return Response({'form_section': form_sect.name})
 
     @action(methods=['get'], detail=False)
+    def type_answers(self, request):
+        type_anss = Form_Sections.objects.all()
+        return Response({'type_answers': [t.type for t in type_anss]})
+
+    @action(methods=['get'], detail=True)
+    def type_answer(self, request, pk=None):
+        type_ans = Type_Answers.objects.get(pk=pk)
+        return Response({'type_answer': type_ans.type})
+
+    @action(methods=['get'], detail=False)
     def form_sections(self, request):
-        form_sects = Form_Sections.objects.all()
+        form_sects = Type_Answers.objects.all()
         return Response({'form_sections': [f.name for f in form_sects]})
 
     @action(methods=['put'], detail=True)
@@ -1000,6 +1010,35 @@ class VersionsViewSet(viewsets.ModelViewSet):
         except:
             return Response({'error': 'Объект не существует'})
         serializers = VersionsSerializer(data=request.data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
+
+
+class Type_AnswersViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+    queryset = Type_Answers.objects.all()
+    serializer_class = Type_AnswersSerializer
+
+    @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    def type_answers_id(self, request, pk=None):
+        type_ans_id = Type_Answers.objects.values('id').get(pk=pk)
+        return Response({'type_id': type_ans_id})
+
+    @action(methods=['get'], detail=True)                              # Извлекаю одну запись из конкретного поля
+    def type_answers(self, request, pk=None):
+        type = Type_Answers.objects.values('type').get(pk=pk)
+        return Response({'type': type})
+
+    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    def type_answers_update(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({'error': 'Метод PUT не определен'})
+        try:
+            instance = Type_Answers.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Объект не существует'})
+        serializers = Type_AnswersSerializer(data=request.data, instance=instance, partial=True)
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})

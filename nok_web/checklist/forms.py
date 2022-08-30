@@ -173,10 +173,11 @@ class Form_SectionsForm(forms.ModelForm):
 class QuestionsForm(forms.ModelForm):
     class Meta:
         model = Questions
-        fields = ['name', 'form_sections', 'is_deleted']
+        fields = ['name', 'form_sections', 'type_answers', 'is_deleted']
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control"}),
             'form_sections': forms.Select(attrs={"class": "form-control"}),
+            'type_answers': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
 
@@ -305,5 +306,14 @@ class VersionsForm(forms.ModelForm):
             'version': forms.TextInput(attrs={"class": "form-control"}),
             'active': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
+        }
+
+
+class Type_AnswersForm(forms.ModelForm):
+    class Meta:
+        model = Type_Answers
+        fields = ['type']
+        widgets = {
+            'type': forms.Select(attrs={"class": "form-control"}),
         }
 

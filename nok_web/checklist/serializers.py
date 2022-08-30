@@ -71,7 +71,7 @@ class Form_SectionsSerializer(serializers.ModelSerializer):
 class QuestionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questions
-        fields = ['id', 'name', 'form_sections', 'is_deleted']
+        fields = ['id', 'name', 'form_sections', 'type_answers', 'is_deleted']
 
 
 class Question_ValuesSerializer(serializers.ModelSerializer):
@@ -132,4 +132,10 @@ class VersionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Versions
         fields = ['id', 'table_name', 'version', 'active', 'is_deleted']
+
+
+class Type_AnswersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Type_Answers
+        fields = ['id', 'type']
 

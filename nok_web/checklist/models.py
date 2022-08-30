@@ -198,6 +198,7 @@ class Form_Sections(models.Model):
 class Questions(models.Model):
     name = models.CharField(max_length=500, verbose_name='Вопросы')
     form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
+    type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип вопроса_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -360,3 +361,16 @@ class Versions(models.Model):
 
     class Meta:
         verbose_name_plural = 'Контроль версий'
+
+
+class Type_Answers(models.Model):
+    type = models.CharField(max_length=50, verbose_name='Типы ответов')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name_plural = 'Тип ответа'
