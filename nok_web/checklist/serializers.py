@@ -7,15 +7,6 @@ class RegionsSerializer(serializers.ModelSerializer):
         model = Regions
         fields = ['id', 'region_name', 'is_deleted']
 
-    # def create(self, validated_data):
-    #     return Regions.objects.create(**validated_data)
-    #
-    # def update(self, instance, validated_data):
-    #     instance.region_name = validated_data.get('region_name', instance.region_name)
-    #     instance.is_deleted = validated_data.get('is_deleted', instance.is_deleted)
-    #     instance.save()
-    #     return instance
-
 
 class Type_DepartmentsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -80,7 +71,7 @@ class Form_SectionsSerializer(serializers.ModelSerializer):
 class QuestionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questions
-        fields = ['id', 'name', 'form_sections', 'is_deleted']
+        fields = ['id', 'name', 'form_sections', 'type_answers', 'is_deleted']
 
 
 class Question_ValuesSerializer(serializers.ModelSerializer):
@@ -119,6 +110,18 @@ class Signed_DociumentsSerializer(serializers.ModelSerializer):
         fields = ['id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
 
 
+class CommentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comments
+        fields = ['id', 'free_value', 'forms', 'is_deleted']
+
+
+class PhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photo
+        fields = ['id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+
+
 class EvaluationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evaluation
@@ -129,4 +132,10 @@ class VersionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Versions
         fields = ['id', 'table_name', 'version', 'active', 'is_deleted']
+
+
+class Type_AnswersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Type_Answers
+        fields = ['id', 'type']
 

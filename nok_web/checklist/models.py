@@ -198,6 +198,7 @@ class Form_Sections(models.Model):
 class Questions(models.Model):
     name = models.CharField(max_length=500, verbose_name='Вопросы')
     form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
+    type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип вопроса_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -301,6 +302,37 @@ class Signed_Dociuments(models.Model):
         return self.file_name
 
 
+class Comments(models.Model):
+    free_value = models.CharField(max_length=300, verbose_name='Комментарии')
+    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
+    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name_plural = 'Комментарии'
+
+
+class Photo(models.Model):
+    file_name = models.CharField(max_length=50, verbose_name='Фото')
+    original_file_name = models.CharField(max_length=50, verbose_name='Оригинальное имя файла')
+    description = models.CharField(max_length=50, verbose_name='Комментарий')
+    created_at = models.DateField(verbose_name='Дата документа')
+    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
+    evaluation = models.ForeignKey('Evaluation', on_delete=models.PROTECT, null=True, verbose_name='Оценка_id')
+    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return self.file_name
+
+    class Meta:
+        verbose_name_plural = 'Фото'
+
+
 class Evaluation(models.Model):
     date_evaluation = models.DateField(verbose_name='Дата проведения оценки')
     forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
@@ -329,3 +361,16 @@ class Versions(models.Model):
 
     class Meta:
         verbose_name_plural = 'Контроль версий'
+
+
+class Type_Answers(models.Model):
+    type = models.CharField(max_length=50, verbose_name='Типы ответов')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name_plural = 'Тип ответа'

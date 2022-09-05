@@ -466,8 +466,18 @@ class QuestionsViewSet(viewsets.ModelViewSet):
         return Response({'form_section': form_sect.name})
 
     @action(methods=['get'], detail=False)
+    def type_answers(self, request):
+        type_anss = Form_Sections.objects.all()
+        return Response({'type_answers': [t.type for t in type_anss]})
+
+    @action(methods=['get'], detail=True)
+    def type_answer(self, request, pk=None):
+        type_ans = Type_Answers.objects.get(pk=pk)
+        return Response({'type_answer': type_ans.type})
+
+    @action(methods=['get'], detail=False)
     def form_sections(self, request):
-        form_sects = Form_Sections.objects.all()
+        form_sects = Type_Answers.objects.all()
         return Response({'form_sections': [f.name for f in form_sects]})
 
     @action(methods=['put'], detail=True)
@@ -809,6 +819,109 @@ class Signed_DociumentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
+class CommentsViewSet(viewsets.ModelViewSet):
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializer
+
+    @action(methods=['get'], detail=True)
+    def comments_id(self, request, pk=None):
+        comment_id = Comments.objects.values('id').get(pk=pk)
+        return Response({'comments_id': comment_id})
+
+    @action(methods=['get'], detail=True)
+    def free_value(self, request, pk=None):
+        fv = Comments.objects.values('free_value').get(pk=pk)
+        return Response({'free_value': fv})
+
+    @action(methods=['get'], detail=True)
+    def form(self, request, pk=None):
+        form_fs = Forms.objects.get(pk=pk)
+        return Response({'form': form_fs.name})
+
+    @action(methods=['get'], detail=False)
+    def forms(self, request):
+        forms_fs = Forms.objects.all()
+        return Response({'forms': [f.name for f in forms_fs]})
+
+    @action(methods=['put'], detail=True)
+    def comments_update(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({'error': 'Метод PUT не определен'})
+        try:
+            instance = Comments.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Объект не существует'})
+        serializers = CommentsSerializer(data=request.data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
+
+
+class PhotoViewSet(viewsets.ModelViewSet):
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+
+    @action(methods=['get'], detail=True)
+    def photo_id(self, request, pk=None):
+        pht_id = Photo.objects.values('id').get(pk=pk)
+        return Response({'photo_id': pht_id})
+
+    @action(methods=['get'], detail=True)
+    def file_name(self, request, pk=None):
+        fn = Photo.objects.values('file_name').get(pk=pk)
+        return Response({'file_name': fn})
+
+    @action(methods=['get'], detail=True)
+    def original_file_name(self, request, pk=None):
+        ofn = Photo.objects.values('original_file_name').get(pk=pk)
+        return Response({'original_file_name': ofn})
+
+    @action(methods=['get'], detail=True)
+    def description(self, request, pk=None):
+        descr = Photo.objects.values('description').get(pk=pk)
+        return Response({'description': descr})
+
+    @action(methods=['get'], detail=True)
+    def created_at(self, request, pk=None):
+        created = Photo.objects.values('created_at').get(pk=pk)
+        return Response({'created': created})
+
+    @action(methods=['get'], detail=True)
+    def form(self, request, pk=None):
+        form_sd = Forms.objects.get(pk=pk)
+        return Response({'form': form_sd.name})
+
+    @action(methods=['get'], detail=False)
+    def forms(self, request):
+        forms_sd = Forms.objects.all()
+        return Response({'forms': [f.name for f in forms_sd]})
+
+    @action(methods=['get'], detail=True)
+    def evaluation(self, request, pk=None):
+        evaluat = Evaluation.objects.get(pk=pk)
+        return Response({'name': evaluat.date_evaluation})
+
+    @action(methods=['get'], detail=False)
+    def evaluations(self, request):
+        evaluats = Evaluation.objects.all()
+        return Response({'names': [e.date_evaluation for e in evaluats]})
+
+    @action(methods=['put'], detail=True)
+    def photo_update(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({'error': 'Метод PUT не определен'})
+        try:
+            instance = Photo.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Объект не существует'})
+        serializers = PhotoSerializer(data=request.data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
+
+
 class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
@@ -897,6 +1010,35 @@ class VersionsViewSet(viewsets.ModelViewSet):
         except:
             return Response({'error': 'Объект не существует'})
         serializers = VersionsSerializer(data=request.data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
+
+
+class Type_AnswersViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+    queryset = Type_Answers.objects.all()
+    serializer_class = Type_AnswersSerializer
+
+    @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    def type_answers_id(self, request, pk=None):
+        type_ans_id = Type_Answers.objects.values('id').get(pk=pk)
+        return Response({'type_id': type_ans_id})
+
+    @action(methods=['get'], detail=True)                              # Извлекаю одну запись из конкретного поля
+    def type_answers(self, request, pk=None):
+        type = Type_Answers.objects.values('type').get(pk=pk)
+        return Response({'type': type})
+
+    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    def type_answers_update(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({'error': 'Метод PUT не определен'})
+        try:
+            instance = Type_Answers.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Объект не существует'})
+        serializers = Type_AnswersSerializer(data=request.data, instance=instance, partial=True)
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})

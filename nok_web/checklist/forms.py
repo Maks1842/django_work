@@ -173,10 +173,11 @@ class Form_SectionsForm(forms.ModelForm):
 class QuestionsForm(forms.ModelForm):
     class Meta:
         model = Questions
-        fields = ['name', 'form_sections', 'is_deleted']
+        fields = ['name', 'form_sections', 'type_answers', 'is_deleted']
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control"}),
             'form_sections': forms.Select(attrs={"class": "form-control"}),
+            'type_answers': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
 
@@ -257,6 +258,32 @@ class Signed_DociumentsForm(forms.ModelForm):
         }
 
 
+class CommentsForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['free_value', 'forms', 'is_deleted']
+        widgets = {
+            'free_value': forms.TextInput(attrs={"class": "form-control"}),
+            'forms': forms.Select(attrs={"class": "form-control"}),
+            'is_deleted': forms.Select(attrs={"class": "form-control"})
+        }
+
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ['file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+        widgets = {
+            'file_name': forms.TextInput(attrs={"class": "form-control"}),
+            'original_file_name': forms.TextInput(attrs={"class": "form-control"}),
+            'description': forms.TextInput(attrs={"class": "form-control"}),
+            'created_at': forms.DateInput(attrs={"class": "form-control"}),
+            'forms': forms.Select(attrs={"class": "form-control"}),
+            'evaluation': forms.Select(attrs={"class": "form-control"}),
+            'is_deleted': forms.Select(attrs={"class": "form-control"})
+        }
+
+
 class EvaluationForm(forms.ModelForm):
     class Meta:
         model = Evaluation
@@ -279,5 +306,14 @@ class VersionsForm(forms.ModelForm):
             'version': forms.TextInput(attrs={"class": "form-control"}),
             'active': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
+        }
+
+
+class Type_AnswersForm(forms.ModelForm):
+    class Meta:
+        model = Type_Answers
+        fields = ['type']
+        widgets = {
+            'type': forms.Select(attrs={"class": "form-control"}),
         }
 

@@ -80,10 +80,10 @@ class Form_SectionsAdmin(admin.ModelAdmin):
 
 
 class QuestionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'form_sections', 'is_deleted')
-    search_fields = ('name', 'form_sections', 'is_deleted')
-    list_editable = ('name', 'form_sections', 'is_deleted')
-    list_filter = ('name', 'form_sections', 'is_deleted')
+    list_display = ('id', 'name', 'form_sections', 'type_answers', 'is_deleted')
+    search_fields = ('name', 'form_sections', 'type_answers', 'is_deleted')
+    list_editable = ('name', 'form_sections', 'type_answers', 'is_deleted')
+    list_filter = ('name', 'form_sections', 'type_answers', 'is_deleted')
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):
@@ -128,6 +128,20 @@ class Signed_DociumentsAdmin(admin.ModelAdmin):
     list_filter = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
 
 
+class CommentsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'free_value', 'forms', 'is_deleted')
+    search_fields = ('free_value', 'forms', 'is_deleted')
+    list_editable = ('free_value', 'forms', 'is_deleted')
+    list_filter = ('free_value', 'forms', 'is_deleted')
+
+
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    search_fields = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    list_filter = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
+
+
 class EvaluationAdmin(admin.ModelAdmin):
     list_display = ('id', 'date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
     search_fields = ('date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
@@ -140,6 +154,13 @@ class VersionsAdmin(admin.ModelAdmin):
     search_fields = ('table_name', 'version', 'active', 'is_deleted')
     list_editable = ('table_name', 'version', 'active', 'is_deleted')
     list_filter = ('table_name', 'version', 'active', 'is_deleted')
+
+
+class Type_AnswersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type')
+    search_fields = ('type',)
+    list_editable = ('type',)
+    list_filter = ('type',)
 
 
 admin.site.register(Regions, RegionAdmin)            #!!!Важно соблюдать последовательность регистрации моделей
@@ -160,6 +181,9 @@ admin.site.register(Recommendations, RecommendationsAdmin)
 admin.site.register(Forms_Recommendations, Forms_RecommendationsAdmin)
 admin.site.register(Answers, AnswersAdmin)
 admin.site.register(Signed_Dociuments, Signed_DociumentsAdmin)
+admin.site.register(Comments, CommentsAdmin)
+admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Evaluation, EvaluationAdmin)
 admin.site.register(Versions, VersionsAdmin)
+admin.site.register(Type_Answers, Type_AnswersAdmin)
 
