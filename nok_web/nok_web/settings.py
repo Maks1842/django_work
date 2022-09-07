@@ -26,7 +26,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", []).split(" ")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", []).split(" ")          ## Также надо поправить в INTERNAL_IPS
+# ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -80,13 +82,24 @@ WSGI_APPLICATION = 'nok_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.postgresql'),
-        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'nok_web_db')),
-        'USER': os.environ.get("SQL_USER", 'my_user'),
-        'PASSWORD': os.environ.get("SQL_PASSWORD", 'kms7350'),
-        'HOST': os.environ.get("SQL_HOST", "127.0.0.1"),
-        'PORT': os.environ.get("SQL_PORT", '5432'),
+        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'postgres')),
+        'USER': os.environ.get("SQL_USER", 'postgres'),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", 'postgres'),
+        'HOST': os.environ.get("SQL_HOST", "localhost"),
+        'PORT': os.environ.get("SQL_PORT", '65432'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#         'PORT': '65432',
+#     }
+# }
 
 
 # Password validation
@@ -137,6 +150,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = os.environ.get("INTERNAL_IPS", ['127.0.0.1']).split(" ")
+# INTERNAL_IPS = ['127.0.0.1']
 
 
 REST_FRAMEWORK = {

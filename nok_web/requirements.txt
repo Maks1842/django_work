@@ -8,3 +8,4 @@ psycopg2-binary==2.9.3
 pytz==2022.2.1
 six==1.16.0
 sqlparse==0.4.2
+drf-yasg2>=1.19.4

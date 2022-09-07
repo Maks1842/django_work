@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY requirements.txt /app/
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
 COPY entrypoint.sh /usr/local/bin/docker-entrypoint
