@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'checklist.apps.ChecklistConfig',
+    'rest_framework',
+    'drf_yasg2',
 ]
 
 MIDDLEWARE = [
@@ -82,13 +84,38 @@ WSGI_APPLICATION = 'nok_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.postgresql'),
-        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'postgres')),
-        'USER': os.environ.get("SQL_USER", 'postgres'),
-        'PASSWORD': os.environ.get("SQL_PASSWORD", 'postgres'),
-        'HOST': os.environ.get("SQL_HOST", "localhost"),
-        'PORT': os.environ.get("SQL_PORT", '65432'),
+        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'nok_web_db')),
+        'USER': os.environ.get("SQL_USER", 'my_user'),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", 'kms7350'),
+        'HOST': os.environ.get("SQL_HOST", "127.0.0.1"),
+        'PORT': os.environ.get("SQL_PORT", '5432'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.postgresql'),
+#         'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'postgres')),
+#         'USER': os.environ.get("SQL_USER", 'postgres'),
+#         'PASSWORD': os.environ.get("SQL_PASSWORD", 'postgres'),
+#         'HOST': os.environ.get("SQL_HOST", "localhost"),
+#         'PORT': os.environ.get("SQL_PORT", '65432'),
+#     }
+# }
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'nok_web_db',
+#         'USER': 'my_user',
+#         'PASSWORD': 'kms7350',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 
 # DATABASES = {
 #     'default': {
