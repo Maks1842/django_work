@@ -246,7 +246,7 @@ class AnswersForm(forms.ModelForm):
 class Signed_DociumentsForm(forms.ModelForm):
     class Meta:
         model = Signed_Dociuments
-        fields = ['file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+        fields = ['file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user']
         widgets = {
             'file_name': forms.TextInput(attrs={"class": "form-control"}),
             'originat_file_name': forms.TextInput(attrs={"class": "form-control"}),
@@ -254,7 +254,8 @@ class Signed_DociumentsForm(forms.ModelForm):
             'created_at': forms.DateInput(attrs={"class": "form-control"}),
             'forms': forms.Select(attrs={"class": "form-control"}),
             'evaluation': forms.Select(attrs={"class": "form-control"}),
-            'is_deleted': forms.Select(attrs={"class": "form-control"})
+            'is_deleted': forms.Select(attrs={"class": "form-control"}),
+            'user': forms.Select(attrs={"class": "form-control"})
         }
 
 
@@ -272,7 +273,7 @@ class CommentsForm(forms.ModelForm):
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
-        fields = ['file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+        fields = ['file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user']
         widgets = {
             'file_name': forms.TextInput(attrs={"class": "form-control"}),
             'original_file_name': forms.TextInput(attrs={"class": "form-control"}),
@@ -280,7 +281,8 @@ class PhotoForm(forms.ModelForm):
             'created_at': forms.DateInput(attrs={"class": "form-control"}),
             'forms': forms.Select(attrs={"class": "form-control"}),
             'evaluation': forms.Select(attrs={"class": "form-control"}),
-            'is_deleted': forms.Select(attrs={"class": "form-control"})
+            'is_deleted': forms.Select(attrs={"class": "form-control"}),
+            'user': forms.Select(attrs={"class": "form-control"})
         }
 
 
@@ -315,5 +317,19 @@ class Type_AnswersForm(forms.ModelForm):
         fields = ['type']
         widgets = {
             'type': forms.Select(attrs={"class": "form-control"}),
+        }
+
+
+class Transaction_ExchangeForm(forms.ModelForm):
+    class Meta:
+        model = Transaction_Exchange
+        fields = ['model', 'field', 'old_data', 'new_data', 'date_exchange', 'user']
+        widgets = {
+            'model': forms.Select(attrs={"class": "form-control"}),
+            'field': forms.Select(attrs={"class": "form-control"}),
+            'old_data': forms.Select(attrs={"class": "form-control"}),
+            'new_data': forms.Select(attrs={"class": "form-control"}),
+            'date_exchange': forms.DateInput(attrs={"class": "form-control"}),
+            'user': forms.Select(attrs={"class": "form-control"}),
         }
 

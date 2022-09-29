@@ -122,10 +122,10 @@ class AnswersAdmin(admin.ModelAdmin):
 
 
 class Signed_DociumentsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
-    search_fields = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
-    list_editable = ('file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
-    list_filter = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    list_display = ('id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    search_fields = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    list_editable = ('file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    list_filter = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
 
 
 class CommentsAdmin(admin.ModelAdmin):
@@ -136,10 +136,10 @@ class CommentsAdmin(admin.ModelAdmin):
 
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
-    search_fields = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
-    list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted')
-    list_filter = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted')
+    list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    search_fields = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    list_filter = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
 
 
 class EvaluationAdmin(admin.ModelAdmin):
@@ -163,7 +163,16 @@ class Type_AnswersAdmin(admin.ModelAdmin):
     list_filter = ('type',)
 
 
-admin.site.register(Regions, RegionAdmin)            #!!!Важно соблюдать последовательность регистрации моделей
+
+class Transaction_ExchangeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
+    search_fields = ('model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
+    list_editable = ('model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
+    list_filter = ('model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
+
+
+#!!!Важно соблюдать последовательность регистрации моделей
+admin.site.register(Regions, RegionAdmin)
 admin.site.register(Type_Departments, Type_DepartmentsAdmin)
 admin.site.register(Departments, DepartmentAdmin)
 admin.site.register(Department_Persons, Department_PersonsAdmin)
@@ -186,4 +195,5 @@ admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Evaluation, EvaluationAdmin)
 admin.site.register(Versions, VersionsAdmin)
 admin.site.register(Type_Answers, Type_AnswersAdmin)
+admin.site.register(Transaction_Exchange, Transaction_ExchangeAdmin)
 

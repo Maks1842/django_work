@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse_lazy
 
@@ -291,6 +292,7 @@ class Signed_Dociuments(models.Model):
     forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
     evaluation = models.ForeignKey('Evaluation', on_delete=models.PROTECT, null=True, verbose_name='Оценка_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
@@ -322,6 +324,7 @@ class Photo(models.Model):
     forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
     evaluation = models.ForeignKey('Evaluation', on_delete=models.PROTECT, null=True, verbose_name='Оценка_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
@@ -374,3 +377,19 @@ class Type_Answers(models.Model):
 
     class Meta:
         verbose_name_plural = 'Тип ответа'
+
+
+class Transaction_Exchange(models.Model):
+    model = models.CharField(max_length=50, verbose_name='Модель')
+    field = models.CharField(max_length=50, verbose_name='Поле')
+    old_data = models.CharField(max_length=300, verbose_name='Старые данные')
+    new_data = models.CharField(max_length=300, verbose_name='Новые данные')
+    date_exchange = models.DateField(verbose_name='Дата изменения данных')
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
+
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name_plural = 'Регистрация изменений данных'
