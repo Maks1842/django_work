@@ -42,6 +42,7 @@ class Departments(models.Model):
     region = models.ForeignKey('Regions', on_delete=models.PROTECT, null=True, verbose_name='Регион_id')                           #Поле для связывания моделей (в данном случае для модели Region)
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
     def get_absolute_url(self):
         return reverse_lazy('library', kwargs={"departments_id": self.pk})
@@ -384,7 +385,8 @@ class Transaction_Exchange(models.Model):
     field = models.CharField(max_length=50, verbose_name='Поле')
     old_data = models.CharField(max_length=300, verbose_name='Старые данные')
     new_data = models.CharField(max_length=300, verbose_name='Новые данные')
-    date_exchange = models.DateField(verbose_name='Дата изменения данных')
+    date_exchange = models.DateTimeField(auto_now_add=True, verbose_name='Дата изменения данных')
+    # date_exchange = models.DateField(verbose_name='Дата изменения данных')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
 

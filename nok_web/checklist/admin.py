@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 # Настройка админки
-class RegionAdmin(admin.ModelAdmin):
+class RegionsAdmin(admin.ModelAdmin):
     list_display = ('id', 'region_name', 'is_deleted')                             # Указываю какие поля отображать
     search_fields = ('region_name', 'is_deleted')                                 # Указываю по каким полям можно осуществлять поиск
     list_editable = ('region_name', 'is_deleted')                                 # Возможность редактирования поля
@@ -16,11 +16,11 @@ class Type_DepartmentsAdmin(admin.ModelAdmin):
     list_filter = ('type', 'is_deleted')
 
 
-class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted')
-    search_fields = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted')
-    list_editable = ('department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted')
-    list_filter = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted')
+class DepartmentsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
+    search_fields = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
+    list_editable = ('department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
+    list_filter = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
 
 
 class Department_PersonsAdmin(admin.ModelAdmin):
@@ -166,15 +166,15 @@ class Type_AnswersAdmin(admin.ModelAdmin):
 
 class Transaction_ExchangeAdmin(admin.ModelAdmin):
     list_display = ('id', 'model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
-    search_fields = ('model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
-    list_editable = ('model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
-    list_filter = ('model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
+    search_fields = ('model', 'field', 'old_data', 'new_data', 'user')
+    list_editable = ('model', 'field', 'old_data', 'new_data', 'user')
+    list_filter = ('model', 'field', 'old_data', 'new_data', 'user')
 
 
 #!!!Важно соблюдать последовательность регистрации моделей
-admin.site.register(Regions, RegionAdmin)
+admin.site.register(Regions, RegionsAdmin)
 admin.site.register(Type_Departments, Type_DepartmentsAdmin)
-admin.site.register(Departments, DepartmentAdmin)
+admin.site.register(Departments, DepartmentsAdmin)
 admin.site.register(Department_Persons, Department_PersonsAdmin)
 admin.site.register(Type_Organisations, Type_OrganisationsAdmin)
 admin.site.register(Organisations, OrganisationsAdmin)

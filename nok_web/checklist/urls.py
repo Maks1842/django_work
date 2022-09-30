@@ -46,6 +46,7 @@ router.register('signed_dociuments', Signed_DociumentsViewSet, basename='signed_
 router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', Type_AnswersViewSet, basename='type_answers')
+router.register('transaction_exchange', Transaction_ExchangeViewSet, basename='transaction_exchange')
 
 
 

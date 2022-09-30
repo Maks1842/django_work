@@ -46,7 +46,7 @@ class Type_DepartmentsForm(forms.ModelForm):
 class DepartmentsForm(forms.ModelForm):
     class Meta:
         model = Departments
-        fields = ['department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted']
+        fields = ['department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user']
         widgets = {
             'department_name': forms.TextInput(attrs={"class": "form-control"}),
             'address': forms.TextInput(attrs={"class": "form-control"}),
@@ -56,7 +56,8 @@ class DepartmentsForm(forms.ModelForm):
             'parent': forms.Select(attrs={"class": "form-control"}),
             'region': forms.Select(attrs={"class": "form-control"}),
             'type_departments': forms.Select(attrs={"class": "form-control"}),
-            'is_deleted': forms.Select(attrs={"class": "form-control"})
+            'is_deleted': forms.Select(attrs={"class": "form-control"}),
+            'user': forms.Select(attrs={"class": "form-control"})
         }
 
 
@@ -323,13 +324,12 @@ class Type_AnswersForm(forms.ModelForm):
 class Transaction_ExchangeForm(forms.ModelForm):
     class Meta:
         model = Transaction_Exchange
-        fields = ['model', 'field', 'old_data', 'new_data', 'date_exchange', 'user']
+        fields = ['model', 'field', 'old_data', 'new_data', 'user']
         widgets = {
             'model': forms.Select(attrs={"class": "form-control"}),
             'field': forms.Select(attrs={"class": "form-control"}),
             'old_data': forms.Select(attrs={"class": "form-control"}),
             'new_data': forms.Select(attrs={"class": "form-control"}),
-            'date_exchange': forms.DateInput(attrs={"class": "form-control"}),
             'user': forms.Select(attrs={"class": "form-control"}),
         }
 

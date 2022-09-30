@@ -89,7 +89,7 @@ DATABASES = {
         'USER': os.environ.get("SQL_USER", 'my_user'),
         'PASSWORD': os.environ.get("SQL_PASSWORD", 'kms7350'),
         'HOST': os.environ.get("SQL_HOST", "127.0.0.1"),
-        'PORT': os.environ.get("SQL_PORT", '5432'),
+        'PORT': os.environ.get("SQL_PORT", '15432'),
     }
 }
 
@@ -101,30 +101,6 @@ DATABASES = {
 #         'PASSWORD': os.environ.get("SQL_PASSWORD", 'postgres'),
 #         'HOST': os.environ.get("SQL_HOST", "localhost"),
 #         'PORT': os.environ.get("SQL_PORT", '65432'),
-#     }
-# }
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'nok_web_db',
-#         'USER': 'my_user',
-#         'PASSWORD': 'kms7350',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'localhost',
-#         'PORT': '65432',
 #     }
 # }
 
@@ -183,5 +159,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
         # В боевом режиме, чтобы на отображалась страница настроек, СТРОКУ ЗАКОММЕНТИРОВАТЬ
+    ],
+    #Данные видно только авторизованным пользователям
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }

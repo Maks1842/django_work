@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data:rw
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -15,7 +15,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - .:/app:rw
     ports:
       - "8000:8000"
     environment:

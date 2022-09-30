@@ -1,10 +1,20 @@
 from .models import *
+from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
+from django.http import Http404
 from .serializers import *
-from rest_framework import generics, viewsets
+from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.decorators import action
+from rest_framework.decorators import action, permission_classes
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
 
+
+"""ОГРАНИЧЕНИЯ ДОСТУПА:
+AllowAny - полный доступ;
+IsAdminUser - только для Администраторов;
+IsAuthenticated - только для авторизованных пользователей;
+IsAuthenticatedOrReadOnly - только для авторизованных или всем, но для чтения.
+"""
 
 ######## v1 - один класс для всего () ##########
 class RegionsViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
@@ -65,9 +75,15 @@ class Type_DepartmentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
+
 class DepartmentsViewSet(viewsets.ModelViewSet):
     queryset = Departments.objects.all()
     serializer_class = DepartmentsSerializer
+    # permission_classes = (IsAdminUser,)
+
+    # Отключение метода Destroy
+    def _allowed_methods(self):
+        return [m for m in super(DepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def departments_id(self, request, pk=None):
@@ -110,6 +126,7 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         return Response({'types_departments': [t.type for t in types_deps]})
 
     @action(methods=['put'], detail=True)
+    @permission_classes([IsAdminUser, IsOwnerOrReadOnly])
     def departments_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -122,6 +139,16 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})
+
+    # @action(methods=['delete'], detail=True)
+    # @permission_classes([IsAdminUser])
+    # def departments_destroy(self, request, *args, **kwargs):
+    #     try:
+    #         instance = self.get_object()
+    #         self.perform_destroy(instance)
+    #     except Http404:
+    #         pass
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class Department_PersonsViewSet(viewsets.ModelViewSet):
@@ -1045,6 +1072,23 @@ class Type_AnswersViewSet(viewsets.ModelViewSet):                            # �
 
 
 
+class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+    queryset = Transaction_Exchange.objects.all()
+    serializer_class = Transaction_ExchangeSerializer
+
+    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    def transaction_exchange_update(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+        if not pk:
+            return Response({'error': 'Метод PUT не определен'})
+        try:
+            instance = Transaction_Exchange.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Объект не существует'})
+        serializers = Transaction_ExchangeSerializer(data=request.data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
 
 ######## v2 - учебный ##########
 # class RegionsAPIView(APIView):

@@ -83,7 +83,8 @@
     "parent": null,
     "region": 1,
     "type_departments": 2,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -98,7 +99,8 @@
     "parent": null,
     "region": 2,
     "type_departments": 3,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -113,7 +115,8 @@
     "parent": null,
     "region": 1,
     "type_departments": 1,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -128,7 +131,8 @@
     "parent": null,
     "region": 2,
     "type_departments": 2,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -143,7 +147,8 @@
     "parent": null,
     "region": 3,
     "type_departments": 2,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -158,7 +163,8 @@
     "parent": null,
     "region": 2,
     "type_departments": 1,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -173,7 +179,8 @@
     "parent": null,
     "region": 3,
     "type_departments": 1,
-    "is_deleted": false
+    "is_deleted": false,
+    "user": 1
   }
 },
 {
@@ -452,6 +459,7 @@
   "fields": {
     "name": "Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты",
     "form_sections": 8,
+    "type_answers": null,
     "is_deleted": false
   }
 },
@@ -461,6 +469,7 @@
   "fields": {
     "name": "Место нахождения организации культуры и ее филиалов (при наличии)",
     "form_sections": 8,
+    "type_answers": null,
     "is_deleted": false
   }
 },
@@ -470,6 +479,7 @@
   "fields": {
     "name": "Дата создания организации культуры, сведения об учредителе/учредителях, контактные телефоны, адрес сайта, адреса электронной почты учредителя/учредителей",
     "form_sections": 8,
+    "type_answers": null,
     "is_deleted": false
   }
 },
@@ -479,6 +489,7 @@
   "fields": {
     "name": "Виды предоставляемых услуг организацией культуры",
     "form_sections": 9,
+    "type_answers": null,
     "is_deleted": false
   }
 },
@@ -488,6 +499,7 @@
   "fields": {
     "name": "Перечень оказываемых платных услуг (при наличии)*; цены (тарифы) на услуги (при наличии платных услуг), копии документов о порядке предоставления услуг за плату, нормативных правовых актов, устанавливающих цены (тарифы) на услуги (при наличии платных услуг)*",
     "form_sections": 9,
+    "type_answers": null,
     "is_deleted": false
   }
 },
@@ -535,6 +547,43 @@
     "forms": 1,
     "order_num": 1,
     "is_deleted": false
+  }
+},
+{
+  "model": "checklist.signed_dociuments",
+  "pk": 1,
+  "fields": {
+    "file_name": "Тест",
+    "originat_file_name": "Матрицы_культура_КК_2022_копия.xlsx",
+    "description": "Проверка",
+    "created_at": "2022-09-30",
+    "forms": 1,
+    "evaluation": 1,
+    "is_deleted": false,
+    "user": 1
+  }
+},
+{
+  "model": "checklist.evaluation",
+  "pk": 1,
+  "fields": {
+    "date_evaluation": "2022-09-30",
+    "forms": 1,
+    "organisations": 1,
+    "organisation_persons": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.transaction_exchange",
+  "pk": 1,
+  "fields": {
+    "model": "Регионы",
+    "field": "Регион",
+    "old_data": "Ставропольский край",
+    "new_data": "Краснодарский край",
+    "date_exchange": "2022-09-30T13:45:04.387Z",
+    "user": 1
   }
 }
 ]

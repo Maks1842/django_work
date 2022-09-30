@@ -15,9 +15,10 @@ class Type_DepartmentsSerializer(serializers.ModelSerializer):
 
 
 class DepartmentsSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Departments
-        fields = ['id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted']
+        fields = ['id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user']
 
 
 class Department_PersonsSerializer(serializers.ModelSerializer):
@@ -105,9 +106,10 @@ class AnswersSerializer(serializers.ModelSerializer):
 
 
 class Signed_DociumentsSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Signed_Dociuments
-        fields = ['id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+        fields = ['id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user']
 
 
 class CommentsSerializer(serializers.ModelSerializer):
@@ -117,9 +119,10 @@ class CommentsSerializer(serializers.ModelSerializer):
 
 
 class PhotoSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Photo
-        fields = ['id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted']
+        fields = ['id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user']
 
 
 class EvaluationSerializer(serializers.ModelSerializer):
@@ -138,4 +141,12 @@ class Type_AnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Type_Answers
         fields = ['id', 'type']
+
+
+
+class Transaction_ExchangeSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    class Meta:
+        model = Transaction_Exchange
+        fields = ['id', 'model', 'field', 'old_data', 'new_data', 'date_exchange', 'user']
 
