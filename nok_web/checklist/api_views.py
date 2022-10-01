@@ -1,5 +1,5 @@
 from .models import *
-from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
 from django.http import Http404
 from .serializers import *
 from rest_framework import generics, viewsets, status
@@ -10,10 +10,15 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthentic
 
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
+Дефолтные permissions:
 AllowAny - полный доступ;
 IsAdminUser - только для Администраторов;
 IsAuthenticated - только для авторизованных пользователей;
 IsAuthenticatedOrReadOnly - только для авторизованных или всем, но для чтения.
+
+Кастомные permissions:
+IsAdminOrReadOnly - запись может просматривать любой, а удалять только Администратор;
+IsOwnerAndAdminOrReadOnly - запись может менять только пользователь который её создал и Админ, просматривать может любой.
 """
 
 ######## v1 - один класс для всего () ##########
@@ -79,7 +84,7 @@ class Type_DepartmentsViewSet(viewsets.ModelViewSet):
 class DepartmentsViewSet(viewsets.ModelViewSet):
     queryset = Departments.objects.all()
     serializer_class = DepartmentsSerializer
-    # permission_classes = (IsAdminUser,)
+    permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     # Отключение метода Destroy
     def _allowed_methods(self):
@@ -126,7 +131,7 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         return Response({'types_departments': [t.type for t in types_deps]})
 
     @action(methods=['put'], detail=True)
-    @permission_classes([IsAdminUser, IsOwnerOrReadOnly])
+    # @permission_classes([IsAdminUser, IsOwnerOrReadOnly])
     def departments_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -140,15 +145,6 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         serializers.save()
         return Response({'post': serializers.data})
 
-    # @action(methods=['delete'], detail=True)
-    # @permission_classes([IsAdminUser])
-    # def departments_destroy(self, request, *args, **kwargs):
-    #     try:
-    #         instance = self.get_object()
-    #         self.perform_destroy(instance)
-    #     except Http404:
-    #         pass
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class Department_PersonsViewSet(viewsets.ModelViewSet):
@@ -785,6 +781,11 @@ class AnswersViewSet(viewsets.ModelViewSet):
 class Signed_DociumentsViewSet(viewsets.ModelViewSet):
     queryset = Signed_Dociuments.objects.all()
     serializer_class = Signed_DociumentsSerializer
+    permission_classes = (IsOwnerAndAdminOrReadOnly,)
+
+    # Отключение метода Destroy
+    def _allowed_methods(self):
+        return [m for m in super(Signed_DociumentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def signed_dociuments_id(self, request, pk=None):
@@ -888,6 +889,11 @@ class CommentsViewSet(viewsets.ModelViewSet):
 class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
+    permission_classes = (IsOwnerAndAdminOrReadOnly,)
+
+    # Отключение метода Destroy
+    def _allowed_methods(self):
+        return [m for m in super(PhotoViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def photo_id(self, request, pk=None):

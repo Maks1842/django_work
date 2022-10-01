@@ -1,8 +1,9 @@
 
-from django.urls import path, include
+from django.urls import path, include, re_path
 from .views import *
 from .api_views import *
 from rest_framework import routers
+from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView, TokenObtainPairView
 
 from rest_framework import permissions
 from drf_yasg2.views import get_schema_view
@@ -51,15 +52,23 @@ router.register('transaction_exchange', Transaction_ExchangeViewSet, basename='t
 
 
 urlpatterns = [
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),                             # Для v1 (с использованием router)
+    path('api/v1/auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
+    path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-    path('register/', register, name='register'),
-    path('login/', user_login, name='login'),
-    path('logout/', user_logout, name='logout'),
+    # path('register/', register, name='register'),
+    # path('login/', user_login, name='login'),
+    # path('logout/', user_logout, name='logout'),
+    # path('api/v1/drf-auth/', include('res_framework.urls')),
+    # path(r'^auth/', include('djoser.urls')),
 
 
     path('', region_view, name='home'),

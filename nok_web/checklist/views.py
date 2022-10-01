@@ -2,51 +2,51 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 
 from .models import *
-from .forms import UserRegisterForm, UserLoginForm
+# from .forms import UserRegisterForm, UserLoginForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
 
 
 # Регистрация пользователя
-def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        # if form.is_valid():                           ## V1 - после регистарции перенаправляем на страницу авторизации
-        #     form.save()
-        #     messages.success(request, 'Вы успешно зарегистрировались')   # Сообщение для пользователя из формы
-        #     return redirect('login')                                     ## V1 - После успешной регистрации перенаправить на страницу Авторизации
-
-        if form.is_valid():                             ## V2 - после регистрации сразу авторизуем
-            user = form.save()
-            login(request, user)
-            messages.success(request, 'Вы успешно зарегистрировались')
-            return redirect('home')                     # После успешной авторизации можно перенаправить куда-нибудь пользователя (например на главную страницу)
-
-        else:
-            messages.error(request, 'Ошибка регистрации')
-    else:
-        form = UserRegisterForm()
-    return render(request, 'checklist/register.html', {"form": form})
-
-
-# Авторизация пользователя
-def user_login(request):
-    if request.method == 'POST':                            # Если данные к нам пришли методом 'POST'
-        form = UserLoginForm(data=request.POST)             # Тогда создаем экземпляр формы и связываем его с данными (обязательно указать data=)
-        if form.is_valid():                                 # Проверяем, если форма валидна
-            user = form.get_user()                          # то можно авторизовать пользователя. Для этого его нужно получить с помощью .get_user()
-            login(request, user)                            # далее в метод login передаю объект Юзера
-            return redirect('home')                         # После успешной авторизации можно перенаправить куда-нибудь пользователя (например на главную страницу)
-    else:
-        form = UserLoginForm()                              # Если данные пришли не методом 'POST', то просто создать объект формы не связанный с данными
-
-    return render(request, 'checklist/login.html', {'form': form})     # и далее в шаблон html передаем форму , {'form': form}
-
-
-# Выход пользователя из учетки
-def user_logout(request):
-    logout(request)
-    return redirect('login')
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserRegisterForm(request.POST)
+#         # if form.is_valid():                           ## V1 - после регистарции перенаправляем на страницу авторизации
+#         #     form.save()
+#         #     messages.success(request, 'Вы успешно зарегистрировались')   # Сообщение для пользователя из формы
+#         #     return redirect('login')                                     ## V1 - После успешной регистрации перенаправить на страницу Авторизации
+#
+#         if form.is_valid():                             ## V2 - после регистрации сразу авторизуем
+#             user = form.save()
+#             login(request, user)
+#             messages.success(request, 'Вы успешно зарегистрировались')
+#             return redirect('home')                     # После успешной авторизации можно перенаправить куда-нибудь пользователя (например на главную страницу)
+#
+#         else:
+#             messages.error(request, 'Ошибка регистрации')
+#     else:
+#         form = UserRegisterForm()
+#     return render(request, 'checklist/register.html', {"form": form})
+#
+#
+# # Авторизация пользователя
+# def user_login(request):
+#     if request.method == 'POST':                            # Если данные к нам пришли методом 'POST'
+#         form = UserLoginForm(data=request.POST)             # Тогда создаем экземпляр формы и связываем его с данными (обязательно указать data=)
+#         if form.is_valid():                                 # Проверяем, если форма валидна
+#             user = form.get_user()                          # то можно авторизовать пользователя. Для этого его нужно получить с помощью .get_user()
+#             login(request, user)                            # далее в метод login передаю объект Юзера
+#             return redirect('home')                         # После успешной авторизации можно перенаправить куда-нибудь пользователя (например на главную страницу)
+#     else:
+#         form = UserLoginForm()                              # Если данные пришли не методом 'POST', то просто создать объект формы не связанный с данными
+#
+#     return render(request, 'checklist/login.html', {'form': form})     # и далее в шаблон html передаем форму , {'form': form}
+#
+#
+# # Выход пользователя из учетки
+# def user_logout(request):
+#     logout(request)
+#     return redirect('login')
 
 
 
