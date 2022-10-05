@@ -228,7 +228,7 @@
     "region": 6,
     "type_departments": 3,
     "is_deleted": false,
-    "user": 2
+    "user": 1
   }
 },
 {
@@ -250,6 +250,70 @@
   "pk": 1,
   "fields": {
     "type": "Здание культурного наследия",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 2,
+  "fields": {
+    "type": "Амбулаторные условия",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 3,
+  "fields": {
+    "type": "Стационарные условия",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 4,
+  "fields": {
+    "type": "ДОУ (образование)",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 5,
+  "fields": {
+    "type": "ОО (образование)",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 6,
+  "fields": {
+    "type": "СКОУ (образование)",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 7,
+  "fields": {
+    "type": "СПО (образование)",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 8,
+  "fields": {
+    "type": "ДПО (образование)",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_organisations",
+  "pk": 9,
+  "fields": {
+    "type": "ДОД (образование)",
     "is_deleted": false
   }
 },
@@ -363,9 +427,21 @@
   "model": "checklist.forms",
   "pk": 1,
   "fields": {
-    "name": "Акт осмотра - Культура",
-    "created_at": "2022-08-15",
-    "type_departments": 2,
+    "name": "Акт осмотра - Здравоохранение",
+    "created_at": "2022-10-05",
+    "type_departments": 1,
+    "templates": null,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.forms",
+  "pk": 2,
+  "fields": {
+    "name": "Акт осмотра - Образование",
+    "created_at": "2022-10-05",
+    "type_departments": 3,
     "templates": null,
     "version": null,
     "is_deleted": false
@@ -375,12 +451,12 @@
   "model": "checklist.form_sections",
   "pk": 1,
   "fields": {
-    "name": "по показателю 1.1",
+    "name": "I. Общая информация о медицинской организации",
     "version": "1",
     "order_num": 1,
-    "parent": 6,
+    "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -388,12 +464,12 @@
   "model": "checklist.form_sections",
   "pk": 2,
   "fields": {
-    "name": "по показателю 1.2",
+    "name": "II. Информация о медицинской деятельности медицинской организации",
     "version": "1",
     "order_num": 1,
-    "parent": 6,
+    "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -401,12 +477,12 @@
   "model": "checklist.form_sections",
   "pk": 3,
   "fields": {
-    "name": "по показателю 2.1",
+    "name": "III. Информация о медицинских работниках медицинских организаций, включая филиалы (при их наличии)",
     "version": "1",
     "order_num": 1,
-    "parent": 7,
+    "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -414,12 +490,12 @@
   "model": "checklist.form_sections",
   "pk": 4,
   "fields": {
-    "name": "по показателю 3.1",
+    "name": "1.2. Обеспечение наличия на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг (каждый пункт - 30 баллов, максимально - 100 баллов) ",
     "version": "1",
     "order_num": 1,
     "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -427,12 +503,12 @@
   "model": "checklist.form_sections",
   "pk": 5,
   "fields": {
-    "name": "по показателю 3.2",
+    "name": "2.1.1 Наличие Комфортных условий для предоставления услуг (каждый пункт - 20 баллов, максимально - 100 баллов)",
     "version": "1",
     "order_num": 1,
     "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -440,12 +516,12 @@
   "model": "checklist.form_sections",
   "pk": 6,
   "fields": {
-    "name": "Критерий 1 «Открытость и доступность информации об организации культуры»:",
+    "name": "2.2.1. Среднее время ожидания предоставления услуги (значение ставится в одну из строк максимально - 100 баллов)",
     "version": "1",
     "order_num": 1,
     "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -453,12 +529,12 @@
   "model": "checklist.form_sections",
   "pk": 7,
   "fields": {
-    "name": "Критерий 2 «Комфортность условий предоставления услуг»:",
+    "name": "3.1. Оборудование территории, прилегающей к медицинской организации, и ее помещений с учетом доступности для инвалидов (каждый пункт - 20 баллов, максимально - 100 баллов)",
     "version": "1",
     "order_num": 1,
     "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -466,12 +542,12 @@
   "model": "checklist.form_sections",
   "pk": 8,
   "fields": {
-    "name": "I. Общая информация об организации культуры",
+    "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими (каждый пункт - 20 баллов, максимально - 100 баллов)",
     "version": "1",
     "order_num": 1,
-    "parent": 1,
+    "parent": null,
     "forms": 1,
-    "type_departments": 2,
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -479,12 +555,12 @@
   "model": "checklist.form_sections",
   "pk": 9,
   "fields": {
-    "name": "II. Информация о деятельности организации культуры",
+    "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
     "version": "1",
     "order_num": 1,
-    "parent": 1,
-    "forms": 1,
-    "type_departments": 2,
+    "parent": null,
+    "forms": 2,
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -492,12 +568,129 @@
   "model": "checklist.form_sections",
   "pk": 10,
   "fields": {
-    "name": "III. Информация о независимой оценке качества",
+    "name": "I. Основные сведения",
     "version": "1",
     "order_num": 1,
-    "parent": 1,
-    "forms": 1,
-    "type_departments": 2,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 11,
+  "fields": {
+    "name": "II. Структура и органы управления образовательной организацией",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 12,
+  "fields": {
+    "name": "III. Документы (в виде копий)",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 13,
+  "fields": {
+    "name": "IV. Образование",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 14,
+  "fields": {
+    "name": "V. Руководство. Педагогический состав",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 15,
+  "fields": {
+    "name": "VI. Материально-техническое обеспечении образовательной деятельности",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 16,
+  "fields": {
+    "name": "VII. Стипендии и иные виды материальной поддержки",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 17,
+  "fields": {
+    "name": "VIII. Платные образовательные услуги",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 18,
+  "fields": {
+    "name": "IX. Финансово-хозяйственная деятельность",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 19,
+  "fields": {
+    "name": "X. Вакантные места для приема (перевода)",
+    "version": "1",
+    "order_num": 1,
+    "parent": 9,
+    "forms": 2,
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -505,9 +698,9 @@
   "model": "checklist.questions",
   "pk": 1,
   "fields": {
-    "name": "Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты",
-    "form_sections": 8,
-    "type_answers": null,
+    "name": "Полное наименование",
+    "form_sections": 1,
+    "type_answers": 1,
     "is_deleted": false
   }
 },
@@ -515,9 +708,9 @@
   "model": "checklist.questions",
   "pk": 2,
   "fields": {
-    "name": "Место нахождения организации культуры и ее филиалов (при наличии)",
-    "form_sections": 8,
-    "type_answers": null,
+    "name": "Место нахождения и схема проезда,  включая обособленные структурные подразделения (при их наличии)",
+    "form_sections": 1,
+    "type_answers": 1,
     "is_deleted": false
   }
 },
@@ -525,9 +718,9 @@
   "model": "checklist.questions",
   "pk": 3,
   "fields": {
-    "name": "Дата создания организации культуры, сведения об учредителе/учредителях, контактные телефоны, адрес сайта, адреса электронной почты учредителя/учредителей",
-    "form_sections": 8,
-    "type_answers": null,
+    "name": "Почтовый адрес",
+    "form_sections": 1,
+    "type_answers": 1,
     "is_deleted": false
   }
 },
@@ -535,9 +728,9 @@
   "model": "checklist.questions",
   "pk": 4,
   "fields": {
-    "name": "Виды предоставляемых услуг организацией культуры",
-    "form_sections": 9,
-    "type_answers": null,
+    "name": "Дата государственной регистрации ",
+    "form_sections": 1,
+    "type_answers": 1,
     "is_deleted": false
   }
 },
@@ -545,9 +738,739 @@
   "model": "checklist.questions",
   "pk": 5,
   "fields": {
-    "name": "Перечень оказываемых платных услуг (при наличии)*; цены (тарифы) на услуги (при наличии платных услуг), копии документов о порядке предоставления услуг за плату, нормативных правовых актов, устанавливающих цены (тарифы) на услуги (при наличии платных услуг)*",
-    "form_sections": 9,
-    "type_answers": null,
+    "name": "Сведения об учредителе (учредителях)",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 6,
+  "fields": {
+    "name": "Структура",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 7,
+  "fields": {
+    "name": "Органы управления",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 8,
+  "fields": {
+    "name": "Вакантные должности",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 9,
+  "fields": {
+    "name": "Режим работы",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 10,
+  "fields": {
+    "name": "График работы",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 11,
+  "fields": {
+    "name": "Правила внутреннего распорядка для потребителей услуг",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 12,
+  "fields": {
+    "name": "Контактные телефоны",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 13,
+  "fields": {
+    "name": "Номера телефонов справочных служб",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 14,
+  "fields": {
+    "name": "Адреса электронной почты",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 15,
+  "fields": {
+    "name": "График приема граждан руководителем медицинской организации и иными уполномоченными лицами с указанием:",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 16,
+  "fields": {
+    "name": "Телефона",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 17,
+  "fields": {
+    "name": "Адреса электронной почты",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 18,
+  "fields": {
+    "name": "Адрес органа исполнительной власти субъекта Российской Федерации в сфере охраны здоровья",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 19,
+  "fields": {
+    "name": "Адрес территориального органа Федеральной службы по надзору в сфере здравоохранения",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 20,
+  "fields": {
+    "name": "Контактный телефон территориального органа Федеральной службы по надзору в сфере здравоохранения",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 21,
+  "fields": {
+    "name": "Адрес территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 22,
+  "fields": {
+    "name": "Контактный телефон территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 23,
+  "fields": {
+    "name": "Информация о страховых медицинских организациях, с которыми заключены договоры на оказание и оплату медицинской помощи по обязательному",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 24,
+  "fields": {
+    "name": "Отзывы потребителей услуг",
+    "form_sections": 1,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 43,
+  "fields": {
+    "name": "О наличии лицензии на осуществление медицинской деятельности с приложением (копия лицензии)",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 44,
+  "fields": {
+    "name": "О видах медицинской помощи",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 45,
+  "fields": {
+    "name": "О правах граждан в сфере охраны здоровья",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 46,
+  "fields": {
+    "name": "Об обязанностях граждан в сфере охраны здоровья",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 47,
+  "fields": {
+    "name": "О перечне жизненно необходимых и важнейших лекарственных препаратов для медицинского применения",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 48,
+  "fields": {
+    "name": "О перечне лекарственных препаратов, предназначенных для обеспечения лиц, больных гемофилией, муковисцидозом, гипофизарным нанизмом, болезнью Гоше, злокачественными новообразованиями лимфоидной, кроветворной и родственных им тканей, рассеянным склерозом, а также лиц после трансплантации органов и (или) тканей",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 49,
+  "fields": {
+    "name": "О перечне лекарственных препаратов для медицинского применения, в том числе лекарственных препаратов для медицинского применения, назначаемых по решению врачебных комиссий медицинских организаций",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 50,
+  "fields": {
+    "name": "О перечне лекарственных препаратов, отпускаемых населению в соответствии с Перечнем групп населения и категорий заболеваний, при амбулаторном лечении которых лекарственные средства и изделия медицинского назначения отпускаются по рецептам врачей бесплатно, а также в соответствии с Перечнем групп населения, при амбулаторном лечении которых лекарственные средства отпускаются по рецептам врачей с пятидесятипроцентной скидкой",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 51,
+  "fields": {
+    "name": "О возможности получения медицинской помощи в рамках программы государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальных программ государственных гарантий бесплатного оказания гражданам медицинской помощи",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 52,
+  "fields": {
+    "name": "О порядке оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 53,
+  "fields": {
+    "name": "Об объеме оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 54,
+  "fields": {
+    "name": "Об условиях оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 55,
+  "fields": {
+    "name": "О показателях доступности медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 56,
+  "fields": {
+    "name": "О показателях качества медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 57,
+  "fields": {
+    "name": "О сроках проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 58,
+  "fields": {
+    "name": "О порядке проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 59,
+  "fields": {
+    "name": "О результатах проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 60,
+  "fields": {
+    "name": "Правила записи на первичный прием",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 61,
+  "fields": {
+    "name": "Правила записи на консультацию",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 62,
+  "fields": {
+    "name": "Правила записи на обследование",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 63,
+  "fields": {
+    "name": "Правила подготовки к диагностическим исследованиям",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 64,
+  "fields": {
+    "name": "Правила госпитализации",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 65,
+  "fields": {
+    "name": "Сроки госпитализации",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 66,
+  "fields": {
+    "name": "Правила предоставления платных медицинских услуг",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 67,
+  "fields": {
+    "name": "Условия, порядок, форма предоставления медицинских услуг и порядок их оплаты",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 68,
+  "fields": {
+    "name": "Перечень оказываемых платных медицинских услуг с указанием цен в рублях (тарифы)  с приложением электронного образа документов (для помещений – копии документов)",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 69,
+  "fields": {
+    "name": "Сведения о медицинских работниках, участвующих в предоставлении платных медицинских услуг, об уровне их профессионального образования и квалификации: Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 70,
+  "fields": {
+    "name": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи, специальность, квалификация)",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 71,
+  "fields": {
+    "name": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 72,
+  "fields": {
+    "name": "График работы",
+    "form_sections": 2,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 73,
+  "fields": {
+    "name": "Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность",
+    "form_sections": 3,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 74,
+  "fields": {
+    "name": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи,  специальность, квалификация)",
+    "form_sections": 3,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 75,
+  "fields": {
+    "name": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)",
+    "form_sections": 3,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 76,
+  "fields": {
+    "name": "График работы и часы приема медицинского работника",
+    "form_sections": 3,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 77,
+  "fields": {
+    "name": "телефона",
+    "form_sections": 4,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 78,
+  "fields": {
+    "name": "электронной почты",
+    "form_sections": 4,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 79,
+  "fields": {
+    "name": "электронных сервисов (форма для подачи электронного обращения/ жалобы/предложения; раздел «Часто задаваемые вопросы»; получение консультации по оказываемым услугам и пр.)",
+    "form_sections": 4,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 80,
+  "fields": {
+    "name": "обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие анкеты для опроса граждан или гиперссылки на нее)",
+    "form_sections": 4,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 81,
+  "fields": {
+    "name": "обеспечение лечебно-охранительного режима (Отсутствие свободных мест ожидания, состояние гардероба, питание, действия персонала по уходу)",
+    "form_sections": 5,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 82,
+  "fields": {
+    "name": "отсутствие очередей",
+    "form_sections": 5,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 83,
+  "fields": {
+    "name": "доступность записи на прием к врачу/направление на госпитализацию (по телефону медицинской организации, через кол-центр, с использованием информационно-телекоммуникационной сети \"Интернет\" на официальном сайте медицинской организации, на портале государственных услуг (www.gosuslugi.ru), при обращении в медицинскую организацию)",
+    "form_sections": 5,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 84,
+  "fields": {
+    "name": "наличие и доступность санитарно-гигиенических помещений",
+    "form_sections": 5,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 85,
+  "fields": {
+    "name": "доступность питьевой воды",
+    "form_sections": 5,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 86,
+  "fields": {
+    "name": "санитарное состояние",
+    "form_sections": 5,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 87,
+  "fields": {
+    "name": "оборудование входных групп пандусами/подъемными платформами",
+    "form_sections": 7,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 88,
+  "fields": {
+    "name": "наличие выделенных стоянок для автотранспортных средств инвалидов",
+    "form_sections": 7,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 89,
+  "fields": {
+    "name": "наличие адаптированных лифтов, поручней, расширенных дверных проемов",
+    "form_sections": 7,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 90,
+  "fields": {
+    "name": "наличие сменных кресел-колясок",
+    "form_sections": 7,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 91,
+  "fields": {
+    "name": "наличие и доступность специально оборудованных санитарно-гигиенических помещений",
+    "form_sections": 7,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 92,
+  "fields": {
+    "name": "дублирование для инвалидов по слуху и зрению звуковой и зрительной информации",
+    "form_sections": 8,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 93,
+  "fields": {
+    "name": "дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными рельефно-точечным шрифтом Брайля",
+    "form_sections": 8,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 94,
+  "fields": {
+    "name": "возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика (тифлосурдопереводчика)",
+    "form_sections": 8,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 95,
+  "fields": {
+    "name": "наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети «Интернет» для инвалидов по зрению",
+    "form_sections": 8,
+    "type_answers": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 96,
+  "fields": {
+    "name": "наличие возможности сопровождения инвалида работниками медицинской организации;\n- наличие возможности оказания первичной медико-санитарной и паллиативной медицинской помощи инвалидам на дому",
+    "form_sections": 8,
+    "type_answers": 1,
     "is_deleted": false
   }
 },
@@ -564,6 +1487,22 @@
   "pk": 2,
   "fields": {
     "value_name": "Нет",
+    "questions": 1
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 3,
+  "fields": {
+    "value_name": "Не предусмотрено",
+    "questions": 1
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 4,
+  "fields": {
+    "value_name": "Отсутствуют",
     "questions": 1
   }
 },
@@ -634,6 +1573,34 @@
     "organisations": 1,
     "organisation_persons": 1,
     "is_deleted": false
+  }
+},
+{
+  "model": "checklist.type_answers",
+  "pk": 1,
+  "fields": {
+    "type": "checkbox"
+  }
+},
+{
+  "model": "checklist.type_answers",
+  "pk": 2,
+  "fields": {
+    "type": "radiobutton"
+  }
+},
+{
+  "model": "checklist.type_answers",
+  "pk": 3,
+  "fields": {
+    "type": "text"
+  }
+},
+{
+  "model": "checklist.type_answers",
+  "pk": 4,
+  "fields": {
+    "type": "number"
   }
 },
 {
