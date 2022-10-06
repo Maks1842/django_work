@@ -200,7 +200,8 @@ class Form_Sections(models.Model):
 class Questions(models.Model):
     name = models.CharField(max_length=500, verbose_name='Вопросы')
     form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
-    type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип вопроса_id')
+    type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип ответа_id')
+    answer_variant = models.JSONField(max_length=500, null=True, blank=True, verbose_name='Вариант ответа')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -214,8 +215,7 @@ class Questions(models.Model):
 
 
 class Question_Values(models.Model):
-    value_name = models.CharField(max_length=50, verbose_name='Варианты ответов')
-    questions = models.ForeignKey('Questions', on_delete=models.PROTECT, null=True, verbose_name='Вопросы_id')
+    value_name = models.CharField(max_length=200, verbose_name='Варианты ответов')
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})

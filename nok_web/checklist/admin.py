@@ -80,17 +80,17 @@ class Form_SectionsAdmin(admin.ModelAdmin):
 
 
 class QuestionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'form_sections', 'type_answers', 'is_deleted')
-    search_fields = ('name', 'form_sections', 'type_answers', 'is_deleted')
-    list_editable = ('name', 'form_sections', 'type_answers', 'is_deleted')
-    list_filter = ('name', 'form_sections', 'type_answers', 'is_deleted')
+    list_display = ('id', 'name', 'form_sections', 'type_answers', 'answer_variant', 'is_deleted')
+    search_fields = ('name', 'form_sections', 'type_answers', 'answer_variant', 'is_deleted')
+    list_editable = ('name', 'form_sections', 'type_answers', 'answer_variant', 'is_deleted')
+    list_filter = ('name', 'form_sections', 'type_answers', 'answer_variant', 'is_deleted')
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value_name', 'questions')
-    search_fields = ('value_name', 'questions')
-    list_editable = ('value_name', 'questions')
-    list_filter = ('value_name', 'questions')
+    list_display = ('id', 'value_name')
+    search_fields = ('value_name',)
+    list_editable = ('value_name',)
+    list_filter = ('value_name',)
 
 
 class Form_Sections_QuestionAdmin(admin.ModelAdmin):

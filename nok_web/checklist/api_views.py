@@ -26,6 +26,10 @@ class RegionsViewSet(viewsets.ModelViewSet):                            # Дан
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
 
+    # Отключение метода Destroy
+    def _allowed_methods(self):
+        return [m for m in super(RegionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def region_id(self, request, pk=None):
         reg_id = Regions.objects.values('id').get(pk=pk)
@@ -54,6 +58,9 @@ class RegionsViewSet(viewsets.ModelViewSet):                            # Дан
 class Type_DepartmentsViewSet(viewsets.ModelViewSet):
     queryset = Type_Departments.objects.all()
     serializer_class = Type_DepartmentsSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(Type_DepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def type_departments_id(self, request, pk=None):
@@ -86,7 +93,6 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
     serializer_class = DepartmentsSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
-    # Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(DepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -151,6 +157,9 @@ class Department_PersonsViewSet(viewsets.ModelViewSet):
     queryset = Department_Persons.objects.all()
     serializer_class = Department_PersonsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(Department_PersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def department(self, request, pk=None):
         dep = Departments.objects.get(pk=pk)
@@ -180,6 +189,9 @@ class Type_OrganisationsViewSet(viewsets.ModelViewSet):
     queryset = Type_Organisations.objects.all()
     serializer_class = Type_OrganisationsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(Type_OrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def type_organisations_id(self, request, pk=None):
         type_orgs_id = Type_Organisations.objects.values('id').get(pk=pk)
@@ -208,6 +220,9 @@ class Type_OrganisationsViewSet(viewsets.ModelViewSet):
 class OrganisationsViewSet(viewsets.ModelViewSet):
     queryset = Organisations.objects.all()
     serializer_class = OrganisationsSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(OrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def organisations_id(self, request, pk=None):
@@ -273,6 +288,9 @@ class Organisation_PersonsViewSet(viewsets.ModelViewSet):
     queryset = Organisation_Persons.objects.all()
     serializer_class = Organisation_PersonsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(Organisation_PersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def organisation(self, request, pk=None):
         org = Organisations.objects.get(pk=pk)
@@ -301,6 +319,9 @@ class Organisation_PersonsViewSet(viewsets.ModelViewSet):
 class QuotaViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Quota.objects.all()
     serializer_class = QuotaSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(QuotaViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def quota_id(self, request, pk=None):
@@ -331,6 +352,9 @@ class TemplatesViewSet(viewsets.ModelViewSet):
     queryset = Templates.objects.all()
     serializer_class = TemplatesSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(TemplatesViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def templates_id(self, request, pk=None):
         temp_id = Templates.objects.values('id').get(pk=pk)
@@ -359,6 +383,9 @@ class TemplatesViewSet(viewsets.ModelViewSet):
 class FormsViewSet(viewsets.ModelViewSet):
     queryset = Forms.objects.all()
     serializer_class = FormsSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(FormsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def forms_id(self, request, pk=None):
@@ -408,6 +435,9 @@ class FormsViewSet(viewsets.ModelViewSet):
 class Form_SectionsViewSet(viewsets.ModelViewSet):
     queryset = Form_Sections.objects.all()
     serializer_class = Form_SectionsSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(Form_SectionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def form_sections_id(self, request, pk=None):
@@ -473,6 +503,9 @@ class QuestionsViewSet(viewsets.ModelViewSet):
     queryset = Questions.objects.all()
     serializer_class = QuestionsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(QuestionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def questions_id(self, request, pk=None):
         quest_id = Questions.objects.values('id').get(pk=pk)
@@ -522,6 +555,9 @@ class Question_ValuesViewSet(viewsets.ModelViewSet):
     queryset = Question_Values.objects.all()
     serializer_class = Question_ValuesSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(Question_ValuesViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def question_values_id(self, request, pk=None):
         quest_id = Question_Values.objects.values('id').get(pk=pk)
@@ -531,16 +567,6 @@ class Question_ValuesViewSet(viewsets.ModelViewSet):
     def question_values_name(self, request, pk=None):
         name = Question_Values.objects.values('value_name').get(pk=pk)
         return Response({'value_name': name})
-
-    @action(methods=['get'], detail=True)
-    def question(self, request, pk=None):
-        quest = Questions.objects.get(pk=pk)
-        return Response({'name': quest.name})
-
-    @action(methods=['get'], detail=False)
-    def questions(self, request):
-        quests = Questions.objects.all()
-        return Response({'names': [q.name for q in quests]})
 
     @action(methods=['put'], detail=True)
     def question_values_update(self, request, *args, **kwargs):
@@ -560,6 +586,9 @@ class Question_ValuesViewSet(viewsets.ModelViewSet):
 class Form_Sections_QuestionViewSet(viewsets.ModelViewSet):
     queryset = Form_Sections_Question.objects.all()
     serializer_class = Form_Sections_QuestionSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(Form_Sections_QuestionViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def form_sections_question_id(self, request, pk=None):
@@ -610,6 +639,9 @@ class RecommendationsViewSet(viewsets.ModelViewSet):
     queryset = Recommendations.objects.all()
     serializer_class = RecommendationsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(RecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def recommendations_id(self, request, pk=None):
         rec_id = Recommendations.objects.values('id').get(pk=pk)
@@ -638,6 +670,9 @@ class RecommendationsViewSet(viewsets.ModelViewSet):
 class Forms_RecommendationsViewSet(viewsets.ModelViewSet):
     queryset = Forms_Recommendations.objects.all()
     serializer_class = Forms_RecommendationsSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(Forms_RecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def forms_recommendations_id(self, request, pk=None):
@@ -707,6 +742,9 @@ class Forms_RecommendationsViewSet(viewsets.ModelViewSet):
 class AnswersViewSet(viewsets.ModelViewSet):
     queryset = Answers.objects.all()
     serializer_class = AnswersSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(AnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def answers_id(self, request, pk=None):
@@ -783,7 +821,6 @@ class Signed_DociumentsViewSet(viewsets.ModelViewSet):
     serializer_class = Signed_DociumentsSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
-    # Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(Signed_DociumentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -851,6 +888,9 @@ class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(CommentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def comments_id(self, request, pk=None):
         comment_id = Comments.objects.values('id').get(pk=pk)
@@ -891,7 +931,6 @@ class PhotoViewSet(viewsets.ModelViewSet):
     serializer_class = PhotoSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
-    # Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(PhotoViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -959,6 +998,9 @@ class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(EvaluationViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def evaluation_id(self, request, pk=None):
         evaluat_id = Evaluation.objects.values('id').get(pk=pk)
@@ -1018,6 +1060,9 @@ class VersionsViewSet(viewsets.ModelViewSet):
     queryset = Versions.objects.all()
     serializer_class = VersionsSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(VersionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)
     def versions_id(self, request, pk=None):
         vers_id = Versions.objects.values('id').get(pk=pk)
@@ -1052,6 +1097,9 @@ class Type_AnswersViewSet(viewsets.ModelViewSet):                            # �
     queryset = Type_Answers.objects.all()
     serializer_class = Type_AnswersSerializer
 
+    def _allowed_methods(self):
+        return [m for m in super(Type_AnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
+
     @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def type_answers_id(self, request, pk=None):
         type_ans_id = Type_Answers.objects.values('id').get(pk=pk)
@@ -1081,6 +1129,9 @@ class Type_AnswersViewSet(viewsets.ModelViewSet):                            # �
 class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Transaction_Exchange.objects.all()
     serializer_class = Transaction_ExchangeSerializer
+
+    def _allowed_methods(self):
+        return [m for m in super(Transaction_ExchangeViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
     def transaction_exchange_update(self, request, *args, **kwargs):

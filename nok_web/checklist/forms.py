@@ -174,11 +174,12 @@ class Form_SectionsForm(forms.ModelForm):
 class QuestionsForm(forms.ModelForm):
     class Meta:
         model = Questions
-        fields = ['name', 'form_sections', 'type_answers', 'is_deleted']
+        fields = ['name', 'form_sections', 'type_answers', 'answer_variant', 'is_deleted']
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control"}),
             'form_sections': forms.Select(attrs={"class": "form-control"}),
             'type_answers': forms.Select(attrs={"class": "form-control"}),
+            'answer_variant': forms.TextInput(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
 
@@ -186,10 +187,9 @@ class QuestionsForm(forms.ModelForm):
 class Question_ValuesForm(forms.ModelForm):
     class Meta:
         model = Question_Values
-        fields = ['value_name', 'questions']
+        fields = ['value_name']
         widgets = {
             'value_name': forms.TextInput(attrs={"class": "form-control"}),
-            'questions': forms.Select(attrs={"class": "form-control"})
         }
 
 
