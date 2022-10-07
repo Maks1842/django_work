@@ -1,5 +1,6 @@
-from rest_framework import permissions
+"""В этом модуле создаю кастомные разрешения для пользователей"""
 
+from rest_framework import permissions
 
 # Касстомный класс, позволяющий чтобы запись мог просматривать каждый, а удалять только Администратор
 class IsAdminOrReadOnly(permissions.BasePermission):

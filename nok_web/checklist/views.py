@@ -5,6 +5,7 @@ from .models import *
 # from .forms import UserRegisterForm, UserLoginForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.http import JsonResponse
 
 
 # Регистрация пользователя
@@ -110,28 +111,3 @@ class LibDepartments(ListView):
 
 
 
-# class ViewDepartments(DetailView):         # Данный класс заменяет контроллер функции >>> def view_news(request, news_id):
-#     model = Departments                    # Указываю из какой Модели буду получать данные
-#     # template_name = 'checklist/department_add_list.html'
-#     context_object_name = 'department'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Другая страница'
-#         return context
-
-
-
-# class CreateChecklist(CreateView):         # Данный класс заменяет контроллер функции >>> def add_news(request):
-#     form_class = DepartmentsForm                   # Связываю форму с существующей моделью
-#     template_name = 'checklist/library.html'
-#     success_url = reverse_lazy('library')      # После сохранения данных, перенаправляет пользователя по указанному адресу. По умолчанию (без данного метода) редирект происходит на текущую страницу
-#     # login_url = '/admin/'                 # Вариант 1 - перенаправляет на Админку
-#     # login_url = reverse_lazy('library')        # Вариант 2 - перенаправляет на указанную страницу
-
-
-# def view_departments(request, departments_id):
-#     departments_id = 1
-#     department = Departments.objects.get(pk=departments_id)                           #V1
-# #     news_item = get_object_or_404(News, pk=news_id)                     #V2 с обработчиком ошибки некорректного адреса страницы
-#     return render(request, 'checklist/department_add_list.html', {"department": department})

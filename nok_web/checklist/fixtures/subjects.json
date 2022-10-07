@@ -701,7 +701,7 @@
     "name": "Полное наименование",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -712,7 +712,7 @@
     "name": "Место нахождения и схема проезда,  включая обособленные структурные подразделения (при их наличии)",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -723,7 +723,7 @@
     "name": "Почтовый адрес",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -734,7 +734,7 @@
     "name": "Дата государственной регистрации",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -745,7 +745,7 @@
     "name": "Сведения об учредителе (учредителях)",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -756,7 +756,7 @@
     "name": "Структура",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -767,7 +767,7 @@
     "name": "Органы управления",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -778,7 +778,7 @@
     "name": "Вакантные должности",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -789,7 +789,7 @@
     "name": "Режим работы",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -800,7 +800,7 @@
     "name": "График работы",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -811,7 +811,7 @@
     "name": "Правила внутреннего распорядка для потребителей услуг",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -822,7 +822,7 @@
     "name": "Контактные телефоны",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -833,7 +833,7 @@
     "name": "Номера телефонов справочных служб",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -844,7 +844,7 @@
     "name": "Адреса электронной почты",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -855,7 +855,7 @@
     "name": "График приема граждан руководителем медицинской организации и иными уполномоченными лицами с указанием:",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -866,7 +866,7 @@
     "name": "Телефона",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -877,7 +877,7 @@
     "name": "Адреса электронной почты",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -888,7 +888,7 @@
     "name": "Адрес органа исполнительной власти субъекта Российской Федерации в сфере охраны здоровья",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -899,7 +899,7 @@
     "name": "Адрес территориального органа Федеральной службы по надзору в сфере здравоохранения",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -910,7 +910,7 @@
     "name": "Контактный телефон территориального органа Федеральной службы по надзору в сфере здравоохранения",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -921,7 +921,7 @@
     "name": "Адрес территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -932,7 +932,7 @@
     "name": "Контактный телефон территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -943,7 +943,7 @@
     "name": "Информация о страховых медицинских организациях, с которыми заключены договоры на оказание и оплату медицинской помощи по обязательному",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -954,7 +954,7 @@
     "name": "Отзывы потребителей услуг",
     "form_sections": 1,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -965,7 +965,7 @@
     "name": "О наличии лицензии на осуществление медицинской деятельности с приложением (копия лицензии)",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -976,7 +976,7 @@
     "name": "О видах медицинской помощи",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -987,7 +987,7 @@
     "name": "О правах граждан в сфере охраны здоровья",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -998,7 +998,7 @@
     "name": "Об обязанностях граждан в сфере охраны здоровья",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1009,7 +1009,7 @@
     "name": "О перечне жизненно необходимых и важнейших лекарственных препаратов для медицинского применения",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1020,7 +1020,7 @@
     "name": "О перечне лекарственных препаратов, предназначенных для обеспечения лиц, больных гемофилией, муковисцидозом, гипофизарным нанизмом, болезнью Гоше, злокачественными новообразованиями лимфоидной, кроветворной и родственных им тканей, рассеянным склерозом, а также лиц после трансплантации органов и (или) тканей",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1031,7 +1031,7 @@
     "name": "О перечне лекарственных препаратов для медицинского применения, в том числе лекарственных препаратов для медицинского применения, назначаемых по решению врачебных комиссий медицинских организаций",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1042,7 +1042,7 @@
     "name": "О перечне лекарственных препаратов, отпускаемых населению в соответствии с Перечнем групп населения и категорий заболеваний, при амбулаторном лечении которых лекарственные средства и изделия медицинского назначения отпускаются по рецептам врачей бесплатно, а также в соответствии с Перечнем групп населения, при амбулаторном лечении которых лекарственные средства отпускаются по рецептам врачей с пятидесятипроцентной скидкой",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1053,7 +1053,7 @@
     "name": "О возможности получения медицинской помощи в рамках программы государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальных программ государственных гарантий бесплатного оказания гражданам медицинской помощи",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1064,7 +1064,7 @@
     "name": "О порядке оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1075,7 +1075,7 @@
     "name": "Об объеме оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1086,7 +1086,7 @@
     "name": "Об условиях оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1097,7 +1097,7 @@
     "name": "О показателях доступности медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1108,7 +1108,7 @@
     "name": "О показателях качества медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1119,7 +1119,7 @@
     "name": "О сроках проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1130,7 +1130,7 @@
     "name": "О порядке проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1141,7 +1141,7 @@
     "name": "О результатах проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1152,7 +1152,7 @@
     "name": "Правила записи на первичный прием",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1163,7 +1163,7 @@
     "name": "Правила записи на консультацию",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1174,7 +1174,7 @@
     "name": "Правила записи на обследование",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1185,7 +1185,7 @@
     "name": "Правила подготовки к диагностическим исследованиям",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1196,7 +1196,7 @@
     "name": "Правила госпитализации",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1207,7 +1207,7 @@
     "name": "Сроки госпитализации",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1218,11 +1218,7 @@
     "name": "Правила предоставления платных медицинских услуг",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1233,11 +1229,7 @@
     "name": "Условия, порядок, форма предоставления медицинских услуг и порядок их оплаты",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1248,11 +1240,7 @@
     "name": "Перечень оказываемых платных медицинских услуг с указанием цен в рублях (тарифы)  с приложением электронного образа документов (для помещений – копии документов)",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1263,11 +1251,7 @@
     "name": "Сведения о медицинских работниках, участвующих в предоставлении платных медицинских услуг, об уровне их профессионального образования и квалификации: Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1278,11 +1262,7 @@
     "name": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи, специальность, квалификация)",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1293,11 +1273,7 @@
     "name": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1308,11 +1284,7 @@
     "name": "График работы",
     "form_sections": 2,
     "type_answers": 1,
-    "answer_variant": {
-      "answer": [
-        4
-      ]
-    },
+    "answer_variant": "11, 12, 4",
     "is_deleted": false
   }
 },
@@ -1323,7 +1295,7 @@
     "name": "Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность",
     "form_sections": 3,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1334,7 +1306,7 @@
     "name": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи,  специальность, квалификация)",
     "form_sections": 3,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1345,7 +1317,7 @@
     "name": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)",
     "form_sections": 3,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1356,7 +1328,7 @@
     "name": "График работы и часы приема медицинского работника",
     "form_sections": 3,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "11, 12",
     "is_deleted": false
   }
 },
@@ -1367,7 +1339,7 @@
     "name": "Телефон",
     "form_sections": 4,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1378,7 +1350,7 @@
     "name": "Электронная почта",
     "form_sections": 4,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1389,7 +1361,7 @@
     "name": "Электронные сервисы (форма для подачи электронного обращения/ жалобы/предложения; раздел «Часто задаваемые вопросы»; получение консультации по оказываемым услугам и пр.)",
     "form_sections": 4,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1400,7 +1372,7 @@
     "name": "Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие анкеты для опроса граждан или гиперссылки на нее)",
     "form_sections": 4,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1411,7 +1383,7 @@
     "name": "обеспечение лечебно-охранительного режима (Отсутствие свободных мест ожидания, состояние гардероба, питание, действия персонала по уходу)",
     "form_sections": 5,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1422,7 +1394,7 @@
     "name": "отсутствие очередей",
     "form_sections": 5,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1433,7 +1405,7 @@
     "name": "доступность записи на прием к врачу/направление на госпитализацию (по телефону медицинской организации, через кол-центр, с использованием информационно-телекоммуникационной сети \"Интернет\" на официальном сайте медицинской организации, на портале государственных услуг (www.gosuslugi.ru), при обращении в медицинскую организацию)",
     "form_sections": 5,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1444,7 +1416,7 @@
     "name": "наличие и доступность санитарно-гигиенических помещений",
     "form_sections": 5,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1455,7 +1427,7 @@
     "name": "доступность питьевой воды",
     "form_sections": 5,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1466,7 +1438,7 @@
     "name": "санитарное состояние",
     "form_sections": 5,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1477,7 +1449,7 @@
     "name": "оборудование входных групп пандусами/подъемными платформами",
     "form_sections": 7,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1488,7 +1460,7 @@
     "name": "наличие выделенных стоянок для автотранспортных средств инвалидов",
     "form_sections": 7,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1499,7 +1471,7 @@
     "name": "наличие адаптированных лифтов, поручней, расширенных дверных проемов",
     "form_sections": 7,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1510,7 +1482,7 @@
     "name": "наличие сменных кресел-колясок",
     "form_sections": 7,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1521,7 +1493,7 @@
     "name": "наличие и доступность специально оборудованных санитарно-гигиенических помещений",
     "form_sections": 7,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1532,7 +1504,7 @@
     "name": "дублирование для инвалидов по слуху и зрению звуковой и зрительной информации",
     "form_sections": 8,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1543,7 +1515,7 @@
     "name": "дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными рельефно-точечным шрифтом Брайля",
     "form_sections": 8,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1554,7 +1526,7 @@
     "name": "возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика (тифлосурдопереводчика)",
     "form_sections": 8,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1565,7 +1537,7 @@
     "name": "наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети «Интернет» для инвалидов по зрению",
     "form_sections": 8,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1576,7 +1548,7 @@
     "name": "наличие возможности сопровождения инвалида работниками медицинской организации;- наличие возможности оказания первичной медико-санитарной и паллиативной медицинской помощи инвалидам на дому",
     "form_sections": 8,
     "type_answers": 1,
-    "answer_variant": null,
+    "answer_variant": "1",
     "is_deleted": false
   }
 },
@@ -1587,16 +1559,7 @@
     "name": "Среднее время ожидания предоставления услуги",
     "form_sections": 6,
     "type_answers": 5,
-    "answer_variant": {
-      "answer": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ]
-    },
+    "answer_variant": "5, 6, 7, 8, 9, 10",
     "is_deleted": false
   }
 },
@@ -1668,6 +1631,20 @@
   "pk": 10,
   "fields": {
     "value_name": "меньше установленного срока ожидания не менее, чем 1/2 срока"
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 11,
+  "fields": {
+    "value_name": "Стенд"
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 12,
+  "fields": {
+    "value_name": "Сайт"
   }
 },
 {

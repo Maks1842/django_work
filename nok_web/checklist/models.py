@@ -201,7 +201,7 @@ class Questions(models.Model):
     name = models.CharField(max_length=500, verbose_name='Вопросы')
     form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
     type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип ответа_id')
-    answer_variant = models.JSONField(max_length=500, null=True, blank=True, verbose_name='Вариант ответа')
+    answer_variant = models.CharField(max_length=50, null=True, blank=True, verbose_name='Вариант ответа')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):

@@ -77,7 +77,7 @@ urlpatterns = [
     path('organisation/', HomeDepartments.as_view(), name='organisation'),
 
 
-    # path('api/regions/', RegionsAPIView.as_view()),                 # Для v2
+    path('api/get_medicine_act/', Get_For_MedicineActAPIView.as_view()),                 # Для v2
     # path('api/regions-put/<int:pk>/', RegionsAPIView.as_view()),        # Для v2
     # path('api/departments-put/<int:pk>/', DepartmentsAPIDetailView.as_view()),        # Для v2
 

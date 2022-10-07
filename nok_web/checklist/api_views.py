@@ -1,12 +1,15 @@
+import json
+
 from .models import *
 from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from .serializers import *
 from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
+from drf_yasg2.utils import swagger_auto_schema
 
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
@@ -319,6 +322,8 @@ class Organisation_PersonsViewSet(viewsets.ModelViewSet):
 class QuotaViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Quota.objects.all()
     serializer_class = QuotaSerializer
+    # swagger_schema = 'put'
+
 
     def _allowed_methods(self):
         return [m for m in super(QuotaViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -333,6 +338,7 @@ class QuotaViewSet(viewsets.ModelViewSet):                            # Данн
         quot = Quota.objects.values('quota').get(pk=pk)
         return Response({'quota': quot})
 
+    # @swagger_auto_schema(method='delete', swagger_schema=None)
     @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
     def quota_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
@@ -1147,34 +1153,46 @@ class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                       
         serializers.save()
         return Response({'post': serializers.data})
 
-######## v2 - учебный ##########
-# class RegionsAPIView(APIView):
-#
-#     def get(self, request):
-#         regions = Regions.objects.all().values()
-#         return Response({'regions': regions})
-#
-#     def post(self, request):                              #Для добавления данных
-#         serializers = RegionsSerializer(data=request.data)
-#         serializers.is_valid(raise_exception=True)
-#         serializers.save()
-#         return Response({'post': serializers.data})
-#
-#     def put(self, request, *args, **kwargs):              #Для изменения данных
-#         pk = kwargs.get('pk', None)
-#         if not pk:
-#             return Response({'error': 'Метод PUT не определен'})
-#
-#         try:
-#             instance = Regions.objects.get(pk=pk)
-#         except:
-#             return Response({'error': 'Объект не существует'})
-#
-#         serializers = RegionsSerializer(data=request.data, instance=instance)
-#         serializers.is_valid(raise_exception=True)
-#         serializers.save()
-#         return Response({'post': serializers.data})
 
+class Get_For_MedicineActAPIView(APIView):
+
+    def get(self, request):
+        context = []
+        count = 0
+
+        form_sections = Form_Sections.objects.values().filter(type_departments=1)
+        questions = Questions.objects.values()
+        type_answers = Type_Answers.objects.values()
+        question_values = Question_Values.objects.values()
+
+        for fs in form_sections:
+            fs_id = fs['id']
+
+            for q in questions:
+                choices = []
+                if q['form_sections_id'] == fs_id:
+                    count += 1
+                    type = type_answers.get(pk=q['type_answers_id'])
+                    ans_var = q['answer_variant'].split(',')
+
+                    for av in range(len(ans_var)):
+                        qv = question_values.get(pk=ans_var[av])
+                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                    context.append({
+                        'title': fs['name'],
+                        'elements': [
+                            {
+                                'name': count,
+                                'title': q['name'],
+                                'type': type['type'],
+                                'choices': choices,
+                                'isRequired': 'true'
+                            },
+                        ]
+                    })
+
+        return Response({'pages': context})
 
 
 
