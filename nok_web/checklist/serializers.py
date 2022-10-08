@@ -72,7 +72,7 @@ class Form_SectionsSerializer(serializers.ModelSerializer):
 class QuestionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questions
-        fields = ['id', 'name', 'form_sections', 'type_answers', 'answer_variant', 'is_deleted']
+        fields = ['id', 'name', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted']
 
 
 class Question_ValuesSerializer(serializers.ModelSerializer):
