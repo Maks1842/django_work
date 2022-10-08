@@ -1160,7 +1160,7 @@ class Get_Medicine_ActAPIView(APIView):
         context = []
         count = 0
 
-        form_sections = Form_Sections.objects.values().filter(type_departments=1)
+        form_sections = Form_Sections.objects.values().filter(type_departments=1) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
         question_values = Question_Values.objects.values()
@@ -1171,28 +1171,34 @@ class Get_Medicine_ActAPIView(APIView):
             for q in questions:
                 choices = []
                 if q['form_sections_id'] == fs_id:
-                    count += 1
-                    type = type_answers.get(pk=q['type_answers_id'])
-                    answer_variant = q['answer_variant']
-                    ans_var_re = (re.sub(r'\s', '', answer_variant))
-                    ans_var = ans_var_re.split(',')
+                    if re.findall(r'(2|3)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                        count += 1
+                        type = type_answers.get(pk=q['type_answers_id'])
+                        answer_variant = q['answer_variant']
+                        try:
+                            ans_var_re = (re.sub(r'\s', '', answer_variant))
+                        except:
+                            ans_var_re = answer_variant
 
-                    for av in range(len(ans_var)):
-                        qv = question_values.get(pk=ans_var[av])
-                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                        ans_var = ans_var_re.split(',')
 
-                    context.append({
-                        'title': fs['name'],
-                        'elements': [
-                            {
-                                'name': count,
-                                'title': q['name'],
-                                'type': type['type'],
-                                'choices': choices,
-                                'isRequired': 'true'
-                            },
-                        ]
-                    })
+                        for av in range(len(ans_var)):
+                            qv = question_values.get(pk=ans_var[av])
+                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                        context.append({
+                            'title': fs['name'],
+                            'elements': [
+                                {
+                                    'name': count,
+                                    'title': q['name'],
+                                    'type': type['type'],
+                                    'choices': choices,
+                                    'isRequired': 'true',
+                                    # 'test': x
+                                },
+                            ]
+                        })
 
         return Response({'pages': context})
 
@@ -1204,7 +1210,7 @@ class Get_EducationOO_ActAPIView(APIView):
         context = []
         count = 0
 
-        form_sections = Form_Sections.objects.values().filter(type_departments=3)
+        form_sections = Form_Sections.objects.values().filter(type_departments=3) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
         question_values = Question_Values.objects.values()
@@ -1215,28 +1221,84 @@ class Get_EducationOO_ActAPIView(APIView):
             for q in questions:
                 choices = []
                 if q['form_sections_id'] == fs_id:
-                    count += 1
-                    type = type_answers.get(pk=q['type_answers_id'])
-                    answer_variant = q['answer_variant']
-                    ans_var_re = (re.sub(r'\s', '', answer_variant))
-                    ans_var = ans_var_re.split(',')
+                    if re.findall(r'(5)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                        count += 1
+                        type = type_answers.get(pk=q['type_answers_id'])
+                        answer_variant = q['answer_variant']
+                        try:
+                            ans_var_re = (re.sub(r'\s', '', answer_variant))
+                        except:
+                            ans_var_re = answer_variant
 
-                    for av in range(len(ans_var)):
-                        qv = question_values.get(pk=ans_var[av])
-                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                        ans_var = ans_var_re.split(',')
 
-                    context.append({
-                        'title': fs['name'],
-                        'elements': [
-                            {
-                                'name': count,
-                                'title': q['name'],
-                                'type': type['type'],
-                                'choices': choices,
-                                'isRequired': 'true'
-                            },
-                        ]
-                    })
+                        for av in range(len(ans_var)):
+                            qv = question_values.get(pk=ans_var[av])
+                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                        context.append({
+                            'title': fs['name'],
+                            'elements': [
+                                {
+                                    'name': count,
+                                    'title': q['name'],
+                                    'type': type['type'],
+                                    'choices': choices,
+                                    'isRequired': 'true',
+                                    # 'test': ans_var
+                                },
+                            ]
+                        })
+
+        return Response({'pages': context})
+
+
+
+class Get_EducationDOU_ActAPIView(APIView):
+
+    def get(self, request):
+        context = []
+        count = 0
+
+        form_sections = Form_Sections.objects.values().filter(type_departments=3) | Form_Sections.objects.values().filter(type_departments=None)
+        questions = Questions.objects.values()
+        type_answers = Type_Answers.objects.values()
+        question_values = Question_Values.objects.values()
+
+        for fs in form_sections:
+            fs_id = fs['id']
+
+            for q in questions:
+                choices = []
+                if q['form_sections_id'] == fs_id:
+                    if re.findall(r'(4)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                        count += 1
+                        type = type_answers.get(pk=q['type_answers_id'])
+                        answer_variant = q['answer_variant']
+                        try:
+                            ans_var_re = (re.sub(r'\s', '', answer_variant))
+                        except:
+                            ans_var_re = answer_variant
+
+                        ans_var = ans_var_re.split(',')
+
+                        for av in range(len(ans_var)):
+                            qv = question_values.get(pk=ans_var[av])
+                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                        context.append({
+                            'title': fs['name'],
+                            'elements': [
+                                {
+                                    'name': count,
+                                    'title': q['name'],
+                                    'type': type['type'],
+                                    'choices': choices,
+                                    'isRequired': 'true',
+                                    # 'test': ans_var
+                                },
+                            ]
+                        })
 
         return Response({'pages': context})
 

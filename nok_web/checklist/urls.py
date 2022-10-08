@@ -79,6 +79,7 @@ urlpatterns = [
 
     path('api/get_medicine_act/', Get_Medicine_ActAPIView.as_view()),
     path('api/get_education_oo_act/', Get_EducationOO_ActAPIView.as_view()),
+    path('api/get_education_dou_act/', Get_EducationDOU_ActAPIView.as_view()),
 
 
 
