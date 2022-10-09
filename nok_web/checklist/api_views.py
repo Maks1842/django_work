@@ -322,7 +322,7 @@ class Organisation_PersonsViewSet(viewsets.ModelViewSet):
 class QuotaViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Quota.objects.all()
     serializer_class = QuotaSerializer
-    # swagger_schema = 'put'
+    # swagger_schema = None
 
 
     def _allowed_methods(self):
@@ -1153,6 +1153,17 @@ class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                       
         serializers.save()
         return Response({'post': serializers.data})
 
+
+
+"""
+Предоставление API для данных из БД.
+1. Проверяю, какому типу департамента принадлежит раздел Анкеты:
+    - раздел может быть одинаковый для разных департаментов, если type_departments=None, значит подходит ко всем.
+2. Проверяю, какому типу организации принадлежит вопрос Анкеты:
+    - вопрос может принадлежать к конкретному типу организации или ко всем:
+        -  если q['type_organisations'] == None, значит вопрос подходит ко всем;
+        - если re.findall(r'(2|3)', то необходисо указать id соответствующего типа организации из type_organisations.
+"""
 
 class Get_Medicine_ActAPIView(APIView):
 
