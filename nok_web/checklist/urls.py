@@ -48,6 +48,7 @@ router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', Type_AnswersViewSet, basename='type_answers')
 router.register('transaction_exchange', Transaction_ExchangeViewSet, basename='transaction_exchange')
+# router.register('api/get_medicine_act/', Get_Medicine_ActAPIView.as_view())
 
 
 
@@ -77,9 +78,9 @@ urlpatterns = [
     path('organisation/', HomeDepartments.as_view(), name='organisation'),
 
 
-    path('api/get_medicine_act/', Get_Medicine_ActAPIView.as_view()),
-    path('api/get_education_oo_act/', Get_EducationOO_ActAPIView.as_view()),
-    path('api/get_education_dou_act/', Get_EducationDOU_ActAPIView.as_view()),
+    path('api/get_medicine_act/', Get_Medicine_ActAPIView.as_view(), name='get_medicine_act'),
+    path('api/get_education_oo_act/', Get_EducationOO_ActAPIView.as_view(), name='get_education_oo_act'),
+    path('api/get_education_dou_act/', Get_EducationDOU_ActAPIView.as_view(), name='get_education_dou_act'),
 
 
 

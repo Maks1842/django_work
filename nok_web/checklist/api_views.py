@@ -1,4 +1,5 @@
 import re
+import json
 
 from .models import *
 from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
@@ -10,7 +11,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
 from drf_yasg2.utils import swagger_auto_schema
-
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -24,8 +24,9 @@ IsAdminOrReadOnly - запись может просматривать любо�
 IsOwnerAndAdminOrReadOnly - запись может менять только пользователь который её создал и Админ, просматривать может любой.
 """
 
+
 ######## v1 - один класс для всего () ##########
-class RegionsViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+class RegionsViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
 
@@ -33,17 +34,18 @@ class RegionsViewSet(viewsets.ModelViewSet):                            # Дан
     def _allowed_methods(self):
         return [m for m in super(RegionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
-    @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    @action(methods=['get'],
+            detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def region_id(self, request, pk=None):
         reg_id = Regions.objects.values('id').get(pk=pk)
         return Response({'region_id': reg_id})
 
-    @action(methods=['get'], detail=True)                              # Извлекаю одну запись из конкретного поля
+    @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
     def region_name(self, request, pk=None):
         reg_name = Regions.objects.values('region_name').get(pk=pk)
         return Response({'region_name': reg_name})
 
-    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
     def regions_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -88,7 +90,6 @@ class Type_DepartmentsViewSet(viewsets.ModelViewSet):
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})
-
 
 
 class DepartmentsViewSet(viewsets.ModelViewSet):
@@ -153,7 +154,6 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})
-
 
 
 class Department_PersonsViewSet(viewsets.ModelViewSet):
@@ -319,27 +319,28 @@ class Organisation_PersonsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class QuotaViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+class QuotaViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Quota.objects.all()
     serializer_class = QuotaSerializer
-    # swagger_schema = None
 
+    # swagger_schema = None
 
     def _allowed_methods(self):
         return [m for m in super(QuotaViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
-    @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    @action(methods=['get'],
+            detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def quota_id(self, request, pk=None):
         quot_id = Quota.objects.values('id').get(pk=pk)
         return Response({'quota_id': quot_id})
 
-    @action(methods=['get'], detail=True)                              # Извлекаю одну запись из конкретного поля
+    @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
     def quota(self, request, pk=None):
         quot = Quota.objects.values('quota').get(pk=pk)
         return Response({'quota': quot})
 
     # @swagger_auto_schema(method='delete', swagger_schema=None)
-    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
     def quota_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -757,6 +758,7 @@ class AnswersViewSet(viewsets.ModelViewSet):
         ans_id = Answers.objects.values('id').get(pk=pk)
         return Response({'answers_id': ans_id})
 
+    # @swagger_auto_schema(operation_description='GET /answers/free_value/')
     @action(methods=['get'], detail=True)
     def free_value(self, request, pk=None):
         fv = Answers.objects.values('free_value').get(pk=pk)
@@ -1099,24 +1101,25 @@ class VersionsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Type_AnswersViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+class Type_AnswersViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Type_Answers.objects.all()
     serializer_class = Type_AnswersSerializer
 
     def _allowed_methods(self):
         return [m for m in super(Type_AnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
-    @action(methods=['get'], detail=True)                              # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    @action(methods=['get'],
+            detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def type_answers_id(self, request, pk=None):
         type_ans_id = Type_Answers.objects.values('id').get(pk=pk)
         return Response({'type_id': type_ans_id})
 
-    @action(methods=['get'], detail=True)                              # Извлекаю одну запись из конкретного поля
+    @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
     def type_answers(self, request, pk=None):
         type = Type_Answers.objects.values('type').get(pk=pk)
         return Response({'type': type})
 
-    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
     def type_answers_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -1131,15 +1134,14 @@ class Type_AnswersViewSet(viewsets.ModelViewSet):                            # �
         return Response({'post': serializers.data})
 
 
-
-class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                            # Данный класс включает методы GET, POST, PUT, DELETE
+class Transaction_ExchangeViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Transaction_Exchange.objects.all()
     serializer_class = Transaction_ExchangeSerializer
 
     def _allowed_methods(self):
         return [m for m in super(Transaction_ExchangeViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
-    @action(methods=['put'], detail=True)                              # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
     def transaction_exchange_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -1154,7 +1156,6 @@ class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                       
         return Response({'post': serializers.data})
 
 
-
 """
 Предоставление API для данных из БД.
 1. Проверяю, какому типу департамента принадлежит раздел Анкеты:
@@ -1165,12 +1166,12 @@ class Transaction_ExchangeViewSet(viewsets.ModelViewSet):                       
         - если re.findall(r'(2|3)', то необходисо указать id соответствующего типа организации из type_organisations.
 """
 
+
 class Get_Medicine_ActAPIView(APIView):
 
     def get(self, request):
         context = []
-        count = 0
-
+        stack_type_question = {}   # Дебагер
         form_sections = Form_Sections.objects.values().filter(type_departments=1) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
@@ -1178,41 +1179,53 @@ class Get_Medicine_ActAPIView(APIView):
 
         for fs in form_sections:
             fs_id = fs['id']
+            questions_id = questions.filter(form_sections_id=fs_id)
+            count_section = 0
+            pages = []
 
-            for q in questions:
+            for q in questions_id:
                 choices = []
-                if q['form_sections_id'] == fs_id:
-                    if re.findall(r'(2|3)', str(q['type_organisations'])) or q['type_organisations'] == None:
-                        count += 1
-                        type = type_answers.get(pk=q['type_answers_id'])
-                        answer_variant = q['answer_variant']
-                        try:
-                            ans_var_re = (re.sub(r'\s', '', answer_variant))
-                        except:
-                            ans_var_re = answer_variant
+                count_section += 1
 
-                        ans_var = ans_var_re.split(',')
+                if re.findall(r'(2|3)', str(q['type_organisations'])) or q['type_organisations'] is None:
 
-                        for av in range(len(ans_var)):
-                            qv = question_values.get(pk=ans_var[av])
-                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                    type = type_answers.get(pk=q['type_answers_id'])
+                    answer_variant = q['answer_variant']
+                    ans_var_re = answer_variant
+                    try:
+                        ans_var_re = (re.sub(r'\s', '', answer_variant))
+                    except:
+                        pass
 
-                        context.append({
-                            'title': fs['name'],
-                            'elements': [
-                                {
-                                    'name': count,
-                                    'title': q['name'],
-                                    'type': type['type'],
-                                    'choices': choices,
-                                    'isRequired': 'true',
-                                    # 'test': x
-                                },
-                            ]
-                        })
+                    ans_var = ans_var_re.split(',')
+
+                    for av in range(len(ans_var)):
+                        qv = question_values.get(pk=ans_var[av])
+                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+
+                    pages.append({
+                        'name': q['id'],
+                        'title': q['name'],
+                        'type': type['type'],
+                        'choices': choices,
+                        'isRequired': 'true',
+                        # 'test': len(questions_id),
+                        # 'test2': count_section
+                    })
+
+                    # stack_type_question[f"question_id{q['id']}"] = pages     # Дебагер. Необходимо в return добавить stack_type_question
+                if len(pages) == 4 or len(questions_id) == count_section:
+                    context.append({
+                        'title': fs['name'],
+                        'elements': pages,
+                    })
+                    pages = []
+
+        # with open('medicina.json', 'w') as file:
+        #     json.dump({'pages': context}, file, ensure_ascii=False, indent=4)
 
         return Response({'pages': context})
-
 
 
 class Get_EducationOO_ActAPIView(APIView):
@@ -1221,48 +1234,59 @@ class Get_EducationOO_ActAPIView(APIView):
         context = []
         count = 0
 
-        form_sections = Form_Sections.objects.values().filter(type_departments=3) | Form_Sections.objects.values().filter(type_departments=None)
+        form_sections = Form_Sections.objects.values().filter(
+            type_departments=3) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
         question_values = Question_Values.objects.values()
 
         for fs in form_sections:
             fs_id = fs['id']
+            questions_id = questions.filter(form_sections_id=fs_id)
+            count_section = 0
+            pages = []
 
-            for q in questions:
+            for q in questions_id:
                 choices = []
-                if q['form_sections_id'] == fs_id:
-                    if re.findall(r'(5)', str(q['type_organisations'])) or q['type_organisations'] == None:
-                        count += 1
-                        type = type_answers.get(pk=q['type_answers_id'])
-                        answer_variant = q['answer_variant']
-                        try:
-                            ans_var_re = (re.sub(r'\s', '', answer_variant))
-                        except:
-                            ans_var_re = answer_variant
+                count_section += 1
 
-                        ans_var = ans_var_re.split(',')
+                if re.findall(r'(5|6)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                    count += 1
+                    type = type_answers.get(pk=q['type_answers_id'])
+                    answer_variant = q['answer_variant']
+                    ans_var_re = answer_variant
+                    try:
+                        ans_var_re = (re.sub(r'\s', '', answer_variant))
+                    except:
+                        pass
 
-                        for av in range(len(ans_var)):
-                            qv = question_values.get(pk=ans_var[av])
-                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                    ans_var = ans_var_re.split(',')
 
-                        context.append({
-                            'title': fs['name'],
-                            'elements': [
-                                {
-                                    'name': count,
-                                    'title': q['name'],
-                                    'type': type['type'],
-                                    'choices': choices,
-                                    'isRequired': 'true',
-                                    # 'test': ans_var
-                                },
-                            ]
-                        })
+                    for av in range(len(ans_var)):
+                        qv = question_values.get(pk=ans_var[av])
+                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                    pages.append({
+                        'name': str(count),
+                        'title': q['name'],
+                        'type': type['type'],
+                        'choices': choices,
+                        'isRequired': 'true',
+                        # 'test': len(questions_id),
+                        # 'test2': count_section
+                    })
+
+                if len(pages) == 4 or len(questions_id) == count_section:
+                    context.append({
+                        'title': fs['name'],
+                        'elements': pages,
+                    })
+                    pages = []
+
+        # with open('EducationOO.json', 'w') as file:
+        #     json.dump({'pages': context}, file, ensure_ascii=False, indent=4)
 
         return Response({'pages': context})
-
 
 
 class Get_EducationDOU_ActAPIView(APIView):
@@ -1271,49 +1295,56 @@ class Get_EducationDOU_ActAPIView(APIView):
         context = []
         count = 0
 
-        form_sections = Form_Sections.objects.values().filter(type_departments=3) | Form_Sections.objects.values().filter(type_departments=None)
+        form_sections = Form_Sections.objects.values().filter(
+            type_departments=3) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
         question_values = Question_Values.objects.values()
 
         for fs in form_sections:
             fs_id = fs['id']
+            questions_id = questions.filter(form_sections_id=fs_id)
+            count_section = 0
+            pages = []
 
-            for q in questions:
+            for q in questions_id:
                 choices = []
-                if q['form_sections_id'] == fs_id:
-                    if re.findall(r'(4)', str(q['type_organisations'])) or q['type_organisations'] == None:
-                        count += 1
-                        type = type_answers.get(pk=q['type_answers_id'])
-                        answer_variant = q['answer_variant']
-                        try:
-                            ans_var_re = (re.sub(r'\s', '', answer_variant))
-                        except:
-                            ans_var_re = answer_variant
+                count_section += 1
 
-                        ans_var = ans_var_re.split(',')
+                if re.findall(r'(4)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                    count += 1
+                    type = type_answers.get(pk=q['type_answers_id'])
+                    answer_variant = q['answer_variant']
+                    ans_var_re = answer_variant
+                    try:
+                        ans_var_re = (re.sub(r'\s', '', answer_variant))
+                    except:
+                        pass
 
-                        for av in range(len(ans_var)):
-                            qv = question_values.get(pk=ans_var[av])
-                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                    ans_var = ans_var_re.split(',')
 
-                        context.append({
-                            'title': fs['name'],
-                            'elements': [
-                                {
-                                    'name': count,
-                                    'title': q['name'],
-                                    'type': type['type'],
-                                    'choices': choices,
-                                    'isRequired': 'true',
-                                    # 'test': ans_var
-                                },
-                            ]
-                        })
+                    for av in range(len(ans_var)):
+                        qv = question_values.get(pk=ans_var[av])
+                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                    pages.append({
+                        'name': str(count),
+                        'title': q['name'],
+                        'type': type['type'],
+                        'choices': choices,
+                        'isRequired': 'true',
+                        # 'test': len(questions_id),
+                        # 'test2': count_section
+                    })
+
+                if len(pages) == 4 or len(questions_id) == count_section:
+                    context.append({
+                        'title': fs['name'],
+                        'elements': pages,
+                    })
+                    pages = []
+
+        # with open('EducationDOU.json', 'w') as file:
+        #     json.dump({'pages': context}, file, ensure_ascii=False, indent=4)
 
         return Response({'pages': context})
-
-
-
-
-
