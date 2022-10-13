@@ -27,32 +27,34 @@ schema_view = get_schema_view(
 router = routers.DefaultRouter()
 
 router.register(r'regions', RegionsViewSet, basename='regions')
-router.register(r'type_departments', Type_DepartmentsViewSet, basename='type_departments')
+router.register(r'type_departments', TypeDepartmentsViewSet, basename='type_departments')
 router.register(r'departments', DepartmentsViewSet, basename='departments')
-router.register(r'department_persons', Department_PersonsViewSet, basename='department_persons')
-router.register('type_organisations', Type_OrganisationsViewSet, basename='type_organisations')
+router.register(r'department_persons', DepartmentPersonsViewSet, basename='department_persons')
+router.register('type_organisations', TypeOrganisationsViewSet, basename='type_organisations')
 router.register('organisations', OrganisationsViewSet, basename='organisations')
-router.register('organisation_persons', Organisation_PersonsViewSet, basename='organisation_persons')
+router.register('organisation_persons', OrganisationPersonsViewSet, basename='organisation_persons')
 router.register('quota', QuotaViewSet, basename='quota')
 router.register('templates', TemplatesViewSet, basename='templates')
 router.register('forms', FormsViewSet, basename='forms')
-router.register('form_sections', Form_SectionsViewSet, basename='form_sections')
+router.register('form_sections', FormSectionsViewSet, basename='form_sections')
 router.register('questions', QuestionsViewSet, basename='questions')
-router.register('question_values', Question_ValuesViewSet, basename='question_values')
-router.register('form_sections_question', Form_Sections_QuestionViewSet, basename='form_sections_question')
+router.register('question_values', QuestionValuesViewSet, basename='question_values')
+router.register('form_sections_question', FormSectionsQuestionViewSet, basename='form_sections_question')
 router.register('recommendations', RecommendationsViewSet, basename='recommendations')
-router.register('forms_recommendations', Forms_RecommendationsViewSet, basename='forms_recommendations')
+router.register('forms_recommendations', FormsRecommendationsViewSet, basename='forms_recommendations')
 router.register('answers', AnswersViewSet, basename='answers')
-router.register('signed_dociuments', Signed_DociumentsViewSet, basename='signed_dociuments')
+router.register('signed_dociuments', SignedDociumentsViewSet, basename='signed_dociuments')
 router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
-router.register('type_answers', Type_AnswersViewSet, basename='type_answers')
-router.register('transaction_exchange', Transaction_ExchangeViewSet, basename='transaction_exchange')
-# router.register('api/get_medicine_act/', Get_Medicine_ActAPIView.as_view())
-
+router.register('type_answers', TypeAnswersViewSet, basename='type_answers')
+router.register('transaction_exchange', TransactionExchangeViewSet, basename='transaction_exchange')
 
 
 urlpatterns = [
+    path('api/get_medicine_act/', GetMedicineActAPIView.as_view(), name='get_medicine_act'),
+    path('api/get_education_oo_act/', GetEducationOOActAPIView.as_view(), name='get_education_oo_act'),
+    path('api/get_education_dou_act/', GetEducationDOUActAPIView.as_view(), name='get_education_dou_act'),
+
     path('api/v1/drf-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),                             # Для v1 (с использованием router)
     path('api/v1/auth/', include('djoser.urls')),
@@ -65,28 +67,21 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-    # path('register/', register, name='register'),
-    # path('login/', user_login, name='login'),
-    # path('logout/', user_logout, name='logout'),
-    # path('api/v1/drf-auth/', include('res_framework.urls')),
-    # path(r'^auth/', include('djoser.urls')),
-
-
     path('', region_view, name='home'),
     path('question_view/', question_view, name='question_view'),
     path('departments/', LibDepartments.as_view(), name='departments'),           # пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать дополнительные параметры
     path('organisation/', HomeDepartments.as_view(), name='organisation'),
 
 
-    path('api/get_medicine_act/', Get_Medicine_ActAPIView.as_view(), name='get_medicine_act'),
-    path('api/get_education_oo_act/', Get_EducationOO_ActAPIView.as_view(), name='get_education_oo_act'),
-    path('api/get_education_dou_act/', Get_EducationDOU_ActAPIView.as_view(), name='get_education_dou_act'),
 
 
 
     # path('api/regions-put/<int:pk>/', RegionsAPIView.as_view()),        # Для v2
     # path('api/departments-put/<int:pk>/', DepartmentsAPIDetailView.as_view()),        # Для v2
 
-    # path('api/regions/', RegionsViewSet.as_view({'get': 'list'})),                   # Для v1 (без использования router)
-    # path('api/regions/<int:pk>/', RegionsViewSet.as_view({'put': 'update'})),        # Для v1 (без использования router)
+    # path('register/', register, name='register'),
+    # path('login/', user_login, name='login'),
+    # path('logout/', user_logout, name='logout'),
+    # path('api/v1/drf-auth/', include('res_framework.urls')),
+    # path(r'^auth/', include('djoser.urls')),
 ]

@@ -9,8 +9,7 @@ from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
-from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
-from drf_yasg2.utils import swagger_auto_schema
+from drf_yasg2.utils import swagger_auto_schema, unset
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -27,24 +26,30 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 
 ######## v1 - один класс для всего () ##########
 class RegionsViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
 
-    # Отключение метода Destroy
+    swagger_schema = None
+
+# Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(RegionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
+    # @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'],
             detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
     def region_id(self, request, pk=None):
         reg_id = Regions.objects.values('id').get(pk=pk)
         return Response({'region_id': reg_id})
 
+    # @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
     def region_name(self, request, pk=None):
         reg_name = Regions.objects.values('region_name').get(pk=pk)
         return Response({'region_name': reg_name})
 
+    # @swagger_auto_schema(auto_schema=None)
     @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
     def regions_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
@@ -60,12 +65,14 @@ class RegionsViewSet(viewsets.ModelViewSet):  # Данный класс вклю
         return Response({'post': serializers.data})
 
 
-class Type_DepartmentsViewSet(viewsets.ModelViewSet):
+class TypeDepartmentsViewSet(viewsets.ModelViewSet):
     queryset = Type_Departments.objects.all()
     serializer_class = Type_DepartmentsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Type_DepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(TypeDepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def type_departments_id(self, request, pk=None):
@@ -96,6 +103,9 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
     queryset = Departments.objects.all()
     serializer_class = DepartmentsSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
+
+    swagger_schema = None
+
 
     def _allowed_methods(self):
         return [m for m in super(DepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -156,12 +166,14 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Department_PersonsViewSet(viewsets.ModelViewSet):
+class DepartmentPersonsViewSet(viewsets.ModelViewSet):
     queryset = Department_Persons.objects.all()
     serializer_class = Department_PersonsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Department_PersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(DepartmentPersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def department(self, request, pk=None):
@@ -188,12 +200,14 @@ class Department_PersonsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Type_OrganisationsViewSet(viewsets.ModelViewSet):
+class TypeOrganisationsViewSet(viewsets.ModelViewSet):
     queryset = Type_Organisations.objects.all()
     serializer_class = Type_OrganisationsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Type_OrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(TypeOrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def type_organisations_id(self, request, pk=None):
@@ -223,6 +237,8 @@ class Type_OrganisationsViewSet(viewsets.ModelViewSet):
 class OrganisationsViewSet(viewsets.ModelViewSet):
     queryset = Organisations.objects.all()
     serializer_class = OrganisationsSerializer
+
+    swagger_schema = None
 
     def _allowed_methods(self):
         return [m for m in super(OrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -287,12 +303,14 @@ class OrganisationsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Organisation_PersonsViewSet(viewsets.ModelViewSet):
+class OrganisationPersonsViewSet(viewsets.ModelViewSet):
     queryset = Organisation_Persons.objects.all()
     serializer_class = Organisation_PersonsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Organisation_PersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(OrganisationPersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def organisation(self, request, pk=None):
@@ -322,6 +340,8 @@ class Organisation_PersonsViewSet(viewsets.ModelViewSet):
 class QuotaViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Quota.objects.all()
     serializer_class = QuotaSerializer
+
+    swagger_schema = None
 
     # swagger_schema = None
 
@@ -359,6 +379,8 @@ class TemplatesViewSet(viewsets.ModelViewSet):
     queryset = Templates.objects.all()
     serializer_class = TemplatesSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
         return [m for m in super(TemplatesViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -390,6 +412,8 @@ class TemplatesViewSet(viewsets.ModelViewSet):
 class FormsViewSet(viewsets.ModelViewSet):
     queryset = Forms.objects.all()
     serializer_class = FormsSerializer
+
+    swagger_schema = None
 
     def _allowed_methods(self):
         return [m for m in super(FormsViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -439,12 +463,14 @@ class FormsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Form_SectionsViewSet(viewsets.ModelViewSet):
+class FormSectionsViewSet(viewsets.ModelViewSet):
     queryset = Form_Sections.objects.all()
     serializer_class = Form_SectionsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Form_SectionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(FormSectionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def form_sections_id(self, request, pk=None):
@@ -510,6 +536,8 @@ class QuestionsViewSet(viewsets.ModelViewSet):
     queryset = Questions.objects.all()
     serializer_class = QuestionsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
         return [m for m in super(QuestionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -558,12 +586,14 @@ class QuestionsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Question_ValuesViewSet(viewsets.ModelViewSet):
+class QuestionValuesViewSet(viewsets.ModelViewSet):
     queryset = Question_Values.objects.all()
     serializer_class = Question_ValuesSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Question_ValuesViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(QuestionValuesViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def question_values_id(self, request, pk=None):
@@ -590,12 +620,14 @@ class Question_ValuesViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Form_Sections_QuestionViewSet(viewsets.ModelViewSet):
+class FormSectionsQuestionViewSet(viewsets.ModelViewSet):
     queryset = Form_Sections_Question.objects.all()
     serializer_class = Form_Sections_QuestionSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Form_Sections_QuestionViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(FormSectionsQuestionViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def form_sections_question_id(self, request, pk=None):
@@ -646,6 +678,8 @@ class RecommendationsViewSet(viewsets.ModelViewSet):
     queryset = Recommendations.objects.all()
     serializer_class = RecommendationsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
         return [m for m in super(RecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -674,12 +708,14 @@ class RecommendationsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Forms_RecommendationsViewSet(viewsets.ModelViewSet):
+class FormsRecommendationsViewSet(viewsets.ModelViewSet):
     queryset = Forms_Recommendations.objects.all()
     serializer_class = Forms_RecommendationsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Forms_RecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(FormsRecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def forms_recommendations_id(self, request, pk=None):
@@ -749,6 +785,8 @@ class Forms_RecommendationsViewSet(viewsets.ModelViewSet):
 class AnswersViewSet(viewsets.ModelViewSet):
     queryset = Answers.objects.all()
     serializer_class = AnswersSerializer
+
+    swagger_schema = None
 
     def _allowed_methods(self):
         return [m for m in super(AnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -824,13 +862,15 @@ class AnswersViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Signed_DociumentsViewSet(viewsets.ModelViewSet):
+class SignedDociumentsViewSet(viewsets.ModelViewSet):
     queryset = Signed_Dociuments.objects.all()
     serializer_class = Signed_DociumentsSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Signed_DociumentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(SignedDociumentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def signed_dociuments_id(self, request, pk=None):
@@ -896,6 +936,8 @@ class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
         return [m for m in super(CommentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -938,6 +980,8 @@ class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
+
+    swagger_schema = None
 
     def _allowed_methods(self):
         return [m for m in super(PhotoViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -1006,6 +1050,8 @@ class EvaluationViewSet(viewsets.ModelViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
         return [m for m in super(EvaluationViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -1068,6 +1114,8 @@ class VersionsViewSet(viewsets.ModelViewSet):
     queryset = Versions.objects.all()
     serializer_class = VersionsSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
         return [m for m in super(VersionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
@@ -1101,12 +1149,14 @@ class VersionsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class Type_AnswersViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+class TypeAnswersViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Type_Answers.objects.all()
     serializer_class = Type_AnswersSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Type_AnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'],
             detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
@@ -1134,12 +1184,14 @@ class Type_AnswersViewSet(viewsets.ModelViewSet):  # Данный класс в�
         return Response({'post': serializers.data})
 
 
-class Transaction_ExchangeViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+class TransactionExchangeViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Transaction_Exchange.objects.all()
     serializer_class = Transaction_ExchangeSerializer
 
+    swagger_schema = None
+
     def _allowed_methods(self):
-        return [m for m in super(Transaction_ExchangeViewSet, self)._allowed_methods() if m not in ['DELETE']]
+        return [m for m in super(TransactionExchangeViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
     def transaction_exchange_update(self, request, *args, **kwargs):
@@ -1167,11 +1219,11 @@ class Transaction_ExchangeViewSet(viewsets.ModelViewSet):  # Данный кла
 """
 
 
-class Get_Medicine_ActAPIView(APIView):
+class GetMedicineActAPIView(APIView):
 
     def get(self, request):
         context = []
-        stack_type_question = {}   # Дебагер
+        # stack_type_question = {}   # Дебагер
         form_sections = Form_Sections.objects.values().filter(type_departments=1) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
@@ -1214,7 +1266,8 @@ class Get_Medicine_ActAPIView(APIView):
                         # 'test2': count_section
                     })
 
-                    # stack_type_question[f"question_id{q['id']}"] = pages     # Дебагер. Необходимо в return добавить stack_type_question
+                    # stack_type_question[f"question_id{q['id']}"] = pages                   # Дебагер. Необходимо в return добавить stack_type_question
+
                 if len(pages) == 4 or len(questions_id) == count_section:
                     context.append({
                         'title': fs['name'],
@@ -1222,13 +1275,10 @@ class Get_Medicine_ActAPIView(APIView):
                     })
                     pages = []
 
-        # with open('medicina.json', 'w') as file:
-        #     json.dump({'pages': context}, file, ensure_ascii=False, indent=4)
-
         return Response({'pages': context})
 
 
-class Get_EducationOO_ActAPIView(APIView):
+class GetEducationOOActAPIView(APIView):
 
     def get(self, request):
         context = []
@@ -1250,7 +1300,7 @@ class Get_EducationOO_ActAPIView(APIView):
                 choices = []
                 count_section += 1
 
-                if re.findall(r'(5|6)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                if re.findall(r'(5|6)', str(q['type_organisations'])) or q['type_organisations'] is None:
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
                     answer_variant = q['answer_variant']
@@ -1283,13 +1333,10 @@ class Get_EducationOO_ActAPIView(APIView):
                     })
                     pages = []
 
-        # with open('EducationOO.json', 'w') as file:
-        #     json.dump({'pages': context}, file, ensure_ascii=False, indent=4)
-
         return Response({'pages': context})
 
 
-class Get_EducationDOU_ActAPIView(APIView):
+class GetEducationDOUActAPIView(APIView):
 
     def get(self, request):
         context = []
@@ -1311,7 +1358,7 @@ class Get_EducationDOU_ActAPIView(APIView):
                 choices = []
                 count_section += 1
 
-                if re.findall(r'(4)', str(q['type_organisations'])) or q['type_organisations'] == None:
+                if re.findall(r'(4)', str(q['type_organisations'])) or q['type_organisations'] is None:
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
                     answer_variant = q['answer_variant']
