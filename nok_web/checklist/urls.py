@@ -23,8 +23,7 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-
-router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 
 router.register(r'regions', RegionsViewSet, basename='regions')
 router.register(r'type_departments', TypeDepartmentsViewSet, basename='type_departments')
@@ -56,8 +55,11 @@ urlpatterns = [
     path('api/get_education_dou_act/', GetEducationDOUActAPIView.as_view(), name='get_education_dou_act'),
 
     path('api/v1/drf-auth/', include('rest_framework.urls')),
-    path('api/', include(router.urls)),                             # Для v1 (с использованием router)
+
+    # Маршрутизация с использованием router
+    path('api/', include(router.urls)),
     path('api/v1/auth/', include('djoser.urls')),
+
     re_path(r'^auth/', include('djoser.urls.authtoken')),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -69,12 +71,16 @@ urlpatterns = [
 
     path('', region_view, name='home'),
     path('question_view/', question_view, name='question_view'),
-    path('departments/', LibDepartments.as_view(), name='departments'),           # пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать дополнительные параметры
+
+    # Пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать доп. параметры
+    path('departments/', LibDepartments.as_view(), name='departments'),
     path('organisation/', HomeDepartments.as_view(), name='organisation'),
 
 
 
-
+    # path('api/regions-get/', RegionsAPIList.as_view()),
+    # path('api/departments-get/<int:pk>/', DepartmentsAPIRetrieve.as_view()),
+    # path('api/departments-get/<int:pk>/region/', DepartmentsAPIRetrieve.as_view()),
 
     # path('api/regions-put/<int:pk>/', RegionsAPIView.as_view()),        # Для v2
     # path('api/departments-put/<int:pk>/', DepartmentsAPIDetailView.as_view()),        # Для v2

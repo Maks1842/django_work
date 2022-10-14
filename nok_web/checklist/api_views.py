@@ -5,10 +5,11 @@ from .models import *
 from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
 from django.http import Http404, HttpResponse
 from .serializers import *
-from rest_framework import generics, viewsets, status
+from rest_framework import generics, viewsets, status, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
+from rest_framework.viewsets import GenericViewSet
 from drf_yasg2.utils import swagger_auto_schema, unset
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
@@ -25,32 +26,43 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 
 
 ######## v1 - один класс для всего () ##########
-class RegionsViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+class RegionsViewSet(
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
 
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
 
+    # Отключаю отображение всех методоа из Swagger
     swagger_schema = None
 
-# Отключение метода Destroy
+    # Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(RegionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
+    # Отключаю отображение метода из Swagger
     # @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'],
-            detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+
+    # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    @action(methods=['get'], detail=True)
     def region_id(self, request, pk=None):
         reg_id = Regions.objects.values('id').get(pk=pk)
         return Response({'region_id': reg_id})
 
+    # Извлекаю одну запись из конкретного поля
     # @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
+    @action(methods=['get'], detail=True)
     def region_name(self, request, pk=None):
         reg_name = Regions.objects.values('region_name').get(pk=pk)
         return Response({'region_name': reg_name})
 
+    # Изменяю одну запись в конкретном поле
     # @swagger_auto_schema(auto_schema=None)
-    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)
     def regions_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -65,14 +77,17 @@ class RegionsViewSet(viewsets.ModelViewSet):  # Данный класс вклю
         return Response({'post': serializers.data})
 
 
-class TypeDepartmentsViewSet(viewsets.ModelViewSet):
+class TypeDepartmentsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Type_Departments.objects.all()
     serializer_class = Type_DepartmentsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(TypeDepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def type_departments_id(self, request, pk=None):
@@ -99,57 +114,68 @@ class TypeDepartmentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class DepartmentsViewSet(viewsets.ModelViewSet):
+class DepartmentsViewSet(
+                         # mixins.CreateModelMixin,
+                         mixins.RetrieveModelMixin,
+                         mixins.UpdateModelMixin,
+                         # mixins.DestroyModelMixin,
+                         mixins.ListModelMixin,
+                         GenericViewSet):
     queryset = Departments.objects.all()
     serializer_class = DepartmentsSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     swagger_schema = None
 
-
-    def _allowed_methods(self):
-        return [m for m in super(DepartmentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
     def departments_id(self, request, pk=None):
         dep_id = Departments.objects.values('id').get(pk=pk)
         return Response({'departments_id': dep_id})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
     def department_name(self, request, pk=None):
         dep_name = Departments.objects.values('department_name').get(pk=pk)
         return Response({'department_name': dep_name})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
     def parent(self, request, pk=None):
         parent_dep = Departments.objects.get(pk=pk)
         return Response({'parent_dep': parent_dep.department_name})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=False)
     def parents(self, request):
         parents_dep = Departments.objects.all()
         return Response({'parents_dep': [p.department_name for p in parents_dep]})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
     def region(self, request, pk=None):
         reg = Regions.objects.get(pk=pk)
         return Response({'region': reg.region_name})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=False)
     def regions(self, request):
         regs = Regions.objects.all()
         return Response({'regions': [r.region_name for r in regs]})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
     def type_department(self, request, pk=None):
         type_dep = Type_Departments.objects.get(pk=pk)
         return Response({'type_department': type_dep.type})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=False)
     def types_departments(self, request):
         types_deps = Type_Departments.objects.all()
         return Response({'types_departments': [t.type for t in types_deps]})
 
+    @swagger_auto_schema(auto_schema=None)
     @action(methods=['put'], detail=True)
     # @permission_classes([IsAdminUser, IsOwnerOrReadOnly])
     def departments_update(self, request, *args, **kwargs):
@@ -166,7 +192,13 @@ class DepartmentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class DepartmentPersonsViewSet(viewsets.ModelViewSet):
+class DepartmentPersonsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Department_Persons.objects.all()
     serializer_class = Department_PersonsSerializer
 
@@ -200,7 +232,13 @@ class DepartmentPersonsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class TypeOrganisationsViewSet(viewsets.ModelViewSet):
+class TypeOrganisationsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Type_Organisations.objects.all()
     serializer_class = Type_OrganisationsSerializer
 
@@ -234,14 +272,17 @@ class TypeOrganisationsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class OrganisationsViewSet(viewsets.ModelViewSet):
+class OrganisationsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Organisations.objects.all()
     serializer_class = OrganisationsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(OrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def organisations_id(self, request, pk=None):
@@ -303,14 +344,17 @@ class OrganisationsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class OrganisationPersonsViewSet(viewsets.ModelViewSet):
+class OrganisationPersonsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Organisation_Persons.objects.all()
     serializer_class = Organisation_PersonsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(OrganisationPersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def organisation(self, request, pk=None):
@@ -337,7 +381,13 @@ class OrganisationPersonsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class QuotaViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+class QuotaViewSet(
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
     queryset = Quota.objects.all()
     serializer_class = QuotaSerializer
 
@@ -345,22 +395,18 @@ class QuotaViewSet(viewsets.ModelViewSet):  # Данный класс включ
 
     # swagger_schema = None
 
-    def _allowed_methods(self):
-        return [m for m in super(QuotaViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
-    @action(methods=['get'],
-            detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
+    @action(methods=['get'], detail=True)
     def quota_id(self, request, pk=None):
         quot_id = Quota.objects.values('id').get(pk=pk)
         return Response({'quota_id': quot_id})
 
-    @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
+    @action(methods=['get'], detail=True)
     def quota(self, request, pk=None):
         quot = Quota.objects.values('quota').get(pk=pk)
         return Response({'quota': quot})
 
     # @swagger_auto_schema(method='delete', swagger_schema=None)
-    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)
     def quota_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -375,14 +421,17 @@ class QuotaViewSet(viewsets.ModelViewSet):  # Данный класс включ
         return Response({'post': serializers.data})
 
 
-class TemplatesViewSet(viewsets.ModelViewSet):
+class TemplatesViewSet(
+                        # mixins.CreateModelMixin,
+                        mixins.RetrieveModelMixin,
+                        mixins.UpdateModelMixin,
+                        # mixins.DestroyModelMixin,
+                        mixins.ListModelMixin,
+                        GenericViewSet):
     queryset = Templates.objects.all()
     serializer_class = TemplatesSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(TemplatesViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def templates_id(self, request, pk=None):
@@ -409,14 +458,17 @@ class TemplatesViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class FormsViewSet(viewsets.ModelViewSet):
+class FormsViewSet(
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
     queryset = Forms.objects.all()
     serializer_class = FormsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(FormsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def forms_id(self, request, pk=None):
@@ -463,14 +515,17 @@ class FormsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class FormSectionsViewSet(viewsets.ModelViewSet):
+class FormSectionsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Form_Sections.objects.all()
     serializer_class = Form_SectionsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(FormSectionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def form_sections_id(self, request, pk=None):
@@ -532,14 +587,17 @@ class FormSectionsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class QuestionsViewSet(viewsets.ModelViewSet):
+class QuestionsViewSet(
+                        # mixins.CreateModelMixin,
+                        mixins.RetrieveModelMixin,
+                        mixins.UpdateModelMixin,
+                        # mixins.DestroyModelMixin,
+                        mixins.ListModelMixin,
+                        GenericViewSet):
     queryset = Questions.objects.all()
     serializer_class = QuestionsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(QuestionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def questions_id(self, request, pk=None):
@@ -586,14 +644,17 @@ class QuestionsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class QuestionValuesViewSet(viewsets.ModelViewSet):
+class QuestionValuesViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Question_Values.objects.all()
     serializer_class = Question_ValuesSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(QuestionValuesViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def question_values_id(self, request, pk=None):
@@ -620,14 +681,17 @@ class QuestionValuesViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class FormSectionsQuestionViewSet(viewsets.ModelViewSet):
+class FormSectionsQuestionViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Form_Sections_Question.objects.all()
     serializer_class = Form_Sections_QuestionSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(FormSectionsQuestionViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def form_sections_question_id(self, request, pk=None):
@@ -674,14 +738,17 @@ class FormSectionsQuestionViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class RecommendationsViewSet(viewsets.ModelViewSet):
+class RecommendationsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Recommendations.objects.all()
     serializer_class = RecommendationsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(RecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def recommendations_id(self, request, pk=None):
@@ -708,14 +775,17 @@ class RecommendationsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class FormsRecommendationsViewSet(viewsets.ModelViewSet):
+class FormsRecommendationsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Forms_Recommendations.objects.all()
     serializer_class = Forms_RecommendationsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(FormsRecommendationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def forms_recommendations_id(self, request, pk=None):
@@ -782,21 +852,23 @@ class FormsRecommendationsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class AnswersViewSet(viewsets.ModelViewSet):
+class AnswersViewSet(
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
     queryset = Answers.objects.all()
     serializer_class = AnswersSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(AnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def answers_id(self, request, pk=None):
         ans_id = Answers.objects.values('id').get(pk=pk)
         return Response({'answers_id': ans_id})
 
-    # @swagger_auto_schema(operation_description='GET /answers/free_value/')
     @action(methods=['get'], detail=True)
     def free_value(self, request, pk=None):
         fv = Answers.objects.values('free_value').get(pk=pk)
@@ -862,15 +934,18 @@ class AnswersViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class SignedDociumentsViewSet(viewsets.ModelViewSet):
+class SignedDociumentsViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Signed_Dociuments.objects.all()
     serializer_class = Signed_DociumentsSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(SignedDociumentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def signed_dociuments_id(self, request, pk=None):
@@ -932,14 +1007,17 @@ class SignedDociumentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class CommentsViewSet(viewsets.ModelViewSet):
+class CommentsViewSet(
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(CommentsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def comments_id(self, request, pk=None):
@@ -976,15 +1054,18 @@ class CommentsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class PhotoViewSet(viewsets.ModelViewSet):
+class PhotoViewSet(
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    mixins.ListModelMixin,
+                    GenericViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(PhotoViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def photo_id(self, request, pk=None):
@@ -1046,14 +1127,17 @@ class PhotoViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class EvaluationViewSet(viewsets.ModelViewSet):
+class EvaluationViewSet(
+                        # mixins.CreateModelMixin,
+                        mixins.RetrieveModelMixin,
+                        mixins.UpdateModelMixin,
+                        # mixins.DestroyModelMixin,
+                        mixins.ListModelMixin,
+                        GenericViewSet):
     queryset = Evaluation.objects.all()
     serializer_class = EvaluationSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(EvaluationViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def evaluation_id(self, request, pk=None):
@@ -1110,14 +1194,17 @@ class EvaluationViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class VersionsViewSet(viewsets.ModelViewSet):
+class VersionsViewSet(
+                        # mixins.CreateModelMixin,
+                        mixins.RetrieveModelMixin,
+                        mixins.UpdateModelMixin,
+                        # mixins.DestroyModelMixin,
+                        mixins.ListModelMixin,
+                        GenericViewSet):
     queryset = Versions.objects.all()
     serializer_class = VersionsSerializer
 
     swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(VersionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'], detail=True)
     def versions_id(self, request, pk=None):
@@ -1149,14 +1236,20 @@ class VersionsViewSet(viewsets.ModelViewSet):
         return Response({'post': serializers.data})
 
 
-class TypeAnswersViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+class TypeAnswersViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
     queryset = Type_Answers.objects.all()
     serializer_class = Type_AnswersSerializer
 
     swagger_schema = None
 
-    def _allowed_methods(self):
-        return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
+    # def _allowed_methods(self):
+    #     return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
     @action(methods=['get'],
             detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
@@ -1184,16 +1277,19 @@ class TypeAnswersViewSet(viewsets.ModelViewSet):  # Данный класс вк
         return Response({'post': serializers.data})
 
 
-class TransactionExchangeViewSet(viewsets.ModelViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
+class TransactionExchangeViewSet(
+                            # mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            # mixins.DestroyModelMixin,
+                            mixins.ListModelMixin,
+                            GenericViewSet):
     queryset = Transaction_Exchange.objects.all()
     serializer_class = Transaction_ExchangeSerializer
 
     swagger_schema = None
 
-    def _allowed_methods(self):
-        return [m for m in super(TransactionExchangeViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
-    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
+    @action(methods=['put'], detail=True)
     def transaction_exchange_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
@@ -1222,8 +1318,12 @@ class TransactionExchangeViewSet(viewsets.ModelViewSet):  # Данный кла�
 class GetMedicineActAPIView(APIView):
 
     def get(self, request):
+
+        # Дебагер
+        # stack_type_question = {}
+
         context = []
-        # stack_type_question = {}   # Дебагер
+
         form_sections = Form_Sections.objects.values().filter(type_departments=1) | Form_Sections.objects.values().filter(type_departments=None)
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
@@ -1266,7 +1366,8 @@ class GetMedicineActAPIView(APIView):
                         # 'test2': count_section
                     })
 
-                    # stack_type_question[f"question_id{q['id']}"] = pages                   # Дебагер. Необходимо в return добавить stack_type_question
+                    # Дебагер. Необходимо в return добавить stack_type_question
+                    # stack_type_question[f"question_id{q['id']}"] = pages
 
                 if len(pages) == 4 or len(questions_id) == count_section:
                     context.append({
