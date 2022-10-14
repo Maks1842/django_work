@@ -13,9 +13,12 @@ from django.contrib.auth.models import User
 #
 #
 # class UserRegisterForm(UserCreationForm):
-#     username = forms.CharField(max_length=150, label='Имя пользователя', help_text='Подсказка: максимум 150 символов', widget=forms.TextInput(attrs={'class': 'form-control'}))
-#     password1 = forms.CharField(max_length=50, label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-#     password2 = forms.CharField(max_length=50, label='Подтверждение пароля', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+#     username = forms.CharField(max_length=150, label='Имя пользователя',
+#           help_text='Подсказка: максимум 150 символов', widget=forms.TextInput(attrs={'class': 'form-control'}))
+#     password1 = forms.CharField(max_length=50, label='Пароль',
+#           widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+#     password2 = forms.CharField(max_length=50, label='Подтверждение пароля',
+#           widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 #     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control'}))
 #
 #     class Meta:
@@ -46,7 +49,8 @@ class Type_DepartmentsForm(forms.ModelForm):
 class DepartmentsForm(forms.ModelForm):
     class Meta:
         model = Departments
-        fields = ['department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user']
+        fields = ['department_name', 'address', 'phone', 'website', 'email', 'parent', 'region',
+                                                'type_departments', 'is_deleted', 'user']
         widgets = {
             'department_name': forms.TextInput(attrs={"class": "form-control"}),
             'address': forms.TextInput(attrs={"class": "form-control"}),

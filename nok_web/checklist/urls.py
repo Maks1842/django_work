@@ -58,12 +58,12 @@ urlpatterns = [
 
     # Маршрутизация с использованием router
     path('api/', include(router.urls)),
-    path('api/v1/auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls')),
 
     re_path(r'^auth/', include('djoser.urls.authtoken')),
-    path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('auth/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

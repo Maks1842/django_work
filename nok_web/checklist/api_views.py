@@ -84,6 +84,7 @@ class TypeDepartmentsViewSet(
                             # mixins.DestroyModelMixin,
                             mixins.ListModelMixin,
                             GenericViewSet):
+
     queryset = Type_Departments.objects.all()
     serializer_class = Type_DepartmentsSerializer
 
@@ -121,9 +122,10 @@ class DepartmentsViewSet(
                          # mixins.DestroyModelMixin,
                          mixins.ListModelMixin,
                          GenericViewSet):
+
     queryset = Departments.objects.all()
     serializer_class = DepartmentsSerializer
-    permission_classes = (IsOwnerAndAdminOrReadOnly,)
+    # permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     swagger_schema = None
 
@@ -199,6 +201,7 @@ class DepartmentPersonsViewSet(
                             # mixins.DestroyModelMixin,
                             mixins.ListModelMixin,
                             GenericViewSet):
+
     queryset = Department_Persons.objects.all()
     serializer_class = Department_PersonsSerializer
 
@@ -351,6 +354,7 @@ class OrganisationPersonsViewSet(
                             # mixins.DestroyModelMixin,
                             mixins.ListModelMixin,
                             GenericViewSet):
+
     queryset = Organisation_Persons.objects.all()
     serializer_class = Organisation_PersonsSerializer
 
@@ -941,9 +945,10 @@ class SignedDociumentsViewSet(
                             # mixins.DestroyModelMixin,
                             mixins.ListModelMixin,
                             GenericViewSet):
+
     queryset = Signed_Dociuments.objects.all()
     serializer_class = Signed_DociumentsSerializer
-    permission_classes = (IsOwnerAndAdminOrReadOnly,)
+    # permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     swagger_schema = None
 
@@ -1061,9 +1066,10 @@ class PhotoViewSet(
                     # mixins.DestroyModelMixin,
                     mixins.ListModelMixin,
                     GenericViewSet):
+
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
-    permission_classes = (IsOwnerAndAdminOrReadOnly,)
+    # permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
     swagger_schema = None
 

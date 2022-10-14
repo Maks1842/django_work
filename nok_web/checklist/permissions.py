@@ -11,8 +11,8 @@ class IsAdminOrReadOnly(permissions.BasePermission):
         return bool(request.user and request.user.is_staff)
 
 
-
-# Запись менять может только пользователь который её создал и Аминистратор, просматривать может любой
+# Запись менять может только пользователь который её создал и Аминистратор,
+# просматривать может любой, даже не авторизованный
 class IsOwnerAndAdminOrReadOnly(permissions.BasePermission):
     """
     Разрешение на уровне объекта, позволяющее редактировать его только владельцам объекта.
