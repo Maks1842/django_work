@@ -1363,7 +1363,7 @@ class GetMedicineActAPIView(APIView):
 
 
                     pages.append({
-                        'name': q['id'],
+                        'name': f"{q['id']}",
                         'title': q['name'],
                         'type': type['type'],
                         'choices': choices,

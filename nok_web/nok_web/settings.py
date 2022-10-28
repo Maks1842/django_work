@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'drf_yasg2',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'nok_web.urls'
@@ -209,3 +212,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+]
