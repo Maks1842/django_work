@@ -125,9 +125,9 @@ class DepartmentsViewSet(
 
     queryset = Departments.objects.all()
     serializer_class = DepartmentsSerializer
-    # permission_classes = (IsOwnerAndAdminOrReadOnly,)
+    permission_classes = (IsOwnerAndAdminOrReadOnly,)
 
-    swagger_schema = None
+    # swagger_schema = None
 
     @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
@@ -1363,7 +1363,7 @@ class GetMedicineActAPIView(APIView):
 
 
                     pages.append({
-                        'name': q['id'],
+                        'name': f"{q['id']}",
                         'title': q['name'],
                         'type': type['type'],
                         'choices': choices,

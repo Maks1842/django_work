@@ -50,20 +50,20 @@ router.register('transaction_exchange', TransactionExchangeViewSet, basename='tr
 
 
 urlpatterns = [
-    path('api/get_medicine_act/', GetMedicineActAPIView.as_view(), name='get_medicine_act'),
-    path('api/get_education_oo_act/', GetEducationOOActAPIView.as_view(), name='get_education_oo_act'),
-    path('api/get_education_dou_act/', GetEducationDOUActAPIView.as_view(), name='get_education_dou_act'),
+    path('api/v1/get_medicine_act/', GetMedicineActAPIView.as_view(), name='get_medicine_act'),
+    path('api/v1/get_education_oo_act/', GetEducationOOActAPIView.as_view(), name='get_education_oo_act'),
+    path('api/v1/get_education_dou_act/', GetEducationDOUActAPIView.as_view(), name='get_education_dou_act'),
 
     path('api/v1/drf-auth/', include('rest_framework.urls')),
 
     # Маршрутизация с использованием router
     path('api/', include(router.urls)),
-    path('auth/', include('djoser.urls')),
+    path('api/v1/auth/', include('djoser.urls')),
 
-    re_path(r'^auth/', include('djoser.urls.authtoken')),
-    path('auth/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('auth/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('auth/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    re_path(r'^api/v1/auth/', include('djoser.urls.authtoken')),
+    path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/v1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/v1/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
