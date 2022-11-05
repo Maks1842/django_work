@@ -338,3 +338,30 @@ class Transaction_ExchangeForm(forms.ModelForm):
             'user': forms.Select(attrs={"class": "form-control"}),
         }
 
+
+class ListForCheckForm(forms.ModelForm):
+    class Meta:
+        model = ListForCheck
+        fields = ['name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted']
+        widgets = {
+            'name': forms.TextInput(attrs={"class": "form-control"}),
+            'period': forms.TextInput(attrs={"class": "form-control"}),
+            'region': forms.Select(attrs={"class": "form-control"}),
+            'department': forms.Select(attrs={"class": "form-control"}),
+            'organisation': forms.Select(attrs={"class": "form-control"}),
+            'user': forms.Select(attrs={"class": "form-control"}),
+            'is_deleted': forms.Select(attrs={"class": "form-control"}),
+        }
+
+
+class FormsActForm(forms.ModelForm):
+    class Meta:
+        model = FormsAct
+        fields = ['type_departments', 'type_organisations', 'act_json', 'version']
+        widgets = {
+            'type_departments': forms.Select(attrs={"class": "form-control"}),
+            'type_organisations': forms.Select(attrs={"class": "form-control"}),
+            'act_json': forms.Textarea,
+            'version': forms.TextInput(attrs={"class": "form-control"}),
+        }
+

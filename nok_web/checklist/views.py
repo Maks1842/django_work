@@ -83,6 +83,14 @@ def question_view(request):
     return render(request, 'checklist/check_list.html', context)
 
 
+def designer_act_view(request):
+    type_departments = Type_Departments.objects.order_by('pk')
+    type_organisations = Type_Organisations.objects.order_by('pk')
+    context = {
+        'type_departments': type_departments,
+        'type_organisations': type_organisations,
+    }
+    return render(request, 'checklist/designer_act.html', context)
 
 
 # Тренировочная вьюха

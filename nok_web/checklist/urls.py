@@ -71,10 +71,11 @@ urlpatterns = [
 
     path('', region_view, name='home'),
     path('question_view/', question_view, name='question_view'),
+    path('designer-act/', designer_act_view, name='designer-act'),
 
     # Пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать доп. параметры
     path('departments/', LibDepartments.as_view(), name='departments'),
-    path('organisation/', HomeDepartments.as_view(), name='organisation'),
+    path('designer-act/', HomeDepartments.as_view(), name='designer-act'),
 
 
 

@@ -396,3 +396,32 @@ class Transaction_Exchange(models.Model):
 
     class Meta:
         verbose_name_plural = 'Регистрация изменений данных'
+
+
+class ListForCheck(models.Model):
+    name = models.CharField(max_length=100, null=True, verbose_name='Имя списка')
+    period = models.CharField(max_length=100, null=True, verbose_name='Период проверки')
+    region = models.ForeignKey('Regions', on_delete=models.PROTECT, null=True, verbose_name='Регион_id')
+    department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент_id')
+    organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение_id')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, verbose_name='Пользователь')
+    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name_plural = 'Списки проверяемых организаций'
+
+
+class FormsAct(models.Model):
+    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
+    type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип учреждения_id')
+    act_json = models.JSONField(verbose_name='Структура акта')
+    version = models.CharField(max_length=50, null=True, verbose_name='Версия формы акта')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name_plural = 'Формы актов'
