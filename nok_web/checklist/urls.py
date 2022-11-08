@@ -74,6 +74,7 @@ urlpatterns = [
     path('designer-act/', designer_act_view, name='designer-act'),
     path('get-act/', get_act, name='get-act'),
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
+    path('forms-test-add/', forms_test_add, name='forms_test_add'),
 
     # Пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать доп. параметры
     path('departments_xxx/', LibDepartments.as_view(), name='departments_xxx'),

@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.http import JsonResponse
 import re
+import json
 
 
 # Регистрация пользователя
@@ -92,10 +93,13 @@ def designer_act_view(request):
         'type_organisations': type_organisations,
 
     }
-    return render(request, 'checklist/designer_act.html', context)
+    return render(request, 'checklist/helper.html', context)
 
 
 def get_act(request, type_departments=1, type_organisations='2|3'):
+
+    # type_departments = request.POST['type_dep']
+    # type_organisations = str(request.POST['type_org'])
 
     form_act = []
     count = 0
@@ -149,7 +153,8 @@ def get_act(request, type_departments=1, type_organisations='2|3'):
                 })
                 pages = []
 
-    context = {"pages": form_act}
+    xxx = json.dumps({"pages": form_act}, ensure_ascii=False)
+    context = {"form_act": xxx}
 
     return render(request, 'checklist/helper.html', context)
 
@@ -167,6 +172,16 @@ def forms_act_add(request):
     else:
         form = FormsActForm()
     return render(request, 'checklist/designer_act.html', {'form': form})
+
+
+def forms_test_add(request):
+    type_departments = request.POST['type_dep']
+    type_organisations = request.POST['type_org']
+
+    context = {'type_dep': type_departments,
+               'type_org': type_organisations}
+    return render(request, 'checklist/designer_act.html', context)
+
 
 
 # Тренировочная вьюха
