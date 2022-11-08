@@ -418,7 +418,7 @@ class FormsAct(models.Model):
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип учреждения_id')
     act_json = models.JSONField(verbose_name='Структура акта')
-    version = models.CharField(max_length=50, null=True, verbose_name='Версия формы акта')
+    version = models.CharField(max_length=50, verbose_name='Версия формы акта')
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})

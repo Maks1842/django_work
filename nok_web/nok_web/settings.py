@@ -165,7 +165,10 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-        # В боевом режиме, чтобы не отображалась страница настроек, СТРОКУ ЗАКОММЕНТИРОВАТЬ
+
+        # 'rest_framework.renderers.TemplateHTMLRenderer',
+        # В боевом режиме, чтобы не отображалась страница настроек, СТРОКУ 'rest_framework.renderers.BrowsableAPIRenderer', ЗАКОММЕНТИРОВАТЬ
+
     ],
     # Данные видно только авторизованным пользователям
     'DEFAULT_PERMISSION_CLASSES': [

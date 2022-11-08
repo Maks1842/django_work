@@ -150,3 +150,15 @@ class Transaction_ExchangeSerializer(serializers.ModelSerializer):
         model = Transaction_Exchange
         fields = ['id', 'model', 'field', 'old_data', 'new_data', 'date_exchange', 'user']
 
+
+class ListForCheckSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ListForCheck
+        fields = ['id', 'name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted']
+
+
+class FormsActSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FormsAct
+        fields = ['id', 'type_departments', 'type_organisations', 'act_json', 'version']
+

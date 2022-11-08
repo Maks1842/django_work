@@ -47,12 +47,12 @@ router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', TypeAnswersViewSet, basename='type_answers')
 router.register('transaction_exchange', TransactionExchangeViewSet, basename='transaction_exchange')
+router.register('list_for_check', ListForCheckViewSet, basename='list_for_check')
+router.register('forms_act', FormsActViewSet, basename='forms_act')
 
 
 urlpatterns = [
-    path('api/v1/get_medicine_act/', GetMedicineActAPIView.as_view(), name='get_medicine_act'),
-    path('api/v1/get_education_oo_act/', GetEducationOOActAPIView.as_view(), name='get_education_oo_act'),
-    path('api/v1/get_education_dou_act/', GetEducationDOUActAPIView.as_view(), name='get_education_dou_act'),
+    path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
 
     path('api/v1/drf-auth/', include('rest_framework.urls')),
 
@@ -72,10 +72,12 @@ urlpatterns = [
     path('', region_view, name='home'),
     path('question_view/', question_view, name='question_view'),
     path('designer-act/', designer_act_view, name='designer-act'),
+    path('get-act/', get_act, name='get-act'),
+    path('forms-act-add/', forms_act_add, name='forms_act_add'),
 
     # Пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать доп. параметры
-    path('departments/', LibDepartments.as_view(), name='departments'),
-    path('designer-act/', HomeDepartments.as_view(), name='designer-act'),
+    path('departments_xxx/', LibDepartments.as_view(), name='departments_xxx'),
+    # path('designer-act/', HomeDepartments.as_view(), name='designer-act'),
 
 
 

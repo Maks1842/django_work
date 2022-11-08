@@ -361,7 +361,7 @@ class FormsActForm(forms.ModelForm):
         widgets = {
             'type_departments': forms.Select(attrs={"class": "form-control"}),
             'type_organisations': forms.Select(attrs={"class": "form-control"}),
-            'act_json': forms.Textarea,
+            'act_json': forms.Textarea(attrs={"class": "form-control", "rows": 17}),
             'version': forms.TextInput(attrs={"class": "form-control"}),
         }
 
