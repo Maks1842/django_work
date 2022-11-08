@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!--Указываю какой шаблон хочу наследовать-->
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+<!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+
+
+{% block content %}
+<div class="container">                    <!--Оборачиваем все содержимое сетки в контейнер-->
+  <div class="row">                      <!--Ряд сетки-->
+    <div class="col-md-12">             <!--Колонки сетки-->
+      <div class="form-group">
+        <p>
+          <a class="btn btn-primary" href="{% url 'get-act' %}" role="button">Сформировать акт</a>
+        </p>
+      </div>
+
+        <div class="mb-3">
+        <p>
+          <label>Форма акта:</label>
+          <textarea class="form-control" id="123" rows="30" readonly>{{ pages }}</textarea>
+        </p>
+          </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

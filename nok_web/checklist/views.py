@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 
 from .models import *
-# from .forms import UserRegisterForm, UserLoginForm
+from .forms import *
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.http import JsonResponse
+import re
 
 
 # Регистрация пользователя
@@ -89,8 +90,83 @@ def designer_act_view(request):
     context = {
         'type_departments': type_departments,
         'type_organisations': type_organisations,
+
     }
     return render(request, 'checklist/designer_act.html', context)
+
+
+def get_act(request, type_departments=1, type_organisations='2|3'):
+
+    form_act = []
+    count = 0
+
+    form_sections = Form_Sections.objects.values().filter(type_departments=type_departments) | Form_Sections.objects.values().filter(type_departments=None)
+    questions = Questions.objects.values()
+    type_answers = Type_Answers.objects.values()
+    question_values = Question_Values.objects.values()
+
+    for fs in form_sections:
+        fs_id = fs['id']
+        questions_id = questions.filter(form_sections_id=fs_id)
+        count_section = 0
+        pages = []
+
+        for q in questions_id:
+            choices = []
+            count_section += 1
+
+            if re.findall(type_organisations, str(q['type_organisations'])) or q['type_organisations'] is None:
+                count += 1
+                type = type_answers.get(pk=q['type_answers_id'])
+                answer_variant = q['answer_variant']
+                ans_var_re = answer_variant
+                try:
+                    ans_var_re = (re.sub(r'\s', '', answer_variant))
+                except:
+                    pass
+
+                ans_var = ans_var_re.split(',')
+
+                for av in range(len(ans_var)):
+                    qv = question_values.get(pk=ans_var[av])
+                    choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+
+                pages.append({
+                    "name": str(count),
+                    "title": q['name'],
+                    "type": type['type'],
+                    "choices": choices,
+                    "isRequired": 'true',
+                    # 'test': len(questions_id),
+                    # 'test2': count_section
+                })
+
+            if len(pages) == 4 or len(questions_id) == count_section:
+                form_act.append({
+                    "title": fs['name'],
+                    "elements": pages,
+                })
+                pages = []
+
+    context = {"pages": form_act}
+
+    return render(request, 'checklist/helper.html', context)
+
+
+# Добавление данных в БД
+def forms_act_add(request):
+    if request.method == 'POST':
+        # Данная строка создает Форму связанную с данными Модели
+        form = FormsActForm(request.POST)
+        # Проверяю прошла ли Форма валидацию
+        if form.is_valid():
+            # Сохраняются в БД
+            form.save()
+            return redirect('home')
+    else:
+        form = FormsActForm()
+    return render(request, 'checklist/designer_act.html', {'form': form})
 
 
 # Тренировочная вьюха

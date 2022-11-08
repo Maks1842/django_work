@@ -8,31 +8,60 @@
 
 
 {% block content %}
+<form action="{% url 'forms_act_add' %}" method="post">
+    {% csrf_token %}                         <!--Обязательный тег - токин котрый автоматически добавляется к форме для защиты ее от подделки-->
 
-<div class="container">                    <!--Оборачиваем все содержимое сетки в контейнер-->
-    <div class="row">                      <!--Ряд сетки-->
-        <div class="col-md-4">             <!--Колонки сетки-->
-            <label class="mt-3">Тип департамента:</label>
-            <select class="form-select">
-                <option selected>---Выберите тип департамента---</option>
-                {% for item in type_departments %}
-                <option>{{ item.type }}</option>
-                {% endfor %}
-            </select>
+    {{ form.non_field.erroes }}                                   <!--Обработка общих ошибок-->
 
-            <label class="mt-3">Тип организации:</label>
-            <select class="form-select">
-                <option selected>---Выберите тип организации---</option>
-                {% for item in type_organisations %}
-                <option>{{ item.type }}</option>
-                {% endfor %}
-            </select>
+                <div class="form-group">
+                    <p>
+                        <label for="{{ form.type_departments.id_for_label }}">Тип департамента:</label>
+                        {{ form.type_departments }}
+                    <div class="invalid-feedback">
+                        {{ form.type_departments.errors }}
+                    </div>
+                    </p>
+                </div>
 
-            <br/>
-            <a class="btn btn-primary" href="{% url 'question_view' %}" role="button">Начать</a>
-        </div>
-    </div>
-</div>
+                <div class="form-group">
+                    <p>
+                        <label for="{{ form.type_organisations.id_for_label }}">Тип организации:</label>
+                        {{ form.type_organisations }}
+                    <div class="invalid-feedback">
+                        {{ form.type_organisations.errors }}
+                    </div>
+                    </p>
+                </div>
+
+            <div class="form-group">
+                <div class="mb-3">
+                    <p>
+                        <label for="{{ form.act_json.id_for_label }}">Форма акта:</label>
+                        {{ form.act_json }}
+                    <div class="invalid-feedback">
+                        {{ form.act_json.errors }}
+                    </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <p>
+                            <label for="{{ form.version.id_for_label }}">Версия акта:</label>
+                            {{ form.version }}
+                        <div class="invalid-feedback">
+                            {{ form.version.errors }}
+                        </div>
+                        </p>
+                    </div>
 
 
+                        <button type="submit" class="btn btn-primary btn-block">Сохранить форму</button>
+
+                </div>
+            </div>
+
+</form>
 {% endblock %}

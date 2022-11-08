@@ -1342,6 +1342,11 @@ class FormsActViewSet(
     # def _allowed_methods(self):
     #     return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
 
+    @action(methods=['get'], detail=True)
+    def act_json(self, request, pk=None):
+        act = FormsAct.objects.values('act_json').get(pk=pk)
+        return Response({'act_json': act})
+
 
 """
 Предоставление API для данных из БД.
