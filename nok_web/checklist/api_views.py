@@ -1360,7 +1360,7 @@ class FormsActViewSet(
 
 class GetActAPIView(APIView):
 
-    def get(self, request, type_departments=3, type_organisations='9'):
+    def get(self, request, type_departments=1, type_organisations=2):
 
         context = []
         count = 0
@@ -1380,7 +1380,8 @@ class GetActAPIView(APIView):
                 choices = []
                 count_section += 1
 
-                if re.findall(type_organisations, str(q['type_organisations'])) or q['type_organisations'] is None:
+                # if re.findall(type_organisations, str(q['type_organisations'])) or q['type_organisations'] is None:
+                if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
                     answer_variant = q['answer_variant']

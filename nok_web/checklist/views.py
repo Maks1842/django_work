@@ -96,7 +96,7 @@ def designer_act_view(request):
     return render(request, 'checklist/helper.html', context)
 
 
-def get_act(request, type_departments=1, type_organisations='2|3'):
+def get_act(request, type_departments=1, type_organisations=3):
 
     # type_departments = request.POST['type_dep']
     # type_organisations = str(request.POST['type_org'])
@@ -119,7 +119,7 @@ def get_act(request, type_departments=1, type_organisations='2|3'):
             choices = []
             count_section += 1
 
-            if re.findall(type_organisations, str(q['type_organisations'])) or q['type_organisations'] is None:
+            if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
                 count += 1
                 type = type_answers.get(pk=q['type_answers_id'])
                 answer_variant = q['answer_variant']
