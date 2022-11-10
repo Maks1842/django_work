@@ -198,18 +198,13 @@ class Form_Sections(models.Model):
 
 
 class Questions(models.Model):
-    name = models.CharField(max_length=2000, verbose_name='Вопросы')
-    form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
-    type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип ответа_id')
-    answer_variant = models.CharField(max_length=50, null=True, blank=True, verbose_name='Вариант ответа')
-    type_organisations = models.CharField(max_length=50, null=True, blank=True, verbose_name='Принадлежность к типу организаций')
-    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+    questions = models.CharField(max_length=2000, verbose_name='Вопросы')
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
-        return self.name
+        return self.questions
 
     class Meta:
         verbose_name_plural = 'Варианты вопросов'
@@ -229,16 +224,19 @@ class Question_Values(models.Model):
 
 
 class Form_Sections_Question(models.Model):
-    questions = models.ForeignKey('Questions', on_delete=models.PROTECT, null=True, verbose_name='Вопросы_id')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
-    order_num = models.IntegerField(verbose_name='Порядковый номер')
+    question = models.ForeignKey('Questions', on_delete=models.PROTECT, verbose_name='Вопрос')
+    order_num = models.IntegerField(null=True, blank=True, verbose_name='Порядковый номер')
+    form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Наименование разделов_id')
+    type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип ответа_id')
+    answer_variant = models.CharField(max_length=50, null=True, blank=True, verbose_name='Вариант ответа')
+    type_organisations = models.CharField(max_length=50, null=True, blank=True, verbose_name='Тип учреждения_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
 
     class Meta:
-        verbose_name_plural = 'Сопоставление вопрос-форма'
+        verbose_name_plural = 'Сопоставление вопрос-раздел'
 
 
 class Recommendations(models.Model):

@@ -611,28 +611,8 @@ class QuestionsViewSet(
 
     @action(methods=['get'], detail=True)
     def questions_name(self, request, pk=None):
-        name = Questions.objects.values('name').get(pk=pk)
-        return Response({'name': name})
-
-    @action(methods=['get'], detail=True)
-    def form_section(self, request, pk=None):
-        form_sect = Form_Sections.objects.get(pk=pk)
-        return Response({'form_section': form_sect.name})
-
-    @action(methods=['get'], detail=False)
-    def type_answers(self, request):
-        type_anss = Form_Sections.objects.all()
-        return Response({'type_answers': [t.type for t in type_anss]})
-
-    @action(methods=['get'], detail=True)
-    def type_answer(self, request, pk=None):
-        type_ans = Type_Answers.objects.get(pk=pk)
-        return Response({'type_answer': type_ans.type})
-
-    @action(methods=['get'], detail=False)
-    def form_sections(self, request):
-        form_sects = Type_Answers.objects.all()
-        return Response({'form_sections': [f.name for f in form_sects]})
+        questions = Questions.objects.values('questions').get(pk=pk)
+        return Response({'questions': questions})
 
     @action(methods=['put'], detail=True)
     def questions_update(self, request, *args, **kwargs):
@@ -697,36 +677,6 @@ class FormSectionsQuestionViewSet(
     serializer_class = Form_Sections_QuestionSerializer
 
     swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def form_sections_question_id(self, request, pk=None):
-        fsq_id = Form_Sections_Question.objects.values('id').get(pk=pk)
-        return Response({'fsq_id': fsq_id})
-
-    @action(methods=['get'], detail=True)
-    def order_num(self, request, pk=None):
-        num = Form_Sections_Question.objects.values('order_num').get(pk=pk)
-        return Response({'order_num': num})
-
-    @action(methods=['get'], detail=True)
-    def question(self, request, pk=None):
-        quest = Questions.objects.get(pk=pk)
-        return Response({'name': quest.name})
-
-    @action(methods=['get'], detail=False)
-    def questions(self, request):
-        quests = Questions.objects.all()
-        return Response({'names': [q.name for q in quests]})
-
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_fs = Forms.objects.get(pk=pk)
-        return Response({'form': form_fs.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_fs = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_fs]})
 
     @action(methods=['put'], detail=True)
     def form_sections_question_update(self, request, *args, **kwargs):
@@ -1354,7 +1304,7 @@ class FormsActViewSet(
     - раздел может быть одинаковый для разных департаментов, если type_departments=None, значит подходит ко всем.
 2. Передаю два позиционных аргумента, для выбора необходимых вопросов Акта, для конкретных типов оргрнизаций:
     - type_departments=1 ---> 1 - это id модели Type_Departments;
-    - type_organisations='2|3' ---> '2|3' - это id модели Type_Organisations.
+    - type_organisations=2 ---> 2 - это id модели Type_Organisations.
 """
 
 

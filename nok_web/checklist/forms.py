@@ -178,14 +178,9 @@ class Form_SectionsForm(forms.ModelForm):
 class QuestionsForm(forms.ModelForm):
     class Meta:
         model = Questions
-        fields = ['name', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted']
+        fields = ['questions']
         widgets = {
-            'name': forms.TextInput(attrs={"class": "form-control"}),
-            'form_sections': forms.Select(attrs={"class": "form-control"}),
-            'type_answers': forms.Select(attrs={"class": "form-control"}),
-            'answer_variant': forms.TextInput(attrs={"class": "form-control"}),
-            'type_organisations': forms.TextInput(attrs={"class": "form-control"}),
-            'is_deleted': forms.Select(attrs={"class": "form-control"})
+            'questions': forms.TextInput(attrs={"class": "form-control"}),
         }
 
 
@@ -201,11 +196,14 @@ class Question_ValuesForm(forms.ModelForm):
 class Form_Sections_QuestionForm(forms.ModelForm):
     class Meta:
         model = Form_Sections_Question
-        fields = ['questions', 'forms', 'order_num', 'is_deleted']
+        fields = ['question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted']
         widgets = {
-            'questions': forms.Select(attrs={"class": "form-control"}),
-            'forms': forms.Select(attrs={"class": "form-control"}),
+            'question': forms.Select(attrs={"class": "form-control"}),
             'order_num': forms.TextInput(attrs={"class": "form-control"}),
+            'form_sections': forms.Select(attrs={"class": "form-control"}),
+            'type_answers': forms.Select(attrs={"class": "form-control"}),
+            'answer_variant': forms.TextInput(attrs={"class": "form-control"}),
+            'type_organisations': forms.TextInput(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }
 

@@ -510,7 +510,7 @@
   "model": "checklist.form_sections",
   "pk": 4,
   "fields": {
-    "name": "1.2. Обеспечение наличия на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+    "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
     "version": "1",
     "order_num": 1,
     "parent": null,
@@ -523,7 +523,7 @@
   "model": "checklist.form_sections",
   "pk": 5,
   "fields": {
-    "name": "2.1.1 Наличие Комфортных условий для предоставления услуг (каждый пункт - 20 баллов, максимально - 100 баллов)",
+    "name": "2.1.1 Наличие Комфортных условий для предоставления услуг",
     "version": "1",
     "order_num": 1,
     "parent": null,
@@ -536,7 +536,7 @@
   "model": "checklist.form_sections",
   "pk": 6,
   "fields": {
-    "name": "2.2.1. Среднее время ожидания предоставления услуги (значение ставится в одну из строк максимально - 100 баллов)",
+    "name": "2.2.1. Среднее время ожидания предоставления услуги",
     "version": "1",
     "order_num": 2,
     "parent": null,
@@ -549,7 +549,7 @@
   "model": "checklist.form_sections",
   "pk": 7,
   "fields": {
-    "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов (каждый пункт - 20 баллов, максимально - 100 баллов)",
+    "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
     "version": "1",
     "order_num": 1,
     "parent": null,
@@ -562,7 +562,7 @@
   "model": "checklist.form_sections",
   "pk": 8,
   "fields": {
-    "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими (каждый пункт - 20 баллов, максимально - 100 баллов)",
+    "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
     "version": "1",
     "order_num": 2,
     "parent": null,
@@ -757,1896 +757,1106 @@
   "model": "checklist.questions",
   "pk": 1,
   "fields": {
-    "name": "Полное наименование",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Полное наименование"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 2,
   "fields": {
-    "name": "Место нахождения и схема проезда,  включая обособленные структурные подразделения (при их наличии)",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Место нахождения и схема проезда,  включая обособленные структурные подразделения (при их наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 3,
   "fields": {
-    "name": "Почтовый адрес",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Почтовый адрес"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 4,
   "fields": {
-    "name": "Дата государственной регистрации",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Дата государственной регистрации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 5,
   "fields": {
-    "name": "Сведения об учредителе (учредителях)",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения об учредителе (учредителях)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 6,
   "fields": {
-    "name": "Структура",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Структура"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 7,
   "fields": {
-    "name": "Органы управления",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Органы управления"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 8,
   "fields": {
-    "name": "Вакантные должности",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Вакантные должности"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 9,
   "fields": {
-    "name": "Режим работы",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Режим работы"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 10,
   "fields": {
-    "name": "График работы",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "График работы"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 11,
   "fields": {
-    "name": "Правила внутреннего распорядка для потребителей услуг",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила внутреннего распорядка для потребителей услуг"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 12,
   "fields": {
-    "name": "Контактные телефоны",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Контактные телефоны"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 13,
   "fields": {
-    "name": "Номера телефонов справочных служб",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Номера телефонов справочных служб"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 14,
   "fields": {
-    "name": "Адреса электронной почты",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Адреса электронной почты"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 15,
   "fields": {
-    "name": "График приема граждан руководителем медицинской организации и иными уполномоченными лицами с указанием:",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "График приема граждан руководителем медицинской организации и иными уполномоченными лицами с указанием:"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 16,
   "fields": {
-    "name": "Телефона",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Телефона"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 17,
   "fields": {
-    "name": "Адреса электронной почты",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Адреса электронной почты"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 18,
   "fields": {
-    "name": "Адрес органа исполнительной власти субъекта Российской Федерации в сфере охраны здоровья",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Адрес органа исполнительной власти субъекта Российской Федерации в сфере охраны здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 19,
   "fields": {
-    "name": "Адрес территориального органа Федеральной службы по надзору в сфере здравоохранения",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Адрес территориального органа Федеральной службы по надзору в сфере здравоохранения"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 20,
   "fields": {
-    "name": "Контактный телефон территориального органа Федеральной службы по надзору в сфере здравоохранения",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Контактный телефон территориального органа Федеральной службы по надзору в сфере здравоохранения"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 21,
   "fields": {
-    "name": "Адрес территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Адрес территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 22,
   "fields": {
-    "name": "Контактный телефон территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Контактный телефон территориального органа Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 23,
   "fields": {
-    "name": "Информация о страховых медицинских организациях, с которыми заключены договоры на оказание и оплату медицинской помощи по обязательному",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о страховых медицинских организациях, с которыми заключены договоры на оказание и оплату медицинской помощи по обязательному"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 24,
   "fields": {
-    "name": "Отзывы потребителей услуг",
-    "form_sections": 1,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Отзывы потребителей услуг"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 43,
   "fields": {
-    "name": "О наличии лицензии на осуществление медицинской деятельности с приложением (копия лицензии)",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О наличии лицензии на осуществление медицинской деятельности с приложением (копия лицензии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 44,
   "fields": {
-    "name": "О видах медицинской помощи",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О видах медицинской помощи"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 45,
   "fields": {
-    "name": "О правах граждан в сфере охраны здоровья",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О правах граждан в сфере охраны здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 46,
   "fields": {
-    "name": "Об обязанностях граждан в сфере охраны здоровья",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Об обязанностях граждан в сфере охраны здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 47,
   "fields": {
-    "name": "О перечне жизненно необходимых и важнейших лекарственных препаратов для медицинского применения",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О перечне жизненно необходимых и важнейших лекарственных препаратов для медицинского применения"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 48,
   "fields": {
-    "name": "О перечне лекарственных препаратов, предназначенных для обеспечения лиц, больных гемофилией, муковисцидозом, гипофизарным нанизмом, болезнью Гоше, злокачественными новообразованиями лимфоидной, кроветворной и родственных им тканей, рассеянным склерозом, а также лиц после трансплантации органов и (или) тканей",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О перечне лекарственных препаратов, предназначенных для обеспечения лиц, больных гемофилией, муковисцидозом, гипофизарным нанизмом, болезнью Гоше, злокачественными новообразованиями лимфоидной, кроветворной и родственных им тканей, рассеянным склерозом, а также лиц после трансплантации органов и (или) тканей"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 49,
   "fields": {
-    "name": "О перечне лекарственных препаратов для медицинского применения, в том числе лекарственных препаратов для медицинского применения, назначаемых по решению врачебных комиссий медицинских организаций",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О перечне лекарственных препаратов для медицинского применения, в том числе лекарственных препаратов для медицинского применения, назначаемых по решению врачебных комиссий медицинских организаций"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 50,
   "fields": {
-    "name": "О перечне лекарственных препаратов, отпускаемых населению в соответствии с Перечнем групп населения и категорий заболеваний, при амбулаторном лечении которых лекарственные средства и изделия медицинского назначения отпускаются по рецептам врачей бесплатно, а также в соответствии с Перечнем групп населения, при амбулаторном лечении которых лекарственные средства отпускаются по рецептам врачей с пятидесятипроцентной скидкой",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О перечне лекарственных препаратов, отпускаемых населению в соответствии с Перечнем групп населения и категорий заболеваний, при амбулаторном лечении которых лекарственные средства и изделия медицинского назначения отпускаются по рецептам врачей бесплатно, а также в соответствии с Перечнем групп населения, при амбулаторном лечении которых лекарственные средства отпускаются по рецептам врачей с пятидесятипроцентной скидкой"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 51,
   "fields": {
-    "name": "О возможности получения медицинской помощи в рамках программы государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальных программ государственных гарантий бесплатного оказания гражданам медицинской помощи",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О возможности получения медицинской помощи в рамках программы государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальных программ государственных гарантий бесплатного оказания гражданам медицинской помощи"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 52,
   "fields": {
-    "name": "О порядке оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О порядке оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 53,
   "fields": {
-    "name": "Об объеме оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Об объеме оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 54,
   "fields": {
-    "name": "Об условиях оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Об условиях оказания медицинской помощи в соответствии с программой государственных гарантий бесплатного оказания гражданам медицинской помощи и территориальной программой государственных гарантий бесплатного оказания гражданам медицинской помощи"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 55,
   "fields": {
-    "name": "О показателях доступности медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О показателях доступности медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 56,
   "fields": {
-    "name": "О показателях качества медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О показателях качества медицинской помощи, установленных в территориальной программе государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 57,
   "fields": {
-    "name": "О сроках проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О сроках проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 58,
   "fields": {
-    "name": "О порядке проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О порядке проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 59,
   "fields": {
-    "name": "О результатах проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "О результатах проводимой диспансеризации населения в медицинской организации, оказывающей первичную медикосанитарную помощь и имеющей прикрепленное население"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 60,
   "fields": {
-    "name": "Правила записи на первичный прием",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила записи на первичный прием"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 61,
   "fields": {
-    "name": "Правила записи на консультацию",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила записи на консультацию"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 62,
   "fields": {
-    "name": "Правила записи на обследование",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила записи на обследование"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 63,
   "fields": {
-    "name": "Правила подготовки к диагностическим исследованиям",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила подготовки к диагностическим исследованиям"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 64,
   "fields": {
-    "name": "Правила госпитализации",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила госпитализации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 65,
   "fields": {
-    "name": "Сроки госпитализации",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сроки госпитализации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 66,
   "fields": {
-    "name": "Правила предоставления платных медицинских услуг",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Правила предоставления платных медицинских услуг"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 67,
   "fields": {
-    "name": "Условия, порядок, форма предоставления медицинских услуг и порядок их оплаты",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Условия, порядок, форма предоставления медицинских услуг и порядок их оплаты"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 68,
   "fields": {
-    "name": "Перечень оказываемых платных медицинских услуг с указанием цен в рублях (тарифы)  с приложением электронного образа документов (для помещений – копии документов)",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Перечень оказываемых платных медицинских услуг с указанием цен в рублях (тарифы)  с приложением электронного образа документов (для помещений – копии документов)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 69,
   "fields": {
-    "name": "Сведения о медицинских работниках, участвующих в предоставлении платных медицинских услуг, об уровне их профессионального образования и квалификации: Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения о медицинских работниках, участвующих в предоставлении платных медицинских услуг, об уровне их профессионального образования и квалификации: Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 70,
   "fields": {
-    "name": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи, специальность, квалификация)",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи, специальность, квалификация)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 71,
   "fields": {
-    "name": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 72,
   "fields": {
-    "name": "График работы",
-    "form_sections": 2,
-    "type_answers": 1,
-    "answer_variant": "11, 12, 4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "График работы"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 73,
   "fields": {
-    "name": "Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность",
-    "form_sections": 3,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 74,
   "fields": {
-    "name": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи,  специальность, квалификация)",
-    "form_sections": 3,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения из документа об образовании (уровень образования, организация, выдавшая документ об образовании, год выдачи,  специальность, квалификация)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 75,
   "fields": {
-    "name": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)",
-    "form_sections": 3,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения из сертификата специалиста (специальность, соответствующая занимаемой должности, срок действия)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 76,
   "fields": {
-    "name": "График работы и часы приема медицинского работника",
-    "form_sections": 3,
-    "type_answers": 1,
-    "answer_variant": "11, 12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "График работы и часы приема медицинского работника"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 77,
   "fields": {
-    "name": "Наличие на официальном сайте номера телефона организации (его функционирование)",
-    "form_sections": 4,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие на официальном сайте номера телефона организации (его функционирование)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 78,
   "fields": {
-    "name": "Наличие на официальном сайте адреса электронной почты (ее функционирование)",
-    "form_sections": 4,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие на официальном сайте адреса электронной почты (ее функционирование)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 79,
   "fields": {
-    "name": "Электронные сервисы (форма для подачи электронного обращения/ жалобы/предложения)",
-    "form_sections": 4,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие на официальном сайте электронных сервисов (форма для подачи электронного обращения/ жалобы/предложения)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 80,
   "fields": {
-    "name": "Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие анкеты для опроса граждан или гиперссылки на нее)",
-    "form_sections": 4,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие анкеты для опроса граждан или гиперссылки на нее)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 81,
   "fields": {
-    "name": "обеспечение лечебно-охранительного режима (Отсутствие свободных мест ожидания, состояние гардероба, питание, действия персонала по уходу)",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "2,3",
-    "is_deleted": false
+    "questions": "Обеспечение лечебно-охранительного режима (Отсутствие свободных мест ожидания, состояние гардероба, питание, действия персонала по уходу)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 82,
   "fields": {
-    "name": "Отсутствие очередей",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "2,3",
-    "is_deleted": false
+    "questions": "Отсутствие очередей"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 83,
   "fields": {
-    "name": "доступность записи на прием к врачу/направление на госпитализацию (по телефону медицинской организации, через кол-центр, с использованием информационно-телекоммуникационной сети \"Интернет\" на официальном сайте медицинской организации, на портале государственных услуг (www.gosuslugi.ru), при обращении в медицинскую организацию)",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "2,3",
-    "is_deleted": false
+    "questions": "Доступность записи на прием к врачу/направление на госпитализацию (по телефону медицинской организации, через кол-центр, с использованием информационно-телекоммуникационной сети \"Интернет\" на официальном сайте медицинской организации, на портале государственных услуг (www.gosuslugi.ru), при обращении в медицинскую организацию)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 84,
   "fields": {
-    "name": "Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды, туалетной бумаги и пр.)",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды, туалетной бумаги и пр.)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 85,
   "fields": {
-    "name": "Доступность питьевой воды",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Доступность питьевой воды"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 86,
   "fields": {
-    "name": "Санитарное состояние помещений организации",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Санитарное состояние помещений организации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 87,
   "fields": {
-    "name": "Оборудование входных групп пандусами/подъемными платформами",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Оборудование входных групп пандусами/подъемными платформами"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 88,
   "fields": {
-    "name": "Наличие выделенных стоянок для автотранспортных средств инвалидов",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие выделенных стоянок для автотранспортных средств инвалидов"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 89,
   "fields": {
-    "name": "Наличие адаптированных лифтов, поручней, расширенных дверных проемов",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие адаптированных лифтов, поручней, расширенных дверных проемов"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 90,
   "fields": {
-    "name": "Наличие сменных кресел-колясок",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие сменных кресел-колясок"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 91,
   "fields": {
-    "name": "Наличие и доступность специально оборудованных санитарно-гигиенических помещений",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие и доступность специально оборудованных санитарно-гигиенических помещений"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 92,
   "fields": {
-    "name": "Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 93,
   "fields": {
-    "name": "Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными рельефно-точечным шрифтом Брайля",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными рельефно-точечным шрифтом Брайля"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 94,
   "fields": {
-    "name": "Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика (тифлосурдопереводчика)",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика (тифлосурдопереводчика)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 95,
   "fields": {
-    "name": "Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети «Интернет» для инвалидов по зрению",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети «Интернет» для инвалидов по зрению"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 96,
   "fields": {
-    "name": "Наличие возможности сопровождения инвалида работниками медицинской организации;- наличие возможности оказания первичной медико-санитарной и паллиативной медицинской помощи инвалидам на дому",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "2,3",
-    "is_deleted": false
+    "questions": "Наличие возможности сопровождения инвалида работниками медицинской организации;- наличие возможности оказания первичной медико-санитарной и паллиативной медицинской помощи инвалидам на дому"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 97,
   "fields": {
-    "name": "Среднее время ожидания предоставления услуги",
-    "form_sections": 6,
-    "type_answers": 5,
-    "answer_variant": "5, 6, 7, 8, 9, 10",
-    "type_organisations": "2,3",
-    "is_deleted": false
+    "questions": "Среднее время ожидания предоставления услуги"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 98,
   "fields": {
-    "name": "Информация о дате создания образовательной организации",
-    "form_sections": 10,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о дате создания образовательной организации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 99,
   "fields": {
-    "name": "Информация об учредителе, учредителях образовательной организации",
-    "form_sections": 10,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация об учредителе, учредителях образовательной организации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 100,
   "fields": {
-    "name": "Информация  о  месте  нахождения образовательной организации и ее филиалов (при наличии)",
-    "form_sections": 10,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация  о  месте  нахождения образовательной организации и ее филиалов (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 101,
   "fields": {
-    "name": "Информация о режиме, графике работы",
-    "form_sections": 10,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о режиме, графике работы"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 102,
   "fields": {
-    "name": "Информация  о  контактных  телефонах  и  об  адресах электронной почты",
-    "form_sections": 10,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация  о  контактных  телефонах  и  об  адресах электронной почты"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 103,
   "fields": {
-    "name": "Информация о структуре и об органах управления образовательной организации (в том числе: наименование структурных подразделений (органов управления); фамилии, имена, отчества и должности руководителей структурных подразделений; места нахождения структурных подразделений; адреса официальных сайтов в сети «Интернет» структурных подразделений (при наличии); адреса электронной почты структурных подразделений (при наличии)",
-    "form_sections": 11,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о структуре и об органах управления образовательной организации (в том числе: наименование структурных подразделений (органов управления); фамилии, имена, отчества и должности руководителей структурных подразделений; места нахождения структурных подразделений; адреса официальных сайтов в сети «Интернет» структурных подразделений (при наличии); адреса электронной почты структурных подразделений (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 104,
   "fields": {
-    "name": "Сведения о положениях о структурных подразделениях (об органах управления) с приложением копий указанных положений (при их наличии))",
-    "form_sections": 11,
-    "type_answers": 1,
-    "answer_variant": "12,13",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Сведения о положениях о структурных подразделениях (об органах управления) с приложением копий указанных положений (при их наличии))"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 105,
   "fields": {
-    "name": "Устав образовательной организации",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Устав образовательной организации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 106,
   "fields": {
-    "name": "Лицензии на осуществление образовательной деятельности (с приложениями)",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "11,12,3",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Лицензии на осуществление образовательной деятельности (с приложениями)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 107,
   "fields": {
-    "name": "Свидетельства  о  государственной  аккредитации (с приложениями)",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "5,6,7,8",
-    "is_deleted": false
+    "questions": "Свидетельства  о  государственной  аккредитации (с приложениями)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 108,
   "fields": {
-    "name": "План финансово-хозяйственной деятельности образовательной организации, утвержденного в установленном законодательством Российской Федерации порядке, или бюджетные сметы образовательной организации",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "План финансово-хозяйственной деятельности образовательной организации, утвержденного в установленном законодательством Российской Федерации порядке, или бюджетные сметы образовательной организации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 109,
   "fields": {
-    "name": "Локальные нормативные акты по основным вопросам организации и осуществления образовательной деятельности, в том числе регламентирующие правила приема обучающихся, режим занятий обучающихся, формы, периодичность и порядок текущего контроля успеваемости и промежуточной аттестации обучающихся, порядок и основания перевода, отчисления и восстановления обучающихся, порядок оформления возникновения, приостановления и прекращения отношений между образовательной организацией и обучающимися и (или) родителями (законными представителями) несовершеннолетних обучающихся.",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Локальные нормативные акты по основным вопросам организации и осуществления образовательной деятельности, в том числе регламентирующие правила приема обучающихся, режим занятий обучающихся, формы, периодичность и порядок текущего контроля успеваемости и промежуточной аттестации обучающихся, порядок и основания перевода, отчисления и восстановления обучающихся, порядок оформления возникновения, приостановления и прекращения отношений между образовательной организацией и обучающимися и (или) родителями (законными представителями) несовершеннолетних обучающихся."
   }
 },
 {
   "model": "checklist.questions",
   "pk": 110,
   "fields": {
-    "name": "Отчет о результатах самообследования",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Отчет о результатах самообследования"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 111,
   "fields": {
-    "name": "Документ о порядке оказания платных образовательных услуг (при наличии), в том числе образец договора об оказании платных образовательных услуг, документ об утверждении стоимости обучения по каждой образовательной программе*",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "11,12,4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Документ о порядке оказания платных образовательных услуг (при наличии), в том числе образец договора об оказании платных образовательных услуг, документ об утверждении стоимости обучения по каждой образовательной программе*"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 112,
   "fields": {
-    "name": "Документ об установлении размера платы, взимаемой с родителей (законных представителей) за присмотр и уход детьми, осваивающими образовательные программы дошкольного образования в организациях, осуществляющих образовательную деятельность, за содержание детей в образовательной организации, реализующей образовательные программы начального общего, основного общего или среднего общего образования, если в такой образовательной организации созданы условия для проживания обучающихся в интернате, либо за осуществление присмотра и ухода за детьми в группах продленного дня в образовательной организации, реализующей образовательные программы начального общего, основного общего или среднего общего образования (при наличии)",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "12,4",
-    "type_organisations": "4,5,6",
-    "is_deleted": false
+    "questions": "Документ об установлении размера платы, взимаемой с родителей (законных представителей) за присмотр и уход детьми, осваивающими образовательные программы дошкольного образования в организациях, осуществляющих образовательную деятельность, за содержание детей в образовательной организации, реализующей образовательные программы начального общего, основного общего или среднего общего образования, если в такой образовательной организации созданы условия для проживания обучающихся в интернате, либо за осуществление присмотра и ухода за детьми в группах продленного дня в образовательной организации, реализующей образовательные программы начального общего, основного общего или среднего общего образования (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 113,
   "fields": {
-    "name": "Предписания органов, осуществляющих государственный контроль (надзор) в сфере образования, отчеты об исполнении таких предписаний (при наличии)",
-    "form_sections": 12,
-    "type_answers": 1,
-    "answer_variant": "12,14",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Предписания органов, осуществляющих государственный контроль (надзор) в сфере образования, отчеты об исполнении таких предписаний (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 114,
   "fields": {
-    "name": "Информация о реализуемых уровнях образования",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о реализуемых уровнях образования"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 115,
   "fields": {
-    "name": "Информация о формах обучения",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о формах обучения"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 116,
   "fields": {
-    "name": "Информация о нормативных сроках обучения",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о нормативных сроках обучения"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 117,
   "fields": {
-    "name": "Информация о сроке действия государственной аккредитации образовательных программ (при наличии государственной аккредитации)",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "11,12,3",
-    "type_organisations": "5,6,7,8",
-    "is_deleted": false
+    "questions": "Информация о сроке действия государственной аккредитации образовательных программ (при наличии государственной аккредитации)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 118,
   "fields": {
-    "name": "Информация об описании образовательных программ с приложением их копий",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация об описании образовательных программ с приложением их копий"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 119,
   "fields": {
-    "name": "Информация  об  учебных  планах  реализуемых образовательных программ с приложением их копий",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация  об  учебных  планах  реализуемых образовательных программ с приложением их копий"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 120,
   "fields": {
-    "name": "Аннотации к рабочим программам дисциплин (по каждой дисциплине в составе образовательной программы) с приложением их копий (при наличии)",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Аннотации к рабочим программам дисциплин (по каждой дисциплине в составе образовательной программы) с приложением их копий (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 121,
   "fields": {
-    "name": "Информация о календарных учебных графиках с приложением их копий",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о календарных учебных графиках с приложением их копий"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 122,
   "fields": {
-    "name": "Информация о методических и иных документах, разработанных образовательной организацией для обеспечения образовательного процесса",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о методических и иных документах, разработанных образовательной организацией для обеспечения образовательного процесса"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 123,
   "fields": {
-    "name": "Информация о реализуемых образовательных программах, в том числе о реализуемых адаптированных образовательных программах, с указанием учебных предметов, курсов, дисциплин (модулей), практики, предусмотренных соответствующей образовательной программой",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о реализуемых образовательных программах, в том числе о реализуемых адаптированных образовательных программах, с указанием учебных предметов, курсов, дисциплин (модулей), практики, предусмотренных соответствующей образовательной программой"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 124,
   "fields": {
-    "name": "Информация об использовании при реализации указанных образовательных программ электронного обучения и дистанционных образовательных технологий (при наличии)",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": "5,6,7,8",
-    "is_deleted": false
+    "questions": "Информация об использовании при реализации указанных образовательных программ электронного обучения и дистанционных образовательных технологий (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 125,
   "fields": {
-    "name": "Информация о численности обучающихся по реализуемым образовательным программам за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по договорам об образовании за счет средств физических и (или) юридических лиц, о языках, на которых осуществляется образование (обучение)",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о численности обучающихся по реализуемым образовательным программам за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по договорам об образовании за счет средств физических и (или) юридических лиц, о языках, на которых осуществляется образование (обучение)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 126,
   "fields": {
-    "name": "Образовательные организации, реализующие общеобразовательные программы, дополнительно указывают наименование образовательной программы",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "11,12,3",
-    "type_organisations": "5,6,7,8",
-    "is_deleted": false
+    "questions": "Образовательные организации, реализующие общеобразовательные программы, дополнительно указывают наименование образовательной программы"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 127,
   "fields": {
-    "name": "Уровень образования",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": "7,8",
-    "is_deleted": false
+    "questions": "Уровень образования"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 128,
   "fields": {
-    "name": "Код и наименование профессии, специальности, направления подготовки",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": "7,8",
-    "is_deleted": false
+    "questions": "Код и наименование профессии, специальности, направления подготовки"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 129,
   "fields": {
-    "name": "Информация о направлениях и результатах научной (научно-исследовательской) деятельности и научно-исследовательской базе для ее осуществления (для образовательных организаций высшего образования и организаций дополнительного профессионального образования)",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": "7,8",
-    "is_deleted": false
+    "questions": "Информация о направлениях и результатах научной (научно-исследовательской) деятельности и научно-исследовательской базе для ее осуществления (для образовательных организаций высшего образования и организаций дополнительного профессионального образования)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 130,
   "fields": {
-    "name": "Информация о результатах приема по каждой профессии, специальности среднего профессионального образования (при наличии вступительных испытаний), каждому направлению подготовки или специальности высшего образования с различными условиями приема (на места, финансируемые за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по договорам об образовании за счет средств физических и (или) юридических лиц) с указанием средней суммы набранных баллов по всем вступительным испытаниям, а также о результатах перевода, восстановления и отчисления",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": "7,8",
-    "is_deleted": false
+    "questions": "Информация о результатах приема по каждой профессии, специальности среднего профессионального образования (при наличии вступительных испытаний), каждому направлению подготовки или специальности высшего образования с различными условиями приема (на места, финансируемые за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по договорам об образовании за счет средств физических и (или) юридических лиц) с указанием средней суммы набранных баллов по всем вступительным испытаниям, а также о результатах перевода, восстановления и отчисления"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 131,
   "fields": {
-    "name": "Информация о федеральных государственных образовательных стандартах и об образовательных стандартах с приложением их копий (при наличии). Допускается вместо копий федеральных государственных образовательных стандартов и образовательных стандартов размещать гиперссылки на соответствующие документы на сайте Минпросвещения России ",
-    "form_sections": 13,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о федеральных государственных образовательных стандартах и об образовательных стандартах с приложением их копий (при наличии). Допускается вместо копий федеральных государственных образовательных стандартов и образовательных стандартов размещать гиперссылки на соответствующие документы на сайте Минпросвещения России "
   }
 },
 {
   "model": "checklist.questions",
   "pk": 132,
   "fields": {
-    "name": "Информация о руководителе образовательной организации, его заместителях, в том числе: фамилия, имя, отчество (при наличии) руководителя, его заместителей; должность руководителя, его заместителей; контактные телефоны; адреса электронной почты, в том числе информация о месте нахождения филиалов образовательной организации (при их наличии)",
-    "form_sections": 14,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о руководителе образовательной организации, его заместителях, в том числе: фамилия, имя, отчество (при наличии) руководителя, его заместителей; должность руководителя, его заместителей; контактные телефоны; адреса электронной почты, в том числе информация о месте нахождения филиалов образовательной организации (при их наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 133,
   "fields": {
-    "name": "Информация о персональном составе педагогических работников с указанием уровня образования, квалификации и опыта работы, в том числе: фамилия, имя, отчество (при наличии) работника; занимаемая должность (должности); преподаваемые дисциплины; ученая степень (при наличии); ученое звание (при наличии); наименование направления подготовки и (или) специальности; данные о повышении квалификации и (или) профессиональной переподготовке (при наличии); общий стаж работы; стаж работы по специальности",
-    "form_sections": 14,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о персональном составе педагогических работников с указанием уровня образования, квалификации и опыта работы, в том числе: фамилия, имя, отчество (при наличии) работника; занимаемая должность (должности); преподаваемые дисциплины; ученая степень (при наличии); ученое звание (при наличии); наименование направления подготовки и (или) специальности; данные о повышении квалификации и (или) профессиональной переподготовке (при наличии); общий стаж работы; стаж работы по специальности"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 134,
   "fields": {
-    "name": "Информация о материально-техническом обеспечении образовательной деятельности (в том числе: наличие оборудованных учебных кабинетов, объектов для проведения практических занятий, библиотек, объектов спорта, средств обучения и воспитания, в том числе приспособленных для использования инвалидами и лицами с ограниченными возможностями здоровья)",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о материально-техническом обеспечении образовательной деятельности (в том числе: наличие оборудованных учебных кабинетов, объектов для проведения практических занятий, библиотек, объектов спорта, средств обучения и воспитания, в том числе приспособленных для использования инвалидами и лицами с ограниченными возможностями здоровья)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 135,
   "fields": {
-    "name": "Информация о обеспечении доступа в здания образовательной организации инвалидов и лиц с ограниченными возможностями здоровья",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о обеспечении доступа в здания образовательной организации инвалидов и лиц с ограниченными возможностями здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 136,
   "fields": {
-    "name": "Информация об условиях питания обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья (при наличии)",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "11,12,3",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация об условиях питания обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 137,
   "fields": {
-    "name": "Информация об условиях охраны здоровья обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация об условиях охраны здоровья обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 138,
   "fields": {
-    "name": "Информация о доступе к информационным системам и информационно-телекоммуникационным сетям, в том числе приспособленным для использования инвалидами и лицами с ограниченными возможностями здоровья",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о доступе к информационным системам и информационно-телекоммуникационным сетям, в том числе приспособленным для использования инвалидами и лицами с ограниченными возможностями здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 139,
   "fields": {
-    "name": "Информация об электронных образовательных ресурсах, к которым обеспечивается доступ обучающихся, в том числе приспособленные для использования инвалидами и лицами с ограниченными возможностями здоровья",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация об электронных образовательных ресурсах, к которым обеспечивается доступ обучающихся, в том числе приспособленные для использования инвалидами и лицами с ограниченными возможностями здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 140,
   "fields": {
-    "name": "Информация о наличии специальных технических средств обучения коллективного и индивидуального пользования для инвалидов и лиц с ограниченными возможностями здоровья",
-    "form_sections": 15,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о наличии специальных технических средств обучения коллективного и индивидуального пользования для инвалидов и лиц с ограниченными возможностями здоровья"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 141,
   "fields": {
-    "name": "Информация о наличии и условиях предоставления обучающимся стипендий, мер социальной поддержки (при наличии)",
-    "form_sections": 16,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": "5,6,7,8",
-    "is_deleted": false
+    "questions": "Информация о наличии и условиях предоставления обучающимся стипендий, мер социальной поддержки (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 142,
   "fields": {
-    "name": "Информация о наличии общежития, интерната, в том числе приспособленных для использования инвалидами и лицами с ограниченными возможностями здоровья, количестве жилых помещений в общежитии, интернате для иногородних обучающихся, формировании платы за проживание в общежитии (при наличии)",
-    "form_sections": 16,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": "4,5,6,7,8",
-    "is_deleted": false
+    "questions": "Информация о наличии общежития, интерната, в том числе приспособленных для использования инвалидами и лицами с ограниченными возможностями здоровья, количестве жилых помещений в общежитии, интернате для иногородних обучающихся, формировании платы за проживание в общежитии (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 143,
   "fields": {
-    "name": "Информация о трудоустройстве выпускников (при наличии)",
-    "form_sections": 16,
-    "type_answers": 1,
-    "answer_variant": "12,3",
-    "type_organisations": "7,8",
-    "is_deleted": false
+    "questions": "Информация о трудоустройстве выпускников (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 144,
   "fields": {
-    "name": "Информация  о  наличии  и  порядке  оказания  платных образовательных услуг (при наличии)",
-    "form_sections": 17,
-    "type_answers": 1,
-    "answer_variant": "11,12,4",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация  о  наличии  и  порядке  оказания  платных образовательных услуг (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 145,
   "fields": {
-    "name": "Информация об объеме образовательной деятельности, финансовое обеспечение которой осуществляется за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц",
-    "form_sections": 18,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация об объеме образовательной деятельности, финансовое обеспечение которой осуществляется за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 146,
   "fields": {
-    "name": "Информация о поступлении финансовых и материальных средств и об их расходовании по итогам финансового года",
-    "form_sections": 18,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о поступлении финансовых и материальных средств и об их расходовании по итогам финансового года"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 147,
   "fields": {
-    "name": "Информация о количестве вакантных мест для приема (перевода) по каждой образовательной программе, профессии, специальности, направлению подготовки (на места, финансируемые за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц)",
-    "form_sections": 19,
-    "type_answers": 1,
-    "answer_variant": "12",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Информация о количестве вакантных мест для приема (перевода) по каждой образовательной программе, профессии, специальности, направлению подготовки (на места, финансируемые за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 148,
   "fields": {
-    "name": "Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1,4,5,6,7,8,9,10",
-    "is_deleted": false
+    "questions": "Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 149,
   "fields": {
-    "name": "Наличие и понятность навигации внутри образовательной организации",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1,4,5,6,7,8,9,10",
-    "is_deleted": false
+    "questions": "Наличие и понятность навигации внутри образовательной организации"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 150,
   "fields": {
-    "name": "Помощь, оказываемая работниками образовательной организации, прошедшими необходимое обучение (инструктирование) (возможность сопровождения работниками организации);\n- наличие возможности предоставления образовательных услуг в дистанционном режиме или на дому",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "4,5,6,7,8,9",
-    "is_deleted": false
+    "questions": "Помощь, оказываемая работниками образовательной организации, прошедшими необходимое обучение (инструктирование) (возможность сопровождения работниками организации);\n- наличие возможности предоставления образовательных услуг в дистанционном режиме или на дому"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 151,
   "fields": {
-    "name": "Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты",
-    "form_sections": 20,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 152,
   "fields": {
-    "name": "Место нахождения организации культуры и ее филиалов (при наличии)",
-    "form_sections": 20,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Место нахождения организации культуры и ее филиалов (при наличии)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 153,
   "fields": {
-    "name": "Дата создания организации культуры, сведения об учредителе/учредителях, контактные телефоны, адрес сайта, адреса электронной почты учредителя/учредителей",
-    "form_sections": 20,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Дата создания организации культуры, сведения об учредителе/учредителях, контактные телефоны, адрес сайта, адреса электронной почты учредителя/учредителей"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 154,
   "fields": {
-    "name": "Учредительные документы (копия устава организации культуры, свидетельство о государственной регистрации, решения учредителя о создании организации культуры и назначении ее руководителя, положения о филиалах и представительствах (при наличии))",
-    "form_sections": 20,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Учредительные документы (копия устава организации культуры, свидетельство о государственной регистрации, решения учредителя о создании организации культуры и назначении ее руководителя, положения о филиалах и представительствах (при наличии))"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 155,
   "fields": {
-    "name": "Структура и органы управления организации культуры; фамилии, имена, отчества и должности руководителей организации культуры, ее структурных подразделений и филиалов (при их наличии), контактные телефоны, адреса сайтов структурных подразделений (при наличии), адреса электронной почты",
-    "form_sections": 20,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Структура и органы управления организации культуры; фамилии, имена, отчества и должности руководителей организации культуры, ее структурных подразделений и филиалов (при их наличии), контактные телефоны, адреса сайтов структурных подразделений (при наличии), адреса электронной почты"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 156,
   "fields": {
-    "name": "Режим, график работы организации культуры",
-    "form_sections": 20,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Режим, график работы организации культуры"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 157,
   "fields": {
-    "name": "Виды предоставляемых услуг организацией культуры",
-    "form_sections": 21,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Виды предоставляемых услуг организацией культуры"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 158,
   "fields": {
-    "name": "Перечень оказываемых платных услуг (при наличии)*; цены (тарифы) на услуги (при наличии платных услуг), копии документов о порядке предоставления услуг за плату, нормативных правовых актов, устанавливающих цены (тарифы) на услуги (при наличии платных услуг)*",
-    "form_sections": 21,
-    "type_answers": 1,
-    "answer_variant": "11,12,4",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Перечень оказываемых платных услуг (при наличии)*; цены (тарифы) на услуги (при наличии платных услуг), копии документов о порядке предоставления услуг за плату, нормативных правовых актов, устанавливающих цены (тарифы) на услуги (при наличии платных услуг)*"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 159,
   "fields": {
-    "name": "Материально-техническое обеспечение предоставления услуг",
-    "form_sections": 21,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Материально-техническое обеспечение предоставления услуг"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 160,
   "fields": {
-    "name": "Копия плана финансово-хозяйственной деятельности организации культуры, утвержденного в установленном законодательством Российской Федерации порядке, или бюджетной сметы (информация об объеме предоставляемых услуг)",
-    "form_sections": 21,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Копия плана финансово-хозяйственной деятельности организации культуры, утвержденного в установленном законодательством Российской Федерации порядке, или бюджетной сметы (информация об объеме предоставляемых услуг)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 161,
   "fields": {
-    "name": "Информация о планируемых мероприятиях (анонсы, афиши, акции), новости, события",
-    "form_sections": 21,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Информация о планируемых мероприятиях (анонсы, афиши, акции), новости, события"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 162,
   "fields": {
-    "name": "Копии лицензий на осуществление деятельность, подлежащей лицензированию в соответствии с законодательством Российской Федерации (при осуществлении соответствующих видов деятельности)*",
-    "form_sections": 21,
-    "type_answers": 1,
-    "answer_variant": "11,12,3",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Копии лицензий на осуществление деятельность, подлежащей лицензированию в соответствии с законодательством Российской Федерации (при осуществлении соответствующих видов деятельности)*"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 163,
   "fields": {
-    "name": "Результаты независимой оценки качества условий оказания услуг, планы по улучшению  качества работы организации культуры (по устранению недостатков, выявленных по итогам независимой оценки качества)",
-    "form_sections": 22,
-    "type_answers": 1,
-    "answer_variant": "11,12",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Результаты независимой оценки качества условий оказания услуг, планы по улучшению  качества работы организации культуры (по устранению недостатков, выявленных по итогам независимой оценки качества)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 164,
   "fields": {
-    "name": "Наличие на официальном сайте раздела «Часто задаваемые вопросы»",
-    "form_sections": 4,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие на официальном сайте раздела «Часто задаваемые вопросы»"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 165,
   "fields": {
-    "name": "Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие технические возможности",
-    "form_sections": 4,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": null,
-    "is_deleted": false
+    "questions": "Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие технические возможности"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 166,
   "fields": {
-    "name": "Возможность бронирования услуги/доступность записи на получение услуги (по телефону, с использованием сети «Интернет» на официальном сайте организации, при личном посещении и пр.)",
-    "form_sections": 5,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Возможность бронирования услуги/доступность записи на получение услуги (по телефону, с использованием сети «Интернет» на официальном сайте организации, при личном посещении и пр.)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 167,
   "fields": {
-    "name": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-оборудование входа ровной площадкой непосредственно перед входной дверью, для обеспечения его доступности для инвалидов на креслах-колясках;\n-расположение входной двери в сочетании с направлением пути подхода;",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-оборудование входа ровной площадкой непосредственно перед входной дверью, для обеспечения его доступности для инвалидов на креслах-колясках;\n-расположение входной двери в сочетании с направлением пути подхода;"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 168,
   "fields": {
-    "name": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-оборудование выхода со специальных парковочных мест бордюрными пандусами, расположенными в непосредственной близости от них",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-оборудование выхода со специальных парковочных мест бордюрными пандусами, расположенными в непосредственной близости от них"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 169,
   "fields": {
-    "name": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-использование визуального отличающегося цвета поверхности пандуса от цвета горизонтальной площадки;\n-прочное закрепление противоскользящей поверхности пандусов",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-использование визуального отличающегося цвета поверхности пандуса от цвета горизонтальной площадки;\n-прочное закрепление противоскользящей поверхности пандусов"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 170,
   "fields": {
-    "name": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-обеспечение возможности входа и выхода из объекта культурного наследия, в том числе с использованием специальных подъездных устройств",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Оборудование входа в здание – объект культурного наследия или на его территорию:\n-обеспечение возможности входа и выхода из объекта культурного наследия, в том числе с использованием специальных подъездных устройств"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 171,
   "fields": {
-    "name": "Наличие выделенных стоянок для автотранспортных средств инвалидов. Организация размещения специальных мест для транспорта инвалидов:\n-размещение специальных парковочных мест рядом друг с другом и обозначение их местонахождения указателем, расположенным рядом с главным входом в здание;\n-обозначение специальных парковочных мест наземной разметкой с обозначением как на поверхности парковки, так и с помощью вертикального знака;\n- создание системы управления/наблюдения, чтобы выделенные специальные парковочные места использовались только инвалидами;\n- расположение специальных парковочных мест как можно ближе к входу в сооружение",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Наличие выделенных стоянок для автотранспортных средств инвалидов. Организация размещения специальных мест для транспорта инвалидов:\n-размещение специальных парковочных мест рядом друг с другом и обозначение их местонахождения указателем, расположенным рядом с главным входом в здание;\n-обозначение специальных парковочных мест наземной разметкой с обозначением как на поверхности парковки, так и с помощью вертикального знака;\n- создание системы управления/наблюдения, чтобы выделенные специальные парковочные места использовались только инвалидами;\n- расположение специальных парковочных мест как можно ближе к входу в сооружение"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 172,
   "fields": {
-    "name": "Организация путей движения на объекте культурного наследия:\n-обеспечение отличия по цвету и яркости предохранительной оковки каждой ступени лестниц от примыкающей к ней ступени и обеспечение противоскользящих свойств ступеней",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Организация путей движения на объекте культурного наследия:\n-обеспечение отличия по цвету и яркости предохранительной оковки каждой ступени лестниц от примыкающей к ней ступени и обеспечение противоскользящих свойств ступеней"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 173,
   "fields": {
-    "name": "Организация путей движения на объекте культурного наследия. Наличие поручней, расширенных дверных проемов:\n-устройство входного вестибюля с учетом предоставления инвалиду в кресле-коляске возможности ее использования",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Организация путей движения на объекте культурного наследия. Наличие поручней, расширенных дверных проемов:\n-устройство входного вестибюля с учетом предоставления инвалиду в кресле-коляске возможности ее использования"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 174,
   "fields": {
-    "name": "Организация путей движения на объекте культурного наследия. Наличие адаптированных лифтов:\n-обеспечение альтернативного способа преодоления перепада высот с помощью ступеней",
-    "form_sections": 7,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1",
-    "is_deleted": false
+    "questions": "Организация путей движения на объекте культурного наследия. Наличие адаптированных лифтов:\n-обеспечение альтернативного способа преодоления перепада высот с помощью ступеней"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 175,
   "fields": {
-    "name": "Наличие возможности оказания помощи работниками организации, прошедшими необходимое обучение (инструктирование) (возможность сопровождения работниками организации)",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Наличие возможности оказания помощи работниками организации, прошедшими необходимое обучение (инструктирование) (возможность сопровождения работниками организации)"
   }
 },
 {
   "model": "checklist.questions",
   "pk": 176,
   "fields": {
-    "name": "Наличие возможности предоставления услуги в дистанционном режиме или на дому",
-    "form_sections": 8,
-    "type_answers": 1,
-    "answer_variant": "1",
-    "type_organisations": "1,10",
-    "is_deleted": false
+    "questions": "Наличие возможности предоставления услуги в дистанционном режиме или на дому"
   }
 },
 {
@@ -2748,32 +1958,1765 @@
   }
 },
 {
-  "model": "checklist.form_sections_question",
-  "pk": 1,
+  "model": "checklist.question_values",
+  "pk": 15,
   "fields": {
-    "questions": 3,
-    "forms": 1,
+    "value_name": "Доступ отсутствует"
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 16,
+  "fields": {
+    "value_name": "ЭОР не применяются"
+  }
+},
+{
+  "model": "checklist.question_values",
+  "pk": 17,
+  "fields": {
+    "value_name": "Специальные технические средства отсутствуют"
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 167,
+  "fields": {
+    "question": 1,
     "order_num": 1,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
     "is_deleted": false
   }
 },
 {
   "model": "checklist.form_sections_question",
-  "pk": 2,
+  "pk": 168,
   "fields": {
-    "questions": 2,
-    "forms": 1,
-    "order_num": 1,
+    "question": 2,
+    "order_num": 2,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
     "is_deleted": false
   }
 },
 {
   "model": "checklist.form_sections_question",
-  "pk": 3,
+  "pk": 169,
   "fields": {
-    "questions": 1,
-    "forms": 1,
+    "question": 3,
+    "order_num": 3,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 170,
+  "fields": {
+    "question": 4,
+    "order_num": 4,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 171,
+  "fields": {
+    "question": 5,
+    "order_num": 5,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 172,
+  "fields": {
+    "question": 6,
+    "order_num": 6,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 173,
+  "fields": {
+    "question": 7,
+    "order_num": 7,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 174,
+  "fields": {
+    "question": 8,
+    "order_num": 8,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 175,
+  "fields": {
+    "question": 9,
+    "order_num": 9,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 176,
+  "fields": {
+    "question": 10,
+    "order_num": 10,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 177,
+  "fields": {
+    "question": 11,
+    "order_num": 11,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 178,
+  "fields": {
+    "question": 12,
+    "order_num": 12,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 179,
+  "fields": {
+    "question": 13,
+    "order_num": 13,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 180,
+  "fields": {
+    "question": 14,
+    "order_num": 14,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 181,
+  "fields": {
+    "question": 15,
+    "order_num": 15,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 182,
+  "fields": {
+    "question": 16,
+    "order_num": 16,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 183,
+  "fields": {
+    "question": 17,
+    "order_num": 17,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 184,
+  "fields": {
+    "question": 18,
+    "order_num": 18,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 185,
+  "fields": {
+    "question": 19,
+    "order_num": 19,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 186,
+  "fields": {
+    "question": 20,
+    "order_num": 20,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 187,
+  "fields": {
+    "question": 21,
+    "order_num": 21,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 188,
+  "fields": {
+    "question": 22,
+    "order_num": 22,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 189,
+  "fields": {
+    "question": 23,
+    "order_num": 23,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 190,
+  "fields": {
+    "question": 24,
+    "order_num": 24,
+    "form_sections": 1,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 191,
+  "fields": {
+    "question": 43,
     "order_num": 1,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 192,
+  "fields": {
+    "question": 44,
+    "order_num": 2,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 193,
+  "fields": {
+    "question": 45,
+    "order_num": 3,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 194,
+  "fields": {
+    "question": 46,
+    "order_num": 4,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 195,
+  "fields": {
+    "question": 47,
+    "order_num": 5,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 196,
+  "fields": {
+    "question": 48,
+    "order_num": 6,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 197,
+  "fields": {
+    "question": 49,
+    "order_num": 7,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 198,
+  "fields": {
+    "question": 50,
+    "order_num": 8,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 199,
+  "fields": {
+    "question": 51,
+    "order_num": 9,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 200,
+  "fields": {
+    "question": 52,
+    "order_num": 10,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 201,
+  "fields": {
+    "question": 53,
+    "order_num": 11,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 202,
+  "fields": {
+    "question": 54,
+    "order_num": 12,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 203,
+  "fields": {
+    "question": 55,
+    "order_num": 13,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 204,
+  "fields": {
+    "question": 56,
+    "order_num": 14,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 205,
+  "fields": {
+    "question": 57,
+    "order_num": 15,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 206,
+  "fields": {
+    "question": 58,
+    "order_num": 16,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 207,
+  "fields": {
+    "question": 59,
+    "order_num": 17,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 208,
+  "fields": {
+    "question": 60,
+    "order_num": 18,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 209,
+  "fields": {
+    "question": 61,
+    "order_num": 19,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 210,
+  "fields": {
+    "question": 62,
+    "order_num": 20,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 211,
+  "fields": {
+    "question": 63,
+    "order_num": 21,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 212,
+  "fields": {
+    "question": 64,
+    "order_num": 22,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 213,
+  "fields": {
+    "question": 65,
+    "order_num": 23,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 214,
+  "fields": {
+    "question": 66,
+    "order_num": 24,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 215,
+  "fields": {
+    "question": 67,
+    "order_num": 25,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 216,
+  "fields": {
+    "question": 68,
+    "order_num": 26,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 217,
+  "fields": {
+    "question": 69,
+    "order_num": 27,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 218,
+  "fields": {
+    "question": 70,
+    "order_num": 28,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 219,
+  "fields": {
+    "question": 71,
+    "order_num": 29,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 220,
+  "fields": {
+    "question": 72,
+    "order_num": 30,
+    "form_sections": 2,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 221,
+  "fields": {
+    "question": 73,
+    "order_num": 1,
+    "form_sections": 3,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 222,
+  "fields": {
+    "question": 74,
+    "order_num": 2,
+    "form_sections": 3,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 223,
+  "fields": {
+    "question": 75,
+    "order_num": 3,
+    "form_sections": 3,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 224,
+  "fields": {
+    "question": 76,
+    "order_num": 4,
+    "form_sections": 3,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 225,
+  "fields": {
+    "question": 77,
+    "order_num": 1,
+    "form_sections": 4,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 226,
+  "fields": {
+    "question": 78,
+    "order_num": 2,
+    "form_sections": 4,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 227,
+  "fields": {
+    "question": 79,
+    "order_num": 3,
+    "form_sections": 4,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 228,
+  "fields": {
+    "question": 164,
+    "order_num": 4,
+    "form_sections": 4,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 229,
+  "fields": {
+    "question": 165,
+    "order_num": 5,
+    "form_sections": 4,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 230,
+  "fields": {
+    "question": 80,
+    "order_num": 6,
+    "form_sections": 4,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 231,
+  "fields": {
+    "question": 81,
+    "order_num": 1,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 232,
+  "fields": {
+    "question": 82,
+    "order_num": 2,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 233,
+  "fields": {
+    "question": 83,
+    "order_num": 3,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 234,
+  "fields": {
+    "question": 84,
+    "order_num": 4,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 235,
+  "fields": {
+    "question": 85,
+    "order_num": 5,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 236,
+  "fields": {
+    "question": 86,
+    "order_num": 6,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 237,
+  "fields": {
+    "question": 97,
+    "order_num": 1,
+    "form_sections": 6,
+    "type_answers": 5,
+    "answer_variant": "5,6,7,8,9,10",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 238,
+  "fields": {
+    "question": 87,
+    "order_num": 1,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 239,
+  "fields": {
+    "question": 88,
+    "order_num": 2,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 240,
+  "fields": {
+    "question": 89,
+    "order_num": 3,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 241,
+  "fields": {
+    "question": 90,
+    "order_num": 4,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 242,
+  "fields": {
+    "question": 91,
+    "order_num": 5,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 243,
+  "fields": {
+    "question": 92,
+    "order_num": 1,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 244,
+  "fields": {
+    "question": 93,
+    "order_num": 2,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 245,
+  "fields": {
+    "question": 94,
+    "order_num": 3,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 246,
+  "fields": {
+    "question": 95,
+    "order_num": 4,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 247,
+  "fields": {
+    "question": 96,
+    "order_num": 5,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "2,3",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 248,
+  "fields": {
+    "question": 98,
+    "order_num": 1,
+    "form_sections": 10,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 249,
+  "fields": {
+    "question": 99,
+    "order_num": 2,
+    "form_sections": 10,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 250,
+  "fields": {
+    "question": 100,
+    "order_num": 3,
+    "form_sections": 10,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 251,
+  "fields": {
+    "question": 101,
+    "order_num": 4,
+    "form_sections": 10,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 252,
+  "fields": {
+    "question": 102,
+    "order_num": 5,
+    "form_sections": 10,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 253,
+  "fields": {
+    "question": 103,
+    "order_num": 1,
+    "form_sections": 11,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 254,
+  "fields": {
+    "question": 104,
+    "order_num": 2,
+    "form_sections": 11,
+    "type_answers": 1,
+    "answer_variant": "12,13",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 255,
+  "fields": {
+    "question": 105,
+    "order_num": 1,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 256,
+  "fields": {
+    "question": 106,
+    "order_num": 2,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "11,12,3",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 257,
+  "fields": {
+    "question": 107,
+    "order_num": 3,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "5,6,7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 258,
+  "fields": {
+    "question": 108,
+    "order_num": 4,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 259,
+  "fields": {
+    "question": 109,
+    "order_num": 5,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 260,
+  "fields": {
+    "question": 110,
+    "order_num": 6,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 261,
+  "fields": {
+    "question": 111,
+    "order_num": 7,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "12,4",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 262,
+  "fields": {
+    "question": 112,
+    "order_num": 8,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "12,4",
+    "type_organisations": "4,5,6,",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 263,
+  "fields": {
+    "question": 113,
+    "order_num": 9,
+    "form_sections": 12,
+    "type_answers": 1,
+    "answer_variant": "12,14",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 264,
+  "fields": {
+    "question": 114,
+    "order_num": 1,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 265,
+  "fields": {
+    "question": 115,
+    "order_num": 2,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 266,
+  "fields": {
+    "question": 116,
+    "order_num": 3,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 267,
+  "fields": {
+    "question": 117,
+    "order_num": 4,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "11,12,3",
+    "type_organisations": "5,6,7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 268,
+  "fields": {
+    "question": 118,
+    "order_num": 5,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 269,
+  "fields": {
+    "question": 119,
+    "order_num": 6,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 270,
+  "fields": {
+    "question": 120,
+    "order_num": 7,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 271,
+  "fields": {
+    "question": 121,
+    "order_num": 8,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 272,
+  "fields": {
+    "question": 122,
+    "order_num": 9,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 273,
+  "fields": {
+    "question": 123,
+    "order_num": 10,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 274,
+  "fields": {
+    "question": 124,
+    "order_num": 11,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12,3",
+    "type_organisations": "5,6,7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 275,
+  "fields": {
+    "question": 125,
+    "order_num": 12,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 276,
+  "fields": {
+    "question": 126,
+    "order_num": 13,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "11,12,3",
+    "type_organisations": "5,6,7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 277,
+  "fields": {
+    "question": 127,
+    "order_num": 14,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": "7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 278,
+  "fields": {
+    "question": 128,
+    "order_num": 15,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": "7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 279,
+  "fields": {
+    "question": 129,
+    "order_num": 16,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": "7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 280,
+  "fields": {
+    "question": 130,
+    "order_num": 17,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 281,
+  "fields": {
+    "question": 131,
+    "order_num": 18,
+    "form_sections": 13,
+    "type_answers": 1,
+    "answer_variant": "12,3",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 282,
+  "fields": {
+    "question": 132,
+    "order_num": 1,
+    "form_sections": 14,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 283,
+  "fields": {
+    "question": 133,
+    "order_num": 2,
+    "form_sections": 14,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 284,
+  "fields": {
+    "question": 134,
+    "order_num": 1,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 285,
+  "fields": {
+    "question": 135,
+    "order_num": 2,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 286,
+  "fields": {
+    "question": 136,
+    "order_num": 3,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 287,
+  "fields": {
+    "question": 137,
+    "order_num": 4,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 288,
+  "fields": {
+    "question": 138,
+    "order_num": 5,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "12,15",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 289,
+  "fields": {
+    "question": 139,
+    "order_num": 6,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "12,16",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 290,
+  "fields": {
+    "question": 140,
+    "order_num": 7,
+    "form_sections": 15,
+    "type_answers": 1,
+    "answer_variant": "12,17",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 291,
+  "fields": {
+    "question": 141,
+    "order_num": 1,
+    "form_sections": 16,
+    "type_answers": 1,
+    "answer_variant": "12,3",
+    "type_organisations": "5,6,7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 292,
+  "fields": {
+    "question": 142,
+    "order_num": 2,
+    "form_sections": 16,
+    "type_answers": 1,
+    "answer_variant": "12,3",
+    "type_organisations": "4,5,6,7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 293,
+  "fields": {
+    "question": 143,
+    "order_num": 3,
+    "form_sections": 16,
+    "type_answers": 1,
+    "answer_variant": "12,3",
+    "type_organisations": "7,8",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 294,
+  "fields": {
+    "question": 144,
+    "order_num": 1,
+    "form_sections": 17,
+    "type_answers": 1,
+    "answer_variant": "11,12,4",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 295,
+  "fields": {
+    "question": 145,
+    "order_num": 1,
+    "form_sections": 18,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 296,
+  "fields": {
+    "question": 146,
+    "order_num": 2,
+    "form_sections": 18,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 297,
+  "fields": {
+    "question": 147,
+    "order_num": 1,
+    "form_sections": 19,
+    "type_answers": 1,
+    "answer_variant": "12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 298,
+  "fields": {
+    "question": 148,
+    "order_num": 1,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "4,5,6,7,8,9",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 299,
+  "fields": {
+    "question": 149,
+    "order_num": 2,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "4,5,6,7,8,9",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 300,
+  "fields": {
+    "question": 150,
+    "order_num": 5,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": null,
     "is_deleted": false
   }
 },
