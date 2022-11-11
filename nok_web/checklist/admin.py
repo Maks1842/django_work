@@ -170,18 +170,25 @@ class Transaction_ExchangeAdmin(admin.ModelAdmin):
     list_filter = ('model', 'field', 'old_data', 'new_data', 'user')
 
 
-class ListForCheckAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted')
-    search_fields = ('name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted')
-    list_editable = ('name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted')
-    list_filter = ('name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted')
-
-
 class FormsActAdmin(admin.ModelAdmin):
     list_display = ('id', 'type_departments', 'type_organisations', 'act_json', 'version')
     search_fields = ('type_departments', 'type_organisations', 'act_json', 'version')
     list_editable = ('type_departments', 'type_organisations', 'act_json', 'version')
     list_filter = ('type_departments', 'type_organisations', 'act_json', 'version')
+
+
+class CheckingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'date_checking', 'region', 'department', 'is_deleted')
+    search_fields = ('name', 'date_checking', 'region', 'department', 'is_deleted')
+    list_editable = ('name', 'date_checking', 'region', 'department', 'is_deleted')
+    list_filter = ('name', 'date_checking', 'region', 'department', 'is_deleted')
+
+
+class ListCheckingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'checking', 'organisation', 'user', 'is_deleted')
+    search_fields = ('checking', 'organisation', 'user', 'is_deleted')
+    list_editable = ('checking', 'organisation', 'user', 'is_deleted')
+    list_filter = ('checking', 'organisation', 'user', 'is_deleted')
 
 
 #!!!Важно соблюдать последовательность регистрации моделей
@@ -209,6 +216,7 @@ admin.site.register(Evaluation, EvaluationAdmin)
 admin.site.register(Versions, VersionsAdmin)
 admin.site.register(Type_Answers, Type_AnswersAdmin)
 admin.site.register(Transaction_Exchange, Transaction_ExchangeAdmin)
-admin.site.register(ListForCheck, ListForCheckAdmin)
 admin.site.register(FormsAct, FormsActAdmin)
+admin.site.register(Checking, CheckingAdmin)
+admin.site.register(List_Checking, ListCheckingAdmin)
 

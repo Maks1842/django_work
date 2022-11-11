@@ -396,22 +396,6 @@ class Transaction_Exchange(models.Model):
         verbose_name_plural = 'Регистрация изменений данных'
 
 
-class ListForCheck(models.Model):
-    name = models.CharField(max_length=100, null=True, verbose_name='Имя списка')
-    period = models.CharField(max_length=100, null=True, verbose_name='Период проверки')
-    region = models.ForeignKey('Regions', on_delete=models.PROTECT, null=True, verbose_name='Регион_id')
-    department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент_id')
-    organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение_id')
-    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, verbose_name='Пользователь')
-    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
-    class Meta:
-        verbose_name_plural = 'Списки проверяемых организаций'
-
-
 class FormsAct(models.Model):
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип учреждения_id')
@@ -423,3 +407,33 @@ class FormsAct(models.Model):
 
     class Meta:
         verbose_name_plural = 'Формы актов'
+
+
+class Checking(models.Model):
+    name = models.CharField(max_length=500, verbose_name='Наименование проверки')
+    date_checking = models.DateField(verbose_name='Дата проверки')
+    region = models.ForeignKey('Regions', on_delete=models.PROTECT, null=True, verbose_name='Регион')
+    department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
+    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name_plural = 'Наименование проверки'
+
+
+class List_Checking(models.Model):
+    checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Наименование проверки')
+    organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Эксперт')
+    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
+
+    def get_absolute_url(self):
+        return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    class Meta:
+        verbose_name_plural = 'Проверяемые организации'

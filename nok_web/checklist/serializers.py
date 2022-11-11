@@ -72,7 +72,7 @@ class Form_SectionsSerializer(serializers.ModelSerializer):
 class QuestionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questions
-        fields = ['id', 'name', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted']
+        fields = ['id', 'questions']
 
 
 class Question_ValuesSerializer(serializers.ModelSerializer):
@@ -84,7 +84,7 @@ class Question_ValuesSerializer(serializers.ModelSerializer):
 class Form_Sections_QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Form_Sections_Question
-        fields = ['id', 'questions', 'forms', 'order_num', 'is_deleted']
+        fields = ['id', 'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted']
 
 
 class RecommendationsSerializer(serializers.ModelSerializer):
@@ -143,7 +143,6 @@ class Type_AnswersSerializer(serializers.ModelSerializer):
         fields = ['id', 'type']
 
 
-
 class Transaction_ExchangeSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
@@ -151,14 +150,23 @@ class Transaction_ExchangeSerializer(serializers.ModelSerializer):
         fields = ['id', 'model', 'field', 'old_data', 'new_data', 'date_exchange', 'user']
 
 
-class ListForCheckSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ListForCheck
-        fields = ['id', 'name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted']
-
-
 class FormsActSerializer(serializers.ModelSerializer):
     class Meta:
         model = FormsAct
         fields = ['id', 'type_departments', 'type_organisations', 'act_json', 'version']
+
+
+class CheckingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Checking
+        fields = ['id', 'name', 'date_checking', 'region', 'department', 'is_deleted']
+
+
+class ListCheckingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = List_Checking
+        fields = ['id', 'checking', 'organisation', 'user', 'is_deleted']
+
+
+
 

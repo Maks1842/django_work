@@ -676,7 +676,7 @@ class FormSectionsQuestionViewSet(
     queryset = Form_Sections_Question.objects.all()
     serializer_class = Form_Sections_QuestionSerializer
 
-    swagger_schema = None
+    # swagger_schema = None
 
     @action(methods=['put'], detail=True)
     def form_sections_question_update(self, request, *args, **kwargs):
@@ -1261,15 +1261,15 @@ class TransactionExchangeViewSet(
         return Response({'post': serializers.data})
 
 
-class ListForCheckViewSet(
+class ListCheckingViewSet(
                     # mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     # mixins.DestroyModelMixin,
                     mixins.ListModelMixin,
                     GenericViewSet):
-    queryset = ListForCheck.objects.all()
-    serializer_class = ListForCheckSerializer
+    queryset = List_Checking.objects.all()
+    serializer_class = ListCheckingSerializer
 
     # swagger_schema = None
 
@@ -1289,13 +1289,10 @@ class FormsActViewSet(
 
     # swagger_schema = None
 
-    # def _allowed_methods(self):
-    #     return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
     @action(methods=['get'], detail=True)
     def act_json(self, request, pk=None):
         act = FormsAct.objects.values('act_json').get(pk=pk)
-        return Response({'act_json': act})
+        return Response(act['act_json'])
 
 
 """
@@ -1316,13 +1313,14 @@ class GetActAPIView(APIView):
         count = 0
 
         form_sections = Form_Sections.objects.values().filter(type_departments=type_departments) | Form_Sections.objects.values().filter(type_departments=None)
+        form_sections_question = Form_Sections_Question.objects.values()
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
         question_values = Question_Values.objects.values()
 
         for fs in form_sections:
             fs_id = fs['id']
-            questions_id = questions.filter(form_sections_id=fs_id)
+            questions_id = form_sections_question.filter(form_sections_id=fs_id)
             count_section = 0
             pages = []
 
@@ -1334,6 +1332,7 @@ class GetActAPIView(APIView):
                 if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
+                    question = questions.get(pk=q['question_id'])
                     answer_variant = q['answer_variant']
                     ans_var_re = answer_variant
                     try:
@@ -1350,7 +1349,7 @@ class GetActAPIView(APIView):
 
                     pages.append({
                         'name': str(count),
-                        'title': q['name'],
+                        'title': question['questions'],
                         'type': type['type'],
                         'choices': choices,
                         'isRequired': 'true',

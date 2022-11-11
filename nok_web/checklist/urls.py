@@ -47,7 +47,7 @@ router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', TypeAnswersViewSet, basename='type_answers')
 router.register('transaction_exchange', TransactionExchangeViewSet, basename='transaction_exchange')
-router.register('list_for_check', ListForCheckViewSet, basename='list_for_check')
+router.register('list_for_check', ListCheckingViewSet, basename='list_for_check')
 router.register('forms_act', FormsActViewSet, basename='forms_act')
 
 

@@ -390,6 +390,22 @@
   }
 },
 {
+  "model": "checklist.organisations",
+  "pk": 5,
+  "fields": {
+    "organisation_name": "Больница г. Грозный",
+    "address": "йцук",
+    "phone": "12354",
+    "website": "qwer.ru",
+    "email": "wert@sg.com",
+    "parent": null,
+    "department": 7,
+    "quota": 1,
+    "type_organisations": 2,
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.organisation_persons",
   "pk": 1,
   "fields": {
@@ -523,7 +539,7 @@
   "model": "checklist.form_sections",
   "pk": 5,
   "fields": {
-    "name": "2.1.1 Наличие Комфортных условий для предоставления услуг",
+    "name": "2.1.1 Наличие комфортных условий для предоставления услуг",
     "version": "1",
     "order_num": 1,
     "parent": null,
@@ -2910,7 +2926,7 @@
     "form_sections": 7,
     "type_answers": 1,
     "answer_variant": "1",
-    "type_organisations": null,
+    "type_organisations": "2,3,4,5,6,7,8,9,10",
     "is_deleted": false
   }
 },
@@ -2923,7 +2939,7 @@
     "form_sections": 7,
     "type_answers": 1,
     "answer_variant": "1",
-    "type_organisations": null,
+    "type_organisations": "2,3,4,5,6,7,8,9,10",
     "is_deleted": false
   }
 },
@@ -2936,7 +2952,7 @@
     "form_sections": 7,
     "type_answers": 1,
     "answer_variant": "1",
-    "type_organisations": null,
+    "type_organisations": "2,3,4,5,6,7,8,9,10",
     "is_deleted": false
   }
 },
@@ -2949,7 +2965,7 @@
     "form_sections": 7,
     "type_answers": 1,
     "answer_variant": "1",
-    "type_organisations": null,
+    "type_organisations": "2,3,4,5,6,7,8,9,10",
     "is_deleted": false
   }
 },
@@ -2962,7 +2978,7 @@
     "form_sections": 7,
     "type_answers": 1,
     "answer_variant": "1",
-    "type_organisations": null,
+    "type_organisations": "2,3,4,5,6,7,8,9,10",
     "is_deleted": false
   }
 },
@@ -3716,7 +3732,319 @@
     "form_sections": 8,
     "type_answers": 1,
     "answer_variant": "1",
+    "type_organisations": "4,5,6,7,8,9",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 301,
+  "fields": {
+    "question": 151,
+    "order_num": 1,
+    "form_sections": 20,
+    "type_answers": 1,
+    "answer_variant": "11,12",
     "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 302,
+  "fields": {
+    "question": 152,
+    "order_num": 2,
+    "form_sections": 20,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 303,
+  "fields": {
+    "question": 153,
+    "order_num": 3,
+    "form_sections": 20,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 304,
+  "fields": {
+    "question": 154,
+    "order_num": 4,
+    "form_sections": 20,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 305,
+  "fields": {
+    "question": 155,
+    "order_num": 5,
+    "form_sections": 20,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 306,
+  "fields": {
+    "question": 156,
+    "order_num": 6,
+    "form_sections": 20,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 307,
+  "fields": {
+    "question": 157,
+    "order_num": 1,
+    "form_sections": 21,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 308,
+  "fields": {
+    "question": 158,
+    "order_num": 2,
+    "form_sections": 21,
+    "type_answers": 1,
+    "answer_variant": "11,12,4",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 309,
+  "fields": {
+    "question": 159,
+    "order_num": 3,
+    "form_sections": 21,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 310,
+  "fields": {
+    "question": 160,
+    "order_num": 4,
+    "form_sections": 21,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 311,
+  "fields": {
+    "question": 161,
+    "order_num": 5,
+    "form_sections": 21,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 312,
+  "fields": {
+    "question": 162,
+    "order_num": 6,
+    "form_sections": 21,
+    "type_answers": 1,
+    "answer_variant": "11,12,3",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 313,
+  "fields": {
+    "question": 163,
+    "order_num": 1,
+    "form_sections": 22,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 314,
+  "fields": {
+    "question": 166,
+    "order_num": 7,
+    "form_sections": 5,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1,10",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 315,
+  "fields": {
+    "question": 167,
+    "order_num": 1,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 316,
+  "fields": {
+    "question": 168,
+    "order_num": 2,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 317,
+  "fields": {
+    "question": 169,
+    "order_num": 3,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 318,
+  "fields": {
+    "question": 170,
+    "order_num": 4,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 319,
+  "fields": {
+    "question": 171,
+    "order_num": 5,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 320,
+  "fields": {
+    "question": 172,
+    "order_num": 6,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 321,
+  "fields": {
+    "question": 173,
+    "order_num": 7,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 322,
+  "fields": {
+    "question": 174,
+    "order_num": 8,
+    "form_sections": 7,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 323,
+  "fields": {
+    "question": 175,
+    "order_num": 5,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1,10",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 324,
+  "fields": {
+    "question": 176,
+    "order_num": 6,
+    "form_sections": 8,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "1,10",
     "is_deleted": false
   }
 },
@@ -12509,6 +12837,27 @@
       ]
     },
     "version": "V1"
+  }
+},
+{
+  "model": "checklist.checking",
+  "pk": 1,
+  "fields": {
+    "name": "Провекра тест",
+    "date_checking": "2022-11-11",
+    "region": 3,
+    "department": 7,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.list_checking",
+  "pk": 1,
+  "fields": {
+    "checking": 1,
+    "organisation": 5,
+    "user": 1,
+    "is_deleted": false
   }
 }
 ]

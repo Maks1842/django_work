@@ -337,20 +337,6 @@ class Transaction_ExchangeForm(forms.ModelForm):
         }
 
 
-class ListForCheckForm(forms.ModelForm):
-    class Meta:
-        model = ListForCheck
-        fields = ['name', 'period', 'region', 'department', 'organisation', 'user', 'is_deleted']
-        widgets = {
-            'name': forms.TextInput(attrs={"class": "form-control"}),
-            'period': forms.TextInput(attrs={"class": "form-control"}),
-            'region': forms.Select(attrs={"class": "form-control"}),
-            'department': forms.Select(attrs={"class": "form-control"}),
-            'organisation': forms.Select(attrs={"class": "form-control"}),
-            'user': forms.Select(attrs={"class": "form-control"}),
-            'is_deleted': forms.Select(attrs={"class": "form-control"}),
-        }
-
 
 class FormsActForm(forms.ModelForm):
     class Meta:
@@ -361,5 +347,30 @@ class FormsActForm(forms.ModelForm):
             'type_organisations': forms.Select(attrs={"class": "form-control"}),
             'act_json': forms.Textarea(attrs={"class": "form-control", "rows": 17}),
             'version': forms.TextInput(attrs={"class": "form-control"}),
+        }
+
+
+class CheckingForm(forms.ModelForm):
+    class Meta:
+        model = Checking
+        fields = ['name', 'date_checking', 'region', 'department', 'is_deleted']
+        widgets = {
+            'name': forms.TextInput(attrs={"class": "form-control"}),
+            'date_checking': forms.DateInput(attrs={"class": "form-control"}),
+            'region': forms.Select(attrs={"class": "form-control"}),
+            'department': forms.Select(attrs={"class": "form-control"}),
+            'is_deleted': forms.Select(attrs={"class": "form-control"}),
+        }
+
+
+class ListCheckingForm(forms.ModelForm):
+    class Meta:
+        model = List_Checking
+        fields = ['checking', 'organisation', 'user', 'is_deleted']
+        widgets = {
+            'checking': forms.Select(attrs={"class": "form-control"}),
+            'organisation': forms.Select(attrs={"class": "form-control"}),
+            'user': forms.Select(attrs={"class": "form-control"}),
+            'is_deleted': forms.Select(attrs={"class": "form-control"}),
         }
 
