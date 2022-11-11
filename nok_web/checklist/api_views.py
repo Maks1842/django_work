@@ -1261,22 +1261,6 @@ class TransactionExchangeViewSet(
         return Response({'post': serializers.data})
 
 
-class ListCheckingViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-    queryset = List_Checking.objects.all()
-    serializer_class = ListCheckingSerializer
-
-    # swagger_schema = None
-
-    # def _allowed_methods(self):
-    #     return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
-
 class FormsActViewSet(
                 # mixins.CreateModelMixin,
                 mixins.RetrieveModelMixin,
@@ -1293,6 +1277,32 @@ class FormsActViewSet(
     def act_json(self, request, pk=None):
         act = FormsAct.objects.values('act_json').get(pk=pk)
         return Response(act['act_json'])
+
+
+class CheckingViewSet(
+    # mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    # mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    GenericViewSet):
+    queryset = Checking.objects.all()
+    serializer_class = CheckingSerializer
+
+    # swagger_schema = None
+
+
+class ListCheckingViewSet(
+    # mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    # mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    GenericViewSet):
+    queryset = List_Checking.objects.all()
+    serializer_class = ListCheckingSerializer
+
+    # swagger_schema = None
 
 
 """
