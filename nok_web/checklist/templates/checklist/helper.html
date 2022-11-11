@@ -8,22 +8,43 @@
 
 
 {% block content %}
-<div class="container">                    <!--Оборачиваем все содержимое сетки в контейнер-->
-  <div class="row">                      <!--Ряд сетки-->
-    <div class="col-md-12">             <!--Колонки сетки-->
-      <div class="form-group">
-        <p>
-          <a class="btn btn-primary" href="{% url 'get-act' %}" role="button">Сформировать акт</a>
-        </p>
-      </div>
 
-        <div class="mb-3">
-        <p>
-          <label>Форма акта:</label>
-          <textarea class="form-control" id="123" rows="30" readonly>{{ pages }}</textarea>
-        </p>
-          </div>
+
+<form action="{% url 'get-act' %}" method="post">
+    {% csrf_token %}
+
+    <div class="container">                    <!--Оборачиваем все содержимое сетки в контейнер-->
+        <div class="row">                      <!--Ряд сетки-->
+            <div class="col-md-12">             <!--Колонки сетки-->
+                <label class="mt-3">тип департамента:</label>
+                <select class="form-select" name="type_dep">
+                    <option selected>---Выбрать тип департамента---</option>
+                    {% for item in type_departments %}
+                    <option value="{{ item.id }}">{{ item.type }}</option>
+                    {% endfor %}
+                </select>
+
+                <label class="mt-3">Тип организации:</label>
+                <select class="form-select" name="type_org">
+                    <option selected>---Выбрать тип организации---</option>
+                    {% for item in type_organisations %}
+                    <option value="{{ item.id }}">{{ item.type }}</option>
+                    {% endfor %}
+                </select>
+
+                <label class="mt-3">Версия формы акта:</label>
+                <input name="version">
+
+                <button type="submit">Передать данные</button>
+
+                <div class="mb-3">
+                    <p>
+                        <label>Форма акта:</label>
+                        <textarea class="form-control" id="123" rows="17" readonly>{{ form_act }}</textarea>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+</form>
 {% endblock %}

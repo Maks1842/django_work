@@ -41,6 +41,8 @@ class RegionsViewSet(
     # Отключаю отображение всех методов из Swagger
     swagger_schema = None
 
+    @swagger_auto_schema(tags=['Регионы'])
+
     # Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(RegionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -81,21 +83,18 @@ class RegionsViewSet(
 class TypeDepartmentsViewSet(
                             # mixins.CreateModelMixin,
                             mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
+                            # mixins.UpdateModelMixin,
                             # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
+                            # mixins.ListModelMixin,
                             GenericViewSet):
+
 
     queryset = Type_Departments.objects.all()
     serializer_class = Type_DepartmentsSerializer
 
     # swagger_schema = None
 
-    @action(methods=['get'], detail=True)
-    def type_departments_id(self, request, pk=None):
-        type_dep_id = Type_Departments.objects.values('id').get(pk=pk)
-        return Response({'type_dep_id': type_dep_id})
-
+    @swagger_auto_schema(tags=['Тип департамента'])
     @action(methods=['get'], detail=True)
     def type_departments_name(self, request, pk=None):
         type_dep_name = Type_Departments.objects.values('type').get(pk=pk)
@@ -119,9 +118,9 @@ class TypeDepartmentsViewSet(
 class DepartmentsViewSet(
                          # mixins.CreateModelMixin,
                          mixins.RetrieveModelMixin,
-                         mixins.UpdateModelMixin,
+                         # mixins.UpdateModelMixin,
                          # mixins.DestroyModelMixin,
-                         mixins.ListModelMixin,
+                         # mixins.ListModelMixin,
                          GenericViewSet):
 
     queryset = Departments.objects.all()
@@ -136,7 +135,7 @@ class DepartmentsViewSet(
         dep_id = Departments.objects.values('id').get(pk=pk)
         return Response({'departments_id': dep_id})
 
-    @swagger_auto_schema(auto_schema=None)
+    # @swagger_auto_schema(auto_schema=None)
     @action(methods=['get'], detail=True)
     def department_name(self, request, pk=None):
         dep_name = Departments.objects.values('department_name').get(pk=pk)
@@ -398,8 +397,6 @@ class QuotaViewSet(
 
     swagger_schema = None
 
-    # swagger_schema = None
-
     @action(methods=['get'], detail=True)
     def quota_id(self, request, pk=None):
         quot_id = Quota.objects.values('id').get(pk=pk)
@@ -605,11 +602,6 @@ class QuestionsViewSet(
     swagger_schema = None
 
     @action(methods=['get'], detail=True)
-    def questions_id(self, request, pk=None):
-        quest_id = Questions.objects.values('id').get(pk=pk)
-        return Response({'questions_id': quest_id})
-
-    @action(methods=['get'], detail=True)
     def questions_name(self, request, pk=None):
         questions = Questions.objects.values('questions').get(pk=pk)
         return Response({'questions': questions})
@@ -676,7 +668,7 @@ class FormSectionsQuestionViewSet(
     queryset = Form_Sections_Question.objects.all()
     serializer_class = Form_Sections_QuestionSerializer
 
-    # swagger_schema = None
+    swagger_schema = None
 
     @action(methods=['put'], detail=True)
     def form_sections_question_update(self, request, *args, **kwargs):
@@ -820,11 +812,6 @@ class AnswersViewSet(
     swagger_schema = None
 
     @action(methods=['get'], detail=True)
-    def answers_id(self, request, pk=None):
-        ans_id = Answers.objects.values('id').get(pk=pk)
-        return Response({'answers_id': ans_id})
-
-    @action(methods=['get'], detail=True)
     def free_value(self, request, pk=None):
         fv = Answers.objects.values('free_value').get(pk=pk)
         return Response({'free_value': fv})
@@ -903,10 +890,6 @@ class SignedDociumentsViewSet(
 
     swagger_schema = None
 
-    @action(methods=['get'], detail=True)
-    def signed_dociuments_id(self, request, pk=None):
-        sd_id = Signed_Dociuments.objects.values('id').get(pk=pk)
-        return Response({'signed_dociuments_id': sd_id})
 
     @action(methods=['get'], detail=True)
     def file_name(self, request, pk=None):
@@ -1280,12 +1263,12 @@ class FormsActViewSet(
 
 
 class CheckingViewSet(
-    # mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    # mixins.DestroyModelMixin,
-    mixins.ListModelMixin,
-    GenericViewSet):
+                # mixins.CreateModelMixin,
+                mixins.RetrieveModelMixin,
+                # mixins.UpdateModelMixin,
+                # mixins.DestroyModelMixin,
+                # mixins.ListModelMixin,
+                GenericViewSet):
     queryset = Checking.objects.all()
     serializer_class = CheckingSerializer
 
@@ -1293,12 +1276,12 @@ class CheckingViewSet(
 
 
 class ListCheckingViewSet(
-    # mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    # mixins.DestroyModelMixin,
-    mixins.ListModelMixin,
-    GenericViewSet):
+                    # mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    # mixins.UpdateModelMixin,
+                    # mixins.DestroyModelMixin,
+                    # mixins.ListModelMixin,
+                    GenericViewSet):
     queryset = List_Checking.objects.all()
     serializer_class = ListCheckingSerializer
 
@@ -1311,19 +1294,21 @@ class ListCheckingViewSet(
     - раздел может быть одинаковый для разных департаментов, если type_departments=None, значит подходит ко всем.
 2. Передаю два позиционных аргумента, для выбора необходимых вопросов Акта, для конкретных типов оргрнизаций:
     - type_departments=1 ---> 1 - это id модели Type_Departments;
-    - type_organisations=2 ---> 2 - это id модели Type_Organisations.
+    - type_organisations=2 ---> 2 - это id модели Type_Organisations;
+    - number_items=0 ---> 0 - это количество вопросов на странице. Если 0 - то пагинация идет по разделам, 
+    если (например) 4 - то на каждой странице по 4 вопроса.
 """
 
 
 class GetActAPIView(APIView):
 
-    def get(self, request, type_departments=1, type_organisations=2):
+    def get(self, request, type_departments=3, type_organisations=4, number_items=0):
 
         context = []
         count = 0
 
-        form_sections = Form_Sections.objects.values().filter(type_departments=type_departments) | Form_Sections.objects.values().filter(type_departments=None)
-        form_sections_question = Form_Sections_Question.objects.values()
+        form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+        form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
         question_values = Question_Values.objects.values()
@@ -1338,7 +1323,6 @@ class GetActAPIView(APIView):
                 choices = []
                 count_section += 1
 
-                # if re.findall(type_organisations, str(q['type_organisations'])) or q['type_organisations'] is None:
                 if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
@@ -1367,7 +1351,7 @@ class GetActAPIView(APIView):
                         # 'test2': count_section
                     })
 
-                if len(pages) == 4 or len(questions_id) == count_section:
+                if len(pages) == number_items or len(questions_id) == count_section:
                     context.append({
                         'title': fs['name'],
                         'elements': pages,

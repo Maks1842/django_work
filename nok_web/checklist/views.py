@@ -96,22 +96,24 @@ def designer_act_view(request):
     return render(request, 'checklist/helper.html', context)
 
 
-def get_act(request, type_departments=1, type_organisations=3):
+def get_act(request, type_departments=1, type_organisations=3, number_items=4):
 
-    # type_departments = request.POST['type_dep']
-    # type_organisations = str(request.POST['type_org'])
+    type_departments = request.POST['type_dep']
+    type_organisations = request.POST['type_org']
+    version_act = request.POST['version']
 
     form_act = []
     count = 0
 
-    form_sections = Form_Sections.objects.values().filter(type_departments=type_departments) | Form_Sections.objects.values().filter(type_departments=None)
+    form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+    form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
     questions = Questions.objects.values()
     type_answers = Type_Answers.objects.values()
     question_values = Question_Values.objects.values()
 
     for fs in form_sections:
         fs_id = fs['id']
-        questions_id = questions.filter(form_sections_id=fs_id)
+        questions_id = form_sections_question.filter(form_sections_id=fs_id)
         count_section = 0
         pages = []
 
@@ -122,6 +124,7 @@ def get_act(request, type_departments=1, type_organisations=3):
             if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
                 count += 1
                 type = type_answers.get(pk=q['type_answers_id'])
+                question = questions.get(pk=q['question_id'])
                 answer_variant = q['answer_variant']
                 ans_var_re = answer_variant
                 try:
@@ -138,7 +141,7 @@ def get_act(request, type_departments=1, type_organisations=3):
 
                 pages.append({
                     "name": str(count),
-                    "title": q['name'],
+                    "title": question['questions'],
                     "type": type['type'],
                     "choices": choices,
                     "isRequired": 'true',
@@ -146,7 +149,7 @@ def get_act(request, type_departments=1, type_organisations=3):
                     # 'test2': count_section
                 })
 
-            if len(pages) == 4 or len(questions_id) == count_section:
+            if len(pages) == number_items or len(questions_id) == count_section:
                 form_act.append({
                     "title": fs['name'],
                     "elements": pages,
@@ -155,6 +158,9 @@ def get_act(request, type_departments=1, type_organisations=3):
 
     xxx = json.dumps({"pages": form_act}, ensure_ascii=False)
     context = {"form_act": xxx}
+
+    # element = FormsAct(type_departments=2, type_organisations=10, act_json=context, version=version_act)
+    # element.save()
 
     return render(request, 'checklist/helper.html', context)
 
@@ -178,8 +184,8 @@ def forms_test_add(request):
     type_departments = request.POST['type_dep']
     type_organisations = request.POST['type_org']
 
-    context = {'type_dep': type_departments,
-               'type_org': type_organisations}
+    context = {'type_depr': type_departments,
+               'type_orgn': type_organisations}
     return render(request, 'checklist/designer_act.html', context)
 
 
