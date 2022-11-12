@@ -12,6 +12,8 @@ from rest_framework.decorators import action, permission_classes
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.renderers import JSONRenderer
 from drf_yasg2.utils import swagger_auto_schema, unset
+from drf_yasg2 import openapi
+from drf_yasg2.openapi import Schema, TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -1286,6 +1288,94 @@ class ListCheckingViewSet(
     serializer_class = ListCheckingSerializer
 
     # swagger_schema = None
+
+    @action(methods=['get'], detail=False)
+    def list_organisations(self, request, check_pk=1, user_pk=None):
+        if user_pk is None:
+            list_organisations = List_Checking.objects.filter(checking=check_pk).values('organisation__organisation_name')
+            list_users = List_Checking.objects.filter(checking=check_pk).values('user__username')
+        else:
+            list_organisations = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('organisation__organisation_name')
+            list_users = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('user__username')
+        return Response({'list_organisations': list_organisations,
+                         'list_users': list_users})
+
+    @action(methods=['get'], detail=False)
+    def checkings(self, request, pk=None):
+        name_checking = List_Checking.objects.values('checking__name')
+        return Response({'name_checking': name_checking})
+
+    @action(methods=['get'], detail=False)
+    def organisations(self, request, pk=None):
+        organisation = List_Checking.objects.values('organisation__organisation_name')
+        return Response({'organisation': organisation})
+
+    @action(methods=['get'], detail=False)
+    def users(self, request, pk=None):
+        user = List_Checking.objects.values('user__username')
+        return Response({'user': user})
+
+
+class GetCheckListOrganizationsAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Общие запросы к списку организаций на проверке'],
+        operation_description="Получить списки: user --> организации, user --> проверки, проверка --> users",
+        manual_parameters=[
+            openapi.Parameter('id_check', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_user', openapi.IN_QUERY, description="Идентификатор эксперта",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        check = request.query_params.get('id_check')
+        user = request.query_params.get('id_user')
+        if check is None:
+            queryset = List_Checking.objects.filter(user_id=user)
+        elif user is None:
+            queryset = List_Checking.objects.filter(checking_id=check)
+        else:
+            queryset = List_Checking.objects.filter(checking_id=check, user_id=user)
+
+        result = []
+        for item in queryset:
+            Organisations.objects.filter(id=item.organisation_id)
+            result.append({
+                'id': item.id,
+                'user_id': item.user_id,
+                'user_name': item.user.username,
+                'checking_name': item.checking.name,
+                'organisation_id': item.organisation_id,
+                'organisation_name': item.organisation.organisation_name,
+            })
+        return Response({'data': result})
+
+
+class GetListCheckingAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Список проверок у эксперта'],
+        operation_description="Получить список проверок в которых участвует эксперт",
+        manual_parameters=[
+            openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор эксперта",
+                              type=openapi.TYPE_INTEGER)
+        ])
+
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        user = request.query_params.get('user_id')
+        queryset = List_Checking.objects.filter(user_id=user).distinct('checking')
+
+        result = []
+        for item in queryset:
+            result.append({
+                'id': item.checking.id,
+                'checking_name': item.checking.name,
+            })
+        return Response({'data': result})
+
+
 
 
 """

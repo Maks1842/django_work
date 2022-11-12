@@ -53,13 +53,18 @@ router.register('list_checking', ListCheckingViewSet, basename='list_checking')
 
 
 urlpatterns = [
-    path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
-
-    path('api/v1/drf-auth/', include('rest_framework.urls')),
-
     # Маршрутизация с использованием router
     path('api/', include(router.urls)),
     path('api/v1/auth/', include('djoser.urls')),
+
+
+    path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
+    path('api/v1/getCheck/', GetCheckListOrganizationsAPIView.as_view(), name='getCheck'),
+    path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
+
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
+
+
 
     re_path(r'^api/v1/auth/', include('djoser.urls.authtoken')),
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
