@@ -1246,81 +1246,78 @@ class TransactionExchangeViewSet(
         return Response({'post': serializers.data})
 
 
-class FormsActViewSet(
-                # mixins.CreateModelMixin,
-                mixins.RetrieveModelMixin,
-                mixins.UpdateModelMixin,
-                # mixins.DestroyModelMixin,
-                mixins.ListModelMixin,
-                GenericViewSet):
-    queryset = FormsAct.objects.all()
-    serializer_class = FormsActSerializer
+# class ListCheckingViewSet(
+#                     # mixins.CreateModelMixin,
+#                     mixins.RetrieveModelMixin,
+#                     # mixins.UpdateModelMixin,
+#                     # mixins.DestroyModelMixin,
+#                     # mixins.ListModelMixin,
+#                     GenericViewSet):
+#     queryset = List_Checking.objects.all()
+#     serializer_class = ListCheckingSerializer
+#
+#     # swagger_schema = None
+#
+#     @action(methods=['get'], detail=False)
+#     def list_organisations(self, request, check_pk=1, user_pk=None):
+#         if user_pk is None:
+#             list_organisations = List_Checking.objects.filter(checking=check_pk).values('organisation__organisation_name')
+#             list_users = List_Checking.objects.filter(checking=check_pk).values('user__username')
+#         else:
+#             list_organisations = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('organisation__organisation_name')
+#             list_users = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('user__username')
+#         return Response({'list_organisations': list_organisations,
+#                          'list_users': list_users})
+#
+#     @action(methods=['get'], detail=False)
+#     def checkings(self, request, pk=None):
+#         name_checking = List_Checking.objects.values('checking__name')
+#         return Response({'name_checking': name_checking})
+#
+#     @action(methods=['get'], detail=False)
+#     def organisations(self, request, pk=None):
+#         organisation = List_Checking.objects.values('organisation__organisation_name')
+#         return Response({'organisation': organisation})
+#
+#     @action(methods=['get'], detail=False)
+#     def users(self, request, pk=None):
+#         user = List_Checking.objects.values('user__username')
+#         return Response({'user': user})
 
-    # swagger_schema = None
 
-    @action(methods=['get'], detail=True)
-    def act_json(self, request, pk=None):
-        act = FormsAct.objects.values('act_json').get(pk=pk)
-        return Response(act['act_json'])
+class GetFormActAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Получить формы Актов'],
+        operation_description="Получить формы Актов для проверки, в формате JSON",
+        manual_parameters=[
+            openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        type_department = request.query_params.get('id_type_department')
+        type_organisation = request.query_params.get('id_type_organisation')
 
+        queryset = FormsAct.objects.filter(type_departments_id=type_department, type_organisations_id=type_organisation)
 
-class CheckingViewSet(
-                # mixins.CreateModelMixin,
-                mixins.RetrieveModelMixin,
-                # mixins.UpdateModelMixin,
-                # mixins.DestroyModelMixin,
-                # mixins.ListModelMixin,
-                GenericViewSet):
-    queryset = Checking.objects.all()
-    serializer_class = CheckingSerializer
-
-    # swagger_schema = None
-
-
-class ListCheckingViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    # mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    # mixins.ListModelMixin,
-                    GenericViewSet):
-    queryset = List_Checking.objects.all()
-    serializer_class = ListCheckingSerializer
-
-    # swagger_schema = None
-
-    @action(methods=['get'], detail=False)
-    def list_organisations(self, request, check_pk=1, user_pk=None):
-        if user_pk is None:
-            list_organisations = List_Checking.objects.filter(checking=check_pk).values('organisation__organisation_name')
-            list_users = List_Checking.objects.filter(checking=check_pk).values('user__username')
-        else:
-            list_organisations = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('organisation__organisation_name')
-            list_users = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('user__username')
-        return Response({'list_organisations': list_organisations,
-                         'list_users': list_users})
-
-    @action(methods=['get'], detail=False)
-    def checkings(self, request, pk=None):
-        name_checking = List_Checking.objects.values('checking__name')
-        return Response({'name_checking': name_checking})
-
-    @action(methods=['get'], detail=False)
-    def organisations(self, request, pk=None):
-        organisation = List_Checking.objects.values('organisation__organisation_name')
-        return Response({'organisation': organisation})
-
-    @action(methods=['get'], detail=False)
-    def users(self, request, pk=None):
-        user = List_Checking.objects.values('user__username')
-        return Response({'user': user})
+        result = []
+        for item in queryset:
+            FormsAct.objects.filter(id=item.id)
+            result.append({
+                'id': item.id,
+                'name': item.act_json,
+            })
+        return Response({'data': result})
 
 
 class GetCheckListOrganizationsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
-        tags=['Общие запросы к списку организаций на проверке'],
-        operation_description="Получить списки: user --> организации, user --> проверки, проверка --> users",
+        tags=['Список организаций на проверке'],
+        operation_description="Получить: user --> организации, проверка --> организации",
         manual_parameters=[
             openapi.Parameter('id_check', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
@@ -1331,10 +1328,10 @@ class GetCheckListOrganizationsAPIView(APIView):
     def get(self, request):
         check = request.query_params.get('id_check')
         user = request.query_params.get('id_user')
-        if check is None:
-            queryset = List_Checking.objects.filter(user_id=user)
-        elif user is None:
+        if user is None:
             queryset = List_Checking.objects.filter(checking_id=check)
+        # elif check is None:
+        #     queryset = List_Checking.objects.filter(user_id=user)
         else:
             queryset = List_Checking.objects.filter(checking_id=check, user_id=user)
 
@@ -1342,12 +1339,8 @@ class GetCheckListOrganizationsAPIView(APIView):
         for item in queryset:
             Organisations.objects.filter(id=item.organisation_id)
             result.append({
-                'id': item.id,
-                'user_id': item.user_id,
-                'user_name': item.user.username,
-                'checking_name': item.checking.name,
-                'organisation_id': item.organisation_id,
-                'organisation_name': item.organisation.organisation_name,
+                'id': item.organisation_id,
+                'name': item.organisation.organisation_name,
             })
         return Response({'data': result})
 
@@ -1371,7 +1364,7 @@ class GetListCheckingAPIView(APIView):
         for item in queryset:
             result.append({
                 'id': item.checking.id,
-                'checking_name': item.checking.name,
+                'name': item.checking.name,
             })
         return Response({'data': result})
 

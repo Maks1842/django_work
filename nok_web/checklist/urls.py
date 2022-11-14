@@ -47,9 +47,8 @@ router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', TypeAnswersViewSet, basename='type_answers')
 router.register('transaction_exchange', TransactionExchangeViewSet, basename='transaction_exchange')
-router.register('forms_act', FormsActViewSet, basename='forms_act')
-router.register('checking', CheckingViewSet, basename='checking')
-router.register('list_checking', ListCheckingViewSet, basename='list_checking')
+# router.register('checking', CheckingViewSet, basename='checking')
+# router.register('list_checking', ListCheckingViewSet, basename='list_checking')
 
 
 urlpatterns = [
@@ -59,7 +58,8 @@ urlpatterns = [
 
 
     path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
-    path('api/v1/getCheck/', GetCheckListOrganizationsAPIView.as_view(), name='getCheck'),
+    path('api/v1/getFormAct/', GetFormActAPIView.as_view(), name='getFormAct'),
+    path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),
     path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
 
     path('api/v1/drf-auth/', include('rest_framework.urls')),
