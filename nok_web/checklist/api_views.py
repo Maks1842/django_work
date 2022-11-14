@@ -1291,17 +1291,16 @@ class GetFormActAPIView(APIView):
         tags=['Получить формы Актов'],
         operation_description="Получить формы Актов для проверки, в формате JSON",
         manual_parameters=[
-            openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
-                              type=openapi.TYPE_INTEGER),
+            # openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
+            #                   type=openapi.TYPE_INTEGER),
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
-        type_department = request.query_params.get('id_type_department')
         type_organisation = request.query_params.get('id_type_organisation')
 
-        queryset = FormsAct.objects.filter(type_departments_id=type_department, type_organisations_id=type_organisation)
+        queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
         result = []
         for item in queryset:
