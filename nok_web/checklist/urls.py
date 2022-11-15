@@ -58,7 +58,8 @@ urlpatterns = [
 
 
     path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
-    path('api/v1/getFormAct/', GetFormActAPIView.as_view(), name='getFormAct'),
+    path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='getFormActByOrganizationType'),
+    path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
     path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),
     path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
 

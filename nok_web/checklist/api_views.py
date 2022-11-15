@@ -1285,10 +1285,10 @@ class TransactionExchangeViewSet(
 #         return Response({'user': user})
 
 
-class GetFormActAPIView(APIView):
+class GetFormActByOrganizationTypeAPIView(APIView):
     @swagger_auto_schema(
         method='get',
-        tags=['Получить формы Актов'],
+        tags=['Получить формы Актов по типу организации'],
         operation_description="Получить формы Актов для проверки, в формате JSON",
         manual_parameters=[
             # openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
@@ -1304,10 +1304,34 @@ class GetFormActAPIView(APIView):
 
         result = []
         for item in queryset:
-            FormsAct.objects.filter(id=item.id)
             result.append({
-                'id': item.id,
-                'name': item.act_json,
+                'json': item.act_json,
+            })
+        return Response({'data': result})
+
+
+class GetFormActByOrganizationIdAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Получить формы Актов по Id организации'],
+        operation_description="Получить формы Актов для проверки, в формате JSON",
+        manual_parameters=[
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        organisation = request.query_params.get('id_organisation')
+
+        queryset = Organisations.objects.filter(id=organisation)
+
+        result = []
+        for item in queryset:
+            act_json = FormsAct.objects.values('act_json').get(type_organisations_id=item.type_organisations_id)
+            result.append({
+                # 'id': item.id,
+                # 'name': item.organisation_name,
+                'json': act_json,
             })
         return Response({'data': result})
 
@@ -1329,14 +1353,12 @@ class GetCheckListOrganizationsAPIView(APIView):
         user = request.query_params.get('id_user')
         if user is None:
             queryset = List_Checking.objects.filter(checking_id=check)
-        # elif check is None:
-        #     queryset = List_Checking.objects.filter(user_id=user)
         else:
             queryset = List_Checking.objects.filter(checking_id=check, user_id=user)
 
         result = []
         for item in queryset:
-            Organisations.objects.filter(id=item.organisation_id)
+            # Organisations.objects.filter(id=item.organisation_id)
             result.append({
                 'id': item.organisation_id,
                 'name': item.organisation.organisation_name,
