@@ -1291,8 +1291,6 @@ class GetFormActByOrganizationTypeAPIView(APIView):
         tags=['Получить формы Актов по типу организации'],
         operation_description="Получить формы Актов для проверки, в формате JSON",
         manual_parameters=[
-            # openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
-            #                   type=openapi.TYPE_INTEGER),
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER)
         ])
@@ -1302,12 +1300,11 @@ class GetFormActByOrganizationTypeAPIView(APIView):
 
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
-        result = []
-        for item in queryset:
-            result.append({
-                'json': item.act_json,
-            })
-        return Response({'data': result})
+        form_json = {}
+        if len(queryset) > 0:
+            form_json = queryset[0].act_json
+
+        return Response(form_json)
 
 
 class GetFormActByOrganizationIdAPIView(APIView):
@@ -1325,15 +1322,11 @@ class GetFormActByOrganizationIdAPIView(APIView):
 
         queryset = Organisations.objects.filter(id=organisation)
 
-        result = []
-        for item in queryset:
-            act_json = FormsAct.objects.get(type_organisations_id=item.type_organisations_id)
-            result.append({
-                # 'id': item.id,
-                # 'name': item.organisation_name,
-                'json': act_json.act_json,
-            })
-        return Response({'data': result})
+        form_json = {}
+        if len(queryset) > 0:
+            form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+
+        return Response(form_json)
 
 
 class GetCheckListOrganizationsAPIView(APIView):
