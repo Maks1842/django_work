@@ -1327,11 +1327,11 @@ class GetFormActByOrganizationIdAPIView(APIView):
 
         result = []
         for item in queryset:
-            act_json = FormsAct.objects.values('act_json').get(type_organisations_id=item.type_organisations_id)
+            act_json = FormsAct.objects.get(type_organisations_id=item.type_organisations_id)
             result.append({
                 # 'id': item.id,
                 # 'name': item.organisation_name,
-                'json': act_json,
+                'json': act_json.act_json,
             })
         return Response({'data': result})
 
