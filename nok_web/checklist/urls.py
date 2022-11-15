@@ -29,7 +29,7 @@ router.register(r'regions', RegionsViewSet, basename='regions')
 router.register(r'type_departments', TypeDepartmentsViewSet, basename='type_departments')
 router.register(r'departments', DepartmentsViewSet, basename='departments')
 router.register(r'department_persons', DepartmentPersonsViewSet, basename='department_persons')
-router.register('type_organisations', TypeOrganisationsViewSet, basename='type_organisations')
+# router.register('type_organisations', TypeOrganisationsViewSet, basename='type_organisations')
 router.register('organisations', OrganisationsViewSet, basename='organisations')
 router.register('organisation_persons', OrganisationPersonsViewSet, basename='organisation_persons')
 router.register('quota', QuotaViewSet, basename='quota')
@@ -58,6 +58,7 @@ urlpatterns = [
 
 
     path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
+    path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='getListTypeOrganizations'),
     path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='getFormActByOrganizationType'),
     path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
     path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),

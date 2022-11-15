@@ -237,44 +237,44 @@ class DepartmentPersonsViewSet(
         return Response({'post': serializers.data})
 
 
-class TypeOrganisationsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Type_Organisations.objects.all()
-    serializer_class = Type_OrganisationsSerializer
-
-    swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(TypeOrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
-    @action(methods=['get'], detail=True)
-    def type_organisations_id(self, request, pk=None):
-        type_orgs_id = Type_Organisations.objects.values('id').get(pk=pk)
-        return Response({'type_organisations_id': type_orgs_id})
-
-    @action(methods=['get'], detail=True)
-    def type_organisations_name(self, request, pk=None):
-        type_orgs_name = Type_Organisations.objects.values('type').get(pk=pk)
-        return Response({'type_organisations_name': type_orgs_name})
-
-    @action(methods=['put'], detail=True)
-    def type_organisations_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Type_Organisations.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Type_OrganisationsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
+# class TypeOrganisationsViewSet(
+#                             # mixins.CreateModelMixin,
+#                             mixins.RetrieveModelMixin,
+#                             mixins.UpdateModelMixin,
+#                             # mixins.DestroyModelMixin,
+#                             mixins.ListModelMixin,
+#                             GenericViewSet):
+#     queryset = Type_Organisations.objects.all()
+#     serializer_class = Type_OrganisationsSerializer
+#
+#     # swagger_schema = None
+#
+#     def _allowed_methods(self):
+#         return [m for m in super(TypeOrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
+#
+#     @action(methods=['get'], detail=True)
+#     def type_organisations_id(self, request, pk=None):
+#         type_orgs_id = Type_Organisations.objects.values('id').get(pk=pk)
+#         return Response({'type_organisations_id': type_orgs_id})
+#
+#     @action(methods=['get'], detail=True)
+#     def type_organisations_name(self, request, pk=None):
+#         type_orgs_name = Type_Organisations.objects.values('type').get(pk=pk)
+#         return Response({'type_organisations_name': type_orgs_name})
+#
+#     @action(methods=['put'], detail=True)
+#     def type_organisations_update(self, request, *args, **kwargs):
+#         pk = kwargs.get('pk', None)
+#         if not pk:
+#             return Response({'error': 'Метод PUT не определен'})
+#         try:
+#             instance = Type_Organisations.objects.get(pk=pk)
+#         except:
+#             return Response({'error': 'Объект не существует'})
+#         serializers = Type_OrganisationsSerializer(data=request.data, instance=instance, partial=True)
+#         serializers.is_valid(raise_exception=True)
+#         serializers.save()
+#         return Response({'post': serializers.data})
 
 
 class OrganisationsViewSet(
@@ -1246,43 +1246,23 @@ class TransactionExchangeViewSet(
         return Response({'post': serializers.data})
 
 
-# class ListCheckingViewSet(
-#                     # mixins.CreateModelMixin,
-#                     mixins.RetrieveModelMixin,
-#                     # mixins.UpdateModelMixin,
-#                     # mixins.DestroyModelMixin,
-#                     # mixins.ListModelMixin,
-#                     GenericViewSet):
-#     queryset = List_Checking.objects.all()
-#     serializer_class = ListCheckingSerializer
-#
-#     # swagger_schema = None
-#
-#     @action(methods=['get'], detail=False)
-#     def list_organisations(self, request, check_pk=1, user_pk=None):
-#         if user_pk is None:
-#             list_organisations = List_Checking.objects.filter(checking=check_pk).values('organisation__organisation_name')
-#             list_users = List_Checking.objects.filter(checking=check_pk).values('user__username')
-#         else:
-#             list_organisations = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('organisation__organisation_name')
-#             list_users = List_Checking.objects.filter(checking=check_pk, user=user_pk).values('user__username')
-#         return Response({'list_organisations': list_organisations,
-#                          'list_users': list_users})
-#
-#     @action(methods=['get'], detail=False)
-#     def checkings(self, request, pk=None):
-#         name_checking = List_Checking.objects.values('checking__name')
-#         return Response({'name_checking': name_checking})
-#
-#     @action(methods=['get'], detail=False)
-#     def organisations(self, request, pk=None):
-#         organisation = List_Checking.objects.values('organisation__organisation_name')
-#         return Response({'organisation': organisation})
-#
-#     @action(methods=['get'], detail=False)
-#     def users(self, request, pk=None):
-#         user = List_Checking.objects.values('user__username')
-#         return Response({'user': user})
+class GetListTypeOrganizationsAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Типы организаций'],
+        operation_description="Получить список типов оргнизаций")
+
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        queryset = Type_Organisations.objects.all()
+
+        result = []
+        for item in queryset:
+            result.append({
+                'id': item.id,
+                'name': item.type,
+            })
+        return Response({'data': result})
 
 
 class GetFormActByOrganizationTypeAPIView(APIView):
