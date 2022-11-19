@@ -78,6 +78,7 @@ class Department_Persons(models.Model):
 
 class Type_Organisations(models.Model):
     type = models.CharField(max_length=100, verbose_name='Тип учреждения')
+    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип департамента')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):

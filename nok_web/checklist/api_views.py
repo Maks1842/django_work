@@ -1250,11 +1250,20 @@ class GetListTypeOrganizationsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
         tags=['Типы организаций'],
-        operation_description="Получить список типов оргнизаций")
+        operation_description="Получить список типов оргнизаций",
+        manual_parameters=[
+            openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
+                              type=openapi.TYPE_INTEGER)
+        ])
 
     @action(detail=False, methods=['get'])
     def get(self, request):
-        queryset = Type_Organisations.objects.all()
+        type_department = request.query_params.get('id_type_department')
+
+        if type_department is None:
+            queryset = Type_Organisations.objects.all()
+        else:
+            queryset = Type_Organisations.objects.filter(type_departments_id=type_department)
 
         result = []
         for item in queryset:
@@ -1335,6 +1344,7 @@ class GetCheckListOrganizationsAPIView(APIView):
             result.append({
                 'id': item.organisation_id,
                 'name': item.organisation.organisation_name,
+                'type': item.organisation.type_organisations_id
             })
         return Response({'data': result})
 
