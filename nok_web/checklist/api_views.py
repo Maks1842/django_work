@@ -1344,7 +1344,8 @@ class GetCheckListOrganizationsAPIView(APIView):
             result.append({
                 'id': item.organisation_id,
                 'name': item.organisation.organisation_name,
-                'type': item.organisation.type_organisations_id
+                'type': item.organisation.type_organisations_id,
+                'department': item.organisation.department_id
             })
         return Response({'data': result})
 
