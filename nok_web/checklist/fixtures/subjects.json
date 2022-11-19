@@ -250,6 +250,7 @@
   "pk": 1,
   "fields": {
     "type": "Здание культурного наследия",
+    "type_departments": 2,
     "is_deleted": false
   }
 },
@@ -258,6 +259,7 @@
   "pk": 2,
   "fields": {
     "type": "Амбулаторные условия",
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -266,6 +268,7 @@
   "pk": 3,
   "fields": {
     "type": "Стационарные условия",
+    "type_departments": 1,
     "is_deleted": false
   }
 },
@@ -274,6 +277,7 @@
   "pk": 4,
   "fields": {
     "type": "ДОУ (образование)",
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -282,6 +286,7 @@
   "pk": 5,
   "fields": {
     "type": "ОО (образование)",
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -290,6 +295,7 @@
   "pk": 6,
   "fields": {
     "type": "СКОУ (образование)",
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -298,6 +304,7 @@
   "pk": 7,
   "fields": {
     "type": "СПО (образование)",
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -306,6 +313,7 @@
   "pk": 8,
   "fields": {
     "type": "ДПО (образование)",
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -314,6 +322,7 @@
   "pk": 9,
   "fields": {
     "type": "ДОД (образование)",
+    "type_departments": 3,
     "is_deleted": false
   }
 },
@@ -322,6 +331,7 @@
   "pk": 10,
   "fields": {
     "type": "Культура (стандарт)",
+    "type_departments": 2,
     "is_deleted": false
   }
 },
@@ -337,7 +347,7 @@
     "parent": null,
     "department": 4,
     "quota": 1,
-    "type_organisations": null,
+    "type_organisations": 1,
     "is_deleted": false
   }
 },
@@ -353,7 +363,7 @@
     "parent": null,
     "department": 4,
     "quota": 1,
-    "type_organisations": null,
+    "type_organisations": 10,
     "is_deleted": false
   }
 },
@@ -369,7 +379,7 @@
     "parent": null,
     "department": 1,
     "quota": 4,
-    "type_organisations": null,
+    "type_organisations": 10,
     "is_deleted": false
   }
 },
