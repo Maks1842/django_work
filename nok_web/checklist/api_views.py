@@ -1340,12 +1340,12 @@ class GetCheckListOrganizationsAPIView(APIView):
 
         result = []
         for item in queryset:
-            # Organisations.objects.filter(id=item.organisation_id)
+            department = Departments.objects.values('type_departments_id').get(pk=item.organisation.department_id)
             result.append({
                 'id': item.organisation_id,
                 'name': item.organisation.organisation_name,
                 'type': item.organisation.type_organisations_id,
-                'department': item.organisation.department_id
+                'department_type': department['type_departments_id']
             })
         return Response({'data': result})
 
