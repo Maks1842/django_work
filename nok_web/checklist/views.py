@@ -96,7 +96,7 @@ def designer_act_view(request):
     return render(request, 'checklist/helper.html', context)
 
 
-def get_act(request, type_departments=1, type_organisations=3, number_items=4):
+def get_act(request, type_departments=1, type_organisations=3, number_items=0):
 
     type_departments = request.POST['type_dep']
     type_organisations = request.POST['type_org']

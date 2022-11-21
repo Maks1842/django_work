@@ -1,6 +1,8 @@
 import re
 import json
 
+# import modules.test_json_answer
+
 from .models import *
 from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
 from django.http import Http404, HttpResponse
@@ -1345,7 +1347,7 @@ class GetCheckListOrganizationsAPIView(APIView):
                 'id': item.organisation_id,
                 'name': item.organisation.organisation_name,
                 'type': item.organisation.type_organisations_id,
-                'department_type': department['type_departments_id']
+                'department': department['type_departments_id']
             })
         return Response({'data': result})
 
@@ -1446,3 +1448,67 @@ class GetActAPIView(APIView):
                     })
                     pages = []
         return Response({'pages': context})
+
+
+class GetActAnswerAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Получить Акта проверки по организации'],
+        operation_description="Получить Акт с результатами проверки, в формате JSON",
+        manual_parameters=[
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+
+        act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "11" ], "5": [ "11", "12" ],
+                       "6": [ "11", "12" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
+                       "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "66": [ "1" ], "72": [ "1" ], "73": [ "1" ],
+                       "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
+
+        organisation = request.query_params.get('id_organisation')
+
+# В боевом режиме необходимо настромть запрос по id организации проверяемой
+        queryset = FormsAct.objects.filter(type_organisations_id=organisation)
+        # dict_answer = json.loads(act_answer)
+
+
+        list = []
+        if len(queryset) > 0:
+            form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+
+            for item in form_json['pages']:
+                elements = []
+                for elem in item['elements']:
+                    name = elem["name"]
+                    title = elem["title"]
+                    answer_1 = ""
+                    answer_2 = ""
+
+                    if name in act_answer:
+                        if len(act_answer.get(name)) > 1:
+                            answer_1 = act_answer.get(name)[0]
+                            answer_2 = act_answer.get(name)[1]
+                        else:
+                            answer_1 = act_answer.get(name)[0]
+
+                    elements.append({
+                        "name": name,
+                        "title": title,
+                        "answer_1": answer_1,
+                        "answer_2": answer_2,
+                    })
+
+                list.append({
+                    "title": item["title"],
+                    "elements": elements,
+                })
+
+        return Response(list)
+
+
+# def answer_in_the_act():
+#     dict = json.loads(test_json_answer.act_answer)
+#     for item in dict:
+

@@ -64,6 +64,8 @@ urlpatterns = [
     path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),
     path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
 
+    path('api/v1/getActAnswer/', GetActAnswerAPIView.as_view(), name='getActAnswer'),
+
     path('api/v1/drf-auth/', include('rest_framework.urls')),
 
 
