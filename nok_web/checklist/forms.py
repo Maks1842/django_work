@@ -187,9 +187,10 @@ class QuestionsForm(forms.ModelForm):
 class Question_ValuesForm(forms.ModelForm):
     class Meta:
         model = Question_Values
-        fields = ['value_name']
+        fields = ['value_name', 'name_alternativ']
         widgets = {
             'value_name': forms.TextInput(attrs={"class": "form-control"}),
+            'name_alternativ': forms.TextInput(attrs={"class": "form-control"}),
         }
 
 

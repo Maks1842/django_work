@@ -87,10 +87,10 @@ class QuestionsAdmin(admin.ModelAdmin):
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value_name')
-    search_fields = ('value_name',)
-    list_editable = ('value_name',)
-    list_filter = ('value_name',)
+    list_display = ('id', 'value_name', 'name_alternativ')
+    search_fields = ('value_name', 'name_alternativ')
+    list_editable = ('value_name', 'name_alternativ')
+    list_filter = ('value_name', 'name_alternativ')
 
 
 class Form_Sections_QuestionAdmin(admin.ModelAdmin):

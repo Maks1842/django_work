@@ -213,6 +213,7 @@ class Questions(models.Model):
 
 class Question_Values(models.Model):
     value_name = models.CharField(max_length=500, verbose_name='Варианты ответов')
+    name_alternativ = models.CharField(max_length=100, blank=True, verbose_name='Альтернативный вариант ответа')
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})

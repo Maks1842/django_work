@@ -78,7 +78,7 @@ class QuestionsSerializer(serializers.ModelSerializer):
 class Question_ValuesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question_Values
-        fields = ['id', 'value_name']
+        fields = ['id', 'value_name',  'name_alternativ']
 
 
 class Form_Sections_QuestionSerializer(serializers.ModelSerializer):

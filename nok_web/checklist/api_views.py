@@ -1462,43 +1462,38 @@ class GetActAnswerAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
 
-        act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "11" ], "5": [ "11", "12" ],
-                       "6": [ "11", "12" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
-                       "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "66": [ "1" ], "72": [ "1" ], "73": [ "1" ],
-                       "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
-
         organisation = request.query_params.get('id_organisation')
 
-# В боевом режиме необходимо настромть запрос по id организации проверяемой
-        queryset = FormsAct.objects.filter(type_organisations_id=organisation)
-        # dict_answer = json.loads(act_answer)
-
+        # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
+        type_organisations = Organisations.objects.get(pk=organisation).type_organisations_id
+        queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
 
         list = []
         if len(queryset) > 0:
             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+            query = Question_Values.objects.values()
 
             for item in form_json['pages']:
                 elements = []
                 for elem in item['elements']:
                     name = elem["name"]
                     title = elem["title"]
-                    answer_1 = ""
-                    answer_2 = ""
 
-                    if name in act_answer:
-                        if len(act_answer.get(name)) > 1:
-                            answer_1 = act_answer.get(name)[0]
-                            answer_2 = act_answer.get(name)[1]
-                        else:
-                            answer_1 = act_answer.get(name)[0]
+                    answer = answer_in_the_act(name, query)
 
-                    elements.append({
-                        "name": name,
-                        "title": title,
-                        "answer_1": answer_1,
-                        "answer_2": answer_2,
-                    })
+                    if len(answer) > 1:
+                        elements.append({
+                            "name": name,
+                            "title": title,
+                            "answer_1": answer[0],
+                            "answer_2": answer[1],
+                        })
+                    else:
+                        elements.append({
+                            "name": name,
+                            "title": title,
+                            "answer_1": answer,
+                        })
 
                 list.append({
                     "title": item["title"],
@@ -1508,7 +1503,41 @@ class GetActAnswerAPIView(APIView):
         return Response(list)
 
 
-# def answer_in_the_act():
-#     dict = json.loads(test_json_answer.act_answer)
-#     for item in dict:
+def answer_in_the_act(name, query):
+
+    act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "12" ], "5": [ "11", "12" ],
+                   "6": [ "4" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
+                   "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "66": [ "1" ], "72": [ "1" ], "73": [ "1" ],
+                   "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
+
+    answer_1 = ""
+    answer_2 = ""
+
+    if name in act_answer:
+
+        if len(act_answer.get(name)) > 1:
+
+            if len(query.get(pk=int(act_answer.get(name)[0]))['name_alternativ']) > 0:
+                answer_1 = query.get(pk=int(act_answer.get(name)[0]))['name_alternativ']
+            if len(query.get(pk=int(act_answer.get(name)[1]))['name_alternativ']) > 0:
+                answer_2 = query.get(pk=int(act_answer.get(name)[1]))['name_alternativ']
+        elif "Стенд" in query.get(pk=int(act_answer.get(name)[0]))['value_name']:
+            answer_1 = "Да"
+            answer_2 = "Нет"
+        elif "Сайт" in query.get(pk=int(act_answer.get(name)[0]))['value_name']:
+            answer_1 = "Нет"
+            answer_2 = "Да"
+        else:
+            answer_1 = query.get(pk=int(act_answer.get(name)[0]))['value_name']
+            answer_2 = ''
+    else:
+        answer_1 = "Нет"
+        answer_2 = "Нет"
+
+    answer = [
+            answer_1,
+            answer_2
+        ]
+
+    return answer
 
