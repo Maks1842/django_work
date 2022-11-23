@@ -1392,7 +1392,7 @@ class GetListCheckingAPIView(APIView):
 
 class GetActAPIView(APIView):
 
-    def get(self, request, type_departments=3, type_organisations=4, number_items=0):
+    def get(self, request, type_departments=1, type_organisations=2, number_items=0):
 
         context = []
         count = 0
@@ -1473,71 +1473,116 @@ class GetActAnswerAPIView(APIView):
             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
             query = Question_Values.objects.values()
 
-            for item in form_json['pages']:
-                elements = []
-                for elem in item['elements']:
-                    name = elem["name"]
-                    title = elem["title"]
+            comparison = do_some_magic(form_json)
+            answers = answer_in_the_act(comparison, query)
 
-                    answer = answer_in_the_act(name, query)
+            # for item in form_json['pages']:
+            #     elements = []
+            #     for elem in item['elements']:
+            #         name = elem["name"]
+            #         title = elem["title"]
+            #
+            #         z = do_some_magic(form_json)
+            #
+            #         answer = answer_in_the_act(z, query)
+            #
+            #
+            #
+            #         if len(answer) > 1:
+            #             elements.append({
+            #                 "name": name,
+            #                 "title": title,
+            #                 "answer_1": answer[0],
+            #                 "answer_2": answer[1],
+            #             })
+            #         else:
+            #             elements.append({
+            #                 "name": name,
+            #                 "title": title,
+            #                 "answer_1": answer,
+            #             })
+            #
+            #     list.append({
+            #         "title": item["title"],
+            #         "elements": elements,
+            #
+            #     })
 
-                    if len(answer) > 1:
-                        elements.append({
-                            "name": name,
-                            "title": title,
-                            "answer_1": answer[0],
-                            "answer_2": answer[1],
-                        })
-                    else:
-                        elements.append({
-                            "name": name,
-                            "title": title,
-                            "answer_1": answer,
-                        })
+        return Response(answers)
 
-                list.append({
-                    "title": item["title"],
-                    "elements": elements,
-                })
-
-        return Response(list)
-
-
-def answer_in_the_act(name, query):
-
+'''
+Функция сравнения двух json.
+Производится сопоставление полученных ответов с имеющимеся вопросами.
+На выходе формируется новый json, где:
+- если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
+- если нет ни одного совпадения, то все ячейки остаются пустые.
+В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
+'''
+def do_some_magic(form_json):
     act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "12" ], "5": [ "11", "12" ],
                    "6": [ "4" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
-                   "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "66": [ "1" ], "72": [ "1" ], "73": [ "1" ],
+                   "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "71": [ "8" ], "72": [ "1" ], "73": [ "1" ],
                    "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
 
-    answer_1 = ""
-    answer_2 = ""
+    # f = open("act_med.json")
+    # act = json.load(f)
+    # f.close()
+    # f = open("answ.json")
+    # answ = json.load(f)
+    # f.close()
 
-    if name in act_answer:
+    act = form_json
+    answ = act_answer
 
-        if len(act_answer.get(name)) > 1:
+    questions = {}
+    for page in act['pages']:
+        for element in page['elements']:
+            choices = []
+            for choice in element['choices']:
+                choices.append(choice['value'])
+            questions[element['name']] = choices
 
-            if len(query.get(pk=int(act_answer.get(name)[0]))['name_alternativ']) > 0:
-                answer_1 = query.get(pk=int(act_answer.get(name)[0]))['name_alternativ']
-            if len(query.get(pk=int(act_answer.get(name)[1]))['name_alternativ']) > 0:
-                answer_2 = query.get(pk=int(act_answer.get(name)[1]))['name_alternativ']
-        elif "Стенд" in query.get(pk=int(act_answer.get(name)[0]))['value_name']:
-            answer_1 = "Да"
-            answer_2 = "Нет"
-        elif "Сайт" in query.get(pk=int(act_answer.get(name)[0]))['value_name']:
-            answer_1 = "Нет"
-            answer_2 = "Да"
-        else:
-            answer_1 = query.get(pk=int(act_answer.get(name)[0]))['value_name']
-            answer_2 = ''
-    else:
-        answer_1 = "Нет"
-        answer_2 = "Нет"
+    tt = {}
 
-    answer = [
-            answer_1,
-            answer_2
-        ]
+    for question in answ:
+        sh = []
+        for answer in questions[question]:
+            if answer in answ[question]:
+                sh.append(answer)
+            else:
+                sh.append('')
+        tt[question] = sh
+    z = questions.copy()
+    z.update(tt)
+    for question in z:
+        if question not in answ:
+            for i in range(len(z[question])):
+                z[question][i] = ''
 
-    return answer
+    return z
+
+
+'''
+Функция формирования текстовых ответов для HTML шаблона из json файла,
+который сформирован на основе сопоставления act_json и answer_json.
+'''
+def answer_in_the_act(comparison, query):
+
+    list = {}
+
+    for answ in comparison:
+        answer = ''
+        answers = []
+        for a in comparison[answ]:
+            if a == '':
+                answer = "Нет"
+            elif int(a) > 0:
+                if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                    answer = query.get(pk=int(a))['name_alternativ']
+                else:
+                    answer = query.get(pk=int(a))['value_name']
+            answers.append(answer)
+        list[answ] = answers
+
+    return list
 
