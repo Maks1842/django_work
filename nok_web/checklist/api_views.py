@@ -1519,14 +1519,11 @@ class GetActAnswerAPIView(APIView):
 В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
 '''
 def do_some_magic(form_json):
-    act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "12" ], "5": [ "11", "12" ],
-                   "6": [ "4" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
-                   "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "71": [ "8" ], "72": [ "1" ], "73": [ "1" ],
-                   "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
 
-    # f = open("act_med.json")
-    # act = json.load(f)
-    # f.close()
+    f = open("checklist/modules/abm.json")       # Акт амбулатория
+    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    act_answer = json.load(f)
+    f.close()
     # f = open("answ.json")
     # answ = json.load(f)
     # f.close()

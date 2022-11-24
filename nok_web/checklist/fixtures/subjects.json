@@ -416,6 +416,38 @@
   }
 },
 {
+  "model": "checklist.organisations",
+  "pk": 6,
+  "fields": {
+    "organisation_name": "Школа г. Краснодар",
+    "address": "фыапфп",
+    "phone": "4651321",
+    "website": "сайт.рф",
+    "email": "qwer@asd.ru",
+    "parent": null,
+    "department": 2,
+    "quota": 2,
+    "type_organisations": 5,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisations",
+  "pk": 7,
+  "fields": {
+    "organisation_name": "Детсад г.Краснодар",
+    "address": "чсмтвр",
+    "phone": "4651321",
+    "website": "ыва.рф",
+    "email": "sz@fg.ru",
+    "parent": null,
+    "department": 2,
+    "quota": 3,
+    "type_organisations": 4,
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.organisation_persons",
   "pk": 1,
   "fields": {
@@ -500,7 +532,7 @@
     "name": "I. Общая информация о медицинской организации",
     "version": "1",
     "order_num": 1,
-    "parent": null,
+    "parent": 9,
     "forms": 1,
     "type_departments": 1,
     "is_deleted": false
@@ -513,7 +545,7 @@
     "name": "II. Информация о медицинской деятельности медицинской организации",
     "version": "1",
     "order_num": 2,
-    "parent": null,
+    "parent": 9,
     "forms": 1,
     "type_departments": 1,
     "is_deleted": false
@@ -526,7 +558,7 @@
     "name": "III. Информация о медицинских работниках медицинских организаций, включая филиалы (при их наличии)",
     "version": "1",
     "order_num": 3,
-    "parent": null,
+    "parent": 9,
     "forms": 1,
     "type_departments": 1,
     "is_deleted": false
@@ -747,7 +779,7 @@
     "name": "I. Общая информация об организации культуры",
     "version": "1",
     "order_num": 1,
-    "parent": null,
+    "parent": 9,
     "forms": 3,
     "type_departments": 2,
     "is_deleted": false
@@ -760,7 +792,7 @@
     "name": "II. Информация о деятельности организации культуры",
     "version": "1",
     "order_num": 2,
-    "parent": null,
+    "parent": 9,
     "forms": 3,
     "type_departments": 2,
     "is_deleted": false
@@ -773,7 +805,7 @@
     "name": "III. Информация о независимой оценке качества",
     "version": "1",
     "order_num": 3,
-    "parent": null,
+    "parent": 9,
     "forms": 3,
     "type_departments": 2,
     "is_deleted": false
@@ -3810,7 +3842,7 @@
     "order_num": 4,
     "form_sections": 20,
     "type_answers": 1,
-    "answer_variant": "11,12",
+    "answer_variant": "12",
     "type_organisations": null,
     "is_deleted": false
   }
@@ -3875,7 +3907,7 @@
     "order_num": 3,
     "form_sections": 21,
     "type_answers": 1,
-    "answer_variant": "11,12",
+    "answer_variant": "12",
     "type_organisations": null,
     "is_deleted": false
   }
@@ -3888,7 +3920,7 @@
     "order_num": 4,
     "form_sections": 21,
     "type_answers": 1,
-    "answer_variant": "11,12",
+    "answer_variant": "12",
     "type_organisations": null,
     "is_deleted": false
   }
@@ -13758,6 +13790,17 @@
     "date_checking": "2022-11-08",
     "region": 6,
     "department": 10,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.checking",
+  "pk": 4,
+  "fields": {
+    "name": "Проверка 5",
+    "date_checking": "2022-11-24",
+    "region": 2,
+    "department": 2,
     "is_deleted": false
   }
 },

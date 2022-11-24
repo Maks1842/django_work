@@ -8,65 +8,27 @@
 
 
 {% block content %}
-
+<form action="{% url 'get-act' %}" method="post">
+    {% csrf_token %}
 <div class="container">                    <!--Оборачиваем все содержимое сетки в контейнер-->
     <div class="row">                      <!--Ряд сетки-->
-        <div class="col-md-4">             <!--Колонки сетки-->
-            <label class="mt-3">Регион:</label>
-            <select class="form-select">
-                <option selected>---Выберите регион---</option>
-                {% for item in regions %}
-                <option>{{ item.region_name }}</option>
-                {% endfor %}
-            </select>
-
-            <label class="mt-3">Департамент:</label>
-            <select class="form-select">
-                <option selected>---Выберите департамент---</option>
-                {% for item in departments %}
-                <option>{{ item.department_name }}</option>
-                {% endfor %}
-            </select>
-        </div>
 
         <div class="col-md-8">
             <label class="mt-3">Учреждение:</label>
-            <select class="form-select">
+            <select class="form-select" name="org_id">
                 <option selected>---Выберите учреждение---</option>
-                {% for item in organisations.organisation_name.all %}      <!--Тест-->
-                <option>{{ item }}</option>
+                {% for item in organisations %}
+                <option value="{{ item.id }}">{{ item.organisation_name }}</option>
                 {% endfor %}
             </select>
-
-            <h3>{{ organisations.organisation_name }}</h3>                 <!--Тест-->
-
-            <div class="row">
-                <div class="col-md-8">
-                    <label class="mt-3">Тип учреждения:</label>
-                    <select class="form-select" aria-label="Пример выбора по умолчанию">
-                        <option selected>---Выберите тип---</option>
-                        <option value="1">Один</option>
-                        <option value="2">Два</option>
-                        <option value="3">Три</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label class="mt-3">Дата проверки:</label>
-                    <select class="form-select" aria-label="Пример выбора по умолчанию">
-                        <option selected>----</option>
-                        <option value="1">Один</option>
-                        <option value="2">Два</option>
-                        <option value="3">Три</option>
-                    </select>
-                </div>
-            </div>
         </div>
 
         <div class="col-md-3 offset-md-5 mt-5 d-grid">
-            <a class="btn btn-primary" href="{% url 'question_view' %}" role="button">Начать</a>
+            <a type="submit" class="btn btn-primary" role="button">Сформировать</a>
         </div>
     </div>
 </div>
+</form>
 
 
 {% endblock %}

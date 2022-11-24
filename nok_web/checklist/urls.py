@@ -79,7 +79,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-    path('', region_view, name='home'),
+    path('', organisation_view, name='home'),
     path('question_view/', question_view, name='question_view'),
     path('designer-act/', designer_act_view, name='designer-act'),
     path('get-act/', get_act, name='get-act'),

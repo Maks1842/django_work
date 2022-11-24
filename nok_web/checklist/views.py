@@ -63,10 +63,8 @@ def region_view(request):
     }
     return render(request, 'checklist/select_list.html', context)
 
-# Тренировочная вьюха
-def organisation_view(request, organisations_id):                  # Откуда приходит позиционный элемент organisations_id??? Из html ???
-    organisations = Organisations.objects.get(pk=organisations_id)
-    # organisations = Organisations.objects.order_by('pk')
+def organisation_view(request):
+    organisations = Organisations.objects.order_by('pk')
     context = {
         'organisations': organisations,
     }
@@ -163,6 +161,105 @@ def get_act(request, type_departments=1, type_organisations=3, number_items=0):
     # element.save()
 
     return render(request, 'checklist/helper.html', context)
+
+
+
+def get_act_answer(request):
+
+    org_id = request.POST['org_id']
+
+    # organisation = request.query_params.get('id_organisation')
+
+    # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
+    type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
+    queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
+
+    list = []
+    if len(queryset) > 0:
+        form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+        query = Question_Values.objects.values()
+
+        comparison = do_some_magic(form_json)
+        answers = answer_in_the_act(comparison, query)
+    context = {'answers': answers}
+
+    return render(request, 'checklist/act_medical_amb.html', context)
+
+'''
+Функция сравнения двух json.
+Производится сопоставление полученных ответов с имеющимеся вопросами.
+На выходе формируется новый json, где:
+- если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
+- если нет ни одного совпадения, то все ячейки остаются пустые.
+В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
+'''
+def do_some_magic(form_json):
+    act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "12" ], "5": [ "11", "12" ],
+                   "6": [ "4" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
+                   "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "71": [ "8" ], "72": [ "1" ], "73": [ "1" ],
+                   "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
+
+    # f = open("act_med.json")
+    # act = json.load(f)
+    # f.close()
+    # f = open("answ.json")
+    # answ = json.load(f)
+    # f.close()
+
+    act = form_json
+    answ = act_answer
+
+    questions = {}
+    for page in act['pages']:
+        for element in page['elements']:
+            choices = []
+            for choice in element['choices']:
+                choices.append(choice['value'])
+            questions[element['name']] = choices
+
+    tt = {}
+
+    for question in answ:
+        sh = []
+        for answer in questions[question]:
+            if answer in answ[question]:
+                sh.append(answer)
+            else:
+                sh.append('')
+        tt[question] = sh
+    z = questions.copy()
+    z.update(tt)
+    for question in z:
+        if question not in answ:
+            for i in range(len(z[question])):
+                z[question][i] = ''
+
+    return z
+
+
+'''
+Функция формирования текстовых ответов для HTML шаблона из json файла,
+который сформирован на основе сопоставления act_json и answer_json.
+'''
+def answer_in_the_act(comparison, query):
+
+    list = {}
+
+    for answ in comparison:
+        answer = ''
+        answers = []
+        for a in comparison[answ]:
+            if a == '':
+                answer = "Нет"
+            elif int(a) > 0:
+                if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                    answer = query.get(pk=int(a))['name_alternativ']
+                else:
+                    answer = query.get(pk=int(a))['value_name']
+            answers.append(answer)
+        list[answ] = answers
+
+    return list
 
 
 # Добавление данных в БД
