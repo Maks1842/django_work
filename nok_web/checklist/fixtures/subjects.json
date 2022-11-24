@@ -13893,5 +13893,25 @@
     "user": 2,
     "is_deleted": false
   }
+},
+{
+  "model": "checklist.list_checking",
+  "pk": 10,
+  "fields": {
+    "checking": 4,
+    "organisation": 6,
+    "user": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.list_checking",
+  "pk": 11,
+  "fields": {
+    "checking": 4,
+    "organisation": 7,
+    "user": 1,
+    "is_deleted": false
+  }
 }
 ]
