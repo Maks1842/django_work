@@ -34,7 +34,6 @@ router.register('organisations', OrganisationsViewSet, basename='organisations')
 router.register('organisation_persons', OrganisationPersonsViewSet, basename='organisation_persons')
 router.register('quota', QuotaViewSet, basename='quota')
 router.register('templates', TemplatesViewSet, basename='templates')
-router.register('forms', FormsViewSet, basename='forms')
 router.register('form_sections', FormSectionsViewSet, basename='form_sections')
 router.register('questions', QuestionsViewSet, basename='questions')
 router.register('question_values', QuestionValuesViewSet, basename='question_values')
@@ -43,7 +42,6 @@ router.register('recommendations', RecommendationsViewSet, basename='recommendat
 router.register('forms_recommendations', FormsRecommendationsViewSet, basename='forms_recommendations')
 router.register('answers', AnswersViewSet, basename='answers')
 router.register('signed_dociuments', SignedDociumentsViewSet, basename='signed_dociuments')
-router.register('evaluation', EvaluationViewSet, basename='evaluation')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', TypeAnswersViewSet, basename='type_answers')
 router.register('transaction_exchange', TransactionExchangeViewSet, basename='transaction_exchange')
@@ -85,6 +83,7 @@ urlpatterns = [
     path('get-act/', get_act, name='get-act'),
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
     path('forms-test-add/', forms_test_add, name='forms_test_add'),
+    path('get-act-answer/', get_act_answer, name='get-act-answer'),
 
     # Пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать доп. параметры
     path('departments_xxx/', LibDepartments.as_view(), name='departments_xxx'),

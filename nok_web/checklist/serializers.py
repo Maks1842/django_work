@@ -57,16 +57,10 @@ class TemplatesSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'template_file', 'version', 'is_deleted']
 
 
-class FormsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Forms
-        fields = ['id', 'name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted']
-
-
 class Form_SectionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Form_Sections
-        fields = ['id', 'name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted']
+        fields = ['id', 'name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted']
 
 
 class QuestionsSerializer(serializers.ModelSerializer):
@@ -96,39 +90,33 @@ class RecommendationsSerializer(serializers.ModelSerializer):
 class Forms_RecommendationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Forms_Recommendations
-        fields = ['id', 'free_value', 'answers', 'forms', 'form_sections', 'recommendations', 'is_deleted']
+        fields = ['id', 'free_value', 'answers', 'form_sections', 'recommendations', 'is_deleted']
 
 
 class AnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answers
-        fields = ['id', 'free_value', 'organisations', 'quota', 'forms', 'questions', 'question_values', 'is_deleted']
+        fields = ['id', 'organisations', 'checking', 'answers_json', 'is_deleted']
 
 
 class Signed_DociumentsSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Signed_Dociuments
-        fields = ['id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user']
+        fields = ['id', 'file_name', 'originat_file_name', 'description', 'created_at', 'is_deleted', 'user']
 
 
 class CommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        fields = ['id', 'free_value', 'forms', 'is_deleted']
+        fields = ['id', 'free_value', 'is_deleted']
 
 
 class PhotoSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Photo
-        fields = ['id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user']
-
-
-class EvaluationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Evaluation
-        fields = ['id', 'date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted']
+        fields = ['id', 'file_name', 'original_file_name', 'description', 'created_at', 'is_deleted', 'user']
 
 
 class VersionsSerializer(serializers.ModelSerializer):
@@ -153,7 +141,7 @@ class Transaction_ExchangeSerializer(serializers.ModelSerializer):
 class FormsActSerializer(serializers.ModelSerializer):
     class Meta:
         model = FormsAct
-        fields = ['id', 'type_departments', 'type_organisations', 'act_json', 'version']
+        fields = ['id', 'type_departments', 'type_organisations', 'act_json', 'date', 'version']
 
 
 class CheckingSerializer(serializers.ModelSerializer):
@@ -165,7 +153,7 @@ class CheckingSerializer(serializers.ModelSerializer):
 class ListCheckingSerializer(serializers.ModelSerializer):
     class Meta:
         model = List_Checking
-        fields = ['id', 'checking', 'organisation', 'user', 'is_deleted']
+        fields = ['id', 'checking', 'organisation', 'organisation_person', 'user', 'is_deleted']
 
 
 

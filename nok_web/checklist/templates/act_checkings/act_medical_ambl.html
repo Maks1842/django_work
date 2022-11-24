@@ -1,5 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+<!--Указываю какой шаблон хочу наследовать-->
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+<!--Используется для переопределения блока. В данном случае title-->
+{% endblock %}
+
+
+{% block content %}
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title></title>
@@ -79,7 +87,7 @@
     <tr>
         <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{'name'}}
+                {{ name_org }}
             </p>
         </td>
     </tr>
@@ -90,7 +98,7 @@
     <tr>
         <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question" style="font-size: 14pt">
-                Наименование населенного пункта
+                Адрес организации
             </p>
         </td>
     </tr>
@@ -98,7 +106,7 @@
     <tr>
         <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{'name'}}
+                {{ address_org }}
             </p>
         </td>
     </tr>
@@ -137,7 +145,7 @@
     <tr>
         <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{'name'}}
+                {{ user }}
             </p>
         </td>
     </tr>
@@ -274,13 +282,13 @@
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.1.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.1.1 }}
             </p>
         </td>
     </tr>
@@ -296,12 +304,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.2.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.2.1 }}
             </p>
         </td>
     </tr>
@@ -317,12 +325,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.3.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.3.1 }}
             </p>
         </td>
     </tr>
@@ -338,12 +346,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.4.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.4.1 }}
             </p>
         </td>
     </tr>
@@ -359,12 +367,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.5.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.5.1 }}
             </p>
         </td>
     </tr>
@@ -380,12 +388,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.6.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.6.1 }}
             </p>
         </td>
     </tr>
@@ -401,12 +409,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.7.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.7.1 }}
             </p>
         </td>
     </tr>
@@ -422,12 +430,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.8.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.8.1 }}
             </p>
         </td>
     </tr>
@@ -443,12 +451,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.9.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.9.1 }}
             </p>
         </td>
     </tr>
@@ -464,12 +472,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.10.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.10.1 }}
             </p>
         </td>
     </tr>
@@ -485,12 +493,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.11.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.11.1 }}
             </p>
         </td>
     </tr>
@@ -506,12 +514,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.12.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.12.1 }}
             </p>
         </td>
     </tr>
@@ -527,12 +535,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.13.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.13.1 }}
             </p>
         </td>
     </tr>
@@ -548,12 +556,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.14.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.14.1 }}
             </p>
         </td>
     </tr>
@@ -569,12 +577,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.15.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.15.1 }}
             </p>
         </td>
     </tr>
@@ -590,12 +598,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.16.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.16.1 }}
             </p>
         </td>
     </tr>
@@ -611,12 +619,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.17.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.17.1 }}
             </p>
         </td>
     </tr>
@@ -632,12 +640,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.18.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.18.1 }}
             </p>
         </td>
     </tr>
@@ -653,12 +661,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.19.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.19.1 }}
             </p>
         </td>
     </tr>
@@ -674,12 +682,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.20.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.20.1 }}
             </p>
         </td>
     </tr>
@@ -696,12 +704,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.21.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.21.1 }}
             </p>
         </td>
     </tr>
@@ -718,12 +726,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.22.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.22.1 }}
             </p>
         </td>
     </tr>
@@ -740,12 +748,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.23.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.23.1 }}
             </p>
         </td>
     </tr>
@@ -761,12 +769,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.24.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.24.1 }}
             </p>
         </td>
     </tr>
@@ -790,12 +798,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.25.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.25.1 }}
             </p>
         </td>
     </tr>
@@ -811,12 +819,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.26.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.26.1 }}
             </p>
         </td>
     </tr>
@@ -832,12 +840,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.27.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.27.1 }}
             </p>
         </td>
     </tr>
@@ -853,12 +861,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.28.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.28.1 }}
             </p>
         </td>
     </tr>
@@ -874,12 +882,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.29.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.29.1 }}
             </p>
         </td>
     </tr>
@@ -898,12 +906,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.30.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.30.1 }}
             </p>
         </td>
     </tr>
@@ -920,12 +928,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.31.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.31.1 }}
             </p>
         </td>
     </tr>
@@ -945,12 +953,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.32.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.32.1 }}
             </p>
         </td>
     </tr>
@@ -968,12 +976,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.33.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.33.1 }}
             </p>
         </td>
     </tr>
@@ -991,12 +999,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.34.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.34.1 }}
             </p>
         </td>
     </tr>
@@ -1014,12 +1022,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.35.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.35.1 }}
             </p>
         </td>
     </tr>
@@ -1037,12 +1045,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.36.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.36.1 }}
             </p>
         </td>
     </tr>
@@ -1059,12 +1067,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.37.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.37.1 }}
             </p>
         </td>
     </tr>
@@ -1081,12 +1089,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.38.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.38.1 }}
             </p>
         </td>
     </tr>
@@ -1103,12 +1111,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.39.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.39.1 }}
             </p>
         </td>
     </tr>
@@ -1125,12 +1133,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.40.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.40.1 }}
             </p>
         </td>
     </tr>
@@ -1147,12 +1155,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.41.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.41.1 }}
             </p>
         </td>
     </tr>
@@ -1168,12 +1176,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.42.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.42.1 }}
             </p>
         </td>
     </tr>
@@ -1189,12 +1197,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.43.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.43.1 }}
             </p>
         </td>
     </tr>
@@ -1210,12 +1218,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.44.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.44.1 }}
             </p>
         </td>
     </tr>
@@ -1231,12 +1239,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.45.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.45.1 }}
             </p>
         </td>
     </tr>
@@ -1252,12 +1260,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.46.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.46.1 }}
             </p>
         </td>
     </tr>
@@ -1273,12 +1281,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.47.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.47.1 }}
             </p>
         </td>
     </tr>
@@ -1294,12 +1302,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.48.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.48.1 }}
             </p>
         </td>
     </tr>
@@ -1315,12 +1323,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.49.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.49.1 }}
             </p>
         </td>
     </tr>
@@ -1337,12 +1345,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.50.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.50.1 }}
             </p>
         </td>
     </tr>
@@ -1360,12 +1368,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.51.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.51.1 }}
             </p>
         </td>
     </tr>
@@ -1382,12 +1390,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.52.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.52.1 }}
             </p>
         </td>
     </tr>
@@ -1403,12 +1411,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.53.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.53.1 }}
             </p>
         </td>
     </tr>
@@ -1424,12 +1432,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.54.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.54.1 }}
             </p>
         </td>
     </tr>
@@ -1453,13 +1461,13 @@
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.55.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.55.1 }}
             </p>
         </td>
     </tr>
@@ -1476,12 +1484,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.56.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.56.1 }}
             </p>
         </td>
     </tr>
@@ -1497,12 +1505,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.57.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.57.1 }}
             </p>
         </td>
     </tr>
@@ -1518,12 +1526,12 @@
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.58.0 }}
             </p>
         </td>
         <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-
+                {{ answers.58.1 }}
             </p>
         </td>
     </tr>
@@ -1575,8 +1583,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.59.0 }}
             </p>
         </td>
     </tr>
@@ -1591,8 +1599,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.60.0 }}
             </p>
         </td>
     </tr>
@@ -1608,8 +1616,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.61.0 }}
             </p>
         </td>
     </tr>
@@ -1624,8 +1632,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.62.0 }}
             </p>
         </td>
     </tr>
@@ -1641,8 +1649,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.63.0 }}
             </p>
         </td>
     </tr>
@@ -1658,8 +1666,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.64.0 }}
             </p>
         </td>
     </tr>
@@ -1696,8 +1704,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.65.0 }}
             </p>
         </td>
     </tr>
@@ -1712,8 +1720,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.66.0 }}
             </p>
         </td>
     </tr>
@@ -1732,8 +1740,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.67.0 }}
             </p>
         </td>
     </tr>
@@ -1748,8 +1756,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.68.0 }}
             </p>
         </td>
     </tr>
@@ -1765,8 +1773,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.69.0 }}
             </p>
         </td>
     </tr>
@@ -1781,8 +1789,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.70.0 }}
             </p>
         </td>
     </tr>
@@ -1810,7 +1818,7 @@
         </td>
         <td style="width: 300px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-
+                {{ answers.71.0 }}
             </p>
         </td>
     </tr>
@@ -1848,8 +1856,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.72.0 }}
             </p>
         </td>
     </tr>
@@ -1864,8 +1872,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.73.0 }}
             </p>
         </td>
     </tr>
@@ -1880,8 +1888,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.74.0 }}
             </p>
         </td>
     </tr>
@@ -1896,8 +1904,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.75.0 }}
             </p>
         </td>
     </tr>
@@ -1912,8 +1920,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.76.0 }}
             </p>
         </td>
     </tr>
@@ -1941,8 +1949,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.77.0 }}
             </p>
         </td>
     </tr>
@@ -1958,8 +1966,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.78.0 }}
             </p>
         </td>
     </tr>
@@ -1975,8 +1983,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.79.0 }}
             </p>
         </td>
     </tr>
@@ -1992,8 +2000,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.80.0 }}
             </p>
         </td>
     </tr>
@@ -2010,8 +2018,8 @@
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-
+            <p class="num">
+                {{ answers.81.0 }}
             </p>
         </td>
     </tr>
@@ -2020,7 +2028,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 735px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
                 <b>Дополнительная информация</b>
             </p>
@@ -2028,7 +2036,7 @@
     </tr>
 
     <tr>
-        <td style="width: 735px; height: 60px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 720px; height: 60px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
 
             </p>
@@ -2095,7 +2103,6 @@
     </tr>
 </table>
 <br/>
-
-
 </body>
-</html>
+
+{% endblock %}

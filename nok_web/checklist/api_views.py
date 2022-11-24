@@ -464,63 +464,6 @@ class TemplatesViewSet(
         return Response({'post': serializers.data})
 
 
-class FormsViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-    queryset = Forms.objects.all()
-    serializer_class = FormsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def forms_id(self, request, pk=None):
-        form_id = Forms.objects.values('id').get(pk=pk)
-        return Response({'forms_id': form_id})
-
-    @action(methods=['get'], detail=True)
-    def created_at(self, request, pk=None):
-        created = Forms.objects.values('created_at').get(pk=pk)
-        return Response({'created': created})
-
-    @action(methods=['get'], detail=True)
-    def type_department(self, request, pk=None):
-        type_dep = Type_Departments.objects.get(pk=pk)
-        return Response({'type_department': type_dep.type})
-
-    @action(methods=['get'], detail=False)
-    def types_departments(self, request):
-        types_deps = Type_Departments.objects.all()
-        return Response({'types_departments': [t.type for t in types_deps]})
-
-    @action(methods=['get'], detail=True)
-    def template(self, request, pk=None):
-        temp = Templates.objects.get(pk=pk)
-        return Response({'template': temp.name})
-
-    @action(methods=['get'], detail=False)
-    def templates(self, request):
-        temps = Templates.objects.all()
-        return Response({'templates': [t.name for t in temps]})
-
-    @action(methods=['put'], detail=True)
-    def forms_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Forms.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = FormsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
 class FormSectionsViewSet(
                             # mixins.CreateModelMixin,
                             mixins.RetrieveModelMixin,
@@ -557,16 +500,6 @@ class FormSectionsViewSet(
     def parents(self, request):
         parents_fs = Form_Sections.objects.all()
         return Response({'parents': [p.name for p in parents_fs]})
-
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_fs = Forms.objects.get(pk=pk)
-        return Response({'form': form_fs.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_fs = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_fs]})
 
     @action(methods=['get'], detail=True)
     def type_department(self, request, pk=None):
@@ -759,16 +692,6 @@ class FormsRecommendationsViewSet(
         return Response({'names': [a.id for a in anss]})
 
     @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_fs = Forms.objects.get(pk=pk)
-        return Response({'form': form_fs.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_fs = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_fs]})
-
-    @action(methods=['get'], detail=True)
     def form_section(self, request, pk=None):
         form_sect = Form_Sections.objects.get(pk=pk)
         return Response({'form_section': form_sect.name})
@@ -834,16 +757,6 @@ class AnswersViewSet(
     def quota(self, request, pk=None):
         quot = Quota.objects.get(pk=pk)
         return Response({'quota': quot.quota})
-
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_fs = Forms.objects.get(pk=pk)
-        return Response({'form': form_fs.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_fs = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_fs]})
 
     @action(methods=['get'], detail=True)
     def question(self, request, pk=None):
@@ -915,26 +828,6 @@ class SignedDociumentsViewSet(
         created = Signed_Dociuments.objects.values('created_at').get(pk=pk)
         return Response({'created': created})
 
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_sd = Forms.objects.get(pk=pk)
-        return Response({'form': form_sd.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_sd = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_sd]})
-
-    @action(methods=['get'], detail=True)
-    def evaluation(self, request, pk=None):
-        evaluat = Evaluation.objects.get(pk=pk)
-        return Response({'name': evaluat.date_evaluation})
-
-    @action(methods=['get'], detail=False)
-    def evaluations(self, request):
-        evaluats = Evaluation.objects.all()
-        return Response({'names': [e.date_evaluation for e in evaluats]})
-
     @action(methods=['put'], detail=True)
     def signed_dociuments_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
@@ -971,16 +864,6 @@ class CommentsViewSet(
     def free_value(self, request, pk=None):
         fv = Comments.objects.values('free_value').get(pk=pk)
         return Response({'free_value': fv})
-
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_fs = Forms.objects.get(pk=pk)
-        return Response({'form': form_fs.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_fs = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_fs]})
 
     @action(methods=['put'], detail=True)
     def comments_update(self, request, *args, **kwargs):
@@ -1036,26 +919,6 @@ class PhotoViewSet(
         created = Photo.objects.values('created_at').get(pk=pk)
         return Response({'created': created})
 
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_sd = Forms.objects.get(pk=pk)
-        return Response({'form': form_sd.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_sd = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_sd]})
-
-    @action(methods=['get'], detail=True)
-    def evaluation(self, request, pk=None):
-        evaluat = Evaluation.objects.get(pk=pk)
-        return Response({'name': evaluat.date_evaluation})
-
-    @action(methods=['get'], detail=False)
-    def evaluations(self, request):
-        evaluats = Evaluation.objects.all()
-        return Response({'names': [e.date_evaluation for e in evaluats]})
-
     @action(methods=['put'], detail=True)
     def photo_update(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
@@ -1066,73 +929,6 @@ class PhotoViewSet(
         except:
             return Response({'error': 'Объект не существует'})
         serializers = PhotoSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class EvaluationViewSet(
-                        # mixins.CreateModelMixin,
-                        mixins.RetrieveModelMixin,
-                        mixins.UpdateModelMixin,
-                        # mixins.DestroyModelMixin,
-                        mixins.ListModelMixin,
-                        GenericViewSet):
-    queryset = Evaluation.objects.all()
-    serializer_class = EvaluationSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def evaluation_id(self, request, pk=None):
-        evaluat_id = Evaluation.objects.values('id').get(pk=pk)
-        return Response({'evaluation_id': evaluat_id})
-
-    @action(methods=['get'], detail=True)
-    def date_evaluation(self, request, pk=None):
-        date = Evaluation.objects.values('date_evaluation').get(pk=pk)
-        return Response({'date_evaluation': date})
-
-    @action(methods=['get'], detail=True)
-    def form(self, request, pk=None):
-        form_sd = Forms.objects.get(pk=pk)
-        return Response({'form': form_sd.name})
-
-    @action(methods=['get'], detail=False)
-    def forms(self, request):
-        forms_sd = Forms.objects.all()
-        return Response({'forms': [f.name for f in forms_sd]})
-
-    @action(methods=['get'], detail=True)
-    def organisation(self, request, pk=None):
-        org = Organisations.objects.get(pk=pk)
-        return Response({'organisation': org.organisation_name})
-
-    @action(methods=['get'], detail=False)
-    def organisations(self, request):
-        orgs = Organisations.objects.all()
-        return Response({'organisations': [o.organisation_name for o in orgs]})
-
-    @action(methods=['get'], detail=True)
-    def organisation_person(self, request, pk=None):
-        org_pers = Organisation_Persons.objects.get(pk=pk)
-        return Response({'organisation_person': org_pers.id})
-
-    @action(methods=['get'], detail=False)
-    def organisation_persons(self, request):
-        orgs_pers = Organisation_Persons.objects.all()
-        return Response({'organisation_persons': [o.id for o in orgs_pers]})
-
-    @action(methods=['put'], detail=True)
-    def evaluation_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Evaluation.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = EvaluationSerializer(data=request.data, instance=instance, partial=True)
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})
@@ -1522,6 +1318,9 @@ def do_some_magic(form_json):
 
     f = open("checklist/modules/abm.json")       # Акт амбулатория
     # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    # f = open("checklist/modules/cult_standart.json")    # Акт культурное наследие
+    # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
+    # f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)
     f.close()
     # f = open("answ.json")
@@ -1570,15 +1369,26 @@ def answer_in_the_act(comparison, query):
     for answ in comparison:
         answer = ''
         answers = []
-        for a in comparison[answ]:
-            if a == '':
-                answer = "Нет"
-            elif int(a) > 0:
-                if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                    answer = query.get(pk=int(a))['name_alternativ']
-                else:
-                    answer = query.get(pk=int(a))['value_name']
-            answers.append(answer)
+        if '11' in comparison[answ] or '12' in comparison[answ]:
+            for a in comparison[answ]:
+                if a == '':
+                    answer = "Нет"
+                elif int(a) > 0:
+                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                        answer = query.get(pk=int(a))['name_alternativ']
+                    else:
+                        answer = query.get(pk=int(a))['value_name']
+                answers.append(answer)
+        else:
+            for a in comparison[answ]:
+                if a == '':
+                    pass
+                elif int(a) > 0:
+                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                        answer = query.get(pk=int(a))['name_alternativ']
+                    else:
+                        answer = query.get(pk=int(a))['value_name']
+                    answers.append(answer)
         list[answ] = answers
 
     return list

@@ -65,8 +65,10 @@ def region_view(request):
 
 def organisation_view(request):
     organisations = Organisations.objects.order_by('pk')
+    checking = Checking.objects.order_by('pk')
     context = {
         'organisations': organisations,
+        'checking': checking,
     }
     return render(request, 'checklist/select_list.html', context)
 
@@ -166,12 +168,14 @@ def get_act(request, type_departments=1, type_organisations=3, number_items=0):
 
 def get_act_answer(request):
 
-    org_id = request.POST['org_id']
-
-    # organisation = request.query_params.get('id_organisation')
+    org_id = request.POST["org_id"]
+    check_id = request.POST["check_id"]
 
     # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
     type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
+    name_org = Organisations.objects.get(pk=org_id).organisation_name
+    address_org = Organisations.objects.get(pk=org_id).address
+    user = List_Checking.objects.get(checking_id=check_id).user  # Имя проверяющего
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
 
     list = []
@@ -181,9 +185,12 @@ def get_act_answer(request):
 
         comparison = do_some_magic(form_json)
         answers = answer_in_the_act(comparison, query)
-    context = {'answers': answers}
+    context = {'name_org': name_org,
+               'address_org': address_org,
+               'user': user,
+               'answers': answers}
 
-    return render(request, 'checklist/act_medical_amb.html', context)
+    return render(request, 'act_checkings/act_medical_ambl.html', context)
 
 '''
 Функция сравнения двух json.
@@ -194,14 +201,14 @@ def get_act_answer(request):
 В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
 '''
 def do_some_magic(form_json):
-    act_answer = { "1": [ "11", "12" ], "2": [ "11", "12" ], "3": [ "11" ], "4": [ "12" ], "5": [ "11", "12" ],
-                   "6": [ "4" ], "7": [ "11", "12" ], "8": [ "11", "12" ], "59": [ "1" ], "60": [ "1" ],
-                   "61": [ "1" ], "62": [ "1" ], "65": [ "1" ], "71": [ "8" ], "72": [ "1" ], "73": [ "1" ],
-                   "77": [ "1" ], "78": [ "1" ], "79": [ "1" ], "80": [ "1" ], "81": [ "1" ] }
 
-    # f = open("act_med.json")
-    # act = json.load(f)
-    # f.close()
+    f = open("checklist/modules/abm.json")       # Акт амбулатория
+    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    # f = open("checklist/modules/cult_standart.json")    # Акт культурное наследие
+    # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
+    # f = open("checklist/modules/school.json")    # Акт школа
+    act_answer = json.load(f)
+    f.close()
     # f = open("answ.json")
     # answ = json.load(f)
     # f.close()
@@ -248,15 +255,26 @@ def answer_in_the_act(comparison, query):
     for answ in comparison:
         answer = ''
         answers = []
-        for a in comparison[answ]:
-            if a == '':
-                answer = "Нет"
-            elif int(a) > 0:
-                if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                    answer = query.get(pk=int(a))['name_alternativ']
-                else:
-                    answer = query.get(pk=int(a))['value_name']
-            answers.append(answer)
+        if '11' in comparison[answ] or '12' in comparison[answ]:
+            for a in comparison[answ]:
+                if a == '':
+                    answer = "Нет"
+                elif int(a) > 0:
+                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                        answer = query.get(pk=int(a))['name_alternativ']
+                    else:
+                        answer = query.get(pk=int(a))['value_name']
+                answers.append(answer)
+        else:
+            for a in comparison[answ]:
+                if a == '':
+                    pass
+                elif int(a) > 0:
+                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                        answer = query.get(pk=int(a))['name_alternativ']
+                    else:
+                        answer = query.get(pk=int(a))['value_name']
+                    answers.append(answer)
         list[answ] = answers
 
     return list

@@ -490,37 +490,11 @@
   }
 },
 {
-  "model": "checklist.forms",
+  "model": "checklist.templates",
   "pk": 1,
   "fields": {
-    "name": "Акт осмотра - Здравоохранение",
-    "created_at": "2022-10-05",
-    "type_departments": 1,
-    "templates": null,
-    "version": null,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.forms",
-  "pk": 2,
-  "fields": {
-    "name": "Акт осмотра - Образование",
-    "created_at": "2022-10-05",
-    "type_departments": 3,
-    "templates": null,
-    "version": null,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.forms",
-  "pk": 3,
-  "fields": {
-    "name": "Акт осмотра - Культура",
-    "created_at": "2022-11-09",
-    "type_departments": 2,
-    "templates": null,
+    "name": "Здравоохранение амбулатория. 24.11.2022",
+    "template_file": "act_medical_ambl.html",
     "version": null,
     "is_deleted": false
   }
@@ -533,7 +507,6 @@
     "version": "1",
     "order_num": 1,
     "parent": 9,
-    "forms": 1,
     "type_departments": 1,
     "is_deleted": false
   }
@@ -546,7 +519,6 @@
     "version": "1",
     "order_num": 2,
     "parent": 9,
-    "forms": 1,
     "type_departments": 1,
     "is_deleted": false
   }
@@ -559,7 +531,6 @@
     "version": "1",
     "order_num": 3,
     "parent": 9,
-    "forms": 1,
     "type_departments": 1,
     "is_deleted": false
   }
@@ -572,7 +543,6 @@
     "version": "1",
     "order_num": 11,
     "parent": null,
-    "forms": 1,
     "type_departments": null,
     "is_deleted": false
   }
@@ -585,7 +555,6 @@
     "version": "1",
     "order_num": 12,
     "parent": null,
-    "forms": 1,
     "type_departments": null,
     "is_deleted": false
   }
@@ -598,7 +567,6 @@
     "version": "1",
     "order_num": 13,
     "parent": null,
-    "forms": 1,
     "type_departments": 1,
     "is_deleted": false
   }
@@ -611,7 +579,6 @@
     "version": "1",
     "order_num": 14,
     "parent": null,
-    "forms": 1,
     "type_departments": null,
     "is_deleted": false
   }
@@ -624,7 +591,6 @@
     "version": "1",
     "order_num": 15,
     "parent": null,
-    "forms": 1,
     "type_departments": null,
     "is_deleted": false
   }
@@ -637,7 +603,6 @@
     "version": "1",
     "order_num": 1,
     "parent": null,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -650,7 +615,6 @@
     "version": "1",
     "order_num": 1,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -663,7 +627,6 @@
     "version": "1",
     "order_num": 2,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -676,7 +639,6 @@
     "version": "1",
     "order_num": 3,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -689,7 +651,6 @@
     "version": "1",
     "order_num": 4,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -702,7 +663,6 @@
     "version": "1",
     "order_num": 5,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -715,7 +675,6 @@
     "version": "1",
     "order_num": 6,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -728,7 +687,6 @@
     "version": "1",
     "order_num": 7,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -741,7 +699,6 @@
     "version": "1",
     "order_num": 8,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -754,7 +711,6 @@
     "version": "1",
     "order_num": 9,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -767,7 +723,6 @@
     "version": "1",
     "order_num": 10,
     "parent": 9,
-    "forms": 2,
     "type_departments": 3,
     "is_deleted": false
   }
@@ -780,7 +735,6 @@
     "version": "1",
     "order_num": 1,
     "parent": 9,
-    "forms": 3,
     "type_departments": 2,
     "is_deleted": false
   }
@@ -793,7 +747,6 @@
     "version": "1",
     "order_num": 2,
     "parent": 9,
-    "forms": 3,
     "type_departments": 2,
     "is_deleted": false
   }
@@ -806,7 +759,6 @@
     "version": "1",
     "order_num": 3,
     "parent": 9,
-    "forms": 3,
     "type_departments": 2,
     "is_deleted": false
   }
@@ -4108,45 +4060,6 @@
   }
 },
 {
-  "model": "checklist.signed_dociuments",
-  "pk": 1,
-  "fields": {
-    "file_name": "Тест",
-    "originat_file_name": "Матрицы_культура_КК_2022_копия.xlsx",
-    "description": "Проверка",
-    "created_at": "2022-09-30",
-    "forms": 1,
-    "evaluation": 1,
-    "is_deleted": false,
-    "user": 1
-  }
-},
-{
-  "model": "checklist.signed_dociuments",
-  "pk": 2,
-  "fields": {
-    "file_name": "Тест 2",
-    "originat_file_name": "Матрицы_культура_КК_2022_копия_2.xlsx",
-    "description": "Проверка 2",
-    "created_at": "2022-09-20",
-    "forms": 1,
-    "evaluation": 1,
-    "is_deleted": false,
-    "user": 1
-  }
-},
-{
-  "model": "checklist.evaluation",
-  "pk": 1,
-  "fields": {
-    "date_evaluation": "2022-09-30",
-    "forms": 1,
-    "organisations": 1,
-    "organisation_persons": 1,
-    "is_deleted": false
-  }
-},
-{
   "model": "checklist.type_answers",
   "pk": 1,
   "fields": {
@@ -5471,6 +5384,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -6752,6 +6666,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -7739,6 +7654,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -8726,6 +8642,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -9765,6 +9682,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -10804,6 +10722,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -11707,6 +11626,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -12581,6 +12501,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -13217,6 +13138,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -13757,6 +13679,7 @@
         }
       ]
     },
+    "date": "2022-11-06",
     "version": "V1"
   }
 },
@@ -13810,6 +13733,7 @@
   "fields": {
     "checking": 1,
     "organisation": 5,
+    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13818,8 +13742,9 @@
   "model": "checklist.list_checking",
   "pk": 2,
   "fields": {
-    "checking": 1,
+    "checking": 2,
     "organisation": 4,
+    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13828,8 +13753,9 @@
   "model": "checklist.list_checking",
   "pk": 3,
   "fields": {
-    "checking": 1,
+    "checking": 3,
     "organisation": 2,
+    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13838,8 +13764,9 @@
   "model": "checklist.list_checking",
   "pk": 4,
   "fields": {
-    "checking": 1,
+    "checking": 3,
     "organisation": 1,
+    "organisation_person": null,
     "user": 2,
     "is_deleted": false
   }
@@ -13850,6 +13777,7 @@
   "fields": {
     "checking": 2,
     "organisation": 4,
+    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13858,18 +13786,9 @@
   "model": "checklist.list_checking",
   "pk": 6,
   "fields": {
-    "checking": 2,
+    "checking": 3,
     "organisation": 1,
-    "user": 2,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 7,
-  "fields": {
-    "checking": 2,
-    "organisation": 5,
+    "organisation_person": null,
     "user": 2,
     "is_deleted": false
   }
@@ -13878,19 +13797,10 @@
   "model": "checklist.list_checking",
   "pk": 8,
   "fields": {
-    "checking": 3,
+    "checking": 2,
     "organisation": 3,
+    "organisation_person": null,
     "user": 1,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 9,
-  "fields": {
-    "checking": 3,
-    "organisation": 5,
-    "user": 2,
     "is_deleted": false
   }
 },
@@ -13900,6 +13810,7 @@
   "fields": {
     "checking": 4,
     "organisation": 6,
+    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13910,6 +13821,7 @@
   "fields": {
     "checking": 4,
     "organisation": 7,
+    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }

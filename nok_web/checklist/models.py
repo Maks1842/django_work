@@ -59,8 +59,8 @@ class Department_Persons(models.Model):
     first_name = models.CharField(max_length=20, verbose_name='Имя')
     second_name = models.CharField(max_length=20, null=True, blank=True, verbose_name='Отчество')
     last_name = models.CharField(max_length=20, verbose_name='Фамилия')
-    position = models.CharField(max_length=200, verbose_name='Должность')
-    phone = models.CharField(max_length=15, verbose_name='Телефон')
+    position = models.CharField(max_length=200, blank=True, verbose_name='Должность')
+    phone = models.CharField(max_length=15, blank=True, verbose_name='Телефон')
     email = models.EmailField(max_length=50, blank=True, verbose_name='Email')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
@@ -119,14 +119,18 @@ class Organisation_Persons(models.Model):
     first_name = models.CharField(max_length=20, verbose_name='Имя')
     second_name = models.CharField(max_length=20, null=True, blank=True, verbose_name='Отчество')
     last_name = models.CharField(max_length=20, verbose_name='Фамилия')
-    position = models.CharField(max_length=200, verbose_name='Должность')
-    phone = models.CharField(max_length=15, verbose_name='Телефон')
+    position = models.CharField(max_length=200, blank=True, verbose_name='Должность')
+    phone = models.CharField(max_length=15, blank=True, verbose_name='Телефон')
     email = models.EmailField(max_length=50, blank=True, verbose_name='Email')
     organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
+
+    def __str__(self):
+        name = self.first_name + ' ' + self.second_name + ' ' + self.last_name
+        return name
 
     class Meta:
         verbose_name = 'Ответственный из Учреждения'
@@ -147,25 +151,6 @@ class Quota(models.Model):
 class Templates(models.Model):
     name = models.CharField(max_length=200, verbose_name='Наименование шаблона html')
     template_file = models.FileField(verbose_name='Ссылка на шаблон')
-    version = models.ForeignKey('Versions', on_delete=models.PROTECT, null=True, verbose_name='Версия_id')
-    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Наименование шаблона html'
-        verbose_name_plural = 'Наименование шаблона html'
-
-
-class Forms(models.Model):
-    name = models.CharField(max_length=200, verbose_name='Наименование формы Акта/Отчета')
-    created_at = models.DateField(verbose_name='Дата формы')
-    type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип департамента_id')
-    templates = models.ForeignKey('Templates', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Шаблоны_id')
     version = models.ForeignKey('Versions', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Версия_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
@@ -176,7 +161,8 @@ class Forms(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Наименование формы Акта/Отчета'
+        verbose_name = 'Шаблоны html'
+        verbose_name_plural = 'Шаблоны html'
 
 
 class Form_Sections(models.Model):
@@ -184,7 +170,6 @@ class Form_Sections(models.Model):
     version = models.CharField(max_length=20, verbose_name='Версия раздела')
     order_num = models.IntegerField(verbose_name='Порядковый номер')
     parent = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent_id')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип департамента_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
@@ -195,7 +180,7 @@ class Form_Sections(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Наименование разделов'
+        verbose_name_plural = 'Наименование разделов акта'
 
 
 class Questions(models.Model):
@@ -258,7 +243,6 @@ class Recommendations(models.Model):
 class Forms_Recommendations(models.Model):
     free_value = models.CharField(max_length=500, verbose_name='Рекомендации в свободной форме')
     answers = models.ForeignKey('Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Ответы_id')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
     form_sections = models.ForeignKey('Form_Sections', on_delete=models.PROTECT, null=True, verbose_name='Разделы_id')
     recommendations = models.ForeignKey('Recommendations', on_delete=models.PROTECT, null=True, verbose_name='Рекоммендации_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
@@ -271,12 +255,9 @@ class Forms_Recommendations(models.Model):
 
 
 class Answers(models.Model):
-    free_value = models.CharField(max_length=250, verbose_name='Ответы в свободной форме')
     organisations = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Организации_id')
-    quota = models.ForeignKey('Quota', on_delete=models.PROTECT, null=True, verbose_name='Квоты_id')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
-    questions = models.ForeignKey('Questions', on_delete=models.PROTECT, null=True, verbose_name='Вопросы_id')
-    question_values = models.ForeignKey('Question_Values', on_delete=models.PROTECT, null=True, verbose_name='Варианты ответов_id')
+    checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Проверка_id')
+    answers_json = models.JSONField(null=True, verbose_name='Структура ответов')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -291,8 +272,6 @@ class Signed_Dociuments(models.Model):
     originat_file_name = models.FileField(verbose_name='Ссылка на документ')
     description = models.CharField(max_length=250, verbose_name='Комментарий')
     created_at = models.DateField(verbose_name='Дата документа')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
-    evaluation = models.ForeignKey('Evaluation', on_delete=models.PROTECT, null=True, verbose_name='Оценка_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
@@ -308,7 +287,6 @@ class Signed_Dociuments(models.Model):
 
 class Comments(models.Model):
     free_value = models.CharField(max_length=500, verbose_name='Комментарии')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def get_absolute_url(self):
@@ -323,8 +301,6 @@ class Photo(models.Model):
     original_file_name = models.CharField(max_length=50, verbose_name='Оригинальное имя файла')
     description = models.CharField(max_length=50, verbose_name='Комментарий')
     created_at = models.DateField(verbose_name='Дата документа')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
-    evaluation = models.ForeignKey('Evaluation', on_delete=models.PROTECT, null=True, verbose_name='Оценка_id')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
@@ -337,19 +313,6 @@ class Photo(models.Model):
     class Meta:
         verbose_name_plural = 'Фото'
 
-
-class Evaluation(models.Model):
-    date_evaluation = models.DateField(verbose_name='Дата проведения оценки')
-    forms = models.ForeignKey('Forms', on_delete=models.PROTECT, null=True, verbose_name='Формы_id')
-    organisations = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Организации_id')
-    organisation_persons = models.ForeignKey('Organisation_Persons', on_delete=models.PROTECT, null=True, verbose_name='Представитель организации_id')
-    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
-    class Meta:
-        verbose_name_plural = 'Независимая оценка'
 
 
 class Versions(models.Model):
@@ -378,18 +341,17 @@ class Type_Answers(models.Model):
         return self.type
 
     class Meta:
-        verbose_name_plural = 'Тип ответа'
+        verbose_name = 'Тип ответа'
+        verbose_name_plural = 'Типы ответов'
 
 
 class Transaction_Exchange(models.Model):
     model = models.CharField(max_length=50, verbose_name='Модель')
     field = models.CharField(max_length=50, verbose_name='Поле')
-    old_data = models.CharField(max_length=2000, verbose_name='Старые данные')
-    new_data = models.CharField(max_length=2000, verbose_name='Новые данные')
+    old_data = models.CharField(max_length=2000, blank=True, verbose_name='Старые данные')
+    new_data = models.CharField(max_length=2000, blank=True, verbose_name='Новые данные')
     date_exchange = models.DateTimeField(auto_now_add=True, verbose_name='Дата изменения данных')
-    # date_exchange = models.DateField(verbose_name='Дата изменения данных')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
-
 
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
@@ -402,6 +364,7 @@ class FormsAct(models.Model):
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип учреждения_id')
     act_json = models.JSONField(verbose_name='Структура акта')
+    date = models.DateField(null=True, blank=True, verbose_name='Дата формы акта')
     version = models.CharField(max_length=50, verbose_name='Версия формы акта')
 
     def get_absolute_url(self):
@@ -431,6 +394,7 @@ class Checking(models.Model):
 class List_Checking(models.Model):
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Наименование проверки')
     organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')
+    organisation_person = models.ForeignKey('Organisation_Persons', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Представитель организации')
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Эксперт')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 

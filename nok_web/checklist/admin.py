@@ -65,18 +65,11 @@ class TemplatesAdmin(admin.ModelAdmin):
     list_filter = ('name', 'template_file', 'version', 'is_deleted')
 
 
-class FormsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
-    search_fields = ('name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
-    list_editable = ('name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
-    list_filter = ('name', 'version', 'created_at', 'type_departments', 'templates', 'is_deleted')
-
-
 class Form_SectionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
-    search_fields = ('name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
-    list_editable = ('name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
-    list_filter = ('name', 'version', 'order_num', 'parent', 'forms', 'type_departments', 'is_deleted')
+    list_display = ('id', 'name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
+    search_fields = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
+    list_editable = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
+    list_filter = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
 
 
 class QuestionsAdmin(admin.ModelAdmin):
@@ -108,45 +101,38 @@ class RecommendationsAdmin(admin.ModelAdmin):
 
 
 class Forms_RecommendationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'free_value', 'answers', 'forms', 'form_sections', 'recommendations', 'is_deleted')
-    search_fields = ('answers', 'forms', 'form_sections', 'recommendations', 'is_deleted')
-    list_editable = ('free_value', 'answers', 'forms', 'form_sections', 'recommendations', 'is_deleted')
-    list_filter = ('answers', 'forms', 'form_sections', 'recommendations', 'is_deleted')
+    list_display = ('id', 'free_value', 'answers', 'form_sections', 'recommendations', 'is_deleted')
+    search_fields = ('answers', 'form_sections', 'recommendations', 'is_deleted')
+    list_editable = ('free_value', 'answers', 'form_sections', 'recommendations', 'is_deleted')
+    list_filter = ('answers', 'form_sections', 'recommendations', 'is_deleted')
 
 
 class AnswersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'free_value', 'organisations', 'quota', 'forms', 'questions', 'question_values', 'is_deleted')
-    search_fields = ('organisations', 'quota', 'forms', 'questions', 'question_values', 'is_deleted')
-    list_editable = ('free_value', 'organisations', 'quota', 'forms', 'questions', 'question_values', 'is_deleted')
-    list_filter = ('organisations', 'quota', 'forms', 'questions', 'question_values', 'is_deleted')
+    list_display = ('id', 'organisations', 'checking', 'answers_json', 'is_deleted')
+    search_fields = ('organisations', 'checking', 'answers_json', 'is_deleted')
+    list_editable = ('organisations', 'checking', 'answers_json', 'is_deleted')
+    list_filter = ('organisations', 'checking', 'answers_json', 'is_deleted')
 
 
 class Signed_DociumentsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-    search_fields = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-    list_editable = ('file_name', 'originat_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-    list_filter = ('file_name', 'originat_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
+    list_display = ('id', 'file_name', 'originat_file_name', 'description', 'created_at', 'is_deleted', 'user')
+    search_fields = ('file_name', 'originat_file_name', 'created_at', 'is_deleted', 'user')
+    list_editable = ('file_name', 'originat_file_name', 'description', 'created_at', 'is_deleted', 'user')
+    list_filter = ('file_name', 'originat_file_name', 'created_at', 'is_deleted', 'user')
 
 
 class CommentsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'free_value', 'forms', 'is_deleted')
-    search_fields = ('free_value', 'forms', 'is_deleted')
-    list_editable = ('free_value', 'forms', 'is_deleted')
-    list_filter = ('free_value', 'forms', 'is_deleted')
+    list_display = ('id', 'free_value', 'is_deleted')
+    search_fields = ('free_value', 'is_deleted')
+    list_editable = ('free_value', 'is_deleted')
+    list_filter = ('free_value', 'is_deleted')
 
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-    search_fields = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-    list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-    list_filter = ('file_name', 'original_file_name', 'created_at', 'forms', 'evaluation', 'is_deleted', 'user')
-
-
-class EvaluationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
-    search_fields = ('date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
-    list_editable = ('date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
-    list_filter = ('date_evaluation', 'forms', 'organisations', 'organisation_persons', 'is_deleted')
+    list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'is_deleted', 'user')
+    search_fields = ('file_name', 'original_file_name', 'created_at', 'is_deleted', 'user')
+    list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'is_deleted', 'user')
+    list_filter = ('file_name', 'original_file_name', 'created_at', 'is_deleted', 'user')
 
 
 class VersionsAdmin(admin.ModelAdmin):
@@ -171,10 +157,10 @@ class Transaction_ExchangeAdmin(admin.ModelAdmin):
 
 
 class FormsActAdmin(admin.ModelAdmin):
-    list_display = ('id', 'type_departments', 'type_organisations', 'act_json', 'version')
-    search_fields = ('type_departments', 'type_organisations', 'act_json', 'version')
-    list_editable = ('type_departments', 'type_organisations', 'act_json', 'version')
-    list_filter = ('type_departments', 'type_organisations', 'act_json', 'version')
+    list_display = ('id', 'type_departments', 'type_organisations', 'act_json', 'date', 'version')
+    search_fields = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
+    list_editable = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
+    list_filter = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
 
 
 class CheckingAdmin(admin.ModelAdmin):
@@ -185,10 +171,10 @@ class CheckingAdmin(admin.ModelAdmin):
 
 
 class ListCheckingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'checking', 'organisation', 'user', 'is_deleted')
-    search_fields = ('checking', 'organisation', 'user', 'is_deleted')
-    list_editable = ('checking', 'organisation', 'user', 'is_deleted')
-    list_filter = ('checking', 'organisation', 'user', 'is_deleted')
+    list_display = ('id', 'checking', 'organisation', 'organisation_person', 'user', 'is_deleted')
+    search_fields = ('checking', 'organisation', 'organisation_person', 'user', 'is_deleted')
+    list_editable = ('checking', 'organisation', 'organisation_person', 'user', 'is_deleted')
+    list_filter = ('checking', 'organisation', 'organisation_person', 'user', 'is_deleted')
 
 
 #!!!Важно соблюдать последовательность регистрации моделей
@@ -201,7 +187,6 @@ admin.site.register(Organisations, OrganisationsAdmin)
 admin.site.register(Organisation_Persons, Organisation_PersonsAdmin)
 admin.site.register(Quota, QuotaAdmin)
 admin.site.register(Templates, TemplatesAdmin)
-admin.site.register(Forms, FormsAdmin)
 admin.site.register(Form_Sections, Form_SectionsAdmin)
 admin.site.register(Questions, QuestionsAdmin)
 admin.site.register(Question_Values, Question_ValuesAdmin)
@@ -212,7 +197,6 @@ admin.site.register(Answers, AnswersAdmin)
 admin.site.register(Signed_Dociuments, Signed_DociumentsAdmin)
 admin.site.register(Comments, CommentsAdmin)
 admin.site.register(Photo, PhotoAdmin)
-admin.site.register(Evaluation, EvaluationAdmin)
 admin.site.register(Versions, VersionsAdmin)
 admin.site.register(Type_Answers, Type_AnswersAdmin)
 admin.site.register(Transaction_Exchange, Transaction_ExchangeAdmin)
