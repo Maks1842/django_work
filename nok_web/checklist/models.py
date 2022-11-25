@@ -115,6 +115,11 @@ class Organisations(models.Model):
         verbose_name_plural = 'Учреждения'
 
 
+'''
+Информация о представителе проверяемой организации.
+Данные может вносить любой пользователь приложения, как на этапе подготовки проверки
+так и во время проверки.
+'''
 class Organisation_Persons(models.Model):
     first_name = models.CharField(max_length=20, verbose_name='Имя')
     second_name = models.CharField(max_length=20, null=True, blank=True, verbose_name='Отчество')
@@ -226,6 +231,10 @@ class Form_Sections_Question(models.Model):
         verbose_name_plural = 'Сопоставление вопрос-раздел'
 
 
+'''
+Хранятся типовые рекомендации по замечаниям отраженным в акте проверки.
+Данные этой модели используются при составлении итоговых отчетов.
+'''
 class Recommendations(models.Model):
     name = models.CharField(max_length=500, verbose_name='Рекоммендации')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
@@ -240,6 +249,10 @@ class Recommendations(models.Model):
         verbose_name_plural = 'Варианты рекоммендаций'
 
 
+'''
+Хранятся рекомендации в свободной форме по замечаниям отраженным в акте проверки.
+Данные этой модели используются при составлении итоговых отчетов.
+'''
 class Forms_Recommendations(models.Model):
     free_value = models.CharField(max_length=500, verbose_name='Рекомендации в свободной форме')
     answers = models.ForeignKey('Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Ответы_id')
@@ -254,6 +267,10 @@ class Forms_Recommendations(models.Model):
         verbose_name_plural = 'Рекомендации - факт'
 
 
+'''
+Хранятся json структуры ответов на вопросы Акта, полученные в ходе заполнения экспертом/ползователем акта проверки.
+Идентификация по названию проверки и названию проверяемой организации.
+'''
 class Answers(models.Model):
     organisations = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Организации_id')
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Проверка_id')
@@ -267,6 +284,9 @@ class Answers(models.Model):
         verbose_name_plural = 'Ответы - факт'
 
 
+'''
+Хранятся ссылки на отсканированные Акты проверки, с подписями представителей проверяемой организации.
+'''
 class Signed_Dociuments(models.Model):
     file_name = models.CharField(max_length=100, verbose_name='Наименования документов')
     originat_file_name = models.FileField(verbose_name='Ссылка на документ')
@@ -331,6 +351,13 @@ class Versions(models.Model):
         verbose_name_plural = 'Контроль версий'
 
 
+'''
+С помощью какого элемента пользователь проставояет ответ:
+1 - checkbox;
+2 - radiobutton;
+3 - input;
+5 - select.
+'''
 class Type_Answers(models.Model):
     type = models.CharField(max_length=50, verbose_name='Типы ответов')
 
@@ -345,6 +372,9 @@ class Type_Answers(models.Model):
         verbose_name_plural = 'Типы ответов'
 
 
+'''
+В данной модели хранятся все изменения, произведенные пользователем в других моделях.
+'''
 class Transaction_Exchange(models.Model):
     model = models.CharField(max_length=50, verbose_name='Модель')
     field = models.CharField(max_length=50, verbose_name='Поле')
@@ -360,6 +390,12 @@ class Transaction_Exchange(models.Model):
         verbose_name_plural = 'Регистрация изменений данных'
 
 
+'''
+Хранятся json структуры Актов, используемых в проверке.
+На основе act_json формируются поля анкеты на фронтенде.
+Также структура act_json используется при сопоставлении с answers_json (json структура ответов), при рендеринге 
+HTML шаблона, Акта проверки с результатами.
+'''
 class FormsAct(models.Model):
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента_id')
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип учреждения_id')
@@ -374,6 +410,9 @@ class FormsAct(models.Model):
         verbose_name_plural = 'Формы актов'
 
 
+'''
+Хранятся данные о проверке.
+'''
 class Checking(models.Model):
     name = models.CharField(max_length=500, verbose_name='Наименование проверки')
     date_checking = models.DateField(verbose_name='Дата проверки')
@@ -391,6 +430,10 @@ class Checking(models.Model):
         verbose_name_plural = 'Наименование проверки'
 
 
+'''
+Хранятся данные об организациях включенных в конкретную проверку.
+А также данные об экспертах, за которыми закрепленны проверяемые организации.
+'''
 class List_Checking(models.Model):
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Наименование проверки')
     organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')

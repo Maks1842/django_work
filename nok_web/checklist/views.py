@@ -66,9 +66,11 @@ def region_view(request):
 def organisation_view(request):
     organisations = Organisations.objects.order_by('pk')
     checking = Checking.objects.order_by('pk')
+    template = Templates.objects.order_by('pk')
     context = {
         'organisations': organisations,
         'checking': checking,
+        'template': template,
     }
     return render(request, 'checklist/select_list.html', context)
 
@@ -121,7 +123,7 @@ def get_act(request, type_departments=1, type_organisations=3, number_items=0):
             choices = []
             count_section += 1
 
-            if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
+            if q['type_organisations'] is None:
                 count += 1
                 type = type_answers.get(pk=q['type_answers_id'])
                 question = questions.get(pk=q['question_id'])
@@ -138,23 +140,44 @@ def get_act(request, type_departments=1, type_organisations=3, number_items=0):
                     qv = question_values.get(pk=ans_var[av])
                     choices.append({'value': ans_var[av], 'text': qv['value_name']})
 
-
                 pages.append({
                     "name": str(count),
                     "title": question['questions'],
                     "type": type['type'],
                     "choices": choices,
                     "isRequired": 'true',
-                    # 'test': len(questions_id),
-                    # 'test2': count_section
                 })
 
-            if len(pages) == number_items or len(questions_id) == count_section:
-                form_act.append({
-                    "title": fs['name'],
-                    "elements": pages,
+            elif str(type_organisations) in q['type_organisations'].split(','):
+                count += 1
+                type = type_answers.get(pk=q['type_answers_id'])
+                question = questions.get(pk=q['question_id'])
+                answer_variant = q['answer_variant']
+                ans_var_re = answer_variant
+                try:
+                    ans_var_re = (re.sub(r'\s', '', answer_variant))
+                except:
+                    pass
+
+                ans_var = ans_var_re.split(',')
+
+                for av in range(len(ans_var)):
+                    qv = question_values.get(pk=ans_var[av])
+                    choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                pages.append({
+                    'name': str(count),
+                    'title': question['questions'],
+                    'type': type['type'],
+                    'choices': choices,
+                    'isRequired': 'true',
                 })
-                pages = []
+
+        if len(pages) == number_items or len(questions_id) == count_section:
+            form_act.append({
+                "title": fs['name'],
+                "elements": pages,
+            })
 
     xxx = json.dumps({"pages": form_act}, ensure_ascii=False)
     context = {"form_act": xxx}
@@ -170,15 +193,16 @@ def get_act_answer(request):
 
     org_id = request.POST["org_id"]
     check_id = request.POST["check_id"]
+    template_id = request.POST["temp_id"]
 
     # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
     type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
     name_org = Organisations.objects.get(pk=org_id).organisation_name
     address_org = Organisations.objects.get(pk=org_id).address
-    user = List_Checking.objects.get(checking_id=check_id).user  # Имя проверяющего
+    user = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).user  # Имя проверяющего
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
+    temp = Templates.objects.get(pk=template_id).template_file
 
-    list = []
     if len(queryset) > 0:
         form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
         query = Question_Values.objects.values()
@@ -190,7 +214,7 @@ def get_act_answer(request):
                'user': user,
                'answers': answers}
 
-    return render(request, 'act_checkings/act_medical_ambl.html', context)
+    return render(request, f'act_checkings/{temp}', context)
 
 '''
 Функция сравнения двух json.
@@ -202,9 +226,9 @@ def get_act_answer(request):
 '''
 def do_some_magic(form_json):
 
-    f = open("checklist/modules/abm.json")       # Акт амбулатория
-    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    # f = open("checklist/modules/cult_standart.json")    # Акт культурное наследие
+    # f = open("checklist/modules/abm.json")       # Акт амбулатория
+    f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    # f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
     # f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)

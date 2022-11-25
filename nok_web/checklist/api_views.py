@@ -1209,7 +1209,7 @@ class GetActAPIView(APIView):
                 choices = []
                 count_section += 1
 
-                if str(type_organisations) in str(q['type_organisations']) or q['type_organisations'] is None:
+                if q['type_organisations'] is None:
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
                     question = questions.get(pk=q['question_id'])
@@ -1226,6 +1226,29 @@ class GetActAPIView(APIView):
                         qv = question_values.get(pk=ans_var[av])
                         choices.append({'value': ans_var[av], 'text': qv['value_name']})
 
+                    pages.append({
+                        'name': str(count),
+                        'title': question['questions'],
+                        'type': type['type'],
+                        'choices': choices,
+                        'isRequired': 'true',
+                    })
+                elif str(type_organisations) in q['type_organisations'].split(','):
+                    count += 1
+                    type = type_answers.get(pk=q['type_answers_id'])
+                    question = questions.get(pk=q['question_id'])
+                    answer_variant = q['answer_variant']
+                    ans_var_re = answer_variant
+                    try:
+                        ans_var_re = (re.sub(r'\s', '', answer_variant))
+                    except:
+                        pass
+
+                    ans_var = ans_var_re.split(',')
+
+                    for av in range(len(ans_var)):
+                        qv = question_values.get(pk=ans_var[av])
+                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
 
                     pages.append({
                         'name': str(count),
@@ -1233,17 +1256,15 @@ class GetActAPIView(APIView):
                         'type': type['type'],
                         'choices': choices,
                         'isRequired': 'true',
-                        # 'test': len(questions_id),
-                        # 'test2': count_section
                     })
 
-                if len(pages) == number_items or len(questions_id) == count_section:
-                    context.append({
-                        'title': fs['name'],
-                        'elements': pages,
-                    })
-                    pages = []
-        return Response({'pages': context})
+            if len(pages) == number_items or len(questions_id) == count_section:
+                context.append({
+                    'title': fs['name'],
+                    'elements': pages,
+                })
+                pages = []
+        return Response({"pages": context})
 
 
 class GetActAnswerAPIView(APIView):
@@ -1316,9 +1337,9 @@ class GetActAnswerAPIView(APIView):
 '''
 def do_some_magic(form_json):
 
-    f = open("checklist/modules/abm.json")       # Акт амбулатория
+    # f = open("checklist/modules/abm.json")       # Акт амбулатория
     # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    # f = open("checklist/modules/cult_standart.json")    # Акт культурное наследие
+    f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
     # f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)
