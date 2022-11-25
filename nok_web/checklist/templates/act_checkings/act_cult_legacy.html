@@ -75,6 +75,7 @@
     </td>
 </table>
 <br/>
+
 <table style="border-collapse: collapse">
     <tr>
         <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
@@ -87,7 +88,7 @@
     <tr>
         <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{ 'name' }}
+                {{ name_org }}
             </p>
         </td>
     </tr>
@@ -98,7 +99,7 @@
     <tr>
         <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question" style="font-size: 14pt">
-                Наименование населенного пункта
+                Адрес организации
             </p>
         </td>
     </tr>
@@ -106,7 +107,7 @@
     <tr>
         <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{'name'}}
+                {{ address_org }}
             </p>
         </td>
     </tr>
@@ -145,7 +146,7 @@
     <tr>
         <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{'name'}}
+                {{ user }}
             </p>
         </td>
     </tr>
@@ -178,7 +179,7 @@
     <tr>
         <td style="width: 735px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
             <p class="question" style="font-size: 12pt">
-                (фамилия, имя, отчество представителя медицинской организации)
+                (фамилия, имя, отчество представителя организации культуры)
             </p>
         </td>
     </tr>
@@ -826,23 +827,10 @@
         </td>
     </tr>
 
-    <tr id="1">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">1</p>
-        </td>
-        <td style="width: 500px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="question">
-                Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты
-            </p>
-        </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">
-                {{ answers.1.0 }}
-            </p>
-        </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">
-                {{ answers.1.1 }}
+    <tr>
+        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <p class="question" style="text-align: center">
+                <b>Оборудованных входных групп пандусами (подъемными платформами)</b>
             </p>
         </td>
     </tr>
@@ -853,7 +841,9 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Оборудование входных групп пандусами/подъемными платформами
+                Оборудование входа в здание или на его территорию:<br/>
+                -оборудование входа ровной площадкой непосредственно перед входной дверью, для обеспечения его доступности для инвалидов на креслах-колясках;<br/>
+                -расположение входной двери в сочетании с направлением пути подхода;
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
@@ -869,9 +859,7 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Оборудование входа в здание – объект культурного наследия или на его территорию:<br/>
-                -оборудование входа ровной площадкой непосредственно перед входной дверью, для обеспечения его доступности для инвалидов на креслах-колясках;<br/>
-                -расположение входной двери в сочетании с направлением пути подхода;
+                -оборудование выхода со специальных парковочных мест бордюрными пандусами, расположенными в непосредственной близости от них.
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
@@ -887,13 +875,13 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Оборудование входа в здание – объект культурного наследия или на его территорию:<br/>
-                -оборудование выхода со специальных парковочных мест бордюрными пандусами, расположенными в непосредственной близости от них.
+                -использование визуального отличающегося цвета поверхности пандуса от цвета горизонтальной площадки;<br/>
+                -прочное закрепление противоскользящей поверхности пандусов.
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.26.0 }}
+                {{ answers.28.0 }}
             </p>
         </td>
     </tr>
@@ -904,12 +892,20 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Наличие выделенных стоянок для автотранспортных средств инвалидов
+                -обеспечение возможности входа и выхода из объекта культурного наследия, в том числе с использованием специальных подъездных устройств.
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
                 {{ answers.29.0 }}
+            </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <p class="question" style="text-align: center">
+                <b>Наличие выделенных стоянок для автотранспортных средств инвалидов</b>
             </p>
         </td>
     </tr>
@@ -920,12 +916,24 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Наличие адаптированных лифтов, поручней, расширенных дверных проемов
+                Организация размещения специальных мест для транспорта инвалидов:<br/>
+                -размещение специальных парковочных мест рядом друг с другом и обозначение их местонахождения указателем, расположенным рядом с главным входом в здание;<br/>
+                -обозначение специальных парковочных мест наземной разметкой с обозначением как на поверхности парковки, так и с помощью вертикального знака;<br/>
+                - создание системы управления/наблюдения, чтобы выделенные специальные парковочные места использовались только инвалидами;<br/>
+                - расположение специальных парковочных мест как можно ближе к входу в сооружение.
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
                 {{ answers.30.0 }}
+            </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <p class="question" style="text-align: center">
+                <b>Наличие адаптированных лифтов, поручней, расширенных дверных проемов</b>
             </p>
         </td>
     </tr>
@@ -936,9 +944,8 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Оборудование входа в здание – объект культурного наследия или на его территорию:<br/>
-                -использование визуального отличающегося цвета поверхности пандуса от цвета горизонтальной площадки;<br/>
-                -прочное закрепление противоскользящей поверхности пандусов.
+                Организация путей движения на объекте культурного наследия:</b>
+                -обеспечение отличия по цвету и яркости предохранительной оковки каждой ступени лестниц от примыкающей к ней ступени и обеспечение противоскользящих свойств ступеней
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
@@ -954,8 +961,7 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Оборудование входа в здание – объект культурного наследия или на его территорию:<br/>
-                -обеспечение возможности входа и выхода из объекта культурного наследия, в том числе с использованием специальных подъездных устройств.
+                -устройство входного вестибюля с учетом предоставления инвалиду в кресле-коляске возможности ее использования
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
@@ -971,7 +977,7 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Наличие сменных кресел-колясок
+                -обеспечение альтернативного способа преодоления перепада высот с помощью ступеней
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
@@ -987,12 +993,28 @@
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                Наличие и доступность специально оборудованных санитарно-гигиенических помещений
+                Наличие сменных кресел-колясок
             </p>
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
                 {{ answers.34.0 }}
+            </p>
+        </td>
+    </tr>
+
+    <tr id="35">
+        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <p class="num">35</p>
+        </td>
+        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <p class="question">
+                Наличие и доступность специально оборудованных санитарно-гигиенических помещений
+            </p>
+        </td>
+        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <p class="num">
+                {{ answers.35.0 }}
             </p>
         </td>
     </tr>
@@ -1010,9 +1032,9 @@
         </td>
     </tr>
 
-    <tr id="31">
+    <tr id="36">
         <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">31</p>
+            <p class="num">36</p>
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
@@ -1021,14 +1043,14 @@
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.31.0 }}
+                {{ answers.36.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="32">
+    <tr id="37">
         <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">32</p>
+            <p class="num">37</p>
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
@@ -1038,14 +1060,14 @@
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.32.0 }}
+                {{ answers.37.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="33">
+    <tr id="38">
         <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">33</p>
+            <p class="num">38</p>
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
@@ -1055,14 +1077,14 @@
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.33.0 }}
+                {{ answers.38.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="34">
+    <tr id="39">
         <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">34</p>
+            <p class="num">39</p>
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
@@ -1072,14 +1094,14 @@
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.34.0 }}
+                {{ answers.39.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="35">
+    <tr id="40">
         <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">35</p>
+            <p class="num">40</p>
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
@@ -1089,14 +1111,14 @@
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.35.0 }}
+                {{ answers.40.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="36">
+    <tr id="41">
         <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
-            <p class="num">36</p>
+            <p class="num">41</p>
         </td>
         <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
@@ -1105,7 +1127,7 @@
         </td>
         <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
-                {{ answers.36.0 }}
+                {{ answers.41.0 }}
             </p>
         </td>
     </tr>

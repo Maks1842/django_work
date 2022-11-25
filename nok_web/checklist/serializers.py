@@ -54,7 +54,7 @@ class QuotaSerializer(serializers.ModelSerializer):
 class TemplatesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Templates
-        fields = ['id', 'name', 'template_file', 'version', 'is_deleted']
+        fields = ['id', 'name', 'type_organisations', 'template_file', 'version', 'is_deleted']
 
 
 class Form_SectionsSerializer(serializers.ModelSerializer):

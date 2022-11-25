@@ -66,11 +66,9 @@ def region_view(request):
 def organisation_view(request):
     organisations = Organisations.objects.order_by('pk')
     checking = Checking.objects.order_by('pk')
-    template = Templates.objects.order_by('pk')
     context = {
         'organisations': organisations,
         'checking': checking,
-        'template': template,
     }
     return render(request, 'checklist/select_list.html', context)
 
@@ -193,7 +191,6 @@ def get_act_answer(request):
 
     org_id = request.POST["org_id"]
     check_id = request.POST["check_id"]
-    template_id = request.POST["temp_id"]
 
     # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
     type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
@@ -201,7 +198,7 @@ def get_act_answer(request):
     address_org = Organisations.objects.get(pk=org_id).address
     user = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).user  # Имя проверяющего
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
-    temp = Templates.objects.get(pk=template_id).template_file
+    temp = Templates.objects.get(type_organisations_id=type_organisations).template_file
 
     if len(queryset) > 0:
         form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
@@ -227,8 +224,8 @@ def get_act_answer(request):
 def do_some_magic(form_json):
 
     # f = open("checklist/modules/abm.json")       # Акт амбулатория
-    f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    # f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
+    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
     # f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)

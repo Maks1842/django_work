@@ -59,10 +59,10 @@ class QuotaAdmin(admin.ModelAdmin):
 
 
 class TemplatesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'template_file', 'version', 'is_deleted')
-    search_fields = ('name', 'template_file', 'version', 'is_deleted')
-    list_editable = ('name', 'template_file', 'version', 'is_deleted')
-    list_filter = ('name', 'template_file', 'version', 'is_deleted')
+    list_display = ('id', 'name', 'type_organisations', 'template_file', 'version', 'is_deleted')
+    search_fields = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
+    list_editable = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
+    list_filter = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
 
 
 class Form_SectionsAdmin(admin.ModelAdmin):

@@ -494,6 +494,7 @@
   "pk": 1,
   "fields": {
     "name": "Здравоохранение амбулатория. 24.11.2022",
+    "type_organisations": 2,
     "template_file": "act_medical_ambl.html",
     "version": null,
     "is_deleted": false
@@ -504,6 +505,7 @@
   "pk": 2,
   "fields": {
     "name": "Здравоохранение стационар. 24.11.2022",
+    "type_organisations": 3,
     "template_file": "act_medical_hosp.html",
     "version": null,
     "is_deleted": false
@@ -514,6 +516,7 @@
   "pk": 3,
   "fields": {
     "name": "Культура - стандарт. 24.11.2022",
+    "type_organisations": 10,
     "template_file": "act_cult_standart.html",
     "version": null,
     "is_deleted": false
@@ -524,7 +527,19 @@
   "pk": 4,
   "fields": {
     "name": "Культура - культурное наследие. 24.11.2022",
+    "type_organisations": 1,
     "template_file": "act_cult_legacy.html",
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 5,
+  "fields": {
+    "name": "Образование ДОУ",
+    "type_organisations": 4,
+    "template_file": "act_education_kindergarten.html",
     "version": null,
     "is_deleted": false
   }
