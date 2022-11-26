@@ -85,7 +85,7 @@ class RegionsViewSet(
 
 
 class TypeDepartmentsViewSet(
-                            # mixins.CreateModelMixin,
+                            mixins.CreateModelMixin,
                             mixins.RetrieveModelMixin,
                             # mixins.UpdateModelMixin,
                             # mixins.DestroyModelMixin,
@@ -346,44 +346,6 @@ class OrganisationsViewSet(
         except:
             return Response({'error': 'Объект не существует'})
         serializers = OrganisationsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class OrganisationPersonsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-
-    queryset = Organisation_Persons.objects.all()
-    serializer_class = Organisation_PersonsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def organisation(self, request, pk=None):
-        org = Organisations.objects.get(pk=pk)
-        return Response({'organisation': org.organisation_name})
-
-    @action(methods=['get'], detail=False)
-    def organisations(self, request):
-        orgs = Organisations.objects.all()
-        return Response({'organisations': [o.organisation_name for o in orgs]})
-
-    @action(methods=['put'], detail=True)
-    def organisation_persons_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Organisation_Persons.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Organisation_PersonsSerializer(data=request.data, instance=instance, partial=True)
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})
@@ -1039,6 +1001,45 @@ class TransactionExchangeViewSet(
         except:
             return Response({'error': 'Объект не существует'})
         serializers = Transaction_ExchangeSerializer(data=request.data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
+
+'''
+Представления ApiView
+'''
+
+class OrganisationPersonsAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Получить представителя проверяемой организации'],
+        manual_parameters=[
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @swagger_auto_schema(
+        method='post',
+        tags=['Добавить представителя проверяемой организации'],
+        # manual_parameters=[
+        #     openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+        #                       type=openapi.TYPE_INTEGER)]
+    )
+    @action(detail=False, methods=['get', 'post'])
+    def get(self, request):
+        organisation = request.query_params.get('id_organisation')
+
+        first_name = Organisation_Persons.objects.get(organisation_id=organisation).first_name
+        second_name = Organisation_Persons.objects.get(organisation_id=organisation).second_name
+        last_name = Organisation_Persons.objects.get(organisation_id=organisation).last_name
+
+        if second_name is None:
+            second_name = ''
+
+        name = last_name + ' ' + first_name + ' ' + second_name
+        return Response({'name': name})
+
+    def post(self, request):            #Для добавления данных
+        serializers = Organisation_PersonsSerializer(data=request.data)
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})
