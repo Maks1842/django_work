@@ -224,8 +224,8 @@ def get_act_answer(request):
 def do_some_magic(form_json):
 
     # f = open("checklist/modules/abm.json")       # Акт амбулатория
-    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
+    f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    # f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
     # f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)

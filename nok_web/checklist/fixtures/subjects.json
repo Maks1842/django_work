@@ -276,7 +276,7 @@
   "model": "checklist.type_organisations",
   "pk": 4,
   "fields": {
-    "type": "ДОУ (образование)",
+    "type": "Дошкольное образование (ДОУ)",
     "type_departments": 3,
     "is_deleted": false
   }
@@ -285,7 +285,7 @@
   "model": "checklist.type_organisations",
   "pk": 5,
   "fields": {
-    "type": "ОО (образование)",
+    "type": "Общеобразовательные организации (ОО, СКОУ)",
     "type_departments": 3,
     "is_deleted": false
   }
@@ -294,7 +294,7 @@
   "model": "checklist.type_organisations",
   "pk": 6,
   "fields": {
-    "type": "СКОУ (образование)",
+    "type": "Резерв_1",
     "type_departments": 3,
     "is_deleted": false
   }
@@ -303,7 +303,7 @@
   "model": "checklist.type_organisations",
   "pk": 7,
   "fields": {
-    "type": "СПО (образование)",
+    "type": "Профессиональное образование (СПО, ДПО)",
     "type_departments": 3,
     "is_deleted": false
   }
@@ -312,7 +312,7 @@
   "model": "checklist.type_organisations",
   "pk": 8,
   "fields": {
-    "type": "ДПО (образование)",
+    "type": "Резерв_2",
     "type_departments": 3,
     "is_deleted": false
   }
@@ -321,7 +321,7 @@
   "model": "checklist.type_organisations",
   "pk": 9,
   "fields": {
-    "type": "ДОД (образование)",
+    "type": "Дополнительное образование (ДОД)",
     "type_departments": 3,
     "is_deleted": false
   }
@@ -448,6 +448,38 @@
   }
 },
 {
+  "model": "checklist.organisations",
+  "pk": 8,
+  "fields": {
+    "organisation_name": "Медицинский техникум",
+    "address": "г. Краснодар",
+    "phone": "1245423",
+    "website": "фыпыф.ру",
+    "email": "qwt@sd.ru",
+    "parent": null,
+    "department": 2,
+    "quota": 1,
+    "type_organisations": 7,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisations",
+  "pk": 9,
+  "fields": {
+    "organisation_name": "Музыкальная школа",
+    "address": "г. Краснодар",
+    "phone": "1245423",
+    "website": "ыва.рф",
+    "email": "sz@fg.ru",
+    "parent": null,
+    "department": 2,
+    "quota": 3,
+    "type_organisations": 9,
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.organisation_persons",
   "pk": 1,
   "fields": {
@@ -495,7 +527,7 @@
   "fields": {
     "name": "Здравоохранение амбулатория. 24.11.2022",
     "type_organisations": 2,
-    "template_file": "act_medical_ambl.html",
+    "template_file": "act_check_ambul.html",
     "version": null,
     "is_deleted": false
   }
@@ -506,7 +538,7 @@
   "fields": {
     "name": "Здравоохранение стационар. 24.11.2022",
     "type_organisations": 3,
-    "template_file": "act_medical_hosp.html",
+    "template_file": "act_check_hospital.html",
     "version": null,
     "is_deleted": false
   }
@@ -539,7 +571,40 @@
   "fields": {
     "name": "Образование ДОУ",
     "type_organisations": 4,
-    "template_file": "act_education_kindergarten.html",
+    "template_file": "act_check_kindergarten.html",
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 6,
+  "fields": {
+    "name": "Образование ОО, СКОУ",
+    "type_organisations": 5,
+    "template_file": "act_check_school.html",
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 7,
+  "fields": {
+    "name": "Профессиональное образование (СПО, ДПО)",
+    "type_organisations": 7,
+    "template_file": "act_check_techcollege.html",
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 8,
+  "fields": {
+    "name": "Дополнительное образование. 24.11.2022",
+    "type_organisations": 9,
+    "template_file": "act_chech_addeducation.html",
     "version": null,
     "is_deleted": false
   }
@@ -13805,6 +13870,28 @@
     "organisation": 7,
     "organisation_person": null,
     "user": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.list_checking",
+  "pk": 12,
+  "fields": {
+    "checking": 4,
+    "organisation": 8,
+    "organisation_person": null,
+    "user": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.list_checking",
+  "pk": 13,
+  "fields": {
+    "checking": 4,
+    "organisation": 9,
+    "organisation_person": null,
+    "user": 2,
     "is_deleted": false
   }
 }

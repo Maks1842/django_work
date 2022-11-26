@@ -20,13 +20,13 @@ class DepartmentsAdmin(admin.ModelAdmin):
     list_display = ('id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
     search_fields = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
     list_editable = ('department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
-    list_filter = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
+    list_filter = ('department_name', 'region', 'type_departments', 'is_deleted', 'user')
 
 
 class Department_PersonsAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'department', 'is_deleted')
     search_fields = ('last_name', 'position', 'department', 'is_deleted')
-    list_editable = ('first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'department', 'is_deleted')
+    list_editable = ('last_name', 'position', 'department', 'is_deleted')
     list_filter = ('department', 'is_deleted')
 
 
@@ -41,13 +41,13 @@ class OrganisationsAdmin(admin.ModelAdmin):
     list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
     search_fields = ('organisation_name', 'address', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
     list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
-    list_filter = ('organisation_name', 'address', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
+    list_filter = ('organisation_name', 'department', 'quota', 'type_organisations', 'is_deleted')
 
 
 class Organisation_PersonsAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted')
     search_fields = ('last_name', 'position', 'department', 'is_deleted')
-    list_editable = ('first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted')
+    list_editable = ('last_name', 'position', 'organisation', 'is_deleted')
     list_filter = ('organisation', 'is_deleted')
 
 
@@ -62,77 +62,71 @@ class TemplatesAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'type_organisations', 'template_file', 'version', 'is_deleted')
     search_fields = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
     list_editable = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
-    list_filter = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
+    list_filter = ('name', 'type_organisations', 'version', 'is_deleted')
 
 
 class Form_SectionsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
     search_fields = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
     list_editable = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
-    list_filter = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
+    list_filter = ('name', 'version', 'type_departments', 'is_deleted')
 
 
 class QuestionsAdmin(admin.ModelAdmin):
     list_display = ('id', 'questions')
     search_fields = ('questions',)
     list_editable = ('questions',)
-    list_filter = ('questions',)
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):
     list_display = ('id', 'value_name', 'name_alternativ')
     search_fields = ('value_name', 'name_alternativ')
     list_editable = ('value_name', 'name_alternativ')
-    list_filter = ('value_name', 'name_alternativ')
 
 
 class Form_Sections_QuestionAdmin(admin.ModelAdmin):
     list_display = ('id', 'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
     search_fields = ('question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
     list_editable = ('question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
-    list_filter = ('question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
 
 
 class RecommendationsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'is_deleted')
     search_fields = ('name', 'is_deleted')
     list_editable = ('name', 'is_deleted')
-    list_filter = ('name', 'is_deleted')
 
 
 class Forms_RecommendationsAdmin(admin.ModelAdmin):
     list_display = ('id', 'free_value', 'answers', 'form_sections', 'recommendations', 'is_deleted')
     search_fields = ('answers', 'form_sections', 'recommendations', 'is_deleted')
     list_editable = ('free_value', 'answers', 'form_sections', 'recommendations', 'is_deleted')
-    list_filter = ('answers', 'form_sections', 'recommendations', 'is_deleted')
 
 
 class AnswersAdmin(admin.ModelAdmin):
     list_display = ('id', 'organisations', 'checking', 'answers_json', 'is_deleted')
     search_fields = ('organisations', 'checking', 'answers_json', 'is_deleted')
     list_editable = ('organisations', 'checking', 'answers_json', 'is_deleted')
-    list_filter = ('organisations', 'checking', 'answers_json', 'is_deleted')
+    list_filter = ('organisations', 'checking', 'is_deleted')
 
 
 class Signed_DociumentsAdmin(admin.ModelAdmin):
     list_display = ('id', 'file_name', 'originat_file_name', 'description', 'created_at', 'is_deleted', 'user')
     search_fields = ('file_name', 'originat_file_name', 'created_at', 'is_deleted', 'user')
     list_editable = ('file_name', 'originat_file_name', 'description', 'created_at', 'is_deleted', 'user')
-    list_filter = ('file_name', 'originat_file_name', 'created_at', 'is_deleted', 'user')
+    list_filter = ('file_name', 'created_at', 'is_deleted', 'user')
 
 
 class CommentsAdmin(admin.ModelAdmin):
     list_display = ('id', 'free_value', 'is_deleted')
     search_fields = ('free_value', 'is_deleted')
     list_editable = ('free_value', 'is_deleted')
-    list_filter = ('free_value', 'is_deleted')
 
 
 class PhotoAdmin(admin.ModelAdmin):
     list_display = ('id', 'file_name', 'original_file_name', 'description', 'created_at', 'is_deleted', 'user')
     search_fields = ('file_name', 'original_file_name', 'created_at', 'is_deleted', 'user')
     list_editable = ('file_name', 'original_file_name', 'description', 'created_at', 'is_deleted', 'user')
-    list_filter = ('file_name', 'original_file_name', 'created_at', 'is_deleted', 'user')
+    list_filter = ('file_name', 'created_at', 'is_deleted', 'user')
 
 
 class VersionsAdmin(admin.ModelAdmin):
@@ -146,21 +140,19 @@ class Type_AnswersAdmin(admin.ModelAdmin):
     list_display = ('id', 'type')
     search_fields = ('type',)
     list_editable = ('type',)
-    list_filter = ('type',)
 
 
 class Transaction_ExchangeAdmin(admin.ModelAdmin):
     list_display = ('id', 'model', 'field', 'old_data', 'new_data', 'date_exchange', 'user')
     search_fields = ('model', 'field', 'old_data', 'new_data', 'user')
     list_editable = ('model', 'field', 'old_data', 'new_data', 'user')
-    list_filter = ('model', 'field', 'old_data', 'new_data', 'user')
 
 
 class FormsActAdmin(admin.ModelAdmin):
     list_display = ('id', 'type_departments', 'type_organisations', 'act_json', 'date', 'version')
     search_fields = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
     list_editable = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
-    list_filter = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
+    list_filter = ('type_departments', 'type_organisations', 'date', 'version')
 
 
 class CheckingAdmin(admin.ModelAdmin):

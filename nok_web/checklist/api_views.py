@@ -1188,7 +1188,7 @@ class GetListCheckingAPIView(APIView):
 
 class GetActAPIView(APIView):
 
-    def get(self, request, type_departments=1, type_organisations=2, number_items=0):
+    def get(self, request, type_departments=3, type_organisations=9, number_items=0):
 
         context = []
         count = 0

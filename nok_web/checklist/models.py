@@ -446,4 +446,5 @@ class List_Checking(models.Model):
         return reverse_lazy('home', kwargs={"pk": self.pk})
 
     class Meta:
+        verbose_name = 'Проверяемая организация'
         verbose_name_plural = 'Проверяемые организации'
