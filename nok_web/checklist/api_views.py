@@ -1011,35 +1011,58 @@ class TransactionExchangeViewSet(
 
 class OrganisationPersonsAPIView(APIView):
     @swagger_auto_schema(
-        method='get',
-        tags=['Получить представителя проверяемой организации'],
+        methods=['get'],
+        tags=['Получить представителя организации'],
         manual_parameters=[
             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER)
+                              type=openapi.TYPE_INTEGER),
         ])
-    @swagger_auto_schema(
-        method='post',
-        tags=['Добавить представителя проверяемой организации'],
-        # manual_parameters=[
-        #     openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-        #                       type=openapi.TYPE_INTEGER)]
-    )
-    @action(detail=False, methods=['get', 'post'])
+
+    @action(methods=['get'], detail=False)
     def get(self, request):
         organisation = request.query_params.get('id_organisation')
 
-        first_name = Organisation_Persons.objects.get(organisation_id=organisation).first_name
-        second_name = Organisation_Persons.objects.get(organisation_id=organisation).second_name
-        last_name = Organisation_Persons.objects.get(organisation_id=organisation).last_name
+        persons = Organisation_Persons.objects.filter(organisation_id=organisation)
+        result = []
+        for person in persons:
+            result.append({
+                'id': person.id,
+                'name': f'{person.last_name} {person.first_name} {person.second_name or ""}'
+            })
+        return Response({'name': result})
 
-        if second_name is None:
-            second_name = ''
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Добавить представителя организации'],
+        manual_parameters=[
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('first_name', openapi.IN_QUERY, description="Имя представителя",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('second_name', openapi.IN_QUERY, description="Отчество представителя",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('last_name', openapi.IN_QUERY, description="Фамилия представителя",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('position', openapi.IN_QUERY, description="Должность",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('phone', openapi.IN_QUERY, description="Телефон",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('email', openapi.IN_QUERY, description="Эл. почта",
+                              type=openapi.FORMAT_EMAIL),
+        ])
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        id_organisation = request.query_params.get('id_organisation')
+        first_name = request.query_params.get('first_name')
+        second_name = request.query_params.get('second_name')
+        last_name = request.query_params.get('last_name')
+        position = request.query_params.get('position')
+        phone = request.query_params.get('phone')
+        email = request.query_params.get('email')
 
-        name = last_name + ' ' + first_name + ' ' + second_name
-        return Response({'name': name})
-
-    def post(self, request):            #Для добавления данных
-        serializers = Organisation_PersonsSerializer(data=request.data)
+        data = {'organisation': id_organisation, 'first_name': first_name, 'second_name': second_name,
+                'last_name': last_name, 'position': position, 'phone': phone, 'email': email}
+        serializers = Organisation_PersonsSerializer(data=data)
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({'post': serializers.data})

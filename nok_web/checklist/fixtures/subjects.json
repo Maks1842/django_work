@@ -72,6 +72,14 @@
   }
 },
 {
+  "model": "checklist.type_departments",
+  "pk": 4,
+  "fields": {
+    "type": "string",
+    "is_deleted": true
+  }
+},
+{
   "model": "checklist.departments",
   "pk": 1,
   "fields": {
@@ -490,6 +498,62 @@
     "phone": "79856",
     "email": "",
     "organisation": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 3,
+  "fields": {
+    "first_name": "Гюльчатай",
+    "second_name": null,
+    "last_name": "Жабздых",
+    "position": "",
+    "phone": "",
+    "email": "",
+    "organisation": 5,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 4,
+  "fields": {
+    "first_name": "Тест",
+    "second_name": null,
+    "last_name": "Тестовый",
+    "position": "",
+    "phone": "",
+    "email": "",
+    "organisation": 3,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 7,
+  "fields": {
+    "first_name": "Роман",
+    "second_name": null,
+    "last_name": "Петров",
+    "position": null,
+    "phone": "1234",
+    "email": null,
+    "organisation": 4,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 8,
+  "fields": {
+    "first_name": "Иван",
+    "second_name": null,
+    "last_name": "Романов",
+    "position": "завхоз",
+    "phone": null,
+    "email": null,
+    "organisation": 2,
     "is_deleted": false
   }
 },
