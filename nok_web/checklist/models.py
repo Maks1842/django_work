@@ -133,9 +133,9 @@ class Organisation_Persons(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('home', kwargs={"pk": self.pk})
 
-    # def __str__(self):
-    #     name = self.first_name + ' ' + self.second_name + ' ' + self.last_name
-    #     return name
+    def __str__(self):
+        name = f'{self.last_name} {self.first_name} {self.second_name or ""}'
+        return name
 
     class Meta:
         verbose_name = 'Ответственный из Учреждения'
