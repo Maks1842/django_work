@@ -38,7 +38,6 @@ router.register('question_values', QuestionValuesViewSet, basename='question_val
 router.register('form_sections_question', FormSectionsQuestionViewSet, basename='form_sections_question')
 router.register('recommendations', RecommendationsViewSet, basename='recommendations')
 router.register('forms_recommendations', FormsRecommendationsViewSet, basename='forms_recommendations')
-router.register('answers', AnswersViewSet, basename='answers')
 router.register('signed_dociuments', SignedDociumentsViewSet, basename='signed_dociuments')
 router.register('versions', VersionsViewSet, basename='versions')
 router.register('type_answers', TypeAnswersViewSet, basename='type_answers')
@@ -54,6 +53,7 @@ urlpatterns = [
 
 
     path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
+    path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
     path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='getListTypeOrganizations'),
     path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='getFormActByOrganizationType'),

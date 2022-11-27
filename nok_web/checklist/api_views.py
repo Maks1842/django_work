@@ -688,73 +688,6 @@ class FormsRecommendationsViewSet(
         return Response({'post': serializers.data})
 
 
-class AnswersViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-    queryset = Answers.objects.all()
-    serializer_class = AnswersSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def free_value(self, request, pk=None):
-        fv = Answers.objects.values('free_value').get(pk=pk)
-        return Response({'free_value': fv})
-
-    @action(methods=['get'], detail=True)
-    def organisation(self, request, pk=None):
-        org = Organisations.objects.get(pk=pk)
-        return Response({'organisation': org.organisation_name})
-
-    @action(methods=['get'], detail=False)
-    def organisations(self, request):
-        orgs = Organisations.objects.all()
-        return Response({'organisations': [o.organisation_name for o in orgs]})
-
-    @action(methods=['get'], detail=True)
-    def quota(self, request, pk=None):
-        quot = Quota.objects.get(pk=pk)
-        return Response({'quota': quot.quota})
-
-    @action(methods=['get'], detail=True)
-    def question(self, request, pk=None):
-        quest = Questions.objects.get(pk=pk)
-        return Response({'name': quest.name})
-
-    @action(methods=['get'], detail=False)
-    def questions(self, request):
-        quests = Questions.objects.all()
-        return Response({'names': [q.name for q in quests]})
-
-    @action(methods=['get'], detail=True)
-    def question_value(self, request, pk=None):
-        qv = Question_Values.objects.get(pk=pk)
-        return Response({'question_value': qv.value_name})
-
-    @action(methods=['get'], detail=False)
-    def question_values(self, request):
-        qvs = Question_Values.objects.all()
-        return Response({'question_values': [f.value_name for f in qvs]})
-
-    @action(methods=['put'], detail=True)
-    def answers_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Answers.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = AnswersSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
 class SignedDociumentsViewSet(
                             # mixins.CreateModelMixin,
                             mixins.RetrieveModelMixin,
@@ -1008,6 +941,49 @@ class TransactionExchangeViewSet(
 '''
 Представления ApiView
 '''
+class AnswersAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Получить результаты ответов'],
+        manual_parameters=[
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверка",
+                              type=openapi.TYPE_INTEGER),
+        ])
+
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        id_organisation = request.query_params.get('id_organisation')
+        id_checking = request.query_params.get('id_checking')
+
+        queryset = Answers.objects.filter(organisations_id=id_organisation, checking_id=id_checking)
+        answer = queryset[0].answers_json
+        return Response(answer)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Добавить результаты ответов'],
+        manual_parameters=[
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверка",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('answers', openapi.IN_QUERY, description="Результаты ответов",
+                              type=openapi.TYPE_STRING),
+        ])
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        id_organisation = request.query_params.get('id_organisation')
+        id_checking = request.query_params.get('id_checking')
+        answers = request.query_params.get('answers')
+
+        data = {'organisations': id_organisation, 'checking': id_checking, 'answers_json': answers}
+        serializers = AnswersSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response({'post': serializers.data})
+
 
 class OrganisationPersonsAPIView(APIView):
     @swagger_auto_schema(
@@ -1328,6 +1304,8 @@ class GetActAnswerAPIView(APIView):
             #         answer = answer_in_the_act(z, query)
             #
             #
+
+
             #
             #         if len(answer) > 1:
             #             elements.append({
