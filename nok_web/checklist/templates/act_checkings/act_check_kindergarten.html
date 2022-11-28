@@ -59,6 +59,10 @@
             font-size: 11pt;
             so-language: ru-RU
         }
+
+        .tab{
+            border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in
+        }
     </style>
 </head>
 
@@ -207,7 +211,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        style="width: 720px" class="tab">
         <p class="title">
             <b>Дошкольное образовательное учреждение</b>
         </p>
@@ -229,7 +233,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="4" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="question">
                 <b>1.1. Соответствие информации о деятельности организации, размещенной на общедоступных
                     информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными
@@ -238,15 +242,15 @@
         </td>
     </tr>
     <tr>
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 30px" class="tab">
             <p class="num">№ п/п</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
                 Наименование документа
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 Наличие
             </p>
@@ -254,7 +258,7 @@
                 <b>Стенд</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 Наличие
             </p>
@@ -265,112 +269,112 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="num">
                 <b>I. Основные сведения</b>
             </p>
         </td>
     </tr>
 
-    <tr id="1">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">1</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о дате создания образовательной организации
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.1.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="2">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">2</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация об учредителе, учредителях образовательной организации
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.2.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="3">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">3</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация  о  месте  нахождения образовательной организации и ее филиалов (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.3.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.3.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="4">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">4</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о режиме, графике работы
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.4.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.4.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="5">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">5</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация  о  контактных  телефонах  и  об  адресах электронной почты
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.5.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.5.1 }}
             </p>
@@ -378,18 +382,18 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="num">
                 <b>II. Структура и органы управления образовательной организацией</b>
             </p>
         </td>
     </tr>
 
-    <tr id="6">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">6</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о структуре и об органах управления образовательной организации
                 (в том числе: наименование структурных подразделений (органов управления); фамилии, имена, отчества
@@ -398,33 +402,33 @@
                 адреса электронной почты структурных подразделений (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.6.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.6.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="7">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">7</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Сведения о положениях о структурных подразделениях (об органах управления) с приложением копий указанных положений (при их наличии))
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.7.0 }}
             </p>
@@ -432,82 +436,82 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="num">
                 <b>III. Документы (в виде копий)</b>
             </p>
         </td>
     </tr>
 
-    <tr id="8">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">8</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Устав образовательной организации
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.8.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="9">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">9</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Лицензии на осуществление образовательной деятельности (с приложениями)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.9.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.9.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="10">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">10</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 План финансово-хозяйственной деятельности образовательной организации, утвержденного в установленном
                 законодательством Российской Федерации порядке, или бюджетные сметы образовательной организации
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.10.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="11">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">11</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Локальные нормативные акты по основным вопросам организации и осуществления образовательной деятельности,
                 в том числе регламентирующие правила приема обучающихся, режим занятий обучающихся, формы,
@@ -517,66 +521,66 @@
                 (или) родителями (законными представителями) несовершеннолетних обучающихся.
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.11.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.11.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="12">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">12</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Отчет о результатах самообследования
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.12.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="13">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">13</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Документ о порядке оказания платных образовательных услуг (при наличии),
                 в том числе образец договора об оказании платных образовательных услуг, документ об утверждении стоимости обучения по каждой образовательной программе*
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.13.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.13.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="14">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">14</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Документ об установлении размера платы, взимаемой с родителей (законных представителей) за присмотр
                 и уход детьми, осваивающими образовательные программы дошкольного образования в организациях,
@@ -587,33 +591,33 @@
                 реализующей образовательные программы начального общего, основного общего или среднего общего образования (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.14.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="15">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">15</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Предписания органов, осуществляющих государственный контроль (надзор) в сфере образования, отчеты об исполнении таких предписаний (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.15.0 }}
             </p>
@@ -621,243 +625,243 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="num">
                 <b>IV. Образование</b>
             </p>
         </td>
     </tr>
 
-    <tr id="16">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">16</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о реализуемых уровнях образования
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.16.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="17">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">17</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о формах обучения
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.17.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="18">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">18</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о нормативных сроках обучения
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.18.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="19">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">19</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация об описании образовательных программ с приложением их копий
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.19.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="20">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">20</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация  об  учебных  планах  реализуемых образовательных программ с приложением их копий
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.20.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.20.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="21">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">21</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Аннотации к рабочим программам дисциплин (по каждой дисциплине в составе образовательной программы) с приложением их копий (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.21.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="22">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">22</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о календарных учебных графиках с приложением их копий
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.22.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="23">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">23</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о методических и иных документах, разработанных образовательной организацией для обеспечения образовательного процесса
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.23.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="24">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">24</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о реализуемых образовательных программах, в том числе о реализуемых адаптированных образовательных программах,
                 с указанием учебных предметов, курсов, дисциплин (модулей), практики, предусмотренных соответствующей образовательной программой
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.24.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="25">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">25</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о численности обучающихся по реализуемым образовательным программам за счет бюджетных
                 ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по договорам
                 об образовании за счет средств физических и (или) юридических лиц, о языках, на которых осуществляется образование (обучение)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.25.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="26">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">26</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о федеральных государственных образовательных стандартах и об образовательных стандартах
                 с приложением их копий (при наличии). Допускается вместо копий федеральных государственных
                 образовательных стандартов и образовательных стандартов размещать гиперссылки на соответствующие документы на сайте Минпросвещения России
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.26.0 }}
             </p>
@@ -872,34 +876,34 @@
         </td>
     </tr>
 
-    <tr id="27">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">27</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о руководителе образовательной организации, его заместителях, в том числе:
                 фамилия, имя, отчество (при наличии) руководителя, его заместителей; должность руководителя,
                 его заместителей; контактные телефоны; адреса электронной почты, в том числе информация о месте нахождения филиалов образовательной организации (при их наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.27.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.27.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="28">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">28</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о персональном составе педагогических работников с указанием уровня образования,
                 квалификации и опыта работы, в том числе: фамилия, имя, отчество (при наличии) работника;
@@ -908,12 +912,12 @@
                 данные о повышении квалификации и (или) профессиональной переподготовке (при наличии); общий стаж работы; стаж работы по специальности
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.28.0 }}
             </p>
@@ -928,152 +932,152 @@
         </td>
     </tr>
 
-    <tr id="29">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">29</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о материально-техническом обеспечении образовательной деятельности (в том числе:
                 наличие оборудованных учебных кабинетов, объектов для проведения практических занятий, библиотек,
                 объектов спорта, средств обучения и воспитания, в том числе приспособленных для использования инвалидами и лицами с ограниченными возможностями здоровья)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.29.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="30">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">30</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о обеспечении доступа в здания образовательной организации инвалидов и лиц с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.30.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="31">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">31</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация об условиях питания обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.31.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.31.1 }}
             </p>
         </td>
     </tr>
 
-    <tr id="32">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">32</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация об условиях охраны здоровья обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.32.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="33">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">33</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о доступе к информационным системам и информационно-телекоммуникационным сетям,
                 в том числе приспособленным для использования инвалидами и лицами с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.33.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="34">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">34</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация об электронных образовательных ресурсах, к которым обеспечивается доступ обучающихся,
                 в том числе приспособленные для использования инвалидами и лицами с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.34.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="35">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">35</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о наличии специальных технических средств обучения коллективного и индивидуального
                 пользования для инвалидов и лиц с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.35.0 }}
             </p>
@@ -1088,23 +1092,23 @@
         </td>
     </tr>
 
-    <tr id="36">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">36</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о наличии общежития, интерната, в том числе приспособленных для использования инвалидами
                 и лицами с ограниченными возможностями здоровья, количестве жилых помещений в общежитии,
                 интернате для иногородних обучающихся, формировании платы за проживание в общежитии (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.36.0 }}
             </p>
@@ -1119,21 +1123,21 @@
         </td>
     </tr>
 
-    <tr id="37">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">37</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация  о  наличии  и  порядке  оказания  платных образовательных услуг (при наличии)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.37.0 }}
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.37.1 }}
             </p>
@@ -1148,44 +1152,44 @@
         </td>
     </tr>
 
-    <tr id="38">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">38</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация об объеме образовательной деятельности, финансовое обеспечение которой осуществляется
                 за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации,
                 местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.38.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="39">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">39</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о поступлении финансовых и материальных средств и об их расходовании по итогам финансового года
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.39.0 }}
             </p>
@@ -1200,11 +1204,11 @@
         </td>
     </tr>
 
-    <tr id="40">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">40</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Информация о количестве вакантных мест для приема (перевода) по каждой образовательной программе,
                 профессии, специальности, направлению подготовки (на места, финансируемые за счет бюджетных ассигнований
@@ -1212,12 +1216,12 @@
                 за счет средств физических и (или) юридических лиц)
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 65px" class="tab">
             <p class="num">
                 {{ answers.40.0 }}
             </p>
@@ -1228,7 +1232,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов
                     обратной связи и взаимодействия с получателями услуг</b>
@@ -1236,99 +1240,99 @@
         </td>
     </tr>
 
-    <tr id="41">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">41</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте номера телефона организации (его функционирование)
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.41.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="42">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">42</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте адреса электронной почты (ее функционирование)
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.42.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="43">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">43</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте электронных сервисов (форма для подачи электронного обращения/
                 жалобы/предложения)
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.43.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="44">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">44</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте раздела «Часто задаваемые вопросы»
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.44.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="45">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">45</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие
                 технические возможности
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.45.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="46">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">46</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие
                 анкеты для опроса граждан или гиперссылки на нее)
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.46.0 }}
             </p>
@@ -1349,88 +1353,88 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>2.1.1 Наличие комфортных условий для предоставления услуг</b>
             </p>
         </td>
     </tr>
 
-    <tr id="47">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">47</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.47.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="48">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">48</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие и понятность навигации внутри организации
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.48.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="49">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">49</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Доступность питьевой воды
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.49.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="50">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">50</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды,
                 туалетной бумаги и пр.)
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.50.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="51">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">51</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Санитарное состояние помещений организации
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.51.0 }}
             </p>
@@ -1452,7 +1456,7 @@
 <table style="border-collapse: collapse">
 
     <tr>
-        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для
                     инвалидов</b>
@@ -1460,80 +1464,80 @@
         </td>
     </tr>
 
-    <tr id="52">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">52</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Оборудование входных групп пандусами/подъемными платформами
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.52.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="53">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">53</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие выделенных стоянок для автотранспортных средств инвалидов
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.53.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="54">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">54</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие адаптированных лифтов, поручней, расширенных дверных проемов
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.54.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="55">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">55</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие сменных кресел-колясок
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.55.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="56">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">56</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие и доступность специально оборудованных санитарно-гигиенических помещений
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.56.0 }}
             </p>
@@ -1545,7 +1549,7 @@
 <table style="border-collapse: collapse">
 
     <tr>
-        <td colspan="3" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с
                     другими</b>
@@ -1553,85 +1557,85 @@
         </td>
     </tr>
 
-    <tr id="57">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">57</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.57.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="58">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">58</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными
                 рельефно-точечным шрифтом Брайля
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.58.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="59">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">59</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика
                 (тифлосурдопереводчика)
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.59.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="60">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">60</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети
                 «Интернет» для инвалидов по зрению
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.60.0 }}
             </p>
         </td>
     </tr>
 
-    <tr id="61">
-        <td style="width: 30px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+    <tr>
+        <td style="width: 30px" class="tab">
             <p class="num">61</p>
         </td>
-        <td style="width: 560px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Помощь, оказываемая работниками образовательной организации, прошедшими необходимое обучение (инструктирование)
                 (возможность сопровождения работниками организации);<br/>
                 - наличие возможности предоставления образовательных услуг в дистанционном режиме или на дому
             </p>
         </td>
-        <td style="width: 130px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 130px" class="tab">
             <p class="num">
                 {{ answers.61.0 }}
             </p>
@@ -1642,7 +1646,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 720px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" style="width: 720px" class="tab">
             <p class="question">
                 <b>Дополнительная информация</b>
             </p>
@@ -1650,7 +1654,7 @@
     </tr>
 
     <tr>
-        <td style="width: 720px; height: 60px; border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 720px; height: 60px" class="tab">
             <p class="question">
 
             </p>

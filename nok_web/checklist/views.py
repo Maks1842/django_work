@@ -197,7 +197,7 @@ def get_act_answer(request):
     name_org = Organisations.objects.get(pk=org_id).organisation_name
     address_org = Organisations.objects.get(pk=org_id).address
     user = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).user  # Имя проверяющего
-    person = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).organisation_person  # Представитель проверяемой организации
+    # person = Form_Organisation_Persons.objects.get(organisation_id=org_id).person  # Представитель проверяемой организации
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
     temp = Templates.objects.get(type_organisations_id=type_organisations).template_file
 
@@ -210,7 +210,7 @@ def get_act_answer(request):
     context = {'name_org': name_org,
                'address_org': address_org,
                'user': user,
-               'person': person,
+               # 'person': person,
                'answers': answers}
 
     return render(request, f'act_checkings/{temp}', context)
@@ -226,10 +226,10 @@ def get_act_answer(request):
 def do_some_magic(form_json):
 
     # f = open("checklist/modules/abm.json")       # Акт амбулатория
-    f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
+    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
     # f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
-    # f = open("checklist/modules/school.json")    # Акт школа
+    f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)
     f.close()
     # f = open("answ.json")
