@@ -42,7 +42,13 @@ class OrganisationsSerializer(serializers.ModelSerializer):
 class Organisation_PersonsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organisation_Persons
-        fields = ['id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted']
+        fields = ['id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'is_deleted']
+
+
+class Form_Organisation_PersonsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Form_Organisation_Persons
+        fields = ['id', 'organisation', 'person']
 
 
 class QuotaSerializer(serializers.ModelSerializer):
@@ -153,7 +159,7 @@ class CheckingSerializer(serializers.ModelSerializer):
 class ListCheckingSerializer(serializers.ModelSerializer):
     class Meta:
         model = List_Checking
-        fields = ['id', 'checking', 'organisation', 'organisation_person', 'user', 'is_deleted']
+        fields = ['id', 'checking', 'organisation', 'user', 'is_deleted']
 
 
 

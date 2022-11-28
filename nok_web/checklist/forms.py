@@ -112,7 +112,7 @@ class OrganisationsForm(forms.ModelForm):
 class Organisation_PersonsForm(forms.ModelForm):
     class Meta:
         model = Organisation_Persons
-        fields = ['first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted']
+        fields = ['first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'is_deleted']
         widgets = {
             'first_name': forms.TextInput(attrs={"class": "form-control"}),
             'second_name': forms.TextInput(attrs={"class": "form-control"}),
@@ -120,8 +120,17 @@ class Organisation_PersonsForm(forms.ModelForm):
             'position': forms.TextInput(attrs={"class": "form-control"}),
             'phone': forms.TextInput(attrs={"class": "form-control"}),
             'email': forms.EmailInput(attrs={"class": "form-control"}),
-            'organisation': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
+        }
+
+
+class Form_Organisation_PersonsForm(forms.ModelForm):
+    class Meta:
+        model = Form_Organisation_Persons
+        fields = ['organisation', 'person']
+        widgets = {
+            'organisation': forms.Select(attrs={"class": "form-control"}),
+            'person': forms.Select(attrs={"class": "form-control"})
         }
 
 
@@ -332,11 +341,10 @@ class CheckingForm(forms.ModelForm):
 class ListCheckingForm(forms.ModelForm):
     class Meta:
         model = List_Checking
-        fields = ['checking', 'organisation', 'organisation_person', 'user', 'is_deleted']
+        fields = ['checking', 'organisation', 'user', 'is_deleted']
         widgets = {
             'checking': forms.Select(attrs={"class": "form-control"}),
             'organisation': forms.Select(attrs={"class": "form-control"}),
-            'organisation_person': forms.Select(attrs={"class": "form-control"}),
             'user': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"}),
         }

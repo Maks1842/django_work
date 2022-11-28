@@ -497,7 +497,6 @@
     "position": "Как директор",
     "phone": "79856",
     "email": "",
-    "organisation": 1,
     "is_deleted": false
   }
 },
@@ -511,7 +510,6 @@
     "position": "",
     "phone": "",
     "email": "",
-    "organisation": 5,
     "is_deleted": false
   }
 },
@@ -525,7 +523,6 @@
     "position": "",
     "phone": "",
     "email": "",
-    "organisation": 3,
     "is_deleted": false
   }
 },
@@ -539,7 +536,6 @@
     "position": null,
     "phone": "1234",
     "email": null,
-    "organisation": 4,
     "is_deleted": false
   }
 },
@@ -553,8 +549,76 @@
     "position": "завхоз",
     "phone": null,
     "email": null,
-    "organisation": 2,
     "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 9,
+  "fields": {
+    "first_name": "Кто",
+    "second_name": "Его",
+    "last_name": "Сделал",
+    "position": "Самый",
+    "phone": "2345",
+    "email": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 2,
+  "fields": {
+    "organisation": 1,
+    "person": 1
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 3,
+  "fields": {
+    "organisation": 5,
+    "person": 3
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 4,
+  "fields": {
+    "organisation": 2,
+    "person": 8
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 5,
+  "fields": {
+    "organisation": 4,
+    "person": 7
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 6,
+  "fields": {
+    "organisation": 3,
+    "person": 4
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 7,
+  "fields": {
+    "organisation": 6,
+    "person": 9
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 8,
+  "fields": {
+    "organisation": 7,
+    "person": 9
   }
 },
 {
@@ -4230,6 +4294,16 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,10",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.answers",
+  "pk": 2,
+  "fields": {
+    "organisations": 5,
+    "checking": 1,
+    "answers_json": "{ \"1\": [ \"11\" ], \"3\": [ \"11\" ], \"4\": [ \"11\", \"12\" ], \"5\": [ \"11\", \"12\" ], \"6\": [ \"11\", \"12\" ], \"7\": [ \"11\", \"12\" ], \"8\": [ \"11\", \"12\" ], \"9\": [ \"12\" ], \"10\": [ \"11\" ], \"11\": [ \"12\" ], \"12\": [ \"11\", \"12\" ], \"13\": [ \"12\" ], \"14\": [ \"12\", \"11\" ], \"15\": [ \"12\", \"11\" ], \"16\": [ \"11\" ], \"17\": [ \"11\" ], \"18\": [ \"11\", \"12\" ], \"19\": [ \"11\" ], \"20\": [ \"11\" ], \"21\": [ \"11\" ], \"22\": [ \"12\" ], \"23\": [ \"12\" ], \"24\": [ \"12\" ], \"25\": [ \"11\", \"12\" ], \"26\": [ \"11\", \"12\" ], \"27\": [ \"11\" ], \"28\": [ \"11\" ], \"29\": [ \"11\" ], \"30\": [ \"11\", \"12\" ], \"31\": [ \"11\", \"12\" ], \"32\": [ \"12\", \"11\" ], \"33\": [ \"12\" ], \"34\": [ \"11\" ], \"35\": [ \"11\" ], \"36\": [ \"12\", \"11\" ], \"37\": [ \"11\" ], \"38\": [ \"12\" ], \"39\": [ \"11\" ], \"40\": [ \"11\", \"12\" ], \"41\": [ \"11\", \"12\" ], \"42\": [ \"11\" ], \"43\": [ \"11\" ], \"44\": [ \"11\" ], \"45\": [ \"11\" ], \"46\": [ \"11\" ], \"47\": [ \"11\", \"12\" ], \"48\": [ \"11\" ], \"49\": [ \"11\", \"12\" ], \"50\": [ \"11\" ], \"51\": [ \"11\" ], \"52\": [ \"11\" ], \"53\": [ \"11\", \"12\" ], \"54\": [ \"12\" ], \"55\": [ \"11\", \"12\" ], \"56\": [ \"11\", \"12\" ], \"57\": [ \"11\", \"12\" ], \"58\": [ \"11\", \"12\" ], \"59\": [ \"1\" ], \"60\": [ \"1\" ], \"61\": [ \"1\" ], \"62\": [ \"1\" ], \"63\": [ \"1\" ], \"64\": [ \"1\" ], \"65\": [ \"1\" ], \"66\": [ \"1\" ], \"67\": [ \"1\" ], \"68\": [ \"1\" ], \"69\": [ \"1\" ], \"70\": [ \"1\" ], \"71\": [ \"8\" ], \"72\": [ \"1\" ], \"73\": [ \"1\" ], \"74\": [ \"1\" ], \"75\": [ \"1\" ], \"76\": [ \"1\" ], \"77\": [ \"1\" ], \"78\": [ \"1\" ], \"79\": [ \"1\" ], \"80\": [ \"1\" ], \"81\": [ \"1\" ] }",
     "is_deleted": false
   }
 },
@@ -13844,7 +13918,6 @@
   "fields": {
     "checking": 1,
     "organisation": 5,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13855,7 +13928,6 @@
   "fields": {
     "checking": 2,
     "organisation": 4,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13866,7 +13938,6 @@
   "fields": {
     "checking": 3,
     "organisation": 2,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13877,7 +13948,6 @@
   "fields": {
     "checking": 3,
     "organisation": 1,
-    "organisation_person": null,
     "user": 2,
     "is_deleted": false
   }
@@ -13888,7 +13958,6 @@
   "fields": {
     "checking": 2,
     "organisation": 1,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13899,7 +13968,6 @@
   "fields": {
     "checking": 3,
     "organisation": 1,
-    "organisation_person": null,
     "user": 2,
     "is_deleted": false
   }
@@ -13910,7 +13978,6 @@
   "fields": {
     "checking": 2,
     "organisation": 3,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13921,7 +13988,6 @@
   "fields": {
     "checking": 4,
     "organisation": 6,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13932,7 +13998,6 @@
   "fields": {
     "checking": 4,
     "organisation": 7,
-    "organisation_person": null,
     "user": 1,
     "is_deleted": false
   }
@@ -13943,7 +14008,6 @@
   "fields": {
     "checking": 4,
     "organisation": 8,
-    "organisation_person": null,
     "user": 2,
     "is_deleted": false
   }
@@ -13954,7 +14018,6 @@
   "fields": {
     "checking": 4,
     "organisation": 9,
-    "organisation_person": null,
     "user": 2,
     "is_deleted": false
   }

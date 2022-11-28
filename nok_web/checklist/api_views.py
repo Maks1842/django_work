@@ -1,9 +1,6 @@
 import re
 import json
 
-# import modules.test_json_answer
-
-from .models import *
 from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
 from django.http import Http404, HttpResponse
 from .serializers import *
@@ -15,7 +12,6 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.renderers import JSONRenderer
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
-from drf_yasg2.openapi import Schema, TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -30,7 +26,7 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 """
 
 
-######## v1 - один класс для всего () ##########
+######## v1 - один класс для всего (). Учебный вариант. Не желательное использование ##########
 class RegionsViewSet(
                     # mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
@@ -84,862 +80,9 @@ class RegionsViewSet(
         return Response({'post': serializers.data})
 
 
-class TypeDepartmentsViewSet(
-                            mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            # mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            # mixins.ListModelMixin,
-                            GenericViewSet):
-
-
-    queryset = Type_Departments.objects.all()
-    serializer_class = Type_DepartmentsSerializer
-
-    # swagger_schema = None
-
-    @swagger_auto_schema(tags=['Тип департамента'])
-    @action(methods=['get'], detail=True)
-    def type_departments_name(self, request, pk=None):
-        type_dep_name = Type_Departments.objects.values('type').get(pk=pk)
-        return Response({'type_dep_name': type_dep_name})
-
-    @action(methods=['put'], detail=True)
-    def type_departments_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Type_Departments.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Type_DepartmentsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class DepartmentsViewSet(
-                         # mixins.CreateModelMixin,
-                         mixins.RetrieveModelMixin,
-                         # mixins.UpdateModelMixin,
-                         # mixins.DestroyModelMixin,
-                         # mixins.ListModelMixin,
-                         GenericViewSet):
-
-    queryset = Departments.objects.all()
-    serializer_class = DepartmentsSerializer
-    permission_classes = (IsOwnerAndAdminOrReadOnly,)
-
-    # swagger_schema = None
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=True)
-    def departments_id(self, request, pk=None):
-        dep_id = Departments.objects.values('id').get(pk=pk)
-        return Response({'departments_id': dep_id})
-
-    # @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=True)
-    def department_name(self, request, pk=None):
-        dep_name = Departments.objects.values('department_name').get(pk=pk)
-        return Response({'department_name': dep_name})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=True)
-    def parent(self, request, pk=None):
-        parent_dep = Departments.objects.get(pk=pk)
-        return Response({'parent_dep': parent_dep.department_name})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=False)
-    def parents(self, request):
-        parents_dep = Departments.objects.all()
-        return Response({'parents_dep': [p.department_name for p in parents_dep]})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=True)
-    def region(self, request, pk=None):
-        reg = Regions.objects.get(pk=pk)
-        return Response({'region': reg.region_name})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=False)
-    def regions(self, request):
-        regs = Regions.objects.all()
-        return Response({'regions': [r.region_name for r in regs]})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=True)
-    def type_department(self, request, pk=None):
-        type_dep = Type_Departments.objects.get(pk=pk)
-        return Response({'type_department': type_dep.type})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['get'], detail=False)
-    def types_departments(self, request):
-        types_deps = Type_Departments.objects.all()
-        return Response({'types_departments': [t.type for t in types_deps]})
-
-    @swagger_auto_schema(auto_schema=None)
-    @action(methods=['put'], detail=True)
-    # @permission_classes([IsAdminUser, IsOwnerOrReadOnly])
-    def departments_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Departments.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = DepartmentsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class DepartmentPersonsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-
-    queryset = Department_Persons.objects.all()
-    serializer_class = Department_PersonsSerializer
-
-    swagger_schema = None
-
-    def _allowed_methods(self):
-        return [m for m in super(DepartmentPersonsViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
-    @action(methods=['get'], detail=True)
-    def department(self, request, pk=None):
-        dep = Departments.objects.get(pk=pk)
-        return Response({'department': dep.department_name})
-
-    @action(methods=['get'], detail=False)
-    def departments(self, request):
-        deps = Departments.objects.all()
-        return Response({'departments': [d.department_name for d in deps]})
-
-    @action(methods=['put'], detail=True)
-    def department_persons_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Department_Persons.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Department_PersonsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-# class TypeOrganisationsViewSet(
-#                             # mixins.CreateModelMixin,
-#                             mixins.RetrieveModelMixin,
-#                             mixins.UpdateModelMixin,
-#                             # mixins.DestroyModelMixin,
-#                             mixins.ListModelMixin,
-#                             GenericViewSet):
-#     queryset = Type_Organisations.objects.all()
-#     serializer_class = Type_OrganisationsSerializer
-#
-#     # swagger_schema = None
-#
-#     def _allowed_methods(self):
-#         return [m for m in super(TypeOrganisationsViewSet, self)._allowed_methods() if m not in ['DELETE']]
-#
-#     @action(methods=['get'], detail=True)
-#     def type_organisations_id(self, request, pk=None):
-#         type_orgs_id = Type_Organisations.objects.values('id').get(pk=pk)
-#         return Response({'type_organisations_id': type_orgs_id})
-#
-#     @action(methods=['get'], detail=True)
-#     def type_organisations_name(self, request, pk=None):
-#         type_orgs_name = Type_Organisations.objects.values('type').get(pk=pk)
-#         return Response({'type_organisations_name': type_orgs_name})
-#
-#     @action(methods=['put'], detail=True)
-#     def type_organisations_update(self, request, *args, **kwargs):
-#         pk = kwargs.get('pk', None)
-#         if not pk:
-#             return Response({'error': 'Метод PUT не определен'})
-#         try:
-#             instance = Type_Organisations.objects.get(pk=pk)
-#         except:
-#             return Response({'error': 'Объект не существует'})
-#         serializers = Type_OrganisationsSerializer(data=request.data, instance=instance, partial=True)
-#         serializers.is_valid(raise_exception=True)
-#         serializers.save()
-#         return Response({'post': serializers.data})
-
-
-class OrganisationsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Organisations.objects.all()
-    serializer_class = OrganisationsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def organisations_id(self, request, pk=None):
-        orgs_id = Organisations.objects.values('id').get(pk=pk)
-        return Response({'organisations_id': orgs_id})
-
-    @action(methods=['get'], detail=True)
-    def organisation_name(self, request, pk=None):
-        org_name = Organisations.objects.values('organisation_name').get(pk=pk)
-        return Response({'organisation_name': org_name})
-
-    @action(methods=['get'], detail=True)
-    def parent(self, request, pk=None):
-        parent_org = Organisations.objects.get(pk=pk)
-        return Response({'parent': parent_org.organisation_name})
-
-    @action(methods=['get'], detail=False)
-    def parents(self, request):
-        parents_org = Organisations.objects.all()
-        return Response({'parents': [p.organisation_name for p in parents_org]})
-
-    @action(methods=['get'], detail=True)
-    def department(self, request, pk=None):
-        dep = Departments.objects.get(pk=pk)
-        return Response({'region': dep.region_name})
-
-    @action(methods=['get'], detail=False)
-    def departments(self, request):
-        deps = Departments.objects.all()
-        return Response({'regions': [d.department_name for d in deps]})
-
-    @action(methods=['get'], detail=True)
-    def type_organisation(self, request, pk=None):
-        type_org = Type_Organisations.objects.get(pk=pk)
-        return Response({'type_organisation': type_org.type})
-
-    @action(methods=['get'], detail=False)
-    def types_organisations(self, request):
-        types_orgs = Type_Organisations.objects.all()
-        return Response({'types_organisations': [t.type for t in types_orgs]})
-
-    @action(methods=['get'], detail=True)
-    def quota(self, request, pk=None):
-        quota_org = Quota.objects.get(pk=pk)
-        return Response({'quota': quota_org.quota})
-
-    @action(methods=['put'], detail=True)
-    def organisations_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Organisations.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = OrganisationsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class QuotaViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-    queryset = Quota.objects.all()
-    serializer_class = QuotaSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def quota_id(self, request, pk=None):
-        quot_id = Quota.objects.values('id').get(pk=pk)
-        return Response({'quota_id': quot_id})
-
-    @action(methods=['get'], detail=True)
-    def quota(self, request, pk=None):
-        quot = Quota.objects.values('quota').get(pk=pk)
-        return Response({'quota': quot})
-
-    # @swagger_auto_schema(method='delete', swagger_schema=None)
-    @action(methods=['put'], detail=True)
-    def quota_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Quota.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = QuotaSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class TemplatesViewSet(
-                        # mixins.CreateModelMixin,
-                        mixins.RetrieveModelMixin,
-                        mixins.UpdateModelMixin,
-                        # mixins.DestroyModelMixin,
-                        mixins.ListModelMixin,
-                        GenericViewSet):
-    queryset = Templates.objects.all()
-    serializer_class = TemplatesSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def templates_id(self, request, pk=None):
-        temp_id = Templates.objects.values('id').get(pk=pk)
-        return Response({'templates_id': temp_id})
-
-    @action(methods=['get'], detail=True)
-    def name(self, request, pk=None):
-        temp_name = Templates.objects.values('name').get(pk=pk)
-        return Response({'name': temp_name})
-
-    @action(methods=['put'], detail=True)
-    def templates_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Templates.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = TemplatesSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class FormSectionsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Form_Sections.objects.all()
-    serializer_class = Form_SectionsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def form_sections_id(self, request, pk=None):
-        form_sect_id = Form_Sections.objects.values('id').get(pk=pk)
-        return Response({'form_sections_id': form_sect_id})
-
-    @action(methods=['get'], detail=True)
-    def form_sections_name(self, request, pk=None):
-        name = Form_Sections.objects.values('name').get(pk=pk)
-        return Response({'name': name})
-
-    @action(methods=['get'], detail=True)
-    def order_num(self, request, pk=None):
-        ord_num = Form_Sections.objects.values('order_num').get(pk=pk)
-        return Response({'order_num': ord_num})
-
-    @action(methods=['get'], detail=True)
-    def parent(self, request, pk=None):
-        parent_fs = Form_Sections.objects.get(pk=pk)
-        return Response({'parent': parent_fs.name})
-
-    @action(methods=['get'], detail=False)
-    def parents(self, request):
-        parents_fs = Form_Sections.objects.all()
-        return Response({'parents': [p.name for p in parents_fs]})
-
-    @action(methods=['get'], detail=True)
-    def type_department(self, request, pk=None):
-        type_dep = Type_Departments.objects.get(pk=pk)
-        return Response({'type_department': type_dep.type})
-
-    @action(methods=['get'], detail=False)
-    def types_departments(self, request):
-        types_deps = Type_Departments.objects.all()
-        return Response({'types_departments': [t.type for t in types_deps]})
-
-    @action(methods=['put'], detail=True)
-    def form_sections_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Form_Sections.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Form_SectionsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class QuestionsViewSet(
-                        # mixins.CreateModelMixin,
-                        mixins.RetrieveModelMixin,
-                        mixins.UpdateModelMixin,
-                        # mixins.DestroyModelMixin,
-                        mixins.ListModelMixin,
-                        GenericViewSet):
-    queryset = Questions.objects.all()
-    serializer_class = QuestionsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def questions_name(self, request, pk=None):
-        questions = Questions.objects.values('questions').get(pk=pk)
-        return Response({'questions': questions})
-
-    @action(methods=['put'], detail=True)
-    def questions_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Questions.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = QuestionsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class QuestionValuesViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Question_Values.objects.all()
-    serializer_class = Question_ValuesSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def question_values_id(self, request, pk=None):
-        quest_id = Question_Values.objects.values('id').get(pk=pk)
-        return Response({'question_values_id': quest_id})
-
-    @action(methods=['get'], detail=True)
-    def question_values_name(self, request, pk=None):
-        name = Question_Values.objects.values('value_name').get(pk=pk)
-        return Response({'value_name': name})
-
-    @action(methods=['put'], detail=True)
-    def question_values_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Question_Values.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Question_ValuesSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class FormSectionsQuestionViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Form_Sections_Question.objects.all()
-    serializer_class = Form_Sections_QuestionSerializer
-
-    swagger_schema = None
-
-    @action(methods=['put'], detail=True)
-    def form_sections_question_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Form_Sections_Question.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Form_Sections_QuestionSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class RecommendationsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Recommendations.objects.all()
-    serializer_class = RecommendationsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def recommendations_id(self, request, pk=None):
-        rec_id = Recommendations.objects.values('id').get(pk=pk)
-        return Response({'recommendations_id': rec_id})
-
-    @action(methods=['get'], detail=True)
-    def recommendations_name(self, request, pk=None):
-        name = Recommendations.objects.values('name').get(pk=pk)
-        return Response({'name': name})
-
-    @action(methods=['put'], detail=True)
-    def recommendations_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Recommendations.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = RecommendationsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class FormsRecommendationsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Forms_Recommendations.objects.all()
-    serializer_class = Forms_RecommendationsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def forms_recommendations_id(self, request, pk=None):
-        fr_id = Forms_Recommendations.objects.values('id').get(pk=pk)
-        return Response({'forms_recommendations_id': fr_id})
-
-    @action(methods=['get'], detail=True)
-    def free_value(self, request, pk=None):
-        fv = Forms_Recommendations.objects.values('free_value').get(pk=pk)
-        return Response({'free_value': fv})
-
-    @action(methods=['get'], detail=True)
-    def answer(self, request, pk=None):
-        ans = Answers.objects.get(pk=pk)
-        return Response({'name': ans.id})
-
-    @action(methods=['get'], detail=False)
-    def answers(self, request):
-        anss = Answers.objects.all()
-        return Response({'names': [a.id for a in anss]})
-
-    @action(methods=['get'], detail=True)
-    def form_section(self, request, pk=None):
-        form_sect = Form_Sections.objects.get(pk=pk)
-        return Response({'form_section': form_sect.name})
-
-    @action(methods=['get'], detail=False)
-    def form_sections(self, request):
-        form_sects = Form_Sections.objects.all()
-        return Response({'form_sections': [f.name for f in form_sects]})
-
-    @action(methods=['get'], detail=True)
-    def recommendation(self, request, pk=None):
-        rec = Recommendations.objects.get(pk=pk)
-        return Response({'recommendation': rec.name})
-
-    @action(methods=['get'], detail=False)
-    def recommendations(self, request):
-        recs = Recommendations.objects.all()
-        return Response({'recommendations': [r.name for r in recs]})
-
-    @action(methods=['put'], detail=True)
-    def forms_recommendations_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Forms_Recommendations.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Forms_RecommendationsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class SignedDociumentsViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-
-    queryset = Signed_Dociuments.objects.all()
-    serializer_class = Signed_DociumentsSerializer
-    # permission_classes = (IsOwnerAndAdminOrReadOnly,)
-
-    swagger_schema = None
-
-
-    @action(methods=['get'], detail=True)
-    def file_name(self, request, pk=None):
-        fn = Signed_Dociuments.objects.values('file_name').get(pk=pk)
-        return Response({'file_name': fn})
-
-    @action(methods=['get'], detail=True)
-    def originat_file_name(self, request, pk=None):
-        ofn = Signed_Dociuments.objects.values('originat_file_name').get(pk=pk)
-        return Response({'originat_file_name': ofn})
-
-    @action(methods=['get'], detail=True)
-    def description(self, request, pk=None):
-        descr = Signed_Dociuments.objects.values('description').get(pk=pk)
-        return Response({'description': descr})
-
-    @action(methods=['get'], detail=True)
-    def created_at(self, request, pk=None):
-        created = Signed_Dociuments.objects.values('created_at').get(pk=pk)
-        return Response({'created': created})
-
-    @action(methods=['put'], detail=True)
-    def signed_dociuments_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Signed_Dociuments.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Signed_DociumentsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class CommentsViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-    queryset = Comments.objects.all()
-    serializer_class = CommentsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def comments_id(self, request, pk=None):
-        comment_id = Comments.objects.values('id').get(pk=pk)
-        return Response({'comments_id': comment_id})
-
-    @action(methods=['get'], detail=True)
-    def free_value(self, request, pk=None):
-        fv = Comments.objects.values('free_value').get(pk=pk)
-        return Response({'free_value': fv})
-
-    @action(methods=['put'], detail=True)
-    def comments_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Comments.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = CommentsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class PhotoViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-
-    queryset = Photo.objects.all()
-    serializer_class = PhotoSerializer
-    # permission_classes = (IsOwnerAndAdminOrReadOnly,)
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def photo_id(self, request, pk=None):
-        pht_id = Photo.objects.values('id').get(pk=pk)
-        return Response({'photo_id': pht_id})
-
-    @action(methods=['get'], detail=True)
-    def file_name(self, request, pk=None):
-        fn = Photo.objects.values('file_name').get(pk=pk)
-        return Response({'file_name': fn})
-
-    @action(methods=['get'], detail=True)
-    def original_file_name(self, request, pk=None):
-        ofn = Photo.objects.values('original_file_name').get(pk=pk)
-        return Response({'original_file_name': ofn})
-
-    @action(methods=['get'], detail=True)
-    def description(self, request, pk=None):
-        descr = Photo.objects.values('description').get(pk=pk)
-        return Response({'description': descr})
-
-    @action(methods=['get'], detail=True)
-    def created_at(self, request, pk=None):
-        created = Photo.objects.values('created_at').get(pk=pk)
-        return Response({'created': created})
-
-    @action(methods=['put'], detail=True)
-    def photo_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Photo.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = PhotoSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class VersionsViewSet(
-                        # mixins.CreateModelMixin,
-                        mixins.RetrieveModelMixin,
-                        mixins.UpdateModelMixin,
-                        # mixins.DestroyModelMixin,
-                        mixins.ListModelMixin,
-                        GenericViewSet):
-    queryset = Versions.objects.all()
-    serializer_class = VersionsSerializer
-
-    swagger_schema = None
-
-    @action(methods=['get'], detail=True)
-    def versions_id(self, request, pk=None):
-        vers_id = Versions.objects.values('id').get(pk=pk)
-        return Response({'versions_id': vers_id})
-
-    @action(methods=['get'], detail=True)
-    def table_name(self, request, pk=None):
-        name = Versions.objects.values('table_name').get(pk=pk)
-        return Response({'table_name': name})
-
-    @action(methods=['get'], detail=True)
-    def version(self, request, pk=None):
-        vers = Versions.objects.values('version').get(pk=pk)
-        return Response({'version': vers})
-
-    @action(methods=['put'], detail=True)
-    def versions_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Versions.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = VersionsSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class TypeAnswersViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):  # Данный класс включает методы GET, POST, PUT, DELETE
-    queryset = Type_Answers.objects.all()
-    serializer_class = Type_AnswersSerializer
-
-    swagger_schema = None
-
-    # def _allowed_methods(self):
-    #     return [m for m in super(TypeAnswersViewSet, self)._allowed_methods() if m not in ['DELETE']]
-
-    @action(methods=['get'],
-            detail=True)  # detail=True возвращает только одну запись, detail=False - возвращает несколько записей
-    def type_answers_id(self, request, pk=None):
-        type_ans_id = Type_Answers.objects.values('id').get(pk=pk)
-        return Response({'type_id': type_ans_id})
-
-    @action(methods=['get'], detail=True)  # Извлекаю одну запись из конкретного поля
-    def type_answers(self, request, pk=None):
-        type = Type_Answers.objects.values('type').get(pk=pk)
-        return Response({'type': type})
-
-    @action(methods=['put'], detail=True)  # Изменяю одну запись в конкретном поле
-    def type_answers_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Type_Answers.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Type_AnswersSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
-
-
-class TransactionExchangeViewSet(
-                            # mixins.CreateModelMixin,
-                            mixins.RetrieveModelMixin,
-                            mixins.UpdateModelMixin,
-                            # mixins.DestroyModelMixin,
-                            mixins.ListModelMixin,
-                            GenericViewSet):
-    queryset = Transaction_Exchange.objects.all()
-    serializer_class = Transaction_ExchangeSerializer
-
-    swagger_schema = None
-
-    @action(methods=['put'], detail=True)
-    def transaction_exchange_update(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-        if not pk:
-            return Response({'error': 'Метод PUT не определен'})
-        try:
-            instance = Transaction_Exchange.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-        serializers = Transaction_ExchangeSerializer(data=request.data, instance=instance, partial=True)
-        serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
 
 '''
-Представления ApiView
+Представления ApiView. Основной вариант.
 '''
 class AnswersAPIView(APIView):
     @swagger_auto_schema(
@@ -958,7 +101,9 @@ class AnswersAPIView(APIView):
         id_checking = request.query_params.get('id_checking')
 
         queryset = Answers.objects.filter(organisations_id=id_organisation, checking_id=id_checking)
-        answer = queryset[0].answers_json
+        answer = ''
+        if len(queryset) > 0:
+            answer = queryset[0].answers_json
         return Response(answer)
 
     @swagger_auto_schema(
@@ -997,15 +142,15 @@ class OrganisationPersonsAPIView(APIView):
     @action(methods=['get'], detail=False)
     def get(self, request):
         organisation = request.query_params.get('id_organisation')
+        queryset = Form_Organisation_Persons.objects.filter(organisation_id=organisation)
 
-        persons = Organisation_Persons.objects.filter(organisation_id=organisation)
-        result = []
-        for person in persons:
-            result.append({
-                'id': person.id,
-                'name': f'{person.last_name} {person.first_name} {person.second_name or ""}'
-            })
-        return Response({'name': result})
+        context = []
+
+        if len(queryset) > 0:
+            for item in queryset:
+                context = {'id': item.person_id,
+                           'name': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"}
+        return Response({'name': context})
 
     @swagger_auto_schema(
         methods=['post'],
@@ -1057,18 +202,18 @@ class GetListTypeOrganizationsAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         type_department = request.query_params.get('id_type_department')
-
         if type_department is None:
             queryset = Type_Organisations.objects.all()
         else:
             queryset = Type_Organisations.objects.filter(type_departments_id=type_department)
 
         result = []
-        for item in queryset:
-            result.append({
-                'id': item.id,
-                'name': item.type,
-            })
+        if len(queryset) > 0:
+            for item in queryset:
+                result.append({
+                    'id': item.id,
+                    'name': item.type,
+                })
         return Response({'data': result})
 
 
@@ -1084,7 +229,6 @@ class GetFormActByOrganizationTypeAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         type_organisation = request.query_params.get('id_type_organisation')
-
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
         form_json = {}
@@ -1106,7 +250,6 @@ class GetFormActByOrganizationIdAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         organisation = request.query_params.get('id_organisation')
-
         queryset = Organisations.objects.filter(id=organisation)
 
         form_json = {}
@@ -1137,14 +280,15 @@ class GetCheckListOrganizationsAPIView(APIView):
             queryset = List_Checking.objects.filter(checking_id=check, user_id=user)
 
         result = []
-        for item in queryset:
-            department = Departments.objects.values('type_departments_id').get(pk=item.organisation.department_id)
-            result.append({
-                'id': item.organisation_id,
-                'name': item.organisation.organisation_name,
-                'type': item.organisation.type_organisations_id,
-                'department': department['type_departments_id']
-            })
+        if len(queryset) > 0:
+            for item in queryset:
+                department = Departments.objects.values('type_departments_id').get(pk=item.organisation.department_id)
+                result.append({
+                    'id': item.organisation_id,
+                    'name': item.organisation.organisation_name,
+                    'type': item.organisation.type_organisations_id,
+                    'department': department['type_departments_id']
+                })
         return Response({'data': result})
 
 
@@ -1164,11 +308,12 @@ class GetListCheckingAPIView(APIView):
         queryset = List_Checking.objects.filter(user_id=user).distinct('checking')
 
         result = []
-        for item in queryset:
-            result.append({
-                'id': item.checking.id,
-                'name': item.checking.name,
-            })
+        if len(queryset) > 0:
+            for item in queryset:
+                result.append({
+                    'id': item.checking.id,
+                    'name': item.checking.name,
+                })
         return Response({'data': result})
 
 
@@ -1282,50 +427,19 @@ class GetActAnswerAPIView(APIView):
         organisation = request.query_params.get('id_organisation')
 
         # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
-        type_organisations = Organisations.objects.get(pk=organisation).type_organisations_id
+        try:
+            type_organisations = Organisations.objects.get(pk=organisation).type_organisations_id
+        except Exception:
+            type_organisations = 0
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
 
-        list = []
+        answers = {}
         if len(queryset) > 0:
             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
             query = Question_Values.objects.values()
 
             comparison = do_some_magic(form_json)
             answers = answer_in_the_act(comparison, query)
-
-            # for item in form_json['pages']:
-            #     elements = []
-            #     for elem in item['elements']:
-            #         name = elem["name"]
-            #         title = elem["title"]
-            #
-            #         z = do_some_magic(form_json)
-            #
-            #         answer = answer_in_the_act(z, query)
-            #
-            #
-
-
-            #
-            #         if len(answer) > 1:
-            #             elements.append({
-            #                 "name": name,
-            #                 "title": title,
-            #                 "answer_1": answer[0],
-            #                 "answer_2": answer[1],
-            #             })
-            #         else:
-            #             elements.append({
-            #                 "name": name,
-            #                 "title": title,
-            #                 "answer_1": answer,
-            #             })
-            #
-            #     list.append({
-            #         "title": item["title"],
-            #         "elements": elements,
-            #
-            #     })
 
         return Response(answers)
 
