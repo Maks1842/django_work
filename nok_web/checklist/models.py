@@ -139,6 +139,18 @@ class Organisation_Persons(models.Model):
     class Meta:
         verbose_name = 'Ответственный из Учреждения'
         verbose_name_plural = 'Ответственные из Учреждений'
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "first_name",
+                    "second_name",
+                    "last_name",
+                    "position",
+                    "phone",
+                    "email",
+                ],
+                name="unique_person")
+        ]
 
 
 '''

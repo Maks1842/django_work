@@ -12,6 +12,7 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.renderers import JSONRenderer
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
+from django.db import IntegrityError
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -28,13 +29,12 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 
 ######## v1 - один класс для всего (). Учебный вариант. Не желательное использование ##########
 class RegionsViewSet(
-                    # mixins.CreateModelMixin,
-                    mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    # mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    GenericViewSet):
-
+    # mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    # mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    GenericViewSet):
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
 
@@ -42,7 +42,6 @@ class RegionsViewSet(
     swagger_schema = None
 
     @swagger_auto_schema(tags=['Регионы'])
-
     # Отключение метода Destroy
     def _allowed_methods(self):
         return [m for m in super(RegionsViewSet, self)._allowed_methods() if m not in ['DELETE']]
@@ -80,10 +79,11 @@ class RegionsViewSet(
         return Response({'post': serializers.data})
 
 
-
 '''
 Представления ApiView. Основной вариант.
 '''
+
+
 class AnswersAPIView(APIView):
     @swagger_auto_schema(
         methods=['get'],
@@ -94,7 +94,6 @@ class AnswersAPIView(APIView):
             openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверка",
                               type=openapi.TYPE_INTEGER),
         ])
-
     @action(methods=['get'], detail=False)
     def get(self, request):
         id_organisation = request.query_params.get('id_organisation')
@@ -138,55 +137,60 @@ class OrganisationPersonsAPIView(APIView):
             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
                               type=openapi.TYPE_INTEGER),
         ])
-
     @action(methods=['get'], detail=False)
     def get(self, request):
         organisation = request.query_params.get('id_organisation')
-        queryset = Form_Organisation_Persons.objects.filter(organisation_id=organisation)
-
-        context = []
-
-        if len(queryset) > 0:
-            for item in queryset:
-                context = {'id': item.person_id,
-                           'name': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"}
-        return Response({'name': context})
+        persons = Form_Organisation_Persons.objects.filter(organisation_id=organisation)
+        result = []
+        if len(persons) > 0:
+            for item in persons:
+                result.append({
+                    'id': item.person_id,
+                    'name': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"
+                })
+        return Response({'data': result})
 
     @swagger_auto_schema(
         methods=['post'],
         tags=['Добавить представителя организации'],
-        manual_parameters=[
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('first_name', openapi.IN_QUERY, description="Имя представителя",
-                              type=openapi.TYPE_STRING),
-            openapi.Parameter('second_name', openapi.IN_QUERY, description="Отчество представителя",
-                              type=openapi.TYPE_STRING),
-            openapi.Parameter('last_name', openapi.IN_QUERY, description="Фамилия представителя",
-                              type=openapi.TYPE_STRING),
-            openapi.Parameter('position', openapi.IN_QUERY, description="Должность",
-                              type=openapi.TYPE_STRING),
-            openapi.Parameter('phone', openapi.IN_QUERY, description="Телефон",
-                              type=openapi.TYPE_STRING),
-            openapi.Parameter('email', openapi.IN_QUERY, description="Эл. почта",
-                              type=openapi.FORMAT_EMAIL),
-        ])
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'id_organisation': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'first_name': openapi.Schema(type=openapi.TYPE_STRING, description='Имя'),
+                'second_name': openapi.Schema(type=openapi.TYPE_STRING, description='Отчество'),
+                'last_name': openapi.Schema(type=openapi.TYPE_STRING, description='Фамилия'),
+                'position': openapi.Schema(type=openapi.TYPE_STRING, description='Должность'),
+                'phone': openapi.Schema(type=openapi.TYPE_STRING, description='Телефон'),
+                'email': openapi.Schema(type=openapi.FORMAT_EMAIL, description='Эл. почта'),
+            }
+        ))
     @action(methods=['post'], detail=True)
     def post(self, request):
-        id_organisation = request.query_params.get('id_organisation')
-        first_name = request.query_params.get('first_name')
-        second_name = request.query_params.get('second_name')
-        last_name = request.query_params.get('last_name')
-        position = request.query_params.get('position')
-        phone = request.query_params.get('phone')
-        email = request.query_params.get('email')
-
-        data = {'organisation': id_organisation, 'first_name': first_name, 'second_name': second_name,
-                'last_name': last_name, 'position': position, 'phone': phone, 'email': email}
-        serializers = Organisation_PersonsSerializer(data=data)
+        req_data = request.data
+        id_org = req_data.pop('id_organisation')
+        serializers = Organisation_PersonsSerializer(data=req_data)
         serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
+        try:
+            res = serializers.save()
+        except IntegrityError:
+            return Response({"error": "Такой человек уже существует"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+        data = {
+            'organisation': id_org,
+            'person': res.pk
+        }
+        serializers_person = Form_Organisation_PersonsSerializer(data=data)
+        serializers_person.is_valid(raise_exception=True)
+        try:
+            serializers_person.save()
+        except IntegrityError:
+            return Response({"error": "Пользователь добавлен, но не связан с организацией. Обратитесь к администратору!"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Представитель успешно добавлен'})
 
 
 class GetListTypeOrganizationsAPIView(APIView):
@@ -198,7 +202,6 @@ class GetListTypeOrganizationsAPIView(APIView):
             openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
                               type=openapi.TYPE_INTEGER)
         ])
-
     @action(detail=False, methods=['get'])
     def get(self, request):
         type_department = request.query_params.get('id_type_department')
@@ -301,7 +304,6 @@ class GetListCheckingAPIView(APIView):
             openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор эксперта",
                               type=openapi.TYPE_INTEGER)
         ])
-
     @action(detail=False, methods=['get'])
     def get(self, request):
         user = request.query_params.get('user_id')
@@ -315,8 +317,6 @@ class GetListCheckingAPIView(APIView):
                     'name': item.checking.name,
                 })
         return Response({'data': result})
-
-
 
 
 """
@@ -338,7 +338,9 @@ class GetActAPIView(APIView):
         context = []
         count = 0
 
-        form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+        form_sections = Form_Sections.objects.values().order_by('order_num').filter(
+            type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(
+            type_departments=None)
         form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
         questions = Questions.objects.values()
         type_answers = Type_Answers.objects.values()
@@ -443,6 +445,7 @@ class GetActAnswerAPIView(APIView):
 
         return Response(answers)
 
+
 '''
 Функция сравнения двух json.
 Производится сопоставление полученных ответов с имеющимеся вопросами.
@@ -451,11 +454,12 @@ class GetActAnswerAPIView(APIView):
 - если нет ни одного совпадения, то все ячейки остаются пустые.
 В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
 '''
-def do_some_magic(form_json):
 
+
+def do_some_magic(form_json):
     # f = open("checklist/modules/abm.json")       # Акт амбулатория
     # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
+    f = open("checklist/modules/cult_standart.json")  # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
     # f = open("checklist/modules/school.json")    # Акт школа
     act_answer = json.load(f)
@@ -499,8 +503,9 @@ def do_some_magic(form_json):
 Функция формирования текстовых ответов для HTML шаблона из json файла,
 который сформирован на основе сопоставления act_json и answer_json.
 '''
-def answer_in_the_act(comparison, query):
 
+
+def answer_in_the_act(comparison, query):
     list = {}
 
     for answ in comparison:
@@ -529,4 +534,3 @@ def answer_in_the_act(comparison, query):
         list[answ] = answers
 
     return list
-
