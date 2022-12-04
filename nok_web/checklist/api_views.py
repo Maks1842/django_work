@@ -12,7 +12,7 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.renderers import JSONRenderer
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -166,6 +166,7 @@ class OrganisationPersonsAPIView(APIView):
             }
         ))
     @action(methods=['post'], detail=True)
+    @transaction.atomic
     def post(self, request):
         req_data = request.data
         id_org = req_data.pop('id_organisation')
@@ -177,18 +178,20 @@ class OrganisationPersonsAPIView(APIView):
             return Response({"error": "Такой человек уже существует"},
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
+
         data = {
             'organisation': id_org,
             'person': res.pk
         }
         serializers_person = Form_Organisation_PersonsSerializer(data=data)
         serializers_person.is_valid(raise_exception=True)
-        try:
-            serializers_person.save()
-        except IntegrityError:
-            return Response({"error": "Пользователь добавлен, но не связан с организацией. Обратитесь к администратору!"},
-                            status=status.HTTP_406_NOT_ACCEPTABLE,
-                            )
+        serializers_person.save()
+        # try:
+        #     serializers_person.save()
+        # except IntegrityError:
+        #     return Response({"error": "Пользователь добавлен, но не связан с организацией. Обратитесь к администратору!"},
+        #                     status=status.HTTP_406_NOT_ACCEPTABLE,
+        #                     )
 
         return Response({'message': 'Представитель успешно добавлен'})
 

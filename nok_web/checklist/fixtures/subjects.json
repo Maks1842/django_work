@@ -566,6 +566,45 @@
   }
 },
 {
+  "model": "checklist.organisation_persons",
+  "pk": 10,
+  "fields": {
+    "first_name": "Петр",
+    "second_name": "Петрович",
+    "last_name": "Шишка",
+    "position": "ВсёЗнает",
+    "phone": "222222",
+    "email": "afsdf@wd.ru",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 12,
+  "fields": {
+    "first_name": "Боря",
+    "second_name": "Абдрахманыч",
+    "last_name": "Зязиков",
+    "position": "Сопровождающий",
+    "phone": "12354",
+    "email": "ra@df.ru",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 16,
+  "fields": {
+    "first_name": "Николай",
+    "second_name": "Захарович",
+    "last_name": "Тищенко",
+    "position": "Сопровождающий",
+    "phone": "12354",
+    "email": "ra@df.ru",
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.form_organisation_persons",
   "pk": 2,
   "fields": {
@@ -619,6 +658,30 @@
   "fields": {
     "organisation": 7,
     "person": 9
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 9,
+  "fields": {
+    "organisation": 9,
+    "person": 12
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 10,
+  "fields": {
+    "organisation": 9,
+    "person": 16
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 11,
+  "fields": {
+    "organisation": 8,
+    "person": 10
   }
 },
 {
