@@ -37,6 +37,7 @@ urlpatterns = [
     path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
+    path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
     path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='getListTypeOrganizations'),
     path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='getFormActByOrganizationType'),
     path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),

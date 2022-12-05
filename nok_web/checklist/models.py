@@ -255,22 +255,7 @@ class Form_Sections_Question(models.Model):
         verbose_name_plural = 'Сопоставление вопрос-раздел'
 
 
-'''
-Хранятся типовые рекомендации по замечаниям отраженным в акте проверки.
-Данные этой модели используются при составлении итоговых отчетов.
-'''
-class Recommendations(models.Model):
-    name = models.CharField(max_length=500, verbose_name='Рекоммендации')
-    is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = 'Варианты рекоммендаций'
 
 
 '''

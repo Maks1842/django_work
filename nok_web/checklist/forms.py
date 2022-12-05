@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
+# from .app_models.recommendations import Recommendations
+
 
 # class UserLoginForm(AuthenticationForm):
 #     username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -204,14 +206,14 @@ class Form_Sections_QuestionForm(forms.ModelForm):
         }
 
 
-class RecommendationsForm(forms.ModelForm):
-    class Meta:
-        model = Recommendations
-        fields = ['name', 'is_deleted']
-        widgets = {
-            'name': forms.TextInput(attrs={"class": "form-control"}),
-            'is_deleted': forms.Select(attrs={"class": "form-control"})
-        }
+# class RecommendationsForm(forms.ModelForm):
+#     class Meta:
+#         model = Recommendations
+#         fields = ['name', 'is_deleted']
+#         widgets = {
+#             'name': forms.TextInput(attrs={"class": "form-control"}),
+#             'is_deleted': forms.Select(attrs={"class": "form-control"})
+#         }
 
 
 class Forms_RecommendationsForm(forms.ModelForm):

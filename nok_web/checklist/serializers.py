@@ -1,6 +1,8 @@
 from .models import *
 from rest_framework import serializers
 
+from .app_models.recommendations import Recommendations
+
 
 class RegionsSerializer(serializers.ModelSerializer):
     class Meta:

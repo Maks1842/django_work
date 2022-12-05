@@ -685,6 +685,14 @@
   }
 },
 {
+  "model": "checklist.form_organisation_persons",
+  "pk": 35,
+  "fields": {
+    "organisation": 6,
+    "person": 4
+  }
+},
+{
   "model": "checklist.quota",
   "pk": 1,
   "fields": {
@@ -14082,6 +14090,16 @@
     "checking": 4,
     "organisation": 9,
     "user": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.recommendations",
+  "pk": 1,
+  "fields": {
+    "name": "Какаято рекомендация",
+    "id_type_departments": "1,2",
+    "id_questions": "2,3,4",
     "is_deleted": false
   }
 }

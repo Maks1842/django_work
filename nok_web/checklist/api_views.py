@@ -169,6 +169,8 @@ class OrganisationPersonsAPIView(APIView):
     @transaction.atomic
     def post(self, request):
         req_data = request.data
+
+        # .pop()ищет указанный ключ (аналогично .get(), но), возвращает и удаляет его, если он найден, иначе генерируется исключение.
         id_org = req_data.pop('id_organisation')
         serializers = Organisation_PersonsSerializer(data=req_data)
         serializers.is_valid(raise_exception=True)
@@ -186,14 +188,37 @@ class OrganisationPersonsAPIView(APIView):
         serializers_person = Form_Organisation_PersonsSerializer(data=data)
         serializers_person.is_valid(raise_exception=True)
         serializers_person.save()
-        # try:
-        #     serializers_person.save()
-        # except IntegrityError:
-        #     return Response({"error": "Пользователь добавлен, но не связан с организацией. Обратитесь к администратору!"},
-        #                     status=status.HTTP_406_NOT_ACCEPTABLE,
-        #                     )
 
         return Response({'message': 'Представитель успешно добавлен'})
+
+
+class FormOrganisationPersonsAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Добавить сопоставление организации и представителя'],
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'organisation': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'person': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор представителя'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        serializers_person = Form_Organisation_PersonsSerializer(data=req_data)
+        serializers_person.is_valid(raise_exception=True)
+
+        if Form_Organisation_Persons.objects.filter(organisation=req_data.pop('organisation'),
+                                                    person=req_data.pop('person')).exists() == False:
+            serializers_person.save()
+        else:
+            return Response({"error": "Такая запись уже существует"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Сопоставлее успешно добавлено'})
 
 
 class GetListTypeOrganizationsAPIView(APIView):

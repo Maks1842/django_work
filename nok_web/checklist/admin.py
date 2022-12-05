@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from .app_models.recommendations import Recommendations
+
 
 # Настройка админки
 class RegionsAdmin(admin.ModelAdmin):
