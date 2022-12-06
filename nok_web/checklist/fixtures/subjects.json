@@ -693,6 +693,22 @@
   }
 },
 {
+  "model": "checklist.form_organisation_persons",
+  "pk": 38,
+  "fields": {
+    "organisation": 1,
+    "person": 9
+  }
+},
+{
+  "model": "checklist.form_organisation_persons",
+  "pk": 40,
+  "fields": {
+    "organisation": 7,
+    "person": 12
+  }
+},
+{
   "model": "checklist.quota",
   "pk": 1,
   "fields": {

@@ -210,10 +210,9 @@ class FormOrganisationPersonsAPIView(APIView):
         serializers_person = Form_Organisation_PersonsSerializer(data=req_data)
         serializers_person.is_valid(raise_exception=True)
 
-        if Form_Organisation_Persons.objects.filter(organisation=req_data.pop('organisation'),
-                                                    person=req_data.pop('person')).exists() == False:
+        try:
             serializers_person.save()
-        else:
+        except IntegrityError:
             return Response({"error": "Такая запись уже существует"},
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
