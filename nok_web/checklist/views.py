@@ -1,8 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 
-from .models import *
-from .forms import *
+from .app_forms.forms_act_form import FormsActForm
+from .app_models.checking import Checking
+from .app_models.departments import Departments
+from .app_models.form_sections import Form_Sections
+from .app_models.form_sections_question import Form_Sections_Question
+from .app_models.forms_act import FormsAct
+from .app_models.list_checking import List_Checking
+from .app_models.organisations import Organisations
+from .app_models.question_values import Question_Values
+from .app_models.questions import Questions
+from .app_models.regions import Regions
+from .app_models.templates import Templates
+from .app_models.type_answers import Type_Answers
+from .app_models.type_departments import Type_Departments
+from .app_models.type_organisations import Type_Organisations
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.http import JsonResponse
