@@ -1,13 +1,9 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.urls import reverse_lazy
 
 class Regions(models.Model):
     region_name = models.CharField(max_length=100, verbose_name='Регион')  #  verbose_name - Как поле будет отображаться в админке
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.region_name
@@ -20,9 +16,6 @@ class Regions(models.Model):
 class Type_Departments(models.Model):
     type = models.CharField(max_length=100, verbose_name='Тип департамента')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.type
@@ -44,9 +37,6 @@ class Departments(models.Model):
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
-    def get_absolute_url(self):
-        return reverse_lazy('library', kwargs={"departments_id": self.pk})
-
     def __str__(self):
         return self.department_name
 
@@ -65,9 +55,6 @@ class Department_Persons(models.Model):
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     # def __str__(self):
     #     return self.department_name
 
@@ -80,9 +67,6 @@ class Type_Organisations(models.Model):
     type = models.CharField(max_length=100, verbose_name='Тип учреждения')
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, verbose_name='Тип департамента')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.type
@@ -101,11 +85,7 @@ class Organisations(models.Model):
     parent = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
     quota = models.ForeignKey('Quota', on_delete=models.PROTECT, null=True, verbose_name='Квота')
-    type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип учреждения')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.organisation_name
@@ -113,6 +93,37 @@ class Organisations(models.Model):
     class Meta:
         verbose_name = 'Учреждение'
         verbose_name_plural = 'Учреждения'
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "organisation_name",
+                ],
+                name="unique_organisations")
+        ]
+
+
+'''
+Сопоставление проверяемой организации с её типом.
+constraints[] - позволяет проверять уникальность добавляемой записи
+'''
+class Form_Type_Organisation(models.Model):
+    organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')
+    type_organisation = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, verbose_name='Тип учреждения')
+
+    def __str__(self):
+        name = f"{self.organisation} {self.type_organisation}"
+        return name
+
+    class Meta:
+        verbose_name_plural = 'Сопоставление Учреждение --> Тип'
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "organisation",
+                    "type_organisation",
+                ],
+                name="unique_typeorg")
+        ]
 
 
 '''
@@ -128,9 +139,6 @@ class Organisation_Persons(models.Model):
     phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон')
     email = models.EmailField(max_length=50, null=True, blank=True, verbose_name='Email')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         name = f"{self.last_name} {self.first_name} {self.second_name or ''}"
@@ -192,9 +200,6 @@ class Templates(models.Model):
     version = models.ForeignKey('Versions', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Версия')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     def __str__(self):
         return self.name
 
@@ -211,9 +216,6 @@ class Form_Sections(models.Model):
     type_departments = models.ForeignKey('Type_Departments', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип департамента')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     def __str__(self):
         return self.name
 
@@ -223,9 +225,6 @@ class Form_Sections(models.Model):
 
 class Questions(models.Model):
     questions = models.CharField(max_length=2000, verbose_name='Вопросы')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.questions
@@ -237,9 +236,6 @@ class Questions(models.Model):
 class Question_Values(models.Model):
     value_name = models.CharField(max_length=500, verbose_name='Варианты ответов')
     name_alternativ = models.CharField(max_length=100, null=True, blank=True, verbose_name='Альтернативный вариант ответа')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.value_name
@@ -256,9 +252,6 @@ class Form_Sections_Question(models.Model):
     answer_variant = models.CharField(max_length=50, null=True, blank=True, verbose_name='Вариант ответа')
     type_organisations = models.CharField(max_length=50, null=True, blank=True, verbose_name='Тип учреждения')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name_plural = 'Сопоставление вопрос-раздел'
@@ -278,28 +271,32 @@ class Forms_Recommendations(models.Model):
     recommendations = models.ForeignKey('Recommendations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Рекоммендации')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     class Meta:
         verbose_name_plural = 'Рекомендации - факт'
 
 
 '''
-Хранятся json структуры ответов на вопросы Акта, полученные в ходе заполнения экспертом/ползователем акта проверки.
+Хранятся json-ответы на вопросы Акта (ответы которые проставил эксперт), полученные в ходе заполнения экспертом/ползователем акта проверки.
 Идентификация по названию проверки и названию проверяемой организации.
 '''
 class Answers(models.Model):
     organisations = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Организации')
+    type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, verbose_name='Тип учреждения')
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Проверка')
     answers_json = models.JSONField(null=True, verbose_name='Результаты ответов')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     class Meta:
         verbose_name_plural = 'Ответы - факт'
+        constraints = [
+            models.UniqueConstraint(
+                fields=[
+                    "organisations",
+                    "type_organisations",
+                    "checking",
+                ],
+                name="unique_answers")
+        ]
 
 
 '''
@@ -313,9 +310,6 @@ class Signed_Dociuments(models.Model):
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     class Meta:
         verbose_name_plural = 'Подписанные Акты'
 
@@ -326,9 +320,6 @@ class Signed_Dociuments(models.Model):
 class Comments(models.Model):
     free_value = models.CharField(max_length=500, verbose_name='Комментарии')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name_plural = 'Комментарии'
@@ -341,9 +332,6 @@ class Photo(models.Model):
     created_at = models.DateField(verbose_name='Дата документа')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     user = models.ForeignKey(User, null=True, verbose_name='Пользователь', on_delete=models.PROTECT)
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.file_name
@@ -359,9 +347,6 @@ class Versions(models.Model):
     active = models.BooleanField(default=True, verbose_name='Текущая версия')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     def __str__(self):
         return self.table_name
 
@@ -370,7 +355,7 @@ class Versions(models.Model):
 
 
 '''
-С помощью какого элемента пользователь проставояет ответ:
+С помощью какого элемента пользователь проставляет ответ:
 1 - checkbox;
 2 - radiobutton;
 3 - input;
@@ -378,9 +363,6 @@ class Versions(models.Model):
 '''
 class Type_Answers(models.Model):
     type = models.CharField(max_length=50, verbose_name='Типы ответов')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.type
@@ -401,9 +383,6 @@ class Transaction_Exchange(models.Model):
     date_exchange = models.DateTimeField(auto_now_add=True, verbose_name='Дата изменения данных')
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     class Meta:
         verbose_name_plural = 'Регистрация изменений данных'
 
@@ -420,9 +399,6 @@ class FormsAct(models.Model):
     act_json = models.JSONField(verbose_name='Структура акта')
     date = models.DateField(null=True, blank=True, verbose_name='Дата формы акта')
     version = models.CharField(max_length=50, verbose_name='Версия формы акта')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name_plural = 'Формы актов'
@@ -441,9 +417,6 @@ class Checking(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
-
     class Meta:
         verbose_name_plural = 'Наименование проверки'
 
@@ -457,9 +430,6 @@ class List_Checking(models.Model):
     organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Эксперт')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = 'Проверяемая организация'

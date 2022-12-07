@@ -96,7 +96,7 @@ class Type_OrganisationsForm(forms.ModelForm):
 class OrganisationsForm(forms.ModelForm):
     class Meta:
         model = Organisations
-        fields = ['organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted']
+        fields = ['organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted']
         widgets = {
             'organisation_name': forms.TextInput(attrs={"class": "form-control"}),
             'address': forms.TextInput(attrs={"class": "form-control"}),
@@ -106,8 +106,17 @@ class OrganisationsForm(forms.ModelForm):
             'parent': forms.Select(attrs={"class": "form-control"}),
             'department': forms.Select(attrs={"class": "form-control"}),
             'quota': forms.Select(attrs={"class": "form-control"}),
-            'type_organisations': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
+        }
+
+
+class Form_Type_OrganisationForm(forms.ModelForm):
+    class Meta:
+        model = Form_Type_Organisation
+        fields = ['organisation', 'type_organisation']
+        widgets = {
+            'organisation': forms.Select(attrs={"class": "form-control"}),
+            'type_organisation': forms.Select(attrs={"class": "form-control"})
         }
 
 
@@ -232,9 +241,10 @@ class Forms_RecommendationsForm(forms.ModelForm):
 class AnswersForm(forms.ModelForm):
     class Meta:
         model = Answers
-        fields = ['organisations', 'checking', 'answers_json', 'is_deleted']
+        fields = ['organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted']
         widgets = {
             'organisations': forms.Select(attrs={"class": "form-control"}),
+            'type_organisations': forms.Select(attrs={"class": "form-control"}),
             'checking': forms.Select(attrs={"class": "form-control"}),
             'answers_json': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})

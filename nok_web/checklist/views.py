@@ -52,7 +52,6 @@ import json
 #     return redirect('login')
 
 
-
 # Тренировочная вьюха
 def region_view(request):
     regions = Regions.objects.order_by('pk')
@@ -63,14 +62,18 @@ def region_view(request):
     }
     return render(request, 'checklist/select_list.html', context)
 
+
 def organisation_view(request):
     organisations = Organisations.objects.order_by('pk')
+    type_organisations = Type_Organisations.objects.order_by('pk')
     checking = Checking.objects.order_by('pk')
     context = {
         'organisations': organisations,
+        'type_organisations': type_organisations,
         'checking': checking,
     }
     return render(request, 'checklist/select_list.html', context)
+
 
 # Тренировочная вьюха
 def question_view(request):
@@ -97,7 +100,6 @@ def designer_act_view(request):
 
 
 def get_act(request, type_departments=1, type_organisations=3, number_items=0):
-
     type_departments = request.POST['type_dep']
     type_organisations = request.POST['type_org']
     version_act = request.POST['version']
@@ -105,7 +107,9 @@ def get_act(request, type_departments=1, type_organisations=3, number_items=0):
     form_act = []
     count = 0
 
-    form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+    form_sections = Form_Sections.objects.values().order_by('order_num').filter(
+        type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(
+        type_departments=None)
     form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
     questions = Questions.objects.values()
     type_answers = Type_Answers.objects.values()
@@ -186,26 +190,31 @@ def get_act(request, type_departments=1, type_organisations=3, number_items=0):
     return render(request, 'checklist/helper.html', context)
 
 
+'''
+Рендеринг результатов проверки в шаблон HTML.
+do_some_magic - предварительно сопоставляет json-структура акта и json-результаты ответов
+'''
+
 
 def get_act_answer(request):
-
     org_id = request.POST["org_id"]
+    type_org_id = request.POST["type_org_id"]
     check_id = request.POST["check_id"]
 
     # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
-    type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
+    # type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
     name_org = Organisations.objects.get(pk=org_id).organisation_name
     address_org = Organisations.objects.get(pk=org_id).address
     user = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).user  # Имя проверяющего
     # person = Form_Organisation_Persons.objects.get(organisation_id=org_id).person  # Представитель проверяемой организации
-    queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
-    temp = Templates.objects.get(type_organisations_id=type_organisations).template_file
+    queryset = FormsAct.objects.filter(type_organisations_id=type_org_id)
+    temp = Templates.objects.get(type_organisations_id=type_org_id).template_file
 
     if len(queryset) > 0:
         form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
         query = Question_Values.objects.values()
 
-        comparison = do_some_magic(form_json)
+        comparison = do_some_magic(form_json, org_id, type_org_id, check_id)
         answers = answer_in_the_act(comparison, query)
     context = {'name_org': name_org,
                'address_org': address_org,
@@ -215,6 +224,7 @@ def get_act_answer(request):
 
     return render(request, f'act_checkings/{temp}', context)
 
+
 '''
 Функция сравнения двух json.
 Производится сопоставление полученных ответов с имеющимеся вопросами.
@@ -223,21 +233,12 @@ def get_act_answer(request):
 - если нет ни одного совпадения, то все ячейки остаются пустые.
 В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
 '''
-def do_some_magic(form_json):
 
-    # f = open("checklist/modules/abm.json")       # Акт амбулатория
-    # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    # f = open("checklist/modules/cult_standart.json")    # Акт культура стандарт
-    # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
-    f = open("checklist/modules/school.json")    # Акт школа
-    act_answer = json.load(f)
-    f.close()
-    # f = open("answ.json")
-    # answ = json.load(f)
-    # f.close()
+
+def do_some_magic(form_json, org_id, type_org_id, check_id):
 
     act = form_json
-    answ = act_answer
+    act_answer = Answers.objects.filter(checking_id=check_id, type_organisations=type_org_id).get(organisations_id=org_id).answers_json
 
     questions = {}
     for page in act['pages']:
@@ -249,10 +250,10 @@ def do_some_magic(form_json):
 
     tt = {}
 
-    for question in answ:
+    for question in act_answer:
         sh = []
         for answer in questions[question]:
-            if answer in answ[question]:
+            if answer in act_answer[question]:
                 sh.append(answer)
             else:
                 sh.append('')
@@ -260,7 +261,7 @@ def do_some_magic(form_json):
     z = questions.copy()
     z.update(tt)
     for question in z:
-        if question not in answ:
+        if question not in act_answer:
             for i in range(len(z[question])):
                 z[question][i] = ''
 
@@ -271,8 +272,9 @@ def do_some_magic(form_json):
 Функция формирования текстовых ответов для HTML шаблона из json файла,
 который сформирован на основе сопоставления act_json и answer_json.
 '''
-def answer_in_the_act(comparison, query):
 
+
+def answer_in_the_act(comparison, query):
     list = {}
 
     for answ in comparison:
@@ -327,7 +329,6 @@ def forms_test_add(request):
     return render(request, 'checklist/designer_act.html', context)
 
 
-
 # Тренировочная вьюха
 class HomeDepartments(ListView):
     model = Departments
@@ -339,6 +340,7 @@ class HomeDepartments(ListView):
         context['title'] = 'Главная страница'
         return context
 
+
 # Тренировочная вьюха
 class LibDepartments(ListView):
     model = Departments
@@ -349,8 +351,3 @@ class LibDepartments(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Другая страница'
         return context
-
-
-
-
-

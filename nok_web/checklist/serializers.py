@@ -38,7 +38,13 @@ class Type_OrganisationsSerializer(serializers.ModelSerializer):
 class OrganisationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organisations
-        fields = ['id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted']
+        fields = ['id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted']
+
+
+    class Form_Type_OrganisationSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Form_Type_Organisation
+            fields = ['id', 'organisation', 'type_organisation']
 
 
 class Organisation_PersonsSerializer(serializers.ModelSerializer):
@@ -104,7 +110,7 @@ class Forms_RecommendationsSerializer(serializers.ModelSerializer):
 class AnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answers
-        fields = ['id', 'organisations', 'checking', 'answers_json', 'is_deleted']
+        fields = ['id', 'organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted']
 
 
 class Signed_DociumentsSerializer(serializers.ModelSerializer):

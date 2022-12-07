@@ -40,10 +40,17 @@ class Type_OrganisationsAdmin(admin.ModelAdmin):
 
 
 class OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
-    search_fields = ('organisation_name', 'address', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
-    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'type_organisations', 'is_deleted')
-    list_filter = ('organisation_name', 'department', 'quota', 'type_organisations', 'is_deleted')
+    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted')
+    search_fields = ('organisation_name', 'address', 'parent', 'department', 'quota', 'is_deleted')
+    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted')
+    list_filter = ('organisation_name', 'department', 'quota', 'is_deleted')
+
+
+class Form_Type_OrganisationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'organisation', 'type_organisation')
+    search_fields = ('organisation', 'type_organisation')
+    list_editable = ('organisation', 'type_organisation')
+    list_filter = ('organisation', 'type_organisation')
 
 
 class Organisation_PersonsAdmin(admin.ModelAdmin):
@@ -111,10 +118,10 @@ class Forms_RecommendationsAdmin(admin.ModelAdmin):
 
 
 class AnswersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisations', 'checking', 'answers_json', 'is_deleted')
-    search_fields = ('organisations', 'checking', 'answers_json', 'is_deleted')
-    list_editable = ('organisations', 'checking', 'answers_json', 'is_deleted')
-    list_filter = ('organisations', 'checking', 'is_deleted')
+    list_display = ('id', 'organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted')
+    search_fields = ('organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted')
+    list_editable = ('organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted')
+    list_filter = ('organisations', 'type_organisations', 'checking', 'is_deleted')
 
 
 class Signed_DociumentsAdmin(admin.ModelAdmin):
@@ -184,6 +191,7 @@ admin.site.register(Departments, DepartmentsAdmin)
 admin.site.register(Department_Persons, Department_PersonsAdmin)
 admin.site.register(Type_Organisations, Type_OrganisationsAdmin)
 admin.site.register(Organisations, OrganisationsAdmin)
+admin.site.register(Form_Type_Organisation, Form_Type_OrganisationAdmin)
 admin.site.register(Organisation_Persons, Organisation_PersonsAdmin)
 admin.site.register(Form_Organisation_Persons, Form_Organisation_PersonsAdmin)
 admin.site.register(Quota, QuotaAdmin)

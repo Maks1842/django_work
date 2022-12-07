@@ -89,17 +89,22 @@ class AnswersAPIView(APIView):
         methods=['get'],
         tags=['Получить результаты ответов'],
         manual_parameters=[
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
                               type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверка",
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER),
+
         ])
     @action(methods=['get'], detail=False)
     def get(self, request):
-        id_organisation = request.query_params.get('id_organisation')
-        id_checking = request.query_params.get('id_checking')
+        checking = request.query_params.get('id_checking')
+        organisation = request.query_params.get('id_organisation')
+        type_organisation = request.query_params.get('id_type_organisation')
 
-        queryset = Answers.objects.filter(organisations_id=id_organisation, checking_id=id_checking)
+        queryset = Answers.objects.filter(organisations_id=organisation, checking_id=checking,
+                                          type_organisations=type_organisation)
         answer = ''
         if len(queryset) > 0:
             answer = queryset[0].answers_json
@@ -108,25 +113,30 @@ class AnswersAPIView(APIView):
     @swagger_auto_schema(
         methods=['post'],
         tags=['Добавить результаты ответов'],
-        manual_parameters=[
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверка",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('answers', openapi.IN_QUERY, description="Результаты ответов",
-                              type=openapi.TYPE_STRING),
-        ])
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
+                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
+                                                     description='Идентификатор типа организации'),
+                'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
+            }
+        ))
     @action(methods=['post'], detail=True)
     def post(self, request):
-        id_organisation = request.query_params.get('id_organisation')
-        id_checking = request.query_params.get('id_checking')
-        answers = request.query_params.get('answers')
+        req_data = request.data
 
-        data = {'organisations': id_organisation, 'checking': id_checking, 'answers_json': answers}
-        serializers = AnswersSerializer(data=data)
+        serializers = AnswersSerializer(data=req_data)
         serializers.is_valid(raise_exception=True)
-        serializers.save()
-        return Response({'post': serializers.data})
+        try:
+            serializers.save()
+        except IntegrityError:
+            return Response({"error": "Ответ, по данной проверке, уже существует"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Ответ успешно добавлен'})
 
 
 class OrganisationPersonsAPIView(APIView):
@@ -268,25 +278,26 @@ class GetFormActByOrganizationTypeAPIView(APIView):
         return Response(form_json)
 
 
-class GetFormActByOrganizationIdAPIView(APIView):
-    @swagger_auto_schema(
-        method='get',
-        tags=['Получить формы Актов по Id организации'],
-        operation_description="Получить формы Актов для проверки, в формате JSON",
-        manual_parameters=[
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER)
-        ])
-    @action(detail=False, methods=['get'])
-    def get(self, request):
-        organisation = request.query_params.get('id_organisation')
-        queryset = Organisations.objects.filter(id=organisation)
-
-        form_json = {}
-        if len(queryset) > 0:
-            form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
-
-        return Response(form_json)
+# не используется
+# class GetFormActByOrganizationIdAPIView(APIView):
+#     @swagger_auto_schema(
+#         method='get',
+#         tags=['Получить формы Актов по Id организации'],
+#         operation_description="Получить формы Актов для проверки, в формате JSON",
+#         manual_parameters=[
+#             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+#                               type=openapi.TYPE_INTEGER)
+#         ])
+#     @action(detail=False, methods=['get'])
+#     def get(self, request):
+#         organisation = request.query_params.get('id_organisation')
+#         queryset = Organisations.objects.filter(id=organisation)
+#
+#         form_json = {}
+#         if len(queryset) > 0:
+#             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+#
+#         return Response(form_json)
 
 
 class GetCheckListOrganizationsAPIView(APIView):
@@ -316,7 +327,7 @@ class GetCheckListOrganizationsAPIView(APIView):
                 result.append({
                     'id': item.organisation_id,
                     'name': item.organisation.organisation_name,
-                    'type': item.organisation.type_organisations_id,
+                    # 'type': item.organisation.type_organisations_id,
                     'department': department['type_departments_id']
                 })
         return Response({'data': result})
@@ -447,27 +458,28 @@ class GetActAnswerAPIView(APIView):
         tags=['Получить Акта проверки по организации'],
         operation_description="Получить Акт с результатами проверки, в формате JSON",
         manual_parameters=[
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+            openapi.Parameter('checking', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
 
-        organisation = request.query_params.get('id_organisation')
+        checking = request.query_params.get('checking')
+        organisation = request.query_params.get('organisation')
+        type_organisation = request.query_params.get('type_organisation')
 
-        # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
-        try:
-            type_organisations = Organisations.objects.get(pk=organisation).type_organisations_id
-        except Exception:
-            type_organisations = 0
-        queryset = FormsAct.objects.filter(type_organisations_id=type_organisations)
+        queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
         answers = {}
         if len(queryset) > 0:
             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
             query = Question_Values.objects.values()
 
-            comparison = do_some_magic(form_json)
+            comparison = do_some_magic(form_json, checking, organisation, type_organisation)
             answers = answer_in_the_act(comparison, query)
 
         return Response(answers)
@@ -483,20 +495,17 @@ class GetActAnswerAPIView(APIView):
 '''
 
 
-def do_some_magic(form_json):
+def do_some_magic(form_json, checking, organisation, type_organisation):
     # f = open("checklist/modules/abm.json")       # Акт амбулатория
     # f = open("checklist/modules/cult_legacy.json")    # Акт культурное наследие
-    f = open("checklist/modules/cult_standart.json")  # Акт культура стандарт
+    # f = open("checklist/modules/cult_standart.json")  # Акт культура стандарт
     # f = open("checklist/modules/kindergarten.json")    # Акт Детсад
     # f = open("checklist/modules/school.json")    # Акт школа
-    act_answer = json.load(f)
-    f.close()
-    # f = open("answ.json")
-    # answ = json.load(f)
+    # act_answer = json.load(f)
     # f.close()
 
     act = form_json
-    answ = act_answer
+    act_answer = Answers.objects.filter(checking_id=checking, type_organisations=type_organisation).get(organisations_id=organisation).answers_json
 
     questions = {}
     for page in act['pages']:
@@ -508,10 +517,10 @@ def do_some_magic(form_json):
 
     tt = {}
 
-    for question in answ:
+    for question in act_answer:
         sh = []
         for answer in questions[question]:
-            if answer in answ[question]:
+            if answer in act_answer[question]:
                 sh.append(answer)
             else:
                 sh.append('')
@@ -519,7 +528,7 @@ def do_some_magic(form_json):
     z = questions.copy()
     z.update(tt)
     for question in z:
-        if question not in answ:
+        if question not in act_answer:
             for i in range(len(z[question])):
                 z[question][i] = ''
 
