@@ -1,5 +1,5 @@
 from django import forms
-from nok_web.checklist.app_models.forms_act import FormsAct
+from ..app_models.forms_act import FormsAct
 
 
 class FormsActForm(forms.ModelForm):

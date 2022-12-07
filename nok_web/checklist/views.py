@@ -6,9 +6,8 @@ from .app_models.checking import Checking
 from .app_models.departments import Departments
 from .app_models.form_sections import Form_Sections
 from .app_models.form_sections_question import Form_Sections_Question
-from .app_models.forms_act import FormsAct
-from .app_models.list_checking import List_Checking
-from .app_models.organisations import Organisations
+from .app_models import FormsAct, List_Checking
+from .app_models import Organisations
 from .app_models.question_values import Question_Values
 from .app_models.questions import Questions
 from .app_models.regions import Regions
