@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse_lazy
 
 
 '''
@@ -11,9 +10,6 @@ class Recommendations(models.Model):
     id_type_departments = models.CharField(max_length=20, null=True, blank=True, verbose_name='Список id департаментов')
     id_questions = models.CharField(max_length=50, null=True, blank=True, verbose_name='Список id вопросов')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-
-    def get_absolute_url(self):
-        return reverse_lazy('home', kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.name

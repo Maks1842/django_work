@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 
-from .models import *
-from .forms import *
+from .app_forms.forms_act_form import FormsActForm
+# from .app_models import FormsAct, List_Checking, Answers, Regions, Departments, Organisations
+from .app_models import *
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.http import JsonResponse

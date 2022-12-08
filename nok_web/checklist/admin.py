@@ -1,14 +1,40 @@
 from django.contrib import admin
-from .models import *
+
+from .app_models.regions import Regions
+from .app_models.type_departments import Type_Departments
+from .app_models.answers import Answers
+from .app_models.checking import Checking
+from .app_models.comments import Comments
+from .app_models.department_persons import Department_Persons
+from .app_models.departments import Departments
+from .app_models.form_organisation_persons import Form_Organisation_Persons
+from .app_models.form_sections import Form_Sections
+from .app_models.form_sections_question import Form_Sections_Question
+from .app_models.form_type_organisation import Form_Type_Organisation
+from .app_models.forms_act import FormsAct
+from .app_models.forms_recommendations import Forms_Recommendations
+from .app_models.list_checking import List_Checking
+from .app_models.organisation_persons import Organisation_Persons
+from .app_models.organisations import Organisations
+from .app_models.photo import Photo
+from .app_models.question_values import Question_Values
+from .app_models.questions import Questions
+from .app_models.quota import Quota
+from .app_models.signed_dociuments import Signed_Dociuments
+from .app_models.templates import Templates
+from .app_models.transaction_exchange import Transaction_Exchange
+from .app_models.type_answers import Type_Answers
+from .app_models.type_organisations import Type_Organisations
+from .app_models.versions import Versions
 from .app_models.recommendations import Recommendations
 
 
 # Настройка админки
 class RegionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'region_name', 'is_deleted')                             # Указываю какие поля отображать
-    search_fields = ('region_name', 'is_deleted')                                 # Указываю по каким полям можно осуществлять поиск
-    list_editable = ('region_name', 'is_deleted')                                 # Возможность редактирования поля
-    list_filter = ('region_name', 'is_deleted')                                   # Возможность фильтровать поля
+    list_display = ('id', 'region_name', 'is_deleted')  # Указываю какие поля отображать
+    search_fields = ('region_name', 'is_deleted')  # Указываю по каким полям можно осуществлять поиск
+    list_editable = ('region_name', 'is_deleted')  # Возможность редактирования поля
+    list_filter = ('region_name', 'is_deleted')  # Возможность фильтровать поля
 
 
 class Type_DepartmentsAdmin(admin.ModelAdmin):
@@ -19,14 +45,19 @@ class Type_DepartmentsAdmin(admin.ModelAdmin):
 
 
 class DepartmentsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
+    list_display = (
+    'id', 'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments',
+    'is_deleted', 'user')
     search_fields = ('department_name', 'address', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
-    list_editable = ('department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted', 'user')
+    list_editable = (
+    'department_name', 'address', 'phone', 'website', 'email', 'parent', 'region', 'type_departments', 'is_deleted',
+    'user')
     list_filter = ('department_name', 'region', 'type_departments', 'is_deleted', 'user')
 
 
 class Department_PersonsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'department', 'is_deleted')
+    list_display = (
+    'id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'department', 'is_deleted')
     search_fields = ('last_name', 'position', 'department', 'is_deleted')
     list_editable = ('last_name', 'position', 'department', 'is_deleted')
     list_filter = ('department', 'is_deleted')
@@ -100,9 +131,13 @@ class Question_ValuesAdmin(admin.ModelAdmin):
 
 
 class Form_Sections_QuestionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
-    search_fields = ('question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
-    list_editable = ('question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
+    list_display = (
+    'id', 'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations',
+    'is_deleted')
+    search_fields = (
+    'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
+    list_editable = (
+    'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
 
 
 class RecommendationsAdmin(admin.ModelAdmin):
@@ -184,7 +219,7 @@ class ListCheckingAdmin(admin.ModelAdmin):
     list_filter = ('checking', 'organisation', 'user', 'is_deleted')
 
 
-#!!!Важно соблюдать последовательность регистрации моделей
+# !!!Важно соблюдать последовательность регистрации моделей
 admin.site.register(Regions, RegionsAdmin)
 admin.site.register(Type_Departments, Type_DepartmentsAdmin)
 admin.site.register(Departments, DepartmentsAdmin)
@@ -212,4 +247,3 @@ admin.site.register(Transaction_Exchange, Transaction_ExchangeAdmin)
 admin.site.register(FormsAct, FormsActAdmin)
 admin.site.register(Checking, CheckingAdmin)
 admin.site.register(List_Checking, ListCheckingAdmin)
-

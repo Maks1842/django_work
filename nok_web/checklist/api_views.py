@@ -1,9 +1,25 @@
 import re
 import json
 
+from .app_models.answers import Answers
+from .app_models.departments import Departments
+from .app_models.form_organisation_persons import Form_Organisation_Persons
+from .app_models.form_sections import Form_Sections
+from .app_models.form_sections_question import Form_Sections_Question
+from .app_models.forms_act import FormsAct
+from .app_models.list_checking import List_Checking
+from .app_models.organisations import Organisations
+from .app_models.question_values import Question_Values
+from .app_models.questions import Questions
+from .app_models.regions import Regions
+from .app_models.type_answers import Type_Answers
+from .app_models.type_organisations import Type_Organisations
+from .app_serializers.answers_serializer import AnswersSerializer
+from .app_serializers.form_organisation_persons_serializer import Form_Organisation_PersonsSerializer
+from .app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
+from .app_serializers.regions_serializer import RegionsSerializer
 from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
 from django.http import Http404, HttpResponse
-from .serializers import *
 from rest_framework import generics, viewsets, status, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -39,7 +55,7 @@ class RegionsViewSet(
     serializer_class = RegionsSerializer
 
     # Отключаю отображение всех методов из Swagger
-    swagger_schema = None
+    # swagger_schema = None
 
     @swagger_auto_schema(tags=['Регионы'])
     # Отключение метода Destroy
