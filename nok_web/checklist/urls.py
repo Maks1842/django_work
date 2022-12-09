@@ -33,7 +33,7 @@ urlpatterns = [
 
     path('api/v1/auth/', include('djoser.urls')),
 
-    # Маршрутизация без использования router
+    # Маршрутизация без использования router. В скобках .as_view() можно передавать доп. параметры
     path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
@@ -46,8 +46,6 @@ urlpatterns = [
     path('api/v1/getActAnswer/', GetActAnswerAPIView.as_view(), name='getActAnswer'),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
 
-
-
     re_path(r'^api/v1/auth/', include('djoser.urls.authtoken')),
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -58,25 +56,14 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     path('', organisation_view, name='home'),
-    path('question_view/', question_view, name='question_view'),
     path('designer-act/', designer_act_view, name='designer-act'),
     path('get-act/', get_act, name='get-act'),
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
-    path('forms-test-add/', forms_test_add, name='forms_test_add'),
     path('get-act-answer/', get_act_answer, name='get-act-answer'),
 
-    # Пример регистрации маршрута для контроллера классов. В скобках .as_view() можно передавать доп. параметры
-    path('departments_xxx/', LibDepartments.as_view(), name='departments_xxx'),
-    # path('designer-act/', HomeDepartments.as_view(), name='designer-act'),
 
 
 
-    # path('api/regions-get/', RegionsAPIList.as_view()),
-    # path('api/departments-get/<int:pk>/', DepartmentsAPIRetrieve.as_view()),
-    # path('api/departments-get/<int:pk>/region/', DepartmentsAPIRetrieve.as_view()),
-
-    # path('api/regions-put/<int:pk>/', RegionsAPIView.as_view()),        # Для v2
-    # path('api/departments-put/<int:pk>/', DepartmentsAPIDetailView.as_view()),        # Для v2
 
     # path('register/', register, name='register'),
     # path('login/', user_login, name='login'),

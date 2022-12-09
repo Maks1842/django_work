@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 
 from .app_forms.forms_act_form import FormsActForm
-# from .app_models import FormsAct, List_Checking, Answers, Regions, Departments, Organisations
 from .app_models import *
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -53,17 +52,6 @@ import json
 #     return redirect('login')
 
 
-# Тренировочная вьюха
-def region_view(request):
-    regions = Regions.objects.order_by('pk')
-    departments = Departments.objects.order_by('pk')
-    context = {
-        'regions': regions,
-        'departments': departments,
-    }
-    return render(request, 'checklist/select_list.html', context)
-
-
 def organisation_view(request):
     organisations = Organisations.objects.order_by('pk')
     type_organisations = Type_Organisations.objects.order_by('pk')
@@ -74,19 +62,6 @@ def organisation_view(request):
         'checking': checking,
     }
     return render(request, 'checklist/select_list.html', context)
-
-
-# Тренировочная вьюха
-def question_view(request):
-    form_sections = Form_Sections.objects.order_by('pk')
-    questions = Questions.objects.order_by('pk')
-    question_values = Question_Values.objects.order_by('pk')
-    context = {
-        'form_sections': form_sections,
-        'questions': questions,
-        'question_values': question_values,
-    }
-    return render(request, 'checklist/check_list.html', context)
 
 
 def designer_act_view(request):
@@ -320,14 +295,6 @@ def forms_act_add(request):
         form = FormsActForm()
     return render(request, 'checklist/designer_act.html', {'form': form})
 
-
-def forms_test_add(request):
-    type_departments = request.POST['type_dep']
-    type_organisations = request.POST['type_org']
-
-    context = {'type_depr': type_departments,
-               'type_orgn': type_organisations}
-    return render(request, 'checklist/designer_act.html', context)
 
 
 # Тренировочная вьюха

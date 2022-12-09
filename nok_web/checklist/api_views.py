@@ -1,19 +1,7 @@
 import re
 import json
 
-from .app_models.answers import Answers
-from .app_models.departments import Departments
-from .app_models.form_organisation_persons import Form_Organisation_Persons
-from .app_models.form_sections import Form_Sections
-from .app_models.form_sections_question import Form_Sections_Question
-from .app_models.forms_act import FormsAct
-from .app_models.list_checking import List_Checking
-from .app_models.organisations import Organisations
-from .app_models.question_values import Question_Values
-from .app_models.questions import Questions
-from .app_models.regions import Regions
-from .app_models.type_answers import Type_Answers
-from .app_models.type_organisations import Type_Organisations
+from .app_models import *
 from .app_serializers.answers_serializer import AnswersSerializer
 from .app_serializers.form_organisation_persons_serializer import Form_Organisation_PersonsSerializer
 from .app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
@@ -55,7 +43,7 @@ class RegionsViewSet(
     serializer_class = RegionsSerializer
 
     # Отключаю отображение всех методов из Swagger
-    # swagger_schema = None
+    swagger_schema = None
 
     @swagger_auto_schema(tags=['Регионы'])
     # Отключение метода Destroy
@@ -103,7 +91,8 @@ class RegionsViewSet(
 class AnswersAPIView(APIView):
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Получить результаты ответов'],
+        tags=['Проверка'],
+        operation_description="Получить результаты ответов",
         manual_parameters=[
             openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
@@ -128,7 +117,8 @@ class AnswersAPIView(APIView):
 
     @swagger_auto_schema(
         methods=['post'],
-        tags=['Добавить результаты ответов'],
+        tags=['Проверка'],
+        operation_description="Добавить результаты ответов",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
             properties={
@@ -158,7 +148,8 @@ class AnswersAPIView(APIView):
 class OrganisationPersonsAPIView(APIView):
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Получить представителя организации'],
+        tags=['Представитель организации'],
+        operation_description="Получить представителя организации",
         manual_parameters=[
             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
                               type=openapi.TYPE_INTEGER),
@@ -178,7 +169,8 @@ class OrganisationPersonsAPIView(APIView):
 
     @swagger_auto_schema(
         methods=['post'],
-        tags=['Добавить представителя организации'],
+        tags=['Представитель организации'],
+        operation_description="Добавить представителя организации",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
             properties={
@@ -221,7 +213,8 @@ class OrganisationPersonsAPIView(APIView):
 class FormOrganisationPersonsAPIView(APIView):
     @swagger_auto_schema(
         methods=['post'],
-        tags=['Добавить сопоставление организации и представителя'],
+        tags=['Представитель организации'],
+        operation_description="Добавить сопоставление представителя и организации",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
             properties={
@@ -276,8 +269,8 @@ class GetListTypeOrganizationsAPIView(APIView):
 class GetFormActByOrganizationTypeAPIView(APIView):
     @swagger_auto_schema(
         method='get',
-        tags=['Получить формы Актов по типу организации'],
-        operation_description="Получить формы Актов для проверки, в формате JSON",
+        tags=['Проверка'],
+        operation_description="Получить форму Акта для проверки, в формате JSON",
         manual_parameters=[
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER)
@@ -319,8 +312,8 @@ class GetFormActByOrganizationTypeAPIView(APIView):
 class GetCheckListOrganizationsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
-        tags=['Список организаций на проверке'],
-        operation_description="Получить: user --> организации, проверка --> организации",
+        tags=['Проверка'],
+        operation_description="Получить проверяемую организацию. Если эксперт не указан, то получаем все организации находящиеся на проверке",
         manual_parameters=[
             openapi.Parameter('id_check', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
@@ -352,8 +345,8 @@ class GetCheckListOrganizationsAPIView(APIView):
 class GetListCheckingAPIView(APIView):
     @swagger_auto_schema(
         method='get',
-        tags=['Список проверок у эксперта'],
-        operation_description="Получить список проверок в которых участвует эксперт",
+        tags=['Проверка'],
+        operation_description="Получить список проверок, в которых участвует эксперт",
         manual_parameters=[
             openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор эксперта",
                               type=openapi.TYPE_INTEGER)
@@ -468,10 +461,34 @@ class GetActAPIView(APIView):
         return Response({"pages": context})
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+Тестовые вьюхи, для добавления результатов проверки в шаблон HTML:
+- GetActAnswerAPIView(APIView):
+- do_some_magic(form_json, checking, organisation, type_organisation):
+answer_in_the_act(comparison, query):
+'''
 class GetActAnswerAPIView(APIView):
+
+    # Отключаю отображение всех методов из Swagger
+    swagger_schema = None
     @swagger_auto_schema(
         method='get',
-        tags=['Получить Акта проверки по организации'],
+        tags=['Тестовый'],
         operation_description="Получить Акт с результатами проверки, в формате JSON",
         manual_parameters=[
             openapi.Parameter('checking', openapi.IN_QUERY, description="Идентификатор проверки",
