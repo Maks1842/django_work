@@ -12,7 +12,7 @@ class Organisation_Persons(models.Model):
     last_name = models.CharField(max_length=20, verbose_name='Фамилия')
     position = models.CharField(max_length=200, null=True, blank=True, verbose_name='Должность')
     phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон')
-    email = models.EmailField(max_length=50, null=True, blank=True, verbose_name='Email')
+    email = models.CharField(max_length=50, blank=True, verbose_name='Email')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def __str__(self):
