@@ -1,19 +1,14 @@
 import re
-import json
-
 from .app_models import *
 from .app_serializers.answers_serializer import AnswersSerializer
 from .app_serializers.form_organisation_persons_serializer import Form_Organisation_PersonsSerializer
 from .app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
 from .app_serializers.regions_serializer import RegionsSerializer
-from .permissions import IsAdminOrReadOnly, IsOwnerAndAdminOrReadOnly
-from django.http import Http404, HttpResponse
 from rest_framework import generics, viewsets, status, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.renderers import JSONRenderer
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from django.db import IntegrityError, transaction
@@ -184,30 +179,28 @@ class OrganisationPersonsAPIView(APIView):
             }
         ))
     @action(methods=['post'], detail=True)
-    @transaction.atomic
+    # @transaction.atomic
     def post(self, request):
         req_data = request.data
 
         # .pop()ищет указанный ключ (аналогично .get(), но), возвращает и удаляет его, если он найден, иначе генерируется исключение.
         id_org = req_data.pop('id_organisation')
         serializers = Organisation_PersonsSerializer(data=req_data)
+        fio = f"{req_data['last_name']} {req_data['first_name']} {req_data['second_name'] or ''}"
         serializers.is_valid(raise_exception=True)
+        error = "Не удалось добавить представителя!"
         try:
-            res = serializers.save()
-        except IntegrityError:
-            return Response({"error": "Такой человек уже существует"},
-                            status=status.HTTP_406_NOT_ACCEPTABLE,
-                            )
-
-        data = {
-            'organisation': id_org,
-            'person': res.pk
-        }
-        serializers_person = Form_Organisation_PersonsSerializer(data=data)
-        serializers_person.is_valid(raise_exception=True)
-        serializers_person.save()
-
-        return Response({'message': 'Представитель успешно добавлен'})
+            with transaction.atomic():
+                res = serializers.save()
+                data = {'organisation': id_org, 'person': res.pk}
+                serializers_person = Form_Organisation_PersonsSerializer(data=data)
+                serializers_person.is_valid(raise_exception=True)
+                serializers_person.save()
+                return Response({'data': {'id': res.pk, 'name': fio}})
+        except IntegrityError as exception:
+            if 'violates unique constraint' in exception.args[0]:
+                error = f"{error} Такой человек уже существует."
+            return Response({'error': error})
 
 
 class FormOrganisationPersonsAPIView(APIView):
@@ -270,64 +263,57 @@ class GetFormActByOrganizationTypeAPIView(APIView):
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
-        operation_description="Получить форму Акта для проверки, в формате JSON",
+        operation_description="Проверить наличие созданной проверки, в случае отсутствия Получить форму Акта для проверки, в формате JSON",
         manual_parameters=[
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
+        checking = request.query_params.get('id_checking')
+        organisation = request.query_params.get('id_organisation')
         type_organisation = request.query_params.get('id_type_organisation')
-        queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
-        form_json = {}
-        if len(queryset) > 0:
-            form_json = queryset[0].act_json
+
+
+        if Answers.objects.filter(checking_id=checking, organisations_id=organisation, type_organisations=type_organisation).exists():
+            return Response({"error": "Такая проверка уже создана"})
+        else:
+            queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
+
+            form_json = {}
+            if len(queryset) > 0:
+                form_json = queryset[0].act_json
 
         return Response(form_json)
-
-
-# не используется
-# class GetFormActByOrganizationIdAPIView(APIView):
-#     @swagger_auto_schema(
-#         method='get',
-#         tags=['Получить формы Актов по Id организации'],
-#         operation_description="Получить формы Актов для проверки, в формате JSON",
-#         manual_parameters=[
-#             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-#                               type=openapi.TYPE_INTEGER)
-#         ])
-#     @action(detail=False, methods=['get'])
-#     def get(self, request):
-#         organisation = request.query_params.get('id_organisation')
-#         queryset = Organisations.objects.filter(id=organisation)
-#
-#         form_json = {}
-#         if len(queryset) > 0:
-#             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
-#
-#         return Response(form_json)
 
 
 class GetCheckListOrganizationsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
-        operation_description="Получить проверяемую организацию. Если эксперт не указан, то получаем все организации находящиеся на проверке",
+        operation_description="Получить проверяемую организацию. "
+                              "Если эксперт не указан, то получаем все организации находящиеся на проверке.",
         manual_parameters=[
             openapi.Parameter('id_check', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('id_user', openapi.IN_QUERY, description="Идентификатор эксперта",
-                              type=openapi.TYPE_INTEGER)
+                              type=openapi.TYPE_INTEGER),
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         check = request.query_params.get('id_check')
         user = request.query_params.get('id_user')
+
         if user is None:
             queryset = List_Checking.objects.filter(checking_id=check)
         else:
             queryset = List_Checking.objects.filter(checking_id=check, user_id=user)
+
 
         result = []
         if len(queryset) > 0:
@@ -364,6 +350,35 @@ class GetListCheckingAPIView(APIView):
                     'name': item.checking.name,
                 })
         return Response({'data': result})
+
+
+
+# не используется
+# class GetFormActByOrganizationIdAPIView(APIView):
+#     @swagger_auto_schema(
+#         method='get',
+#         tags=['Получить формы Актов по Id организации'],
+#         operation_description="Получить формы Актов для проверки, в формате JSON",
+#         manual_parameters=[
+#             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+#                               type=openapi.TYPE_INTEGER)
+#         ])
+#     @action(detail=False, methods=['get'])
+#     def get(self, request):
+#         organisation = request.query_params.get('id_organisation')
+#         queryset = Organisations.objects.filter(id=organisation)
+#
+#         form_json = {}
+#         if len(queryset) > 0:
+#             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+#
+#         return Response(form_json)
+
+
+
+
+
+'''ТЕСТОВЫЕ ВЬЮХИ'''
 
 
 """
@@ -463,19 +478,6 @@ class GetActAPIView(APIView):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 '''
 Тестовые вьюхи, для добавления результатов проверки в шаблон HTML:
 - GetActAnswerAPIView(APIView):
@@ -483,9 +485,6 @@ class GetActAPIView(APIView):
 answer_in_the_act(comparison, query):
 '''
 class GetActAnswerAPIView(APIView):
-
-    # Отключаю отображение всех методов из Swagger
-    swagger_schema = None
     @swagger_auto_schema(
         method='get',
         tags=['Тестовый'],

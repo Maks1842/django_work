@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.shortcuts import render, redirect
 
 from .app_forms.forms_act_form import FormsActForm
 from .app_models import *
@@ -72,97 +71,6 @@ def designer_act_view(request):
         'type_organisations': type_organisations,
 
     }
-    return render(request, 'checklist/helper.html', context)
-
-
-def get_act(request, type_departments=1, type_organisations=3, number_items=0):
-    type_departments = request.POST['type_dep']
-    type_organisations = request.POST['type_org']
-    version_act = request.POST['version']
-
-    form_act = []
-    count = 0
-
-    form_sections = Form_Sections.objects.values().order_by('order_num').filter(
-        type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(
-        type_departments=None)
-    form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
-    questions = Questions.objects.values()
-    type_answers = Type_Answers.objects.values()
-    question_values = Question_Values.objects.values()
-
-    for fs in form_sections:
-        fs_id = fs['id']
-        questions_id = form_sections_question.filter(form_sections_id=fs_id)
-        count_section = 0
-        pages = []
-
-        for q in questions_id:
-            choices = []
-            count_section += 1
-
-            if q['type_organisations'] is None:
-                count += 1
-                type = type_answers.get(pk=q['type_answers_id'])
-                question = questions.get(pk=q['question_id'])
-                answer_variant = q['answer_variant']
-                ans_var_re = answer_variant
-                try:
-                    ans_var_re = (re.sub(r'\s', '', answer_variant))
-                except:
-                    pass
-
-                ans_var = ans_var_re.split(',')
-
-                for av in range(len(ans_var)):
-                    qv = question_values.get(pk=ans_var[av])
-                    choices.append({'value': ans_var[av], 'text': qv['value_name']})
-
-                pages.append({
-                    "name": str(count),
-                    "title": question['questions'],
-                    "type": type['type'],
-                    "choices": choices,
-                    "isRequired": 'true',
-                })
-
-            elif str(type_organisations) in q['type_organisations'].split(','):
-                count += 1
-                type = type_answers.get(pk=q['type_answers_id'])
-                question = questions.get(pk=q['question_id'])
-                answer_variant = q['answer_variant']
-                ans_var_re = answer_variant
-                try:
-                    ans_var_re = (re.sub(r'\s', '', answer_variant))
-                except:
-                    pass
-
-                ans_var = ans_var_re.split(',')
-
-                for av in range(len(ans_var)):
-                    qv = question_values.get(pk=ans_var[av])
-                    choices.append({'value': ans_var[av], 'text': qv['value_name']})
-
-                pages.append({
-                    'name': str(count),
-                    'title': question['questions'],
-                    'type': type['type'],
-                    'choices': choices,
-                    'isRequired': 'true',
-                })
-
-        if len(pages) == number_items or len(questions_id) == count_section:
-            form_act.append({
-                "title": fs['name'],
-                "elements": pages,
-            })
-
-    xxx = json.dumps({"pages": form_act}, ensure_ascii=False)
-    context = {"form_act": xxx}
-
-    # element = FormsAct(type_departments=2, type_organisations=10, act_json=context, version=version_act)
-    # element.save()
-
     return render(request, 'checklist/helper.html', context)
 
 
@@ -297,25 +205,97 @@ def forms_act_add(request):
 
 
 
-# Тренировочная вьюха
-class HomeDepartments(ListView):
-    model = Departments
-    template_name = 'checklist/department_list.html'
-    context_object_name = 'department'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Главная страница'
-        return context
+'''
+Тестовые/Тренировочные вьюхи
+'''
 
 
-# Тренировочная вьюха
-class LibDepartments(ListView):
-    model = Departments
-    template_name = 'checklist/department_add_list.html'
-    context_object_name = 'department'
+def get_act(request, type_departments=1, type_organisations=3, number_items=0):
+    type_departments = request.POST['type_dep']
+    type_organisations = request.POST['type_org']
+    version_act = request.POST['version']
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Другая страница'
-        return context
+    form_act = []
+    count = 0
+
+    form_sections = Form_Sections.objects.values().order_by('order_num').filter(
+        type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(
+        type_departments=None)
+    form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
+    questions = Questions.objects.values()
+    type_answers = Type_Answers.objects.values()
+    question_values = Question_Values.objects.values()
+
+    for fs in form_sections:
+        fs_id = fs['id']
+        questions_id = form_sections_question.filter(form_sections_id=fs_id)
+        count_section = 0
+        pages = []
+
+        for q in questions_id:
+            choices = []
+            count_section += 1
+
+            if q['type_organisations'] is None:
+                count += 1
+                type = type_answers.get(pk=q['type_answers_id'])
+                question = questions.get(pk=q['question_id'])
+                answer_variant = q['answer_variant']
+                ans_var_re = answer_variant
+                try:
+                    ans_var_re = (re.sub(r'\s', '', answer_variant))
+                except:
+                    pass
+
+                ans_var = ans_var_re.split(',')
+
+                for av in range(len(ans_var)):
+                    qv = question_values.get(pk=ans_var[av])
+                    choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                pages.append({
+                    "name": str(count),
+                    "title": question['questions'],
+                    "type": type['type'],
+                    "choices": choices,
+                    "isRequired": 'true',
+                })
+
+            elif str(type_organisations) in q['type_organisations'].split(','):
+                count += 1
+                type = type_answers.get(pk=q['type_answers_id'])
+                question = questions.get(pk=q['question_id'])
+                answer_variant = q['answer_variant']
+                ans_var_re = answer_variant
+                try:
+                    ans_var_re = (re.sub(r'\s', '', answer_variant))
+                except:
+                    pass
+
+                ans_var = ans_var_re.split(',')
+
+                for av in range(len(ans_var)):
+                    qv = question_values.get(pk=ans_var[av])
+                    choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                pages.append({
+                    'name': str(count),
+                    'title': question['questions'],
+                    'type': type['type'],
+                    'choices': choices,
+                    'isRequired': 'true',
+                })
+
+        if len(pages) == number_items or len(questions_id) == count_section:
+            form_act.append({
+                "title": fs['name'],
+                "elements": pages,
+            })
+
+    xxx = json.dumps({"pages": form_act}, ensure_ascii=False)
+    context = {"form_act": xxx}
+
+    # element = FormsAct(type_departments=2, type_organisations=10, act_json=context, version=version_act)
+    # element.save()
+
+    return render(request, 'checklist/helper.html', context)

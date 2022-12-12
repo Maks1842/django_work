@@ -1,4 +1,3 @@
-
 from django.urls import path, include, re_path
 from .views import *
 from .api_views import *
@@ -30,30 +29,29 @@ router.register(r'regions', RegionsViewSet, basename='regions')
 urlpatterns = [
     # Маршрутизация с использованием router
     path('api/', include(router.urls)),
-
     path('api/v1/auth/', include('djoser.urls')),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
+    re_path(r'^api/v1/auth/', include('djoser.urls.authtoken')),
+
+    path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     # Маршрутизация без использования router. В скобках .as_view() можно передавать доп. параметры
-    path('api/v1/get-act/', GetActAPIView.as_view(), name='get_act_drf'),
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
     path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
     path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='getListTypeOrganizations'),
     path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='getFormActByOrganizationType'),
-    # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
     path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),
     path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
-    path('api/v1/getActAnswer/', GetActAnswerAPIView.as_view(), name='getActAnswer'),
-    path('api/v1/drf-auth/', include('rest_framework.urls')),
+    # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
+    # path('api/v1/getActAnswer/', GetActAnswerAPIView.as_view(), name='getActAnswer'),
+    # path('api/v1/get_act/', GetActAPIView.as_view(), name='get_act_drf'),
 
-    re_path(r'^api/v1/auth/', include('djoser.urls.authtoken')),
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-
-    path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     path('', organisation_view, name='home'),
     path('designer-act/', designer_act_view, name='designer-act'),

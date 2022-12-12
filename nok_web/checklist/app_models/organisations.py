@@ -3,10 +3,10 @@ from django.db import models
 
 class Organisations(models.Model):
     organisation_name = models.CharField(max_length=200, verbose_name='Учреждение')
-    address = models.CharField(max_length=300, null=True, blank=True, verbose_name='Адрес')
-    phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон')
-    website = models.CharField(max_length=30, null=True, blank=True, verbose_name='Сайт')
-    email = models.EmailField(max_length=50, null=True, blank=True, verbose_name='Email')
+    address = models.CharField(max_length=300, blank=True, verbose_name='Адрес')
+    phone = models.CharField(max_length=15, blank=True, verbose_name='Телефон')
+    website = models.CharField(max_length=30, blank=True, verbose_name='Сайт')
+    email = models.EmailField(max_length=50, blank=True, verbose_name='Email')
     parent = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
     quota = models.ForeignKey('Quota', on_delete=models.PROTECT, null=True, verbose_name='Квота')
