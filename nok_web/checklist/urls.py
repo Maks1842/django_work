@@ -59,6 +59,8 @@ urlpatterns = [
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
     path('get-act-answer/', get_act_answer, name='get-act-answer'),
 
+    path('html_save_into_pdf/', html_save_into_pdf, name='html_save_into_pdf'),
+
 
 
 

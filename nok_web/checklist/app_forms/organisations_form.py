@@ -11,7 +11,7 @@ class OrganisationsForm(forms.ModelForm):
             'address': forms.TextInput(attrs={"class": "form-control"}),
             'phone': forms.TextInput(attrs={"class": "form-control"}),
             'website': forms.TextInput(attrs={"class": "form-control"}),
-            'email': forms.EmailInput(attrs={"class": "form-control"}),
+            'email': forms.TextInput(attrs={"class": "form-control"}),
             'parent': forms.Select(attrs={"class": "form-control"}),
             'department': forms.Select(attrs={"class": "form-control"}),
             'quota': forms.Select(attrs={"class": "form-control"}),

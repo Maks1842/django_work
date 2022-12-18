@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
+from weasyprint import HTML, CSS
 
 from .app_forms.forms_act_form import FormsActForm
 from .app_models import *
@@ -7,6 +9,8 @@ from django.contrib.auth import login, logout
 from django.http import JsonResponse
 import re
 import json
+
+from .config import FileStorage
 
 
 # Регистрация пользователя
@@ -106,7 +110,26 @@ def get_act_answer(request):
                # 'person': person,
                'answers': answers}
 
+    content = render_to_string(f'act_checkings/{temp}', context)
+    FileStorage.html_result = content
+    FileStorage.name_org = context['name_org']
+
+
+    with open('./checklist/modules/TEST.html', 'w') as static_file:
+        static_file.write(content)
+
     return render(request, f'act_checkings/{temp}', context)
+
+
+def html_save_into_pdf(request):
+    content = FileStorage.html_result
+    name_org = FileStorage.name_org
+
+    HTML('./checklist/modules/TEST.html').write_pdf(f'./checklist/modules/{name_org}.pdf')
+    # HTML(content).write_pdf(f'./checklist/modules/{name_org}.pdf')
+
+    return redirect('home')
+
 
 
 '''

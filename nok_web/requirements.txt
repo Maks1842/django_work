@@ -10,3 +10,4 @@ djoser==2.1.0
 drf-yasg2==1.19.4
 psycopg2-binary==2.9.3
 regex==2022.8.17
+weasyprint==57.1

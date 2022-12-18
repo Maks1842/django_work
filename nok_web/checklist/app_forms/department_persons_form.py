@@ -12,7 +12,7 @@ class Department_PersonsForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={"class": "form-control"}),
             'position': forms.TextInput(attrs={"class": "form-control"}),
             'phone': forms.TextInput(attrs={"class": "form-control"}),
-            'email': forms.EmailInput(attrs={"class": "form-control"}),
+            'email': forms.TextInput(attrs={"class": "form-control"}),
             'department': forms.Select(attrs={"class": "form-control"}),
             'is_deleted': forms.Select(attrs={"class": "form-control"})
         }

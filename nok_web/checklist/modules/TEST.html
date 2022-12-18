@@ -1,5 +1,5 @@
 
-<form action="{% url 'html_save_into_pdf' %}" method="get">
+<form action="/html_save_into_pdf/" method="get">
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -63,7 +63,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 700px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        style="width: 735px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
         <p class="title">
             <b>Акт посещения организации культуры <br/>
                 во время проведения очного этапа сбора и обобщения <br/>
@@ -75,7 +75,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question" style="font-size: 14pt">
                 Наименование организации культуры
             </p>
@@ -83,9 +83,9 @@
     </tr>
 
     <tr>
-        <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{ name_org }}
+                Музей Моя История
             </p>
         </td>
     </tr>
@@ -94,7 +94,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question" style="font-size: 14pt">
                 Адрес организации
             </p>
@@ -102,9 +102,9 @@
     </tr>
 
     <tr>
-        <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{ address_org }}
+                г. Ставрополь
             </p>
         </td>
     </tr>
@@ -123,7 +123,7 @@
     <tr>
         <td style="width: 400px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{'name'}}
+                name
             </p>
         </td>
     </tr>
@@ -133,7 +133,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question" style="font-size: 14pt">
                 Сведения об уполномоченном представителе организации-оператора:
             </p>
@@ -141,14 +141,14 @@
     </tr>
 
     <tr>
-        <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{ user }}
+                admin
             </p>
         </td>
     </tr>
     <tr>
-        <td style="width: 700px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
+        <td style="width: 735px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
             <p class="question" style="font-size: 12pt">
                 (фамилия, имя, отчество представителя организации-оператора)
             </p>
@@ -159,7 +159,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question" style="font-size: 14pt">
                 В присутствии:
             </p>
@@ -167,14 +167,14 @@
     </tr>
 
     <tr>
-        <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="question">
-                {{ person }}
+                
             </p>
         </td>
     </tr>
     <tr>
-        <td style="width: 700px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
+        <td style="width: 735px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
             <p class="question" style="font-size: 12pt">
                 (фамилия, имя, отчество представителя организации культуры)
             </p>
@@ -185,7 +185,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="4" style="width: 700px; border: none; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px; border: none; padding-left: 0.04in; padding-right: 0.04in">
             <p class="header">совместно произвели визуальный осмотр помещений организации культуры и прилегающей
                 территории в целях обеспечения сбора и обобщения информации о качестве условий оказания услуг
                 в организации культуры по критериям и показателям, предусмотренным приказом Министерства культуры
@@ -196,7 +196,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 700px; border: none; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px; border: none; padding-left: 0.04in; padding-right: 0.04in">
             <p class="header" style="text-align: center">
                 В ходе визуального осмотра установлено следующее:
             </p>
@@ -208,9 +208,9 @@
 
 <table>
     <td colspan="4"
-        style="width: 700px" class="tab">
+        style="width: 720px" class="tab">
         <p class="title">
-            <b>Здание культурного насления</b>
+            <b>-----------------</b>
         </p>
     </td>
 </table>
@@ -219,7 +219,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 700px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        style="width: 720px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
         <p class="title">
             <b>Критерий 1. Открытость и доступность информации об организации культуры</b>
         </p>
@@ -229,7 +229,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="4" style="width: 700px" class="tab">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="question">
                 <b>1.1. Соответствие информации о деятельности организации, размещенной на общедоступных
                     информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными
@@ -265,7 +265,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 700px" class="tab">
+        <td colspan="4" style="width: 720px" class="tab">
             <p class="num">
                 <b>I. Общая информация об организации культуры</b>
             </p>
@@ -283,12 +283,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.1.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.1.1 }}
+                Нет
             </p>
         </td>
     </tr>
@@ -304,12 +304,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.2.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.2.1 }}
+                Нет
             </p>
         </td>
     </tr>
@@ -326,12 +326,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.3.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.3.1 }}
+                Да
             </p>
         </td>
     </tr>
@@ -354,7 +354,7 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.4.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -372,12 +372,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.5.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.5.1 }}
+                Нет
             </p>
         </td>
     </tr>
@@ -393,18 +393,18 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.6.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.6.1 }}
+                Да
             </p>
         </td>
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 700px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
             <p class="num">
                 <b>II. Информация о деятельности организации культуры</b>
             </p>
@@ -422,12 +422,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.7.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.7.1 }}
+                Нет
             </p>
         </td>
     </tr>
@@ -445,12 +445,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.8.0 }}
+                Платные услуги отсутствуют
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.8.1 }}
+                
             </p>
         </td>
     </tr>
@@ -471,7 +471,7 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.9.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -493,7 +493,7 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.10.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -509,12 +509,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.11.0 }}
+                Нет
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.11.1 }}
+                Да
             </p>
         </td>
     </tr>
@@ -531,12 +531,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.12.0 }}
+                Не предусмотрено
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.12.1 }}
+                
             </p>
         </td>
     </tr>
@@ -561,12 +561,12 @@
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.13.0 }}
+                Да
             </p>
         </td>
         <td style="width: 65px" class="tab">
             <p class="num">
-                {{ answers.13.1 }}
+                Да
             </p>
         </td>
     </tr>
@@ -575,7 +575,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="3" style="width: 700px" class="tab">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов
                     обратной связи и взаимодействия с получателями услуг</b>
@@ -587,14 +587,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">14</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте номера телефона организации (его функционирование)
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.14.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -603,14 +603,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">15</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте адреса электронной почты (ее функционирование)
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.15.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -619,7 +619,7 @@
         <td style="width: 30px" class="tab">
             <p class="num">16</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте электронных сервисов (форма для подачи электронного обращения/
                 жалобы/предложения)
@@ -627,7 +627,7 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.16.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -636,14 +636,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">17</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие на официальном сайте раздела «Часто задаваемые вопросы»
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.17.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -652,7 +652,7 @@
         <td style="width: 30px" class="tab">
             <p class="num">18</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие
                 технические возможности
@@ -660,7 +660,7 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.18.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -669,7 +669,7 @@
         <td style="width: 30px" class="tab">
             <p class="num">19</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие
                 анкеты для опроса граждан или гиперссылки на нее)
@@ -677,7 +677,7 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.19.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -686,7 +686,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 700px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        style="width: 720px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
         <p class="title">
             <b>Критерий 2. Комфортность условий предоставления услуг</b>
         </p>
@@ -696,7 +696,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="3" style="width: 700px" class="tab">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>2.1.1 Наличие комфортных условий для предоставления услуг</b>
             </p>
@@ -707,14 +707,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">20</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.20.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -723,14 +723,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">21</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие и понятность навигации внутри организации
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.21.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -739,14 +739,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">22</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Доступность питьевой воды
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.22.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -755,7 +755,7 @@
         <td style="width: 30px" class="tab">
             <p class="num">23</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды,
                 туалетной бумаги и пр.)
@@ -763,7 +763,7 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.23.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -772,14 +772,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">24</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Санитарное состояние помещений организации
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.24.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -788,7 +788,7 @@
         <td style="width: 30px" class="tab">
             <p class="num">25</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Возможность бронирования услуги/доступность записи на получение услуги (по телефону, с использованием
                 сети «Интернет» на официальном сайте организации, при личном посещении и пр.)
@@ -796,7 +796,7 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.25.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -805,7 +805,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 700px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        style="width: 720px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
         <p class="title">
             <b>Критерий 3. Доступность услуг для инвалидов</b>
         </p>
@@ -816,7 +816,7 @@
 <table style="border-collapse: collapse">
 
     <tr>
-        <td colspan="3" style="width: 700px" class="tab">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для
                     инвалидов</b>
@@ -825,27 +825,17 @@
     </tr>
 
     <tr>
-        <td colspan="3" style="width: 700px" class="tab">
-            <p class="question" style="text-align: center">
-                <b>Оборудованных входных групп пандусами (подъемными платформами)</b>
-            </p>
-        </td>
-    </tr>
-
-    <tr>
         <td style="width: 30px" class="tab">
             <p class="num">26</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
-                Оборудование входа в здание или на его территорию:<br/>
-                -оборудование входа ровной площадкой непосредственно перед входной дверью, для обеспечения его доступности для инвалидов на креслах-колясках;<br/>
-                -расположение входной двери в сочетании с направлением пути подхода;
+                Оборудование входных групп пандусами/подъемными платформами
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.26.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -854,14 +844,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">27</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
-                -оборудование выхода со специальных парковочных мест бордюрными пандусами, расположенными в непосредственной близости от них.
+                Наличие выделенных стоянок для автотранспортных средств инвалидов
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.27.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -870,15 +860,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">28</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
-                -использование визуального отличающегося цвета поверхности пандуса от цвета горизонтальной площадки;<br/>
-                -прочное закрепление противоскользящей поверхности пандусов.
+                Наличие адаптированных лифтов, поручней, расширенных дверных проемов
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.28.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -887,22 +876,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">29</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
-                -обеспечение возможности входа и выхода из объекта культурного наследия, в том числе с использованием специальных подъездных устройств.
+                Наличие сменных кресел-колясок
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.29.0 }}
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td colspan="3" style="width: 700px" class="tab">
-            <p class="question" style="text-align: center">
-                <b>Наличие выделенных стоянок для автотранспортных средств инвалидов</b>
+                Да
             </p>
         </td>
     </tr>
@@ -911,107 +892,14 @@
         <td style="width: 30px" class="tab">
             <p class="num">30</p>
         </td>
-        <td style="width: 540px" class="tab">
-            <p class="question">
-                Организация размещения специальных мест для транспорта инвалидов:<br/>
-                -размещение специальных парковочных мест рядом друг с другом и обозначение их местонахождения указателем, расположенным рядом с главным входом в здание;<br/>
-                -обозначение специальных парковочных мест наземной разметкой с обозначением как на поверхности парковки, так и с помощью вертикального знака;<br/>
-                - создание системы управления/наблюдения, чтобы выделенные специальные парковочные места использовались только инвалидами;<br/>
-                - расположение специальных парковочных мест как можно ближе к входу в сооружение.
-            </p>
-        </td>
-        <td style="width: 130px" class="tab">
-            <p class="num">
-                {{ answers.30.0 }}
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td colspan="3" style="width: 700px" class="tab">
-            <p class="question" style="text-align: center">
-                <b>Наличие адаптированных лифтов, поручней, расширенных дверных проемов</b>
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td style="width: 30px" class="tab">
-            <p class="num">31</p>
-        </td>
-        <td style="width: 540px" class="tab">
-            <p class="question">
-                Организация путей движения на объекте культурного наследия:</b>
-                -обеспечение отличия по цвету и яркости предохранительной оковки каждой ступени лестниц от примыкающей к ней ступени и обеспечение противоскользящих свойств ступеней
-            </p>
-        </td>
-        <td style="width: 130px" class="tab">
-            <p class="num">
-                {{ answers.31.0 }}
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td style="width: 30px" class="tab">
-            <p class="num">32</p>
-        </td>
-        <td style="width: 540px" class="tab">
-            <p class="question">
-                -устройство входного вестибюля с учетом предоставления инвалиду в кресле-коляске возможности ее использования
-            </p>
-        </td>
-        <td style="width: 130px" class="tab">
-            <p class="num">
-                {{ answers.32.0 }}
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td style="width: 30px" class="tab">
-            <p class="num">33</p>
-        </td>
-        <td style="width: 540px" class="tab">
-            <p class="question">
-                -обеспечение альтернативного способа преодоления перепада высот с помощью ступеней
-            </p>
-        </td>
-        <td style="width: 130px" class="tab">
-            <p class="num">
-                {{ answers.33.0 }}
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td style="width: 30px" class="tab">
-            <p class="num">34</p>
-        </td>
-        <td style="width: 540px" class="tab">
-            <p class="question">
-                Наличие сменных кресел-колясок
-            </p>
-        </td>
-        <td style="width: 130px" class="tab">
-            <p class="num">
-                {{ answers.34.0 }}
-            </p>
-        </td>
-    </tr>
-
-    <tr>
-        <td style="width: 30px" class="tab">
-            <p class="num">35</p>
-        </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие и доступность специально оборудованных санитарно-гигиенических помещений
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.35.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -1021,7 +909,7 @@
 <table style="border-collapse: collapse">
 
     <tr>
-        <td colspan="3" style="width: 700px" class="tab">
+        <td colspan="3" style="width: 720px" class="tab">
             <p class="question">
                 <b>3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с
                     другими</b>
@@ -1031,25 +919,25 @@
 
     <tr>
         <td style="width: 30px" class="tab">
-            <p class="num">36</p>
+            <p class="num">31</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.36.0 }}
+                Да
             </p>
         </td>
     </tr>
 
     <tr>
         <td style="width: 30px" class="tab">
-            <p class="num">37</p>
+            <p class="num">32</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными
                 рельефно-точечным шрифтом Брайля
@@ -1057,16 +945,16 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.37.0 }}
+                Да
             </p>
         </td>
     </tr>
 
     <tr>
         <td style="width: 30px" class="tab">
-            <p class="num">38</p>
+            <p class="num">33</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика
                 (тифлосурдопереводчика)
@@ -1074,16 +962,16 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.38.0 }}
+                Да
             </p>
         </td>
     </tr>
 
     <tr>
         <td style="width: 30px" class="tab">
-            <p class="num">39</p>
+            <p class="num">34</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети
                 «Интернет» для инвалидов по зрению
@@ -1091,16 +979,16 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.39.0 }}
+                Да
             </p>
         </td>
     </tr>
 
     <tr>
         <td style="width: 30px" class="tab">
-            <p class="num">40</p>
+            <p class="num">35</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие возможности оказания помощи работниками организации, прошедшими необходимое обучение (инструктирование)
                 (возможность сопровождения работниками организации)
@@ -1108,23 +996,23 @@
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.40.0 }}
+                Да
             </p>
         </td>
     </tr>
 
     <tr>
         <td style="width: 30px" class="tab">
-            <p class="num">41</p>
+            <p class="num">36</p>
         </td>
-        <td style="width: 540px" class="tab">
+        <td style="width: 560px" class="tab">
             <p class="question">
                 Наличие возможности предоставления услуги в дистанционном режиме или на дому
             </p>
         </td>
         <td style="width: 130px" class="tab">
             <p class="num">
-                {{ answers.41.0 }}
+                Да
             </p>
         </td>
     </tr>
@@ -1133,7 +1021,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 700px" class="tab">
+        <td colspan="1" style="width: 720px" class="tab">
             <p class="question">
                 <b>Дополнительная информация</b>
             </p>
@@ -1141,7 +1029,7 @@
     </tr>
 
     <tr>
-        <td style="width: 700px; height: 60px" class="tab">
+        <td style="width: 720px; height: 60px" class="tab">
             <p class="question">
 
             </p>

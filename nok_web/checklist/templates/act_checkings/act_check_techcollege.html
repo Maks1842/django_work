@@ -1,23 +1,14 @@
-{% extends 'base.html' %}
-<!--Указываю какой шаблон хочу наследовать-->
 
-{% block title %}
-{{ title }} :: {{ block.super }}
-<!--Используется для переопределения блока. В данном случае title-->
-{% endblock %}
-
-
-{% block content %}
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <title></title>
   <style type="text/css">
     @page {
-      size: 8.27in 11.69in;
-      margin-left: 0.59in;
-      margin-right: 0.59in;
-      margin-top: 0.39in;
-      margin-bottom: 0.49in
+      size: letter;
+      margin-left: 1cm;
+      margin-right: 1.5cm;
+      margin-top: 1.5cm;
+      margin-bottom: 1.5cm
     }
 
     p {
@@ -251,7 +242,7 @@
       </p>
     </td>
     <td style="width: 65px" class="tab">
-      <p class="num">
+      <p class="num" style="font-size: 10pt">
         Наличие
       </p>
       <p class="num">
@@ -262,7 +253,7 @@
       <p class="num">
         Наличие
       </p>
-      <p class="num">
+      <p class="num" style="font-size: 10pt">
         <b>Сайт</b>
       </p>
     </td>
@@ -1912,5 +1903,3 @@
 </table>
 <br/>
 </body>
-
-{% endblock %}
