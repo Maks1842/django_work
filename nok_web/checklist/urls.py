@@ -1,4 +1,5 @@
 from django.urls import path, include, re_path
+
 from .views import *
 from .api_views import *
 from rest_framework import routers
@@ -8,6 +9,7 @@ from rest_framework import permissions
 from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 
+from .views_api.act_answer_into_pdf import *
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -46,7 +48,7 @@ urlpatterns = [
     path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),
     path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
     # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
-    # path('api/v1/getActAnswer/', GetActAnswerAPIView.as_view(), name='getActAnswer'),
+    path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='getResultCheckingIntoPdf'),
     # path('api/v1/get_act/', GetActAPIView.as_view(), name='get_act_drf'),
 
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -57,9 +59,9 @@ urlpatterns = [
     path('designer-act/', designer_act_view, name='designer-act'),
     path('get-act/', get_act, name='get-act'),
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
-    path('get-act-answer/', get_act_answer, name='get-act-answer'),
+    # path('get-act-answer/', get_act_answer, name='get-act-answer'),
 
-    path('html_save_into_pdf/', html_save_into_pdf, name='html_save_into_pdf'),
+    # path('html_save_into_pdf/', html_save_into_pdf, name='html_save_into_pdf'),
 
 
 

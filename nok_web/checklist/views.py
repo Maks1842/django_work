@@ -78,138 +78,140 @@ def designer_act_view(request):
     return render(request, 'checklist/helper.html', context)
 
 
-'''
-Рендеринг результатов проверки в шаблон HTML.
-do_some_magic - предварительно сопоставляет json-структура акта и json-результаты ответов
-'''
-
-
-def get_act_answer(request):
-    org_id = request.POST["org_id"]
-    type_org_id = request.POST["type_org_id"]
-    check_id = request.POST["check_id"]
-
-    # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
-    # type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
-    name_org = Organisations.objects.get(pk=org_id).organisation_name
-    address_org = Organisations.objects.get(pk=org_id).address
-    user = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).user  # Имя проверяющего
-    # person = Form_Organisation_Persons.objects.get(organisation_id=org_id).person  # Представитель проверяемой организации
-    queryset = FormsAct.objects.filter(type_organisations_id=type_org_id)
-    temp = Templates.objects.get(type_organisations_id=type_org_id).template_file
-
-    if len(queryset) > 0:
-        form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
-        query = Question_Values.objects.values()
-
-        comparison = do_some_magic(form_json, org_id, type_org_id, check_id)
-        answers = answer_in_the_act(comparison, query)
-    context = {'name_org': name_org,
-               'address_org': address_org,
-               'user': user,
-               # 'person': person,
-               'answers': answers}
-
-    content = render_to_string(f'act_checkings/{temp}', context)
-    FileStorage.html_result = content
-    FileStorage.name_org = context['name_org']
-
-
-    with open('./checklist/modules/TEST.html', 'w') as static_file:
-        static_file.write(content)
-
-    return render(request, f'act_checkings/{temp}', context)
-
-
-def html_save_into_pdf(request):
-    content = FileStorage.html_result
-    name_org = FileStorage.name_org
-
-    HTML('./checklist/modules/TEST.html').write_pdf(f'./checklist/modules/{name_org}.pdf')
-    # HTML(content).write_pdf(f'./checklist/modules/{name_org}.pdf')
-
-    return redirect('home')
-
-
-
-'''
-Функция сравнения двух json.
-Производится сопоставление полученных ответов с имеющимеся вопросами.
-На выходе формируется новый json, где:
-- если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
-- если нет ни одного совпадения, то все ячейки остаются пустые.
-В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
-'''
-
-
-def do_some_magic(form_json, org_id, type_org_id, check_id):
-
-    act = form_json
-    act_answer = Answers.objects.filter(checking_id=check_id, type_organisations=type_org_id).get(organisations_id=org_id).answers_json
-
-    questions = {}
-    for page in act['pages']:
-        for element in page['elements']:
-            choices = []
-            for choice in element['choices']:
-                choices.append(choice['value'])
-            questions[element['name']] = choices
-
-    tt = {}
-
-    for question in act_answer:
-        sh = []
-        for answer in questions[question]:
-            if answer in act_answer[question]:
-                sh.append(answer)
-            else:
-                sh.append('')
-        tt[question] = sh
-    z = questions.copy()
-    z.update(tt)
-    for question in z:
-        if question not in act_answer:
-            for i in range(len(z[question])):
-                z[question][i] = ''
-
-    return z
-
-
-'''
-Функция формирования текстовых ответов для HTML шаблона из json файла,
-который сформирован на основе сопоставления act_json и answer_json.
-'''
-
-
-def answer_in_the_act(comparison, query):
-    list = {}
-
-    for answ in comparison:
-        answer = ''
-        answers = []
-        if '11' in comparison[answ] or '12' in comparison[answ]:
-            for a in comparison[answ]:
-                if a == '':
-                    answer = "Нет"
-                elif int(a) > 0:
-                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        answer = query.get(pk=int(a))['name_alternativ']
-                    else:
-                        answer = query.get(pk=int(a))['value_name']
-                answers.append(answer)
-        else:
-            for a in comparison[answ]:
-                if a == '':
-                    pass
-                elif int(a) > 0:
-                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        answer = query.get(pk=int(a))['name_alternativ']
-                    else:
-                        answer = query.get(pk=int(a))['value_name']
-                    answers.append(answer)
-        list[answ] = answers
-
-    return list
+# '''
+# Рендеринг результатов проверки в шаблон HTML.
+# do_some_magic - предварительно сопоставляет json-структура акта и json-результаты ответов
+# '''
+#
+#
+# def get_act_answer(request):
+#     org_id = request.POST["org_id"]
+#     type_org_id = request.POST["type_org_id"]
+#     check_id = request.POST["check_id"]
+#
+#     # Необходим рефакторинг: записать запрос к FormsAct по id_organisation одной строкой
+#     # type_organisations = Organisations.objects.get(pk=org_id).type_organisations_id
+#     name_org = Organisations.objects.get(pk=org_id).organisation_name
+#     address_org = Organisations.objects.get(pk=org_id).address
+#     user = List_Checking.objects.filter(organisation_id=org_id).get(checking_id=check_id).user  # Имя проверяющего
+#     # person = Form_Organisation_Persons.objects.get(organisation_id=org_id).person  # Представитель проверяемой организации
+#     queryset = FormsAct.objects.filter(type_organisations_id=type_org_id)
+#     temp = Templates.objects.get(type_organisations_id=type_org_id).template_file
+#
+#     if len(queryset) > 0:
+#         form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+#         query = Question_Values.objects.values()
+#
+#         comparison = do_some_magic(form_json, org_id, type_org_id, check_id)
+#         answers = answer_in_the_act(comparison, query)
+#     context = {'name_org': name_org,
+#                'address_org': address_org,
+#                'user': user,
+#                # 'person': person,
+#                'answers': answers}
+#
+#     content = render_to_string(f'act_checkings/{temp}', context)
+#     FileStorage.html_result = content
+#     FileStorage.name_org = context['name_org']
+#
+#
+#     return render(request, f'act_checkings/{temp}', context)
+#
+#
+# def html_save_into_pdf(request):
+#     content = FileStorage.html_result
+#     name_org = FileStorage.name_org
+#
+#     css = CSS(string='@page { size: A4 !important; '
+#                      'margin-left: 1cm !important; '
+#                      'margin-right: 1cm !important; '
+#                      'margin-top: 1.5cm !important;'
+#                      'margin-bottom: 1.5cm !important }')
+#
+#     HTML(string=content).write_pdf(f'./checklist/modules/{name_org}.pdf', stylesheets=[css])
+#
+#     return redirect('home')
+#
+#
+#
+# '''
+# Функция сравнения двух json.
+# Производится сопоставление полученных ответов с имеющимеся вопросами.
+# На выходе формируется новый json, где:
+# - если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
+# - если нет ни одного совпадения, то все ячейки остаются пустые.
+# В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
+# '''
+#
+#
+# def do_some_magic(form_json, org_id, type_org_id, check_id):
+#
+#     act = form_json
+#     act_answer = Answers.objects.filter(checking_id=check_id, type_organisations=type_org_id).get(organisations_id=org_id).answers_json
+#
+#     questions = {}
+#     for page in act['pages']:
+#         for element in page['elements']:
+#             choices = []
+#             for choice in element['choices']:
+#                 choices.append(choice['value'])
+#             questions[element['name']] = choices
+#
+#     tt = {}
+#
+#     for question in act_answer:
+#         sh = []
+#         for answer in questions[question]:
+#             if answer in act_answer[question]:
+#                 sh.append(answer)
+#             else:
+#                 sh.append('')
+#         tt[question] = sh
+#     z = questions.copy()
+#     z.update(tt)
+#     for question in z:
+#         if question not in act_answer:
+#             for i in range(len(z[question])):
+#                 z[question][i] = ''
+#
+#     return z
+#
+#
+# '''
+# Функция формирования текстовых ответов для HTML шаблона из json файла,
+# который сформирован на основе сопоставления act_json и answer_json.
+# '''
+#
+#
+# def answer_in_the_act(comparison, query):
+#     list = {}
+#
+#     for answ in comparison:
+#         answer = ''
+#         answers = []
+#         if '11' in comparison[answ] or '12' in comparison[answ]:
+#             for a in comparison[answ]:
+#                 if a == '':
+#                     answer = "Нет"
+#                 elif int(a) > 0:
+#                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
+#                         answer = query.get(pk=int(a))['name_alternativ']
+#                     else:
+#                         answer = query.get(pk=int(a))['value_name']
+#                 answers.append(answer)
+#         else:
+#             for a in comparison[answ]:
+#                 if a == '':
+#                     pass
+#                 elif int(a) > 0:
+#                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
+#                         answer = query.get(pk=int(a))['name_alternativ']
+#                     else:
+#                         answer = query.get(pk=int(a))['value_name']
+#                     answers.append(answer)
+#         list[answ] = answers
+#
+#     return list
 
 
 # Добавление данных в БД

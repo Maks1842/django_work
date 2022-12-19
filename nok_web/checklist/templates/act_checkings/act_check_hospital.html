@@ -1,4 +1,4 @@
-<form action="{% url 'html_save_into_pdf' %}" method="get">
+<form>
 
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -58,6 +58,20 @@
                 padding-right: 0.04in
             }
 
+            .tab-name {
+                width: 700px;
+                padding-left: 0.04in;
+                padding-right: 0.04in
+            }
+
+            .tab-item {
+                width: 700px;
+                height: 20px;
+                border-bottom: 1px solid #000000;
+                padding-left: 0.04in;
+                padding-right: 0.04in
+            }
+
             .tab-section {
                 width: 700px;
                 border: none;
@@ -82,14 +96,14 @@
             }
 
             .tab-quest {
-                width: 540px;
+                width: 520px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
                 padding-right: 0.04in
             }
 
-            .tab-quest-1 {
-                width: 540px;
+            .tab-quest-2 {
+                width: 390px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
                 padding-right: 0.04in
@@ -110,10 +124,17 @@
             }
 
             .tab-answr-2 {
-                width: 130px;
+                width: 300px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
                 padding-right: 0.04in
+            }
+
+            .tab-end-text {
+                width: 230px;
+                background: transparent;
+                border: none;
+                padding-top: 20px
             }
         </style>
     </head>
@@ -133,7 +154,7 @@
     <br/>
     <table style="border-collapse: collapse">
         <tr>
-            <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+            <td colspan="1" class="tab-name">
                 <p class="question" style="font-size: 14pt">
                     Наименование медицинской организации
                 </p>
@@ -141,7 +162,7 @@
         </tr>
 
         <tr>
-            <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <td class="tab-item">
                 <p class="question">
                     {{ 'name' }}
                 </p>
@@ -152,7 +173,7 @@
 
     <table style="border-collapse: collapse">
         <tr>
-            <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+            <td colspan="1" class="tab-name">
                 <p class="question" style="font-size: 14pt">
                     Наименование населенного пункта
                 </p>
@@ -160,7 +181,7 @@
         </tr>
 
         <tr>
-            <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <td class="tab-item">
                 <p class="question">
                     {{'name'}}
                 </p>
@@ -171,7 +192,7 @@
 
     <table style="border-collapse: collapse">
         <tr>
-            <td colspan="1" style="width: 400px; padding-left: 0.04in; padding-right: 0.04in">
+            <td colspan="1" class="tab-name">
                 <p class="question" style="font-size: 14pt">
                     Дата посещения медицинской организации
                 </p>
@@ -179,7 +200,7 @@
         </tr>
 
         <tr>
-            <td style="width: 400px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <td class="tab-item">
                 <p class="question">
                     {{'name'}}
                 </p>
@@ -191,7 +212,7 @@
 
     <table style="border-collapse: collapse">
         <tr>
-            <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+            <td colspan="1" class="tab-name">
                 <p class="question" style="font-size: 14pt">
                     Сведения об уполномоченном представителе организации-оператора:
                 </p>
@@ -199,7 +220,7 @@
         </tr>
 
         <tr>
-            <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <td class="tab-item">
                 <p class="question">
                     {{'name'}}
                 </p>
@@ -217,7 +238,7 @@
 
     <table style="border-collapse: collapse">
         <tr>
-            <td colspan="1" style="width: 700px; padding-left: 0.04in; padding-right: 0.04in">
+            <td colspan="1" class="tab-name">
                 <p class="question" style="font-size: 14pt">
                     В присутствии:
                 </p>
@@ -225,7 +246,7 @@
         </tr>
 
         <tr>
-            <td style="width: 700px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <td class="tab-item">
                 <p class="question">
                     {{ person }}
                 </p>
@@ -310,7 +331,7 @@
                     Наименование документа
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num" style="font-size: 10pt">
                     Наличие
                 </p>
@@ -318,7 +339,7 @@
                     <b>Стенд</b>
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num" style="font-size: 10pt">
                     Наличие
                 </p>
@@ -345,12 +366,12 @@
                     Полное наименование
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.1.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.1.1 }}
                 </p>
@@ -366,12 +387,12 @@
                     Место нахождения и схема проезда, включая обособленные структурные подразделения (при их наличии)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.2.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.2.1 }}
                 </p>
@@ -387,12 +408,12 @@
                     Почтовый адрес
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.3.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.3.1 }}
                 </p>
@@ -408,12 +429,12 @@
                     Дата государственной регистрации
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.4.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.4.1 }}
                 </p>
@@ -429,12 +450,12 @@
                     Сведения об учредителе (учредителях)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.5.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.5.1 }}
                 </p>
@@ -450,12 +471,12 @@
                     Структура
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.6.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.6.1 }}
                 </p>
@@ -471,12 +492,12 @@
                     Органы управления
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.7.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.7.1 }}
                 </p>
@@ -492,12 +513,12 @@
                     Вакантные должности
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.8.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.8.1 }}
                 </p>
@@ -513,12 +534,12 @@
                     Режим работы
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.9.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.9.1 }}
                 </p>
@@ -534,12 +555,12 @@
                     График работы
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.10.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.10.1 }}
                 </p>
@@ -555,12 +576,12 @@
                     Правила внутреннего распорядка для потребителей услуг
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.11.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.11.1 }}
                 </p>
@@ -576,12 +597,12 @@
                     Контактные телефоны
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.12.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.12.1 }}
                 </p>
@@ -597,12 +618,12 @@
                     Номера телефонов справочных служб
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.13.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.13.1 }}
                 </p>
@@ -618,12 +639,12 @@
                     Адреса электронной почты
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.14.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.14.1 }}
                 </p>
@@ -640,12 +661,12 @@
                     указанием:
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.15.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.15.1 }}
                 </p>
@@ -661,12 +682,12 @@
                     Телефона
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.16.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.16.1 }}
                 </p>
@@ -682,12 +703,12 @@
                     Адреса электронной почты
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.17.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.17.1 }}
                 </p>
@@ -703,12 +724,12 @@
                     Адрес органа исполнительной власти субъекта Российской Федерации в сфере охраны здоровья
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.18.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.18.1 }}
                 </p>
@@ -724,12 +745,12 @@
                     Адрес территориального органа Федеральной службы по надзору в сфере здравоохранения
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.19.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.19.1 }}
                 </p>
@@ -745,12 +766,12 @@
                     Контактный телефон территориального органа Федеральной службы по надзору в сфере здравоохранения
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.20.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.20.1 }}
                 </p>
@@ -767,12 +788,12 @@
                     благополучия человека
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.21.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.21.1 }}
                 </p>
@@ -789,12 +810,12 @@
                     защиты прав потребителей и благополучия человека
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.22.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.22.1 }}
                 </p>
@@ -811,12 +832,12 @@
                     медицинской помощи по обязательному
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.23.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.23.1 }}
                 </p>
@@ -832,12 +853,12 @@
                     Отзывы потребителей услуг
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.24.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.24.1 }}
                 </p>
@@ -845,7 +866,7 @@
         </tr>
 
         <tr>
-            <td colspan="4" style="width: 700px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+            <td colspan="4" class="tab-title">
                 <p class="num">
                     <b>II. Информация о медицинской деятельности медицинской организации</b>
                 </p>
@@ -861,12 +882,12 @@
                     О наличии лицензии на осуществление медицинской деятельности с приложением (копия лицензии)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.25.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.25.1 }}
                 </p>
@@ -882,12 +903,12 @@
                     О видах медицинской помощи
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.26.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.26.1 }}
                 </p>
@@ -903,12 +924,12 @@
                     О правах граждан в сфере охраны здоровья
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.27.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.27.1 }}
                 </p>
@@ -924,12 +945,12 @@
                     Об обязанностях граждан в сфере охраны здоровья
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.28.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.28.1 }}
                 </p>
@@ -945,12 +966,12 @@
                     О перечне жизненно необходимых и важнейших лекарственных препаратов для медицинского применения
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.29.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.29.1 }}
                 </p>
@@ -966,16 +987,15 @@
                     О перечне лекарственных препаратов, предназначенных для обеспечения лиц, больных гемофилией,
                     муковисцидозом, гипофизарным нанизмом, болезнью Гоше, злокачественными новообразованиями лимфоидной,
                     кроветворной и родственных им тканей, рассеянным склерозом, а также лиц после трансплантации органов
-                    и
-                    (или) тканей
+                    и (или) тканей
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.30.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.30.1 }}
                 </p>
@@ -992,12 +1012,12 @@
                     для медицинского применения, назначаемых по решению врачебных комиссий медицинских организаций
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.31.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.31.1 }}
                 </p>
@@ -1017,12 +1037,12 @@
                     рецептам врачей с пятидесятипроцентной скидкой
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.32.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.32.1 }}
                 </p>
@@ -1037,16 +1057,15 @@
                 <p class="question">
                     О возможности получения медицинской помощи в рамках программы государственных гарантий бесплатного
                     оказания гражданам медицинской помощи и территориальных программ государственных гарантий
-                    бесплатного
-                    оказания гражданам медицинской помощи
+                    бесплатного оказания гражданам медицинской помощи
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.33.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.33.1 }}
                 </p>
@@ -1066,12 +1085,12 @@
                     оказания гражданам медицинской помощи
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.34.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.34.1 }}
                 </p>
@@ -1091,12 +1110,12 @@
                     оказания гражданам медицинской помощи
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.35.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.35.1 }}
                 </p>
@@ -1116,12 +1135,12 @@
                     оказания гражданам медицинской помощи
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.36.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.36.1 }}
                 </p>
@@ -1138,12 +1157,12 @@
                     государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.37.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.37.1 }}
                 </p>
@@ -1160,12 +1179,12 @@
                     государственных гарантий бесплатного оказания гражданам медицинской помощи на соответствующий год
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.38.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.38.1 }}
                 </p>
@@ -1182,12 +1201,12 @@
                     медикосанитарную помощь и имеющей прикрепленное население
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.39.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.39.1 }}
                 </p>
@@ -1204,12 +1223,12 @@
                     медикосанитарную помощь и имеющей прикрепленное население
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.40.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.40.1 }}
                 </p>
@@ -1227,12 +1246,12 @@
                     медикосанитарную помощь и имеющей прикрепленное население
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.41.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.41.1 }}
                 </p>
@@ -1248,12 +1267,12 @@
                     Правила записи на первичный прием
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.42.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.42.1 }}
                 </p>
@@ -1269,12 +1288,12 @@
                     Правила записи на консультацию
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.43.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.43.1 }}
                 </p>
@@ -1290,12 +1309,12 @@
                     Правила записи на обследование
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.44.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.44.1 }}
                 </p>
@@ -1311,12 +1330,12 @@
                     Правила подготовки к диагностическим исследованиям
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.45.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.45.1 }}
                 </p>
@@ -1332,12 +1351,12 @@
                     Правила госпитализации
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.46.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.46.1 }}
                 </p>
@@ -1353,12 +1372,12 @@
                     Сроки госпитализации
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.47.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.47.1 }}
                 </p>
@@ -1374,12 +1393,12 @@
                     ** Правила предоставления платных медицинских услуг
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.48.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.48.1 }}
                 </p>
@@ -1395,12 +1414,12 @@
                     ** Условия, порядок, форма предоставления медицинских услуг и порядок их оплаты
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.49.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.49.1 }}
                 </p>
@@ -1417,12 +1436,12 @@
                     с приложением электронного образа документов (для помещений – копии документов)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.50.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.50.1 }}
                 </p>
@@ -1440,12 +1459,12 @@
                     медицинского работника, занимаемая должность
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.51.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.51.1 }}
                 </p>
@@ -1462,12 +1481,12 @@
                     образовании, год выдачи, специальность, квалификация)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.52.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.52.1 }}
                 </p>
@@ -1484,12 +1503,12 @@
                     действия)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.53.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.53.1 }}
                 </p>
@@ -1505,12 +1524,12 @@
                     График работы
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.54.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.54.1 }}
                 </p>
@@ -1535,12 +1554,12 @@
                     Фамилия, имя, отчество (при наличии) медицинского работника, занимаемая должность
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.55.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.55.1 }}
                 </p>
@@ -1557,12 +1576,12 @@
                     образовании, год выдачи, специальность, квалификация)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.56.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.56.1 }}
                 </p>
@@ -1579,12 +1598,12 @@
                     действия)
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.57.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.57.1 }}
                 </p>
@@ -1600,12 +1619,12 @@
                     График работы и часы приема медицинского работника
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.58.0 }}
                 </p>
             </td>
-            <td style="width: 65px" class="tab">
+            <td class="tab-answr">
                 <p class="num">
                     {{ answers.58.1 }}
                 </p>
@@ -1619,11 +1638,9 @@
         <tr>
             <td colspan="4" style="width: 700px; border: none; padding-left: 0.04in; padding-right: 0.04in">
                 <p class="question" style="font-size: 11pt">* пп.39-41: В случаях, когда, медицинская организация не
-                    оказывает
-                    первичную медико-санитарную помощь и/или не имеет прикрепленного населения, в помещениях
+                    оказывает первичную медико-санитарную помощь и/или не имеет прикрепленного населения, в помещениях
                     медицинской организации представляется информация о сроках и порядке проведения диспансеризации
-                    (профилактических
-                    медицинских осмотров) населения Российской Федерации
+                    (профилактических медицинских осмотров) населения Российской Федерации
                 </p>
             </td>
         </tr>
@@ -1631,10 +1648,8 @@
         <tr>
             <td colspan="4" style="width: 700px; border: none; padding-left: 0.04in; padding-right: 0.04in">
                 <p class="question" style="font-size: 11pt">** пп.48-54: В случаях, когда медицинская организация не
-                    оказывает
-                    платных медицинских услуг, в помещениях медицинской организации представляется информация об
-                    отсутствии
-                    платных медицинских услуг
+                    оказывает платных медицинских услуг, в помещениях медицинской организации представляется
+                    информация об отсутствии платных медицинских услуг
                 </p>
             </td>
         </tr>
@@ -1661,7 +1676,7 @@
                     Наличие на официальном сайте номера телефона организации (его функционирование)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.59.0 }}
                 </p>
@@ -1677,7 +1692,7 @@
                     Наличие на официальном сайте адреса электронной почты (ее функционирование)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.60.0 }}
                 </p>
@@ -1694,7 +1709,7 @@
                     жалобы/предложения)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.61.0 }}
                 </p>
@@ -1710,7 +1725,7 @@
                     Наличие на официальном сайте раздела «Часто задаваемые вопросы»
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.62.0 }}
                 </p>
@@ -1727,7 +1742,7 @@
                     технические возможности
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.63.0 }}
                 </p>
@@ -1744,7 +1759,7 @@
                     анкеты для опроса граждан или гиперссылки на нее)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.64.0 }}
                 </p>
@@ -1782,7 +1797,7 @@
                     питание, действия персонала по уходу)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.65.0 }}
                 </p>
@@ -1798,7 +1813,7 @@
                     Отсутствие очередей
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.66.0 }}
                 </p>
@@ -1812,15 +1827,12 @@
             <td class="tab-quest">
                 <p class="question">
                     Доступность записи на прием к врачу/направление на госпитализацию (по телефону медицинской
-                    организации,
-                    через кол-центр, с использованием информационно-телекоммуникационной сети \"Интернет\" на
-                    официальном
-                    сайте
-                    медицинской организации, на портале государственных услуг (www.gosuslugi.ru), при обращении в
-                    медицинскую организацию)
+                    организации, через кол-центр, с использованием информационно-телекоммуникационной сети \"Интернет\"
+                    на официальном сайте медицинской организации, на портале государственных услуг (www.gosuslugi.ru),
+                    при обращении в медицинскую организацию)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.67.0 }}
                 </p>
@@ -1836,7 +1848,7 @@
                     Доступность питьевой воды
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.68.0 }}
                 </p>
@@ -1853,7 +1865,7 @@
                     туалетной бумаги и пр.)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.69.0 }}
                 </p>
@@ -1869,7 +1881,7 @@
                     Санитарное состояние помещений организации
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.70.0 }}
                 </p>
@@ -1881,7 +1893,7 @@
     <table style="border-collapse: collapse">
 
         <tr>
-            <td colspan="3" class="tab-title">
+            <td colspan="3" class="tab-quest-2">
                 <p class="question">
                     <b>2.2.1. Среднее время ожидания предоставления услуги</b>
                 </p>
@@ -1892,12 +1904,12 @@
             <td class="tab-num">
                 <p class="num">71</p>
             </td>
-            <td style="width: 370px" class="tab">
+            <td class="tab-answr-2">
                 <p class="question">
                     Среднее время ожидания предоставления услуги
                 </p>
             </td>
-            <td style="width: 300px" class="tab">
+            <td class="tab-answr-2">
                 <p class="question">
                     {{ answers.71.0 }}
                 </p>
@@ -1936,7 +1948,7 @@
                     Оборудование входных групп пандусами/подъемными платформами
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.72.0 }}
                 </p>
@@ -1952,7 +1964,7 @@
                     Наличие выделенных стоянок для автотранспортных средств инвалидов
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.73.0 }}
                 </p>
@@ -1968,7 +1980,7 @@
                     Наличие адаптированных лифтов, поручней, расширенных дверных проемов
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.74.0 }}
                 </p>
@@ -1984,7 +1996,7 @@
                     Наличие сменных кресел-колясок
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.75.0 }}
                 </p>
@@ -2000,7 +2012,7 @@
                     Наличие и доступность специально оборудованных санитарно-гигиенических помещений
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.76.0 }}
                 </p>
@@ -2030,7 +2042,7 @@
                     Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.77.0 }}
                 </p>
@@ -2047,7 +2059,7 @@
                     рельефно-точечным шрифтом Брайля
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.78.0 }}
                 </p>
@@ -2064,7 +2076,7 @@
                     (тифлосурдопереводчика)
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.79.0 }}
                 </p>
@@ -2082,7 +2094,7 @@
                     «Интернет» для инвалидов по зрению
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.80.0 }}
                 </p>
@@ -2101,7 +2113,7 @@
                     на дому
                 </p>
             </td>
-            <td style="width: 130px" class="tab">
+            <td class="tab-answr-1">
                 <p class="num">
                     {{ answers.81.0 }}
                 </p>
@@ -2131,19 +2143,19 @@
 
     <table>
         <tr>
-            <td style="width: 230px; background: transparent; border: none; padding-bottom: 20px">
+            <td class="tab-end-text" style="padding-bottom: 20px">
                 <p class="question" style="font-size: 11pt">
                     Представитель&nbsp;<br/>
                     организации-оператора:&nbsp;
                 </p>
             </td>
-            <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+            <td class="tab-end-text">
                 <p class="num" style="font-size: 11pt">
                     ___________________<br/>
                     (подпись)
                 </p>
             </td>
-            <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+            <td class="tab-end-text">
                 <p class="num" style="font-size: 11pt">
                     ____________________<br/>
                     (расшифровка подписи)
@@ -2166,19 +2178,19 @@
     </table>
     <table>
         <tr>
-            <td style="width: 230px; background: transparent; border: none; padding-bottom: 20px">
+            <td class="tab-end-text" style="padding-bottom: 20px">
                 <p class="question" style="font-size: 11pt">
                     Представитель&nbsp;<br/>
                     медицинской организации:&nbsp;
                 </p>
             </td>
-            <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+            <td class="tab-end-text">
                 <p class="num" style="font-size: 11pt">
                     ___________________<br/>
                     (подпись)
                 </p>
             </td>
-            <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+            <td class="tab-end-text">
                 <p class="num" style="font-size: 11pt">
                     ____________________<br/>
                     (расшифровка подписи)
@@ -2187,11 +2199,5 @@
         </tr>
     </table>
     <br/>
-
-    <row>
-        <div class="col-md-3 offset-md-5 mt-5 d-grid">
-            <button type="submit">Сохранить в pdf</button>
-        </div>
-    </row>
     </body>
 </form>
