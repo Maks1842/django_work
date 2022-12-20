@@ -24,3 +24,4 @@ from .type_answers import Type_Answers
 from .type_departments import Type_Departments
 from .type_organisations import Type_Organisations
 from .versions import Versions
+from .profile import Profile

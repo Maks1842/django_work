@@ -8,8 +8,13 @@
 
 
 {% block content %}
-<form action="{% url 'get-act-answer' %}" method="post">
-    {% csrf_token %}
+<form action="{% url 'home' %}" method="get">
+
+    <div>
+        <h1>
+            Привет! NOK_WEB приветствует тебя!
+        </h1>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -35,9 +40,6 @@
                     <option value="{{ item.id }}">{{ item.type }}</option>
                     {% endfor %}
                 </select>
-                <div class="col-md-3 offset-md-5 mt-5 d-grid">
-                    <button type="submit">Сформировать</button>
-                </div>
             </div>
 
 

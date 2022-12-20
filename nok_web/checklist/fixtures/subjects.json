@@ -858,6 +858,14 @@
   }
 },
 {
+  "model": "checklist.form_organisation_persons",
+  "pk": 42,
+  "fields": {
+    "organisation": 5,
+    "person": 22
+  }
+},
+{
   "model": "checklist.form_sections",
   "pk": 1,
   "fields": {
@@ -12924,6 +12932,32 @@
   }
 },
 {
+  "model": "checklist.organisation_persons",
+  "pk": 21,
+  "fields": {
+    "first_name": "Коля",
+    "second_name": "вася",
+    "last_name": "Ваня",
+    "position": "",
+    "phone": "",
+    "email": "",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.organisation_persons",
+  "pk": 22,
+  "fields": {
+    "first_name": "Жорж",
+    "second_name": "",
+    "last_name": "Милославский",
+    "position": "Старший",
+    "phone": "",
+    "email": "",
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.organisations",
   "pk": 1,
   "fields": {
@@ -14469,7 +14503,7 @@
   "fields": {
     "name": "Дополнительное образование. 24.11.2022",
     "type_organisations": 9,
-    "template_file": "act_chech_addeducation.html",
+    "template_file": "act_check_addeducation.html",
     "version": null,
     "is_deleted": false
   }
@@ -14633,6 +14667,28 @@
   "fields": {
     "type": "Культура (стандарт)",
     "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.profile",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "phone": "",
+    "address": "",
+    "birthday": "1981-07-24",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.profile",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "phone": "",
+    "address": "",
+    "birthday": "2022-12-20",
     "is_deleted": false
   }
 },

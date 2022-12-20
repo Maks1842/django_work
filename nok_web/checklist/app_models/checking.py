@@ -7,7 +7,7 @@ from django.db import models
 
 class Checking(models.Model):
     name = models.CharField(max_length=500, verbose_name='Наименование проверки')
-    date_checking = models.DateField(verbose_name='Дата проверки')
+    date_checking = models.DateField(verbose_name='Дата начала проверки')
     region = models.ForeignKey('Regions', on_delete=models.PROTECT, null=True, verbose_name='Регион')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
