@@ -53,7 +53,7 @@ urlpatterns = [
     path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
     # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
     path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='getResultCheckingIntoPdf'),
-    path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='getCheckingCompleted'),
+    path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='getResultCheckingIntoPdf'),
 
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

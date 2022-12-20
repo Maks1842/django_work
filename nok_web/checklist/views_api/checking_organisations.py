@@ -193,7 +193,7 @@ class GetCheckingCompletedAPIView(APIView):
 
         result = []
         for item in queryset:
-            queryset_completed = Answers.objects.filter(checking_id=item.checking.id, organisations_id=item.organisation.id)
+            queryset_completed = Answers.objects.filter(checking_id=item.checking.id, organisations_id=item.organisation)
             if len(queryset_completed) > 0:
                 for item_comp in queryset_completed:
                     result.append({
