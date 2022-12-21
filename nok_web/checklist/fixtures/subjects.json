@@ -12710,7 +12710,9 @@
   "fields": {
     "checking": 1,
     "organisation": 5,
+    "person": 22,
     "user": 1,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12720,7 +12722,9 @@
   "fields": {
     "checking": 2,
     "organisation": 4,
+    "person": 7,
     "user": 1,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12730,17 +12734,9 @@
   "fields": {
     "checking": 3,
     "organisation": 2,
+    "person": 8,
     "user": 1,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 4,
-  "fields": {
-    "checking": 3,
-    "organisation": 1,
-    "user": 2,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12750,7 +12746,9 @@
   "fields": {
     "checking": 2,
     "organisation": 1,
+    "person": 9,
     "user": 1,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12760,7 +12758,9 @@
   "fields": {
     "checking": 3,
     "organisation": 1,
+    "person": 1,
     "user": 2,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12770,7 +12770,9 @@
   "fields": {
     "checking": 2,
     "organisation": 3,
+    "person": 4,
     "user": 1,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12780,7 +12782,9 @@
   "fields": {
     "checking": 4,
     "organisation": 6,
+    "person": 9,
     "user": 1,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12790,7 +12794,9 @@
   "fields": {
     "checking": 4,
     "organisation": 7,
+    "person": 9,
     "user": 1,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12800,7 +12806,9 @@
   "fields": {
     "checking": 4,
     "organisation": 8,
+    "person": 10,
     "user": 2,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },
@@ -12810,7 +12818,9 @@
   "fields": {
     "checking": 4,
     "organisation": 9,
+    "person": 16,
     "user": 2,
+    "date_check_org": "2022-12-20",
     "is_deleted": false
   }
 },

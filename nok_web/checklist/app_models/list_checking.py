@@ -11,6 +11,7 @@ from django.db import models
 class List_Checking(models.Model):
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Наименование проверки')
     organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')
+    person = models.ForeignKey('Organisation_Persons', on_delete=models.PROTECT, blank=True, verbose_name='Ответственный')
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Эксперт')
     date_check_org = models.DateField(default=datetime.date.today, verbose_name='Дата проверки организации')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')

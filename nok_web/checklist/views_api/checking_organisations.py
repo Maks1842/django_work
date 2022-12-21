@@ -205,11 +205,7 @@ class GetCheckingCompletedAPIView(APIView):
                         'type_org_id': item_comp.type_organisations.id,
                         'type_org_name': item_comp.type_organisations.type,
                         'org_check_date': item.date_check_org,
-                        # 'org_person': item_comp.checking.date_checking,
+                        'org_person': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}",
 
                     })
-            else:
-                result.append({
-                    'error': f'Проверка организации {item.organisation.organisation_name} не завершена',
-                })
         return Response({'data': result})

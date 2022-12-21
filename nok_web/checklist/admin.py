@@ -221,10 +221,10 @@ class CheckingAdmin(admin.ModelAdmin):
 
 
 class ListCheckingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'checking', 'organisation', 'user', 'date_check_org', 'is_deleted')
-    search_fields = ('checking', 'organisation', 'user', 'date_check_org', 'is_deleted')
-    list_editable = ('checking', 'organisation', 'user', 'date_check_org', 'is_deleted')
-    list_filter = ('checking', 'organisation', 'user', 'date_check_org', 'is_deleted')
+    list_display = ('id', 'checking', 'organisation', 'person', 'user', 'date_check_org', 'is_deleted')
+    search_fields = ('checking', 'organisation', 'person', 'user', 'date_check_org', 'is_deleted')
+    list_editable = ('checking', 'organisation', 'person', 'user', 'date_check_org', 'is_deleted')
+    list_filter = ('checking', 'organisation', 'person', 'user', 'date_check_org', 'is_deleted')
 
 
 # !!!Важно соблюдать последовательность регистрации моделей
