@@ -13,7 +13,7 @@ from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrgani
     GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
-from .views_api.statistics import GetCheckingsListAPIView
+from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView
 from .views_api.tests import RegionsViewSet, GetOrganisationTestAPIView
 
 schema_view = get_schema_view(
@@ -55,7 +55,9 @@ urlpatterns = [
     # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
     path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='getResultCheckingIntoPdf'),
     path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='getResultCheckingIntoPdf'),
+
     path('api/v1/getCheckingsList/', GetCheckingsListAPIView.as_view(), name='getCheckingsList'),
+    path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='getOrganisationList'),
 
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

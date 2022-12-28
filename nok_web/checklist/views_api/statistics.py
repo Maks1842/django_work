@@ -36,18 +36,42 @@ class GetCheckingsListAPIView(APIView):
 
         queryset = Checking.objects.all()
 
-
         result = []
         for item in queryset:
-            count_check = List_Checking.objects.filter(checking_id=item.id)
+            count_org_check = List_Checking.objects.filter(checking_id=item.id)
+            count_org_complit = Answers.objects.filter(checking_id=item.id)
             result.append({
                 'id': item.id,
                 'nameCheck': item.name,
                 'dateCheck': item.date_checking,
                 'regionCheck': item.region.region_name,
                 'departmentCheck': item.department.department_name,
-                'countOrgAll': len(count_check),
-                'countAnser': 0,
+                'countOrgAll': len(count_org_check),
+                'countOrgComplit': len(count_org_complit),
+            })
+        return Response(result)
+
+
+class GetOrganisationListAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Статистика'],
+        operation_description="Получить список организаций, принадлежащих департаменту, по id проверки.",
+        manual_parameters=[
+                    openapi.Parameter('checking_id', openapi.IN_QUERY, description="Идентификатор проверки",
+                                      type=openapi.TYPE_INTEGER)
+                ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        checking = request.query_params.get('checking_id')
+        department = Checking.objects.values('department').get(pk=checking)
+        queryset = Organisations.objects.filter(department=department['department'])
+
+        result = []
+        for item in queryset:
+            result.append({
+                'id': item.id,
+                'name': item.organisation_name,
             })
         return Response(result)
 
