@@ -83,6 +83,36 @@ class AnswersAPIView(APIView):
         return Response({'message': 'Ответ успешно добавлен'})
 
 
+
+class AnswersAPIUpdate(APIView):
+    @swagger_auto_schema(
+        methods=['patch'],
+        tags=['Проверка'],
+        operation_description="Изменить результаты ответов",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
+            },
+        ))
+    @action(methods=['patch'], detail=True)
+    def patch(self, request, *args, **kwargs):
+        pk = kwargs.get('pk', None)
+
+        req_data = request.data
+
+        try:
+            instance = Answers.objects.get(pk=pk)
+        except:
+            return Response({'error': 'Объект не существует'})
+
+        serializers = AnswersSerializer(data=req_data, instance=instance, partial=True)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+
+        return Response({'message': 'Изменения успешно добавлены'})
+
+
 class GetFormActByOrganizationTypeAPIView(APIView):
     @swagger_auto_schema(
         method='get',

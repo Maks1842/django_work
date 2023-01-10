@@ -10,7 +10,7 @@ from drf_yasg2 import openapi
 
 from .views_api.act_answer_into_pdf import *
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
-    GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView
+    GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, AnswersAPIUpdate
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
 from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView
@@ -36,8 +36,8 @@ router.register(r'regions', RegionsViewSet, basename='regions')
 urlpatterns = [
     # Маршрутизация с использованием router
     path('api/', include(router.urls)),
-    path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
+    path('api/v1/auth/', include('djoser.urls')),
     re_path(r'^api/v1/auth/', include('djoser.urls.authtoken')),
 
     path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -46,6 +46,7 @@ urlpatterns = [
 
     # Маршрутизация без использования router. В скобках .as_view() можно передавать доп. параметры
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
+    path('api/v1/Answers/<int:pk>/', AnswersAPIUpdate.as_view(), name='Answers_update'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
     path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
     path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='getListTypeOrganizations'),
