@@ -74,13 +74,18 @@ class AnswersAPIView(APIView):
         serializers = AnswersSerializer(data=req_data)
         serializers.is_valid(raise_exception=True)
         try:
-            serializers.save()
+            Answers.objects.update_or_create(
+                checking=Checking.objects.get(pk=req_data['checking']),
+                organisations=Organisations.objects.get(pk=req_data['organisations']),
+                type_organisations=Type_Organisations.objects.get(pk=req_data['type_organisations']),
+                defaults={'answers_json': req_data['answers_json']},
+            )
         except IntegrityError:
-            return Response({"error": "Ответ, по данной проверке, уже существует"},
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
 
-        return Response({'message': 'Ответ успешно добавлен'})
+        return Response({'message': 'Ответ успешно сохранен'})
 
 
 
