@@ -1,6 +1,7 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from ..app_models import *
 from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 from rest_framework.views import APIView
 from rest_framework.decorators import action
@@ -9,6 +10,7 @@ from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 
 from weasyprint import HTML, CSS
+
 
 '''
 Рендеринг результатов проверки в шаблон HTML с последующим сохранением в pdf.
@@ -31,7 +33,7 @@ class GetResultCheckingIntoPdfAPIView(APIView):
             openapi.Parameter('type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER)
         ])
-    @action(detail=False, methods=['get'])
+    @action(detail=False, methods=['get'],)
     def get(self, request):
 
         checking = request.query_params.get('checking')
@@ -44,10 +46,10 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         try:
             user = List_Checking.objects.filter(organisation_id=organisation).get(checking_id=checking).user
         except:
-            return Response({'error': 'Данные о проверке или об организации неверны. Проверьте правильность сопоставления проверки и организации'})
+            return Response({
+                'error': 'Данные о проверке или об организации неверны. Проверьте правильность сопоставления проверки и организации'})
         # Получаю Представителя проверяемой организации
         # person = Form_Organisation_Persons.objects.get(organisation_id=organisation).person
-
 
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
         if len(queryset) == 0:
@@ -59,8 +61,10 @@ class GetResultCheckingIntoPdfAPIView(APIView):
                                       'Обратитесь к Администратору'})
 
         try:
-            act_answer = Answers.objects.filter(checking_id=checking, type_organisations=type_organisation).\
-                get(organisations_id=organisation).answers_json
+            act_answer = Answers.objects.filter(
+                checking_id=checking,
+                type_organisations=type_organisation
+            ).get(organisations_id=organisation).answers_json
         except:
             return Response({'error': 'Не найдены данные о результатах запрашиваемой проверки.'})
 
@@ -85,8 +89,13 @@ class GetResultCheckingIntoPdfAPIView(APIView):
                          'margin-top: 1.5cm !important;'
                          'margin-bottom: 1.5cm !important }')
         HTML(string=content).write_pdf(f'./checklist/modules/{name_org}.pdf', stylesheets=[css])
-
-        return render(request, f'act_checkings/{temp}', context)
+        # отдаем сохраненный pdf в качестве ответа
+        file_pointer = open(f'./checklist/modules/{name_org}.pdf', "rb")
+        response = HttpResponse(file_pointer, content_type='application/pdf;')
+        response['Content-Disposition'] = f'attachment; filename=download.pdf'
+        response['Content-Transfer-Encoding'] = 'utf-8'
+        return response
+        # return render(request, f'act_checkings/{temp}', context)
 
 
 '''
@@ -100,7 +109,6 @@ class GetResultCheckingIntoPdfAPIView(APIView):
 
 
 def do_some_magic(form_json, act_answer):
-
     act = form_json
     questions = {}
     for page in act['pages']:
