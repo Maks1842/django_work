@@ -13,7 +13,7 @@ from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrgani
     GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, AnswersAPIUpdate
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
-from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView
+from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView, GetStatisticUserAPIView
 from .views_api.tests import RegionsViewSet, GetOrganisationTestAPIView
 
 schema_view = get_schema_view(
@@ -44,7 +44,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-    # Маршрутизация без использования router. В скобках .as_view() можно передавать доп. параметры
+    # Основные API
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/Answers/<int:pk>/', AnswersAPIUpdate.as_view(), name='Answers_update'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
@@ -57,9 +57,12 @@ urlpatterns = [
     path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='getResultCheckingIntoPdf'),
     path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='getResultCheckingIntoPdf'),
 
+    # Для Статистики
     path('api/v1/getCheckingsList/', GetCheckingsListAPIView.as_view(), name='getCheckingsList'),
     path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='getOrganisationList'),
+    path('api/v1/getStatisticUser/', GetStatisticUserAPIView.as_view(), name='GetStatisticUser'),
 
+    # Для Авторизации аутентификации
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),

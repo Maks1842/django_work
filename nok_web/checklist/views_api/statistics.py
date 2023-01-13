@@ -6,19 +6,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
-from django.db import IntegrityError, transaction
-
-"""ОГРАНИЧЕНИЯ ДОСТУПА:
-Дефолтные permissions:
-AllowAny - полный доступ;
-IsAdminUser - только для Администраторов;
-IsAuthenticated - только для авторизованных пользователей;
-IsAuthenticatedOrReadOnly - только для авторизованных или всем, но для чтения.
-
-Кастомные permissions:
-IsAdminOrReadOnly - запись может просматривать любой, а удалять только Администратор;
-IsOwnerAndAdminOrReadOnly - запись может менять только пользователь который её создал и Админ, просматривать может любой.
-"""
+from django.contrib.auth.models import User
 
 
 '''
@@ -76,25 +64,58 @@ class GetOrganisationListAPIView(APIView):
         return Response(result)
 
 
-# class GetListCheckingAPIView(APIView):
-#     @swagger_auto_schema(
-#         method='get',
-#         tags=['Проверка'],
-#         operation_description="Получить список проверок, в которых участвует эксперт",
-#         manual_parameters=[
-#             openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор эксперта",
-#                               type=openapi.TYPE_INTEGER)
-#         ])
-#     @action(detail=False, methods=['get'])
-#     def get(self, request):
-#         user = request.query_params.get('user_id')
-#         queryset = List_Checking.objects.filter(user_id=user).distinct('checking')
-#
-#         result = []
-#         if len(queryset) > 0:
-#             for item in queryset:
-#                 result.append({
-#                     'id': item.checking.id,
-#                     'name': item.checking.name,
-#                 })
-#         return Response({'data': result})
+class GetStatisticUserAPIView(APIView):
+    @swagger_auto_schema(
+        method='get',
+        tags=['Статистика'],
+        operation_description="Получить список проверок и организаций, по id эксперта.",
+        manual_parameters=[
+            openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор эксперта",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        user = request.query_params.get('user_id')
+
+        user_set = User.objects.values().get(pk=user)
+        user_name = user_set['first_name']
+
+        queryset = List_Checking.objects.filter(user=user).values()
+        checkings = queryset.values('checking_id').distinct()
+
+        result = []
+        for item in checkings:
+            check_id = item['checking_id']
+            checking = Checking.objects.get(pk=check_id)
+            org_list = queryset.filter(checking_id=check_id)
+
+            org_data = []
+            count_all = 0
+            count_end = 0
+            for org in org_list:
+                count_all += 1
+                org_id = org['organisation_id']
+                organisation = Organisations.objects.values().get(pk=org_id)
+
+
+                if Answers.objects.filter(checking_id=check_id, organisations_id=org_id).exists():
+                    statusCheck = 'Завершена'
+                    count_end += 1
+                else:
+                    statusCheck = 'Ожидает'
+
+                org_data.append({"nameOrg": organisation['organisation_name'],
+                                 "dateCheckOrg": org['date_check_org'],
+                                 "statusCheck": statusCheck})
+
+            result.append({
+                           "user": user_name,
+                           "nameCheck": checking.name,
+                           "dateCheck": checking.date_checking,
+                           "organisationsNum": {
+                               "checkEnd": count_end,
+                               "checkAll": count_all
+                           },
+                           "organisations": org_data})
+
+        return Response(result)
