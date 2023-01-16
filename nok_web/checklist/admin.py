@@ -141,11 +141,11 @@ class Question_ValuesAdmin(admin.ModelAdmin):
 class Form_Sections_QuestionAdmin(admin.ModelAdmin):
     list_display = (
     'id', 'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations',
-    'is_deleted')
+    'required', 'is_deleted')
     search_fields = (
-    'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations')
+    'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'required')
     list_editable = (
-    'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'is_deleted')
+    'question', 'order_num', 'form_sections', 'type_answers', 'answer_variant', 'type_organisations', 'required', 'is_deleted')
 
 
 class RecommendationsAdmin(admin.ModelAdmin):

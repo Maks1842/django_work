@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
 from rest_framework.viewsets import GenericViewSet
 from drf_yasg2.utils import swagger_auto_schema, unset
+from drf_yasg2 import openapi
 
 
 '''ТЕСТОВЫЕ, ТРЕНИРОВОЧНЫЕ или ВРЕМЕННО НЕ ИСПОЛЬЗУЕМЫЕ ВЬЮХИ'''
@@ -84,30 +85,6 @@ class RegionsViewSet(
 
 
 
-
-
-# не используется
-# class GetFormActByOrganizationIdAPIView(APIView):
-#     @swagger_auto_schema(
-#         method='get',
-#         tags=['Получить формы Актов по Id организации'],
-#         operation_description="Получить формы Актов для проверки, в формате JSON",
-#         manual_parameters=[
-#             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-#                               type=openapi.TYPE_INTEGER)
-#         ])
-#     @action(detail=False, methods=['get'])
-#     def get(self, request):
-#         organisation = request.query_params.get('id_organisation')
-#         queryset = Organisations.objects.filter(id=organisation)
-#
-#         form_json = {}
-#         if len(queryset) > 0:
-#             form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
-#
-#         return Response(form_json)
-
-
 """
 Предоставление API для данных из БД.
 1. Проверяю, какому типу департамента принадлежит раздел Анкеты:
@@ -121,8 +98,22 @@ class RegionsViewSet(
 
 
 class GetActAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Для Админа'],
+        operation_description="Получить форму Анкеты для проверки",
+        manual_parameters=[
+            openapi.Parameter('id_type_departments', openapi.IN_QUERY, description="Идентификатор типа департамента",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+                              type=openapi.TYPE_INTEGER),
+        ])
 
-    def get(self, request, type_departments=3, type_organisations=9, number_items=0):
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        type_departments = request.query_params.get('id_type_departments')
+        type_organisations = request.query_params.get('id_type_organisation')
+        number_items = 0
 
         context = []
         count = 0
@@ -145,7 +136,7 @@ class GetActAPIView(APIView):
                 choices = []
                 count_section += 1
 
-                if q['type_organisations'] is None:
+                if q['type_organisations'] == '':
                     count += 1
                     type = type_answers.get(pk=q['type_answers_id'])
                     question = questions.get(pk=q['question_id'])
@@ -167,7 +158,7 @@ class GetActAPIView(APIView):
                         'title': question['questions'],
                         'type': type['type'],
                         'choices': choices,
-                        'isRequired': 'true',
+                        'isRequired': q['required'],
                     })
                 elif str(type_organisations) in q['type_organisations'].split(','):
                     count += 1
@@ -191,7 +182,7 @@ class GetActAPIView(APIView):
                         'title': question['questions'],
                         'type': type['type'],
                         'choices': choices,
-                        'isRequired': 'true',
+                        'isRequired': q['required'],
                     })
 
             if len(pages) == number_items or len(questions_id) == count_section:
@@ -199,7 +190,7 @@ class GetActAPIView(APIView):
                     'title': fs['name'],
                     'elements': pages,
                 })
-                pages = []
+
         return Response({"pages": context})
 
 

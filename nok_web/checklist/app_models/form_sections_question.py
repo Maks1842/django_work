@@ -8,6 +8,7 @@ class Form_Sections_Question(models.Model):
     type_answers = models.ForeignKey('Type_Answers', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Тип ответа')
     answer_variant = models.CharField(max_length=50, blank=True, verbose_name='Вариант ответа')
     type_organisations = models.CharField(max_length=50, null=True, blank=True, verbose_name='id Типов учреждений')
+    required = models.BooleanField(default=True, verbose_name='Признак обязательности')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     class Meta:
