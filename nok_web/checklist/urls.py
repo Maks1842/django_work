@@ -14,7 +14,7 @@ from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrgani
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
 from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView, GetStatisticUserAPIView
-from .views_api.tests import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView
+from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -62,8 +62,10 @@ urlpatterns = [
     path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='getOrganisationList'),
     path('api/v1/getStatisticUser/', GetStatisticUserAPIView.as_view(), name='GetStatisticUser'),
 
-    # Для Тренировок
+    # Для Админа
     path('api/v1/getAct/', GetActAPIView.as_view(), name='GetAct'),
+    path('api/v1/getPositionUser/', GetPositionUserAPIView.as_view(), name='GetPositionUser'),
+
 
 
     # Для Авторизации аутентификации

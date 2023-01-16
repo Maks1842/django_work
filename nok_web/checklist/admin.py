@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from .app_models import Profile_Position
 from .app_models.profile import Profile
 from .app_models.regions import Regions
 from .app_models.type_departments import Type_Departments
@@ -37,6 +38,13 @@ class ProfileAdmin(admin.ModelAdmin):
     search_fields = ('user', 'address', 'birthday')  # Указываю по каким полям можно осуществлять поиск
     list_editable = ('user', 'phone', 'address', 'birthday', 'is_deleted')  # Возможность редактирования поля
     list_filter = ('user', 'address', 'birthday')  # Возможность фильтровать поля
+
+
+class Profile_PositionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'position')  # Указываю какие поля отображать
+    search_fields = ('position',)  # Указываю по каким полям можно осуществлять поиск
+    list_editable = ('position',)  # Возможность редактирования поля
+    list_filter = ('position',)  # Возможность фильтровать поля
 
 
 class RegionsAdmin(admin.ModelAdmin):
@@ -229,6 +237,7 @@ class ListCheckingAdmin(admin.ModelAdmin):
 
 # !!!Важно соблюдать последовательность регистрации моделей
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Profile_Position, Profile_PositionAdmin)
 admin.site.register(Regions, RegionsAdmin)
 admin.site.register(Type_Departments, Type_DepartmentsAdmin)
 admin.site.register(Departments, DepartmentsAdmin)

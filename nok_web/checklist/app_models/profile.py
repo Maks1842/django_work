@@ -9,6 +9,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=30, blank=True, verbose_name='Телефон')
     address = models.CharField(max_length=100, blank=True, verbose_name='Адрес')
     birthday = models.DateField(null=True, verbose_name='Дата рождения')
+    position = models.ForeignKey('Profile_Position', on_delete=models.PROTECT, null=True, verbose_name='Должность')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     @receiver(post_save, sender=User)

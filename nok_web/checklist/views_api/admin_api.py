@@ -196,6 +196,28 @@ class GetActAPIView(APIView):
         return Response({"pages": context})
 
 
+
+class GetPositionUserAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
+    @swagger_auto_schema(
+        method='get',
+        tags=['Для Админа'],
+        operation_description="Получить должность пользователя",
+        manual_parameters=[
+            openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор пользователя",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        user_id = request.query_params.get('user_id')
+
+        position_id = Profile.objects.get(user_id=user_id).position_id
+        position = Profile_Position.objects.get(pk=position_id).position
+
+        return Response({"position": position})
+
+
 class GetOrganisationTestAPIView(APIView):
 
     permission_classes = [IsAdminUser]
