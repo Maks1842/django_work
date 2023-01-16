@@ -1,4 +1,3 @@
-# from django.shortcuts import render
 from ..app_models import *
 from django.template.loader import render_to_string
 from django.http import HttpResponse
@@ -8,8 +7,21 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
+from rest_framework.permissions import IsAdminUser
 
 from weasyprint import HTML, CSS
+
+"""ОГРАНИЧЕНИЯ ДОСТУПА:
+Дефолтные permissions:
+AllowAny - полный доступ;
+IsAdminUser - только для Администраторов;
+IsAuthenticated - только для авторизованных пользователей;
+IsAuthenticatedOrReadOnly - только для авторизованных или всем, но для чтения.
+
+Кастомные permissions:
+IsAdminOrReadOnly - запись может просматривать любой, а удалять только Администратор;
+IsOwnerAndAdminOrReadOnly - запись может менять только пользователь который её создал и Админ, просматривать может любой.
+"""
 
 
 '''
@@ -20,6 +32,8 @@ from weasyprint import HTML, CSS
 
 
 class GetResultCheckingIntoPdfAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Результаты проверки'],

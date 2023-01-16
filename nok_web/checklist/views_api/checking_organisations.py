@@ -7,6 +7,7 @@ from rest_framework.decorators import action, permission_classes
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from django.db import IntegrityError, transaction
+from rest_framework.permissions import IsAdminUser
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -27,6 +28,8 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 
 
 class AnswersAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
         tags=['Проверка'],
@@ -90,6 +93,8 @@ class AnswersAPIView(APIView):
 
 
 class AnswersAPIUpdate(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['patch'],
         tags=['Проверка'],
@@ -119,6 +124,8 @@ class AnswersAPIUpdate(APIView):
 
 
 class GetFormActByOrganizationTypeAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
@@ -151,6 +158,8 @@ class GetFormActByOrganizationTypeAPIView(APIView):
 
 
 class GetCheckListOrganizationsAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
@@ -187,6 +196,8 @@ class GetCheckListOrganizationsAPIView(APIView):
 
 
 class GetListCheckingAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
@@ -211,6 +222,8 @@ class GetListCheckingAPIView(APIView):
 
 
 class GetCheckingCompletedAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],

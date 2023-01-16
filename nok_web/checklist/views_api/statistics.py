@@ -7,6 +7,7 @@ from rest_framework.decorators import action, permission_classes
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAdminUser
 
 
 '''
@@ -15,6 +16,8 @@ from django.contrib.auth.models import User
 
 
 class GetCheckingsListAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Статистика'],
@@ -41,6 +44,8 @@ class GetCheckingsListAPIView(APIView):
 
 
 class GetOrganisationListAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Статистика'],
@@ -65,6 +70,8 @@ class GetOrganisationListAPIView(APIView):
 
 
 class GetStatisticUserAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Статистика'],

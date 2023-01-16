@@ -1,5 +1,3 @@
-from rest_framework.permissions import IsAdminUser
-
 from ..app_models import *
 from ..app_serializers.form_organisation_persons_serializer import Form_Organisation_PersonsSerializer
 from ..app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
@@ -10,6 +8,7 @@ from rest_framework.decorators import action, permission_classes
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from django.db import IntegrityError, transaction
+from rest_framework.permissions import IsAdminUser
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -119,6 +118,8 @@ class FormOrganisationPersonsAPIView(APIView):
 
 
 class GetListTypeOrganizationsAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Типы организаций'],

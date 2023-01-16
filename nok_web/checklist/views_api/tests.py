@@ -98,6 +98,8 @@ class RegionsViewSet(
 
 
 class GetActAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
         tags=['Для Админа'],
