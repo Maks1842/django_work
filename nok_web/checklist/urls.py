@@ -14,7 +14,8 @@ from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrgani
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
 from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView, GetStatisticUserAPIView
-from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView
+from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView, \
+    GetProfileUserAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -49,22 +50,23 @@ urlpatterns = [
     path('api/v1/Answers/<int:pk>/', AnswersAPIUpdate.as_view(), name='Answers_update'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
     path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
-    path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='getListTypeOrganizations'),
-    path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='getFormActByOrganizationType'),
-    path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='getCheckListOrganizations'),
-    path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='getListChecking'),
+    path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='GetListTypeOrganizations'),
+    path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='GetFormActByOrganizationType'),
+    path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='GetCheckListOrganizations'),
+    path('api/v1/getListChecking/', GetListCheckingAPIView.as_view(), name='GetListChecking'),
     # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
-    path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='getResultCheckingIntoPdf'),
-    path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='getResultCheckingIntoPdf'),
+    path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='GetResultCheckingIntoPdf'),
+    path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='GetResultCheckingIntoPdf'),
 
     # Для Статистики
-    path('api/v1/getCheckingsList/', GetCheckingsListAPIView.as_view(), name='getCheckingsList'),
-    path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='getOrganisationList'),
+    path('api/v1/getCheckingsList/', GetCheckingsListAPIView.as_view(), name='GetCheckingsList'),
+    path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='GetOrganisationList'),
     path('api/v1/getStatisticUser/', GetStatisticUserAPIView.as_view(), name='GetStatisticUser'),
 
     # Для Админа
     path('api/v1/getAct/', GetActAPIView.as_view(), name='GetAct'),
     path('api/v1/getPositionUser/', GetPositionUserAPIView.as_view(), name='GetPositionUser'),
+    path('api/v1/getProfileUser/', GetProfileUserAPIView.as_view(), name='GetProfileUser'),
 
 
 

@@ -1,6 +1,7 @@
 import re
 
 from rest_framework.permissions import IsAdminUser
+from django.contrib.auth.models import User
 
 from ..app_models import *
 from rest_framework.views import APIView
@@ -216,6 +217,38 @@ class GetPositionUserAPIView(APIView):
         position = Profile_Position.objects.get(pk=position_id).position
 
         return Response({"position": position})
+
+
+class GetProfileUserAPIView(APIView):
+    permission_classes = [IsAdminUser]
+    @swagger_auto_schema(
+        method='get',
+        tags=['Для Админа'],
+        operation_description="Получить профиль пользователя",
+        manual_parameters=[
+            openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор пользователя",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        user_id = request.query_params.get('user_id')
+
+        profile_set = Profile.objects.values().get(user_id=user_id)
+        user_set = User.objects.values().get(pk=user_id)
+        position = Profile_Position.objects.get(pk=profile_set['position_id']).position
+
+        profile = {
+            "username": user_set['username'],
+            "first_name": user_set['first_name'],
+            "last_name": user_set['last_name'],
+            "birthday": profile_set['birthday'],
+            "phone": profile_set['phone'],
+            "email": user_set['email'],
+            "address": profile_set['address'],
+            "position": position,
+        }
+
+        return Response({"profile": profile})
 
 
 class GetOrganisationTestAPIView(APIView):
