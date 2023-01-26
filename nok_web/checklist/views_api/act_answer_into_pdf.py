@@ -102,19 +102,19 @@ class GetResultCheckingIntoPdfAPIView(APIView):
                          'margin-right: 1cm !important; '
                          'margin-top: 1.5cm !important;'
                          'margin-bottom: 1.5cm !important }')
-        HTML(string=content).write_pdf(f'./checklist/modules/{name_org}.pdf', stylesheets=[css])
+        HTML(string=content).write_pdf(f'./checklist/local_storage/{name_org}.pdf', stylesheets=[css])
         # отдаем сохраненный pdf в качестве ответа
-        file_pointer = open(f'./checklist/modules/{name_org}.pdf', "rb")
+        file_pointer = open(f'./checklist/local_storage/{name_org}.pdf', "rb")
         response = HttpResponse(file_pointer, content_type='application/pdf;')
         response['Content-Disposition'] = f'attachment; filename=download.pdf'
         response['Content-Transfer-Encoding'] = 'utf-8'
+
         return response
-        # return render(request, f'act_checkings/{temp}', context)
 
 
 '''
 Функция сравнения двух json.
-Производится сопоставление полученных ответов с имеющимеся вопросами.
+Производится сопоставление полученных ответов с имеющимся вопросами.
 На выходе формируется новый json, где:
 - если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
 - если нет ни одного совпадения, то все ячейки остаются пустые.
@@ -136,12 +136,14 @@ def do_some_magic(form_json, act_answer):
 
     for question in act_answer:
         sh = []
+
         for answer in questions[question]:
             if answer in act_answer[question]:
                 sh.append(answer)
             else:
                 sh.append('')
         tt[question] = sh
+
     z = questions.copy()
     z.update(tt)
     for question in z:
@@ -177,13 +179,13 @@ def answer_in_the_act(comparison, query):
         else:
             for a in comparison[answ]:
                 if a == '':
-                    pass
+                    answer = "Нет"
                 elif int(a) > 0:
                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
                         answer = query.get(pk=int(a))['name_alternativ']
                     else:
                         answer = query.get(pk=int(a))['value_name']
-                    answers.append(answer)
+                answers.append(answer)
         list_dict[answ] = answers
 
     return list_dict

@@ -9,13 +9,14 @@ from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 
 from .views_api.act_answer_into_pdf import *
+from .views_api.calculating_rating.education_calculate import EducationFullTimeStageAPIView
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
     GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, AnswersAPIUpdate
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
 from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView, GetStatisticUserAPIView
 from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView, \
-    GetProfileUserAPIView
+    GetProfileUserAPIView, GetActGroupingAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -63,7 +64,11 @@ urlpatterns = [
     path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='GetOrganisationList'),
     path('api/v1/getStatisticUser/', GetStatisticUserAPIView.as_view(), name='GetStatisticUser'),
 
+    # Для рассчета бальной оценки
+    path('api/v1/EducationFullTimeStage/', EducationFullTimeStageAPIView.as_view(), name='EducationFullTimeStage'),
+
     # Для Админа
+    path('api/v1/getActGrouping/', GetActGroupingAPIView.as_view(), name='GetActGrouping'),
     path('api/v1/getAct/', GetActAPIView.as_view(), name='GetAct'),
     path('api/v1/getPositionUser/', GetPositionUserAPIView.as_view(), name='GetPositionUser'),
     path('api/v1/getProfileUser/', GetProfileUserAPIView.as_view(), name='GetProfileUser'),

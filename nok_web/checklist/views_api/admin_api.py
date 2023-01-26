@@ -98,13 +98,17 @@ class RegionsViewSet(
 """
 
 
+
+"""
+Метод создания формы Анкеты для проверки
+"""
 class GetActAPIView(APIView):
 
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
         tags=['Для Админа'],
-        operation_description="Получить форму Анкеты для проверки",
+        operation_description="Создать форму Анкеты для проверки",
         manual_parameters=[
             openapi.Parameter('id_type_departments', openapi.IN_QUERY, description="Идентификатор типа департамента",
                               type=openapi.TYPE_INTEGER),
@@ -131,7 +135,7 @@ class GetActAPIView(APIView):
 
         for fs in form_sections:
             fs_id = fs['id']
-            questions_id = form_sections_question.filter(form_sections_id=fs_id)
+            questions_id = form_sections_question.filter(form_sections=fs_id)
             count_section = 0
             pages = []
 
@@ -196,6 +200,68 @@ class GetActAPIView(APIView):
 
         return Response({"pages": context})
 
+
+
+"""
+Группирую вопросы по соответствующим разделам
+"""
+class GetActGroupingAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Для Админа'],
+        operation_description="Создать форму Акта для расчета рейтинга",
+        manual_parameters=[
+            openapi.Parameter('id_type_departments', openapi.IN_QUERY, description="Идентификатор типа департамента",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+                              type=openapi.TYPE_INTEGER),
+        ])
+
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        type_departments = request.query_params.get('id_type_departments')
+        type_organisations = request.query_params.get('id_type_organisation')
+
+        count = 0
+        count_criterion = 0
+        block = []
+
+        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+        form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
+
+        for b in block_form_sections:
+            count_criterion += 1
+            block_id = b['id']
+            name = b['name']
+            pages = []
+
+            form_sections = Form_Sections.objects.values().order_by('order_num').filter(parent=block_id,
+                type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(parent=block_id,
+                type_departments=None)
+            for fs in form_sections:
+                fs_id = fs['id']
+                questions_id = form_sections_question.filter(form_sections=fs_id)
+                count_section = 0
+
+                for q in questions_id:
+                    count_section += 1
+
+                    if q['type_organisations'] == '':
+                        count += 1
+
+                        pages.append({'name': str(count)})
+                    elif str(type_organisations) in q['type_organisations'].split(','):
+                        count += 1
+
+                        pages.append({'name': str(count)})
+
+            block.append({'id': count_criterion,
+                          'name': name,
+                         'criterion': pages})
+
+        return Response({"pages": block})
 
 
 class GetPositionUserAPIView(APIView):
