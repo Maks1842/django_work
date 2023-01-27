@@ -109,8 +109,10 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         response['Content-Disposition'] = f'attachment; filename=download.pdf'
         response['Content-Transfer-Encoding'] = 'utf-8'
 
-        return response
+        # return response
 
+
+        return Response(comparison)
 
 '''
 Функция сравнения двух json.

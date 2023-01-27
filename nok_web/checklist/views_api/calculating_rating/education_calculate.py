@@ -37,31 +37,7 @@ class EducationFullTimeStageAPIView(APIView):
         # organisation = request.query_params.get('id_organisation')
         # type_organisation = request.query_params.get('id_type_organisation')
 
-        coefficients = {
-            "criterion_1": {
-            "k1": 1,
-            "k2": 2,
-            "k3": 3,
-            },
-            "criterion_2": {
-                "k1": 1,
-                "k2": 2,
-                "k3": 3,
-            },
-            "criterion_3": {
-                "k1": 1,
-                "k2": 2,
-                "k3": 3,
-            },
-        }
 
-        balls = {
-            "ball_1": 10,
-            "ball_2": 20,
-            "ball_3": 30,
-        }
-
-        grouping_json = DataJson.data
 
 
 
@@ -77,14 +53,14 @@ class EducationFullTimeStageAPIView(APIView):
 
         comparison = do_some_magic(form_json, act_answer)
         answers = answer_in_the_act(comparison, query)
-        balls = full_time_stage(answers, coefficients, balls)
+        # balls = full_time_stage(answers)
 
 
-        result = {""}
+        grouping_json = DataJson.grouping
 
 
 
-        return Response(answers)
+        return Response(grouping_json)
 
 
 
@@ -138,31 +114,39 @@ def answer_in_the_act(comparison, query):
     list_dict = {}
 
     for answ in comparison:
-        answer = ''
+        answer = []
         answers = []
         if '11' in comparison[answ] or '12' in comparison[answ]:
             for a in comparison[answ]:
                 if a == '':
-                    answer = "0"
+                    # answer = "0"
+                    answer = {'value': '0', 'text': a}
                 elif int(a) > 0:
                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        answer = "1"
+                        # answer = "1"
+                        answer = {'value': '1', 'text': a}
                     else:
-                        answer = query.get(pk=int(a))['value_name']
+                        # answer = query.get(pk=int(a))['value_name']
+                        answer = {'value': query.get(pk=int(a))['value_name'], 'text': a}
                 answers.append(answer)
         else:
             for a in comparison[answ]:
                 if a == '':
-                    answer = "0"
+                    # answer = "0"
+                    answer = {'value': '0', 'text': a}
                 elif int(a) > 0:
                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        answer = query.get(pk=int(a))['name_alternativ']
+                        # answer = query.get(pk=int(a))['name_alternativ']
+                        answer = {'value': query.get(pk=int(a))['name_alternativ'], 'text': a}
                     elif query.get(pk=int(a))['value_name'] == 'Да':
-                        answer = "1"
+                        # answer = "1"
+                        answer = {'value': '1', 'text': a}
                     elif query.get(pk=int(a))['value_name'] == 'Нет':
-                        answer = "0"
+                        # answer = "0"
+                        answer = {'value': '0', 'text': a}
                     else:
-                        answer = query.get(pk=int(a))['value_name']
+                        # answer = query.get(pk=int(a))['value_name']
+                        answer = {'value': query.get(pk=int(a))['value_name'], 'text': a}
                 answers.append(answer)
         list_dict[answ] = answers
 
@@ -174,5 +158,36 @@ def answer_in_the_act(comparison, query):
 '''
 
 
-def full_time_stage(answers, k, b):
-    pass
+def full_time_stage(answers):
+    coefficients = {
+        "criterion_1": {
+            "k1": 1,
+            "k2": 2,
+            "k3": 3,
+        },
+        "criterion_2": {
+            "k1": 1,
+            "k2": 2,
+            "k3": 3,
+        },
+        "criterion_3": {
+            "k1": 1,
+            "k2": 2,
+            "k3": 3,
+        },
+    }
+
+    balls = {
+        "ball_1": 10,
+        "ball_2": 20,
+        "ball_3": 30,
+    }
+
+    grouping_json = DataJson.grouping
+
+    for x in grouping_json["pages"]:
+        z = x["criterion"]
+
+    # x = len(grouping_json[0])
+
+    return len(z)
