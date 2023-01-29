@@ -87,10 +87,10 @@ class Type_OrganisationsAdmin(admin.ModelAdmin):
 
 
 class OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted')
-    search_fields = ('organisation_name', 'address', 'parent', 'department', 'quota')
-    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'quota', 'is_deleted')
-    list_filter = ('organisation_name', 'department', 'quota')
+    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'is_deleted')
+    search_fields = ('organisation_name', 'address', 'parent', 'department')
+    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'is_deleted')
+    list_filter = ('organisation_name', 'department')
 
 
 class Form_Type_OrganisationAdmin(admin.ModelAdmin):
@@ -169,9 +169,9 @@ class Forms_RecommendationsAdmin(admin.ModelAdmin):
 
 
 class AnswersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted')
-    search_fields = ('organisations', 'type_organisations', 'checking', 'answers_json')
-    list_editable = ('organisations', 'type_organisations', 'checking', 'answers_json', 'is_deleted')
+    list_display = ('id', 'organisations', 'type_organisations', 'checking', 'answers_json', 'quota', 'is_deleted')
+    search_fields = ('organisations', 'type_organisations', 'checking', 'answers_json' 'quota',)
+    list_editable = ('organisations', 'type_organisations', 'checking', 'answers_json', 'quota', 'is_deleted')
     list_filter = ('organisations', 'type_organisations', 'checking')
 
 
@@ -215,9 +215,9 @@ class Transaction_ExchangeAdmin(admin.ModelAdmin):
 
 
 class FormsActAdmin(admin.ModelAdmin):
-    list_display = ('id', 'type_departments', 'type_organisations', 'act_json', 'date', 'version')
-    search_fields = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
-    list_editable = ('type_departments', 'type_organisations', 'act_json', 'date', 'version')
+    list_display = ('id', 'type_departments', 'type_organisations', 'act_json', 'act_json_to_calculate', 'date', 'version')
+    search_fields = ('type_departments', 'type_organisations', 'act_json', 'act_json_to_calculate', 'date', 'version')
+    list_editable = ('type_departments', 'type_organisations', 'act_json', 'act_json_to_calculate', 'date', 'version')
     list_filter = ('type_departments', 'type_organisations', 'date', 'version')
 
 

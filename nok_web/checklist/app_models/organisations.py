@@ -9,7 +9,6 @@ class Organisations(models.Model):
     email = models.EmailField(max_length=50, blank=True, verbose_name='Email')
     parent = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
-    quota = models.ForeignKey('Quota', on_delete=models.PROTECT, null=True, verbose_name='Квота')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def __str__(self):

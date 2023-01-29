@@ -228,7 +228,8 @@ class GetActGroupingAPIView(APIView):
         count_criterion = 0
         block = []
 
-        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=None) | \
+                              Form_Sections.objects.values().order_by('order_num').filter(parent=6, type_departments=1)
         form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
 
         for b in block_form_sections:

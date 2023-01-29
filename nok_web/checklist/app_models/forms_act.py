@@ -14,6 +14,7 @@ class FormsAct(models.Model):
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True,
                                            verbose_name='Тип учреждения')
     act_json = models.JSONField(verbose_name='Структура акта')
+    act_json_to_calculate = models.JSONField(blank=True, verbose_name='Структура для расчета рейтинга')
     date = models.DateField(blank=True, verbose_name='Дата формы акта')
     version = models.CharField(max_length=50, verbose_name='Версия формы акта')
 

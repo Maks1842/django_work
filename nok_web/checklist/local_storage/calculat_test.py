@@ -20,15 +20,16 @@ def full_time_stage():
         },
     }
 
-    balls = {
-        "ball_1": 10,
-        "ball_2": 20,
-        "ball_3": 30,
+    points = {
+        "point_1": 10,
+        "point_2": 20,
+        "point_3": 30,
     }
 
     grouping_json = DataJson.grouping
     answers = DataJson.answers
 
+    ratings = []
 
     for section in grouping_json["pages"]:
 
@@ -39,8 +40,8 @@ def full_time_stage():
             web_count_yes = 0
             web_count_all = 0
 
-            for crit in section["criterion"]:
-                nomber = crit['name']
+            for criterion in section["criterion"]:
+                nomber = criterion['name']
 
                 for ans in answers:
                     if ans == nomber:
@@ -59,7 +60,11 @@ def full_time_stage():
             except Exception:
                 print('Деление на ноль')
 
-
+            ratings.append({"rating_1_1": {"stend_count_yes": stend_count_yes,
+                                           "stend_count_all": stend_count_all,
+                                           "web_count_yes": web_count_yes,
+                                           "web_count_all": web_count_all,
+                                           "rating": rating_1_1}})
 
             print(f'stend_yes= {stend_count_yes}, stend_all= {stend_count_all}, web_yes= {web_count_yes}, web_all= {web_count_all}')
             print(f'rating_1_1= {rating_1_1}')
@@ -69,19 +74,21 @@ def full_time_stage():
 
             service_web_count = 0
 
-            for crit in section["criterion"]:
-                nomber = crit['name']
+            for criterion in section["criterion"]:
+                nomber = criterion['name']
 
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
                             service_web_count += int(items['value'])
 
-            if service_web_count * balls['ball_3'] < 100:
-                rating_1_2 = service_web_count * balls['ball_3']
+            if service_web_count * points['point_3'] < 100:
+                rating_1_2 = service_web_count * points['point_3']
             else:
                 rating_1_2 = 100
 
+            ratings.append({"rating_1_2": {"service_web_count": service_web_count,
+                                           "rating": rating_1_2}})
 
             print(f'service_web_count= {service_web_count}')
             print(f'rating_1_2= {rating_1_2}')
@@ -91,16 +98,16 @@ def full_time_stage():
 
             service_web_count = 0
 
-            for crit in section["criterion"]:
-                nomber = crit['name']
+            for criterion in section["criterion"]:
+                nomber = criterion['name']
 
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
                             service_web_count += int(items['value'])
 
-            if service_web_count * balls['ball_2'] < 100:
-                rating_2_1 = service_web_count * balls['ball_2']
+            if service_web_count * points['point_2'] < 100:
+                rating_2_1 = service_web_count * points['point_2']
             else:
                 rating_2_1 = 100
 
@@ -114,16 +121,16 @@ def full_time_stage():
 
             invalid_1_count = 0
 
-            for crit in section["criterion"]:
-                nomber = crit['name']
+            for criterion in section["criterion"]:
+                nomber = criterion['name']
 
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
                             invalid_1_count += int(items['value'])
 
-            if invalid_1_count * balls['ball_2'] < 100:
-                rating_3_1 = invalid_1_count * balls['ball_2']
+            if invalid_1_count * points['point_2'] < 100:
+                rating_3_1 = invalid_1_count * points['point_2']
             else:
                 rating_3_1 = 100
 
@@ -136,16 +143,16 @@ def full_time_stage():
 
             invalid_2_count = 0
 
-            for crit in section["criterion"]:
-                nomber = crit['name']
+            for criterion in section["criterion"]:
+                nomber = criterion['name']
 
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
                             invalid_2_count += int(items['value'])
 
-            if invalid_2_count * balls['ball_2'] < 100:
-                rating_3_2 = invalid_2_count * balls['ball_2']
+            if invalid_2_count * points['point_2'] < 100:
+                rating_3_2 = invalid_2_count * points['point_2']
             else:
                 rating_3_2 = 100
 
@@ -153,6 +160,12 @@ def full_time_stage():
             print(f'invalid_2_count= {invalid_2_count}')
             print(f'rating_3_2= {rating_3_2}')
 
+
+    print(f'json= {ratings}')
+
+    xxx = ratings[1]['rating_1_2']['rating']
+
+    print(f'xxx= {xxx}')
 
 
 

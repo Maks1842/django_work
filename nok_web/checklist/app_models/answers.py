@@ -11,6 +11,7 @@ class Answers(models.Model):
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, verbose_name='Тип учреждения')
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Проверка')
     answers_json = models.JSONField(null=True, verbose_name='Результаты ответов')
+    quota = models.IntegerField(default=1, verbose_name='Количество получателей услуг')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     class Meta:

@@ -9,7 +9,7 @@ from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 
 from .views_api.act_answer_into_pdf import *
-from .views_api.calculating_rating.education_calculate import EducationFullTimeStageAPIView
+from .views_api.calculating_rating.base_calculate import CalculatingRatingAPIView
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
     GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, AnswersAPIUpdate
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
@@ -65,7 +65,7 @@ urlpatterns = [
     path('api/v1/getStatisticUser/', GetStatisticUserAPIView.as_view(), name='GetStatisticUser'),
 
     # Для рассчета бальной оценки
-    path('api/v1/EducationFullTimeStage/', EducationFullTimeStageAPIView.as_view(), name='EducationFullTimeStage'),
+    path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
 
     # Для Админа
     path('api/v1/getActGrouping/', GetActGroupingAPIView.as_view(), name='GetActGrouping'),
