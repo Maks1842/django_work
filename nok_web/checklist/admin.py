@@ -87,9 +87,9 @@ class Type_OrganisationsAdmin(admin.ModelAdmin):
 
 
 class OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'is_deleted')
-    search_fields = ('organisation_name', 'address', 'parent', 'department')
-    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'is_deleted')
+    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'is_deleted')
+    search_fields = ('organisation_name', 'address', 'parent', 'department' 'inn', 'kpp', 'ogrn',)
+    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'is_deleted')
     list_filter = ('organisation_name', 'department')
 
 
@@ -169,9 +169,9 @@ class Forms_RecommendationsAdmin(admin.ModelAdmin):
 
 
 class AnswersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisations', 'type_organisations', 'checking', 'answers_json', 'quota', 'is_deleted')
-    search_fields = ('organisations', 'type_organisations', 'checking', 'answers_json' 'quota',)
-    list_editable = ('organisations', 'type_organisations', 'checking', 'answers_json', 'quota', 'is_deleted')
+    list_display = ('id', 'organisations', 'type_organisations', 'checking', 'answers_json', 'quota', 'invalid_person', 'is_deleted')
+    search_fields = ('organisations', 'type_organisations', 'checking', 'answers_json' 'quota', 'invalid_person',)
+    list_editable = ('organisations', 'type_organisations', 'checking', 'answers_json', 'quota', 'invalid_person', 'is_deleted')
     list_filter = ('organisations', 'type_organisations', 'checking')
 
 

@@ -124,6 +124,7 @@ class GetActAPIView(APIView):
 
         context = []
         count = 0
+        count_ex = 0
 
         form_sections = Form_Sections.objects.values().order_by('order_num').filter(
             type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(
@@ -191,12 +192,38 @@ class GetActAPIView(APIView):
                         'choices': choices,
                         'isRequired': q['required'],
                     })
+                elif q['type_organisations'] == 'expert':
+                    count_ex += 1
+                    type = type_answers.get(pk=q['type_answers_id'])
+                    question = questions.get(pk=q['question_id'])
+                    answer_variant = q['answer_variant']
+                    ans_var_re = answer_variant
+                    try:
+                        ans_var_re = (re.sub(r'\s', '', answer_variant))
+                    except:
+                        pass
+
+                    ans_var = ans_var_re.split(',')
+
+                    for av in range(len(ans_var)):
+                        qv = question_values.get(pk=ans_var[av])
+                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                    pages.append({
+                        'name': f'expert_{str(count_ex)}',
+                        'title': question['questions'],
+                        'type': type['type'],
+                        'choices': choices,
+                        'isRequired': q['required'],
+                    })
 
             if len(pages) == number_items or len(questions_id) == count_section:
                 context.append({
                     'title': fs['name'],
                     'elements': pages,
                 })
+
+        x = list(context)[-1]
 
         return Response({"pages": context})
 
@@ -225,11 +252,11 @@ class GetActGroupingAPIView(APIView):
         type_organisations = request.query_params.get('id_type_organisation')
 
         count = 0
+        count_ex = 0
         count_criterion = 0
         block = []
 
-        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(type_departments=None) | \
-                              Form_Sections.objects.values().order_by('order_num').filter(parent=6, type_departments=1)
+        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(parent=6, type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
         form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
 
         for b in block_form_sections:
@@ -251,12 +278,15 @@ class GetActGroupingAPIView(APIView):
 
                     if q['type_organisations'] == '':
                         count += 1
-
                         pages.append({'name': str(count)})
+
                     elif str(type_organisations) in q['type_organisations'].split(','):
                         count += 1
-
                         pages.append({'name': str(count)})
+
+                    elif q['type_organisations'] == 'expert':
+                        count_ex += 1
+                        pages.append({'name': f'expert_{str(count_ex)}'})
 
             block.append({'id': count_criterion,
                           'name': name,

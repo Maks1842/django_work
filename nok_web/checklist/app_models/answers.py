@@ -12,6 +12,7 @@ class Answers(models.Model):
     checking = models.ForeignKey('Checking', on_delete=models.PROTECT, null=True, verbose_name='Проверка')
     answers_json = models.JSONField(null=True, verbose_name='Результаты ответов')
     quota = models.IntegerField(default=1, verbose_name='Количество получателей услуг')
+    invalid_person = models.IntegerField(null=True, blank=True, verbose_name='Количество инвалидов')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     class Meta:

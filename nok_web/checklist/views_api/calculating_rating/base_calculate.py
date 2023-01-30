@@ -25,8 +25,6 @@ class CalculatingRatingAPIView(APIView):
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER),
-            openapi.Parameter('invalid', openapi.IN_QUERY, description="Количество инвалидов",
-                              type=openapi.TYPE_INTEGER),
 
         ])
     @action(methods=['get'], detail=False)
@@ -35,7 +33,6 @@ class CalculatingRatingAPIView(APIView):
         checking = request.query_params.get('id_checking')
         organisation = request.query_params.get('id_organisation')
         type_organisation = request.query_params.get('id_type_organisation')
-        invalid = request.query_params.get('invalid')
 
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
@@ -46,6 +43,8 @@ class CalculatingRatingAPIView(APIView):
 
         act_answer = answer_set.answers_json
         quota = answer_set.quota
+        invalid_person = answer_set.invalid_person
+
         form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
         form_json_to_calculate = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json_to_calculate
         query = Question_Values.objects.values()
@@ -53,8 +52,22 @@ class CalculatingRatingAPIView(APIView):
         comparison = do_some_magic(form_json, act_answer)
         answers = answer_in_the_act(comparison, query)
 
-        if type_organisation == '5':
-            rating = school_rating(quota, invalid, answers, form_json_to_calculate)
+        if type_organisation == '1':
+            rating = 100
+        elif type_organisation == '2':
+            rating = 100
+        elif type_organisation == '3':
+            rating = 100
+        elif type_organisation == '4':
+            rating = 100
+        elif type_organisation == '5':
+            rating = school_rating(quota, invalid_person, answers, form_json_to_calculate)
+        elif type_organisation == '7':
+            rating = 100
+        elif type_organisation == '9':
+            rating = 100
+        elif type_organisation == '10':
+            rating = 100
 
         return Response(rating)
 
