@@ -7,22 +7,23 @@ from .coefficients import Coefficients
 '''
 
 
-def school_rating(quota, invalid_person, answers, grouping_json):
+def healthcare_rating(quota, invalid_person, answers, grouping_json):
 
     cfcnt_main = None
     points = None
 
     for item_m in Coefficients.cfcnt_main:
-        if "education" in item_m.keys():
-            cfcnt_main = item_m["education"]
+        if "healthcare" in item_m.keys():
+            cfcnt_main = item_m["healthcare"]
 
     for item_p in Coefficients.points:
-        if "education" in item_p.keys():
-            points = item_p["education"]
+        if "healthcare" in item_p.keys():
+            points = item_p["healthcare"]
 
     rating_1_1 = {}
     rating_1_2 = {}
     rating_2_1 = {}
+    rating_2_2_1 = 0
     rating_3_1 = {}
     rating_3_2 = {}
 
@@ -56,10 +57,10 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 return Response({'error': 'Деление на ноль.'})
 
             rating_1_1 = {"stend_count_yes": stend_count_yes,
-                           "stend_count_all": stend_count_all,
-                           "web_count_yes": web_count_yes,
-                           "web_count_all": web_count_all,
-                           "rating": rating}
+                          "stend_count_all": stend_count_all,
+                          "web_count_yes": web_count_yes,
+                          "web_count_all": web_count_all,
+                          "rating": rating}
 
         elif section['id'] == 2:
             service_web_count = 0
@@ -78,10 +79,10 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_1_2 = {"service_web_count": service_web_count,
-                                           "rating": rating}
+                          "rating": rating}
 
         elif section['id'] == 3:
-            comfort_count = 0
+            comfort_count_1 = 0
 
             for criterion in section["criterion"]:
                 nomber = criterion['name']
@@ -89,17 +90,44 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
-                            comfort_count += int(items['value'])
+                            comfort_count_1 += int(items['value'])
 
-            if comfort_count * int(points["p_2_1"]) < 100:
-                rating = comfort_count * int(points["p_2_1"])
+            if comfort_count_1 * int(points["p_2_1"]) < 100:
+                rating = comfort_count_1 * int(points["p_2_1"])
             else:
                 rating = 100
 
-            rating_2_1 = {"comfort_count": comfort_count,
-                                           "rating": rating}
+            rating_2_1 = {"comfort_count": comfort_count_1,
+                          "rating": rating}
 
         elif section['id'] == 4:
+            index = 5
+
+            for criterion in section["criterion"]:
+                nomber = criterion['name']
+
+                for ans in answers:
+                    if ans == nomber:
+                        for items in answers[ans]:
+                            if items["value"] != '0':
+                                index = int(items["text"])
+
+            if index == 5:
+                rating = int(points["p_2_2_1"])
+            elif index == 6:
+                rating = int(points["p_2_2_2"])
+            elif index == 7:
+                rating = int(points["p_2_2_3"])
+            elif index == 8:
+                rating = int(points["p_2_2_4"])
+            elif index == 9:
+                rating = int(points["p_2_2_6"])
+            else:
+                rating = 100
+
+            rating_2_2_1 = rating
+
+        elif section['id'] == 5:
             invalid_1_count = 0
 
             for criterion in section["criterion"]:
@@ -116,9 +144,9 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_3_1 = {"invalid_1_count": invalid_1_count,
-                                           "rating": rating}
+                          "rating": rating}
 
-        elif section['id'] == 5:
+        elif section['id'] == 6:
             invalid_2_count = 0
 
             for criterion in section["criterion"]:
@@ -135,14 +163,15 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_3_2 = {"invalid_2_count": invalid_2_count,
-                                           "rating": rating}
+                          "rating": rating}
 
     comment_expert_1 = answers["expert_1"]
 
-    rating_respondents = respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1)
+    rating_respondents = respondents_stage(quota, invalid_person, rating_1_1, rating_2_2_1, comment_expert_1)
 
     rating_1 = round(rating_1_1['rating'] * float(cfcnt_main["k_1_1"]) + rating_1_2['rating'] * float(cfcnt_main["k_1_1"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
-    rating_2 = round((rating_2_1['rating'] + rating_respondents['rating_2_3'])/2, 1)
+    rating_2_2 = round((rating_2_2_1 + rating_respondents['rating_2_2_2'])/2, 0)
+    rating_2 = round(rating_2_1['rating'] * float(cfcnt_main["k_2_1"]) + rating_2_2 * float(cfcnt_main["k_2_2"]) + rating_respondents['rating_2_3'] * float(cfcnt_main["k_2_3"]), 1)
     rating_3 = round(rating_3_1['rating'] * float(cfcnt_main["k_3_1"]) + rating_3_2['rating'] * float(cfcnt_main["k_3_2"]) + rating_respondents['rating_3_3'] * float(cfcnt_main["k_3_3"]), 1)
     rating_4 = round(rating_respondents['rating_4_1'] * float(cfcnt_main["k_4_1"]) + rating_respondents['rating_4_2'] * float(cfcnt_main["k_4_2"]) + rating_respondents['rating_4_3'] * float(cfcnt_main["k_4_3"]), 1)
     rating_5 = round(rating_respondents['rating_5_1'] * float(cfcnt_main["k_5_1"]) + rating_respondents['rating_5_2'] * float(cfcnt_main["k_5_2"]) + rating_respondents['rating_5_3'] * float(cfcnt_main["k_5_3"]), 1)
@@ -166,6 +195,10 @@ def school_rating(quota, invalid_person, answers, grouping_json):
         "count_person_1_3_web": int(rating_respondents['count_person_1_3_stend']),
 
         "rating_2_1": rating_2_1,
+        "rating_2_2": rating_2_2,
+        "rating_2_2_1": rating_2_2_1,
+        "rating_2_2_2": rating_respondents['rating_2_2_2'],
+        "count_person_2_2_2": int(rating_respondents['count_person_2_2_2']),
         "rating_2_3": rating_respondents['rating_2_3'],
         "count_person_2_3": int(rating_respondents['count_person_2_3']),
 
@@ -187,12 +220,12 @@ def school_rating(quota, invalid_person, answers, grouping_json):
         "count_person_5_2": int(rating_respondents['count_person_5_2']),
         "rating_5_3": rating_respondents['rating_5_3'],
         "count_person_5_3": int(rating_respondents['count_person_5_3']),
-    }
+               }
 
     return ratings
 
 
-def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1):
+def respondents_stage(quota, invalid_person, rating_1_1, rating_2_2_1, comment_expert_1):
 
     comment_expert = []
 
@@ -205,8 +238,8 @@ def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1):
     cfcnt_resp = None
 
     for item in Coefficients.cfcnt_resp:
-        if "education" in item.keys():
-            cfcnt_resp = item["education"]["school"]
+        if "healthcare" in item.keys():
+            cfcnt_resp = item["healthcare"]
 
     rating_resp = {}
 
@@ -240,6 +273,22 @@ def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1):
     rating_resp.update({'rating_1_3': round((count_person_1_3_stend + count_person_1_3_web)/(quota * 2) * 100, 0),
                         'count_person_1_3_stend': count_person_1_3_stend,
                         'count_person_1_3_web': count_person_1_3_web})
+
+    if rating_2_2_1 >= 40:
+        kr_2_2_2 = random.uniform(float(cfcnt_resp["kr_2_2_3_min"]), float(cfcnt_resp["kr_2_2_3_max"]))
+        count_person_2_2_2 = round(quota * kr_2_2_2, 0)
+        rating_resp.update({'rating_2_2_2': round(count_person_2_2_2/quota * 100, 0),
+                            'count_person_2_2_2': count_person_2_2_2})
+    elif rating_2_2_1 >= 10 and rating_2_2_1 < 40:
+        kr_2_2_2 = random.uniform(float(cfcnt_resp["kr_2_2_2_min"]), float(cfcnt_resp["kr_2_2_2_max"]))
+        count_person_2_2_2 = round(quota * kr_2_2_2, 0)
+        rating_resp.update({'rating_2_2_2': round(count_person_2_2_2/quota * 100, 0),
+                            'count_person_2_2_2': count_person_2_2_2})
+    else:
+        kr_2_2_2 = random.uniform(float(cfcnt_resp["kr_2_2_1_min"]), float(cfcnt_resp["kr_2_2_1_max"]))
+        count_person_2_2_2 = round(quota * kr_2_2_2, 0)
+        rating_resp.update({'rating_2_2_2': round(count_person_2_2_2/quota * 100, 0),
+                            'count_person_2_2_2': count_person_2_2_2})
 
     kr_2_3 = random.uniform(float(cfcnt_resp["kr_2_3_min"]), float(cfcnt_resp["kr_2_3_max"]))
     count_person_2_3 = round(quota * kr_2_3, 0)

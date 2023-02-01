@@ -7,18 +7,18 @@ from .coefficients import Coefficients
 '''
 
 
-def school_rating(quota, invalid_person, answers, grouping_json):
+def culture_rating(quota, invalid_person, answers, grouping_json):
 
     cfcnt_main = None
     points = None
 
     for item_m in Coefficients.cfcnt_main:
-        if "education" in item_m.keys():
-            cfcnt_main = item_m["education"]
+        if "culture" in item_m.keys():
+            cfcnt_main = item_m["culture"]
 
     for item_p in Coefficients.points:
-        if "education" in item_p.keys():
-            points = item_p["education"]
+        if "culture" in item_p.keys():
+            points = item_p["culture"]
 
     rating_1_1 = {}
     rating_1_2 = {}
@@ -56,10 +56,10 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 return Response({'error': 'Деление на ноль.'})
 
             rating_1_1 = {"stend_count_yes": stend_count_yes,
-                           "stend_count_all": stend_count_all,
-                           "web_count_yes": web_count_yes,
-                           "web_count_all": web_count_all,
-                           "rating": rating}
+                          "stend_count_all": stend_count_all,
+                          "web_count_yes": web_count_yes,
+                          "web_count_all": web_count_all,
+                          "rating": rating}
 
         elif section['id'] == 2:
             service_web_count = 0
@@ -78,7 +78,7 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_1_2 = {"service_web_count": service_web_count,
-                                           "rating": rating}
+                          "rating": rating}
 
         elif section['id'] == 3:
             comfort_count = 0
@@ -97,7 +97,7 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_2_1 = {"comfort_count": comfort_count,
-                                           "rating": rating}
+                          "rating": rating}
 
         elif section['id'] == 4:
             invalid_1_count = 0
@@ -116,7 +116,7 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_3_1 = {"invalid_1_count": invalid_1_count,
-                                           "rating": rating}
+                          "rating": rating}
 
         elif section['id'] == 5:
             invalid_2_count = 0
@@ -135,7 +135,7 @@ def school_rating(quota, invalid_person, answers, grouping_json):
                 rating = 100
 
             rating_3_2 = {"invalid_2_count": invalid_2_count,
-                                           "rating": rating}
+                          "rating": rating}
 
     comment_expert_1 = answers["expert_1"]
 
@@ -205,8 +205,8 @@ def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1):
     cfcnt_resp = None
 
     for item in Coefficients.cfcnt_resp:
-        if "education" in item.keys():
-            cfcnt_resp = item["education"]["school"]
+        if "culture" in item.keys():
+            cfcnt_resp = item["culture"]
 
     rating_resp = {}
 

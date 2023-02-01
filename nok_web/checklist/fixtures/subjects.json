@@ -270,9 +270,14 @@
       ],
       "81": [
         "1"
+      ],
+      "expert_1": [
+        "11",
+        "12"
       ]
     },
     "quota": 53,
+    "invalid_person": 2,
     "is_deleted": false
   }
 },
@@ -394,9 +399,14 @@
       ],
       "36": [
         "2"
+      ],
+      "expert_1": [
+        "11",
+        "12"
       ]
     },
     "quota": 120,
+    "invalid_person": 10,
     "is_deleted": false
   }
 },
@@ -532,9 +542,13 @@
       ],
       "41": [
         "1"
+      ],
+      "expert_1": [
+        "12"
       ]
     },
     "quota": 46,
+    "invalid_person": 3,
     "is_deleted": false
   }
 },
@@ -752,9 +766,13 @@
       ],
       "66": [
         "1"
+      ],
+      "expert_1": [
+        "11"
       ]
     },
     "quota": 85,
+    "invalid_person": 5,
     "is_deleted": false
   }
 },
@@ -1349,6 +1367,18 @@
     "order_num": 4,
     "parent": 9,
     "type_departments": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 23,
+  "fields": {
+    "name": "Комментарий эксперта",
+    "version": "1",
+    "order_num": 17,
+    "parent": 23,
+    "type_departments": null,
     "is_deleted": false
   }
 },
@@ -3565,6 +3595,34 @@
   }
 },
 {
+  "model": "checklist.form_sections_question",
+  "pk": 325,
+  "fields": {
+    "question": 177,
+    "order_num": 31,
+    "form_sections": 23,
+    "type_answers": 1,
+    "answer_variant": "11,12",
+    "type_organisations": "expert",
+    "required": false,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections_question",
+  "pk": 326,
+  "fields": {
+    "question": 178,
+    "order_num": 32,
+    "form_sections": 23,
+    "type_answers": 1,
+    "answer_variant": "1",
+    "type_organisations": "xxxxxx",
+    "required": false,
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.formsact",
   "pk": 5,
   "fields": {
@@ -4839,6 +4897,27 @@
               "isRequired": true
             }
           ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
+            }
+          ]
         }
       ]
     },
@@ -5120,6 +5199,15 @@
             },
             {
               "name": "81"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
             }
           ]
         }
@@ -6404,6 +6492,27 @@
               "isRequired": true
             }
           ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
+            }
+          ]
         }
       ]
     },
@@ -6687,6 +6796,15 @@
               "name": "81"
             }
           ]
+        },
+        {
+          "id": 7,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
+            }
+          ]
         }
       ]
     },
@@ -6719,7 +6837,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "2",
@@ -6731,7 +6849,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "3",
@@ -6747,7 +6865,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "4",
@@ -6763,7 +6881,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "5",
@@ -6779,7 +6897,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -6800,7 +6918,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "7",
@@ -6816,7 +6934,7 @@
                   "value": "13"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -6833,7 +6951,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "9",
@@ -6853,7 +6971,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "10",
@@ -6869,7 +6987,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "11",
@@ -6881,7 +6999,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "12",
@@ -6897,7 +7015,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "13",
@@ -6909,7 +7027,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "14",
@@ -6925,7 +7043,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "15",
@@ -6941,7 +7059,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "16",
@@ -6957,7 +7075,7 @@
                   "value": "14"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -6974,7 +7092,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "18",
@@ -6986,7 +7104,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "19",
@@ -6998,7 +7116,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "20",
@@ -7018,7 +7136,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "21",
@@ -7030,7 +7148,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "22",
@@ -7046,7 +7164,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "23",
@@ -7058,7 +7176,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "24",
@@ -7070,7 +7188,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "25",
@@ -7082,7 +7200,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "26",
@@ -7094,7 +7212,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "27",
@@ -7110,7 +7228,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "28",
@@ -7122,7 +7240,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "29",
@@ -7142,7 +7260,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "30",
@@ -7158,7 +7276,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7179,7 +7297,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "32",
@@ -7191,7 +7309,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7208,7 +7326,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "34",
@@ -7220,7 +7338,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "35",
@@ -7236,7 +7354,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "36",
@@ -7248,7 +7366,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "37",
@@ -7264,7 +7382,7 @@
                   "value": "15"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "38",
@@ -7280,7 +7398,7 @@
                   "value": "16"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "39",
@@ -7296,7 +7414,7 @@
                   "value": "17"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7317,7 +7435,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "41",
@@ -7333,7 +7451,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7358,7 +7476,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7375,7 +7493,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "44",
@@ -7387,7 +7505,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7404,7 +7522,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7421,7 +7539,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "47",
@@ -7433,7 +7551,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "48",
@@ -7445,7 +7563,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "49",
@@ -7457,7 +7575,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "50",
@@ -7469,7 +7587,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "51",
@@ -7481,7 +7599,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7498,7 +7616,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "53",
@@ -7510,7 +7628,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "54",
@@ -7522,7 +7640,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "55",
@@ -7534,7 +7652,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "56",
@@ -7546,7 +7664,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7563,7 +7681,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "58",
@@ -7575,7 +7693,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "59",
@@ -7587,7 +7705,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "60",
@@ -7599,7 +7717,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "61",
@@ -7611,7 +7729,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -7628,7 +7746,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "63",
@@ -7640,7 +7758,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "64",
@@ -7652,7 +7770,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "65",
@@ -7664,7 +7782,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "66",
@@ -7676,7 +7794,28 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
+            }
+          ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
             }
           ]
         }
@@ -7911,6 +8050,15 @@
               "name": "66"
             }
           ]
+        },
+        {
+          "id": 6,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
+            }
+          ]
         }
       ]
     },
@@ -7955,7 +8103,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "2",
@@ -7967,7 +8115,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "3",
@@ -7983,7 +8131,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "4",
@@ -7999,7 +8147,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "5",
@@ -8015,7 +8163,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8036,7 +8184,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "7",
@@ -8052,7 +8200,7 @@
                   "value": "13"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8069,7 +8217,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "9",
@@ -8089,7 +8237,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "10",
@@ -8105,7 +8253,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "11",
@@ -8117,7 +8265,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "12",
@@ -8133,7 +8281,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "13",
@@ -8145,7 +8293,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "14",
@@ -8161,7 +8309,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "15",
@@ -8177,7 +8325,7 @@
                   "value": "14"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8194,7 +8342,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "17",
@@ -8206,7 +8354,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "18",
@@ -8218,7 +8366,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "19",
@@ -8238,7 +8386,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "20",
@@ -8250,7 +8398,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "21",
@@ -8266,7 +8414,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "22",
@@ -8278,7 +8426,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "23",
@@ -8290,7 +8438,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "24",
@@ -8302,7 +8450,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "25",
@@ -8314,7 +8462,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "26",
@@ -8330,7 +8478,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "27",
@@ -8342,7 +8490,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "28",
@@ -8362,7 +8510,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "29",
@@ -8374,7 +8522,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "30",
@@ -8386,7 +8534,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "31",
@@ -8398,7 +8546,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "32",
@@ -8414,7 +8562,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "33",
@@ -8430,7 +8578,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8451,7 +8599,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "35",
@@ -8463,7 +8611,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8480,7 +8628,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "37",
@@ -8492,7 +8640,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "38",
@@ -8508,7 +8656,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "39",
@@ -8520,7 +8668,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "40",
@@ -8536,7 +8684,7 @@
                   "value": "15"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "41",
@@ -8552,7 +8700,7 @@
                   "value": "16"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "42",
@@ -8568,7 +8716,7 @@
                   "value": "17"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8589,7 +8737,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "44",
@@ -8605,7 +8753,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "45",
@@ -8621,7 +8769,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8646,7 +8794,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8663,7 +8811,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "48",
@@ -8675,7 +8823,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8692,7 +8840,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8709,7 +8857,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "51",
@@ -8721,7 +8869,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "52",
@@ -8733,7 +8881,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "53",
@@ -8745,7 +8893,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "54",
@@ -8757,7 +8905,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "55",
@@ -8769,7 +8917,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8786,7 +8934,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "57",
@@ -8798,7 +8946,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "58",
@@ -8810,7 +8958,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "59",
@@ -8822,7 +8970,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "60",
@@ -8834,7 +8982,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8851,7 +8999,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "62",
@@ -8863,7 +9011,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "63",
@@ -8875,7 +9023,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "64",
@@ -8887,7 +9035,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "65",
@@ -8899,7 +9047,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -8916,7 +9064,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "67",
@@ -8928,7 +9076,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "68",
@@ -8940,7 +9088,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "69",
@@ -8952,7 +9100,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "70",
@@ -8964,7 +9112,28 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
+            }
+          ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
             }
           ]
         }
@@ -9211,6 +9380,15 @@
               "name": "70"
             }
           ]
+        },
+        {
+          "id": 6,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
+            }
+          ]
         }
       ]
     },
@@ -9255,7 +9433,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "2",
@@ -9267,7 +9445,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "3",
@@ -9283,7 +9461,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "4",
@@ -9299,7 +9477,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "5",
@@ -9315,7 +9493,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9336,7 +9514,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "7",
@@ -9352,7 +9530,7 @@
                   "value": "13"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9369,7 +9547,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "9",
@@ -9389,7 +9567,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "10",
@@ -9401,7 +9579,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "11",
@@ -9417,7 +9595,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "12",
@@ -9429,7 +9607,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "13",
@@ -9445,7 +9623,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "14",
@@ -9461,7 +9639,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "15",
@@ -9477,7 +9655,7 @@
                   "value": "14"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9494,7 +9672,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "17",
@@ -9506,7 +9684,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "18",
@@ -9518,7 +9696,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "19",
@@ -9530,7 +9708,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "20",
@@ -9546,7 +9724,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "21",
@@ -9558,7 +9736,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "22",
@@ -9570,7 +9748,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "23",
@@ -9582,7 +9760,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "24",
@@ -9594,7 +9772,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "25",
@@ -9606,7 +9784,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "26",
@@ -9622,7 +9800,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9643,7 +9821,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "28",
@@ -9655,7 +9833,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9672,7 +9850,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "30",
@@ -9684,7 +9862,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "31",
@@ -9700,7 +9878,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "32",
@@ -9712,7 +9890,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "33",
@@ -9728,7 +9906,7 @@
                   "value": "15"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "34",
@@ -9744,7 +9922,7 @@
                   "value": "16"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "35",
@@ -9760,7 +9938,7 @@
                   "value": "17"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9781,7 +9959,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9806,7 +9984,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9823,7 +10001,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "39",
@@ -9835,7 +10013,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9852,7 +10030,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9869,7 +10047,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "42",
@@ -9881,7 +10059,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "43",
@@ -9893,7 +10071,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "44",
@@ -9905,7 +10083,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "45",
@@ -9917,7 +10095,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "46",
@@ -9929,7 +10107,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -9946,7 +10124,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "48",
@@ -9958,7 +10136,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "49",
@@ -9970,7 +10148,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "50",
@@ -9982,7 +10160,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "51",
@@ -9994,7 +10172,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10011,7 +10189,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "53",
@@ -10023,7 +10201,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "54",
@@ -10035,7 +10213,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "55",
@@ -10047,7 +10225,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "56",
@@ -10059,7 +10237,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10076,7 +10254,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "58",
@@ -10088,7 +10266,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "59",
@@ -10100,7 +10278,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "60",
@@ -10112,7 +10290,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "61",
@@ -10124,7 +10302,28 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
+            }
+          ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
             }
           ]
         }
@@ -10344,6 +10543,15 @@
               "name": "61"
             }
           ]
+        },
+        {
+          "id": 6,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
+            }
+          ]
         }
       ]
     },
@@ -10376,7 +10584,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "2",
@@ -10388,7 +10596,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "3",
@@ -10404,7 +10612,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "4",
@@ -10420,7 +10628,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "5",
@@ -10436,7 +10644,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10457,7 +10665,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "7",
@@ -10473,7 +10681,7 @@
                   "value": "13"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10490,7 +10698,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "9",
@@ -10510,7 +10718,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "10",
@@ -10522,7 +10730,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "11",
@@ -10538,7 +10746,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "12",
@@ -10550,7 +10758,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "13",
@@ -10566,7 +10774,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "14",
@@ -10582,7 +10790,7 @@
                   "value": "14"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10599,7 +10807,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "16",
@@ -10611,7 +10819,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "17",
@@ -10623,7 +10831,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "18",
@@ -10635,7 +10843,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "19",
@@ -10651,7 +10859,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "20",
@@ -10663,7 +10871,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "21",
@@ -10675,7 +10883,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "22",
@@ -10687,7 +10895,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "23",
@@ -10699,7 +10907,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "24",
@@ -10711,7 +10919,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "25",
@@ -10727,7 +10935,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10748,7 +10956,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "27",
@@ -10760,7 +10968,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10777,7 +10985,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "29",
@@ -10789,7 +10997,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "30",
@@ -10805,7 +11013,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "31",
@@ -10817,7 +11025,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "32",
@@ -10833,7 +11041,7 @@
                   "value": "15"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "33",
@@ -10849,7 +11057,7 @@
                   "value": "16"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "34",
@@ -10865,7 +11073,7 @@
                   "value": "17"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10894,7 +11102,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10911,7 +11119,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "37",
@@ -10923,7 +11131,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10940,7 +11148,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -10957,7 +11165,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "40",
@@ -10969,7 +11177,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "41",
@@ -10981,7 +11189,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "42",
@@ -10993,7 +11201,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "43",
@@ -11005,7 +11213,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "44",
@@ -11017,7 +11225,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -11034,7 +11242,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "46",
@@ -11046,7 +11254,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "47",
@@ -11058,7 +11266,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "48",
@@ -11070,7 +11278,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "49",
@@ -11082,7 +11290,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -11099,7 +11307,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "51",
@@ -11111,7 +11319,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "52",
@@ -11123,7 +11331,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "53",
@@ -11135,7 +11343,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "54",
@@ -11147,7 +11355,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             }
           ]
         },
@@ -11164,7 +11372,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "56",
@@ -11176,7 +11384,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "57",
@@ -11188,7 +11396,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "58",
@@ -11200,7 +11408,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
             },
             {
               "name": "59",
@@ -11212,7 +11420,28 @@
                   "value": "1"
                 }
               ],
-              "isRequired": "true"
+              "isRequired": true
+            }
+          ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
             }
           ]
         }
@@ -11424,6 +11653,15 @@
             },
             {
               "name": "59"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
             }
           ]
         }
@@ -12019,6 +12257,27 @@
               "isRequired": true
             }
           ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
+            }
+          ]
         }
       ]
     },
@@ -12174,6 +12433,15 @@
             },
             {
               "name": "41"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
             }
           ]
         }
@@ -12709,6 +12977,27 @@
               "isRequired": true
             }
           ]
+        },
+        {
+          "title": "Комментарий эксперта",
+          "elements": [
+            {
+              "name": "expert_1",
+              "type": "checkbox",
+              "title": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации",
+              "choices": [
+                {
+                  "text": "Стенд",
+                  "value": "11"
+                },
+                {
+                  "text": "Сайт",
+                  "value": "12"
+                }
+              ],
+              "isRequired": false
+            }
+          ]
         }
       ]
     },
@@ -12849,6 +13138,15 @@
             },
             {
               "name": "36"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Комментарий эксперта",
+          "criterion": [
+            {
+              "name": "expert_1"
             }
           ]
         }
@@ -13132,6 +13430,9 @@
     "email": "qwr@mail.ru",
     "parent": null,
     "department": 4,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13146,6 +13447,9 @@
     "email": "asdf@mail.ru",
     "parent": null,
     "department": 4,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13160,6 +13464,9 @@
     "email": "asdf@mail.ru",
     "parent": null,
     "department": 1,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13174,6 +13481,9 @@
     "email": "qwr@mail.ru",
     "parent": null,
     "department": 1,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13188,6 +13498,9 @@
     "email": "wert@sg.com",
     "parent": null,
     "department": 7,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13202,6 +13515,9 @@
     "email": "qwer@asd.ru",
     "parent": null,
     "department": 2,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13216,6 +13532,9 @@
     "email": "sz@fg.ru",
     "parent": null,
     "department": 2,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13230,6 +13549,9 @@
     "email": "qwt@sd.ru",
     "parent": null,
     "department": 2,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -13244,6 +13566,9 @@
     "email": "sz@fg.ru",
     "parent": null,
     "department": 2,
+    "inn": null,
+    "kpp": null,
+    "ogrn": null,
     "is_deleted": false
   }
 },
@@ -14487,6 +14812,20 @@
   "pk": 176,
   "fields": {
     "questions": "Наличие возможности предоставления услуги в дистанционном режиме или на дому"
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 177,
+  "fields": {
+    "questions": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на информационных стендах/сайте организации"
+  }
+},
+{
+  "model": "checklist.questions",
+  "pk": 178,
+  "fields": {
+    "questions": "Неудовлетворительнное качество, полнота и доступность информации о деятельности организации, размещенной на официальном сайте"
   }
 },
 {

@@ -1,3 +1,6 @@
+from .addeducation import addeducation_rating
+from .kindergarden import kindergarden_rating
+from .techcollege import techcollege_rating
 from ...app_models import *
 from ...app_serializers.answers_serializer import AnswersSerializer
 from rest_framework.views import APIView
@@ -8,6 +11,8 @@ from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 
 from .school import school_rating
+from .culture import culture_rating
+from .healthcare import healthcare_rating
 
 
 
@@ -52,22 +57,18 @@ class CalculatingRatingAPIView(APIView):
         comparison = do_some_magic(form_json, act_answer)
         answers = answer_in_the_act(comparison, query)
 
-        if type_organisation == '1':
-            rating = 100
-        elif type_organisation == '2':
-            rating = 100
-        elif type_organisation == '3':
-            rating = 100
+        if type_organisation == '1' or type_organisation == '10':
+            rating = culture_rating(quota, invalid_person, answers, form_json_to_calculate)
+        elif type_organisation == '2' or type_organisation == '3':
+            rating = healthcare_rating(quota, invalid_person, answers, form_json_to_calculate)
         elif type_organisation == '4':
-            rating = 100
+            rating = kindergarden_rating(quota, invalid_person, answers, form_json_to_calculate)
         elif type_organisation == '5':
             rating = school_rating(quota, invalid_person, answers, form_json_to_calculate)
         elif type_organisation == '7':
-            rating = 100
+            rating = techcollege_rating(quota, invalid_person, answers, form_json_to_calculate)
         elif type_organisation == '9':
-            rating = 100
-        elif type_organisation == '10':
-            rating = 100
+            rating = addeducation_rating(quota, invalid_person, answers, form_json_to_calculate)
 
         return Response(rating)
 
