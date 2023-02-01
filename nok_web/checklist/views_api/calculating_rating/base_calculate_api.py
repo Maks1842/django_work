@@ -1,6 +1,4 @@
-from .addeducation import addeducation_rating
-from .kindergarden import kindergarden_rating
-from .techcollege import techcollege_rating
+
 from ...app_models import *
 from ...app_serializers.answers_serializer import AnswersSerializer
 from rest_framework.views import APIView
@@ -10,9 +8,12 @@ from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 
-from .school import school_rating
 from .culture import culture_rating
 from .healthcare import healthcare_rating
+from .school import school_rating
+from .addeducation import addeducation_rating
+from .kindergarden import kindergarden_rating
+from .techcollege import techcollege_rating
 
 
 
@@ -21,8 +22,8 @@ class CalculatingRatingAPIView(APIView):
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Расчет баллов'],
-        operation_description="Образование, баллы по результатам очного этапа",
+        tags=['Расчет рейтинга'],
+        operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
         manual_parameters=[
             openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
@@ -34,6 +35,7 @@ class CalculatingRatingAPIView(APIView):
         ])
     @action(methods=['get'], detail=False)
     def get(self, request):
+        rating = {}
 
         checking = request.query_params.get('id_checking')
         organisation = request.query_params.get('id_organisation')
@@ -70,7 +72,7 @@ class CalculatingRatingAPIView(APIView):
         elif type_organisation == '9':
             rating = addeducation_rating(quota, invalid_person, answers, form_json_to_calculate)
 
-        return Response(rating)
+        return Response({"ratings": rating})
 
 
 

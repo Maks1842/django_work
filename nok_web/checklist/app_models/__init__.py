@@ -14,7 +14,7 @@ from .organisations import Organisations
 from .photo import Photo
 from .question_values import Question_Values
 from .questions import Questions
-from .quota import Quota
+from .ratings import Ratings
 from .recommendations import Recommendations
 from .regions import Regions
 from .signed_dociuments import Signed_Dociuments

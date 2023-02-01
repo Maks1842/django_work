@@ -21,7 +21,7 @@ from .app_models.organisations import Organisations
 from .app_models.photo import Photo
 from .app_models.question_values import Question_Values
 from .app_models.questions import Questions
-from .app_models.quota import Quota
+from .app_models.ratings import Ratings
 from .app_models.signed_dociuments import Signed_Dociuments
 from .app_models.templates import Templates
 from .app_models.transaction_exchange import Transaction_Exchange
@@ -113,11 +113,11 @@ class Form_Organisation_PersonsAdmin(admin.ModelAdmin):
     list_filter = ('organisation', 'person')
 
 
-class QuotaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'quota')
-    search_fields = ('quota',)
-    list_editable = ('quota',)
-    list_filter = ('quota',)
+class RatingsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'organisations', 'type_organisations', 'checking', 'ratings_json', 'is_deleted')
+    search_fields = ('organisations', 'type_organisations', 'checking', 'ratings_json')
+    list_editable = ('organisations', 'type_organisations', 'checking', 'ratings_json', 'is_deleted')
+    list_filter = ('organisations', 'type_organisations', 'checking')
 
 
 class TemplatesAdmin(admin.ModelAdmin):
@@ -247,7 +247,7 @@ admin.site.register(Organisations, OrganisationsAdmin)
 admin.site.register(Form_Type_Organisation, Form_Type_OrganisationAdmin)
 admin.site.register(Organisation_Persons, Organisation_PersonsAdmin)
 admin.site.register(Form_Organisation_Persons, Form_Organisation_PersonsAdmin)
-admin.site.register(Quota, QuotaAdmin)
+admin.site.register(Ratings, RatingsAdmin)
 admin.site.register(Templates, TemplatesAdmin)
 admin.site.register(Form_Sections, Form_SectionsAdmin)
 admin.site.register(Questions, QuestionsAdmin)
