@@ -22,7 +22,7 @@ class CalculatingRatingAPIView(APIView):
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Расчет рейтинга'],
+        tags=['Рейтинг'],
         operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
         manual_parameters=[
             openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
