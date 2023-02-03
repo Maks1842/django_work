@@ -9,9 +9,9 @@ class Organisations(models.Model):
     email = models.EmailField(max_length=50, blank=True, verbose_name='Email')
     parent = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, blank=True, verbose_name='Parent')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
-    inn = models.IntegerField(null=True, blank=True, verbose_name='ИНН')
-    kpp = models.IntegerField(null=True, blank=True, verbose_name='КПП')
-    ogrn = models.IntegerField(null=True, blank=True, verbose_name='ОГРН')
+    inn = models.CharField(max_length=12, blank=True, verbose_name='ИНН')
+    kpp = models.CharField(max_length=9, blank=True, verbose_name='КПП')
+    ogrn = models.CharField(max_length=15, blank=True, verbose_name='ОГРН')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def __str__(self):

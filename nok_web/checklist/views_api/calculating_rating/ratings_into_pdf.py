@@ -1,4 +1,4 @@
-from ..app_models import *
+from ...app_models import *
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 
@@ -31,13 +31,13 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 '''
 
 
-class GetResultCheckingIntoPdfAPIView(APIView):
+class GetRatingsIntoPdfAPIView(APIView):
 
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
-        tags=['Результаты проверки'],
-        operation_description="Получить Акт с результатами проверки в формате pdf. "
+        tags=['Рейтинги'],
+        operation_description="Получить рейтинги по результатам проверки в формате pdf. "
                               "Предварительно сопоставляется json-структура акта и json-результаты ответов",
         manual_parameters=[
             openapi.Parameter('checking', openapi.IN_QUERY, description="Идентификатор проверки",
@@ -56,20 +56,15 @@ class GetResultCheckingIntoPdfAPIView(APIView):
 
         name_org = Organisations.objects.get(pk=organisation).organisation_name
         address_org = Organisations.objects.get(pk=organisation).address
-        # Получаю Имя проверяющего
-        try:
-            user = List_Checking.objects.filter(organisation_id=organisation).get(checking_id=checking).user
-        except:
-            return Response({
-                'error': 'Данные о проверке или об организации неверны. Проверьте правильность сопоставления проверки и организации'})
-        # Получаю Представителя проверяемой организации
-        # person = Form_Organisation_Persons.objects.get(organisation_id=organisation).person
+        inn_org = Organisations.objects.get(pk=organisation).inn
+        website_org = Organisations.objects.get(pk=organisation).website
+
 
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
         if len(queryset) == 0:
             return Response({'error': 'Не найден указанный тип организации'})
 
-        temp = Templates.objects.filter(type_templates_id=1).get(type_organisations_id=type_organisation).template_file
+        temp = Templates.objects.get(type_organisations_id=type_organisation).template_file
         if temp == '':
             return Response({'error': 'Не найден шаблон Акта для данного типа организации. '
                                       'Обратитесь к Администратору'})
@@ -90,7 +85,6 @@ class GetResultCheckingIntoPdfAPIView(APIView):
 
         context = {'name_org': name_org,
                    'address_org': address_org,
-                   'user': user,
                    # 'person': person,
                    'answers': answers}
 
@@ -109,10 +103,10 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         response['Content-Disposition'] = f'attachment; filename=download.pdf'
         response['Content-Transfer-Encoding'] = 'utf-8'
 
-        return response
+        # return response
 
 
-        # return Response(comparison)
+        return Response(comparison)
 
 '''
 Функция сравнения двух json.

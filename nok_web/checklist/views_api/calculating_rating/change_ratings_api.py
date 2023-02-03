@@ -87,4 +87,4 @@ class ChangeRatingsAPIView(APIView):
         elif type_organisation == '4' or type_organisation == '5' or type_organisation == '7' or type_organisation == '9':
             rating = education_rating(ratings, count_person)
 
-        return Response({"ratings": rating})
+        return Response(rating)

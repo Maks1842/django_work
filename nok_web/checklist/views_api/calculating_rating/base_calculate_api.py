@@ -72,7 +72,7 @@ class CalculatingRatingAPIView(APIView):
         elif type_organisation == '9':
             rating = addeducation_rating(quota, invalid_person, answers, form_json_to_calculate)
 
-        return Response({"ratings": rating})
+        return Response(rating)
 
 
 

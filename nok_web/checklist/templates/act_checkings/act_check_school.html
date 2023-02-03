@@ -1,4 +1,4 @@
-
+<form>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title></title>
@@ -102,7 +102,7 @@
         }
 
         .tab-quest-2 {
-            width: 370px;
+            width: 390px;
             border: 1px solid #000000;
             padding-left: 0.04in;
             padding-right: 0.04in
@@ -142,7 +142,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 735px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        class="tab-section">
         <p class="title">
             <b>Акт посещения образовательной организации <br/>
                 во время проведения очного этапа сбора и обобщения <br/>
@@ -153,7 +153,7 @@
 <br/>
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" class="tab-name">
             <p class="question" style="font-size: 14pt">
                 Наименование образовательной организации
             </p>
@@ -161,7 +161,7 @@
     </tr>
 
     <tr>
-        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td class="tab-item">
             <p class="question">
                 {{ name_org }}
             </p>
@@ -172,7 +172,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" class="tab-name">
             <p class="question" style="font-size: 14pt">
                 Адрес организации
             </p>
@@ -180,7 +180,7 @@
     </tr>
 
     <tr>
-        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td class="tab-item">
             <p class="question">
                 {{ address_org }}
             </p>
@@ -191,7 +191,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 400px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" class="tab-name">
             <p class="question" style="font-size: 14pt">
                 Дата посещения организации
             </p>
@@ -199,7 +199,7 @@
     </tr>
 
     <tr>
-        <td style="width: 400px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td class="tab-item">
             <p class="question">
                 {{'name'}}
             </p>
@@ -211,7 +211,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" class="tab-name">
             <p class="question" style="font-size: 14pt">
                 Сведения об уполномоченном представителе организации-оператора:
             </p>
@@ -219,14 +219,14 @@
     </tr>
 
     <tr>
-        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td class="tab-item">
             <p class="question">
                 {{ user }}
             </p>
         </td>
     </tr>
     <tr>
-        <td style="width: 735px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
+        <td class="tab-name" style="height: 20px; padding-bottom: 20px">
             <p class="question" style="font-size: 12pt">
                 (фамилия, имя, отчество представителя организации-оператора)
             </p>
@@ -237,7 +237,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 735px; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="1" class="tab-name">
             <p class="question" style="font-size: 14pt">
                 В присутствии:
             </p>
@@ -245,16 +245,14 @@
     </tr>
 
     <tr>
-        <td style="width: 735px; height: 20px; border-bottom: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td class="tab-item">
             <p class="question">
-                {% for item in answers %}
-                {{ item }}
-                {% endfor %}}
+                {{ person }}
             </p>
         </td>
     </tr>
     <tr>
-        <td style="width: 735px; height: 20px; padding-left: 0.04in; padding-right: 0.04in; padding-bottom: 20px">
+        <td class="tab-name" style="height: 20px; padding-bottom: 20px">
             <p class="question" style="font-size: 12pt">
                 (фамилия, имя, отчество представителя образовательной организации)
             </p>
@@ -265,7 +263,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="4" style="width: 720px; border: none; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-section">
             <p class="header">совместно произвели визуальный осмотр помещений организации и прилегающей
                 территории в целях обеспечения сбора и обобщения информации о качестве условий оказания услуг
             </p>
@@ -273,7 +271,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px; border: none; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-section">
             <p class="header" style="text-align: center">
                 В ходе визуального осмотра установлено следующее:
             </p>
@@ -285,7 +283,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 720px" class="tab">
+        class="tab-title">
         <p class="title">
             <b>Общеобразовательная организация (ОО, СКОУ)</b>
         </p>
@@ -295,11 +293,9 @@
 
 <table>
     <td colspan="4"
-        style="width: 720px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        class="tab-section">
         <p class="title">
-            <b>Критерий 1. Соответствие информации о деятельности медицинской организации, размещенной
-                на общедоступных информационных ресурсах, перечню информации и требованиям к ней, установленными
-                нормативными правовыми актами</b>
+            <b>Критерий 1. Открытость и доступность информации об организации</b>
         </p>
     </td>
 </table>
@@ -307,7 +303,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="4" style="width: 720px" class="tab">
+        <td colspan="4" class="tab-title">
             <p class="question">
                 <b>1.1. Соответствие информации о деятельности организации, размещенной на общедоступных
                     информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными
@@ -316,15 +312,15 @@
         </td>
     </tr>
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">№ п/п</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
                 Наименование документа
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num" style="font-size: 10pt">
                 Наличие
             </p>
@@ -332,7 +328,7 @@
                 <b>Стенд</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num" style="font-size: 10pt">
                 Наличие
             </p>
@@ -343,7 +339,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px" class="tab">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>I. Основные сведения</b>
             </p>
@@ -351,20 +347,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">1</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о дате создания образовательной организации
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.1.0 }}
             </p>
@@ -372,20 +368,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">2</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об учредителе, учредителях образовательной организации
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.2.0 }}
             </p>
@@ -393,20 +389,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">3</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
-                Информация  о  месте  нахождения образовательной организации и ее филиалов (при наличии)
+                Информация о месте нахождения образовательной организации и ее филиалов (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.3.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.3.1 }}
             </p>
@@ -414,20 +410,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">4</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о режиме, графике работы
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.4.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.4.1 }}
             </p>
@@ -435,20 +431,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">5</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация  о  контактных  телефонах  и  об  адресах электронной почты
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.5.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.5.1 }}
             </p>
@@ -456,7 +452,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px" class="tab">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>II. Структура и органы управления образовательной организацией</b>
             </p>
@@ -464,10 +460,10 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">6</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о структуре и об органах управления образовательной организации
                 (в том числе: наименование структурных подразделений (органов управления); фамилии, имена, отчества
@@ -476,12 +472,12 @@
                 адреса электронной почты структурных подразделений (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.6.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.6.1 }}
             </p>
@@ -489,20 +485,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">7</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Сведения о положениях о структурных подразделениях (об органах управления) с приложением копий указанных положений (при их наличии))
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.7.0 }}
             </p>
@@ -510,7 +506,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px" class="tab">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>III. Документы (в виде копий)</b>
             </p>
@@ -518,20 +514,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">8</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Устав образовательной организации
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.8.0 }}
             </p>
@@ -539,20 +535,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">9</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Лицензии на осуществление образовательной деятельности (с приложениями)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.9.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.9.1 }}
             </p>
@@ -560,20 +556,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">10</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
-                Свидетельства  о  государственной  аккредитации (с приложениями)
+                Свидетельства о государственной аккредитации (с приложениями)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.10.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.10.1 }}
             </p>
@@ -581,21 +577,21 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">11</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 План финансово-хозяйственной деятельности образовательной организации, утвержденного в установленном
                 законодательством Российской Федерации порядке, или бюджетные сметы образовательной организации
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.11.0 }}
             </p>
@@ -603,10 +599,10 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">12</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Локальные нормативные акты по основным вопросам организации и осуществления образовательной деятельности,
                 в том числе регламентирующие правила приема обучающихся, режим занятий обучающихся, формы,
@@ -616,12 +612,12 @@
                 (или) родителями (законными представителями) несовершеннолетних обучающихся.
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.12.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.12.1 }}
             </p>
@@ -629,20 +625,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">13</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Отчет о результатах самообследования
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.13.0 }}
             </p>
@@ -650,21 +646,21 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">14</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Документ о порядке оказания платных образовательных услуг (при наличии),
                 в том числе образец договора об оказании платных образовательных услуг, документ об утверждении стоимости обучения по каждой образовательной программе*
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.14.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.14.1 }}
             </p>
@@ -672,10 +668,10 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">15</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Документ об установлении размера платы, взимаемой с родителей (законных представителей) за присмотр
                 и уход детьми, осваивающими образовательные программы дошкольного образования в организациях,
@@ -686,12 +682,12 @@
                 реализующей образовательные программы начального общего, основного общего или среднего общего образования (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.15.0 }}
             </p>
@@ -699,20 +695,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">16</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Предписания органов, осуществляющих государственный контроль (надзор) в сфере образования, отчеты об исполнении таких предписаний (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.16.0 }}
             </p>
@@ -720,7 +716,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px" class="tab">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>IV. Образование</b>
             </p>
@@ -728,20 +724,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">17</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о реализуемых уровнях образования
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.17.0 }}
             </p>
@@ -749,20 +745,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">18</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о формах обучения
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.18.0 }}
             </p>
@@ -770,20 +766,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">19</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о нормативных сроках обучения
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.19.0 }}
             </p>
@@ -791,20 +787,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">20</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о сроке действия государственной аккредитации образовательных программ (при наличии государственной аккредитации)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.20.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.20.1 }}
             </p>
@@ -812,20 +808,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">21</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об описании образовательных программ с приложением их копий
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.21.0 }}
             </p>
@@ -833,20 +829,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">22</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
-                Информация  об  учебных  планах  реализуемых образовательных программ с приложением их копий
+                Информация об учебных планах реализуемых образовательных программ с приложением их копий
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.22.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.22.1 }}
             </p>
@@ -854,20 +850,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">23</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Аннотации к рабочим программам дисциплин (по каждой дисциплине в составе образовательной программы) с приложением их копий (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.23.0 }}
             </p>
@@ -875,20 +871,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">24</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о календарных учебных графиках с приложением их копий
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.24.0 }}
             </p>
@@ -896,20 +892,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">25</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о методических и иных документах, разработанных образовательной организацией для обеспечения образовательного процесса
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.25.0 }}
             </p>
@@ -917,21 +913,21 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">26</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о реализуемых образовательных программах, в том числе о реализуемых адаптированных образовательных программах,
                 с указанием учебных предметов, курсов, дисциплин (модулей), практики, предусмотренных соответствующей образовательной программой
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.26.0 }}
             </p>
@@ -939,20 +935,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">27</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об использовании при реализации указанных образовательных программ электронного обучения и дистанционных образовательных технологий (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.27.0 }}
             </p>
@@ -960,22 +956,22 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">28</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о численности обучающихся по реализуемым образовательным программам за счет бюджетных
                 ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по договорам
                 об образовании за счет средств физических и (или) юридических лиц, о языках, на которых осуществляется образование (обучение)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.28.0 }}
             </p>
@@ -983,20 +979,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">29</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Образовательные организации, реализующие общеобразовательные программы, дополнительно указывают наименование образовательной программы
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.29.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.29.1 }}
             </p>
@@ -1004,22 +1000,22 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">30</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о федеральных государственных образовательных стандартах и об образовательных стандартах
                 с приложением их копий (при наличии). Допускается вместо копий федеральных государственных
                 образовательных стандартов и образовательных стандартов размещать гиперссылки на соответствующие документы на сайте Минпросвещения России
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.30.0 }}
             </p>
@@ -1027,7 +1023,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>V. Руководство. Педагогический состав</b>
             </p>
@@ -1035,22 +1031,22 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">31</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о руководителе образовательной организации, его заместителях, в том числе:
                 фамилия, имя, отчество (при наличии) руководителя, его заместителей; должность руководителя,
                 его заместителей; контактные телефоны; адреса электронной почты, в том числе информация о месте нахождения филиалов образовательной организации (при их наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.31.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.31.1 }}
             </p>
@@ -1058,10 +1054,10 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">32</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о персональном составе педагогических работников с указанием уровня образования,
                 квалификации и опыта работы, в том числе: фамилия, имя, отчество (при наличии) работника;
@@ -1070,12 +1066,12 @@
                 данные о повышении квалификации и (или) профессиональной переподготовке (при наличии); общий стаж работы; стаж работы по специальности
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.32.0 }}
             </p>
@@ -1083,7 +1079,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>VI. Материально-техническое обеспечении образовательной деятельности</b>
             </p>
@@ -1091,22 +1087,22 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">33</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о материально-техническом обеспечении образовательной деятельности (в том числе:
                 наличие оборудованных учебных кабинетов, объектов для проведения практических занятий, библиотек,
                 объектов спорта, средств обучения и воспитания, в том числе приспособленных для использования инвалидами и лицами с ограниченными возможностями здоровья)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.33.0 }}
             </p>
@@ -1114,20 +1110,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">34</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о обеспечении доступа в здания образовательной организации инвалидов и лиц с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.34.0 }}
             </p>
@@ -1135,20 +1131,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">35</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об условиях питания обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.35.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.35.1 }}
             </p>
@@ -1156,20 +1152,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">36</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об условиях охраны здоровья обучающихся, в том числе инвалидов и лиц с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.36.0 }}
             </p>
@@ -1177,21 +1173,21 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">37</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о доступе к информационным системам и информационно-телекоммуникационным сетям,
                 в том числе приспособленным для использования инвалидами и лицами с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.37.0 }}
             </p>
@@ -1199,21 +1195,21 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">38</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об электронных образовательных ресурсах, к которым обеспечивается доступ обучающихся,
                 в том числе приспособленные для использования инвалидами и лицами с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.38.0 }}
             </p>
@@ -1221,21 +1217,21 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">39</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о наличии специальных технических средств обучения коллективного и индивидуального
                 пользования для инвалидов и лиц с ограниченными возможностями здоровья
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.39.0 }}
             </p>
@@ -1243,7 +1239,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>VII. Стипендии и иные виды материальной поддержки</b>
             </p>
@@ -1251,20 +1247,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">40</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о наличии и условиях предоставления обучающимся стипендий, мер социальной поддержки (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.40.0 }}
             </p>
@@ -1272,22 +1268,22 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">41</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о наличии общежития, интерната, в том числе приспособленных для использования инвалидами
                 и лицами с ограниченными возможностями здоровья, количестве жилых помещений в общежитии,
                 интернате для иногородних обучающихся, формировании платы за проживание в общежитии (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.41.0 }}
             </p>
@@ -1295,7 +1291,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>VIII. Платные образовательные услуги</b>
             </p>
@@ -1303,20 +1299,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">42</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
-                Информация  о  наличии  и  порядке  оказания  платных образовательных услуг (при наличии)
+                Информация о наличии и порядке оказания платных образовательных услуг (при наличии)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.42.0 }}
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.42.1 }}
             </p>
@@ -1324,7 +1320,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>IX. Финансово-хозяйственная деятельность</b>
             </p>
@@ -1332,22 +1328,22 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">43</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация об объеме образовательной деятельности, финансовое обеспечение которой осуществляется
                 за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации,
                 местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.43.0 }}
             </p>
@@ -1355,20 +1351,20 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">44</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о поступлении финансовых и материальных средств и об их расходовании по итогам финансового года
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.44.0 }}
             </p>
@@ -1376,7 +1372,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" style="width: 720px;border: 1px solid #000000; padding-left: 0.04in; padding-right: 0.04in">
+        <td colspan="4" class="tab-title">
             <p class="num">
                 <b>X. Вакантные места для приема (перевода)</b>
             </p>
@@ -1384,10 +1380,10 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">45</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Информация о количестве вакантных мест для приема (перевода) по каждой образовательной программе,
                 профессии, специальности, направлению подготовки (на места, финансируемые за счет бюджетных ассигнований
@@ -1395,12 +1391,12 @@
                 за счет средств физических и (или) юридических лиц)
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 <b>X</b>
             </p>
         </td>
-        <td style="width: 65px" class="tab">
+        <td class="tab-answr">
             <p class="num">
                 {{ answers.45.0 }}
             </p>
@@ -1411,7 +1407,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="3" style="width: 720px" class="tab">
+        <td colspan="3" class="tab-title">
             <p class="question">
                 <b>1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов
                     обратной связи и взаимодействия с получателями услуг</b>
@@ -1420,15 +1416,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">46</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте номера телефона организации (его функционирование)
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.46.0 }}
             </p>
@@ -1436,15 +1432,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">47</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте адреса электронной почты (ее функционирование)
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.47.0 }}
             </p>
@@ -1452,16 +1448,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">48</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте электронных сервисов (форма для подачи электронного обращения/
                 жалобы/предложения)
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.48.0 }}
             </p>
@@ -1469,15 +1465,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">49</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте раздела «Часто задаваемые вопросы»
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.49.0 }}
             </p>
@@ -1485,16 +1481,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">50</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие
                 технические возможности
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.50.0 }}
             </p>
@@ -1502,16 +1498,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">51</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие
                 анкеты для опроса граждан или гиперссылки на нее)
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.51.0 }}
             </p>
@@ -1522,7 +1518,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 720px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        class="tab-section">
         <p class="title">
             <b>Критерий 2. Комфортность условий предоставления услуг</b>
         </p>
@@ -1532,7 +1528,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="3" style="width: 720px" class="tab">
+        <td colspan="3" class="tab-title">
             <p class="question">
                 <b>2.1.1 Наличие комфортных условий для предоставления услуг</b>
             </p>
@@ -1540,15 +1536,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">52</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.52.0 }}
             </p>
@@ -1556,15 +1552,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">53</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие и понятность навигации внутри организации
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.53.0 }}
             </p>
@@ -1572,15 +1568,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">54</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Доступность питьевой воды
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.54.0 }}
             </p>
@@ -1588,16 +1584,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">55</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды,
                 туалетной бумаги и пр.)
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.55.0 }}
             </p>
@@ -1605,15 +1601,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">56</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Санитарное состояние помещений организации
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.56.0 }}
             </p>
@@ -1624,7 +1620,7 @@
 
 <table>
     <td colspan="4"
-        style="width: 720px; border: none; padding-top: 1px; padding-bottom: 5px; padding-left: 1px; padding-right: 1px">
+        class="tab-section">
         <p class="title">
             <b>Критерий 3. Доступность услуг для инвалидов</b>
         </p>
@@ -1635,7 +1631,7 @@
 <table style="border-collapse: collapse">
 
     <tr>
-        <td colspan="3" style="width: 720px" class="tab">
+        <td colspan="3" class="tab-title">
             <p class="question">
                 <b>3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для
                     инвалидов</b>
@@ -1644,15 +1640,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">57</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Оборудование входных групп пандусами/подъемными платформами
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.57.0 }}
             </p>
@@ -1660,15 +1656,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">58</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие выделенных стоянок для автотранспортных средств инвалидов
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.58.0 }}
             </p>
@@ -1676,15 +1672,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">59</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие адаптированных лифтов, поручней, расширенных дверных проемов
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.59.0 }}
             </p>
@@ -1692,15 +1688,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">60</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие сменных кресел-колясок
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.60.0 }}
             </p>
@@ -1708,15 +1704,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">61</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие и доступность специально оборудованных санитарно-гигиенических помещений
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.61.0 }}
             </p>
@@ -1728,7 +1724,7 @@
 <table style="border-collapse: collapse">
 
     <tr>
-        <td colspan="3" style="width: 720px" class="tab">
+        <td colspan="3" class="tab-title">
             <p class="question">
                 <b>3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с
                     другими</b>
@@ -1737,15 +1733,15 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">62</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.62.0 }}
             </p>
@@ -1753,16 +1749,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">63</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными
                 рельефно-точечным шрифтом Брайля
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.63.0 }}
             </p>
@@ -1770,16 +1766,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">64</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика
                 (тифлосурдопереводчика)
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.64.0 }}
             </p>
@@ -1787,16 +1783,16 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">65</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети
                 «Интернет» для инвалидов по зрению
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.65.0 }}
             </p>
@@ -1804,17 +1800,17 @@
     </tr>
 
     <tr>
-        <td style="width: 30px" class="tab">
+        <td class="tab-num">
             <p class="num">66</p>
         </td>
-        <td style="width: 560px" class="tab">
+        <td class="tab-quest">
             <p class="question">
                 Помощь, оказываемая работниками образовательной организации, прошедшими необходимое обучение (инструктирование)
                 (возможность сопровождения работниками организации);<br/>
                 - наличие возможности предоставления образовательных услуг в дистанционном режиме или на дому
             </p>
         </td>
-        <td style="width: 130px" class="tab">
+        <td class="tab-answr-1">
             <p class="num">
                 {{ answers.66.0 }}
             </p>
@@ -1825,7 +1821,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" style="width: 720px" class="tab">
+        <td colspan="1" class="tab-title">
             <p class="question">
                 <b>Дополнительная информация</b>
             </p>
@@ -1844,19 +1840,19 @@
 
 <table>
     <tr>
-        <td style="width: 230px; background: transparent; border: none; padding-bottom: 20px">
+        <td class="tab-end-text" style="padding-bottom: 20px">
             <p class="question" style="font-size: 11pt">
                 Представитель&nbsp;<br/>
                 организации-оператора:&nbsp;
             </p>
         </td>
-        <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+        <td class="tab-end-text">
             <p class="num" style="font-size: 11pt">
                 ___________________<br/>
                 (подпись)
             </p>
         </td>
-        <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+        <td class="tab-end-text">
             <p class="num" style="font-size: 11pt">
                 ____________________<br/>
                 (расшифровка подписи)
@@ -1879,19 +1875,19 @@
 </table>
 <table>
     <tr>
-        <td style="width: 230px; background: transparent; border: none; padding-bottom: 20px">
+        <td class="tab-end-text" style="padding-bottom: 20px">
             <p class="question" style="font-size: 11pt">
                 Представитель&nbsp;<br/>
-                образовательной организации:&nbsp;
+                медицинской организации:&nbsp;
             </p>
         </td>
-        <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+        <td class="tab-end-text">
             <p class="num" style="font-size: 11pt">
                 ___________________<br/>
                 (подпись)
             </p>
         </td>
-        <td style="width: 230px; background: transparent; border: none; padding-top: 20px">
+        <td class="tab-end-text">
             <p class="num" style="font-size: 11pt">
                 ____________________<br/>
                 (расшифровка подписи)
@@ -1901,3 +1897,4 @@
 </table>
 <br/>
 </body>
+</form>

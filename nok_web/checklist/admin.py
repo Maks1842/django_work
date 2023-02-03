@@ -26,6 +26,7 @@ from .app_models.signed_dociuments import Signed_Dociuments
 from .app_models.templates import Templates
 from .app_models.transaction_exchange import Transaction_Exchange
 from .app_models.type_answers import Type_Answers
+from .app_models.type_templates import Type_Templates
 from .app_models.type_organisations import Type_Organisations
 from .app_models.versions import Versions
 from .app_models.recommendations import Recommendations
@@ -121,10 +122,10 @@ class RatingsAdmin(admin.ModelAdmin):
 
 
 class TemplatesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'type_organisations', 'template_file', 'version', 'is_deleted')
-    search_fields = ('name', 'type_organisations', 'template_file', 'version')
-    list_editable = ('name', 'type_organisations', 'template_file', 'version', 'is_deleted')
-    list_filter = ('name', 'type_organisations', 'version')
+    list_display = ('id', 'name', 'type_organisations', 'template_file', 'type_templates', 'version', 'is_deleted')
+    search_fields = ('name', 'type_organisations', 'template_file', 'type_templates', 'version')
+    list_editable = ('name', 'type_organisations', 'template_file', 'type_templates', 'version', 'is_deleted')
+    list_filter = ('name', 'type_organisations', 'type_templates', 'version')
 
 
 class Form_SectionsAdmin(admin.ModelAdmin):
@@ -201,8 +202,13 @@ class VersionsAdmin(admin.ModelAdmin):
     list_editable = ('table_name', 'version', 'active', 'is_deleted')
     list_filter = ('table_name', 'version', 'active', 'is_deleted')
 
-
 class Type_AnswersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type')
+    search_fields = ('type',)
+    list_editable = ('type',)
+
+
+class Type_TemplatesAdmin(admin.ModelAdmin):
     list_display = ('id', 'type')
     search_fields = ('type',)
     list_editable = ('type',)
@@ -261,6 +267,7 @@ admin.site.register(Comments, CommentsAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Versions, VersionsAdmin)
 admin.site.register(Type_Answers, Type_AnswersAdmin)
+admin.site.register(Type_Templates, Type_TemplatesAdmin)
 admin.site.register(Transaction_Exchange, Transaction_ExchangeAdmin)
 admin.site.register(FormsAct, FormsActAdmin)
 admin.site.register(Checking, CheckingAdmin)
