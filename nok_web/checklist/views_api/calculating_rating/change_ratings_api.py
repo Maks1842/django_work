@@ -13,6 +13,10 @@ from .changes_to_healthcare import healthcare_rating
 from .changes_to_education import education_rating
 
 
+'''
+Метод корректировки рейтинга, за счет ручного введения количества положительных отзывов респондентов.
+Результаты рейтингов, перезаписываются в Модели Ratings. 
+'''
 
 class ChangeRatingsAPIView(APIView):
 

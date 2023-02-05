@@ -8,6 +8,7 @@ from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 
+from ..magic import do_some_magic
 from .culture import culture_rating
 from .healthcare import healthcare_rating
 from .school import school_rating
@@ -15,6 +16,12 @@ from .addeducation import addeducation_rating
 from .kindergarden import kindergarden_rating
 from .techcollege import techcollege_rating
 
+
+'''
+Данный метод рассчитывает рейтинг с применением коэффициентов, при определении количества положительных 
+отзывов респондентов.
+Результаты рейтингов, по каждой организации (в разрезе проверок), хранятся в Модели Ratings. 
+'''
 
 
 class CalculatingRatingAPIView(APIView):
@@ -60,61 +67,19 @@ class CalculatingRatingAPIView(APIView):
         answers = answer_in_the_act(comparison, query)
 
         if type_organisation == '1' or type_organisation == '10':
-            rating = culture_rating(quota, invalid_person, answers, form_json_to_calculate)
+            rating = culture_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '2' or type_organisation == '3':
-            rating = healthcare_rating(quota, invalid_person, answers, form_json_to_calculate)
+            rating = healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '4':
-            rating = kindergarden_rating(quota, invalid_person, answers, form_json_to_calculate)
+            rating = kindergarden_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '5':
-            rating = school_rating(quota, invalid_person, answers, form_json_to_calculate)
+            rating = school_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '7':
-            rating = techcollege_rating(quota, invalid_person, answers, form_json_to_calculate)
+            rating = techcollege_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '9':
-            rating = addeducation_rating(quota, invalid_person, answers, form_json_to_calculate)
+            rating = addeducation_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
 
         return Response(rating)
-
-
-
-'''
-Функция сравнения двух json.
-Производится сопоставление полученных ответов с имеющимся вопросами.
-На выходе формируется новый json, где:
-- если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
-- если нет ни одного совпадения, то все ячейки остаются пустые.
-В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
-'''
-
-def do_some_magic(form_json, act_answer):
-    act = form_json
-    questions = {}
-    for page in act['pages']:
-        for element in page['elements']:
-            choices = []
-            for choice in element['choices']:
-                choices.append(choice['value'])
-            questions[element['name']] = choices
-
-    tt = {}
-
-    for question in act_answer:
-        sh = []
-
-        for answer in questions[question]:
-            if answer in act_answer[question]:
-                sh.append(answer)
-            else:
-                sh.append('')
-        tt[question] = sh
-
-    z = questions.copy()
-    z.update(tt)
-    for question in z:
-        if question not in act_answer:
-            for i in range(len(z[question])):
-                z[question][i] = ''
-
-    return z
 
 
 '''
@@ -131,33 +96,42 @@ def answer_in_the_act(comparison, query):
         if '11' in comparison[answ] or '12' in comparison[answ]:
             for a in comparison[answ]:
                 if a == '':
-                    # answer = "0"
                     answer = {'value': '0', 'text': a}
                 elif int(a) > 0:
                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        # answer = "1"
                         answer = {'value': '1', 'text': a}
                     else:
-                        # answer = query.get(pk=int(a))['value_name']
                         answer = {'value': query.get(pk=int(a))['value_name'], 'text': a}
                 answers.append(answer)
+        elif len(comparison[answ]) > 2:
+            for a in comparison[answ]:
+                if a != '':
+                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                        answer = {'value': '1', 'text': a}
+                    else:
+                        answer = {'value': query.get(pk=int(a))['value_name'], 'text': a}
+                    answers.append(answer)
+        elif len(comparison[answ]) == 2 and comparison[answ][1] != '' and \
+                (not '11' in comparison[answ][1] or not '12' in comparison[answ][1]):
+            for a in comparison[answ]:
+                if a != '':
+                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
+                        answer = {'value': '1', 'text': a}
+                    else:
+                        answer = {'value': query.get(pk=int(a))['value_name'], 'text': a}
+                    answers.append(answer)
         else:
             for a in comparison[answ]:
                 if a == '':
-                    # answer = "0"
                     answer = {'value': '0', 'text': a}
-                elif int(a) > 0:
+                elif a != '':
                     if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        # answer = query.get(pk=int(a))['name_alternativ']
-                        answer = {'value': query.get(pk=int(a))['name_alternativ'], 'text': a}
+                        answer = {'value': '1', 'text': a}
                     elif query.get(pk=int(a))['value_name'] == 'Да':
-                        # answer = "1"
                         answer = {'value': '1', 'text': a}
                     elif query.get(pk=int(a))['value_name'] == 'Нет':
-                        # answer = "0"
                         answer = {'value': '0', 'text': a}
                     else:
-                        # answer = query.get(pk=int(a))['value_name']
                         answer = {'value': query.get(pk=int(a))['value_name'], 'text': a}
                 answers.append(answer)
         list_dict[answ] = answers

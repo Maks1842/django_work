@@ -13,7 +13,7 @@
 
             p {
                 color: #000000;
-                line-height: 115%;
+                line-height: 100%;
                 text-align: left;
                 orphans: 2;
                 widows: 2;
@@ -37,12 +37,19 @@
             p.num {
                 font: 1.2em 'Times New Roman', serif;
                 font-size: 12pt;
-                text-align: center
+                text-align: center;
+                overflow-x: visible;
             }
 
             p.question {
                 font: 1.2em 'Times New Roman', serif;
                 font-size: 12pt
+            }
+
+            p.western {
+                font-family: "Calibri", serif;
+                font-size: 11pt;
+                so-language: ru-RU
             }
 
             .tab {
@@ -65,6 +72,7 @@
             }
 
             .tab-item {
+                table-layout: fixed;
                 width: 700px;
                 height: 20px;
                 border-bottom: 1px solid #000000;
@@ -73,6 +81,7 @@
             }
 
             .tab-section {
+                table-layout: fixed;
                 width: 700px;
                 border: none;
                 padding-top: 1px;
@@ -82,6 +91,7 @@
             }
 
             .tab-title {
+                table-layout: fixed;
                 width: 700px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
@@ -89,6 +99,7 @@
             }
 
             .tab-num {
+                table-layout: fixed;
                 width: 30px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
@@ -96,6 +107,13 @@
             }
 
             .tab-quest {
+                width: 470px;
+                border: 1px solid #000000;
+                padding-left: 0.04in;
+                padding-right: 0.04in
+            }
+
+            .tab-quest-1 {
                 width: 520px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
@@ -103,20 +121,22 @@
             }
 
             .tab-quest-2 {
-                width: 390px;
+                width: 370px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
                 padding-right: 0.04in
             }
 
             .tab-answr {
+                table-layout: fixed;
                 width: 65px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
-                padding-right: 0.04in
+                padding-right: 0.04in;
             }
 
             .tab-answr-1 {
+                table-layout: fixed;
                 width: 130px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
@@ -124,6 +144,7 @@
             }
 
             .tab-answr-2 {
+                table-layout: fixed;
                 width: 300px;
                 border: 1px solid #000000;
                 padding-left: 0.04in;
@@ -131,6 +152,7 @@
             }
 
             .tab-end-text {
+                table-layout: fixed;
                 width: 230px;
                 background: transparent;
                 border: none;
@@ -140,13 +162,12 @@
     </head>
 
     <body>
-
     <table>
         <td class="tab-section">
             <p class="title">
                 <b>Детализация показателей общих критериев, <br/>
                     участвующих в формировании интегрального значения<br/>
-                    образовательной организации</b>
+                    организации культуры</b>
             </p>
         </td>
     </table>
@@ -155,7 +176,7 @@
     <table>
         <td class="tab-title">
             <p class="title">
-                <b>Общеобразовательная организация (ОО, СКОУ)</b>
+                <b>-----------------</b>
             </p>
         </td>
     </table>
@@ -165,7 +186,7 @@
         <tr>
             <td class="tab-name">
                 <p class="question" style="font-size: 14pt">
-                    Наименование образовательной организации
+                    Наименование организации культуры
                 </p>
             </td>
         </tr>
@@ -401,7 +422,7 @@
         <tr>
             <td colspan="4" class="tab-title">
                 <p class="num">
-                    <b>I. Основные сведения</b>
+                    <b>I. Общая информация об организации культуры</b>
                 </p>
             </td>
         </tr>
@@ -412,17 +433,17 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Информация о дате создания образовательной организации
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
+                    Полное и сокращенное наименование организации культуры, почтовый адрес, контактные телефоны и адреса электронной почты
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.1.0 }}
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    {{ answers.1.1 }}
                 </p>
             </td>
         </tr>
@@ -433,17 +454,17 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Информация об учредителе, учредителях образовательной организации
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
+                    Место нахождения организации культуры и ее филиалов (при наличии)
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.2.0 }}
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    {{ answers.2.1 }}
                 </p>
             </td>
         </tr>
@@ -454,7 +475,8 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Информация о месте нахождения образовательной организации и ее филиалов (при наличии)
+                    Дата создания организации культуры, сведения об учредителе/учредителях, контактные телефоны,
+                    адрес сайта, адреса электронной почты учредителя/учредителей
                 </p>
             </td>
             <td class="tab-answr">
@@ -475,17 +497,19 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Информация о режиме, графике работы
+                    Учредительные документы (копия устава организации культуры, свидетельство о государственной регистрации,
+                    решения учредителя о создании организации культуры и назначении ее руководителя, положения о филиалах и
+                    представительствах (при наличии))
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    <b>X</b>
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.4.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.4.1 }}
                 </p>
             </td>
         </tr>
@@ -496,7 +520,9 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Информация о контактных телефонах и об адресах электронной почты
+                    Структура и органы управления организации культуры; фамилии, имена, отчества и должности руководителей
+                    организации культуры, ее структурных подразделений и филиалов (при их наличии), контактные телефоны,
+                    адреса сайтов структурных подразделений (при наличии), адреса электронной почты
                 </p>
             </td>
             <td class="tab-answr">
@@ -512,24 +538,12 @@
         </tr>
 
         <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>II. Структура и органы управления образовательной организацией</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
             <td class="tab-num">
                 <p class="num">6</p>
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Информация о структуре и об органах управления образовательной организации
-                    (в том числе: наименование структурных подразделений (органов управления); фамилии, имена, отчества
-                    и должности руководителей структурных подразделений; места нахождения структурных подразделений;
-                    адреса официальных сайтов в сети «Интернет» структурных подразделений (при наличии);
-                    адреса электронной почты структурных подразделений (при наличии)
+                    Режим, график работы организации культуры
                 </p>
             </td>
             <td class="tab-answr">
@@ -545,18 +559,20 @@
         </tr>
 
         <tr>
+            <td colspan="4" class="tab-title">
+                <p class="num">
+                    <b>II. Информация о деятельности организации культуры</b>
+                </p>
+            </td>
+        </tr>
+
+        <tr>
             <td class="tab-num">
                 <p class="num">7</p>
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Сведения о положениях о структурных подразделениях (об органах управления) с приложением копий
-                    указанных положений (при их наличии))
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
+                    Виды предоставляемых услуг организацией культуры
                 </p>
             </td>
             <td class="tab-answr">
@@ -564,12 +580,9 @@
                     {{ answers.7.0 }}
                 </p>
             </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
+            <td class="tab-answr">
                 <p class="num">
-                    <b>III. Документы (в виде копий)</b>
+                    {{ answers.7.1 }}
                 </p>
             </td>
         </tr>
@@ -580,17 +593,19 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Устав образовательной организации
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
+                    Перечень оказываемых платных услуг (при наличии)*; цены (тарифы) на услуги (при наличии платных услуг),
+                    копии документов о порядке предоставления услуг за плату, нормативных правовых актов, устанавливающих
+                    цены (тарифы) на услуги (при наличии платных услуг)*
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.8.0 }}
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    {{ answers.8.1 }}
                 </p>
             </td>
         </tr>
@@ -601,17 +616,17 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Лицензии на осуществление образовательной деятельности (с приложениями)
+                    Материально-техническое обеспечение предоставления услуг
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    <b>X</b>
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.9.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.9.1 }}
                 </p>
             </td>
         </tr>
@@ -622,17 +637,18 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Свидетельства о государственной аккредитации (с приложениями)
+                    Копия плана финансово-хозяйственной деятельности организации культуры, утвержденного в установленном
+                    законодательством Российской Федерации порядке, или бюджетной сметы (информация об объеме предоставляемых услуг)
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    <b>X</b>
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.10.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.10.1 }}
                 </p>
             </td>
         </tr>
@@ -643,18 +659,17 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    План финансово-хозяйственной деятельности образовательной организации, утвержденного в установленном
-                    законодательством Российской Федерации порядке, или бюджетные сметы образовательной организации
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
+                    Информация о планируемых мероприятиях (анонсы, афиши, акции), новости, события
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
                     {{ answers.11.0 }}
+                </p>
+            </td>
+            <td class="tab-answr">
+                <p class="num">
+                    {{ answers.11.1 }}
                 </p>
             </td>
         </tr>
@@ -665,14 +680,8 @@
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Локальные нормативные акты по основным вопросам организации и осуществления образовательной
-                    деятельности,
-                    в том числе регламентирующие правила приема обучающихся, режим занятий обучающихся, формы,
-                    периодичность и порядок текущего контроля успеваемости и промежуточной аттестации обучающихся,
-                    порядок и основания перевода, отчисления и восстановления обучающихся, порядок оформления
-                    возникновения,
-                    приостановления и прекращения отношений между образовательной организацией и обучающимися и
-                    (или) родителями (законными представителями) несовершеннолетних обучающихся.
+                    Копии лицензий на осуществление деятельность, подлежащей лицензированию в соответствии с
+                    законодательством Российской Федерации (при осуществлении соответствующих видов деятельности)*
                 </p>
             </td>
             <td class="tab-answr">
@@ -688,17 +697,21 @@
         </tr>
 
         <tr>
+            <td colspan="4" class="tab-quest">
+                <p class="num">
+                    <b>Информация о независимой оценке качества</b>
+                </p>
+            </td>
+        </tr>
+
+        <tr>
             <td class="tab-num">
                 <p class="num">13</p>
             </td>
             <td class="tab-quest">
                 <p class="question">
-                    Отчет о результатах самообследования
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
+                    Результаты независимой оценки качества условий оказания услуг, планы по улучшению  качества работы
+                    организации культуры (по устранению недостатков, выявленных по итогам независимой оценки качества)
                 </p>
             </td>
             <td class="tab-answr">
@@ -706,787 +719,9 @@
                     {{ answers.13.0 }}
                 </p>
             </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">14</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Документ о порядке оказания платных образовательных услуг (при наличии),
-                    в том числе образец договора об оказании платных образовательных услуг, документ об утверждении
-                    стоимости обучения по каждой образовательной программе*
-                </p>
-            </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ answers.14.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.14.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">15</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Документ об установлении размера платы, взимаемой с родителей (законных представителей) за присмотр
-                    и уход детьми, осваивающими образовательные программы дошкольного образования в организациях,
-                    осуществляющих образовательную деятельность, за содержание детей в образовательной организации,
-                    реализующей образовательные программы начального общего, основного общего или среднего общего
-                    образования,
-                    если в такой образовательной организации созданы условия для проживания обучающихся в интернате,
-                    либо за осуществление присмотра и ухода за детьми в группах продленного дня в образовательной
-                    организации,
-                    реализующей образовательные программы начального общего, основного общего или среднего общего
-                    образования (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.15.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">16</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Предписания органов, осуществляющих государственный контроль (надзор) в сфере образования, отчеты об
-                    исполнении таких предписаний (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.16.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>IV. Образование</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">17</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о реализуемых уровнях образования
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.17.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">18</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о формах обучения
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.18.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">19</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о нормативных сроках обучения
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.19.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">20</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о сроке действия государственной аккредитации образовательных программ (при наличии
-                    государственной аккредитации)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.20.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.20.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">21</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об описании образовательных программ с приложением их копий
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.21.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">22</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об учебных планах реализуемых образовательных программ с приложением их копий
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.22.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.22.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">23</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Аннотации к рабочим программам дисциплин (по каждой дисциплине в составе образовательной программы)
-                    с приложением их копий (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.23.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">24</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о календарных учебных графиках с приложением их копий
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.24.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">25</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о методических и иных документах, разработанных образовательной организацией для
-                    обеспечения образовательного процесса
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.25.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">26</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о реализуемых образовательных программах, в том числе о реализуемых адаптированных
-                    образовательных программах,
-                    с указанием учебных предметов, курсов, дисциплин (модулей), практики, предусмотренных
-                    соответствующей образовательной программой
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.26.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">27</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об использовании при реализации указанных образовательных программ электронного обучения
-                    и дистанционных образовательных технологий (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.27.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">28</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о численности обучающихся по реализуемым образовательным программам за счет бюджетных
-                    ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов и по
-                    договорам
-                    об образовании за счет средств физических и (или) юридических лиц, о языках, на которых
-                    осуществляется образование (обучение)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.28.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">29</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Образовательные организации, реализующие общеобразовательные программы, дополнительно указывают
-                    наименование образовательной программы
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.29.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.29.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">30</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о федеральных государственных образовательных стандартах и об образовательных стандартах
-                    с приложением их копий (при наличии). Допускается вместо копий федеральных государственных
-                    образовательных стандартов и образовательных стандартов размещать гиперссылки на соответствующие
-                    документы на сайте Минпросвещения России
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.30.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>V. Руководство. Педагогический состав</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">31</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о руководителе образовательной организации, его заместителях, в том числе:
-                    фамилия, имя, отчество (при наличии) руководителя, его заместителей; должность руководителя,
-                    его заместителей; контактные телефоны; адреса электронной почты, в том числе информация о месте
-                    нахождения филиалов образовательной организации (при их наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.31.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.31.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">32</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о персональном составе педагогических работников с указанием уровня образования,
-                    квалификации и опыта работы, в том числе: фамилия, имя, отчество (при наличии) работника;
-                    занимаемая должность (должности); преподаваемые дисциплины; ученая степень (при наличии);
-                    ученое звание (при наличии); наименование направления подготовки и (или) специальности;
-                    данные о повышении квалификации и (или) профессиональной переподготовке (при наличии); общий стаж
-                    работы; стаж работы по специальности
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.32.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>VI. Материально-техническое обеспечении образовательной деятельности</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">33</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о материально-техническом обеспечении образовательной деятельности (в том числе:
-                    наличие оборудованных учебных кабинетов, объектов для проведения практических занятий, библиотек,
-                    объектов спорта, средств обучения и воспитания, в том числе приспособленных для использования
-                    инвалидами и лицами с ограниченными возможностями здоровья)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.33.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">34</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о обеспечении доступа в здания образовательной организации инвалидов и лиц с
-                    ограниченными возможностями здоровья
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.34.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">35</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об условиях питания обучающихся, в том числе инвалидов и лиц с ограниченными
-                    возможностями здоровья (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.35.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.35.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">36</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об условиях охраны здоровья обучающихся, в том числе инвалидов и лиц с ограниченными
-                    возможностями здоровья
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.36.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">37</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о доступе к информационным системам и информационно-телекоммуникационным сетям,
-                    в том числе приспособленным для использования инвалидами и лицами с ограниченными возможностями
-                    здоровья
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.37.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">38</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об электронных образовательных ресурсах, к которым обеспечивается доступ обучающихся,
-                    в том числе приспособленные для использования инвалидами и лицами с ограниченными возможностями
-                    здоровья
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.38.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">39</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о наличии специальных технических средств обучения коллективного и индивидуального
-                    пользования для инвалидов и лиц с ограниченными возможностями здоровья
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.39.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>VII. Стипендии и иные виды материальной поддержки</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">40</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о наличии и условиях предоставления обучающимся стипендий, мер социальной поддержки (при
-                    наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.40.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">41</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о наличии общежития, интерната, в том числе приспособленных для использования инвалидами
-                    и лицами с ограниченными возможностями здоровья, количестве жилых помещений в общежитии,
-                    интернате для иногородних обучающихся, формировании платы за проживание в общежитии (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.41.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>VIII. Платные образовательные услуги</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">42</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о наличии и порядке оказания платных образовательных услуг (при наличии)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.42.0 }}
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.42.1 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>IX. Финансово-хозяйственная деятельность</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">43</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация об объеме образовательной деятельности, финансовое обеспечение которой осуществляется
-                    за счет бюджетных ассигнований федерального бюджета, бюджетов субъектов Российской Федерации,
-                    местных бюджетов, по договорам об образовании за счет средств физических и (или) юридических лиц
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.43.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">44</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о поступлении финансовых и материальных средств и об их расходовании по итогам
-                    финансового года
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.44.0 }}
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="4" class="tab-title">
-                <p class="num">
-                    <b>X. Вакантные места для приема (перевода)</b>
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="tab-num">
-                <p class="num">45</p>
-            </td>
-            <td class="tab-quest">
-                <p class="question">
-                    Информация о количестве вакантных мест для приема (перевода) по каждой образовательной программе,
-                    профессии, специальности, направлению подготовки (на места, финансируемые за счет бюджетных
-                    ассигнований федерального бюджета, бюджетов субъектов Российской Федерации, местных бюджетов,
-                    по договорам об образовании за счет средств физических и (или) юридических лиц)
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    <b>X</b>
-                </p>
-            </td>
-            <td class="tab-answr">
-                <p class="num">
-                    {{ answers.45.0 }}
+                    {{ answers.13.1 }}
                 </p>
             </td>
         </tr>
@@ -1519,41 +754,41 @@
 
         <tr>
             <td class="tab-num">
-                <p class="num">46</p>
+                <p class="num">14</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие на официальном сайте номера телефона организации (его функционирование)
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.46.0 }}
+                    {{ answers.14.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">47</p>
+                <p class="num">15</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие на официальном сайте адреса электронной почты (ее функционирование)
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.47.0 }}
+                    {{ answers.15.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">48</p>
+                <p class="num">16</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие на официальном сайте электронных сервисов (форма для подачи электронного обращения/
                     жалобы/предложения)
@@ -1561,32 +796,32 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.48.0 }}
+                    {{ answers.16.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">49</p>
+                <p class="num">17</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие на официальном сайте раздела «Часто задаваемые вопросы»
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.49.0 }}
+                    {{ answers.17.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">50</p>
+                <p class="num">18</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие
                     технические возможности
@@ -1594,16 +829,16 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.50.0 }}
+                    {{ answers.18.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">51</p>
+                <p class="num">19</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие
                     анкеты для опроса граждан или гиперссылки на нее)
@@ -1611,7 +846,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.51.0 }}
+                    {{ answers.19.0 }}
                 </p>
             </td>
         </tr>
@@ -1726,57 +961,57 @@
 
         <tr>
             <td class="tab-num">
-                <p class="num">52</p>
+                <p class="num">20</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.52.0 }}
+                    {{ answers.20.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">53</p>
+                <p class="num">21</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие и понятность навигации внутри организации
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.53.0 }}
+                    {{ answers.21.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">54</p>
+                <p class="num">22</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Доступность питьевой воды
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.54.0 }}
+                    {{ answers.22.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">55</p>
+                <p class="num">23</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды,
                     туалетной бумаги и пр.)
@@ -1784,23 +1019,40 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.55.0 }}
+                    {{ answers.23.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">56</p>
+                <p class="num">24</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Санитарное состояние помещений организации
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.56.0 }}
+                    {{ answers.24.0 }}
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="tab-num">
+                <p class="num">25</p>
+            </td>
+            <td class="tab-quest-1">
+                <p class="question">
+                    Возможность бронирования услуги/доступность записи на получение услуги (по телефону, с использованием
+                    сети «Интернет» на официальном сайте организации, при личном посещении и пр.)
+                </p>
+            </td>
+            <td class="tab-answr-1">
+                <p class="num">
+                    {{ answers.25.0 }}
                 </p>
             </td>
         </tr>
@@ -1898,80 +1150,80 @@
 
         <tr>
             <td class="tab-num">
-                <p class="num">57</p>
+                <p class="num">26</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Оборудование входных групп пандусами/подъемными платформами
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.57.0 }}
+                    {{ answers.26.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">58</p>
+                <p class="num">27</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие выделенных стоянок для автотранспортных средств инвалидов
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.58.0 }}
+                    {{ answers.27.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">59</p>
+                <p class="num">28</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие адаптированных лифтов, поручней, расширенных дверных проемов
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.59.0 }}
+                    {{ answers.28.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">60</p>
+                <p class="num">29</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие сменных кресел-колясок
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.60.0 }}
+                    {{ answers.29.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">61</p>
+                <p class="num">30</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Наличие и доступность специально оборудованных санитарно-гигиенических помещений
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.61.0 }}
+                    {{ answers.30.0 }}
                 </p>
             </td>
         </tr>
@@ -2004,25 +1256,25 @@
 
         <tr>
             <td class="tab-num">
-                <p class="num">62</p>
+                <p class="num">31</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.62.0 }}
+                    {{ answers.31.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">63</p>
+                <p class="num">32</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными
                     рельефно-точечным шрифтом Брайля
@@ -2030,16 +1282,16 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.63.0 }}
+                    {{ answers.32.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">64</p>
+                <p class="num">33</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
                     Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика
                     (тифлосурдопереводчика)
@@ -2047,44 +1299,57 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.64.0 }}
+                    {{ answers.33.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">65</p>
+                <p class="num">34</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
-                    Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной
-                    сети
+                    Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети
                     «Интернет» для инвалидов по зрению
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.65.0 }}
+                    {{ answers.34.0 }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td class="tab-num">
-                <p class="num">66</p>
+                <p class="num">35</p>
             </td>
-            <td class="tab-quest">
+            <td class="tab-quest-1">
                 <p class="question">
-                    Помощь, оказываемая работниками образовательной организации, прошедшими необходимое обучение
-                    (инструктирование)
-                    (возможность сопровождения работниками организации);<br/>
-                    - наличие возможности предоставления образовательных услуг в дистанционном режиме или на дому
+                    Наличие возможности оказания помощи работниками организации, прошедшими необходимое обучение (инструктирование)
+                    (возможность сопровождения работниками организации)
                 </p>
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ answers.66.0 }}
+                    {{ answers.35.0 }}
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="tab-num">
+                <p class="num">36</p>
+            </td>
+            <td class="tab-quest-1">
+                <p class="question">
+                    Наличие возможности предоставления услуги в дистанционном режиме или на дому
+                </p>
+            </td>
+            <td class="tab-answr-1">
+                <p class="num">
+                    {{ answers.36.0 }}
                 </p>
             </td>
         </tr>

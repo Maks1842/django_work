@@ -1,4 +1,5 @@
 from ...app_models import *
+from ..magic import do_some_magic, answer_in_the_act
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 
@@ -10,6 +11,8 @@ from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 
 from weasyprint import HTML, CSS
+from django.shortcuts import render
+from rest_framework.renderers import TemplateHTMLRenderer
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -36,7 +39,7 @@ class GetRatingsIntoPdfAPIView(APIView):
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
-        tags=['Рейтинги'],
+        tags=['Рейтинг'],
         operation_description="Получить рейтинги по результатам проверки в формате pdf. "
                               "Предварительно сопоставляется json-структура акта и json-результаты ответов",
         manual_parameters=[
@@ -64,9 +67,9 @@ class GetRatingsIntoPdfAPIView(APIView):
         if len(queryset) == 0:
             return Response({'error': 'Не найден указанный тип организации'})
 
-        temp = Templates.objects.get(type_organisations_id=type_organisation).template_file
+        temp = Templates.objects.filter(type_templates_id=2).get(type_organisations_id=type_organisation).template_file
         if temp == '':
-            return Response({'error': 'Не найден шаблон Акта для данного типа организации. '
+            return Response({'error': 'Не найден шаблон Рейтинга для данного типа организации. '
                                       'Обратитесь к Администратору'})
 
         try:
@@ -77,6 +80,16 @@ class GetRatingsIntoPdfAPIView(APIView):
         except:
             return Response({'error': 'Не найдены данные о результатах запрашиваемой проверки.'})
 
+        try:
+            ratings = Ratings.objects.filter(
+                checking_id=checking,
+                type_organisations=type_organisation
+            ).get(organisations_id=organisation).ratings_json
+        except:
+            return Response({'error': 'Не найдены данные о Рейтингах запрашиваемой проверки.'})
+
+        date_check = List_Checking.objects.filter(checking_id=checking).get(organisation_id=organisation).date_check_org
+
         form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
         query = Question_Values.objects.values()
 
@@ -85,103 +98,26 @@ class GetRatingsIntoPdfAPIView(APIView):
 
         context = {'name_org': name_org,
                    'address_org': address_org,
-                   # 'person': person,
+                   'inn': inn_org,
+                   'website': website_org,
+                   'date_check': date_check,
+                   'ratings': ratings,
                    'answers': answers}
 
-        name_org = context['name_org']
+        content = render_to_string(f'ratings/{temp}', context)
 
-        content = render_to_string(f'act_checkings/{temp}', context)
         css = CSS(string='@page { size: A4 !important; '
                          'margin-left: 1cm !important; '
                          'margin-right: 1cm !important; '
                          'margin-top: 1.5cm !important;'
                          'margin-bottom: 1.5cm !important }')
-        HTML(string=content).write_pdf(f'./checklist/local_storage/{name_org}.pdf', stylesheets=[css])
+        HTML(string=content).write_pdf(f'./checklist/local_storage/Рейтинг_п{checking}_{name_org}.pdf', stylesheets=[css])
         # отдаем сохраненный pdf в качестве ответа
-        file_pointer = open(f'./checklist/local_storage/{name_org}.pdf', "rb")
+        file_pointer = open(f'./checklist/local_storage/Рейтинг_п{checking}_{name_org}.pdf', "rb")
         response = HttpResponse(file_pointer, content_type='application/pdf;')
         response['Content-Disposition'] = f'attachment; filename=download.pdf'
         response['Content-Transfer-Encoding'] = 'utf-8'
 
-        # return response
+        return response
 
-
-        return Response(comparison)
-
-'''
-Функция сравнения двух json.
-Производится сопоставление полученных ответов с имеющимся вопросами.
-На выходе формируется новый json, где:
-- если один из ответов совпадает с вопросом, то ячейки без совпадения остаются пустые, в ячейках с совпадением проставляется номер ответа;
-- если нет ни одного совпадения, то все ячейки остаются пустые.
-В формируемом json количество объектов в списке равно количеству объектов списка с вопросами.
-'''
-
-
-def do_some_magic(form_json, act_answer):
-    act = form_json
-    questions = {}
-    for page in act['pages']:
-        for element in page['elements']:
-            choices = []
-            for choice in element['choices']:
-                choices.append(choice['value'])
-            questions[element['name']] = choices
-
-    tt = {}
-
-    for question in act_answer:
-        sh = []
-
-        for answer in questions[question]:
-            if answer in act_answer[question]:
-                sh.append(answer)
-            else:
-                sh.append('')
-        tt[question] = sh
-
-    z = questions.copy()
-    z.update(tt)
-    for question in z:
-        if question not in act_answer:
-            for i in range(len(z[question])):
-                z[question][i] = ''
-
-    return z
-
-
-'''
-Функция формирования текстовых ответов для HTML шаблона из json файла,
-который сформирован на основе сопоставления act_json и answer_json.
-'''
-
-
-def answer_in_the_act(comparison, query):
-    list_dict = {}
-
-    for answ in comparison:
-        answer = ''
-        answers = []
-        if '11' in comparison[answ] or '12' in comparison[answ]:
-            for a in comparison[answ]:
-                if a == '':
-                    answer = "Нет"
-                elif int(a) > 0:
-                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        answer = query.get(pk=int(a))['name_alternativ']
-                    else:
-                        answer = query.get(pk=int(a))['value_name']
-                answers.append(answer)
-        else:
-            for a in comparison[answ]:
-                if a == '':
-                    answer = "Нет"
-                elif int(a) > 0:
-                    if len(query.get(pk=int(a))['name_alternativ']) > 0:
-                        answer = query.get(pk=int(a))['name_alternativ']
-                    else:
-                        answer = query.get(pk=int(a))['value_name']
-                answers.append(answer)
-        list_dict[answ] = answers
-
-    return list_dict
+        # return Response(answers)
