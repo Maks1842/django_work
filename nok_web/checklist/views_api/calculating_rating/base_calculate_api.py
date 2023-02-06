@@ -9,7 +9,8 @@ from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 
 from ..magic import do_some_magic
-from .culture import culture_rating
+from .culture_legacy import culture_legacy_rating
+from .culture_standart import culture_standart_rating
 from .healthcare import healthcare_rating
 from .school import school_rating
 from .addeducation import addeducation_rating
@@ -66,8 +67,10 @@ class CalculatingRatingAPIView(APIView):
         comparison = do_some_magic(form_json, act_answer)
         answers = answer_in_the_act(comparison, query)
 
-        if type_organisation == '1' or type_organisation == '10':
-            rating = culture_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        if type_organisation == '1':
+            rating = culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        elif type_organisation == '10':
+            rating = culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '2' or type_organisation == '3':
             rating = healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         elif type_organisation == '4':

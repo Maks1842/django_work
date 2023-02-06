@@ -7,7 +7,7 @@ from .coefficients import Coefficients
 '''
 
 
-def addeducation_rating(quota, invalid_person, answers, grouping_json):
+def addeducation_rating(quota, invalid_person, answers, form_json, grouping_json):
 
     cfcnt_main = None
     points = None
@@ -26,28 +26,33 @@ def addeducation_rating(quota, invalid_person, answers, grouping_json):
     rating_3_1 = {}
     rating_3_2 = {}
 
+    stend_count_all = 0
+    web_count_all = 0
+    for page in form_json["pages"]:
+        for el in page["elements"]:
+            for choic in el["choices"]:
+                if choic["value"] == '11':
+                    stend_count_all += 1
+                elif choic["value"] == '12':
+                    web_count_all += 1
+                else:
+                    pass
+
     for section in grouping_json["pages"]:
 
         if section['id'] == 1:
 
             stend_count_yes = 0
-            stend_count_all = 0
             web_count_yes = 0
-            web_count_all = 0
 
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
-
                         for items in answers[ans]:
-
                             if items['text'] == '11':
-                                stend_count_all += 1
                                 stend_count_yes += int(items['value'])
                             elif items['text'] == '12':
-                                web_count_all += 1
                                 web_count_yes += int(items['value'])
 
             try:
@@ -63,10 +68,8 @@ def addeducation_rating(quota, invalid_person, answers, grouping_json):
 
         elif section['id'] == 2:
             service_web_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -82,10 +85,8 @@ def addeducation_rating(quota, invalid_person, answers, grouping_json):
 
         elif section['id'] == 3:
             comfort_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -101,10 +102,8 @@ def addeducation_rating(quota, invalid_person, answers, grouping_json):
 
         elif section['id'] == 4:
             invalid_1_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -120,10 +119,8 @@ def addeducation_rating(quota, invalid_person, answers, grouping_json):
 
         elif section['id'] == 5:
             invalid_2_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:

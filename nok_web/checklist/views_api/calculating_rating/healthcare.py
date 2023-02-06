@@ -46,10 +46,8 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
-
                         for items in answers[ans]:
 
                             if items['text'] == '11':
@@ -70,10 +68,8 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
         elif section['id'] == 2:
             service_web_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -89,10 +85,8 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
         elif section['id'] == 3:
             comfort_count_1 = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -108,10 +102,8 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
         elif section['id'] == 4:
             index = 5
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -135,10 +127,8 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
         elif section['id'] == 5:
             invalid_1_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -154,10 +144,8 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
         elif section['id'] == 6:
             invalid_2_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:

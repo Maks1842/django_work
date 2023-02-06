@@ -1060,23 +1060,94 @@
   </table>
   <br/>
 
-  <table>
-    <td colspan="4"
-        class="tab-section">
-      <p class="title">
-        <b>Критерий 3. Доступность услуг для инвалидов</b>
-      </p>
-    </td>
+  <table style="border-collapse: collapse">
+    <tr>
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 2.3</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_2_3 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг<br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов </b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_2_3 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
+        </p>
+      </td>
+    </tr>
   </table>
   <br/>
 
   <table style="border-collapse: collapse">
+    <tr>
+      <td colspan="2" class="tab-rating">
+        <p class="title">
+          <b>Критерий 3. Доступность услуг для инвалидов<br/>
+            Итого баллов</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_3 }}
+        </p>
+      </td>
+    <tr/>
 
     <tr>
-      <td colspan="3" class="tab-title">
-        <p class="question">
-          <b>3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для
-            инвалидов</b>
+      <td colspan="2" class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 3.1</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_3_1.rating }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question" style="text-align: center">
+          <b>Итого баллов - по показателю 3.1.1</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="question" style="text-align: center">
+          {{ ratings.rating_3_1_1.rating }}
         </p>
       </td>
     </tr>
@@ -1157,6 +1228,19 @@
     </tr>
 
     <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question" style="text-align: center">
+          <b>Итого баллов - по показателю 3.1.2</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="question" style="text-align: center">
+          {{ ratings.rating_3_1_2.rating }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
       <td colspan="3" class="tab-title">
         <p class="question" style="text-align: center">
           <b>Наличие выделенных стоянок для автотранспортных средств инвалидов</b>
@@ -1180,6 +1264,19 @@
       <td class="tab-answr-1">
         <p class="num">
           {{ answers.30.0 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question" style="text-align: center">
+          <b>Итого баллов - по показателю 3.1.3</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="question" style="text-align: center">
+          {{ ratings.rating_3_1_3.rating }}
         </p>
       </td>
     </tr>
@@ -1242,6 +1339,19 @@
     </tr>
 
     <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question" style="text-align: center">
+          <b>Наличие сменных кресел-колясок - баллов</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="question" style="text-align: center">
+          {{ ratings.rating_3_1_chair.rating }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
       <td class="tab-num">
         <p class="num">34</p>
       </td>
@@ -1253,6 +1363,19 @@
       <td class="tab-answr-1">
         <p class="num">
           {{ answers.34.0 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question" style="text-align: center">
+          <b>Наличие санитарно-гигиенических помещений - баллов</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="question" style="text-align: center">
+          {{ ratings.rating_3_1_toilet.rating }}
         </p>
       </td>
     </tr>
@@ -1276,12 +1399,25 @@
   <br/>
 
   <table style="border-collapse: collapse">
+    <tr>
+      <td colspan="2" class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 3.2</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_3_2.rating }}
+        </p>
+      </td>
+    </tr>
 
     <tr>
       <td colspan="3" class="tab-title">
         <p class="question">
-          <b>3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с
-            другими</b>
+          <b>3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне
+            с другими<br/>
+            (каждый пункт - 20 баллов, максимально - 100 баллов)</b>
         </p>
       </td>
     </tr>
@@ -1390,76 +1526,391 @@
 
   <table style="border-collapse: collapse">
     <tr>
-      <td colspan="1" class="tab-title">
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 3.3</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_3_3 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
         <p class="question">
-          <b>Дополнительная информация</b>
+          <b>3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов<br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов </b>
         </p>
       </td>
     </tr>
 
     <tr>
-      <td class="tab-title" style="height: 60px">
+      <td class="tab-quest">
         <p class="question">
+          Число удовлетворенных доступностью услуг для инвалидов
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_invalid_person_3_3 }}
+        </p>
+      </td>
+    </tr>
 
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг (инвалидов)
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.invalid_person }}
         </p>
       </td>
     </tr>
   </table>
   <br/>
 
-  <table>
+  <table style="border-collapse: collapse">
     <tr>
-      <td sclass="tab-end-text" style="padding-bottom: 20px">
-        <p class="question" style="font-size: 11pt">
-          Представитель&nbsp;<br/>
-          организации-оператора:&nbsp;
+      <td class="tab-rating">
+        <p class="title">
+          <b>Критерий 4. Доброжелательность, вежливость работников организации<br/>
+            Итого баллов</b>
         </p>
       </td>
-      <td class="tab-end-text">
-        <p class="num" style="font-size: 11pt">
-          ___________________<br/>
-          (подпись)
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_4 }}
         </p>
       </td>
-      <td class="tab-end-text">
-        <p class="num" style="font-size: 11pt">
-          ____________________<br/>
-          (расшифровка подписи)
+    <tr/>
+
+    <tr>
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 4.1</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_4_1 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников
+            организации, обеспечивающих первичный контакт и информирование получателя услуги
+            (работники справочной, кассиры и прочее) при непосредственном обращении в организацию <br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации,
+          обеспечивающих первичный контакт и информирование получателя услуги
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_4_1 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
         </p>
       </td>
     </tr>
   </table>
-  <br/>
   <br/>
 
-  <table>
+  <table style="border-collapse: collapse">
     <tr>
-      <td style="width: 450px; background: transparent; border: none">
-        <p class="question" style="font-size: 11pt">
-          С информацией, отраженной в настоящем акте ознакомлен и согласен.&nbsp;<br/>
-          Достоверность отраженных в акте сведений подтверждаю.&nbsp;
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 4.2</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_4_2 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников
+            организации, обеспечивающих непосредственное оказание услуги при обращении в организацию<br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации,
+          обеспечивающих непосредственное оказание услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_4_2 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
         </p>
       </td>
     </tr>
   </table>
-  <table>
+  <br/>
+
+  <table style="border-collapse: collapse">
     <tr>
-      <td sclass="tab-end-text" style="padding-bottom: 20px">
-        <p class="question" style="font-size: 11pt">
-          Представитель&nbsp;<br/>
-          организации культуры:&nbsp;
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 4.3</b>
         </p>
       </td>
-      <td class="tab-end-text">
-        <p class="num" style="font-size: 11pt">
-          ___________________<br/>
-          (подпись)
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_4_3 }}
         </p>
       </td>
-      <td class="tab-end-text">
-        <p class="num" style="font-size: 11pt">
-          ____________________<br/>
-          (расшифровка подписи)
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании
+            дистанционных форм взаимодействия <br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, удовлетворенных доброжелательностью,
+          вежливостью работников организации при использовании дистанционных форм взаимодействия
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_4_3 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
+        </p>
+      </td>
+    </tr>
+  </table>
+  <br/>
+
+  <table style="border-collapse: collapse">
+    <tr>
+      <td class="tab-rating">
+        <p class="title">
+          <b>Критерий 5. Удовлетворенность условиями оказания услуг<br/>
+            Итого баллов</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_5 }}
+        </p>
+      </td>
+    <tr/>
+
+    <tr>
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 5.1</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_5_1 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым
+            (могли бы ее рекомендовать, если бы была возможность выбора организации) <br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_5_1 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
+        </p>
+      </td>
+    </tr>
+  </table>
+  <br/>
+
+  <table style="border-collapse: collapse">
+    <tr>
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 5.2</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_5_2 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>5.2. Удовлетворенность получателей услуг графиком работы организации<br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, удовлетворенных графиком работы организации
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_5_2 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
+        </p>
+      </td>
+    </tr>
+  </table>
+  <br/>
+
+  <table style="border-collapse: collapse">
+    <tr>
+      <td class="tab-rating">
+        <p class="title">
+          <b>Итого баллов - по показателю 5.3</b>
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="title">
+          {{ ratings.rating_5_3 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tab-title">
+        <p class="question">
+          <b>5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации<br/>
+            (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.count_person_5_3 }}
+        </p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="tab-quest">
+        <p class="question">
+          Численность опрошенных получателей услуг
+        </p>
+      </td>
+      <td class="tab-answr-1">
+        <p class="num">
+          {{ ratings.quota }}
         </p>
       </td>
     </tr>

@@ -7,7 +7,7 @@ from .coefficients import Coefficients
 '''
 
 
-def culture_rating(quota, invalid_person, answers, grouping_json):
+def culture_legacy_rating(quota, invalid_person, answers, form_json, grouping_json):
 
     cfcnt_main = None
     points = None
@@ -24,30 +24,39 @@ def culture_rating(quota, invalid_person, answers, grouping_json):
     rating_1_2 = {}
     rating_2_1 = {}
     rating_3_1 = {}
+    rating_3_1_1 = {}
+    rating_3_1_2 = {}
+    rating_3_1_3 = {}
+    rating_3_1_chair = {}
+    rating_3_1_toilet = {}
+
     rating_3_2 = {}
+
+    stend_count_all = 0
+    web_count_all = 0
+    for page in form_json["pages"]:
+        for el in page["elements"]:
+            for choic in el["choices"]:
+                if choic["value"] == '11':
+                    stend_count_all += 1
+                elif choic["value"] == '12':
+                    web_count_all += 1
 
     for section in grouping_json["pages"]:
 
         if section['id'] == 1:
 
             stend_count_yes = 0
-            stend_count_all = 0
             web_count_yes = 0
-            web_count_all = 0
 
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
-
                         for items in answers[ans]:
-
                             if items['text'] == '11':
-                                stend_count_all += 1
                                 stend_count_yes += int(items['value'])
                             elif items['text'] == '12':
-                                web_count_all += 1
                                 web_count_yes += int(items['value'])
 
             try:
@@ -63,10 +72,8 @@ def culture_rating(quota, invalid_person, answers, grouping_json):
 
         elif section['id'] == 2:
             service_web_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -82,10 +89,8 @@ def culture_rating(quota, invalid_person, answers, grouping_json):
 
         elif section['id'] == 3:
             comfort_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -100,30 +105,78 @@ def culture_rating(quota, invalid_person, answers, grouping_json):
                           "rating": rating}
 
         elif section['id'] == 4:
-            invalid_1_count = 0
-
-            for criterion in section["criterion"]:
+            invalid_3_1_1_count = 0
+            for criterion in section["criterion"][0:4]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
-                            invalid_1_count += int(items['value'])
-
-            if invalid_1_count * int(points["p_3_1"]) < 100:
-                rating = invalid_1_count * int(points["p_3_1"])
+                            invalid_3_1_1_count += int(items['value'])
+            if invalid_3_1_1_count > 0:
+                rating = int(points["p_3_1"])
             else:
-                rating = 100
+                rating = 0
+            rating_3_1_1 = {"rating": rating}
 
-            rating_3_1 = {"invalid_1_count": invalid_1_count,
-                          "rating": rating}
+            invalid_3_1_2_count = 0
+            for criterion in section["criterion"][4:5]:
+                nomber = criterion['name']
+                for ans in answers:
+                    if ans == nomber:
+                        for items in answers[ans]:
+                            invalid_3_1_2_count += int(items['value'])
+            if invalid_3_1_2_count > 0:
+                rating = int(points["p_3_1"])
+            else:
+                rating = 0
+            rating_3_1_2 = {"rating": rating}
+
+            invalid_3_1_3_count = 0
+            for criterion in section["criterion"][5:8]:
+                nomber = criterion['name']
+                for ans in answers:
+                    if ans == nomber:
+                        for items in answers[ans]:
+                            invalid_3_1_3_count += int(items['value'])
+            if invalid_3_1_3_count > 0:
+                rating = int(points["p_3_1"])
+            else:
+                rating = 0
+            rating_3_1_3 = {"rating": rating}
+
+            invalid_3_1_chair_count = 0
+            for criterion in section["criterion"][8:9]:
+                nomber = criterion['name']
+                for ans in answers:
+                    if ans == nomber:
+                        for items in answers[ans]:
+                            invalid_3_1_chair_count += int(items['value'])
+            if invalid_3_1_chair_count > 0:
+                rating = int(points["p_3_1"])
+            else:
+                rating = 0
+            rating_3_1_chair = {"rating": rating}
+
+            invalid_3_1_toilet_count = 0
+            for criterion in section["criterion"][9:]:
+                nomber = criterion['name']
+                for ans in answers:
+                    if ans == nomber:
+                        for items in answers[ans]:
+                            invalid_3_1_toilet_count += int(items['value'])
+            if invalid_3_1_toilet_count > 0:
+                rating = int(points["p_3_1"])
+            else:
+                rating = 0
+            rating_3_1_toilet = {"rating": rating}
+
+            rat = rating_3_1_1["rating"] + rating_3_1_2["rating"] + rating_3_1_3["rating"] + rating_3_1_chair["rating"] + rating_3_1_toilet["rating"]
+            rating_3_1 = {"rating": rat}
 
         elif section['id'] == 5:
             invalid_2_count = 0
-
             for criterion in section["criterion"]:
                 nomber = criterion['name']
-
                 for ans in answers:
                     if ans == nomber:
                         for items in answers[ans]:
@@ -170,6 +223,11 @@ def culture_rating(quota, invalid_person, answers, grouping_json):
         "count_person_2_3": int(rating_respondents['count_person_2_3']),
 
         "rating_3_1": rating_3_1,
+        "rating_3_1_1": rating_3_1_1,
+        "rating_3_1_2": rating_3_1_2,
+        "rating_3_1_3": rating_3_1_3,
+        "rating_3_1_chair": rating_3_1_chair,
+        "rating_3_1_toilet": rating_3_1_toilet,
         "rating_3_2": rating_3_2,
         "rating_3_3": rating_respondents['rating_3_3'],
         "count_invalid_person_3_3": int(rating_respondents['count_invalid_person_3_3']),
