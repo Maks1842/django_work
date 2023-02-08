@@ -265,9 +265,6 @@
       "79": [
         "1"
       ],
-      "80": [
-        "1"
-      ],
       "81": [
         "1"
       ],
@@ -522,9 +519,6 @@
       "34": [
         "1"
       ],
-      "35": [
-        "1"
-      ],
       "36": [
         "1"
       ],
@@ -567,8 +561,7 @@
         "12"
       ],
       "3": [
-        "11",
-        "12"
+        "11"
       ],
       "4": [
         "11",
@@ -590,8 +583,7 @@
         "12"
       ],
       "9": [
-        "11",
-        "12"
+        "3"
       ],
       "10": [
         "11",
@@ -13430,9 +13422,9 @@
     "email": "qwr@mail.ru",
     "parent": null,
     "department": 4,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "9999",
+    "kpp": "9999",
+    "ogrn": "9999",
     "is_deleted": false
   }
 },
@@ -13447,9 +13439,9 @@
     "email": "asdf@mail.ru",
     "parent": null,
     "department": 4,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "8888",
+    "kpp": "8888",
+    "ogrn": "8888",
     "is_deleted": false
   }
 },
@@ -13464,9 +13456,9 @@
     "email": "asdf@mail.ru",
     "parent": null,
     "department": 1,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "7777",
+    "kpp": "7777",
+    "ogrn": "7777",
     "is_deleted": false
   }
 },
@@ -13481,9 +13473,9 @@
     "email": "qwr@mail.ru",
     "parent": null,
     "department": 1,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "6666",
+    "kpp": "6666",
+    "ogrn": "6666",
     "is_deleted": false
   }
 },
@@ -13498,9 +13490,9 @@
     "email": "wert@sg.com",
     "parent": null,
     "department": 7,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "5555",
+    "kpp": "5555",
+    "ogrn": "5555",
     "is_deleted": false
   }
 },
@@ -13515,9 +13507,9 @@
     "email": "qwer@asd.ru",
     "parent": null,
     "department": 2,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "4444",
+    "kpp": "4444",
+    "ogrn": "4444",
     "is_deleted": false
   }
 },
@@ -13532,9 +13524,9 @@
     "email": "sz@fg.ru",
     "parent": null,
     "department": 2,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "3333",
+    "kpp": "3333",
+    "ogrn": "3333",
     "is_deleted": false
   }
 },
@@ -13549,9 +13541,9 @@
     "email": "qwt@sd.ru",
     "parent": null,
     "department": 2,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "2222",
+    "kpp": "2222",
+    "ogrn": "2222",
     "is_deleted": false
   }
 },
@@ -13566,9 +13558,9 @@
     "email": "sz@fg.ru",
     "parent": null,
     "department": 2,
-    "inn": null,
-    "kpp": null,
-    "ogrn": null,
+    "inn": "1111",
+    "kpp": "1111",
+    "ogrn": "1111",
     "is_deleted": false
   }
 },
@@ -14836,62 +14828,60 @@
     "type_organisations": 3,
     "checking": 1,
     "ratings_json": {
-      "ratings": {
-        "quota": 53,
-        "rating_1": 97.6,
-        "rating_2": 78.0,
-        "rating_3": 100.0,
-        "rating_4": 77.8,
-        "rating_5": 78.7,
-        "rating_1_1": {
-          "rating": 100.0,
-          "web_count_all": 33,
-          "web_count_yes": 33,
-          "stend_count_all": 48,
-          "stend_count_yes": 48
-        },
-        "rating_1_2": {
-          "rating": 100,
-          "service_web_count": 6
-        },
-        "rating_1_3": 94.0,
-        "rating_2_1": {
-          "rating": 100,
-          "comfort_count": 6
-        },
-        "rating_2_2": 66.0,
-        "rating_2_3": 72.0,
-        "rating_3_1": {
-          "rating": 100,
-          "invalid_1_count": 5
-        },
-        "rating_3_2": {
-          "rating": 100,
-          "invalid_2_count": 5
-        },
-        "rating_3_3": 100.0,
-        "rating_4_1": 79.0,
-        "rating_4_2": 75.0,
-        "rating_4_3": 81.0,
-        "rating_5_1": 74.0,
-        "rating_5_2": 75.0,
-        "rating_5_3": 83.0,
-        "rating_2_2_1": 40,
-        "rating_2_2_2": 91.0,
-        "rating_total": 86.42,
-        "invalid_person": 2,
-        "count_person_2_3": 38,
-        "count_person_4_1": 42,
-        "count_person_4_2": 40,
-        "count_person_4_3": 43,
-        "count_person_5_1": 39,
-        "count_person_5_2": 40,
-        "count_person_5_3": 44,
-        "count_person_2_2_2": 48,
-        "count_person_1_3_web": 50,
-        "count_person_1_3_stend": 50,
-        "count_invalid_person_3_3": 2
-      }
+      "quota": 53,
+      "rating_1": 84.7,
+      "rating_2": 83.5,
+      "rating_3": 92.0,
+      "rating_4": 76.2,
+      "rating_5": 83.0,
+      "rating_1_1": {
+        "rating": 69.0,
+        "web_count_all": 59,
+        "web_count_yes": 33,
+        "stend_count_all": 59,
+        "stend_count_yes": 48
+      },
+      "rating_1_2": {
+        "rating": 100,
+        "service_web_count": 6
+      },
+      "rating_1_3": 85.0,
+      "rating_2_1": {
+        "rating": 100,
+        "comfort_count": 6
+      },
+      "rating_2_2": 67.0,
+      "rating_2_3": 89.0,
+      "rating_3_1": {
+        "rating": 100,
+        "invalid_1_count": 5
+      },
+      "rating_3_2": {
+        "rating": 80,
+        "invalid_2_count": 4
+      },
+      "rating_3_3": 100.0,
+      "rating_4_1": 74.0,
+      "rating_4_2": 72.0,
+      "rating_4_3": 89.0,
+      "rating_5_1": 85.0,
+      "rating_5_2": 70.0,
+      "rating_5_3": 87.0,
+      "rating_2_2_1": 40,
+      "rating_2_2_2": 94.0,
+      "rating_total": 83.88,
+      "invalid_person": 2,
+      "count_person_2_3": 47,
+      "count_person_4_1": 39,
+      "count_person_4_2": 38,
+      "count_person_4_3": 47,
+      "count_person_5_1": 45,
+      "count_person_5_2": 37,
+      "count_person_5_3": 46,
+      "count_person_2_2_2": 50,
+      "count_person_1_3_web": 45,
+      "count_person_1_3_stend": 45,
+      "count_invalid_person_3_3": 2
     },
     "is_deleted": false
   }
@@ -14904,58 +14894,70 @@
     "type_organisations": 1,
     "checking": 2,
     "ratings_json": {
-      "ratings": {
-        "quota": 46,
-        "rating_1": 99.2,
-        "rating_2": 91.5,
-        "rating_3": 100.0,
-        "rating_4": 76.2,
-        "rating_5": 73.2,
-        "rating_1_1": {
-          "rating": 100.0,
-          "web_count_all": 8,
-          "web_count_yes": 8,
-          "stend_count_all": 6,
-          "stend_count_yes": 6
-        },
-        "rating_1_2": {
-          "rating": 100,
-          "service_web_count": 6
-        },
-        "rating_1_3": 98.0,
-        "rating_2_1": {
-          "rating": 100,
-          "comfort_count": 6
-        },
-        "rating_2_3": 83.0,
-        "rating_3_1": {
-          "rating": 100,
-          "invalid_1_count": 10
-        },
-        "rating_3_2": {
-          "rating": 100,
-          "invalid_2_count": 6
-        },
-        "rating_3_3": 100.0,
-        "rating_4_1": 74.0,
-        "rating_4_2": 74.0,
-        "rating_4_3": 85.0,
-        "rating_5_1": 72.0,
-        "rating_5_2": 83.0,
-        "rating_5_3": 70.0,
-        "rating_total": 88.02,
-        "invalid_person": 3,
-        "count_person_2_3": 38,
-        "count_person_4_1": 34,
-        "count_person_4_2": 34,
-        "count_person_4_3": 39,
-        "count_person_5_1": 33,
-        "count_person_5_2": 38,
-        "count_person_5_3": 32,
-        "count_person_1_3_web": 46,
-        "count_person_1_3_stend": 46,
-        "count_invalid_person_3_3": 3
-      }
+      "quota": 46,
+      "rating_1": 83.2,
+      "rating_2": 89.0,
+      "rating_3": 94.0,
+      "rating_4": 81.2,
+      "rating_5": 78.0,
+      "rating_1_1": {
+        "rating": 56.0,
+        "web_count_all": 14,
+        "web_count_yes": 8,
+        "stend_count_all": 11,
+        "stend_count_yes": 6
+      },
+      "rating_1_2": {
+        "rating": 100,
+        "service_web_count": 6
+      },
+      "rating_1_3": 91.0,
+      "rating_2_1": {
+        "rating": 100,
+        "comfort_count": 6
+      },
+      "rating_2_3": 78.0,
+      "rating_3_1": {
+        "rating": 80
+      },
+      "rating_3_2": {
+        "rating": 100,
+        "invalid_2_count": 6
+      },
+      "rating_3_3": 100.0,
+      "rating_4_1": 76.0,
+      "rating_4_2": 89.0,
+      "rating_4_3": 76.0,
+      "rating_5_1": 80.0,
+      "rating_5_2": 85.0,
+      "rating_5_3": 74.0,
+      "rating_3_1_1": {
+        "rating": 20
+      },
+      "rating_3_1_2": {
+        "rating": 20
+      },
+      "rating_3_1_3": {
+        "rating": 20
+      },
+      "rating_total": 85.08,
+      "invalid_person": 3,
+      "count_person_2_3": 36,
+      "count_person_4_1": 35,
+      "count_person_4_2": 41,
+      "count_person_4_3": 35,
+      "count_person_5_1": 37,
+      "count_person_5_2": 39,
+      "count_person_5_3": 34,
+      "rating_3_1_chair": {
+        "rating": 20
+      },
+      "rating_3_1_toilet": {
+        "rating": 0
+      },
+      "count_person_1_3_web": 44,
+      "count_person_1_3_stend": 44,
+      "count_invalid_person_3_3": 3
     },
     "is_deleted": false
   }
@@ -14968,58 +14970,56 @@
     "type_organisations": 10,
     "checking": 2,
     "ratings_json": {
-      "ratings": {
-        "quota": 120,
-        "rating_1": 98.0,
-        "rating_2": 91.0,
-        "rating_3": 89.0,
-        "rating_4": 78.4,
-        "rating_5": 80.1,
-        "rating_1_1": {
-          "rating": 100.0,
-          "web_count_all": 7,
-          "web_count_yes": 7,
-          "stend_count_all": 7,
-          "stend_count_yes": 7
-        },
-        "rating_1_2": {
-          "rating": 100,
-          "service_web_count": 6
-        },
-        "rating_1_3": 95.0,
-        "rating_2_1": {
-          "rating": 100,
-          "comfort_count": 6
-        },
-        "rating_2_3": 82.0,
-        "rating_3_1": {
-          "rating": 100,
-          "invalid_1_count": 5
-        },
-        "rating_3_2": {
-          "rating": 80,
-          "invalid_2_count": 4
-        },
-        "rating_3_3": 90.0,
-        "rating_4_1": 75.0,
-        "rating_4_2": 82.0,
-        "rating_4_3": 78.0,
-        "rating_5_1": 82.0,
-        "rating_5_2": 70.0,
-        "rating_5_3": 83.0,
-        "rating_total": 87.3,
-        "invalid_person": 10,
-        "count_person_2_3": 98,
-        "count_person_4_1": 90,
-        "count_person_4_2": 99,
-        "count_person_4_3": 94,
-        "count_person_5_1": 98,
-        "count_person_5_2": 84,
-        "count_person_5_3": 100,
-        "count_person_1_3_web": 114,
-        "count_person_1_3_stend": 114,
-        "count_invalid_person_3_3": 9
-      }
+      "quota": 120,
+      "rating_1": 80.3,
+      "rating_2": 91.0,
+      "rating_3": 89.0,
+      "rating_4": 85.4,
+      "rating_5": 75.6,
+      "rating_1_1": {
+        "rating": 57.0,
+        "web_count_all": 14,
+        "web_count_yes": 7,
+        "stend_count_all": 11,
+        "stend_count_yes": 7
+      },
+      "rating_1_2": {
+        "rating": 100,
+        "service_web_count": 6
+      },
+      "rating_1_3": 83.0,
+      "rating_2_1": {
+        "rating": 100,
+        "comfort_count": 6
+      },
+      "rating_2_3": 82.0,
+      "rating_3_1": {
+        "rating": 100,
+        "invalid_1_count": 5
+      },
+      "rating_3_2": {
+        "rating": 80,
+        "invalid_2_count": 4
+      },
+      "rating_3_3": 90.0,
+      "rating_4_1": 82.0,
+      "rating_4_2": 87.0,
+      "rating_4_3": 89.0,
+      "rating_5_1": 82.0,
+      "rating_5_2": 80.0,
+      "rating_5_3": 70.0,
+      "rating_total": 84.26,
+      "invalid_person": 10,
+      "count_person_2_3": 98,
+      "count_person_4_1": 99,
+      "count_person_4_2": 104,
+      "count_person_4_3": 107,
+      "count_person_5_1": 99,
+      "count_person_5_2": 96,
+      "count_person_5_3": 84,
+      "count_person_1_3_web": 98,
+      "count_person_1_3_stend": 98,
+      "count_invalid_person_3_3": 9
     },
     "is_deleted": false
   }
@@ -15032,58 +15032,56 @@
     "type_organisations": 5,
     "checking": 4,
     "ratings_json": {
-      "ratings": {
-        "quota": 85,
-        "rating_1": 99.2,
-        "rating_2": 92.0,
-        "rating_3": 94.0,
-        "rating_4": 86.8,
-        "rating_5": 79.6,
-        "rating_1_1": {
-          "rating": 100.0,
-          "web_count_all": 37,
-          "web_count_yes": 37,
-          "stend_count_all": 12,
-          "stend_count_yes": 12
-        },
-        "rating_1_2": {
-          "rating": 100,
-          "service_web_count": 6
-        },
-        "rating_1_3": 98.0,
-        "rating_2_1": {
-          "rating": 100,
-          "comfort_count": 5
-        },
-        "rating_2_3": 84.0,
-        "rating_3_1": {
-          "rating": 100,
-          "invalid_1_count": 5
-        },
-        "rating_3_2": {
-          "rating": 100,
-          "invalid_2_count": 5
-        },
-        "rating_3_3": 80.0,
-        "rating_4_1": 89.0,
-        "rating_4_2": 89.0,
-        "rating_4_3": 78.0,
-        "rating_5_1": 80.0,
-        "rating_5_2": 73.0,
-        "rating_5_3": 82.0,
-        "rating_total": 90.32,
-        "invalid_person": 5,
-        "count_person_2_3": 71,
-        "count_person_4_1": 76,
-        "count_person_4_2": 76,
-        "count_person_4_3": 66,
-        "count_person_5_1": 68,
-        "count_person_5_2": 62,
-        "count_person_5_3": 70,
-        "count_person_1_3_web": 81,
-        "count_person_1_3_stend": 81,
-        "count_invalid_person_3_3": 4
-      }
+      "quota": 85,
+      "rating_1": 83.5,
+      "rating_2": 85.5,
+      "rating_3": 94.0,
+      "rating_4": 78.4,
+      "rating_5": 81.0,
+      "rating_1_1": {
+        "rating": 77.0,
+        "web_count_all": 46,
+        "web_count_yes": 35,
+        "stend_count_all": 14,
+        "stend_count_yes": 11
+      },
+      "rating_1_2": {
+        "rating": 100,
+        "service_web_count": 6
+      },
+      "rating_1_3": 76.0,
+      "rating_2_1": {
+        "rating": 100,
+        "comfort_count": 5
+      },
+      "rating_2_3": 71.0,
+      "rating_3_1": {
+        "rating": 100,
+        "invalid_1_count": 5
+      },
+      "rating_3_2": {
+        "rating": 100,
+        "invalid_2_count": 5
+      },
+      "rating_3_3": 80.0,
+      "rating_4_1": 78.0,
+      "rating_4_2": 75.0,
+      "rating_4_3": 86.0,
+      "rating_5_1": 86.0,
+      "rating_5_2": 76.0,
+      "rating_5_3": 80.0,
+      "rating_total": 84.48,
+      "invalid_person": 5,
+      "count_person_2_3": 60,
+      "count_person_4_1": 66,
+      "count_person_4_2": 64,
+      "count_person_4_3": 73,
+      "count_person_5_1": 73,
+      "count_person_5_2": 65,
+      "count_person_5_3": 68,
+      "count_person_1_3_web": 66,
+      "count_person_1_3_stend": 66,
+      "count_invalid_person_3_3": 4
     },
     "is_deleted": false
   }
@@ -15153,6 +15151,7 @@
     "name": "Здравоохранение амбулатория. 24.11.2022",
     "type_organisations": 2,
     "template_file": "act_check_ambul.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15164,6 +15163,7 @@
     "name": "Здравоохранение стационар. 24.11.2022",
     "type_organisations": 3,
     "template_file": "act_check_hospital.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15175,6 +15175,7 @@
     "name": "Культура - стандарт. 24.11.2022",
     "type_organisations": 10,
     "template_file": "act_cult_standart.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15186,6 +15187,7 @@
     "name": "Культура - культурное наследие. 24.11.2022",
     "type_organisations": 1,
     "template_file": "act_cult_legacy.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15196,7 +15198,8 @@
   "fields": {
     "name": "Образование ДОУ",
     "type_organisations": 4,
-    "template_file": "act_check_kindergarten.html",
+    "template_file": "act_check_kindergarden.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15208,6 +15211,7 @@
     "name": "Образование ОО, СКОУ",
     "type_organisations": 5,
     "template_file": "act_check_school.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15219,6 +15223,7 @@
     "name": "Профессиональное образование (СПО, ДПО)",
     "type_organisations": 7,
     "template_file": "act_check_techcollege.html",
+    "type_templates": 1,
     "version": null,
     "is_deleted": false
   }
@@ -15230,6 +15235,103 @@
     "name": "Дополнительное образование. 24.11.2022",
     "type_organisations": 9,
     "template_file": "act_check_addeducation.html",
+    "type_templates": 1,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 9,
+  "fields": {
+    "name": "Рейтинг Школа 03.02.2023",
+    "type_organisations": 5,
+    "template_file": "rating_school.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 10,
+  "fields": {
+    "name": "Рейтинг Здрав Стационар 03.02.2023",
+    "type_organisations": 3,
+    "template_file": "rating_hospital.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 11,
+  "fields": {
+    "name": "Рейтинг Культура Стандарт 03.02.2023",
+    "type_organisations": 10,
+    "template_file": "rating_cult_standart.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 12,
+  "fields": {
+    "name": "Рейтинг Культура Наследие 03.02.2023",
+    "type_organisations": 1,
+    "template_file": "rating_cult_legacy.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 13,
+  "fields": {
+    "name": "Рейтинг Здрав Амбулатория 03.02.2023",
+    "type_organisations": 2,
+    "template_file": "rating_ambul.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 14,
+  "fields": {
+    "name": "Рейтинг Детскийсад 03.02.2023",
+    "type_organisations": 4,
+    "template_file": "rating_kindergarden.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 15,
+  "fields": {
+    "name": "Рейтинг Техникум 03.02.2023",
+    "type_organisations": 7,
+    "template_file": "rating_techcollege.html",
+    "type_templates": 2,
+    "version": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.templates",
+  "pk": 16,
+  "fields": {
+    "name": "Рейтинг Доп. образование 03.02.2023",
+    "type_organisations": 9,
+    "template_file": "rating_addeducation.html",
+    "type_templates": 2,
     "version": null,
     "is_deleted": false
   }
@@ -15519,6 +15621,20 @@
   "fields": {
     "organisation": 1,
     "type_organisation": 1
+  }
+},
+{
+  "model": "checklist.type_templates",
+  "pk": 1,
+  "fields": {
+    "type": "Акт"
+  }
+},
+{
+  "model": "checklist.type_templates",
+  "pk": 2,
+  "fields": {
+    "type": "Рейтинг"
   }
 }
 ]
