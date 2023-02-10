@@ -1,4 +1,3 @@
-
 from ...app_models import *
 from ...app_serializers.answers_serializer import AnswersSerializer
 from rest_framework.views import APIView
@@ -25,64 +24,66 @@ from .techcollege import techcollege_rating
 '''
 
 
-class CalculatingRatingAPIView(APIView):
+# class CalculatingRatingAPIView(APIView):
+#     @swagger_auto_schema(
+#         methods=['get'],
+#         tags=['Рейтинг'],
+#         operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
+#         manual_parameters=[
+#             openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
+#                               type=openapi.TYPE_INTEGER),
+#             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+#                               type=openapi.TYPE_INTEGER),
+#             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+#                               type=openapi.TYPE_INTEGER),
+#
+#         ])
+#     @action(methods=['get'], detail=False)
+#     def get(self, request):
+#
+#         checking = request.query_params.get('id_checking')
+#         organisation = request.query_params.get('id_organisation')
+#         type_organisation = request.query_params.get('id_type_organisation')
 
-    permission_classes = [IsAdminUser]
-    @swagger_auto_schema(
-        methods=['get'],
-        tags=['Рейтинг'],
-        operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
-        manual_parameters=[
-            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
-                              type=openapi.TYPE_INTEGER),
+def calculating_rating(checking, organisation, type_organisation):
 
-        ])
-    @action(methods=['get'], detail=False)
-    def get(self, request):
-        rating = {}
+    rating = {}
 
-        checking = request.query_params.get('id_checking')
-        organisation = request.query_params.get('id_organisation')
-        type_organisation = request.query_params.get('id_type_organisation')
+    queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
-        queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
+    try:
+        answer_set = Answers.objects.filter(checking_id=checking).get(organisations_id=organisation)
+    except:
+        return Response({'error': 'Не найдены данные о результатах запрашиваемой проверки.'})
 
-        try:
-            answer_set = Answers.objects.filter(checking_id=checking, type_organisations=type_organisation).get(organisations_id=organisation)
-        except:
-            return Response({'error': 'Не найдены данные о результатах запрашиваемой проверки.'})
+    act_answer = answer_set.answers_json
+    quota = answer_set.quota
+    invalid_person = answer_set.invalid_person
 
-        act_answer = answer_set.answers_json
-        quota = answer_set.quota
-        invalid_person = answer_set.invalid_person
+    form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
+    form_json_to_calculate = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json_to_calculate
+    query = Question_Values.objects.values()
 
-        form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
-        form_json_to_calculate = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json_to_calculate
-        query = Question_Values.objects.values()
+    comparison = do_some_magic(form_json, act_answer)
+    answers = answer_in_the_act(comparison, query)
 
-        comparison = do_some_magic(form_json, act_answer)
-        answers = answer_in_the_act(comparison, query)
+    if type_organisation == '1':
+        rating = culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    elif type_organisation == '10':
+        rating = culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    elif type_organisation == '2' or type_organisation == '3':
+        rating = healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    elif type_organisation == '4':
+        rating = kindergarden_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    elif type_organisation == '5':
+        rating = school_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    elif type_organisation == '7':
+        rating = techcollege_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    elif type_organisation == '9':
+        rating = addeducation_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
 
-        if type_organisation == '1':
-            rating = culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        elif type_organisation == '10':
-            rating = culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        elif type_organisation == '2' or type_organisation == '3':
-            rating = healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        elif type_organisation == '4':
-            rating = kindergarden_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        elif type_organisation == '5':
-            rating = school_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        elif type_organisation == '7':
-            rating = techcollege_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        elif type_organisation == '9':
-            rating = addeducation_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-
-        return Response(rating)
+    # return Response(rating)
+    return rating
 
 
 '''

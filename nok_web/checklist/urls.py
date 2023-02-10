@@ -9,15 +9,15 @@ from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 
 from .views_api.act_answer_into_pdf import *
-from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAPIView
+# from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAPIView
 from .views_api.calculating_rating.change_ratings_api import ChangeRatingsAPIView
 from .views_api.calculating_rating.ratings_api import RatingsAPIView
 from .views_api.calculating_rating.ratings_into_pdf import GetRatingsIntoPdfAPIView
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
-    GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, AnswersAPIUpdate
+    GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
-from .views_api.statistics import GetCheckingsListAPIView, GetOrganisationListAPIView, GetStatisticUserAPIView
+from .views_api.statistics import StatisticUserAPIView, StatisticCheckingsListAPIView, StatisticOrganisationListAPIView
 from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView, \
     GetProfileUserAPIView, GetActGroupingAPIView
 
@@ -51,7 +51,6 @@ urlpatterns = [
 
     # Основные API
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
-    path('api/v1/Answers/<int:pk>/', AnswersAPIUpdate.as_view(), name='Answers_update'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
     path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
     path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='GetListTypeOrganizations'),
@@ -63,12 +62,12 @@ urlpatterns = [
     path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='GetResultCheckingIntoPdf'),
 
     # Для Статистики
-    path('api/v1/getCheckingsList/', GetCheckingsListAPIView.as_view(), name='GetCheckingsList'),
-    path('api/v1/getOrganisationList/', GetOrganisationListAPIView.as_view(), name='GetOrganisationList'),
-    path('api/v1/getStatisticUser/', GetStatisticUserAPIView.as_view(), name='GetStatisticUser'),
+    path('api/v1/StatisticCheckingsList/', StatisticCheckingsListAPIView.as_view(), name='StatisticCheckingsList'),
+    path('api/v1/StatisticOrganisationList/', StatisticOrganisationListAPIView.as_view(), name='StatisticOrganisationList'),
+    path('api/v1/StatisticUser/', StatisticUserAPIView.as_view(), name='StatisticUser'),
 
     # Для рассчета бальной оценки
-    path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
+    # path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
     path('api/v1/ChangeRatings/', ChangeRatingsAPIView.as_view(), name='ChangeRatings'),
     path('api/v1/Ratings/', RatingsAPIView.as_view(), name='Ratings'),
     path('api/v1/getRatingsIntoPdf/', GetRatingsIntoPdfAPIView.as_view(), name='GetRatingsIntoPdf'),

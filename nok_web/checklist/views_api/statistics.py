@@ -1,6 +1,6 @@
 from ..app_models import *
 from ..app_serializers.answers_serializer import AnswersSerializer
-from rest_framework import generics, viewsets, status, mixins
+from django.core.paginator import Paginator
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
@@ -15,20 +15,29 @@ from rest_framework.permissions import IsAdminUser
 '''
 
 
-class GetCheckingsListAPIView(APIView):
+class StatisticCheckingsListAPIView(APIView):
 
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Статистика'],
-        operation_description="Получить список проверок.")
+        operation_description="Получить список проверок. Если страница не указана, то получить первую страницу",
+        manual_parameters=[
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
+                              type=openapi.TYPE_INTEGER)
+        ])
     @action(detail=False, methods=['get'])
     def get(self, request):
+        page = request.query_params.get('page')
+
+        if page is None:
+            page = 1
 
         queryset = Checking.objects.all()
+        paginator = Paginator(queryset, 20)
 
         result = []
-        for item in queryset:
+        for item in paginator.page(page).object_list:
             count_org_check = List_Checking.objects.filter(checking_id=item.id)
             count_org_complit = Answers.objects.filter(checking_id=item.id)
             result.append({
@@ -43,7 +52,7 @@ class GetCheckingsListAPIView(APIView):
         return Response(result)
 
 
-class GetOrganisationListAPIView(APIView):
+class StatisticOrganisationListAPIView(APIView):
 
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
@@ -57,19 +66,29 @@ class GetOrganisationListAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         checking = request.query_params.get('checking_id')
-        department = Checking.objects.values('department').get(pk=checking)
-        queryset = Organisations.objects.filter(department=department['department'])
+        # department = Checking.objects.values('department').get(pk=checking)
+        # queryset = Organisations.objects.filter(department=department['department'])
+        queryset = List_Checking.objects.filter(checking_id=checking)
 
         result = []
         for item in queryset:
+
+            if Ratings.objects.filter(checking_id=checking, organisations_id=item.organisation_id):
+                rating_json = Ratings.objects.filter(checking_id=checking).get(organisations_id=item.organisation_id).ratings_json
+                rating = rating_json['rating_total']['value']
+            else:
+                rating = 0
+
             result.append({
-                'id': item.id,
-                'name': item.organisation_name,
+                'id': item.organisation_id,
+                'name': item.organisation.organisation_name,
+                'date': item.date_check_org,
+                'rating': rating,
             })
         return Response(result)
 
 
-class GetStatisticUserAPIView(APIView):
+class StatisticUserAPIView(APIView):
 
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(

@@ -1,142 +1,7 @@
-<form>
+<html lang="ru">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-        <title></title>
-        <style>
-            @page {
-                size: A4;
-                margin-left: 1cm;
-                margin-right: 1cm;
-                margin-top: 1.5cm;
-                margin-bottom: 1.5cm
-            }
-
-            p {
-                color: #000000;
-                line-height: 115%;
-                text-align: left;
-                orphans: 2;
-                widows: 2;
-                direction: ltr;
-                background: transparent;
-                margin: 0;
-                padding: 0;
-            }
-
-            p.header {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 14pt;
-            }
-
-            p.title {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 16pt;
-                text-align: center
-            }
-
-            p.num {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 12pt;
-                text-align: center
-            }
-
-            p.question {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 12pt
-            }
-
-            .tab {
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-rating {
-                width: 570px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-name {
-                width: 700px;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-item {
-                width: 700px;
-                height: 20px;
-                border-bottom: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-section {
-                width: 700px;
-                border: none;
-                padding-top: 1px;
-                padding-bottom: 5px;
-                padding-left: 1px;
-                padding-right: 1px
-            }
-
-            .tab-title {
-                width: 700px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-num {
-                width: 30px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-quest {
-                width: 520px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-quest-2 {
-                width: 390px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-answr {
-                width: 65px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-answr-1 {
-                width: 130px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-answr-2 {
-                width: 300px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-end-text {
-                width: 230px;
-                background: transparent;
-                border: none;
-                padding-top: 20px
-            }
-        </style>
+        <link rel="stylesheet" href="/nok_web/nok_web/static/css/style_checkings.css">
     </head>
 
     <body>
@@ -163,7 +28,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Наименование образовательной организации
                 </p>
             </td>
@@ -171,7 +36,7 @@
 
         <tr>
             <td class="tab-item">
-                <p class="question">
+                <p class="header_value">
                     {{ name_org }}
                 </p>
             </td>
@@ -182,7 +47,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     ИНН организации
                 </p>
             </td>
@@ -190,7 +55,7 @@
 
         <tr>
             <td class="tab-item">
-                <p class="question">
+                <p class="header_value">
                     {{ inn }}
                 </p>
             </td>
@@ -201,7 +66,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Адрес организации
                 </p>
             </td>
@@ -209,7 +74,7 @@
 
         <tr>
             <td class="tab-item">
-                <p class="question">
+                <p class="header_value">
                     {{ address_org }}
                 </p>
             </td>
@@ -220,7 +85,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Дата посещения организации
                 </p>
             </td>
@@ -228,7 +93,7 @@
 
         <tr>
             <td class="tab-item">
-                <p class="question">
+                <p class="header_value">
                     {{ date_check }}
                 </p>
             </td>
@@ -239,7 +104,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Адрес сайта в сети "Интернет"
                 </p>
             </td>
@@ -247,7 +112,7 @@
 
         <tr>
             <td class="tab-item">
-                <p class="question">
+                <p class="header_value">
                     {{ website }}
                 </p>
             </td>
@@ -258,7 +123,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Дата мониторинга сайта
                 </p>
             </td>
@@ -266,7 +131,7 @@
 
         <tr>
             <td class="tab-item">
-                <p class="question">
+                <p class="header_value">
                     {{ date_check }}
                 </p>
             </td>
@@ -280,20 +145,19 @@
         <tr>
             <td colspan="4"
                 class="tab-section">
-                <p class="title" style="font-size: 22pt">
+                <p class="title" style="font-size: 18pt">
                     <b>Итоговый балл</b>
                 </p>
             </td>
         </tr>
         <tr>
             <td class="tab-section">
-                <p class="title" style="font-size: 22pt">
-                    {{ ratings.rating_total }}
+                <p class="title" style="font-size: 18pt">
+                    <b>{{ ratings.rating_total }}</b>
                 </p>
             </td>
         </tr>
     </table>
-    <br/>
     <br/>
 
     <table style="border-collapse: collapse">
@@ -372,15 +236,15 @@
 
         <tr>
             <td class="tab-num">
-                <p class="num">№ п/п</p>
+                <p class="num">№</p>
             </td>
             <td class="tab-quest">
-                <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
+                <p class="num">
                     Наименование документов
                 </p>
             </td>
             <td class="tab-answr">
-                <p class="num" style="font-size: 10pt">
+                <p class="num" style="font-size: 8pt">
                     Наличие
                 </p>
                 <p class="num">
@@ -388,7 +252,7 @@
                 </p>
             </td>
             <td class="tab-answr">
-                <p class="num" style="font-size: 10pt">
+                <p class="num" style="font-size: 8pt">
                     Наличие
                 </p>
                 <p class="num">
@@ -2483,4 +2347,4 @@
     </table>
     <br/>
     </body>
-</form>
+</html>

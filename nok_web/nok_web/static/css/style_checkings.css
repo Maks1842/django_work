@@ -1,0 +1,134 @@
+/* Стили для Актов и Рейтингов */
+
+@page {
+    size: A4;
+    margin-left: 1cm;
+    margin-right: 1cm;
+    margin-top: 1.5cm;
+    margin-bottom: 1.5cm
+}
+
+p {
+    color: #000000;
+    line-height: 115%;
+    text-align: left;
+    orphans: 2;
+    widows: 2;
+    direction: ltr;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+p.header {
+    font: 1.2em 'Times New Roman', serif;
+    font-size: 11pt;
+}
+
+p.header_value {
+    font: 1.2em 'Times New Roman', serif;
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+p.title {
+    font: 1.2em 'Times New Roman', serif;
+    font-size: 14pt;
+    text-align: center
+}
+
+p.num {
+    font: 1.2em 'Times New Roman', serif;
+    font-size: 10pt;
+    text-align: center
+}
+
+p.question {
+    font: 1.2em 'Times New Roman', serif;
+    font-size: 10pt
+}
+
+.tab {
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-rating {
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-name {
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-item {
+    width: 18.5cm;
+    border-bottom: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-section {
+    width: 18.5cm;
+    border: none;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    padding-right: 1px
+}
+
+.tab-title {
+    width: 18.5cm;
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-num {
+    width: 0.7cm;
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-quest {
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-quest-2 {
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-answr {
+    width: 2cm;
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-answr-1 {
+    width: 4cm;
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-answr-2 {
+    border: 1px solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in
+}
+
+.tab-end-text {
+    background: transparent;
+    border: none;
+    padding-top: 20px
+}

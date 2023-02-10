@@ -228,10 +228,10 @@ class FormsActAdmin(admin.ModelAdmin):
 
 
 class CheckingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'date_checking', 'region', 'department', 'is_deleted')
-    search_fields = ('name', 'date_checking', 'region', 'department', 'is_deleted')
-    list_editable = ('name', 'date_checking', 'region', 'department', 'is_deleted')
-    list_filter = ('name', 'date_checking', 'region', 'department', 'is_deleted')
+    list_display = ('id', 'name', 'date_checking', 'region', 'department', 'finished', 'is_deleted')
+    search_fields = ('name', 'date_checking', 'region', 'department', 'finished', 'is_deleted')
+    list_editable = ('name', 'date_checking', 'region', 'department', 'finished', 'is_deleted')
+    list_filter = ('name', 'date_checking', 'region', 'department', 'finished', 'is_deleted')
 
 
 class ListCheckingAdmin(admin.ModelAdmin):

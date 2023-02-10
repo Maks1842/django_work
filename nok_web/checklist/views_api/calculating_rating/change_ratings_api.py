@@ -1,17 +1,18 @@
 
 from ...app_models import *
-from ...app_serializers.answers_serializer import AnswersSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework import status
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
-
-from .changes_to_culture import culture_rating
+from django.db import IntegrityError, transaction
+from .changes_to_culture_standart import culture_standart_rating
+from .changes_to_culture_legacy import culture_legacy_rating
 from .changes_to_healthcare import healthcare_rating
 from .changes_to_education import education_rating
-
+from ...app_serializers.ratings_serializer import RatingsSerializer
 
 '''
 Метод корректировки рейтинга, за счет ручного введения количества положительных отзывов респондентов.
@@ -36,7 +37,7 @@ class ChangeRatingsAPIView(APIView):
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('count_person_1_3_web', openapi.IN_QUERY, description="Число удовлетворенных сайтом",
                               type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_2_2_2', openapi.IN_QUERY, description="Число удовлетворенных своевременностью услуг",
+            openapi.Parameter('count_person_2_2_2', openapi.IN_QUERY, description="Число удовлетворенных своевременностью услуг (для здравоохранения)",
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('count_person_2_3', openapi.IN_QUERY, description="Число удовлетворенных комфортом",
                               type=openapi.TYPE_INTEGER),
@@ -78,17 +79,51 @@ class ChangeRatingsAPIView(APIView):
         }
 
         try:
-            ratings_set = Ratings.objects.filter(checking_id=checking, type_organisations=type_organisation).get(organisations_id=organisation)
+            ratings_set = Ratings.objects.filter(checking_id=checking).get(organisations_id=organisation)
         except:
             return Response({'error': 'Не найдены данные о рейтингах запрашиваемой проверки.'})
 
         ratings = ratings_set.ratings_json
 
-        if type_organisation == '1' or type_organisation == '10':
-            rating = culture_rating(ratings, count_person)
+        if type_organisation == '1':
+            rating = culture_legacy_rating(ratings, count_person)
+        elif type_organisation == '10':
+            rating = culture_standart_rating(ratings, count_person)
         elif type_organisation == '2' or type_organisation == '3':
             rating = healthcare_rating(ratings, count_person)
         elif type_organisation == '4' or type_organisation == '5' or type_organisation == '7' or type_organisation == '9':
             rating = education_rating(ratings, count_person)
 
         return Response(rating)
+
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Рейтинг'],
+        operation_description="Добавить/изменить результаты рейтингов",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
+                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'ratings_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты рейтингов'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        serializers = RatingsSerializer(data=req_data)
+        serializers.is_valid(raise_exception=True)
+        try:
+            Ratings.objects.update_or_create(
+                checking=Checking.objects.get(pk=req_data['checking']),
+                organisations=Organisations.objects.get(pk=req_data['organisations']),
+                defaults={'ratings_json': req_data['ratings_json']},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Рейтинг успешно сохранен'})

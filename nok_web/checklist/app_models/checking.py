@@ -10,6 +10,7 @@ class Checking(models.Model):
     date_checking = models.DateField(verbose_name='Дата начала проверки')
     region = models.ForeignKey('Regions', on_delete=models.PROTECT, null=True, verbose_name='Регион')
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
+    finished = models.BooleanField(default=False, verbose_name='Признак завершения проверки')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def __str__(self):

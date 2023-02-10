@@ -1,3 +1,4 @@
+from .calculating_rating.base_calculate_api import calculating_rating
 from ..app_models import *
 from ..app_serializers.answers_serializer import AnswersSerializer
 from rest_framework import generics, viewsets, status, mixins
@@ -8,6 +9,8 @@ from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from django.db import IntegrityError, transaction
 from rest_framework.permissions import IsAdminUser
+
+from ..app_serializers.ratings_serializer import RatingsSerializer
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -88,39 +91,63 @@ class AnswersAPIView(APIView):
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
 
-        return Response({'message': 'Ответ успешно сохранен'})
+        checking = str(req_data['checking'])
+        organisation = str(req_data['organisations'])
+        type_organisation = str(req_data['type_organisations'])
+        rating = calculating_rating(checking, organisation, type_organisation)
 
-
-
-class AnswersAPIUpdate(APIView):
-
-    permission_classes = [IsAdminUser]
-    @swagger_auto_schema(
-        methods=['patch'],
-        tags=['Проверка'],
-        operation_description="Изменить результаты ответов",
-        request_body=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
-            },
-        ))
-    @action(methods=['patch'], detail=True)
-    def patch(self, request, *args, **kwargs):
-        pk = kwargs.get('pk', None)
-
-        req_data = request.data
-
-        try:
-            instance = Answers.objects.get(pk=pk)
-        except:
-            return Response({'error': 'Объект не существует'})
-
-        serializers = AnswersSerializer(data=req_data, instance=instance, partial=True)
+        serializers = RatingsSerializer(data=rating)
         serializers.is_valid(raise_exception=True)
-        serializers.save()
+        try:
+            Ratings.objects.update_or_create(
+                checking=Checking.objects.get(pk=checking),
+                organisations=Organisations.objects.get(pk=organisation),
+                defaults={'ratings_json': rating},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
 
-        return Response({'message': 'Изменения успешно добавлены'})
+
+        return Response({'answer': 'Ответ успешно сохранен',
+                         'rating': 'Рейтинг успешно сохранен',
+                         'ratingss': rating})
+        # return Response(rating)
+
+
+
+# class AnswersAPIUpdate(APIView):
+#
+#     permission_classes = [IsAdminUser]
+#     @swagger_auto_schema(
+#         methods=['patch'],
+#         tags=['Проверка'],
+#         operation_description="Изменить результаты ответов",
+#         request_body=openapi.Schema(
+#             type=openapi.TYPE_OBJECT,
+#             properties={
+#                 'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
+#             },
+#         ))
+#     @action(methods=['patch'], detail=True)
+#     def patch(self, request, *args, **kwargs):
+#         pk = kwargs.get('pk', None)
+#
+#         req_data = request.data
+#
+#         try:
+#             instance = Answers.objects.get(pk=pk)
+#         except:
+#             return Response({'error': 'Объект не существует'})
+#
+#         serializers = AnswersSerializer(data=req_data, instance=instance, partial=True)
+#         serializers.is_valid(raise_exception=True)
+#         serializers.save()
+#
+#
+#
+#         return Response({'message': 'Изменения успешно добавлены'})
 
 
 class GetFormActByOrganizationTypeAPIView(APIView):
@@ -185,13 +212,16 @@ class GetCheckListOrganizationsAPIView(APIView):
         result = []
         if len(queryset) > 0:
             for item in queryset:
-                department = Departments.objects.values('type_departments_id').get(pk=item.organisation.department_id)
-                result.append({
-                    'id': item.organisation_id,
-                    'name': item.organisation.organisation_name,
-                    # 'type': item.organisation.type_organisations_id,
-                    'department': department['type_departments_id']
-                })
+                if Answers.objects.filter(checking=check, organisations=item.organisation_id):
+                    pass
+                else:
+                    department = Departments.objects.values('type_departments_id').get(pk=item.organisation.department_id)
+                    result.append({
+                        'id': item.organisation_id,
+                        'name': item.organisation.organisation_name,
+                        # 'type': item.organisation.type_organisations_id,
+                        'department': department['type_departments_id']
+                    })
         return Response({'data': result})
 
 
