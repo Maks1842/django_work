@@ -1,166 +1,8 @@
-<form>
-
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <style>
-      @page {
-        size: A4;
-        margin-left: 1cm;
-        margin-right: 1cm;
-        margin-top: 1.5cm;
-        margin-bottom: 1.5cm
-      }
-
-      p {
-        color: #000000;
-        line-height: 100%;
-        text-align: left;
-        orphans: 2;
-        widows: 2;
-        direction: ltr;
-        background: transparent;
-        margin: 0;
-        padding: 0;
-      }
-
-      p.header {
-        font: 1.2em 'Times New Roman', serif;
-        font-size: 14pt;
-      }
-
-      p.title {
-        font: 1.2em 'Times New Roman', serif;
-        font-size: 16pt;
-        text-align: center
-      }
-
-      p.num {
-        font: 1.2em 'Times New Roman', serif;
-        font-size: 12pt;
-        text-align: center;
-        overflow-x: visible;
-      }
-
-      p.question {
-        font: 1.2em 'Times New Roman', serif;
-        font-size: 12pt
-      }
-
-      p.western {
-        font-family: "Calibri", serif;
-        font-size: 11pt;
-        so-language: ru-RU
-      }
-
-      .tab {
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-rating {
-        width: 570px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-name {
-        width: 700px;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-item {
-        table-layout: fixed;
-        width: 700px;
-        height: 20px;
-        border-bottom: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-section {
-        table-layout: fixed;
-        width: 700px;
-        border: none;
-        padding-top: 1px;
-        padding-bottom: 5px;
-        padding-left: 1px;
-        padding-right: 1px
-      }
-
-      .tab-title {
-        table-layout: fixed;
-        width: 700px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-num {
-        table-layout: fixed;
-        width: 30px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-quest {
-        width: 470px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-quest-1 {
-        width: 520px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-quest-2 {
-        width: 370px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-answr {
-        table-layout: fixed;
-        width: 65px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in;
-      }
-
-      .tab-answr-1 {
-        table-layout: fixed;
-        width: 130px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-answr-2 {
-        table-layout: fixed;
-        width: 300px;
-        border: 1px solid #000000;
-        padding-left: 0.04in;
-        padding-right: 0.04in
-      }
-
-      .tab-end-text {
-        table-layout: fixed;
-        width: 230px;
-        background: transparent;
-        border: none;
-        padding-top: 20px
-      }
-    </style>
-  </head>
+<html lang="ru">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="/nok_web/nok_web/static/css/style_checkings.css">
+</head>
 
   <body>
   <table>
@@ -186,7 +28,7 @@
   <table style="border-collapse: collapse">
     <tr>
       <td class="tab-name">
-        <p class="question" style="font-size: 14pt">
+        <p class="header">
           Наименование организации культуры
         </p>
       </td>
@@ -205,7 +47,7 @@
   <table style="border-collapse: collapse">
     <tr>
       <td class="tab-name">
-        <p class="question" style="font-size: 14pt">
+        <p class="header">
           ИНН организации
         </p>
       </td>
@@ -224,7 +66,7 @@
   <table style="border-collapse: collapse">
     <tr>
       <td class="tab-name">
-        <p class="question" style="font-size: 14pt">
+        <p class="header">
           Адрес организации
         </p>
       </td>
@@ -243,7 +85,7 @@
   <table style="border-collapse: collapse">
     <tr>
       <td class="tab-name">
-        <p class="question" style="font-size: 14pt">
+        <p class="header">
           Дата посещения организации
         </p>
       </td>
@@ -262,7 +104,7 @@
   <table style="border-collapse: collapse">
     <tr>
       <td class="tab-name">
-        <p class="question" style="font-size: 14pt">
+        <p class="header">
           Адрес сайта в сети "Интернет"
         </p>
       </td>
@@ -281,7 +123,7 @@
   <table style="border-collapse: collapse">
     <tr>
       <td class="tab-name">
-        <p class="question" style="font-size: 14pt">
+        <p class="header">
           Дата мониторинга сайта
         </p>
       </td>
@@ -303,15 +145,15 @@
     <tr>
       <td colspan="4"
           class="tab-section">
-        <p class="title" style="font-size: 22pt">
+        <p class="rating_total">
           <b>Итоговый балл</b>
         </p>
       </td>
     </tr>
     <tr>
       <td class="tab-section">
-        <p class="title" style="font-size: 22pt">
-          {{ ratings.rating_total }}
+        <p class="rating_total">
+          {{ ratings.rating_total.value }}
         </p>
       </td>
     </tr>
@@ -329,7 +171,7 @@
       </td>
       <td class="tab-answr">
         <p class="title">
-          {{ ratings.rating_1 }}
+          {{ ratings.rating_1.value }}
         </p>
       </td>
     </tr>
@@ -342,7 +184,7 @@
       </td>
       <td class="tab-answr">
         <p class="title">
-          {{ ratings.rating_1_1.rating }}
+          {{ ratings.rating_1_1.value.rating }}
         </p>
       </td>
     </tr>
@@ -365,12 +207,12 @@
       </td>
       <td class="tab-answr">
         <p class="num">
-          {{ ratings.rating_1_1.stend_count_all }}
+          {{ ratings.rating_1_1.value.stend_count_all }}
         </p>
       </td>
       <td class="tab-answr">
         <p class="num">
-          {{ ratings.rating_1_1.web_count_all }}
+          {{ ratings.rating_1_1.value.web_count_all }}
         </p>
       </td>
     </tr>
@@ -383,12 +225,12 @@
       </td>
       <td class="tab-answr">
         <p class="num">
-          {{ ratings.rating_1_1.stend_count_yes }}
+          {{ ratings.rating_1_1.value.stend_count_yes }}
         </p>
       </td>
       <td class="tab-answr">
         <p class="num">
-          {{ ratings.rating_1_1.web_count_yes }}
+          {{ ratings.rating_1_1.value.web_count_yes }}
         </p>
       </td>
     </tr>
@@ -398,12 +240,12 @@
         <p class="num">№ п/п</p>
       </td>
       <td class="tab-quest">
-        <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
+        <p class="num">
           Наименование документов
         </p>
       </td>
       <td class="tab-answr">
-        <p class="num" style="font-size: 10pt">
+        <p class="num" style="font-size: 8pt">
           Наличие
         </p>
         <p class="num">
@@ -411,7 +253,7 @@
         </p>
       </td>
       <td class="tab-answr">
-        <p class="num" style="font-size: 10pt">
+        <p class="num" style="font-size: 8pt">
           Наличие
         </p>
         <p class="num">
@@ -738,7 +580,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_1_2.rating }}
+          {{ ratings.rating_1_2.value.rating }}
         </p>
       </td>
     </tr>
@@ -863,13 +705,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_1_3 }}
+          {{ ratings.rating_1_3.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации
             о деятельности организации, размещенной на информационных стендах в помещениях организации и
@@ -888,7 +730,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_1_3_stend }}
+          {{ ratings.count_person_1_3_stend.value }}
         </p>
       </td>
     </tr>
@@ -903,7 +745,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_1_3_web }}
+          {{ ratings.count_person_1_3_web.value }}
         </p>
       </td>
     </tr>
@@ -916,7 +758,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -933,7 +775,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_2 }}
+          {{ ratings.rating_2.value }}
         </p>
       </td>
     </tr>
@@ -946,7 +788,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_2_1.rating }}
+          {{ ratings.rating_2_1.value.rating }}
         </p>
       </td>
     </tr>
@@ -964,7 +806,7 @@
       <td class="tab-num">
         <p class="num">20</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью
         </p>
@@ -980,7 +822,7 @@
       <td class="tab-num">
         <p class="num">21</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие и понятность навигации внутри организации
         </p>
@@ -996,7 +838,7 @@
       <td class="tab-num">
         <p class="num">22</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Доступность питьевой воды
         </p>
@@ -1012,7 +854,7 @@
       <td class="tab-num">
         <p class="num">23</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды,
           туалетной бумаги и пр.)
@@ -1029,7 +871,7 @@
       <td class="tab-num">
         <p class="num">24</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Санитарное состояние помещений организации
         </p>
@@ -1045,7 +887,7 @@
       <td class="tab-num">
         <p class="num">25</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Возможность бронирования услуги/доступность записи на получение услуги (по телефону, с использованием
           сети «Интернет» на официальном сайте организации, при личном посещении и пр.)
@@ -1069,13 +911,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_2_3 }}
+          {{ ratings.rating_2_3.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг<br/>
             (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов </b>
@@ -1091,7 +933,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_2_3 }}
+          {{ ratings.count_person_2_3.value }}
         </p>
       </td>
     </tr>
@@ -1104,7 +946,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -1121,7 +963,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_3 }}
+          {{ ratings.rating_3.value }}
         </p>
       </td>
     <tr/>
@@ -1134,20 +976,20 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_3_1.rating }}
+          {{ ratings.rating_3_1.value.rating }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question" style="text-align: center">
           <b>Итого баллов - по показателю 3.1.1</b>
         </p>
       </td>
       <td class="tab-answr-1">
         <p class="question" style="text-align: center">
-          {{ ratings.rating_3_1_1.rating }}
+          {{ ratings.rating_3_1_1.value.rating }}
         </p>
       </td>
     </tr>
@@ -1164,7 +1006,7 @@
       <td class="tab-num">
         <p class="num">26</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Оборудование входа в здание или на его территорию:<br/>
           -оборудование входа ровной площадкой непосредственно перед входной дверью, для обеспечения его доступности для инвалидов на креслах-колясках;<br/>
@@ -1182,7 +1024,7 @@
       <td class="tab-num">
         <p class="num">27</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           -оборудование выхода со специальных парковочных мест бордюрными пандусами, расположенными в непосредственной близости от них.
         </p>
@@ -1198,7 +1040,7 @@
       <td class="tab-num">
         <p class="num">28</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           -использование визуального отличающегося цвета поверхности пандуса от цвета горизонтальной площадки;<br/>
           -прочное закрепление противоскользящей поверхности пандусов.
@@ -1215,7 +1057,7 @@
       <td class="tab-num">
         <p class="num">29</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           -обеспечение возможности входа и выхода из объекта культурного наследия, в том числе с использованием специальных подъездных устройств.
         </p>
@@ -1228,14 +1070,14 @@
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question" style="text-align: center">
           <b>Итого баллов - по показателю 3.1.2</b>
         </p>
       </td>
       <td class="tab-answr-1">
         <p class="question" style="text-align: center">
-          {{ ratings.rating_3_1_2.rating }}
+          {{ ratings.rating_3_1_2.value.rating }}
         </p>
       </td>
     </tr>
@@ -1252,7 +1094,7 @@
       <td class="tab-num">
         <p class="num">30</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Организация размещения специальных мест для транспорта инвалидов:<br/>
           -размещение специальных парковочных мест рядом друг с другом и обозначение их местонахождения указателем, расположенным рядом с главным входом в здание;<br/>
@@ -1269,14 +1111,14 @@
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question" style="text-align: center">
           <b>Итого баллов - по показателю 3.1.3</b>
         </p>
       </td>
       <td class="tab-answr-1">
         <p class="question" style="text-align: center">
-          {{ ratings.rating_3_1_3.rating }}
+          {{ ratings.rating_3_1_3.value.rating }}
         </p>
       </td>
     </tr>
@@ -1293,7 +1135,7 @@
       <td class="tab-num">
         <p class="num">31</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Организация путей движения на объекте культурного наследия:</b>
           -обеспечение отличия по цвету и яркости предохранительной оковки каждой ступени лестниц от примыкающей к ней ступени и обеспечение противоскользящих свойств ступеней
@@ -1310,7 +1152,7 @@
       <td class="tab-num">
         <p class="num">32</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           -устройство входного вестибюля с учетом предоставления инвалиду в кресле-коляске возможности ее использования
         </p>
@@ -1326,7 +1168,7 @@
       <td class="tab-num">
         <p class="num">33</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           -обеспечение альтернативного способа преодоления перепада высот с помощью ступеней
         </p>
@@ -1339,14 +1181,14 @@
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question" style="text-align: center">
           <b>Наличие сменных кресел-колясок - баллов</b>
         </p>
       </td>
       <td class="tab-answr-1">
         <p class="question" style="text-align: center">
-          {{ ratings.rating_3_1_chair.rating }}
+          {{ ratings.rating_3_1_chair.value.rating }}
         </p>
       </td>
     </tr>
@@ -1355,7 +1197,7 @@
       <td class="tab-num">
         <p class="num">34</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие сменных кресел-колясок
         </p>
@@ -1368,14 +1210,14 @@
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question" style="text-align: center">
           <b>Наличие санитарно-гигиенических помещений - баллов</b>
         </p>
       </td>
       <td class="tab-answr-1">
         <p class="question" style="text-align: center">
-          {{ ratings.rating_3_1_toilet.rating }}
+          {{ ratings.rating_3_1_toilet.value.rating }}
         </p>
       </td>
     </tr>
@@ -1384,7 +1226,7 @@
       <td class="tab-num">
         <p class="num">35</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие и доступность специально оборудованных санитарно-гигиенических помещений
         </p>
@@ -1407,7 +1249,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_3_2.rating }}
+          {{ ratings.rating_3_2.value.rating }}
         </p>
       </td>
     </tr>
@@ -1426,7 +1268,7 @@
       <td class="tab-num">
         <p class="num">36</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
         </p>
@@ -1442,7 +1284,7 @@
       <td class="tab-num">
         <p class="num">37</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными
           рельефно-точечным шрифтом Брайля
@@ -1459,7 +1301,7 @@
       <td class="tab-num">
         <p class="num">38</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика
           (тифлосурдопереводчика)
@@ -1476,7 +1318,7 @@
       <td class="tab-num">
         <p class="num">39</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети
           «Интернет» для инвалидов по зрению
@@ -1493,7 +1335,7 @@
       <td class="tab-num">
         <p class="num">40</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие возможности оказания помощи работниками организации, прошедшими необходимое обучение (инструктирование)
           (возможность сопровождения работниками организации)
@@ -1510,7 +1352,7 @@
       <td class="tab-num">
         <p class="num">41</p>
       </td>
-      <td class="tab-quest-1">
+      <td class="tab-quest">
         <p class="question">
           Наличие возможности предоставления услуги в дистанционном режиме или на дому
         </p>
@@ -1533,13 +1375,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_3_3 }}
+          {{ ratings.rating_3_3.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов<br/>
             (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов </b>
@@ -1555,7 +1397,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_invalid_person_3_3 }}
+          {{ ratings.count_invalid_person_3_3.value }}
         </p>
       </td>
     </tr>
@@ -1568,7 +1410,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.invalid_person }}
+          {{ ratings.invalid_person.value }}
         </p>
       </td>
     </tr>
@@ -1585,7 +1427,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_4 }}
+          {{ ratings.rating_4.value }}
         </p>
       </td>
     <tr/>
@@ -1598,13 +1440,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_4_1 }}
+          {{ ratings.rating_4_1.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников
             организации, обеспечивающих первичный контакт и информирование получателя услуги
@@ -1623,7 +1465,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_4_1 }}
+          {{ ratings.count_person_4_1.value }}
         </p>
       </td>
     </tr>
@@ -1636,7 +1478,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -1652,13 +1494,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_4_2 }}
+          {{ ratings.rating_4_2.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников
             организации, обеспечивающих непосредственное оказание услуги при обращении в организацию<br/>
@@ -1676,7 +1518,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_4_2 }}
+          {{ ratings.count_person_4_2.value }}
         </p>
       </td>
     </tr>
@@ -1689,7 +1531,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -1705,13 +1547,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_4_3 }}
+          {{ ratings.rating_4_3.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании
             дистанционных форм взаимодействия <br/>
@@ -1729,7 +1571,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_4_3 }}
+          {{ ratings.count_person_4_3.value }}
         </p>
       </td>
     </tr>
@@ -1742,7 +1584,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -1759,7 +1601,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_5 }}
+          {{ ratings.rating_5.value }}
         </p>
       </td>
     <tr/>
@@ -1772,13 +1614,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_5_1 }}
+          {{ ratings.rating_5_1.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым
             (могли бы ее рекомендовать, если бы была возможность выбора организации) <br/>
@@ -1795,7 +1637,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_5_1 }}
+          {{ ratings.count_person_5_1.value }}
         </p>
       </td>
     </tr>
@@ -1808,7 +1650,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -1824,13 +1666,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_5_2 }}
+          {{ ratings.rating_5_2.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>5.2. Удовлетворенность получателей услуг графиком работы организации<br/>
             (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
@@ -1846,7 +1688,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_5_2 }}
+          {{ ratings.count_person_5_2.value }}
         </p>
       </td>
     </tr>
@@ -1859,7 +1701,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
@@ -1875,13 +1717,13 @@
       </td>
       <td class="tab-answr-1">
         <p class="title">
-          {{ ratings.rating_5_3 }}
+          {{ ratings.rating_5_3.value }}
         </p>
       </td>
     </tr>
 
     <tr>
-      <td colspan="2" class="tab-title">
+      <td colspan="2" class="tab-rating">
         <p class="question">
           <b>5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации<br/>
             (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
@@ -1897,7 +1739,7 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.count_person_5_3 }}
+          {{ ratings.count_person_5_3.value }}
         </p>
       </td>
     </tr>
@@ -1910,11 +1752,11 @@
       </td>
       <td class="tab-answr-1">
         <p class="num">
-          {{ ratings.quota }}
+          {{ ratings.quota.value }}
         </p>
       </td>
     </tr>
   </table>
   <br/>
   </body>
-</form>
+</html>

@@ -1,149 +1,8 @@
-<form>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-        <title></title>
-        <style>
-            @page {
-                size: A4;
-                margin-left: 1cm;
-                margin-right: 1cm;
-                margin-top: 1.5cm;
-                margin-bottom: 1.5cm
-            }
-
-            p {
-                color: #000000;
-                line-height: 115%;
-                text-align: left;
-                orphans: 2;
-                widows: 2;
-                direction: ltr;
-                background: transparent;
-                margin: 0;
-                padding: 0;
-            }
-
-            p.header {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 14pt;
-            }
-
-            p.title {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 16pt;
-                text-align: center
-            }
-
-            p.num {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 12pt;
-                text-align: center
-            }
-
-            p.question {
-                font: 1.2em 'Times New Roman', serif;
-                font-size: 12pt
-            }
-
-            p.western {
-                font-family: "Calibri", serif;
-                font-size: 11pt;
-                so-language: ru-RU
-            }
-
-            .tab {
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-rating {
-                width: 570px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-name {
-                width: 700px;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-item {
-                width: 700px;
-                height: 20px;
-                border-bottom: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-section {
-                width: 700px;
-                border: none;
-                padding-top: 1px;
-                padding-bottom: 5px;
-                padding-left: 1px;
-                padding-right: 1px
-            }
-
-            .tab-title {
-                width: 700px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-num {
-                width: 30px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-quest {
-                width: 520px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-quest-2 {
-                width: 390px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-answr {
-                width: 65px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-answr-1 {
-                width: 130px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-answr-2 {
-                width: 300px;
-                border: 1px solid #000000;
-                padding-left: 0.04in;
-                padding-right: 0.04in
-            }
-
-            .tab-end-text {
-                width: 230px;
-                background: transparent;
-                border: none;
-                padding-top: 20px
-            }
-        </style>
-    </head>
+<html lang="ru">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/nok_web/nok_web/static/css/style_checkings.css">
+</head>
 
     <body>
     <table>
@@ -169,7 +28,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td colspan="1" class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Наименование медицинской организации
                 </p>
             </td>
@@ -188,7 +47,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     ИНН организации
                 </p>
             </td>
@@ -207,7 +66,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Адрес организации
                 </p>
             </td>
@@ -226,7 +85,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Дата посещения организации
                 </p>
             </td>
@@ -246,7 +105,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Адрес сайта в сети "Интернет"
                 </p>
             </td>
@@ -265,7 +124,7 @@
     <table style="border-collapse: collapse">
         <tr>
             <td class="tab-name">
-                <p class="question" style="font-size: 14pt">
+                <p class="header">
                     Дата мониторинга сайта
                 </p>
             </td>
@@ -285,15 +144,15 @@
         <tr>
             <td colspan="4"
                 class="tab-section">
-                <p class="title" style="font-size: 22pt">
+                <p class="rating_total">
                     <b>Итоговый балл</b>
                 </p>
             </td>
         </tr>
         <tr>
             <td class="tab-section">
-                <p class="title" style="font-size: 22pt">
-                    {{ ratings.rating_total }}
+                <p class="rating_total">
+                    {{ ratings.rating_total.value }}
                 </p>
             </td>
         </tr>
@@ -311,7 +170,7 @@
             </td>
             <td class="tab-answr">
                 <p class="title">
-                    {{ ratings.rating_1 }}
+                    {{ ratings.rating_1.value }}
                 </p>
             </td>
         </tr>
@@ -324,7 +183,7 @@
             </td>
             <td class="tab-answr">
                 <p class="title">
-                    {{ ratings.rating_1_1.rating }}
+                    {{ ratings.rating_1_1.value.rating }}
                 </p>
             </td>
         </tr>
@@ -347,12 +206,12 @@
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.stend_count_all }}
+                    {{ ratings.rating_1_1.value.stend_count_all }}
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.web_count_all }}
+                    {{ ratings.rating_1_1.value.web_count_all }}
                 </p>
             </td>
         </tr>
@@ -365,12 +224,12 @@
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.stend_count_yes }}
+                    {{ ratings.rating_1_1.value.stend_count_yes }}
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.web_count_yes }}
+                    {{ ratings.rating_1_1.value.web_count_yes }}
                 </p>
             </td>
         </tr>
@@ -380,12 +239,12 @@
                 <p class="num">№ п/п</p>
             </td>
             <td class="tab-quest">
-                <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
+                <p class="num">
                     Наименование документа
                 </p>
             </td>
             <td class="tab-answr">
-                <p class="num" style="font-size: 10pt">
+                <p class="num" style="font-size: 8pt">
                     Наличие
                 </p>
                 <p class="num">
@@ -393,7 +252,7 @@
                 </p>
             </td>
             <td class="tab-answr">
-                <p class="num" style="font-size: 10pt">
+                <p class="num" style="font-size: 8pt">
                     Наличие
                 </p>
                 <p class="num">
@@ -1685,7 +1544,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_1_2.rating }}
+                    {{ ratings.rating_1_2.value.rating }}
                 </p>
             </td>
         </tr>
@@ -1794,7 +1653,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_1_3 }}
+                    {{ ratings.rating_1_3.value }}
                 </p>
             </td>
         </tr>
@@ -1819,7 +1678,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_1_3_stend }}
+                    {{ ratings.count_person_1_3_stend.value }}
                 </p>
             </td>
         </tr>
@@ -1834,7 +1693,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_1_3_web }}
+                    {{ ratings.count_person_1_3_web.value }}
                 </p>
             </td>
         </tr>
@@ -1847,7 +1706,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -1864,7 +1723,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2 }}
+                    {{ ratings.rating_2.value }}
                 </p>
             </td>
         </tr>
@@ -1877,7 +1736,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2_1.rating }}
+                    {{ ratings.rating_2_1.value.rating }}
                 </p>
             </td>
         </tr>
@@ -2003,7 +1862,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2_2 }}
+                    {{ ratings.rating_2_2.value }}
                 </p>
             </td>
         </tr>
@@ -2026,14 +1885,14 @@
             </td>
             <td class="tab-answr-1">
                 <p class="question" style="text-align: center">
-                    {{ ratings.rating_2_2_1 }}
+                    {{ ratings.rating_2_2_1.value }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td colspan="3" class="tab-title">
-                <p class="question" style="font-size: 10pt">
+                <p class="question">
                     <b>2.2.1. Среднее время ожидания предоставления услуги</b>
                 </p>
             </td>
@@ -2065,14 +1924,14 @@
         </td>
         <td class="tab-answr-1">
             <p class="question" style="text-align: center">
-                {{ ratings.rating_2_2_2 }}
+                {{ ratings.rating_2_2_2.value }}
             </p>
         </td>
     </tr>
 
     <tr>
         <td colspan="3" class="tab-quest-2">
-            <p class="question" style="font-size: 10pt">
+            <p class="question">
                 <b>2.2.2. Своевременность предоставления услуги (в соответствии с датой госпитализации
                     (диагностического исследования)<br/>
                     (в % от общего числа опрошенных получателей услуг), максимально - 100 баллов</b>
@@ -2088,7 +1947,7 @@
         </td>
         <td class="tab-answr-1">
             <p class="num">
-                {{ ratings.count_person_2_2_2 }}
+                {{ ratings.count_person_2_2_2.value }}
             </p>
         </td>
     </tr>
@@ -2101,7 +1960,7 @@
         </td>
         <td class="tab-answr-1">
             <p class="num">
-                {{ ratings.quota }}
+                {{ ratings.quota.value }}
             </p>
         </td>
     </tr>
@@ -2117,7 +1976,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2_3 }}
+                    {{ ratings.rating_2_3.value }}
                 </p>
             </td>
         </tr>
@@ -2139,7 +1998,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_2_3 }}
+                    {{ ratings.count_person_2_3.value }}
                 </p>
             </td>
         </tr>
@@ -2152,7 +2011,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2169,7 +2028,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3 }}
+                    {{ ratings.rating_3.value }}
                 </p>
             </td>
         <tr/>
@@ -2182,7 +2041,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3_1.rating }}
+                    {{ ratings.rating_3_1.value.rating }}
                 </p>
             </td>
         </tr>
@@ -2289,7 +2148,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3_2.rating }}
+                    {{ ratings.rating_3_2.value.rating }}
                 </p>
             </td>
         </tr>
@@ -2400,7 +2259,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3_3 }}
+                    {{ ratings.rating_3_3.value }}
                 </p>
             </td>
         </tr>
@@ -2422,7 +2281,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_invalid_person_3_3 }}
+                    {{ ratings.count_invalid_person_3_3.value }}
                 </p>
             </td>
         </tr>
@@ -2435,7 +2294,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.invalid_person }}
+                    {{ ratings.invalid_person.value }}
                 </p>
             </td>
         </tr>
@@ -2452,7 +2311,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4 }}
+                    {{ ratings.rating_4.value }}
                 </p>
             </td>
         <tr/>
@@ -2465,7 +2324,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4_1 }}
+                    {{ ratings.rating_4_1.value }}
                 </p>
             </td>
         </tr>
@@ -2491,7 +2350,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_4_1 }}
+                    {{ ratings.count_person_4_1.value }}
                 </p>
             </td>
         </tr>
@@ -2504,7 +2363,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2520,7 +2379,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4_2 }}
+                    {{ ratings.rating_4_2.value }}
                 </p>
             </td>
         </tr>
@@ -2544,7 +2403,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_4_2 }}
+                    {{ ratings.count_person_4_2.value }}
                 </p>
             </td>
         </tr>
@@ -2557,7 +2416,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2573,7 +2432,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4_3 }}
+                    {{ ratings.rating_4_3.value }}
                 </p>
             </td>
         </tr>
@@ -2597,7 +2456,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_4_3 }}
+                    {{ ratings.count_person_4_3.value }}
                 </p>
             </td>
         </tr>
@@ -2610,7 +2469,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2627,7 +2486,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5 }}
+                    {{ ratings.rating_5.value }}
                 </p>
             </td>
         <tr/>
@@ -2640,7 +2499,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5_1 }}
+                    {{ ratings.rating_5_1.value }}
                 </p>
             </td>
         </tr>
@@ -2663,7 +2522,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_5_1 }}
+                    {{ ratings.count_person_5_1.value }}
                 </p>
             </td>
         </tr>
@@ -2676,7 +2535,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2692,7 +2551,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5_2 }}
+                    {{ ratings.rating_5_2.value }}
                 </p>
             </td>
         </tr>
@@ -2714,7 +2573,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_5_2 }}
+                    {{ ratings.count_person_5_2.value }}
                 </p>
             </td>
         </tr>
@@ -2727,7 +2586,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2743,7 +2602,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5_3 }}
+                    {{ ratings.rating_5_3.value }}
                 </p>
             </td>
         </tr>
@@ -2765,7 +2624,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_5_3 }}
+                    {{ ratings.count_person_5_3.value }}
                 </p>
             </td>
         </tr>
@@ -2778,11 +2637,11 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
     </table>
     <br/>
     </body>
-</form>
+</html>

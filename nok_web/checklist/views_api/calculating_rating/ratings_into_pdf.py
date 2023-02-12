@@ -82,8 +82,7 @@ class GetRatingsIntoPdfAPIView(APIView):
 
         try:
             ratings = Ratings.objects.filter(
-                checking_id=checking,
-                type_organisations=type_organisation
+                checking_id=checking
             ).get(organisations_id=organisation).ratings_json
         except:
             return Response({'error': 'Не найдены данные о Рейтингах запрашиваемой проверки.'})
@@ -106,11 +105,6 @@ class GetRatingsIntoPdfAPIView(APIView):
 
         content = render_to_string(f'ratings/{temp}', context)
 
-        css = CSS(string='@page { size: A4 !important; '
-                         'margin-left: 1cm !important; '
-                         'margin-right: 1cm !important; '
-                         'margin-top: 1.5cm !important;'
-                         'margin-bottom: 1.5cm !important }')
         HTML(string=content).write_pdf(f'./checklist/local_storage/Рейтинг_пр{checking}_{name_org}.pdf', stylesheets=[CSS("nok_web/static/css/style_checkings.css")])
         # отдаем сохраненный pdf в качестве ответа
         file_pointer = open(f'./checklist/local_storage/Рейтинг_пр{checking}_{name_org}.pdf', "rb")

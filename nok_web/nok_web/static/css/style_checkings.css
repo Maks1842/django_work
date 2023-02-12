@@ -1,11 +1,11 @@
 /* Стили для Актов и Рейтингов */
 
 @page {
-    size: A4;
-    margin-left: 1cm;
-    margin-right: 1cm;
-    margin-top: 1.5cm;
-    margin-bottom: 1.5cm
+    size: A4 !important;
+    margin-left: 1cm !important;
+    margin-right: 1cm !important;
+    margin-top: 1.5cm !important;
+    margin-bottom: 1.5cm !important
 }
 
 p {
@@ -34,6 +34,12 @@ p.header_value {
 p.title {
     font: 1.2em 'Times New Roman', serif;
     font-size: 14pt;
+    text-align: center
+}
+
+p.rating_total {
+    font: 1.2em 'Times New Roman', serif;
+    font-size: 18pt;
     text-align: center
 }
 
@@ -101,12 +107,6 @@ p.question {
     padding-right: 0.04in
 }
 
-.tab-quest-2 {
-    border: 1px solid #000000;
-    padding-left: 0.04in;
-    padding-right: 0.04in
-}
-
 .tab-answr {
     width: 2cm;
     border: 1px solid #000000;
@@ -122,6 +122,7 @@ p.question {
 }
 
 .tab-answr-2 {
+    width: 8cm;
     border: 1px solid #000000;
     padding-left: 0.04in;
     padding-right: 0.04in

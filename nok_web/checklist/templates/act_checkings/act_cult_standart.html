@@ -1,164 +1,13 @@
-<form>
+<html lang="ru">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <style>
-        @page {
-            size: A4;
-            margin-left: 1cm;
-            margin-right: 1cm;
-            margin-top: 1.5cm;
-            margin-bottom: 1.5cm
-        }
-
-        p {
-            color: #000000;
-            line-height: 100%;
-            text-align: left;
-            orphans: 2;
-            widows: 2;
-            direction: ltr;
-            background: transparent;
-            margin: 0;
-            padding: 0;
-        }
-
-        p.header {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 14pt;
-        }
-
-        p.title {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 16pt;
-            text-align: center
-        }
-
-        p.num {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 12pt;
-            text-align: center;
-            overflow-x: visible;
-        }
-
-        p.question {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 12pt
-        }
-
-        p.western {
-            font-family: "Calibri", serif;
-            font-size: 11pt;
-            so-language: ru-RU
-        }
-
-        .tab {
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-name {
-            width: 700px;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-item {
-            table-layout: fixed;
-            width: 700px;
-            height: 20px;
-            border-bottom: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-section {
-            table-layout: fixed;
-            width: 700px;
-            border: none;
-            padding-top: 1px;
-            padding-bottom: 5px;
-            padding-left: 1px;
-            padding-right: 1px
-        }
-
-        .tab-title {
-            table-layout: fixed;
-            width: 700px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-num {
-            table-layout: fixed;
-            width: 30px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-quest {
-            width: 470px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-quest-1 {
-            width: 520px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-quest-2 {
-            width: 370px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-answr {
-            table-layout: fixed;
-            width: 65px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in;
-        }
-
-        .tab-answr-1 {
-            table-layout: fixed;
-            width: 130px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-answr-2 {
-            table-layout: fixed;
-            width: 300px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-end-text {
-            table-layout: fixed;
-            width: 230px;
-            background: transparent;
-            border: none;
-            padding-top: 20px
-        }
-    </style>
+    <link rel="stylesheet" href="/nok_web/nok_web/static/css/style_checkings.css">
 </head>
 
 <body>
 
 <table>
-    <td colspan="4"
-        class="tab-section">
+    <td class="tab-section">
         <p class="title">
             <b>Акт посещения организации культуры <br/>
                 во время проведения очного этапа сбора и обобщения <br/>
@@ -168,10 +17,19 @@
 </table>
 <br/>
 
+<table>
+    <td class="tab-title">
+        <p class="title">
+            <b>-----------------</b>
+        </p>
+    </td>
+</table>
+<br/>
+
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
-            <p class="question" style="font-size: 14pt">
+        <td class="tab-name">
+            <p class="header">
                 Наименование организации культуры
             </p>
         </td>
@@ -179,7 +37,7 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ name_org }}
             </p>
         </td>
@@ -189,8 +47,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
-            <p class="question" style="font-size: 14pt">
+        <td class="tab-name">
+            <p class="header">
                 Адрес организации
             </p>
         </td>
@@ -198,7 +56,7 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ address_org }}
             </p>
         </td>
@@ -208,8 +66,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
-            <p class="question" style="font-size: 14pt">
+        <td class="tab-name">
+            <p class="header">
                 Дата посещения организации
             </p>
         </td>
@@ -217,8 +75,8 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
-                {{'name'}}
+            <p class="header_value">
+                {{ date }}
             </p>
         </td>
     </tr>
@@ -228,8 +86,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
-            <p class="question" style="font-size: 14pt">
+        <td class="tab-name">
+            <p class="header">
                 Сведения об уполномоченном представителе организации-оператора:
             </p>
         </td>
@@ -237,14 +95,14 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ user }}
             </p>
         </td>
     </tr>
     <tr>
         <td class="tab-name" style="height: 20px; padding-bottom: 20px">
-            <p class="question" style="font-size: 12pt">
+            <p class="question" style="font-size: 8pt">
                 (фамилия, имя, отчество представителя организации-оператора)
             </p>
         </td>
@@ -254,8 +112,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
-            <p class="question" style="font-size: 14pt">
+        <td class="tab-name">
+            <p class="header">
                 В присутствии:
             </p>
         </td>
@@ -263,14 +121,14 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ person }}
             </p>
         </td>
     </tr>
     <tr>
         <td class="tab-name" style="height: 20px; padding-bottom: 20px">
-            <p class="question" style="font-size: 12pt">
+            <p class="question" style="font-size: 8pt">
                 (фамилия, имя, отчество представителя организации культуры)
             </p>
         </td>
@@ -280,7 +138,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="4" class="tab-section">
+        <td class="tab-section">
             <p class="header">совместно произвели визуальный осмотр помещений организации культуры и прилегающей
                 территории в целях обеспечения сбора и обобщения информации о качестве условий оказания услуг
                 в организации культуры по критериям и показателям, предусмотренным приказом Министерства культуры
@@ -291,7 +149,7 @@
     </tr>
 
     <tr>
-        <td colspan="4" class="tab-section">
+        <td class="tab-section">
             <p class="header" style="text-align: center">
                 В ходе визуального осмотра установлено следующее:
             </p>
@@ -300,17 +158,6 @@
 </table>
 <br/>
 <br/>
-
-<table>
-    <td colspan="4"
-        class="tab-title">
-        <p class="title">
-            <b>-----------------</b>
-        </p>
-    </td>
-</table>
-<br/>
-
 
 <table>
     <td colspan="4"
@@ -337,12 +184,12 @@
             <p class="num">№ п/п</p>
         </td>
         <td class="tab-quest">
-            <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
+            <p class="num">
                 Наименование документа
             </p>
         </td>
         <td class="tab-answr">
-            <p class="num" style="font-size: 10pt">
+            <p class="num" style="font-size: 8pt">
                 Наличие
             </p>
             <p class="num">
@@ -350,7 +197,7 @@
             </p>
         </td>
         <td class="tab-answr">
-            <p class="num" style="font-size: 10pt">
+            <p class="num" style="font-size: 8pt">
                 Наличие
             </p>
             <p class="num">
@@ -682,7 +529,7 @@
         <td class="tab-num">
             <p class="num">14</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте номера телефона организации (его функционирование)
             </p>
@@ -698,7 +545,7 @@
         <td class="tab-num">
             <p class="num">15</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте адреса электронной почты (ее функционирование)
             </p>
@@ -714,7 +561,7 @@
         <td class="tab-num">
             <p class="num">16</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте электронных сервисов (форма для подачи электронного обращения/
                 жалобы/предложения)
@@ -731,7 +578,7 @@
         <td class="tab-num">
             <p class="num">17</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие на официальном сайте раздела «Часто задаваемые вопросы»
             </p>
@@ -747,7 +594,7 @@
         <td class="tab-num">
             <p class="num">18</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие возможности на официальном сайте получения консультации по оказываемым услугам и прочие
                 технические возможности
@@ -764,7 +611,7 @@
         <td class="tab-num">
             <p class="num">19</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Обеспечение технической возможности выражения получателями услуг о качестве оказания услуг (наличие
                 анкеты для опроса граждан или гиперссылки на нее)
@@ -802,7 +649,7 @@
         <td class="tab-num">
             <p class="num">20</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие комфортной зоны отдыха (ожидания), оборудованной соответствующей мебелью
             </p>
@@ -818,7 +665,7 @@
         <td class="tab-num">
             <p class="num">21</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие и понятность навигации внутри организации
             </p>
@@ -834,7 +681,7 @@
         <td class="tab-num">
             <p class="num">22</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Доступность питьевой воды
             </p>
@@ -850,7 +697,7 @@
         <td class="tab-num">
             <p class="num">23</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие и доступность санитарно-гигиенических помещений (чистота помещений, наличие мыла, воды,
                 туалетной бумаги и пр.)
@@ -867,7 +714,7 @@
         <td class="tab-num">
             <p class="num">24</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Санитарное состояние помещений организации
             </p>
@@ -883,7 +730,7 @@
         <td class="tab-num">
             <p class="num">25</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Возможность бронирования услуги/доступность записи на получение услуги (по телефону, с использованием
                 сети «Интернет» на официальном сайте организации, при личном посещении и пр.)
@@ -923,7 +770,7 @@
         <td class="tab-num">
             <p class="num">26</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Оборудование входных групп пандусами/подъемными платформами
             </p>
@@ -939,7 +786,7 @@
         <td class="tab-num">
             <p class="num">27</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие выделенных стоянок для автотранспортных средств инвалидов
             </p>
@@ -955,7 +802,7 @@
         <td class="tab-num">
             <p class="num">28</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие адаптированных лифтов, поручней, расширенных дверных проемов
             </p>
@@ -971,7 +818,7 @@
         <td class="tab-num">
             <p class="num">29</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие сменных кресел-колясок
             </p>
@@ -987,7 +834,7 @@
         <td class="tab-num">
             <p class="num">30</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие и доступность специально оборудованных санитарно-гигиенических помещений
             </p>
@@ -1016,7 +863,7 @@
         <td class="tab-num">
             <p class="num">31</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Дублирование для инвалидов по слуху и зрению звуковой и зрительной информации
             </p>
@@ -1032,7 +879,7 @@
         <td class="tab-num">
             <p class="num">32</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Дублирование надписей, знаков и иной текстовой и графической информации знаками, выполненными
                 рельефно-точечным шрифтом Брайля
@@ -1049,7 +896,7 @@
         <td class="tab-num">
             <p class="num">33</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Возможность предоставления инвалидам по слуху (слуху и зрению) услуг сурдопереводчика
                 (тифлосурдопереводчика)
@@ -1066,7 +913,7 @@
         <td class="tab-num">
             <p class="num">34</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие альтернативной версии официального сайта организации в информационно-телекоммуникационной сети
                 «Интернет» для инвалидов по зрению
@@ -1083,7 +930,7 @@
         <td class="tab-num">
             <p class="num">35</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие возможности оказания помощи работниками организации, прошедшими необходимое обучение (инструктирование)
                 (возможность сопровождения работниками организации)
@@ -1100,7 +947,7 @@
         <td class="tab-num">
             <p class="num">36</p>
         </td>
-        <td class="tab-quest-1">
+        <td class="tab-quest">
             <p class="question">
                 Наличие возможности предоставления услуги в дистанционном режиме или на дому
             </p>
@@ -1116,7 +963,7 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-title">
+        <td class="tab-title">
             <p class="question">
                 <b>Дополнительная информация</b>
             </p>
@@ -1124,44 +971,41 @@
     </tr>
 
     <tr>
-        <td class="tab-title" style="height: 60px">
+        <td style="height: 2cm" class="tab">
             <p class="question">
 
             </p>
         </td>
     </tr>
 </table>
-<br/>
 
 <table>
     <tr>
-        <td class="tab-end-text" style="padding-bottom: 20px">
-            <p class="question" style="font-size: 11pt">
+        <td class="tab-end-text" style="padding-bottom: 0.8cm">
+            <p class="question">
                 Представитель&nbsp;<br/>
                 организации-оператора:&nbsp;
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ___________________<br/>
                 (подпись)
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ____________________<br/>
                 (расшифровка подписи)
             </p>
         </td>
     </tr>
 </table>
-<br/>
-<br/>
 
 <table>
     <tr>
-        <td style="width: 450px; background: transparent; border: none">
-            <p class="question" style="font-size: 11pt">
+        <td style="background: transparent; border: none">
+            <p class="question">
                 С информацией, отраженной в настоящем акте ознакомлен и согласен.&nbsp;<br/>
                 Достоверность отраженных в акте сведений подтверждаю.&nbsp;
             </p>
@@ -1170,27 +1014,25 @@
 </table>
 <table>
     <tr>
-        <td class="tab-end-text" style="padding-bottom: 20px">
-            <p class="question" style="font-size: 11pt">
+        <td class="tab-end-text" style="padding-bottom: 0.8cm">
+            <p class="question">
                 Представитель&nbsp;<br/>
-                организации культуры:&nbsp;
+                медицинской организации:&nbsp;
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ___________________<br/>
                 (подпись)
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ____________________<br/>
                 (расшифровка подписи)
             </p>
         </td>
     </tr>
 </table>
-<br/>
 </body>
-
-</form>
+</html>

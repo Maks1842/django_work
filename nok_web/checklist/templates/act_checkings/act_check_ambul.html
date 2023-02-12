@@ -1,142 +1,13 @@
-<form>
+<html lang="ru">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <style>
-        @page {
-            size: A4;
-            margin-left: 1cm;
-            margin-right: 1cm;
-            margin-top: 1.5cm;
-            margin-bottom: 1.5cm
-        }
-
-        p {
-            color: #000000;
-            line-height: 115%;
-            text-align: left;
-            orphans: 2;
-            widows: 2;
-            direction: ltr;
-            background: transparent;
-            margin: 0;
-            padding: 0;
-        }
-
-        p.header {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 14pt;
-        }
-
-        p.title {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 16pt;
-            text-align: center
-        }
-
-        p.num {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 12pt;
-            text-align: center
-        }
-
-        p.question {
-            font: 1.2em 'Times New Roman', serif;
-            font-size: 12pt
-        }
-
-        p.western {
-            font-family: "Calibri", serif;
-            font-size: 11pt;
-            so-language: ru-RU
-        }
-
-        .tab-name {
-            width: 700px;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-item {
-            width: 700px;
-            height: 20px;
-            border-bottom: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-section {
-            width: 700px;
-            border: none;
-            padding-top: 1px;
-            padding-bottom: 5px;
-            padding-left: 1px;
-            padding-right: 1px
-        }
-
-        .tab-title {
-            width: 700px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-num {
-            width: 30px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-quest {
-            width: 520px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-quest-2 {
-            width: 370px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-answr {
-            width: 65px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-answr-1 {
-            width: 130px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-answr-2 {
-            width: 300px;
-            border: 1px solid #000000;
-            padding-left: 0.04in;
-            padding-right: 0.04in
-        }
-
-        .tab-end-text {
-            width: 230px;
-            background: transparent;
-            border: none;
-            padding-top: 20px
-        }
-    </style>
+    <link rel="stylesheet" href="/nok_web/nok_web/static/css/style_checkings.css">
 </head>
 
 <body>
 
 <table>
-    <td colspan="4"
-        class="tab-section">
+    <td class="tab-section">
         <p class="title">
             <b>Акт посещения медицинской организации <br/>
                 во время проведения очного этапа сбора и обобщения <br/>
@@ -145,9 +16,20 @@
     </td>
 </table>
 <br/>
+
+<table>
+    <td class="tab-title">
+        <p class="title">
+            <b>Амбулаторные условия</b>
+        </p>
+    </td>
+</table>
+<br/>
+
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
+        <td class="tab-name">
+                <p class="header">
                 Наименование медицинской организации
             </p>
         </td>
@@ -155,7 +37,7 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ name_org }}
             </p>
         </td>
@@ -165,7 +47,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
+        <td class="tab-name">
+                <p class="header">
                 Адрес организации
             </p>
         </td>
@@ -173,7 +56,7 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ address_org }}
             </p>
         </td>
@@ -183,8 +66,9 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
-            <p class="question" style="font-size: 14pt">
+        <td class="tab-name">
+                <p class="header">
+            <p class="header">
                 Дата посещения медицинской организации
             </p>
         </td>
@@ -192,8 +76,8 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
-                {{'name'}}
+            <p class="header_value">
+                {{ date }}
             </p>
         </td>
     </tr>
@@ -203,7 +87,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
+        <td class="tab-name">
+                <p class="header">
                 Сведения об уполномоченном представителе организации-оператора:
             </p>
         </td>
@@ -211,14 +96,14 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ user }}
             </p>
         </td>
     </tr>
     <tr>
         <td class="tab-name" style="height: 20px; padding-bottom: 20px">
-            <p class="question" style="font-size: 12pt">
+            <p class="question" style="font-size: 8pt">
                 (фамилия, имя, отчество представителя организации-оператора)
             </p>
         </td>
@@ -228,7 +113,8 @@
 
 <table style="border-collapse: collapse">
     <tr>
-        <td colspan="1" class="tab-name">
+        <td class="tab-name">
+                <p class="header">
                 В присутствии:
             </p>
         </td>
@@ -236,14 +122,14 @@
 
     <tr>
         <td class="tab-item">
-            <p class="question">
+            <p class="header_value">
                 {{ person }}
             </p>
         </td>
     </tr>
     <tr>
         <td class="tab-name" style="height: 20px; padding-bottom: 20px">
-            <p class="question" style="font-size: 12pt">
+            <p class="question" style="font-size: 8pt">
                 (фамилия, имя, отчество представителя медицинской организации)
             </p>
         </td>
@@ -276,16 +162,6 @@
 
 <table>
     <td colspan="4"
-        class="tab-title">
-        <p class="title">
-            <b>Амбулаторные условия</b>
-        </p>
-    </td>
-</table>
-<br/>
-
-<table>
-    <td colspan="4"
         class="tab-section">
         <p class="title">
             <b>Критерий 1. Открытость и доступность информации об организации</b>
@@ -309,12 +185,12 @@
             <p class="num">№ п/п</p>
         </td>
         <td class="tab-quest">
-            <p style="font: 1.2em 'Times New Roman', serif; font-size: 14pt; text-align: center">
+            <p class="num">
                 Наименование документа
             </p>
         </td>
         <td class="tab-answr">
-            <p class="num" style="font-size: 10pt">
+            <p class="num" style="font-size: 8pt">
                 Наличие
             </p>
             <p class="num">
@@ -322,7 +198,7 @@
             </p>
         </td>
         <td class="tab-answr">
-            <p class="num" style="font-size: 10pt">
+            <p class="num" style="font-size: 8pt">
                 Наличие
             </p>
             <p class="num">
@@ -1875,7 +1751,7 @@
         <td class="tab-num">
             <p class="num">71</p>
         </td>
-        <td class="tab-quest-2">
+        <td class="tab-quest">
             <p class="question">
                 Среднее время ожидания предоставления услуги
             </p>
@@ -2090,9 +1966,9 @@
 </table>
 <br/>
 
-<table style="border-collapse: collapse">
+<table style="border-collapse: collapse;  page-break-before: always">
     <tr>
-        <td colspan="1" class="tab-title">
+        <td class="tab-title">
             <p class="question">
                 <b>Дополнительная информация</b>
             </p>
@@ -2100,7 +1976,7 @@
     </tr>
 
     <tr>
-        <td class="tab-title" style="height: 60px">
+        <td style="height: 3cm" class="tab">
             <p class="question">
 
             </p>
@@ -2111,20 +1987,20 @@
 
 <table>
     <tr>
-        <td class="tab-end-text" style="padding-bottom: 20px">
-            <p class="question" style="font-size: 11pt">
+        <td class="tab-end-text" style="padding-bottom: 0.8cm">
+            <p class="question">
                 Представитель&nbsp;<br/>
                 организации-оператора:&nbsp;
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ___________________<br/>
                 (подпись)
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ____________________<br/>
                 (расшифровка подписи)
             </p>
@@ -2136,8 +2012,8 @@
 
 <table>
     <tr>
-        <td style="width: 450px; background: transparent; border: none">
-            <p class="question" style="font-size: 11pt">
+        <td style="background: transparent; border: none">
+            <p class="question">
                 С информацией, отраженной в настоящем акте ознакомлен и согласен.&nbsp;<br/>
                 Достоверность отраженных в акте сведений подтверждаю.&nbsp;
             </p>
@@ -2146,20 +2022,20 @@
 </table>
 <table>
     <tr>
-        <td class="tab-end-text" style="padding-bottom: 20px">
-            <p class="question" style="font-size: 11pt">
+        <td class="tab-end-text" style="padding-bottom: 0.8cm">
+            <p class="question">
                 Представитель&nbsp;<br/>
                 медицинской организации:&nbsp;
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ___________________<br/>
                 (подпись)
             </p>
         </td>
         <td class="tab-end-text">
-            <p class="num" style="font-size: 11pt">
+            <p class="num" style="font-size: 8pt">
                 ____________________<br/>
                 (расшифровка подписи)
             </p>
@@ -2168,4 +2044,4 @@
 </table>
 <br/>
 </body>
-</form>
+</html>

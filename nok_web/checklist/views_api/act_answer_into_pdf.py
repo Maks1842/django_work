@@ -1,6 +1,7 @@
 from ..app_models import *
 from django.template.loader import render_to_string
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 from rest_framework.views import APIView
 from rest_framework.decorators import action
@@ -59,7 +60,7 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         address_org = Organisations.objects.get(pk=organisation).address
         # Получаю Имя проверяющего
         try:
-            user = List_Checking.objects.filter(organisation_id=organisation).get(checking_id=checking).user
+            list_check_set = List_Checking.objects.filter(organisation_id=organisation).get(checking_id=checking)
         except:
             return Response({
                 'error': 'Данные о проверке или об организации неверны. Проверьте правильность сопоставления проверки и организации'})
@@ -89,21 +90,20 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         comparison = do_some_magic(form_json, act_answer)
         answers = answer_in_the_act(comparison, query)
 
+        user_set = User.objects.values().get(pk=list_check_set.user_id)
+        user_name = user_set['first_name']
+
         context = {'name_org': name_org,
                    'address_org': address_org,
-                   'user': user,
-                   # 'person': person,
+                   'date': list_check_set.date_check_org,
+                   'user': user_name,
+                   'person': list_check_set.person,
                    'answers': answers}
 
         name_org = context['name_org']
 
         content = render_to_string(f'act_checkings/{temp}', context)
-        css = CSS(string='@page { size: A4 !important; '
-                         'margin-left: 1cm !important; '
-                         'margin-right: 1cm !important; '
-                         'margin-top: 1.5cm !important;'
-                         'margin-bottom: 1.5cm !important }')
-        HTML(string=content).write_pdf(f'./checklist/local_storage/{name_org}.pdf', stylesheets=[css])
+        HTML(string=content).write_pdf(f'./checklist/local_storage/{name_org}.pdf', stylesheets=[CSS("nok_web/static/css/style_checkings.css")])
         # отдаем сохраненный pdf в качестве ответа
         file_pointer = open(f'./checklist/local_storage/{name_org}.pdf', "rb")
         response = HttpResponse(file_pointer, content_type='application/pdf;')

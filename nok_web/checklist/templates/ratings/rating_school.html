@@ -145,15 +145,15 @@
         <tr>
             <td colspan="4"
                 class="tab-section">
-                <p class="title" style="font-size: 18pt">
+                <p class="rating_total">
                     <b>Итоговый балл</b>
                 </p>
             </td>
         </tr>
         <tr>
             <td class="tab-section">
-                <p class="title" style="font-size: 18pt">
-                    <b>{{ ratings.rating_total }}</b>
+                <p class="rating_total">
+                    <b>{{ ratings.rating_total.value }}</b>
                 </p>
             </td>
         </tr>
@@ -170,7 +170,7 @@
             </td>
             <td class="tab-answr">
                 <p class="title">
-                    {{ ratings.rating_1 }}
+                    {{ ratings.rating_1.value }}
                 </p>
             </td>
         </tr>
@@ -183,7 +183,7 @@
             </td>
             <td class="tab-answr">
                 <p class="title">
-                    {{ ratings.rating_1_1.rating }}
+                    {{ ratings.rating_1_1.value.rating }}
                 </p>
             </td>
         </tr>
@@ -206,12 +206,12 @@
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.stend_count_all }}
+                    {{ ratings.rating_1_1.value.stend_count_all }}
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.web_count_all }}
+                    {{ ratings.rating_1_1.value.web_count_all }}
                 </p>
             </td>
         </tr>
@@ -224,12 +224,12 @@
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.stend_count_yes }}
+                    {{ ratings.rating_1_1.value.stend_count_yes }}
                 </p>
             </td>
             <td class="tab-answr">
                 <p class="num">
-                    {{ ratings.rating_1_1.web_count_yes }}
+                    {{ ratings.rating_1_1.value.web_count_yes }}
                 </p>
             </td>
         </tr>
@@ -1365,7 +1365,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_1_2.rating }}
+                    {{ ratings.rating_1_2.value.rating }}
                 </p>
             </td>
         </tr>
@@ -1490,7 +1490,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_1_3 }}
+                    {{ ratings.rating_1_3.value }}
                 </p>
             </td>
         </tr>
@@ -1515,7 +1515,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_1_3_stend }}
+                    {{ ratings.count_person_1_3_stend.value }}
                 </p>
             </td>
         </tr>
@@ -1530,7 +1530,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_1_3_web }}
+                    {{ ratings.count_person_1_3_web.value }}
                 </p>
             </td>
         </tr>
@@ -1543,7 +1543,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -1560,7 +1560,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2 }}
+                    {{ ratings.rating_2.value }}
                 </p>
             </td>
         </tr>
@@ -1573,7 +1573,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2_1.rating }}
+                    {{ ratings.rating_2_1.value.rating }}
                 </p>
             </td>
         </tr>
@@ -1679,7 +1679,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_2_3 }}
+                    {{ ratings.rating_2_3.value }}
                 </p>
             </td>
         </tr>
@@ -1701,7 +1701,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_2_3 }}
+                    {{ ratings.count_person_2_3.value }}
                 </p>
             </td>
         </tr>
@@ -1714,7 +1714,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -1731,7 +1731,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3 }}
+                    {{ ratings.rating_3.value }}
                 </p>
             </td>
         <tr/>
@@ -1744,7 +1744,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3_1.rating }}
+                    {{ ratings.rating_3_1.value.rating }}
                 </p>
             </td>
         </tr>
@@ -1850,7 +1850,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3_2.rating }}
+                    {{ ratings.rating_3_2.value.rating }}
                 </p>
             </td>
         </tr>
@@ -1963,7 +1963,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_3_3 }}
+                    {{ ratings.rating_3_3.value }}
                 </p>
             </td>
         </tr>
@@ -1985,7 +1985,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_invalid_person_3_3 }}
+                    {{ ratings.count_invalid_person_3_3.value }}
                 </p>
             </td>
         </tr>
@@ -1998,7 +1998,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.invalid_person }}
+                    {{ ratings.invalid_person.value }}
                 </p>
             </td>
         </tr>
@@ -2015,7 +2015,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4 }}
+                    {{ ratings.rating_4.value }}
                 </p>
             </td>
         <tr/>
@@ -2028,7 +2028,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4_1 }}
+                    {{ ratings.rating_4_1.value }}
                 </p>
             </td>
         </tr>
@@ -2053,7 +2053,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_4_1 }}
+                    {{ ratings.count_person_4_1.value }}
                 </p>
             </td>
         </tr>
@@ -2066,7 +2066,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2082,7 +2082,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4_2 }}
+                    {{ ratings.rating_4_2.value }}
                 </p>
             </td>
         </tr>
@@ -2106,7 +2106,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_4_2 }}
+                    {{ ratings.count_person_4_2.value }}
                 </p>
             </td>
         </tr>
@@ -2119,7 +2119,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2135,7 +2135,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_4_3 }}
+                    {{ ratings.rating_4_3.value }}
                 </p>
             </td>
         </tr>
@@ -2159,7 +2159,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_4_3 }}
+                    {{ ratings.count_person_4_3.value }}
                 </p>
             </td>
         </tr>
@@ -2172,7 +2172,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2189,7 +2189,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5 }}
+                    {{ ratings.rating_5.value }}
                 </p>
             </td>
         <tr/>
@@ -2202,7 +2202,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5_1 }}
+                    {{ ratings.rating_5_1.value }}
                 </p>
             </td>
         </tr>
@@ -2225,7 +2225,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_5_1 }}
+                    {{ ratings.count_person_5_1.value }}
                 </p>
             </td>
         </tr>
@@ -2238,7 +2238,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2254,7 +2254,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5_2 }}
+                    {{ ratings.rating_5_2.value }}
                 </p>
             </td>
         </tr>
@@ -2276,7 +2276,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_5_2 }}
+                    {{ ratings.count_person_5_2.value }}
                 </p>
             </td>
         </tr>
@@ -2289,7 +2289,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
@@ -2305,7 +2305,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="title">
-                    {{ ratings.rating_5_3 }}
+                    {{ ratings.rating_5_3.value }}
                 </p>
             </td>
         </tr>
@@ -2327,7 +2327,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.count_person_5_3 }}
+                    {{ ratings.count_person_5_3.value }}
                 </p>
             </td>
         </tr>
@@ -2340,7 +2340,7 @@
             </td>
             <td class="tab-answr-1">
                 <p class="num">
-                    {{ ratings.quota }}
+                    {{ ratings.quota.value }}
                 </p>
             </td>
         </tr>
