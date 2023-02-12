@@ -22,22 +22,14 @@ class StatisticCheckingsListAPIView(APIView):
         method='get',
         tags=['Статистика'],
         operation_description="Получить список проверок. Если страница не указана, то получить первую страницу",
-        manual_parameters=[
-            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
-                              type=openapi.TYPE_INTEGER)
-        ])
+        )
     @action(detail=False, methods=['get'])
     def get(self, request):
-        page = request.query_params.get('page')
-
-        if page is None:
-            page = 1
 
         queryset = Checking.objects.all()
-        paginator = Paginator(queryset, 20)
 
         result = []
-        for item in paginator.page(page).object_list:
+        for item in queryset:
             count_org_check = List_Checking.objects.filter(checking_id=item.id)
             count_org_complit = Answers.objects.filter(checking_id=item.id)
             result.append({

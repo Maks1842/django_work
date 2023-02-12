@@ -5,6 +5,7 @@ from rest_framework.decorators import action, permission_classes
 from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
+from django.core.paginator import Paginator
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -46,4 +47,37 @@ class RatingsAPIView(APIView):
 
         ratings = ratings_set.ratings_json
         return Response(ratings)
+
+
+class RatingCheckingsListAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
+    @swagger_auto_schema(
+        method='get',
+        tags=['Рейтинг'],
+        operation_description="Получить список проверок. Если страница не указана, то получить первую страницу",
+        manual_parameters=[
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        page = request.query_params.get('page')
+
+        if page is None:
+            page = 1
+
+        queryset = Checking.objects.all()
+        paginator = Paginator(queryset, 20)
+
+        result = []
+        for item in paginator.page(page).object_list:
+            result.append({
+                'id': item.id,
+                'nameCheck': item.name,
+                'dateCheck': item.date_checking,
+                'regionCheck': item.region.region_name,
+                'departmentCheck': item.department.department_name,
+            })
+        return Response(result)
 
