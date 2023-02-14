@@ -9,7 +9,7 @@ from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 
 from .views_api.act_answer_into_pdf import *
-# from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAPIView
+from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAPIView
 from .views_api.calculating_rating.change_ratings_api import ChangeRatingsAPIView
 from .views_api.calculating_rating.ratings_api import RatingsAPIView, RatingCheckingsListAPIView
 from .views_api.calculating_rating.ratings_into_pdf import GetRatingsIntoPdfAPIView
@@ -67,7 +67,7 @@ urlpatterns = [
     path('api/v1/StatisticUser/', StatisticUserAPIView.as_view(), name='StatisticUser'),
 
     # Для рассчета бальной оценки
-    # path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
+    path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
     path('api/v1/ChangeRatings/', ChangeRatingsAPIView.as_view(), name='ChangeRatings'),
     path('api/v1/Ratings/', RatingsAPIView.as_view(), name='Ratings'),
     path('api/v1/RatingCheckingsList/', RatingCheckingsListAPIView.as_view(), name='RatingCheckingsList'),

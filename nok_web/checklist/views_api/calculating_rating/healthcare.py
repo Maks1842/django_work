@@ -1,6 +1,7 @@
 import random
 from rest_framework.response import Response
 from .coefficients import Coefficients
+from ...app_models import Form_Sections
 
 '''
 Функция расчета баллов, по результатам очного этапа.
@@ -11,6 +12,13 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
 
     cfcnt_main = None
     points = None
+
+    sections_set = Form_Sections.objects.values()
+    name = {}
+    for section in sections_set:
+        if section['rating_key']:
+            name[f'{section["rating_key"]}'] = {"id": f'{section["raring_order_num"]}',
+                                                "text": f'{section["name"]}'}
 
     for item_m in Coefficients.cfcnt_main:
         if "healthcare" in item_m.keys():
@@ -60,10 +68,18 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
             except:
                 return Response({'error': 'Деление на ноль.'})
 
-            rating_1_1 = {"stend_count_yes": stend_count_yes,
-                          "stend_count_all": stend_count_all,
-                          "web_count_yes": web_count_yes,
-                          "web_count_all": web_count_all,
+            rating_1_1 = {"stend_count_yes": {"id": name["stend_count_yes"]["id"],
+                                              "value": stend_count_yes,
+                                              "name": name["stend_count_yes"]["text"]},
+                          "stend_count_all": {"id": name["stend_count_all"]["id"],
+                                              "value": stend_count_all,
+                                              "name": name["stend_count_all"]["text"]},
+                          "web_count_yes": {"id": name["web_count_yes"]["id"],
+                                            "value": web_count_yes,
+                                            "name": name["web_count_yes"]["text"]},
+                          "web_count_all": {"id": name["web_count_all"]["id"],
+                                            "value": web_count_all,
+                                            "name": name["web_count_all"]["text"]},
                           "rating": rating}
 
         elif section['id'] == 2:
@@ -76,12 +92,12 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
                             service_web_count += int(items['value'])
 
             if service_web_count * int(points["p_1_2"]) < 100:
-                rating = service_web_count * int(points["p_1_2"])
+                rating_1_2 = service_web_count * int(points["p_1_2"])
             else:
-                rating = 100
+                rating_1_2 = 100
 
-            rating_1_2 = {"service_web_count": service_web_count,
-                          "rating": rating}
+            # rating_1_2 = {"service_web_count": service_web_count,
+            #               "rating": rating}
 
         elif section['id'] == 3:
             comfort_count_1 = 0
@@ -93,12 +109,12 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
                             comfort_count_1 += int(items['value'])
 
             if comfort_count_1 * int(points["p_2_1"]) < 100:
-                rating = comfort_count_1 * int(points["p_2_1"])
+                rating_2_1 = comfort_count_1 * int(points["p_2_1"])
             else:
-                rating = 100
+                rating_2_1 = 100
 
-            rating_2_1 = {"comfort_count": comfort_count_1,
-                          "rating": rating}
+            # rating_2_1 = {"comfort_count": comfort_count_1,
+            #               "rating": rating}
 
         elif section['id'] == 4:
             index = 5
@@ -135,12 +151,12 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
                             invalid_1_count += int(items['value'])
 
             if invalid_1_count * int(points["p_3_1"]) < 100:
-                rating = invalid_1_count * int(points["p_3_1"])
+                rating_3_1 = invalid_1_count * int(points["p_3_1"])
             else:
-                rating = 100
+                rating_3_1 = 100
 
-            rating_3_1 = {"invalid_1_count": invalid_1_count,
-                          "rating": rating}
+            # rating_3_1 = {"invalid_1_count": invalid_1_count,
+            #                                "rating": rating}
 
         elif section['id'] == 6:
             invalid_2_count = 0
@@ -152,104 +168,140 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json):
                             invalid_2_count += int(items['value'])
 
             if invalid_2_count * int(points["p_3_2"]) < 100:
-                rating = invalid_2_count * int(points["p_3_2"])
+                rating_3_2 = invalid_2_count * int(points["p_3_2"])
             else:
-                rating = 100
+                rating_3_2 = 100
 
-            rating_3_2 = {"invalid_2_count": invalid_2_count,
-                          "rating": rating}
+            # rating_3_2 = {"invalid_2_count": invalid_2_count,
+            #                                "rating": rating}
 
     comment_expert_1 = answers["expert_1"]
 
     rating_respondents = respondents_stage(quota, invalid_person, rating_1_1, rating_2_2_1, comment_expert_1)
 
-    rating_1 = round(rating_1_1['rating'] * float(cfcnt_main["k_1_1"]) + rating_1_2['rating'] * float(cfcnt_main["k_1_1"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
+    rating_1 = round(rating_1_1['rating'] * float(cfcnt_main["k_1_1"]) + rating_1_2 * float(cfcnt_main["k_1_1"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
     rating_2_2 = round((rating_2_2_1 + rating_respondents['rating_2_2_2'])/2, 0)
-    rating_2 = round(rating_2_1['rating'] * float(cfcnt_main["k_2_1"]) + rating_2_2 * float(cfcnt_main["k_2_2"]) + rating_respondents['rating_2_3'] * float(cfcnt_main["k_2_3"]), 1)
-    rating_3 = round(rating_3_1['rating'] * float(cfcnt_main["k_3_1"]) + rating_3_2['rating'] * float(cfcnt_main["k_3_2"]) + rating_respondents['rating_3_3'] * float(cfcnt_main["k_3_3"]), 1)
+    rating_2 = round(rating_2_1 * float(cfcnt_main["k_2_1"]) + rating_2_2 * float(cfcnt_main["k_2_2"]) + rating_respondents['rating_2_3'] * float(cfcnt_main["k_2_3"]), 1)
+    rating_3 = round(rating_3_1 * float(cfcnt_main["k_3_1"]) + rating_3_2 * float(cfcnt_main["k_3_2"]) + rating_respondents['rating_3_3'] * float(cfcnt_main["k_3_3"]), 1)
     rating_4 = round(rating_respondents['rating_4_1'] * float(cfcnt_main["k_4_1"]) + rating_respondents['rating_4_2'] * float(cfcnt_main["k_4_2"]) + rating_respondents['rating_4_3'] * float(cfcnt_main["k_4_3"]), 1)
     rating_5 = round(rating_respondents['rating_5_1'] * float(cfcnt_main["k_5_1"]) + rating_respondents['rating_5_2'] * float(cfcnt_main["k_5_2"]) + rating_respondents['rating_5_3'] * float(cfcnt_main["k_5_3"]), 1)
 
     rating_total = round((rating_1 + rating_2 + rating_3 + rating_4 + rating_5)/5, 2)
 
     ratings = {
-        "quota": {"value": quota,
-                  "name": Coefficients.name["quota"]},
-        "invalid_person": {"value": invalid_person,
-                           "name": Coefficients.name["invalid_person"]},
-        "rating_total": {"value": rating_total,
-                         "name": Coefficients.name["rating_total"]},
-        "rating_1": {"value": rating_1,
-                     "name": Coefficients.name["rating_1"]},
-        "rating_2": {"value": rating_2,
-                     "name": Coefficients.name["rating_2"]},
-        "rating_3": {"value": rating_3,
-                     "name": Coefficients.name["rating_3"]},
-        "rating_4": {"value": rating_4,
-                     "name": Coefficients.name["rating_4"]},
-        "rating_5": {"value": rating_5,
-                     "name": Coefficients.name["rating_5"]},
+        "quota": {"id": name["quota"]["id"],
+                  "value": quota,
+                  "name": name["quota"]["text"]},
+        "invalid_person": {"id": name["invalid_person"]["id"],
+                           "value": invalid_person,
+                           "name": name["invalid_person"]["text"]},
+        "rating_total": {"id": name["rating_total"]["id"],
+                         "value": rating_total,
+                         "name": name["rating_total"]["text"]},
+        "rating_1": {"id": name["rating_1"]["id"],
+                     "value": rating_1,
+                     "name": name["rating_1"]["text"]},
+        "rating_2": {"id": name["rating_2"]["id"],
+                     "value": rating_2,
+                     "name": name["rating_2"]["text"]},
+        "rating_3": {"id": name["rating_3"]["id"],
+                     "value": rating_3,
+                     "name": name["rating_3"]["text"]},
+        "rating_4": {"id": name["rating_4"]["id"],
+                     "value": rating_4,
+                     "name": name["rating_4"]["text"]},
+        "rating_5": {"id": name["rating_5"]["id"],
+                     "value": rating_5,
+                     "name": name["rating_5"]["text"]},
 
-        "rating_1_1": {"value": rating_1_1,
-                       "name": Coefficients.name["rating_1_1"]},
-        "rating_1_2": {"value": rating_1_2,
-                       "name": Coefficients.name["rating_1_2"]},
-        "rating_1_3": {"value": rating_respondents['rating_1_3'],
-                       "name": Coefficients.name["rating_1_3"]},
-        "count_person_1_3_stend": {"value": int(rating_respondents['count_person_1_3_stend']),
-                                   "name": Coefficients.name["count_person_1_3_stend"]},
-        "count_person_1_3_web": {"value": int(rating_respondents['count_person_1_3_stend']),
-                                 "name": Coefficients.name["count_person_1_3_web"]},
+        "rating_1_1": {"id": name["rating_1_1"]["id"],
+                       "value": rating_1_1,
+                       "name": name["rating_1_1"]["text"]},
+        "rating_1_2": {"id": name["rating_1_2"]["id"],
+                       "value": rating_1_2,
+                       "name": name["rating_1_2"]["text"]},
+        "rating_1_3": {"id": name["rating_1_3"]["id"],
+                       "value": rating_respondents['rating_1_3'],
+                       "name": name["rating_1_3"]["text"]},
+        "count_person_1_3_stend": {"id": name["count_person_1_3_stend"]["id"],
+                                   "value": int(rating_respondents['count_person_1_3_stend']),
+                                   "name": name["count_person_1_3_stend"]["text"]},
+        "count_person_1_3_web": {"id": name["count_person_1_3_web"]["id"],
+                                 "value": int(rating_respondents['count_person_1_3_stend']),
+                                 "name": name["count_person_1_3_web"]["text"]},
 
-        "rating_2_1": {"value": rating_2_1,
-                       "name": Coefficients.name["rating_2_1"]},
-        "rating_2_2": {"value": rating_2_2,
-                       "name": Coefficients.name["rating_2_2"]},
-        "rating_2_2_1": {"value": rating_2_2_1,
-                         "name": Coefficients.name["rating_2_2_1"]},
-        "rating_2_2_2": {"value": rating_respondents['rating_2_2_2'],
-                         "name": Coefficients.name["rating_2_2_2"]},
-        "count_person_2_2_2": {"value": int(rating_respondents['count_person_2_2_2']),
-                               "name": Coefficients.name["count_person_2_2_2"]},
-        "rating_2_3": {"value": rating_respondents['rating_2_3'],
-                       "name": Coefficients.name["rating_2_3"]},
-        "count_person_2_3": {"value": int(rating_respondents['count_person_2_3']),
-                             "name": Coefficients.name["count_person_2_3"]},
+        "rating_2_1": {"id": name["rating_2_1"]["id"],
+                       "value": rating_2_1,
+                       "name": name["rating_2_1"]["text"]},
+        "rating_2_2": {"id": name["rating_2_2"]["id"],
+                       "value": rating_2_2,
+                       "name": name["rating_2_2"]["text"]},
+        "rating_2_2_1": {"id": name["rating_2_2_1"]["id"],
+                         "value": rating_2_2_1,
+                         "name": name["rating_2_2_1"]["text"]},
+        "rating_2_2_2": {"id": name["rating_2_2_2"]["id"],
+                         "value": rating_respondents['rating_2_2_2'],
+                         "name": name["rating_2_2_2"]["text"]},
+        "count_person_2_2_2": {"id": name["count_person_2_2_2"]["id"],
+                               "value": int(rating_respondents['count_person_2_2_2']),
+                               "name": name["count_person_2_2_2"]["text"]},
+        "rating_2_3": {"id": name["rating_2_3"]["id"],
+                       "value": rating_respondents['rating_2_3'],
+                       "name": name["rating_2_3"]["text"]},
+        "count_person_2_3": {"id": name["count_person_2_3"]["id"],
+                             "value": int(rating_respondents['count_person_2_3']),
+                             "name": name["count_person_2_3"]["text"]},
 
-        "rating_3_1": {"value": rating_3_1,
-                       "name": Coefficients.name["rating_3_1"]},
-        "rating_3_2": {"value": rating_3_2,
-                       "name": Coefficients.name["rating_3_2"]},
-        "rating_3_3": {"value": rating_respondents['rating_3_3'],
-                       "name": Coefficients.name["rating_3_3"]},
-        "count_invalid_person_3_3": {"value": int(rating_respondents['count_invalid_person_3_3']),
-                                     "name": Coefficients.name["count_invalid_person_3_3"]},
+        "rating_3_1": {"id": name["rating_3_1"]["id"],
+                       "value": rating_3_1,
+                       "name": name["rating_3_1"]["text"]},
+        "rating_3_2": {"id": name["rating_3_2"]["id"],
+                       "value": rating_3_2,
+                       "name": name["rating_3_2"]["text"]},
+        "rating_3_3": {"id": name["rating_3_3"]["id"],
+                       "value": rating_respondents['rating_3_3'],
+                       "name": name["rating_3_3"]["text"]},
+        "count_invalid_person_3_3": {"id": name["count_invalid_person_3_3"]["id"],
+                                     "value": int(rating_respondents['count_invalid_person_3_3']),
+                                     "name": name["count_invalid_person_3_3"]["text"]},
 
-        "rating_4_1": {"value": rating_respondents['rating_4_1'],
-                       "name": Coefficients.name["rating_4_1"]},
-        "count_person_4_1": {"value": int(rating_respondents['count_person_4_1']),
-                             "name": Coefficients.name["count_person_4_1"]},
-        "rating_4_2": {"value": rating_respondents['rating_4_2'],
-                       "name": Coefficients.name["rating_4_2"]},
-        "count_person_4_2": {"value": int(rating_respondents['count_person_4_2']),
-                             "name": Coefficients.name["count_person_4_2"]},
-        "rating_4_3": {"value": rating_respondents['rating_4_3'],
-                       "name": Coefficients.name["rating_4_3"]},
-        "count_person_4_3": {"value": int(rating_respondents['count_person_4_3']),
-                             "name": Coefficients.name["count_person_4_3"]},
+        "rating_4_1": {"id": name["rating_4_1"]["id"],
+                       "value": rating_respondents['rating_4_1'],
+                       "name": name["rating_4_1"]["text"]},
+        "count_person_4_1": {"id": name["count_person_4_1"]["id"],
+                             "value": int(rating_respondents['count_person_4_1']),
+                             "name": name["count_person_4_1"]["text"]},
+        "rating_4_2": {"id": name["rating_4_2"]["id"],
+                       "value": rating_respondents['rating_4_2'],
+                       "name": name["rating_4_2"]["text"]},
+        "count_person_4_2": {"id": name["count_person_4_2"]["id"],
+                             "value": int(rating_respondents['count_person_4_2']),
+                             "name": name["count_person_4_2"]["text"]},
+        "rating_4_3": {"id": name["rating_4_3"]["id"],
+                       "value": rating_respondents['rating_4_3'],
+                       "name": name["rating_4_3"]["text"]},
+        "count_person_4_3": {"id": name["count_person_4_3"]["id"],
+                             "value": int(rating_respondents['count_person_4_3']),
+                             "name": name["count_person_4_3"]["text"]},
 
-        "rating_5_1": {"value": rating_respondents['rating_5_1'],
-                       "name": Coefficients.name["rating_5_1"]},
-        "count_person_5_1": {"value": int(rating_respondents['count_person_5_1']),
-                             "name": Coefficients.name["count_person_5_1"]},
-        "rating_5_2": {"value": rating_respondents['rating_5_2'],
-                       "name": Coefficients.name["rating_5_2"]},
-        "count_person_5_2": {"value": int(rating_respondents['count_person_5_2']),
-                             "name": Coefficients.name["count_person_5_2"]},
-        "rating_5_3": {"value": rating_respondents['rating_5_3'],
-                       "name": Coefficients.name["rating_5_3"]},
-        "count_person_5_3": {"value": int(rating_respondents['count_person_5_3']),
-                             "name": Coefficients.name["count_person_5_3"]},
+        "rating_5_1": {"id": name["rating_5_1"]["id"],
+                       "value": rating_respondents['rating_5_1'],
+                       "name": name["rating_5_1"]["text"]},
+        "count_person_5_1": {"id": name["count_person_5_1"]["id"],
+                             "value": int(rating_respondents['count_person_5_1']),
+                             "name": name["count_person_5_1"]["text"]},
+        "rating_5_2": {"id": name["rating_5_2"]["id"],
+                       "value": rating_respondents['rating_5_2'],
+                       "name": name["rating_5_2"]["text"]},
+        "count_person_5_2": {"id": name["count_person_5_2"]["id"],
+                             "value": int(rating_respondents['count_person_5_2']),
+                             "name": name["count_person_5_2"]["text"]},
+        "rating_5_3": {"id": name["rating_5_3"]["id"],
+                       "value": rating_respondents['rating_5_3'],
+                       "name": name["rating_5_3"]["text"]},
+        "count_person_5_3": {"id": name["count_person_5_3"]["id"],
+                             "value": int(rating_respondents['count_person_5_3']),
+                             "name": name["count_person_5_3"]["text"]},
                }
 
     return ratings
@@ -273,8 +325,8 @@ def respondents_stage(quota, invalid_person, rating_1_1, rating_2_2_1, comment_e
 
     rating_resp = {}
 
-    rating_1_3_stend = rating_1_1['stend_count_yes'] / rating_1_1['stend_count_all'] * 100
-    rating_1_3_web = rating_1_1['web_count_yes'] / rating_1_1['web_count_all'] * 100
+    rating_1_3_stend = rating_1_1['stend_count_yes']['value'] / rating_1_1['stend_count_all']['value'] * 100
+    rating_1_3_web = rating_1_1['web_count_yes']['value'] / rating_1_1['web_count_all']['value'] * 100
 
     if satisfactory_stend == '1':
         if rating_1_3_stend >= 95:

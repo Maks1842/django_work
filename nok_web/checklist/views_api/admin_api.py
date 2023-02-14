@@ -135,93 +135,94 @@ class GetActAPIView(APIView):
         question_values = Question_Values.objects.values()
 
         for fs in form_sections:
-            fs_id = fs['id']
-            questions_id = form_sections_question.filter(form_sections=fs_id)
-            count_section = 0
-            pages = []
+            if fs['employ_in_act'] == True:
+                fs_id = fs['id']
+                questions_id = form_sections_question.filter(form_sections=fs_id)
+                count_section = 0
+                pages = []
 
-            for q in questions_id:
-                choices = []
-                count_section += 1
+                for q in questions_id:
+                    choices = []
+                    count_section += 1
 
-                if q['type_organisations'] == '':
-                    count += 1
-                    type = type_answers.get(pk=q['type_answers_id'])
-                    question = questions.get(pk=q['question_id'])
-                    answer_variant = q['answer_variant']
-                    ans_var_re = answer_variant
-                    try:
-                        ans_var_re = (re.sub(r'\s', '', answer_variant))
-                    except:
-                        pass
+                    if q['type_organisations'] == '':
+                        count += 1
+                        type = type_answers.get(pk=q['type_answers_id'])
+                        question = questions.get(pk=q['question_id'])
+                        answer_variant = q['answer_variant']
+                        ans_var_re = answer_variant
+                        try:
+                            ans_var_re = (re.sub(r'\s', '', answer_variant))
+                        except:
+                            pass
 
-                    ans_var = ans_var_re.split(',')
+                        ans_var = ans_var_re.split(',')
 
-                    for av in range(len(ans_var)):
-                        qv = question_values.get(pk=ans_var[av])
-                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                        for av in range(len(ans_var)):
+                            qv = question_values.get(pk=ans_var[av])
+                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
 
-                    pages.append({
-                        'name': str(count),
-                        'title': question['questions'],
-                        'type': type['type'],
-                        'choices': choices,
-                        'isRequired': q['required'],
+                        pages.append({
+                            'name': str(count),
+                            'title': question['questions'],
+                            'type': type['type'],
+                            'choices': choices,
+                            'isRequired': q['required'],
+                        })
+                    elif str(type_organisations) in q['type_organisations'].split(','):
+                        count += 1
+                        type = type_answers.get(pk=q['type_answers_id'])
+                        question = questions.get(pk=q['question_id'])
+                        answer_variant = q['answer_variant']
+                        ans_var_re = answer_variant
+                        try:
+                            ans_var_re = (re.sub(r'\s', '', answer_variant))
+                        except:
+                            pass
+
+                        ans_var = ans_var_re.split(',')
+
+                        for av in range(len(ans_var)):
+                            qv = question_values.get(pk=ans_var[av])
+                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                        pages.append({
+                            'name': str(count),
+                            'title': question['questions'],
+                            'type': type['type'],
+                            'choices': choices,
+                            'isRequired': q['required'],
+                        })
+                    elif q['type_organisations'] == 'expert':
+                        count_ex += 1
+                        type = type_answers.get(pk=q['type_answers_id'])
+                        question = questions.get(pk=q['question_id'])
+                        answer_variant = q['answer_variant']
+                        ans_var_re = answer_variant
+                        try:
+                            ans_var_re = (re.sub(r'\s', '', answer_variant))
+                        except:
+                            pass
+
+                        ans_var = ans_var_re.split(',')
+
+                        for av in range(len(ans_var)):
+                            qv = question_values.get(pk=ans_var[av])
+                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+
+                        pages.append({
+                            'name': f'expert_{str(count_ex)}',
+                            'title': question['questions'],
+                            'type': type['type'],
+                            'choices': choices,
+                            'isRequired': q['required'],
+                        })
+
+                if len(pages) == number_items or len(questions_id) == count_section:
+                    context.append({
+                        'title': fs['name'],
+                        'elements': pages,
                     })
-                elif str(type_organisations) in q['type_organisations'].split(','):
-                    count += 1
-                    type = type_answers.get(pk=q['type_answers_id'])
-                    question = questions.get(pk=q['question_id'])
-                    answer_variant = q['answer_variant']
-                    ans_var_re = answer_variant
-                    try:
-                        ans_var_re = (re.sub(r'\s', '', answer_variant))
-                    except:
-                        pass
-
-                    ans_var = ans_var_re.split(',')
-
-                    for av in range(len(ans_var)):
-                        qv = question_values.get(pk=ans_var[av])
-                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
-
-                    pages.append({
-                        'name': str(count),
-                        'title': question['questions'],
-                        'type': type['type'],
-                        'choices': choices,
-                        'isRequired': q['required'],
-                    })
-                elif q['type_organisations'] == 'expert':
-                    count_ex += 1
-                    type = type_answers.get(pk=q['type_answers_id'])
-                    question = questions.get(pk=q['question_id'])
-                    answer_variant = q['answer_variant']
-                    ans_var_re = answer_variant
-                    try:
-                        ans_var_re = (re.sub(r'\s', '', answer_variant))
-                    except:
-                        pass
-
-                    ans_var = ans_var_re.split(',')
-
-                    for av in range(len(ans_var)):
-                        qv = question_values.get(pk=ans_var[av])
-                        choices.append({'value': ans_var[av], 'text': qv['value_name']})
-
-                    pages.append({
-                        'name': f'expert_{str(count_ex)}',
-                        'title': question['questions'],
-                        'type': type['type'],
-                        'choices': choices,
-                        'isRequired': q['required'],
-                    })
-
-            if len(pages) == number_items or len(questions_id) == count_section:
-                context.append({
-                    'title': fs['name'],
-                    'elements': pages,
-                })
 
         x = list(context)[-1]
 

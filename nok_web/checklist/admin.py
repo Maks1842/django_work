@@ -30,6 +30,7 @@ from .app_models.type_templates import Type_Templates
 from .app_models.type_organisations import Type_Organisations
 from .app_models.versions import Versions
 from .app_models.recommendations import Recommendations
+from .app_models.coefficients import Coefficients
 
 
 # Настройка админки
@@ -129,9 +130,9 @@ class TemplatesAdmin(admin.ModelAdmin):
 
 
 class Form_SectionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
-    search_fields = ('name', 'version', 'order_num', 'parent', 'type_departments')
-    list_editable = ('name', 'version', 'order_num', 'parent', 'type_departments', 'is_deleted')
+    list_display = ('id', 'name', 'version', 'order_num', 'parent', 'type_departments', 'employ_in_act', 'rating_key', 'raring_order_num', 'is_deleted')
+    search_fields = ('name', 'version', 'order_num', 'parent', 'type_departments',  'employ_in_act', 'rating_key',  'raring_order_num')
+    list_editable = ('name', 'version', 'order_num', 'parent', 'type_departments', 'employ_in_act', 'rating_key', 'raring_order_num', 'is_deleted')
     list_filter = ('name', 'version', 'type_departments')
 
 
@@ -241,6 +242,13 @@ class ListCheckingAdmin(admin.ModelAdmin):
     list_filter = ('checking', 'organisation', 'person', 'user', 'date_check_org', 'is_deleted')
 
 
+class CoefficientsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type_departments', 'type_organisations', 'main_json', 'respondents_json', 'points_json', 'date', 'version')
+    search_fields = ('type_departments', 'type_organisations', 'main_json', 'respondents_json', 'points_json', 'date', 'version')
+    list_editable = ('type_departments', 'type_organisations', 'main_json', 'respondents_json', 'points_json', 'date', 'version')
+    list_filter = ('type_departments', 'type_organisations', 'date', 'version')
+
+
 # !!!Важно соблюдать последовательность регистрации моделей
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Profile_Position, Profile_PositionAdmin)
@@ -272,3 +280,4 @@ admin.site.register(Transaction_Exchange, Transaction_ExchangeAdmin)
 admin.site.register(FormsAct, FormsActAdmin)
 admin.site.register(Checking, CheckingAdmin)
 admin.site.register(List_Checking, ListCheckingAdmin)
+admin.site.register(Coefficients, CoefficientsAdmin)

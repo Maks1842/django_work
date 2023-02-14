@@ -21,29 +21,38 @@ from .techcollege import techcollege_rating
 Данный метод рассчитывает рейтинг с применением коэффициентов, при определении количества положительных 
 отзывов респондентов.
 Результаты рейтингов, по каждой организации (в разрезе проверок), хранятся в Модели Ratings. 
+!!! - CalculatingRatingAPIView только для тестов.
+!!! - def calculating_rating - для боевого режима
 '''
 
 
-# class CalculatingRatingAPIView(APIView):
-#     @swagger_auto_schema(
-#         methods=['get'],
-#         tags=['Рейтинг'],
-#         operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
-#         manual_parameters=[
-#             openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
-#                               type=openapi.TYPE_INTEGER),
-#             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-#                               type=openapi.TYPE_INTEGER),
-#             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
-#                               type=openapi.TYPE_INTEGER),
-#
-#         ])
-#     @action(methods=['get'], detail=False)
-#     def get(self, request):
-#
-#         checking = request.query_params.get('id_checking')
-#         organisation = request.query_params.get('id_organisation')
-#         type_organisation = request.query_params.get('id_type_organisation')
+# CalculatingRatingAPIView только для тестов. def calculating_rating - для боевого режима
+class CalculatingRatingAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Рейтинг'],
+        operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
+        manual_parameters=[
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+                              type=openapi.TYPE_INTEGER),
+
+        ])
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+
+        checking = request.query_params.get('id_checking')
+        organisation = request.query_params.get('id_organisation')
+        type_organisation = request.query_params.get('id_type_organisation')
+
+        rating = calculating_rating(checking, organisation, type_organisation)
+
+        return Response(rating)
+# Чтобы верхний блок не попадал в API, необходимо его отключить в urls.py
+
 
 def calculating_rating(checking, organisation, type_organisation):
 
@@ -82,7 +91,6 @@ def calculating_rating(checking, organisation, type_organisation):
     elif type_organisation == '9':
         rating = addeducation_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
 
-    # return Response(rating)
     return rating
 
 
