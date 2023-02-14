@@ -1,5 +1,4 @@
-from .coefficients import Coefficients
-from ...app_models import Form_Sections
+from ...app_models import Form_Sections, Coefficients
 
 '''
 Функция расчета баллов, по результатам корректировки количества респондентов.
@@ -17,9 +16,8 @@ def culture_standart_rating(ratings_json, count_person):
             name[f'{section["rating_key"]}'] = {"id": f'{section["raring_order_num"]}',
                                                 "text": f'{section["name"]}'}
 
-    for item_m in Coefficients.cfcnt_main:
-        if "culture" in item_m.keys():
-            cfcnt_main = item_m["culture"]
+    coefficient = Coefficients.objects.values().get(type_departments=2)
+    cfcnt_main = coefficient['main_json']
 
     quota = ratings_json["quota"]['value']
     invalid_person = ratings_json["invalid_person"]['value']

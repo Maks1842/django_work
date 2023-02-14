@@ -1,5 +1,4 @@
-from .coefficients import Coefficients
-from ...app_models import Form_Sections
+from ...app_models import Form_Sections, Coefficients
 
 '''
 Функция расчета баллов, по результатам корректировки количества респондентов.
@@ -8,8 +7,6 @@ from ...app_models import Form_Sections
 
 def healthcare_rating(ratings_json, count_person):
 
-    cfcnt_main = None
-
     sections_set = Form_Sections.objects.values()
     name = {}
     for section in sections_set:
@@ -17,9 +14,8 @@ def healthcare_rating(ratings_json, count_person):
             name[f'{section["rating_key"]}'] = {"id": f'{section["raring_order_num"]}',
                                                 "text": f'{section["name"]}'}
 
-    for item_m in Coefficients.cfcnt_main:
-        if "healthcare" in item_m.keys():
-            cfcnt_main = item_m["healthcare"]
+    coefficient = Coefficients.objects.values().get(type_departments=1)
+    cfcnt_main = coefficient['main_json']
 
     quota = ratings_json["quota"]['value']
     invalid_person = ratings_json["invalid_person"]['value']

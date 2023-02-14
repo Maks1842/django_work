@@ -816,6 +816,248 @@
   }
 },
 {
+  "model": "checklist.coefficients",
+  "pk": 7,
+  "fields": {
+    "type_departments": 1,
+    "type_organisations": null,
+    "main_json": {
+      "k_1_1": "0.3",
+      "k_1_3": "0.4",
+      "k_2_1": "0.3",
+      "k_2_2": "0.4",
+      "k_2_3": "0.3",
+      "k_3_1": "0.3",
+      "k_3_2": "0.4",
+      "k_3_3": "0.3",
+      "k_4_1": "0.4",
+      "k_4_2": "0.4",
+      "k_4_3": "0.2",
+      "k_5_1": "0.3",
+      "k_5_2": "0.2",
+      "k_5_3": "0.5"
+    },
+    "respondents_json": {
+      "kr_2_3_max": "0.9",
+      "kr_2_3_min": "0.7",
+      "kr_3_3_max": "0.95",
+      "kr_3_3_min": "0.8",
+      "kr_4_1_max": "0.9",
+      "kr_4_1_min": "0.7",
+      "kr_4_2_max": "0.9",
+      "kr_4_2_min": "0.7",
+      "kr_4_3_max": "0.9",
+      "kr_4_3_min": "0.7",
+      "kr_5_1_max": "0.9",
+      "kr_5_1_min": "0.7",
+      "kr_5_2_max": "0.9",
+      "kr_5_2_min": "0.7",
+      "kr_5_3_max": "0.9",
+      "kr_5_3_min": "0.7",
+      "correct_1_3": "0.05",
+      "kr_2_2_1_max": "0.82",
+      "kr_2_2_1_min": "0.7",
+      "kr_2_2_2_max": "0.89",
+      "kr_2_2_2_min": "0.83",
+      "kr_2_2_3_max": "0.95",
+      "kr_2_2_3_min": "0.9",
+      "kr_1_3_web_max": "0.95",
+      "kr_1_3_web_min": "0.85",
+      "kr_1_3_stend_max": "0.95",
+      "kr_1_3_stend_min": "0.85"
+    },
+    "points_json": {
+      "p_1_2": "30",
+      "p_2_1": "20",
+      "p_3_1": "20",
+      "p_3_2": "20",
+      "p_2_2_1": "0",
+      "p_2_2_2": "10",
+      "p_2_2_3": "20",
+      "p_2_2_4": "40",
+      "p_2_2_5": "60",
+      "p_2_2_6": "100"
+    },
+    "date": "2023-02-14",
+    "version": "1"
+  }
+},
+{
+  "model": "checklist.coefficients",
+  "pk": 8,
+  "fields": {
+    "type_departments": 2,
+    "type_organisations": null,
+    "main_json": {
+      "k_1_1": "0.3",
+      "k_1_3": "0.4",
+      "k_3_1": "0.3",
+      "k_3_2": "0.4",
+      "k_3_3": "0.3",
+      "k_4_1": "0.4",
+      "k_4_2": "0.4",
+      "k_4_3": "0.2",
+      "k_5_1": "0.3",
+      "k_5_2": "0.2",
+      "k_5_3": "0.5"
+    },
+    "respondents_json": {
+      "kr_2_3_max": "0.9",
+      "kr_2_3_min": "0.7",
+      "kr_3_3_max": "0.95",
+      "kr_3_3_min": "0.8",
+      "kr_4_1_max": "0.9",
+      "kr_4_1_min": "0.7",
+      "kr_4_2_max": "0.9",
+      "kr_4_2_min": "0.7",
+      "kr_4_3_max": "0.9",
+      "kr_4_3_min": "0.7",
+      "kr_5_1_max": "0.9",
+      "kr_5_1_min": "0.7",
+      "kr_5_2_max": "0.9",
+      "kr_5_2_min": "0.7",
+      "kr_5_3_max": "0.9",
+      "kr_5_3_min": "0.7",
+      "correct_1_3": "0.05",
+      "kr_1_3_web_max": "0.95",
+      "kr_1_3_web_min": "0.85",
+      "kr_1_3_stend_max": "0.95",
+      "kr_1_3_stend_min": "0.85"
+    },
+    "points_json": {
+      "p_1_2": "30",
+      "p_2_1": "20",
+      "p_3_1": "20",
+      "p_3_2": "20"
+    },
+    "date": "2023-02-14",
+    "version": "1"
+  }
+},
+{
+  "model": "checklist.coefficients",
+  "pk": 9,
+  "fields": {
+    "type_departments": 3,
+    "type_organisations": null,
+    "main_json": {
+      "k_1_1": "0.3",
+      "k_1_3": "0.4",
+      "k_3_1": "0.3",
+      "k_3_2": "0.4",
+      "k_3_3": "0.3",
+      "k_4_1": "0.4",
+      "k_4_2": "0.4",
+      "k_4_3": "0.2",
+      "k_5_1": "0.3",
+      "k_5_2": "0.2",
+      "k_5_3": "0.5"
+    },
+    "respondents_json": {
+      "school": {
+        "kr_2_3_max": "0.9",
+        "kr_2_3_min": "0.7",
+        "kr_3_3_max": "0.95",
+        "kr_3_3_min": "0.8",
+        "kr_4_1_max": "0.9",
+        "kr_4_1_min": "0.7",
+        "kr_4_2_max": "0.9",
+        "kr_4_2_min": "0.7",
+        "kr_4_3_max": "0.9",
+        "kr_4_3_min": "0.7",
+        "kr_5_1_max": "0.9",
+        "kr_5_1_min": "0.7",
+        "kr_5_2_max": "0.9",
+        "kr_5_2_min": "0.7",
+        "kr_5_3_max": "0.9",
+        "kr_5_3_min": "0.7",
+        "correct_1_3": "0.05",
+        "kr_1_3_web_max": "0.9",
+        "kr_1_3_web_min": "0.7",
+        "kr_1_3_stend_max": "0.9",
+        "kr_1_3_stend_min": "0.7"
+      },
+      "techcollege": {
+        "kr_2_3_max": "0.9",
+        "kr_2_3_min": "0.7",
+        "kr_3_3_max": "0.95",
+        "kr_3_3_min": "0.8",
+        "kr_4_1_max": "0.9",
+        "kr_4_1_min": "0.7",
+        "kr_4_2_max": "0.9",
+        "kr_4_2_min": "0.7",
+        "kr_4_3_max": "0.9",
+        "kr_4_3_min": "0.7",
+        "kr_5_1_max": "0.9",
+        "kr_5_1_min": "0.7",
+        "kr_5_2_max": "0.9",
+        "kr_5_2_min": "0.7",
+        "kr_5_3_max": "0.9",
+        "kr_5_3_min": "0.7",
+        "correct_1_3": "0.05",
+        "kr_1_3_web_max": "0.9",
+        "kr_1_3_web_min": "0.7",
+        "kr_1_3_stend_max": "0.9",
+        "kr_1_3_stend_min": "0.7"
+      },
+      "addeducation": {
+        "kr_2_3_max": "0.9",
+        "kr_2_3_min": "0.7",
+        "kr_3_3_max": "0.95",
+        "kr_3_3_min": "0.8",
+        "kr_4_1_max": "0.9",
+        "kr_4_1_min": "0.7",
+        "kr_4_2_max": "0.9",
+        "kr_4_2_min": "0.7",
+        "kr_4_3_max": "0.9",
+        "kr_4_3_min": "0.7",
+        "kr_5_1_max": "0.9",
+        "kr_5_1_min": "0.7",
+        "kr_5_2_max": "0.9",
+        "kr_5_2_min": "0.7",
+        "kr_5_3_max": "0.9",
+        "kr_5_3_min": "0.7",
+        "correct_1_3": "0.05",
+        "kr_1_3_web_max": "0.9",
+        "kr_1_3_web_min": "0.7",
+        "kr_1_3_stend_max": "0.9",
+        "kr_1_3_stend_min": "0.7"
+      },
+      "kindergarden": {
+        "kr_2_3_max": "0.9",
+        "kr_2_3_min": "0.7",
+        "kr_3_3_max": "0.95",
+        "kr_3_3_min": "0.8",
+        "kr_4_1_max": "0.9",
+        "kr_4_1_min": "0.7",
+        "kr_4_2_max": "0.9",
+        "kr_4_2_min": "0.7",
+        "kr_4_3_max": "0.9",
+        "kr_4_3_min": "0.7",
+        "kr_5_1_max": "0.9",
+        "kr_5_1_min": "0.7",
+        "kr_5_2_max": "0.9",
+        "kr_5_2_min": "0.7",
+        "kr_5_3_max": "0.9",
+        "kr_5_3_min": "0.7",
+        "correct_1_3": "0.05",
+        "kr_1_3_web_max": "0.95",
+        "kr_1_3_web_min": "0.85",
+        "kr_1_3_stend_max": "0.95",
+        "kr_1_3_stend_min": "0.85"
+      }
+    },
+    "points_json": {
+      "p_1_2": "30",
+      "p_2_1": "20",
+      "p_3_1": "20",
+      "p_3_2": "20"
+    },
+    "date": "2023-02-14",
+    "version": "1"
+  }
+},
+{
   "model": "checklist.department_persons",
   "pk": 1,
   "fields": {
@@ -1106,10 +1348,13 @@
   "pk": 1,
   "fields": {
     "name": "I. Общая информация о медицинской организации",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 2,
     "parent": 9,
     "type_departments": 1,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1118,10 +1363,13 @@
   "pk": 2,
   "fields": {
     "name": "II. Информация о медицинской деятельности медицинской организации",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 3,
     "parent": 9,
     "type_departments": 1,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1130,10 +1378,13 @@
   "pk": 3,
   "fields": {
     "name": "III. Информация о медицинских работниках медицинских организаций, включая филиалы (при их наличии)",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 4,
     "parent": 9,
     "type_departments": 1,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1142,10 +1393,13 @@
   "pk": 4,
   "fields": {
     "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 12,
     "parent": 4,
     "type_departments": null,
+    "rating_key": "rating_1_2",
+    "raring_order_num": 8,
     "is_deleted": false
   }
 },
@@ -1153,11 +1407,14 @@
   "model": "checklist.form_sections",
   "pk": 5,
   "fields": {
-    "name": "2.1.1 Наличие комфортных условий для предоставления услуг",
+    "name": "2.1. Наличие комфортных условий для предоставления услуг",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 13,
     "parent": 5,
     "type_departments": null,
+    "rating_key": "rating_2_1",
+    "raring_order_num": 13,
     "is_deleted": false
   }
 },
@@ -1166,10 +1423,13 @@
   "pk": 6,
   "fields": {
     "name": "2.2.1. Среднее время ожидания предоставления услуги",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 14,
     "parent": 6,
     "type_departments": 1,
+    "rating_key": "rating_2_2_1",
+    "raring_order_num": 15,
     "is_deleted": false
   }
 },
@@ -1178,10 +1438,13 @@
   "pk": 7,
   "fields": {
     "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 15,
     "parent": 7,
     "type_departments": null,
+    "rating_key": "rating_3_1",
+    "raring_order_num": 21,
     "is_deleted": false
   }
 },
@@ -1190,10 +1453,13 @@
   "pk": 8,
   "fields": {
     "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 16,
     "parent": 8,
     "type_departments": null,
+    "rating_key": "rating_3_2",
+    "raring_order_num": 27,
     "is_deleted": false
   }
 },
@@ -1202,10 +1468,13 @@
   "pk": 9,
   "fields": {
     "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 1,
     "parent": 9,
     "type_departments": null,
+    "rating_key": "rating_1_1",
+    "raring_order_num": 3,
     "is_deleted": false
   }
 },
@@ -1214,10 +1483,13 @@
   "pk": 10,
   "fields": {
     "name": "I. Основные сведения",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 2,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1226,10 +1498,13 @@
   "pk": 11,
   "fields": {
     "name": "II. Структура и органы управления образовательной организацией",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 3,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1238,10 +1513,13 @@
   "pk": 12,
   "fields": {
     "name": "III. Документы (в виде копий)",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 4,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1250,10 +1528,13 @@
   "pk": 13,
   "fields": {
     "name": "IV. Образование",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 5,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1262,10 +1543,13 @@
   "pk": 14,
   "fields": {
     "name": "V. Руководство. Педагогический состав",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 6,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1274,10 +1558,13 @@
   "pk": 15,
   "fields": {
     "name": "VI. Материально-техническое обеспечении образовательной деятельности",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 7,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1286,10 +1573,13 @@
   "pk": 16,
   "fields": {
     "name": "VII. Стипендии и иные виды материальной поддержки",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 8,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1298,10 +1588,13 @@
   "pk": 17,
   "fields": {
     "name": "VIII. Платные образовательные услуги",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 9,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1310,10 +1603,13 @@
   "pk": 18,
   "fields": {
     "name": "IX. Финансово-хозяйственная деятельность",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 10,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1322,10 +1618,13 @@
   "pk": 19,
   "fields": {
     "name": "X. Вакантные места для приема (перевода)",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 11,
     "parent": 9,
     "type_departments": 3,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1334,10 +1633,13 @@
   "pk": 20,
   "fields": {
     "name": "I. Общая информация об организации культуры",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 2,
     "parent": 9,
     "type_departments": 2,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1346,10 +1648,13 @@
   "pk": 21,
   "fields": {
     "name": "II. Информация о деятельности организации культуры",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 3,
     "parent": 9,
     "type_departments": 2,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1358,10 +1663,13 @@
   "pk": 22,
   "fields": {
     "name": "III. Информация о независимой оценке качества",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 4,
     "parent": 9,
     "type_departments": 2,
+    "rating_key": "",
+    "raring_order_num": null,
     "is_deleted": false
   }
 },
@@ -1370,10 +1678,628 @@
   "pk": 23,
   "fields": {
     "name": "Комментарий эксперта",
+    "employ_in_act": true,
     "version": "1",
     "order_num": 17,
     "parent": 23,
     "type_departments": null,
+    "rating_key": "",
+    "raring_order_num": null,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 25,
+  "fields": {
+    "name": "Критерий 1. Открытость и доступность информации об организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_1",
+    "raring_order_num": 2,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 26,
+  "fields": {
+    "name": "Критерий 2. Комфортность условий предоставления услуг",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_2",
+    "raring_order_num": 12,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 27,
+  "fields": {
+    "name": "Критерий 3. Доступность услуг для инвалидов",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3",
+    "raring_order_num": 20,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 28,
+  "fields": {
+    "name": "Критерий 4. Доброжелательность, вежливость работников организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_4",
+    "raring_order_num": 30,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 29,
+  "fields": {
+    "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_5",
+    "raring_order_num": 37,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 31,
+  "fields": {
+    "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_1_3",
+    "raring_order_num": 9,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 32,
+  "fields": {
+    "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_1_3_stend",
+    "raring_order_num": 10,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 33,
+  "fields": {
+    "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_1_3_web",
+    "raring_order_num": 11,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 34,
+  "fields": {
+    "name": "2.2. Время ожидания предоставления медицинских услуг (среднее время ожидания и своевременность предоставления медицинской услуги: приема врача/диагностического исследования/плановой госпитализации)",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_2_2",
+    "raring_order_num": 14,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 35,
+  "fields": {
+    "name": "2.2.2. Своевременность предоставления услуги (в соответствии с датой госпитализации (диагностического исследования)",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_2_2_2",
+    "raring_order_num": 16,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 36,
+  "fields": {
+    "name": "Число получателей услуг, которым услуга была предоставлена вовремя",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_2_2_2",
+    "raring_order_num": 17,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 37,
+  "fields": {
+    "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_2_3",
+    "raring_order_num": 18,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 38,
+  "fields": {
+    "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_2_3",
+    "raring_order_num": 19,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 39,
+  "fields": {
+    "name": "Оборудованных входных групп пандусами (подъемными платформами)",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3_1_1",
+    "raring_order_num": 22,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 40,
+  "fields": {
+    "name": "Наличие выделенных стоянок для автотранспортных средств инвалидов",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3_1_2",
+    "raring_order_num": 23,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 41,
+  "fields": {
+    "name": "Наличие адаптированных лифтов, поручней, расширенных дверных проемов",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3_1_3",
+    "raring_order_num": 24,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 42,
+  "fields": {
+    "name": "Наличие сменных кресел-колясок",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3_1_chair",
+    "raring_order_num": 25,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 43,
+  "fields": {
+    "name": "Наличие санитарно-гигиенических помещений",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3_1_toilet",
+    "raring_order_num": 26,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 44,
+  "fields": {
+    "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_3_3",
+    "raring_order_num": 28,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 45,
+  "fields": {
+    "name": "Число удовлетворенных доступностью услуг для инвалидов",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_invalid_person_3_3",
+    "raring_order_num": 29,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 46,
+  "fields": {
+    "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_4_1",
+    "raring_order_num": 31,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 47,
+  "fields": {
+    "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_4_1",
+    "raring_order_num": 32,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 48,
+  "fields": {
+    "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_4_2",
+    "raring_order_num": 33,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 49,
+  "fields": {
+    "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_4_2",
+    "raring_order_num": 34,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 50,
+  "fields": {
+    "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_4_3",
+    "raring_order_num": 35,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 51,
+  "fields": {
+    "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_4_3",
+    "raring_order_num": 36,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 52,
+  "fields": {
+    "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_5_1",
+    "raring_order_num": 38,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 53,
+  "fields": {
+    "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_5_1",
+    "raring_order_num": 39,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 54,
+  "fields": {
+    "name": "5.2. Удовлетворенность получателей услуг, навигацией внутри организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_5_2",
+    "raring_order_num": 40,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 55,
+  "fields": {
+    "name": "Число получателей услуг, удовлетворенных навигацией внутри организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_5_2",
+    "raring_order_num": 41,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 56,
+  "fields": {
+    "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_5_2_education",
+    "raring_order_num": 42,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 57,
+  "fields": {
+    "name": "Число получателей услуг, удовлетворенных графиком работы организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_5_2_education",
+    "raring_order_num": 43,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 58,
+  "fields": {
+    "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_5_3",
+    "raring_order_num": 44,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 59,
+  "fields": {
+    "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "count_person_5_3",
+    "raring_order_num": 45,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 60,
+  "fields": {
+    "name": "Итоговый балл, по результатам проверки",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "rating_total",
+    "raring_order_num": 1,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 61,
+  "fields": {
+    "name": "Количество опрошенных респондентов",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "quota",
+    "raring_order_num": 46,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 62,
+  "fields": {
+    "name": "Количество инвалидов, получателей услуг",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "invalid_person",
+    "raring_order_num": 47,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 63,
+  "fields": {
+    "name": "Нормативное количество документов, на стенде",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "stend_count_all",
+    "raring_order_num": 5,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 64,
+  "fields": {
+    "name": "Нормативное количество документов, на сайте",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "web_count_all",
+    "raring_order_num": 7,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 65,
+  "fields": {
+    "name": "Фактическое количество документов, на стенде",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "stend_count_yes",
+    "raring_order_num": 4,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_sections",
+  "pk": 66,
+  "fields": {
+    "name": "Фактическое количество документов, на сайте",
+    "employ_in_act": false,
+    "version": "1",
+    "order_num": null,
+    "parent": null,
+    "type_departments": null,
+    "rating_key": "web_count_yes",
+    "raring_order_num": 6,
     "is_deleted": false
   }
 },
@@ -14832,165 +15758,205 @@
     "checking": 1,
     "ratings_json": {
       "quota": {
+        "id": "46",
         "name": "Количество опрошенных респондентов",
         "value": 53
       },
       "rating_1": {
+        "id": "2",
         "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 82.8
+        "value": 84.0
       },
       "rating_2": {
+        "id": "12",
         "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 78.6
+        "value": 82.5
       },
       "rating_3": {
+        "id": "20",
         "name": "Критерий 3. Доступность услуг для инвалидов",
         "value": 92.0
       },
       "rating_4": {
+        "id": "30",
         "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 84.2
+        "value": 80.2
       },
       "rating_5": {
+        "id": "37",
         "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 82.0
+        "value": 76.3
       },
       "rating_1_1": {
+        "id": "3",
         "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
         "value": {
           "rating": 68.0,
-          "web_count_all": 59,
-          "web_count_yes": 33,
-          "stend_count_all": 59,
-          "stend_count_yes": 47
+          "web_count_all": {
+            "id": "7",
+            "name": "Нормативное количество документов, на сайте",
+            "value": 59
+          },
+          "web_count_yes": {
+            "id": "6",
+            "name": "Фактическое количество документов, на сайте",
+            "value": 33
+          },
+          "stend_count_all": {
+            "id": "5",
+            "name": "Нормативное количество документов, на стенде",
+            "value": 59
+          },
+          "stend_count_yes": {
+            "id": "4",
+            "name": "Фактическое количество документов, на стенде",
+            "value": 47
+          }
         }
       },
       "rating_1_2": {
+        "id": "8",
         "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": {
-          "rating": 100,
-          "service_web_count": 6
-        }
+        "value": 100
       },
       "rating_1_3": {
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети «Интернет»",
-        "value": 81.0
+        "id": "9",
+        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
+        "value": 84.0
       },
       "rating_2_1": {
-        "name": "2.1 Наличие комфортных условий для предоставления услуг",
-        "value": {
-          "rating": 100,
-          "comfort_count": 6
-        }
+        "id": "13",
+        "name": "2.1. Наличие комфортных условий для предоставления услуг",
+        "value": 100
       },
       "rating_2_2": {
-        "name": "2.2 Время ожидания предоставления медицинских услуг (среднее время ожидания и своевременность предоставления медицинской услуги: приема врача/диагностического исследования/плановой госпитализации)",
+        "id": "14",
+        "name": "2.2. Время ожидания предоставления медицинских услуг (среднее время ожидания и своевременность предоставления медицинской услуги: приема врача/диагностического исследования/плановой госпитализации)",
         "value": 66.0
       },
       "rating_2_3": {
+        "id": "18",
         "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 74.0
+        "value": 87.0
       },
       "rating_3_1": {
+        "id": "21",
         "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": {
-          "rating": 100,
-          "invalid_1_count": 5
-        }
+        "value": 100
       },
       "rating_3_2": {
+        "id": "27",
         "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": {
-          "rating": 80,
-          "invalid_2_count": 4
-        }
+        "value": 80
       },
       "rating_3_3": {
+        "id": "28",
         "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
         "value": 100.0
       },
       "rating_4_1": {
+        "id": "31",
         "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 83.0
+        "value": 85.0
       },
       "rating_4_2": {
+        "id": "33",
         "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
-        "value": 83.0
+        "value": 72.0
       },
       "rating_4_3": {
+        "id": "35",
         "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 89.0
+        "value": 87.0
       },
       "rating_5_1": {
+        "id": "38",
         "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 83.0
+        "value": 85.0
       },
       "rating_5_2": {
+        "id": "40",
         "name": "5.2. Удовлетворенность получателей услуг, навигацией внутри организации",
-        "value": 83.0
+        "value": 74.0
       },
       "rating_5_3": {
+        "id": "44",
         "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 81.0
+        "value": 72.0
       },
       "rating_2_2_1": {
+        "id": "15",
         "name": "2.2.1. Среднее время ожидания предоставления услуги",
         "value": 40
       },
       "rating_2_2_2": {
-        "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 92.0
+        "id": "16",
+        "name": "2.2.2. Своевременность предоставления услуги (в соответствии с датой госпитализации (диагностического исследования)",
+        "value": 91.0
       },
       "rating_total": {
+        "id": "1",
         "name": "Итоговый балл, по результатам проверки",
-        "value": 83.92
+        "value": 83.0
       },
       "invalid_person": {
+        "id": "47",
         "name": "Количество инвалидов, получателей услуг",
         "value": 2
       },
       "count_person_2_3": {
+        "id": "19",
         "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 39
+        "value": 46
       },
       "count_person_4_1": {
+        "id": "32",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 44
+        "value": 45
       },
       "count_person_4_2": {
+        "id": "34",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
-        "value": 44
+        "value": 38
       },
       "count_person_4_3": {
+        "id": "36",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 47
+        "value": 46
       },
       "count_person_5_1": {
+        "id": "39",
         "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 44
+        "value": 45
       },
       "count_person_5_2": {
+        "id": "41",
         "name": "Число получателей услуг, удовлетворенных навигацией внутри организации",
-        "value": 44
+        "value": 39
       },
       "count_person_5_3": {
+        "id": "45",
         "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 43
+        "value": 38
       },
       "count_person_2_2_2": {
-        "name": "2.2.2. Своевременность предоставления услуги (в соответствии с датой госпитализации (диагностического исследования)",
-        "value": 49
+        "id": "17",
+        "name": "Число получателей услуг, которым услуга была предоставлена вовремя",
+        "value": 48
       },
       "count_person_1_3_web": {
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети 'Интернет' (численность опрошенных, ответивших положительно)",
-        "value": 43
+        "id": "11",
+        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
+        "value": 44
       },
       "count_person_1_3_stend": {
+        "id": "10",
         "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 43
+        "value": 44
       },
       "count_invalid_person_3_3": {
-        "name": "Число удовлетворенных доступностью услуг для инвалидов ",
+        "id": "29",
+        "name": "Число удовлетворенных доступностью услуг для инвалидов",
         "value": 2
       }
     },
@@ -15006,179 +15972,211 @@
     "checking": 2,
     "ratings_json": {
       "quota": {
+        "id": "46",
         "name": "Количество опрошенных респондентов",
         "value": 46
       },
       "rating_1": {
+        "id": "2",
         "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 82.0
+        "value": 81.6
       },
       "rating_2": {
+        "id": "12",
         "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 94.5
+        "value": 87.0
       },
       "rating_3": {
+        "id": "20",
         "name": "Критерий 3. Доступность услуг для инвалидов",
-        "value": 94.0
+        "value": 84.1
       },
       "rating_4": {
+        "id": "30",
         "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 82.0
+        "value": 79.6
       },
       "rating_5": {
+        "id": "37",
         "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 75.6
+        "value": 77.9
       },
       "rating_1_1": {
+        "id": "3",
         "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
         "value": {
           "rating": 56.0,
-          "web_count_all": 14,
-          "web_count_yes": 8,
-          "stend_count_all": 11,
-          "stend_count_yes": 6
+          "web_count_all": {
+            "id": "7",
+            "name": "Нормативное количество документов, на сайте",
+            "value": 14
+          },
+          "web_count_yes": {
+            "id": "6",
+            "name": "Фактическое количество документов, на сайте",
+            "value": 8
+          },
+          "stend_count_all": {
+            "id": "5",
+            "name": "Нормативное количество документов, на стенде",
+            "value": 11
+          },
+          "stend_count_yes": {
+            "id": "4",
+            "name": "Фактическое количество документов, на стенде",
+            "value": 6
+          }
         }
       },
       "rating_1_2": {
+        "id": "8",
         "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": {
-          "rating": 100,
-          "service_web_count": 6
-        }
+        "value": 100
       },
       "rating_1_3": {
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети «Интернет»",
-        "value": 88.0
+        "id": "9",
+        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
+        "value": 87.0
       },
       "rating_2_1": {
-        "name": "2.1 Наличие комфортных условий для предоставления услуг",
-        "value": {
-          "rating": 100,
-          "comfort_count": 6
-        }
+        "id": "13",
+        "name": "2.1. Наличие комфортных условий для предоставления услуг",
+        "value": 100
       },
       "rating_2_3": {
+        "id": "18",
         "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 89.0
+        "value": 74.0
       },
       "rating_3_1": {
+        "id": "21",
         "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": {
-          "rating": 80
-        }
+        "value": 80
       },
       "rating_3_2": {
+        "id": "27",
         "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": {
-          "rating": 100,
-          "invalid_2_count": 6
-        }
+        "value": 100
       },
       "rating_3_3": {
+        "id": "28",
         "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
-        "value": 100.0
+        "value": 67.0
       },
       "rating_4_1": {
+        "id": "31",
         "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 89.0
+        "value": 83.0
       },
       "rating_4_2": {
+        "id": "33",
         "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
-        "value": 80.0
-      },
-      "rating_4_3": {
-        "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 72.0
-      },
-      "rating_5_1": {
-        "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 72.0
-      },
-      "rating_5_2": {
-        "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
-        "value": 80.0
-      },
-      "rating_5_3": {
-        "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
         "value": 76.0
       },
+      "rating_4_3": {
+        "id": "35",
+        "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
+        "value": 80.0
+      },
+      "rating_5_1": {
+        "id": "38",
+        "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
+        "value": 83.0
+      },
+      "rating_5_2": {
+        "id": "40",
+        "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
+        "value": 85.0
+      },
+      "rating_5_3": {
+        "id": "44",
+        "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
+        "value": 72.0
+      },
       "rating_3_1_1": {
+        "id": "22",
         "name": "Оборудованных входных групп пандусами (подъемными платформами)",
-        "value": {
-          "rating": 20
-        }
+        "value": 20
       },
       "rating_3_1_2": {
+        "id": "23",
         "name": "Наличие выделенных стоянок для автотранспортных средств инвалидов",
-        "value": {
-          "rating": 20
-        }
+        "value": 20
       },
       "rating_3_1_3": {
+        "id": "24",
         "name": "Наличие адаптированных лифтов, поручней, расширенных дверных проемов",
-        "value": {
-          "rating": 20
-        }
+        "value": 20
       },
       "rating_total": {
+        "id": "1",
         "name": "Итоговый балл, по результатам проверки",
-        "value": 85.62
+        "value": 82.04
       },
       "invalid_person": {
+        "id": "47",
         "name": "Количество инвалидов, получателей услуг",
         "value": 3
       },
       "count_person_2_3": {
+        "id": "19",
         "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 41
+        "value": 34
       },
       "count_person_4_1": {
+        "id": "32",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 41
+        "value": 38
       },
       "count_person_4_2": {
+        "id": "34",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
-        "value": 37
-      },
-      "count_person_4_3": {
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 33
-      },
-      "count_person_5_1": {
-        "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 33
-      },
-      "count_person_5_2": {
-        "name": "Число получателей услуг, удовлетворенных графиком работы организации",
-        "value": 37
-      },
-      "count_person_5_3": {
-        "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
         "value": 35
       },
+      "count_person_4_3": {
+        "id": "36",
+        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
+        "value": 37
+      },
+      "count_person_5_1": {
+        "id": "39",
+        "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
+        "value": 38
+      },
+      "count_person_5_2": {
+        "id": "41",
+        "name": "Число получателей услуг, удовлетворенных графиком работы организации",
+        "value": 39
+      },
+      "count_person_5_3": {
+        "id": "45",
+        "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
+        "value": 33
+      },
       "rating_3_1_chair": {
+        "id": "25",
         "name": "Наличие сменных кресел-колясок",
-        "value": {
-          "rating": 20
-        }
+        "value": 20
       },
       "rating_3_1_toilet": {
+        "id": "26",
         "name": "Наличие санитарно-гигиенических помещений",
-        "value": {
-          "rating": 0
-        }
+        "value": 0
       },
       "count_person_1_3_web": {
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети 'Интернет' (численность опрошенных, ответивших положительно)",
-        "value": 42
+        "id": "11",
+        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
+        "value": 41
       },
       "count_person_1_3_stend": {
+        "id": "10",
         "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 42
+        "value": 41
       },
       "count_invalid_person_3_3": {
-        "name": "Число удовлетворенных доступностью услуг для инвалидов ",
-        "value": 3
+        "id": "29",
+        "name": "Число удовлетворенных доступностью услуг для инвалидов",
+        "value": 2
       }
     },
     "is_deleted": false
@@ -15193,150 +16191,186 @@
     "checking": 2,
     "ratings_json": {
       "quota": {
+        "id": "46",
         "name": "Количество опрошенных респондентов",
         "value": 120
       },
       "rating_1": {
+        "id": "2",
         "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 82.3
+        "value": 80.7
       },
       "rating_2": {
+        "id": "12",
         "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 86.0
+        "value": 86.5
       },
       "rating_3": {
+        "id": "20",
         "name": "Критерий 3. Доступность услуг для инвалидов",
-        "value": 89.0
+        "value": 86.0
       },
       "rating_4": {
+        "id": "30",
         "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 79.2
+        "value": 85.0
       },
       "rating_5": {
+        "id": "37",
         "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 81.4
+        "value": 79.3
       },
       "rating_1_1": {
+        "id": "3",
         "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
         "value": {
           "rating": 57.0,
-          "web_count_all": 14,
-          "web_count_yes": 7,
-          "stend_count_all": 11,
-          "stend_count_yes": 7
+          "web_count_all": {
+            "id": "7",
+            "name": "Нормативное количество документов, на сайте",
+            "value": 14
+          },
+          "web_count_yes": {
+            "id": "6",
+            "name": "Фактическое количество документов, на сайте",
+            "value": 7
+          },
+          "stend_count_all": {
+            "id": "5",
+            "name": "Нормативное количество документов, на стенде",
+            "value": 11
+          },
+          "stend_count_yes": {
+            "id": "4",
+            "name": "Фактическое количество документов, на стенде",
+            "value": 7
+          }
         }
       },
       "rating_1_2": {
+        "id": "8",
         "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": {
-          "rating": 100,
-          "service_web_count": 6
-        }
+        "value": 100
       },
       "rating_1_3": {
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети «Интернет»",
-        "value": 88.0
+        "id": "9",
+        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
+        "value": 84.0
       },
       "rating_2_1": {
-        "name": "2.1 Наличие комфортных условий для предоставления услуг",
-        "value": {
-          "rating": 100,
-          "comfort_count": 6
-        }
+        "id": "13",
+        "name": "2.1. Наличие комфортных условий для предоставления услуг",
+        "value": 100
       },
       "rating_2_3": {
+        "id": "18",
         "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 72.0
+        "value": 73.0
       },
       "rating_3_1": {
+        "id": "21",
         "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": {
-          "rating": 100,
-          "invalid_1_count": 5
-        }
+        "value": 100
       },
       "rating_3_2": {
+        "id": "27",
         "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": {
-          "rating": 80,
-          "invalid_2_count": 4
-        }
+        "value": 80
       },
       "rating_3_3": {
+        "id": "28",
         "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
-        "value": 90.0
+        "value": 80.0
       },
       "rating_4_1": {
+        "id": "31",
         "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 75.0
+        "value": 88.0
       },
       "rating_4_2": {
+        "id": "33",
         "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
         "value": 87.0
       },
       "rating_4_3": {
+        "id": "35",
         "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 72.0
+        "value": 75.0
       },
       "rating_5_1": {
+        "id": "38",
         "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 81.0
+        "value": 88.0
       },
       "rating_5_2": {
+        "id": "40",
         "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
-        "value": 73.0
+        "value": 72.0
       },
       "rating_5_3": {
+        "id": "44",
         "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 85.0
+        "value": 77.0
       },
       "rating_total": {
+        "id": "1",
         "name": "Итоговый балл, по результатам проверки",
-        "value": 83.58
+        "value": 83.5
       },
       "invalid_person": {
+        "id": "47",
         "name": "Количество инвалидов, получателей услуг",
         "value": 10
       },
       "count_person_2_3": {
+        "id": "19",
         "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 87
+        "value": 88
       },
       "count_person_4_1": {
+        "id": "32",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 90
+        "value": 106
       },
       "count_person_4_2": {
+        "id": "34",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
         "value": 104
       },
       "count_person_4_3": {
+        "id": "36",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 86
+        "value": 90
       },
       "count_person_5_1": {
+        "id": "39",
         "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 97
+        "value": 106
       },
       "count_person_5_2": {
+        "id": "41",
         "name": "Число получателей услуг, удовлетворенных графиком работы организации",
-        "value": 88
+        "value": 87
       },
       "count_person_5_3": {
+        "id": "45",
         "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 102
+        "value": 92
       },
       "count_person_1_3_web": {
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети 'Интернет' (численность опрошенных, ответивших положительно)",
+        "id": "11",
+        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
         "value": 103
       },
       "count_person_1_3_stend": {
+        "id": "10",
         "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
         "value": 103
       },
       "count_invalid_person_3_3": {
-        "name": "Число удовлетворенных доступностью услуг для инвалидов ",
-        "value": 9
+        "id": "29",
+        "name": "Число удовлетворенных доступностью услуг для инвалидов",
+        "value": 8
       }
     },
     "is_deleted": false
@@ -15351,149 +16385,185 @@
     "checking": 4,
     "ratings_json": {
       "quota": {
+        "id": "46",
         "name": "Количество опрошенных респондентов",
         "value": 85
       },
       "rating_1": {
+        "id": "2",
         "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 87.1
+        "value": 86.7
       },
       "rating_2": {
+        "id": "12",
         "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 92.5
+        "value": 93.5
       },
       "rating_3": {
+        "id": "20",
         "name": "Критерий 3. Доступность услуг для инвалидов",
         "value": 94.0
       },
       "rating_4": {
+        "id": "30",
         "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 82.4
+        "value": 87.4
       },
       "rating_5": {
+        "id": "37",
         "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 76.9
+        "value": 77.2
       },
       "rating_1_1": {
+        "id": "3",
         "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
         "value": {
           "rating": 77.0,
-          "web_count_all": 46,
-          "web_count_yes": 35,
-          "stend_count_all": 14,
-          "stend_count_yes": 11
+          "web_count_all": {
+            "id": "7",
+            "name": "Нормативное количество документов, на сайте",
+            "value": 46
+          },
+          "web_count_yes": {
+            "id": "6",
+            "name": "Фактическое количество документов, на сайте",
+            "value": 35
+          },
+          "stend_count_all": {
+            "id": "5",
+            "name": "Нормативное количество документов, на стенде",
+            "value": 14
+          },
+          "stend_count_yes": {
+            "id": "4",
+            "name": "Фактическое количество документов, на стенде",
+            "value": 11
+          }
         }
       },
       "rating_1_2": {
+        "id": "8",
         "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": {
-          "rating": 100,
-          "service_web_count": 6
-        }
+        "value": 100
       },
       "rating_1_3": {
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети «Интернет»",
-        "value": 85.0
+        "id": "9",
+        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
+        "value": 84.0
       },
       "rating_2_1": {
-        "name": "2.1 Наличие комфортных условий для предоставления услуг",
-        "value": {
-          "rating": 100,
-          "comfort_count": 5
-        }
+        "id": "13",
+        "name": "2.1. Наличие комфортных условий для предоставления услуг",
+        "value": 100
       },
       "rating_2_3": {
+        "id": "18",
         "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 85.0
+        "value": 87.0
       },
       "rating_3_1": {
+        "id": "21",
         "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": {
-          "rating": 100,
-          "invalid_1_count": 5
-        }
+        "value": 100
       },
       "rating_3_2": {
+        "id": "27",
         "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": {
-          "rating": 100,
-          "invalid_2_count": 5
-        }
+        "value": 100
       },
       "rating_3_3": {
+        "id": "28",
         "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
         "value": 80.0
       },
       "rating_4_1": {
+        "id": "31",
         "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 74.0
+        "value": 88.0
       },
       "rating_4_2": {
+        "id": "33",
         "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
         "value": 88.0
       },
       "rating_4_3": {
+        "id": "35",
         "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 88.0
+        "value": 85.0
       },
       "rating_5_1": {
+        "id": "38",
         "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 78.0
+        "value": 72.0
       },
       "rating_5_2": {
+        "id": "40",
         "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
-        "value": 80.0
+        "value": 88.0
       },
       "rating_5_3": {
+        "id": "44",
         "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 75.0
+        "value": 76.0
       },
       "rating_total": {
+        "id": "1",
         "name": "Итоговый балл, по результатам проверки",
-        "value": 86.58
+        "value": 87.76
       },
       "invalid_person": {
+        "id": "47",
         "name": "Количество инвалидов, получателей услуг",
         "value": 5
       },
       "count_person_2_3": {
+        "id": "19",
         "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 72
+        "value": 74
       },
       "count_person_4_1": {
+        "id": "32",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 63
+        "value": 75
       },
       "count_person_4_2": {
+        "id": "34",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
         "value": 75
       },
       "count_person_4_3": {
+        "id": "36",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 75
+        "value": 72
       },
       "count_person_5_1": {
+        "id": "39",
         "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 66
+        "value": 61
       },
       "count_person_5_2": {
+        "id": "41",
         "name": "Число получателей услуг, удовлетворенных графиком работы организации",
-        "value": 68
+        "value": 75
       },
       "count_person_5_3": {
+        "id": "45",
         "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 64
+        "value": 65
       },
       "count_person_1_3_web": {
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети 'Интернет' (численность опрошенных, ответивших положительно)",
-        "value": 69
+        "id": "11",
+        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
+        "value": 66
       },
       "count_person_1_3_stend": {
+        "id": "10",
         "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 69
+        "value": 66
       },
       "count_invalid_person_3_3": {
-        "name": "Число удовлетворенных доступностью услуг для инвалидов ",
+        "id": "29",
+        "name": "Число удовлетворенных доступностью услуг для инвалидов",
         "value": 4
       }
     },

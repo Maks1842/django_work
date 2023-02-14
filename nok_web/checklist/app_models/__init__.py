@@ -1,6 +1,7 @@
 from .answers import Answers
 from .checking import Checking
 from .comments import Comments
+from .coefficients import Coefficients
 from .department_persons import Department_Persons
 from .departments import Departments
 from .form_organisation_persons import Form_Organisation_Persons

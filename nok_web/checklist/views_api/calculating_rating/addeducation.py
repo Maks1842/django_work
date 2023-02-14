@@ -1,7 +1,6 @@
 import random
 from rest_framework.response import Response
-from .coefficients import Coefficients
-from ...app_models import Form_Sections
+from ...app_models import Form_Sections, Coefficients
 
 '''
 Функция расчета баллов, по результатам очного этапа.
@@ -10,9 +9,6 @@ from ...app_models import Form_Sections
 
 def addeducation_rating(quota, invalid_person, answers, form_json, grouping_json):
 
-    cfcnt_main = None
-    points = None
-
     sections_set = Form_Sections.objects.values()
     name = {}
     for section in sections_set:
@@ -20,13 +16,10 @@ def addeducation_rating(quota, invalid_person, answers, form_json, grouping_json
             name[f'{section["rating_key"]}'] = {"id": f'{section["raring_order_num"]}',
                                                 "text": f'{section["name"]}'}
 
-    for item_m in Coefficients.cfcnt_main:
-        if "education" in item_m.keys():
-            cfcnt_main = item_m["education"]
+    coefficient = Coefficients.objects.values().get(type_departments=3)
 
-    for item_p in Coefficients.points:
-        if "education" in item_p.keys():
-            points = item_p["education"]
+    cfcnt_main = coefficient['main_json']
+    points = coefficient['points_json']
 
     rating_1_1 = {}
     rating_1_2 = {}
@@ -152,7 +145,7 @@ def addeducation_rating(quota, invalid_person, answers, form_json, grouping_json
 
     comment_expert_1 = answers["expert_1"]
 
-    rating_respondents = respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1)
+    rating_respondents = respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1, coefficient)
 
     rating_1 = round(rating_1_1['rating'] * float(cfcnt_main["k_1_1"]) + rating_1_2 * float(cfcnt_main["k_1_1"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
     rating_2 = round((rating_2_1 + rating_respondents['rating_2_3'])/2, 1)
@@ -269,7 +262,7 @@ def addeducation_rating(quota, invalid_person, answers, form_json, grouping_json
     return ratings
 
 
-def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1):
+def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1, coefficient):
 
     comment_expert = []
 
@@ -279,11 +272,7 @@ def respondents_stage(quota, invalid_person, rating_1_1, comment_expert_1):
     satisfactory_stend = comment_expert[0]
     satisfactory_web = comment_expert[1]
 
-    cfcnt_resp = None
-
-    for item in Coefficients.cfcnt_resp:
-        if "education" in item.keys():
-            cfcnt_resp = item["education"]["addeducation"]
+    cfcnt_resp = coefficient['respondents_json']["addeducation"]
 
     rating_resp = {}
 

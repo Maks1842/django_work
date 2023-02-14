@@ -10,9 +10,9 @@ class Coefficients(models.Model):
                                          verbose_name='Тип департамента')
     type_organisations = models.ForeignKey('Type_Organisations', on_delete=models.PROTECT, null=True, blank=True,
                                            verbose_name='Тип учреждения')
-    main_json = models.JSONField(blank=True, verbose_name='Коэффициенты законодательные')
-    respondents_json = models.JSONField(blank=True, verbose_name='Коэффициенты рандомные, для респондентов')
-    points_json = models.JSONField(blank=True, verbose_name='Баллы законодательные')
+    main_json = models.JSONField(null=True, blank=True, verbose_name='Коэффициенты законодательные')
+    respondents_json = models.JSONField(null=True, blank=True, verbose_name='Коэффициенты рандомные, для респондентов')
+    points_json = models.JSONField(null=True, blank=True, verbose_name='Баллы законодательные')
     date = models.DateField(blank=True, verbose_name='Дата коэффициентов')
     version = models.CharField(max_length=50, verbose_name='Версия коэффициентов')
 
