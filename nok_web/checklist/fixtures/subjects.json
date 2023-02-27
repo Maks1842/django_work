@@ -5576,7 +5576,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "65",
@@ -7171,7 +7171,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "65",
@@ -7849,13 +7849,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Структурные подразделения отсутствуют",
-                  "value": "13"
                 }
               ],
-              "isRequired": true
+              "noneText": "Структурные подразделения отсутствуют",
+              "noneValue": "13",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -7886,13 +7885,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "10",
@@ -7958,13 +7956,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "15",
@@ -7990,13 +7987,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Предписания отсутствуют",
-                  "value": "14"
                 }
               ],
-              "isRequired": true
+              "noneText": "Предписания отсутствуют",
+              "noneValue": "14",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -8191,13 +8187,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -8297,13 +8292,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Доступ отсутствует",
-                  "value": "15"
                 }
               ],
-              "isRequired": true
+              "noneText": "Доступ отсутствует",
+              "noneValue": "15",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "38",
@@ -8313,13 +8307,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "ЭОР не применяются",
-                  "value": "16"
                 }
               ],
-              "isRequired": true
+              "noneText": "ЭОР не применяются",
+              "noneValue": "16",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "39",
@@ -8329,13 +8322,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Специальные технические средства отсутствуют",
-                  "value": "17"
                 }
               ],
-              "isRequired": true
+              "noneText": "Специальные технические средства отсутствуют",
+              "noneValue": "17",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -8391,13 +8383,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -8525,7 +8516,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "52",
@@ -9115,13 +9106,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Структурные подразделения отсутствуют",
-                  "value": "13"
                 }
               ],
-              "isRequired": true
+              "noneText": "Структурные подразделения отсутствуют",
+              "noneValue": "13",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -9152,13 +9142,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "10",
@@ -9224,13 +9213,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "15",
@@ -9240,13 +9228,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Предписания отсутствуют",
-                  "value": "14"
                 }
               ],
-              "isRequired": true
+              "noneText": "Предписания отсутствуют",
+              "noneValue": "14",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -9493,13 +9480,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -9599,13 +9585,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Доступ отсутствует",
-                  "value": "15"
                 }
               ],
-              "isRequired": true
+              "noneText": "Доступ отсутствует",
+              "noneValue": "15",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "41",
@@ -9615,13 +9600,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "ЭОР не применяются",
-                  "value": "16"
                 }
               ],
-              "isRequired": true
+              "noneText": "ЭОР не применяются",
+              "noneValue": "16",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "42",
@@ -9631,13 +9615,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Специальные технические средства отсутствуют",
-                  "value": "17"
                 }
               ],
-              "isRequired": true
+              "noneText": "Специальные технические средства отсутствуют",
+              "noneValue": "17",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -9709,13 +9692,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -9843,7 +9825,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "56",
@@ -10445,13 +10427,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Структурные подразделения отсутствуют",
-                  "value": "13"
                 }
               ],
-              "isRequired": true
+              "noneText": "Структурные подразделения отсутствуют",
+              "noneValue": "13",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -10482,13 +10463,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "10",
@@ -10538,13 +10518,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "14",
@@ -10570,13 +10549,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Предписания отсутствуют",
-                  "value": "14"
                 }
               ],
-              "isRequired": true
+              "noneText": "Предписания отсутствуют",
+              "noneValue": "14",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -10715,13 +10693,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -10821,13 +10798,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Доступ отсутствует",
-                  "value": "15"
                 }
               ],
-              "isRequired": true
+              "noneText": "Доступ отсутствует",
+              "noneValue": "15",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "34",
@@ -10837,13 +10813,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "ЭОР не применяются",
-                  "value": "16"
                 }
               ],
-              "isRequired": true
+              "noneText": "ЭОР не применяются",
+              "noneValue": "16",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "35",
@@ -10853,13 +10828,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Специальные технические средства отсутствуют",
-                  "value": "17"
                 }
               ],
-              "isRequired": true
+              "noneText": "Специальные технические средства отсутствуют",
+              "noneValue": "17",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -10899,13 +10873,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -11033,7 +11006,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "47",
@@ -11596,13 +11569,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Структурные подразделения отсутствуют",
-                  "value": "13"
                 }
               ],
-              "isRequired": true
+              "noneText": "Структурные подразделения отсутствуют",
+              "noneValue": "13",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -11633,13 +11605,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "10",
@@ -11689,13 +11660,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "14",
@@ -11705,13 +11675,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Предписания отсутствуют",
-                  "value": "14"
                 }
               ],
-              "isRequired": true
+              "noneText": "Предписания отсутствуют",
+              "noneValue": "14",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -11850,13 +11819,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -11956,13 +11924,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Доступ отсутствует",
-                  "value": "15"
                 }
               ],
-              "isRequired": true
+              "noneText": "Доступ отсутствует",
+              "noneValue": "15",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "33",
@@ -11972,13 +11939,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "ЭОР не применяются",
-                  "value": "16"
                 }
               ],
-              "isRequired": true
+              "noneText": "ЭОР не применяются",
+              "noneValue": "16",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "34",
@@ -11988,13 +11954,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Специальные технические средства отсутствуют",
-                  "value": "17"
                 }
               ],
-              "isRequired": true
+              "noneText": "Специальные технические средства отсутствуют",
+              "noneValue": "17",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -12017,13 +11982,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -12151,7 +12115,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "45",
@@ -12732,13 +12696,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "9",
@@ -12792,13 +12755,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -12901,7 +12863,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "20",
@@ -13512,13 +13474,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Платные услуги отсутствуют",
-                  "value": "4"
                 }
               ],
-              "isRequired": true
+              "noneText": "Платные услуги отсутствуют",
+              "noneValue": "4",
+              "isRequired": true,
+              "showNoneItem": "true"
             },
             {
               "name": "9",
@@ -13572,13 +13533,12 @@
                 {
                   "text": "Сайт",
                   "value": "12"
-                },
-                {
-                  "text": "Не предусмотрено",
-                  "value": "3"
                 }
               ],
-              "isRequired": true
+              "noneText": "Не предусмотрено",
+              "noneValue": "3",
+              "isRequired": true,
+              "showNoneItem": "true"
             }
           ]
         },
@@ -13681,7 +13641,7 @@
           ]
         },
         {
-          "title": "2.1.1 Наличие комфортных условий для предоставления услуг",
+          "title": "2.1. Наличие комфортных условий для предоставления услуг",
           "elements": [
             {
               "name": "20",
@@ -14498,7 +14458,8 @@
   "pk": 1,
   "fields": {
     "value_name": "Да",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14506,7 +14467,8 @@
   "pk": 2,
   "fields": {
     "value_name": "Нет",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14514,7 +14476,8 @@
   "pk": 3,
   "fields": {
     "value_name": "Не предусмотрено",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {
@@ -14522,7 +14485,8 @@
   "pk": 4,
   "fields": {
     "value_name": "Платные услуги отсутствуют",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {
@@ -14530,7 +14494,8 @@
   "pk": 5,
   "fields": {
     "value_name": "превышает установленный срок ожидания",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14538,7 +14503,8 @@
   "pk": 6,
   "fields": {
     "value_name": "равен установленному сроку ожидания",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14546,7 +14512,8 @@
   "pk": 7,
   "fields": {
     "value_name": "меньше установленного срока ожидания на 1 час ",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14554,7 +14521,8 @@
   "pk": 8,
   "fields": {
     "value_name": "меньше установленного срока ожидания на 2 дня (на 2 часа) ",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14562,7 +14530,8 @@
   "pk": 9,
   "fields": {
     "value_name": "меньше установленного срока ожидания на 3 дня (на 3 часа)",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14570,7 +14539,8 @@
   "pk": 10,
   "fields": {
     "value_name": "меньше установленного срока ожидания не менее, чем 1/2 срока",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": false
   }
 },
 {
@@ -14578,7 +14548,8 @@
   "pk": 11,
   "fields": {
     "value_name": "Стенд",
-    "name_alternativ": "Да"
+    "name_alternativ": "Да",
+    "special_option": false
   }
 },
 {
@@ -14586,7 +14557,8 @@
   "pk": 12,
   "fields": {
     "value_name": "Сайт",
-    "name_alternativ": "Да"
+    "name_alternativ": "Да",
+    "special_option": false
   }
 },
 {
@@ -14594,7 +14566,8 @@
   "pk": 13,
   "fields": {
     "value_name": "Структурные подразделения отсутствуют",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {
@@ -14602,7 +14575,8 @@
   "pk": 14,
   "fields": {
     "value_name": "Предписания отсутствуют",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {
@@ -14610,7 +14584,8 @@
   "pk": 15,
   "fields": {
     "value_name": "Доступ отсутствует",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {
@@ -14618,7 +14593,8 @@
   "pk": 16,
   "fields": {
     "value_name": "ЭОР не применяются",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {
@@ -14626,7 +14602,8 @@
   "pk": 17,
   "fields": {
     "value_name": "Специальные технические средства отсутствуют",
-    "name_alternativ": ""
+    "name_alternativ": "",
+    "special_option": true
   }
 },
 {

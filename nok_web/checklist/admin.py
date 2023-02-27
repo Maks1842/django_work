@@ -143,9 +143,9 @@ class QuestionsAdmin(admin.ModelAdmin):
 
 
 class Question_ValuesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'value_name', 'name_alternativ')
-    search_fields = ('value_name', 'name_alternativ')
-    list_editable = ('value_name', 'name_alternativ')
+    list_display = ('id', 'value_name', 'name_alternativ', 'special_option')
+    search_fields = ('value_name', 'name_alternativ', 'special_option')
+    list_editable = ('value_name', 'name_alternativ', 'special_option')
 
 
 class Form_Sections_QuestionAdmin(admin.ModelAdmin):

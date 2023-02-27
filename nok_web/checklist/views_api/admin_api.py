@@ -143,6 +143,8 @@ class GetActAPIView(APIView):
 
                 for q in questions_id:
                     choices = []
+                    choices_alt = ''
+                    special_option = False
                     count_section += 1
 
                     if q['type_organisations'] == '':
@@ -160,15 +162,33 @@ class GetActAPIView(APIView):
 
                         for av in range(len(ans_var)):
                             qv = question_values.get(pk=ans_var[av])
-                            choices.append({'value': ans_var[av], 'text': qv['value_name']})
+                            if qv['special_option'] == True:
+                                choices_alt = {'value': ans_var[av], 'text': qv['value_name']}
+                            else:
+                                choices.append({'value': ans_var[av], 'text': qv['value_name']})
 
-                        pages.append({
-                            'name': str(count),
-                            'title': question['questions'],
-                            'type': type['type'],
-                            'choices': choices,
-                            'isRequired': q['required'],
-                        })
+                            if qv['special_option'] == True:
+                                special_option = True
+
+                        if special_option == True:
+                            pages.append({
+                                'name': str(count),
+                                'title': question['questions'],
+                                'type': type['type'],
+                                'showNoneItem': 'true',
+                                'noneValue': choices_alt['value'],
+                                'noneText': choices_alt['text'],
+                                'choices': choices,
+                                'isRequired': q['required'],
+                            })
+                        else:
+                            pages.append({
+                                'name': str(count),
+                                'title': question['questions'],
+                                'type': type['type'],
+                                'choices': choices,
+                                'isRequired': q['required'],
+                            })
                     elif str(type_organisations) in q['type_organisations'].split(','):
                         count += 1
                         type = type_answers.get(pk=q['type_answers_id'])
