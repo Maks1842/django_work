@@ -242,6 +242,7 @@ class GetActAPIView(APIView):
                     context.append({
                         'title': fs['name'],
                         'elements': pages,
+                        'parent': fs['parent_id']
                     })
 
         x = list(context)[-1]
