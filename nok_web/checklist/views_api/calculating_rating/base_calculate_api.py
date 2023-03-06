@@ -76,22 +76,23 @@ def calculating_rating(checking, organisation, type_organisation):
     comparison = do_some_magic(form_json, act_answer)
     answers = answer_in_the_act(comparison, query)
 
-    if type_organisation == '1':
-        rating = culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-    elif type_organisation == '10':
-        rating = culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-    elif type_organisation == '2' or type_organisation == '3':
-        rating = healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-    elif type_organisation == '4':
-        rating = kindergarden_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-    elif type_organisation == '5':
-        rating = school_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-    elif type_organisation == '7':
-        rating = techcollege_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-    elif type_organisation == '9':
-        rating = addeducation_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+    match type_organisation:
+        case '1':
+            return culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '10':
+            return culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case ('2' | '3'):
+            return healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '4':
+            return kindergarden_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '5':
+            return school_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '7':
+            return techcollege_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '9':
+            return addeducation_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
 
-    return rating
+    return False
 
 
 '''

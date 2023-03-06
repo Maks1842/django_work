@@ -85,14 +85,15 @@ class ChangeRatingsAPIView(APIView):
 
         ratings = ratings_set.ratings_json
 
-        if type_organisation == '1':
-            rating = culture_legacy_rating(ratings, count_person)
-        elif type_organisation == '10':
-            rating = culture_standart_rating(ratings, count_person)
-        elif type_organisation == '2' or type_organisation == '3':
-            rating = healthcare_rating(ratings, count_person)
-        elif type_organisation == '4' or type_organisation == '5' or type_organisation == '7' or type_organisation == '9':
-            rating = education_rating(ratings, count_person)
+        match type_organisation:
+            case '1':
+                rating = culture_legacy_rating(ratings, count_person)
+            case '10':
+                rating = culture_standart_rating(ratings, count_person)
+            case ('2' | '3'):
+                rating = healthcare_rating(ratings, count_person)
+            case ('4' | '5' | '7' | '9'):
+                rating = education_rating(ratings, count_person)
 
         return Response(rating)
 
