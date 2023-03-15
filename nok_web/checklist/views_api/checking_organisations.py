@@ -81,9 +81,9 @@ class AnswersAPIView(APIView):
         serializers.is_valid(raise_exception=True)
         try:
             Answers.objects.update_or_create(
-                checking=Checking.objects.get(pk=req_data['checking']),
-                organisations=Organisations.objects.get(pk=req_data['organisations']),
-                type_organisations=Type_Organisations.objects.get(pk=req_data['type_organisations']),
+                checking_id=req_data['checking'],
+                organisations_id=req_data['organisations'],
+                type_organisations_id=req_data['type_organisations'],
                 defaults={'answers_json': req_data['answers_json']},
             )
         except IntegrityError:
@@ -100,8 +100,9 @@ class AnswersAPIView(APIView):
         serializers.is_valid(raise_exception=True)
         try:
             Ratings.objects.update_or_create(
-                checking=Checking.objects.get(pk=checking),
-                organisations=Organisations.objects.get(pk=organisation),
+                checking_id=req_data['checking'],
+                organisations_id=req_data['organisations'],
+                type_organisations_id=req_data['type_organisations'],
                 defaults={'ratings_json': rating},
             )
         except IntegrityError:
@@ -112,7 +113,8 @@ class AnswersAPIView(APIView):
 
         return Response({'answer': 'Ответ успешно сохранен',
                          'rating': 'Рейтинг успешно сохранен',
-                         'ratingss': rating})
+                         'ratings': rating
+                         })
         # return Response(rating)
 
 

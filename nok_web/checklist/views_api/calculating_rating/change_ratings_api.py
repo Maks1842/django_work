@@ -23,59 +23,50 @@ class ChangeRatingsAPIView(APIView):
 
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
-        methods=['get'],
+        methods=['post'],
         tags=['Рейтинг'],
         operation_description="Корректировка рейтинга (ввод фактических данных по респондентам)",
-        manual_parameters=[
-            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_1_3_stend', openapi.IN_QUERY, description="Число удовлетворенных стендом",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_1_3_web', openapi.IN_QUERY, description="Число удовлетворенных сайтом",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_2_2_2', openapi.IN_QUERY, description="Число удовлетворенных своевременностью услуг (для здравоохранения)",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_2_3', openapi.IN_QUERY, description="Число удовлетворенных комфортом",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_invalid_person_3_3', openapi.IN_QUERY, description="Число удовлетворенных инвалидов",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_4_1', openapi.IN_QUERY, description="Число удовлетворенных вежливостью, первичный контакт",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_4_2', openapi.IN_QUERY, description="Число удовлетворенных вежливостью, непоследственное оказание услуги",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_4_3', openapi.IN_QUERY, description="Число удовлетворенных вежливостью, дистанционное взаимодействие",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_5_1', openapi.IN_QUERY, description="Число готовых рекомендовать учреждение",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_5_2', openapi.IN_QUERY, description="Число удовлетворенных графиком/навигацией",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('count_person_5_3', openapi.IN_QUERY, description="Число удовлетворенных условиями оказания услуг",
-                              type=openapi.TYPE_INTEGER),
-        ])
-    @action(methods=['get'], detail=False)
-    def get(self, request):
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+            'checking_id': openapi.Schema(type=openapi.TYPE_INTEGER, description="Идентификатор проверки"),
+            'organisation_id': openapi.Schema(type=openapi.TYPE_INTEGER, description="Идентификатор организации"),
+            'type_organisation_id': openapi.Schema(type=openapi.TYPE_INTEGER, description="Идентификатор типа организации"),
+            'count_person_1_3_stend': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных стендом"),
+            'count_person_1_3_web': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных сайтом"),
+            'count_person_2_2_2': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных своевременностью услуг (для здравоохранения)"),
+            'count_person_2_3': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных комфортом"),
+            'count_invalid_person_3_3': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных инвалидов"),
+            'count_person_4_1': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных вежливостью, первичный контакт"),
+            'count_person_4_2': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных вежливостью, непоследственное оказание услуги"),
+            'count_person_4_3': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных вежливостью, дистанционное взаимодействие"),
+            'count_person_5_1': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число готовых рекомендовать учреждение"),
+            'count_person_5_2': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных графиком/навигацией"),
+            'count_person_5_3': openapi.Schema(type=openapi.TYPE_INTEGER, description="Число удовлетворенных условиями оказания услуг"),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
         rating = {}
 
-        checking = request.query_params.get('id_checking')
-        organisation = request.query_params.get('id_organisation')
-        type_organisation = request.query_params.get('id_type_organisation')
+        checking = req_data['checking_id']
+        organisation = req_data['organisation_id']
+        type_organisation = req_data['type_organisation_id']
 
         count_person = {
-            "count_person_1_3_stend": request.query_params.get('count_person_1_3_stend'),
-            "count_person_1_3_web": request.query_params.get('count_person_1_3_web'),
-            "count_person_2_2_2": request.query_params.get('count_person_2_2_2'),
-            "count_person_2_3": request.query_params.get('count_person_2_3'),
-            "count_invalid_person_3_3": request.query_params.get('count_invalid_person_3_3'),
-            "count_person_4_1": request.query_params.get('count_person_4_1'),
-            "count_person_4_2": request.query_params.get('count_person_4_2'),
-            "count_person_4_3": request.query_params.get('count_person_4_3'),
-            "count_person_5_1": request.query_params.get('count_person_5_1'),
-            "count_person_5_2": request.query_params.get('count_person_5_2'),
-            "count_person_5_3": request.query_params.get('count_person_5_3')
+            "count_person_1_3_stend": req_data['count_person_1_3_stend'],
+            "count_person_1_3_web": req_data['count_person_1_3_web'],
+            "count_person_2_2_2": req_data['count_person_2_2_2'],
+            "count_person_2_3": req_data['count_person_2_3'],
+            "count_invalid_person_3_3": req_data['count_invalid_person_3_3'],
+            "count_person_4_1": req_data['count_person_4_1'],
+            "count_person_4_2": req_data['count_person_4_2'],
+            "count_person_4_3": req_data['count_person_4_3'],
+            "count_person_5_1": req_data['count_person_5_1'],
+            "count_person_5_2": req_data['count_person_5_2'],
+            "count_person_5_3": req_data['count_person_5_3']
         }
 
         try:
@@ -86,41 +77,29 @@ class ChangeRatingsAPIView(APIView):
         ratings = ratings_set.ratings_json
 
         match type_organisation:
-            case '1':
+            case 1:
                 rating = culture_legacy_rating(ratings, count_person)
-            case '10':
+            case 10:
                 rating = culture_standart_rating(ratings, count_person)
-            case ('2' | '3'):
+            case (2 | 3):
                 rating = healthcare_rating(ratings, count_person)
-            case ('4' | '5' | '7' | '9'):
+            case (4 | 5 | 7 | 9):
                 rating = education_rating(ratings, count_person)
 
-        return Response(rating)
+        data = {'checking': req_data['checking_id'],
+                'organisation': req_data['organisation_id'],
+                'type_organisation': req_data['type_organisation_id'],
+                'ratings_json': rating
+                }
 
-
-    @swagger_auto_schema(
-        methods=['post'],
-        tags=['Рейтинг'],
-        operation_description="Добавить/изменить результаты рейтингов",
-        request_body=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
-                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
-                'ratings_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты рейтингов'),
-            }
-        ))
-    @action(methods=['post'], detail=True)
-    def post(self, request):
-        req_data = request.data
-
-        serializers = RatingsSerializer(data=req_data)
+        serializers = RatingsSerializer(data=data)
         serializers.is_valid(raise_exception=True)
         try:
             Ratings.objects.update_or_create(
-                checking=Checking.objects.get(pk=req_data['checking']),
-                organisations=Organisations.objects.get(pk=req_data['organisations']),
-                defaults={'ratings_json': req_data['ratings_json']},
+                checking_id=checking,
+                organisations_id=organisation,
+                type_organisations_id=type_organisation,
+                defaults={'ratings_json': data['ratings_json']},
             )
         except IntegrityError:
             return Response({"error": "Ошибка при добавлении/изменении данных"},

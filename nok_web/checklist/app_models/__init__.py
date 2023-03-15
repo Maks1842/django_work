@@ -7,6 +7,7 @@ from .departments import Departments
 from .form_organisation_persons import Form_Organisation_Persons
 from .form_sections import Form_Sections
 from .form_sections_question import Form_Sections_Question
+from .form_type_organisation import Form_Type_Organisation
 from .forms_act import FormsAct
 from .forms_recommendations import Forms_Recommendations
 from .list_checking import List_Checking
