@@ -66,16 +66,23 @@ class StatisticOrganisationListAPIView(APIView):
         for item in queryset:
 
             if Ratings.objects.filter(checking_id=checking, organisations_id=item.organisation_id):
-                rating_json = Ratings.objects.filter(checking_id=checking).get(organisations_id=item.organisation_id).ratings_json
-                rating = rating_json['rating_total']['value']
+                rating = Ratings.objects.filter(checking_id=checking).get(organisations_id=item.organisation_id)
+                rating_json = rating.ratings_json
+                rating_total = rating_json['rating_total']['value']
+                type_organisation_id = rating.type_organisations_id
+                type_organisation = Type_Organisations.objects.get(pk=type_organisation_id).type
             else:
-                rating = 0
+                rating_total = 0
+                type_organisation_id = ''
+                type_organisation = ''
 
             result.append({
                 'id': item.organisation_id,
                 'name': item.organisation.organisation_name,
                 'date': item.date_check_org,
-                'rating': rating,
+                'rating': rating_total,
+                'type_organisation_id': type_organisation_id,
+                'type_organisation': type_organisation,
             })
         return Response(result)
 
