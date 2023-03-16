@@ -68,7 +68,7 @@ class ChangeRatingsAPIView(APIView):
             "count_person_5_3": req_data['count_person_5_3']
         }
 
-        if req_data['count_person_2_2_2'] in req_data and req_data['count_person_2_2_2'] != '':
+        if 'count_person_2_2_2' in req_data and req_data['count_person_2_2_2'] != '':
             count_person.update({"count_person_2_2_2": req_data['count_person_2_2_2']})
 
         try:
