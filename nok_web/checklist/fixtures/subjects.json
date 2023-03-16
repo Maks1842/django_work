@@ -768,6 +768,19 @@
   }
 },
 {
+  "model": "checklist.answers",
+  "pk": 15,
+  "fields": {
+    "organisations": 5,
+    "type_organisations": 2,
+    "checking": 3,
+    "answers_json": "string",
+    "quota": 1,
+    "invalid_person": null,
+    "is_deleted": false
+  }
+},
+{
   "model": "checklist.checking",
   "pk": 1,
   "fields": {
@@ -4541,6 +4554,86 @@
     "type_organisations": "xxxxxx",
     "required": false,
     "is_deleted": false
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 1,
+  "fields": {
+    "organisation": 5,
+    "type_organisation": 3
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 2,
+  "fields": {
+    "organisation": 5,
+    "type_organisation": 2
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 3,
+  "fields": {
+    "organisation": 4,
+    "type_organisation": 1
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 4,
+  "fields": {
+    "organisation": 3,
+    "type_organisation": 10
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 5,
+  "fields": {
+    "organisation": 6,
+    "type_organisation": 5
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 6,
+  "fields": {
+    "organisation": 8,
+    "type_organisation": 7
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 7,
+  "fields": {
+    "organisation": 9,
+    "type_organisation": 9
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 8,
+  "fields": {
+    "organisation": 7,
+    "type_organisation": 4
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 9,
+  "fields": {
+    "organisation": 2,
+    "type_organisation": 10
+  }
+},
+{
+  "model": "checklist.form_type_organisation",
+  "pk": 10,
+  "fields": {
+    "organisation": 1,
+    "type_organisation": 1
   }
 },
 {
@@ -15731,7 +15824,7 @@
   "pk": 1,
   "fields": {
     "organisations": 5,
-    "type_organisations": null,
+    "type_organisations": 3,
     "checking": 1,
     "ratings_json": {
       "quota": {
@@ -15744,35 +15837,35 @@
       "rating_1": {
         "id": "25",
         "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 84.0,
+        "value": 58.0,
         "parent": "None",
         "order_num": "2"
       },
       "rating_2": {
         "id": "26",
         "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 81.9,
+        "value": 47.7,
         "parent": "None",
         "order_num": "12"
       },
       "rating_3": {
         "id": "27",
         "name": "Критерий 3. Доступность услуг для инвалидов",
-        "value": 92.0,
+        "value": 137.0,
         "parent": "None",
         "order_num": "20"
       },
       "rating_4": {
         "id": "28",
         "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 82.6,
+        "value": 19.0,
         "parent": "None",
         "order_num": "30"
       },
       "rating_5": {
         "id": "29",
         "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 82.4,
+        "value": 19.0,
         "parent": "None",
         "order_num": "37"
       },
@@ -15793,7 +15886,7 @@
       "rating_1_3": {
         "id": "31",
         "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
-        "value": 84.0,
+        "value": 19.0,
         "parent": "25",
         "order_num": "9"
       },
@@ -15807,14 +15900,14 @@
       "rating_2_2": {
         "id": "34",
         "name": "2.2. Время ожидания предоставления медицинских услуг (среднее время ожидания и своевременность предоставления медицинской услуги: приема врача/диагностического исследования/плановой госпитализации)",
-        "value": 66.0,
+        "value": 30.0,
         "parent": "26",
         "order_num": "14"
       },
       "rating_2_3": {
         "id": "37",
         "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 85.0,
+        "value": 19.0,
         "parent": "26",
         "order_num": "18"
       },
@@ -15835,49 +15928,49 @@
       "rating_3_3": {
         "id": "44",
         "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
-        "value": 100.0,
+        "value": 250.0,
         "parent": "27",
         "order_num": "28"
       },
       "rating_4_1": {
         "id": "46",
         "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 77.0,
+        "value": 19.0,
         "parent": "28",
         "order_num": "31"
       },
       "rating_4_2": {
         "id": "48",
         "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
-        "value": 85.0,
+        "value": 19.0,
         "parent": "28",
         "order_num": "33"
       },
       "rating_4_3": {
         "id": "50",
         "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 89.0,
+        "value": 19.0,
         "parent": "28",
         "order_num": "35"
       },
       "rating_5_1": {
         "id": "52",
         "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 77.0,
+        "value": 19.0,
         "parent": "29",
         "order_num": "38"
       },
       "rating_5_2": {
         "id": "54",
         "name": "5.2. Удовлетворенность получателей услуг, навигацией внутри организации",
-        "value": 89.0,
+        "value": 19.0,
         "parent": "29",
         "order_num": "40"
       },
       "rating_5_3": {
         "id": "58",
         "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 83.0,
+        "value": 19.0,
         "parent": "29",
         "order_num": "44"
       },
@@ -15891,14 +15984,14 @@
       "rating_2_2_2": {
         "id": "35",
         "name": "2.2.2. Своевременность предоставления услуги (в соответствии с датой госпитализации (диагностического исследования)",
-        "value": 92.0,
+        "value": 19.0,
         "parent": "34",
         "order_num": "16"
       },
       "rating_total": {
         "id": "60",
         "name": "Итоговый балл, по результатам проверки",
-        "value": 84.58,
+        "value": 56.14,
         "parent": "None",
         "order_num": "1"
       },
@@ -15940,77 +16033,77 @@
       "count_person_2_3": {
         "id": "38",
         "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 45,
+        "value": 10,
         "parent": "37",
         "order_num": "19"
       },
       "count_person_4_1": {
         "id": "47",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 41,
+        "value": 10,
         "parent": "46",
         "order_num": "32"
       },
       "count_person_4_2": {
         "id": "49",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
-        "value": 45,
+        "value": 10,
         "parent": "48",
         "order_num": "34"
       },
       "count_person_4_3": {
         "id": "51",
         "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 47,
+        "value": 10,
         "parent": "50",
         "order_num": "36"
       },
       "count_person_5_1": {
         "id": "53",
         "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 41,
+        "value": 10,
         "parent": "52",
         "order_num": "39"
       },
       "count_person_5_2": {
         "id": "55",
         "name": "Число получателей услуг, удовлетворенных навигацией внутри организации",
-        "value": 47,
+        "value": 10,
         "parent": "54",
         "order_num": "41"
       },
       "count_person_5_3": {
         "id": "59",
         "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 44,
+        "value": 10,
         "parent": "58",
         "order_num": "45"
       },
       "count_person_2_2_2": {
         "id": "36",
         "name": "Число получателей услуг, которым услуга была предоставлена вовремя",
-        "value": 49,
+        "value": 10,
         "parent": "34",
         "order_num": "17"
       },
       "count_person_1_3_web": {
         "id": "33",
         "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
-        "value": 43,
+        "value": 10,
         "parent": "31",
         "order_num": "11"
       },
       "count_person_1_3_stend": {
         "id": "32",
         "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 43,
+        "value": 10,
         "parent": "31",
         "order_num": "10"
       },
       "count_invalid_person_3_3": {
         "id": "45",
         "name": "Число удовлетворенных доступностью услуг для инвалидов",
-        "value": 2,
+        "value": 5,
         "parent": "44",
         "order_num": "29"
       }
@@ -16023,7 +16116,7 @@
   "pk": 2,
   "fields": {
     "organisations": 1,
-    "type_organisations": null,
+    "type_organisations": 1,
     "checking": 2,
     "ratings_json": {
       "quota": {
@@ -16322,7 +16415,7 @@
   "pk": 3,
   "fields": {
     "organisations": 3,
-    "type_organisations": null,
+    "type_organisations": 10,
     "checking": 2,
     "ratings_json": {
       "quota": {
@@ -16586,7 +16679,7 @@
   "pk": 4,
   "fields": {
     "organisations": 6,
-    "type_organisations": null,
+    "type_organisations": 5,
     "checking": 4,
     "ratings_json": {
       "quota": {
@@ -17300,86 +17393,6 @@
   "pk": 3,
   "fields": {
     "position": "Эксперт"
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 1,
-  "fields": {
-    "organisation": 5,
-    "type_organisation": 3
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 2,
-  "fields": {
-    "organisation": 5,
-    "type_organisation": 2
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 3,
-  "fields": {
-    "organisation": 4,
-    "type_organisation": 1
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 4,
-  "fields": {
-    "organisation": 3,
-    "type_organisation": 10
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 5,
-  "fields": {
-    "organisation": 6,
-    "type_organisation": 5
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 6,
-  "fields": {
-    "organisation": 8,
-    "type_organisation": 7
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 7,
-  "fields": {
-    "organisation": 9,
-    "type_organisation": 9
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 8,
-  "fields": {
-    "organisation": 7,
-    "type_organisation": 4
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 9,
-  "fields": {
-    "organisation": 2,
-    "type_organisation": 10
-  }
-},
-{
-  "model": "checklist.form_type_organisation",
-  "pk": 10,
-  "fields": {
-    "organisation": 1,
-    "type_organisation": 1
   }
 },
 {
