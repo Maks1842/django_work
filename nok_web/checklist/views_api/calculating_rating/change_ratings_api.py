@@ -58,7 +58,6 @@ class ChangeRatingsAPIView(APIView):
         count_person = {
             "count_person_1_3_stend": req_data['count_person_1_3_stend'],
             "count_person_1_3_web": req_data['count_person_1_3_web'],
-            "count_person_2_2_2": req_data['count_person_2_2_2'],
             "count_person_2_3": req_data['count_person_2_3'],
             "count_invalid_person_3_3": req_data['count_invalid_person_3_3'],
             "count_person_4_1": req_data['count_person_4_1'],
@@ -68,6 +67,9 @@ class ChangeRatingsAPIView(APIView):
             "count_person_5_2": req_data['count_person_5_2'],
             "count_person_5_3": req_data['count_person_5_3']
         }
+
+        if req_data['count_person_2_2_2'] in req_data and req_data['count_person_2_2_2'] != '':
+            count_person.update({"count_person_2_2_2": req_data['count_person_2_2_2']})
 
         try:
             ratings_set = Ratings.objects.filter(checking_id=checking).get(organisations_id=organisation)
