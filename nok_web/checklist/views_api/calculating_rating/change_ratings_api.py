@@ -108,4 +108,4 @@ class ChangeRatingsAPIView(APIView):
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
 
-        return Response({'message': 'Рейтинг успешно сохранен'})
+        return Response(data['ratings_json'])
