@@ -315,7 +315,7 @@ def culture_standart_rating(quota, invalid_person, answers, form_json, grouping_
                              "name": name["count_person_5_1"]["text"],
                              "parent": name["count_person_5_1"]["parent"],
                              "order_num": name["count_person_5_1"]["order_num"]},
-        "rating_5_2": {"id": name["rating_5_2"]["id"],
+        "rating_5_2": {"id": name["rating_5_2_education"]["id"],
                        "value": rating_respondents['rating_5_2'],
                        "name": name["rating_5_2_education"]["text"],
                        "parent": name["rating_5_2_education"]["parent"],
