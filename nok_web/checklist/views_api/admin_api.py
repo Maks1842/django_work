@@ -339,7 +339,7 @@ class GetPositionUserAPIView(APIView):
 
 
 class GetProfileUserAPIView(APIView):
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Для Админа'],
