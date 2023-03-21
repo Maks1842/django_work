@@ -25,7 +25,7 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 
 
 class OrganisationPersonsAPIView(APIView):
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
         tags=['Представитель организации'],
@@ -119,7 +119,7 @@ class FormOrganisationPersonsAPIView(APIView):
 
 class GetListTypeOrganizationsAPIView(APIView):
 
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Типы организаций'],

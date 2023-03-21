@@ -32,7 +32,7 @@ IsOwnerAndAdminOrReadOnly - запись может менять только п
 
 class AnswersAPIView(APIView):
 
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
         tags=['Проверка'],
@@ -248,7 +248,7 @@ class InvalidPersonAPIView(APIView):
 
 class GetFormActByOrganizationTypeAPIView(APIView):
 
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
@@ -282,7 +282,7 @@ class GetFormActByOrganizationTypeAPIView(APIView):
 
 class GetCheckListOrganizationsAPIView(APIView):
 
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
@@ -323,7 +323,7 @@ class GetCheckListOrganizationsAPIView(APIView):
 
 class GetListCheckingAPIView(APIView):
 
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
@@ -349,7 +349,7 @@ class GetListCheckingAPIView(APIView):
 
 class GetCheckingCompletedAPIView(APIView):
 
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
         tags=['Проверка'],
