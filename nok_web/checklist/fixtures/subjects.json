@@ -273,7 +273,8 @@
       ]
     },
     "quota": 53,
-    "invalid_person": 2,
+    "invalid_person": 15,
+    "comments": "POST 1",
     "is_deleted": false
   }
 },
@@ -403,6 +404,7 @@
     },
     "quota": 120,
     "invalid_person": 10,
+    "comments": "Коммент 1",
     "is_deleted": false
   }
 },
@@ -542,6 +544,7 @@
     },
     "quota": 46,
     "invalid_person": 3,
+    "comments": "Клммент 2",
     "is_deleted": false
   }
 },
@@ -764,19 +767,7 @@
     },
     "quota": 85,
     "invalid_person": 5,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.answers",
-  "pk": 15,
-  "fields": {
-    "organisations": 5,
-    "type_organisations": 2,
-    "checking": 3,
-    "answers_json": "string",
-    "quota": 1,
-    "invalid_person": null,
+    "comments": "Коммент 3",
     "is_deleted": false
   }
 },
@@ -825,6 +816,22 @@
     "region": 2,
     "department": 2,
     "finished": false,
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.comments",
+  "pk": 2,
+  "fields": {
+    "free_value": "Комментарий 1",
+    "is_deleted": false
+  }
+},
+{
+  "model": "checklist.comments",
+  "pk": 3,
+  "fields": {
+    "free_value": "Комментарий 2",
     "is_deleted": false
   }
 },

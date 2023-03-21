@@ -14,7 +14,8 @@ from .views_api.calculating_rating.change_ratings_api import ChangeRatingsAPIVie
 from .views_api.calculating_rating.ratings_api import RatingsAPIView, RatingCheckingsListAPIView
 from .views_api.calculating_rating.ratings_into_pdf import GetRatingsIntoPdfAPIView
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
-    GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView
+    GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, \
+    InvalidPersonAPIView, CommentsCheckingAPIView
 from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
     GetListTypeOrganizationsAPIView
 from .views_api.statistics import StatisticUserAPIView, StatisticCheckingsListAPIView, StatisticOrganisationListAPIView
@@ -49,7 +50,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-    # Основные API
+    # Основные API проверки
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
     path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
@@ -60,6 +61,8 @@ urlpatterns = [
     # path('api/v1/getFormActByOrganizationId/', GetFormActByOrganizationIdAPIView.as_view(), name='getFormActByOrganizationId'),
     path('api/v1/getResultCheckingIntoPdf/', GetResultCheckingIntoPdfAPIView.as_view(), name='GetResultCheckingIntoPdf'),
     path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='GetResultCheckingIntoPdf'),
+    path('api/v1/CommentsChecking/', CommentsCheckingAPIView.as_view(), name='CommentsChecking'),
+    path('api/v1/InvalidPerson/', InvalidPersonAPIView.as_view(), name='InvalidPerson'),
 
     # Для Статистики
     path('api/v1/StatisticCheckingsList/', StatisticCheckingsListAPIView.as_view(), name='StatisticCheckingsList'),

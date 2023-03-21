@@ -118,38 +118,132 @@ class AnswersAPIView(APIView):
         # return Response(rating)
 
 
+class CommentsCheckingAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Проверка'],
+        operation_description="Получить комментарии по проверке",
+        manual_parameters=[
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+                              type=openapi.TYPE_INTEGER),
 
-# class AnswersAPIUpdate(APIView):
-#
-#     permission_classes = [IsAdminUser]
-#     @swagger_auto_schema(
-#         methods=['patch'],
-#         tags=['Проверка'],
-#         operation_description="Изменить результаты ответов",
-#         request_body=openapi.Schema(
-#             type=openapi.TYPE_OBJECT,
-#             properties={
-#                 'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
-#             },
-#         ))
-#     @action(methods=['patch'], detail=True)
-#     def patch(self, request, *args, **kwargs):
-#         pk = kwargs.get('pk', None)
-#
-#         req_data = request.data
-#
-#         try:
-#             instance = Answers.objects.get(pk=pk)
-#         except:
-#             return Response({'error': 'Объект не существует'})
-#
-#         serializers = AnswersSerializer(data=req_data, instance=instance, partial=True)
-#         serializers.is_valid(raise_exception=True)
-#         serializers.save()
-#
-#
-#
-#         return Response({'message': 'Изменения успешно добавлены'})
+        ])
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        checking = request.query_params.get('id_checking')
+        organisation = request.query_params.get('id_organisation')
+        type_organisation = request.query_params.get('id_type_organisation')
+
+        queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
+                                          type_organisations=type_organisation)
+        result = ''
+        if len(queryset) > 0:
+            if queryset['comments'] is not None and queryset['comments'] != '':
+                result = {"comment_expert": queryset['comments']}
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Проверка'],
+        operation_description="Добавить комментарий эксперта",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
+                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
+                                                     description='Идентификатор типа организации'),
+                'comment': openapi.Schema(type=openapi.TYPE_STRING, description='Комментарий эксперта'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        serializers = AnswersSerializer(data=req_data)
+        serializers.is_valid(raise_exception=True)
+        try:
+            Answers.objects.update_or_create(
+                checking_id=req_data['checking'],
+                organisations_id=req_data['organisations'],
+                type_organisations_id=req_data['type_organisations'],
+                defaults={'comments': req_data['comment']},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+
+        return Response({'result_comment': 'Комментарий успешно сохранен'})
+
+
+class InvalidPersonAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Проверка'],
+        operation_description="Получить количество инвалидов, получающие услуги в организации",
+        manual_parameters=[
+            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
+                              type=openapi.TYPE_INTEGER),
+
+        ])
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        checking = request.query_params.get('id_checking')
+        organisation = request.query_params.get('id_organisation')
+        type_organisation = request.query_params.get('id_type_organisation')
+
+        queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
+                                                type_organisations=type_organisation)
+        result = ''
+        if len(queryset) > 0:
+            if queryset['invalid_person'] is not None and queryset['invalid_person'] != '':
+                result = {"invalid_person": queryset['invalid_person'],}
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Проверка'],
+        operation_description="Добавить количество инвалидов",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
+                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
+                                                     description='Идентификатор типа организации'),
+                'invalid_person': openapi.Schema(type=openapi.TYPE_INTEGER, description='Количество инвалидов'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        serializers = AnswersSerializer(data=req_data)
+        serializers.is_valid(raise_exception=True)
+        try:
+            Answers.objects.update_or_create(
+                checking_id=req_data['checking'],
+                organisations_id=req_data['organisations'],
+                type_organisations_id=req_data['type_organisations'],
+                defaults={'invalid_person': req_data['invalid_person']},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,)
+
+        return Response({'result_invalid_person': 'Количество инвалидов успешно сохранено'})
 
 
 class GetFormActByOrganizationTypeAPIView(APIView):
