@@ -15,6 +15,9 @@ def do_some_magic(form_json, act_answer):
     for page in act['pages']:
         for element in page['elements']:
             choices = []
+            #  добавляем к ответам ответ который исключает существующие
+            if 'showNoneItem' in element.values():
+                element['choices'].append({"text": element['noneText'], "value": element['noneValue']})
             for choice in element['choices']:
                 choices.append(choice['value'])
             questions[element['name']] = choices

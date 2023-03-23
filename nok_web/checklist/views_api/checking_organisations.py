@@ -57,6 +57,7 @@ class AnswersAPIView(APIView):
         answer = ''
         if len(queryset) > 0:
             answer = queryset[0].answers_json
+            answer['invalidPerson'] = queryset[0].invalid_person
         return Response(answer)
 
     @swagger_auto_schema(
@@ -71,6 +72,7 @@ class AnswersAPIView(APIView):
                 'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
                                                      description='Идентификатор типа организации'),
                 'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
+                'invalid_person': openapi.Schema(type=openapi.TYPE_INTEGER, description='Количество инвалидов'),
             }
         ))
     @action(methods=['post'], detail=True)
@@ -84,7 +86,7 @@ class AnswersAPIView(APIView):
                 checking_id=req_data['checking'],
                 organisations_id=req_data['organisations'],
                 type_organisations_id=req_data['type_organisations'],
-                defaults={'answers_json': req_data['answers_json']},
+                defaults={'answers_json': req_data['answers_json'], 'invalid_person': req_data['invalid_person']},
             )
         except IntegrityError:
             return Response({"error": "Ошибка при добавлении/изменении данных"},
