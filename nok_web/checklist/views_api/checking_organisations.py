@@ -382,6 +382,7 @@ class GetCheckingCompletedAPIView(APIView):
                         'type_org_name': item_comp.type_organisations.type,
                         'org_check_date': item.date_check_org,
                         'org_person': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}",
+                        'comment': item_comp.comments
 
                     })
         return Response({'data': result})
