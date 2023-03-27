@@ -9,6 +9,7 @@ from drf_yasg2.utils import swagger_auto_schema, unset
 from drf_yasg2 import openapi
 from django.db import IntegrityError, transaction
 from rest_framework.permissions import IsAdminUser
+from django.contrib.auth.models import User
 
 from ..app_serializers.ratings_serializer import RatingsSerializer
 
@@ -363,15 +364,24 @@ class GetCheckingCompletedAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         user = request.query_params.get('user_id')
-        queryset = List_Checking.objects.filter(user_id=user)
+
+        user_admin = User.objects.get(pk=user).is_superuser
+
+        if user_admin == True:
+            queryset = List_Checking.objects.all()
+        else:
+            queryset = List_Checking.objects.filter(user_id=user)
+
         if len(queryset) == 0:
             return Response({'error': 'У данного эксперта нет проверок'})
 
         result = []
         for item in queryset:
             queryset_completed = Answers.objects.filter(checking_id=item.checking.id, organisations_id=item.organisation)
+
             if len(queryset_completed) > 0:
                 for item_comp in queryset_completed:
+                    # return Response(item_comp.checking.id)
                     result.append({
                         'check_id': item_comp.checking.id,
                         'check_name': item_comp.checking.name,
@@ -386,3 +396,4 @@ class GetCheckingCompletedAPIView(APIView):
 
                     })
         return Response({'data': result})
+

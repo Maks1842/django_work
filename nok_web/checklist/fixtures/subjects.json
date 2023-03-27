@@ -3145,7 +3145,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3159,7 +3159,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3173,7 +3173,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3187,7 +3187,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3201,7 +3201,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3215,7 +3215,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3229,7 +3229,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3243,7 +3243,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3257,7 +3257,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3271,7 +3271,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3285,7 +3285,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3299,7 +3299,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3327,7 +3327,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3341,7 +3341,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3355,7 +3355,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3369,7 +3369,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,2,3,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3383,7 +3383,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,2,3,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3397,7 +3397,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3411,7 +3411,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3425,7 +3425,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3439,7 +3439,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3453,7 +3453,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3467,7 +3467,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3481,7 +3481,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3565,7 +3565,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3607,7 +3607,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3635,7 +3635,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3691,7 +3691,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3705,7 +3705,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3719,7 +3719,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3747,7 +3747,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3775,7 +3775,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3789,7 +3789,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3803,7 +3803,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3817,7 +3817,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3845,7 +3845,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3873,7 +3873,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3887,7 +3887,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3901,7 +3901,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3957,7 +3957,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3971,7 +3971,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3985,7 +3985,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4013,7 +4013,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4125,7 +4125,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4139,7 +4139,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4153,7 +4153,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4167,7 +4167,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4181,7 +4181,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,4,5,6,7,8,9,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4195,7 +4195,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "4,5,6,7,8,9",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4251,7 +4251,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4321,7 +4321,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4335,7 +4335,7 @@
     "type_answers": 1,
     "answer_variant": "12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4391,7 +4391,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4405,7 +4405,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4419,7 +4419,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4433,7 +4433,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4447,7 +4447,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4461,7 +4461,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4475,7 +4475,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4489,7 +4489,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4503,7 +4503,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4517,7 +4517,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4531,7 +4531,7 @@
     "type_answers": 1,
     "answer_variant": "1",
     "type_organisations": "1,10",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -14175,18 +14175,6 @@
 },
 {
   "model": "checklist.list_checking",
-  "pk": 5,
-  "fields": {
-    "checking": 2,
-    "organisation": 1,
-    "person": 9,
-    "user": 1,
-    "date_check_org": "2022-12-09",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
   "pk": 6,
   "fields": {
     "checking": 3,
@@ -14238,7 +14226,7 @@
   "pk": 12,
   "fields": {
     "checking": 4,
-    "organisation": 8,
+    "organisation": 6,
     "person": 10,
     "user": 2,
     "date_check_org": "2022-11-09",
