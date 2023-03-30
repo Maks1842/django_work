@@ -4653,10 +4653,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Общая информация о медицинской организации",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -5046,6 +5048,7 @@
         },
         {
           "title": "II. Информация о медицинской деятельности медицинской организации",
+          "parent": 9,
           "elements": [
             {
               "name": "25",
@@ -5531,6 +5534,7 @@
         },
         {
           "title": "III. Информация о медицинских работниках медицинских организаций, включая филиалы (при их наличии)",
+          "parent": 9,
           "elements": [
             {
               "name": "55",
@@ -5600,6 +5604,7 @@
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "59",
@@ -5611,7 +5616,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "60",
@@ -5623,7 +5628,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "61",
@@ -5635,7 +5640,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "62",
@@ -5647,7 +5652,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "63",
@@ -5659,7 +5664,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "64",
@@ -5671,12 +5676,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "65",
@@ -5688,7 +5694,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "66",
@@ -5700,7 +5706,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "67",
@@ -5712,7 +5718,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "68",
@@ -5724,7 +5730,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "69",
@@ -5736,7 +5742,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "70",
@@ -5748,12 +5754,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.2.1. Среднее время ожидания предоставления услуги",
+          "parent": 34,
           "elements": [
             {
               "name": "71",
@@ -5791,6 +5798,7 @@
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "72",
@@ -5802,7 +5810,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "73",
@@ -5814,7 +5822,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "74",
@@ -5826,7 +5834,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "75",
@@ -5838,7 +5846,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "76",
@@ -5850,12 +5858,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "77",
@@ -5867,7 +5876,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "78",
@@ -5879,7 +5888,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "79",
@@ -5891,7 +5900,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "80",
@@ -5903,7 +5912,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "81",
@@ -5915,12 +5924,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -6248,10 +6258,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Общая информация о медицинской организации",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -6641,6 +6653,7 @@
         },
         {
           "title": "II. Информация о медицинской деятельности медицинской организации",
+          "parent": 9,
           "elements": [
             {
               "name": "25",
@@ -7126,6 +7139,7 @@
         },
         {
           "title": "III. Информация о медицинских работниках медицинских организаций, включая филиалы (при их наличии)",
+          "parent": 9,
           "elements": [
             {
               "name": "55",
@@ -7195,6 +7209,7 @@
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "59",
@@ -7206,7 +7221,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "60",
@@ -7218,7 +7233,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "61",
@@ -7230,7 +7245,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "62",
@@ -7242,7 +7257,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "63",
@@ -7254,7 +7269,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "64",
@@ -7266,12 +7281,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "65",
@@ -7283,7 +7299,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "66",
@@ -7295,7 +7311,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "67",
@@ -7307,7 +7323,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "68",
@@ -7319,7 +7335,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "69",
@@ -7331,7 +7347,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "70",
@@ -7343,12 +7359,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.2.1. Среднее время ожидания предоставления услуги",
+          "parent": 34,
           "elements": [
             {
               "name": "71",
@@ -7386,6 +7403,7 @@
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "72",
@@ -7397,7 +7415,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "73",
@@ -7409,7 +7427,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "74",
@@ -7421,7 +7439,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "75",
@@ -7433,7 +7451,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "76",
@@ -7445,12 +7463,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "77",
@@ -7462,7 +7481,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "78",
@@ -7474,7 +7493,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "79",
@@ -7486,7 +7505,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "80",
@@ -7498,7 +7517,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "81",
@@ -7510,12 +7529,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -7843,10 +7863,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Основные сведения",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -7858,7 +7880,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -7870,7 +7892,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -7924,6 +7946,7 @@
         },
         {
           "title": "II. Структура и органы управления образовательной организацией",
+          "parent": 9,
           "elements": [
             {
               "name": "6",
@@ -7960,6 +7983,7 @@
         },
         {
           "title": "III. Документы (в виде копий)",
+          "parent": 9,
           "elements": [
             {
               "name": "8",
@@ -7971,7 +7995,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "9",
@@ -8018,7 +8042,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -8046,7 +8070,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "14",
@@ -8098,6 +8122,7 @@
         },
         {
           "title": "IV. Образование",
+          "parent": 9,
           "elements": [
             {
               "name": "17",
@@ -8109,7 +8134,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -8121,7 +8146,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -8133,7 +8158,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "20",
@@ -8165,7 +8190,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -8193,7 +8218,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -8205,7 +8230,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "25",
@@ -8217,7 +8242,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "26",
@@ -8229,7 +8254,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -8257,7 +8282,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -8298,6 +8323,7 @@
         },
         {
           "title": "V. Руководство. Педагогический состав",
+          "parent": 9,
           "elements": [
             {
               "name": "31",
@@ -8325,12 +8351,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "VI. Материально-техническое обеспечении образовательной деятельности",
+          "parent": 9,
           "elements": [
             {
               "name": "33",
@@ -8342,7 +8369,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "34",
@@ -8354,7 +8381,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "35",
@@ -8382,7 +8409,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "37",
@@ -8433,6 +8460,7 @@
         },
         {
           "title": "VII. Стипендии и иные виды материальной поддержки",
+          "parent": 9,
           "elements": [
             {
               "name": "40",
@@ -8470,6 +8498,7 @@
         },
         {
           "title": "VIII. Платные образовательные услуги",
+          "parent": 9,
           "elements": [
             {
               "name": "42",
@@ -8494,6 +8523,7 @@
         },
         {
           "title": "IX. Финансово-хозяйственная деятельность",
+          "parent": 9,
           "elements": [
             {
               "name": "43",
@@ -8505,7 +8535,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "44",
@@ -8517,12 +8547,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "X. Вакантные места для приема (перевода)",
+          "parent": 9,
           "elements": [
             {
               "name": "45",
@@ -8534,12 +8565,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "46",
@@ -8551,7 +8583,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "47",
@@ -8563,7 +8595,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "48",
@@ -8575,7 +8607,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "49",
@@ -8587,7 +8619,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "50",
@@ -8599,7 +8631,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "51",
@@ -8611,12 +8643,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "52",
@@ -8628,7 +8661,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "53",
@@ -8640,7 +8673,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "54",
@@ -8652,7 +8685,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "55",
@@ -8664,7 +8697,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "56",
@@ -8676,12 +8709,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "57",
@@ -8693,7 +8727,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "58",
@@ -8705,7 +8739,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "59",
@@ -8717,7 +8751,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "60",
@@ -8729,7 +8763,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "61",
@@ -8741,12 +8775,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "62",
@@ -8758,7 +8793,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "63",
@@ -8770,7 +8805,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "64",
@@ -8782,7 +8817,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "65",
@@ -8794,7 +8829,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "66",
@@ -8806,12 +8841,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -9100,10 +9136,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Основные сведения",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -9115,7 +9153,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -9127,7 +9165,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -9181,6 +9219,7 @@
         },
         {
           "title": "II. Структура и органы управления образовательной организацией",
+          "parent": 9,
           "elements": [
             {
               "name": "6",
@@ -9217,6 +9256,7 @@
         },
         {
           "title": "III. Документы (в виде копий)",
+          "parent": 9,
           "elements": [
             {
               "name": "8",
@@ -9228,7 +9268,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "9",
@@ -9275,7 +9315,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -9303,7 +9343,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "14",
@@ -9339,6 +9379,7 @@
         },
         {
           "title": "IV. Образование",
+          "parent": 9,
           "elements": [
             {
               "name": "16",
@@ -9350,7 +9391,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -9362,7 +9403,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -9374,7 +9415,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -9406,7 +9447,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -9434,7 +9475,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -9446,7 +9487,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -9458,7 +9499,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "25",
@@ -9470,7 +9511,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "26",
@@ -9498,7 +9539,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -9530,7 +9571,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -9542,7 +9583,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "31",
@@ -9554,7 +9595,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -9591,6 +9632,7 @@
         },
         {
           "title": "V. Руководство. Педагогический состав",
+          "parent": 9,
           "elements": [
             {
               "name": "34",
@@ -9618,12 +9660,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "VI. Материально-техническое обеспечении образовательной деятельности",
+          "parent": 9,
           "elements": [
             {
               "name": "36",
@@ -9635,7 +9678,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "37",
@@ -9647,7 +9690,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "38",
@@ -9675,7 +9718,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "40",
@@ -9726,6 +9769,7 @@
         },
         {
           "title": "VII. Стипендии и иные виды материальной поддержки",
+          "parent": 9,
           "elements": [
             {
               "name": "43",
@@ -9779,6 +9823,7 @@
         },
         {
           "title": "VIII. Платные образовательные услуги",
+          "parent": 9,
           "elements": [
             {
               "name": "46",
@@ -9803,6 +9848,7 @@
         },
         {
           "title": "IX. Финансово-хозяйственная деятельность",
+          "parent": 9,
           "elements": [
             {
               "name": "47",
@@ -9814,7 +9860,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "48",
@@ -9826,12 +9872,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "X. Вакантные места для приема (перевода)",
+          "parent": 9,
           "elements": [
             {
               "name": "49",
@@ -9843,12 +9890,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "50",
@@ -9860,7 +9908,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "51",
@@ -9872,7 +9920,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "52",
@@ -9884,7 +9932,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "53",
@@ -9896,7 +9944,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "54",
@@ -9908,7 +9956,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "55",
@@ -9920,12 +9968,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "56",
@@ -9937,7 +9986,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "57",
@@ -9949,7 +9998,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "58",
@@ -9961,7 +10010,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "59",
@@ -9973,7 +10022,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "60",
@@ -9985,12 +10034,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "61",
@@ -10002,7 +10052,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "62",
@@ -10014,7 +10064,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "63",
@@ -10026,7 +10076,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "64",
@@ -10038,7 +10088,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "65",
@@ -10050,12 +10100,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "66",
@@ -10067,7 +10118,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "67",
@@ -10079,7 +10130,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "68",
@@ -10091,7 +10142,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "69",
@@ -10103,7 +10154,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "70",
@@ -10115,12 +10166,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -10421,10 +10473,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Основные сведения",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -10436,7 +10490,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -10448,7 +10502,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -10502,6 +10556,7 @@
         },
         {
           "title": "II. Структура и органы управления образовательной организацией",
+          "parent": 9,
           "elements": [
             {
               "name": "6",
@@ -10538,6 +10593,7 @@
         },
         {
           "title": "III. Документы (в виде копий)",
+          "parent": 9,
           "elements": [
             {
               "name": "8",
@@ -10549,7 +10605,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "9",
@@ -10580,7 +10636,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -10608,7 +10664,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "13",
@@ -10660,6 +10716,7 @@
         },
         {
           "title": "IV. Образование",
+          "parent": 9,
           "elements": [
             {
               "name": "16",
@@ -10671,7 +10728,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -10683,7 +10740,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -10695,7 +10752,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -10707,7 +10764,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "20",
@@ -10735,7 +10792,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -10747,7 +10804,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -10759,7 +10816,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -10771,7 +10828,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "25",
@@ -10783,7 +10840,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "26",
@@ -10804,6 +10861,7 @@
         },
         {
           "title": "V. Руководство. Педагогический состав",
+          "parent": 9,
           "elements": [
             {
               "name": "27",
@@ -10831,12 +10889,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "VI. Материально-техническое обеспечении образовательной деятельности",
+          "parent": 9,
           "elements": [
             {
               "name": "29",
@@ -10848,7 +10907,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -10860,7 +10919,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "31",
@@ -10888,7 +10947,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "33",
@@ -10939,6 +10998,7 @@
         },
         {
           "title": "VII. Стипендии и иные виды материальной поддержки",
+          "parent": 9,
           "elements": [
             {
               "name": "36",
@@ -10960,6 +11020,7 @@
         },
         {
           "title": "VIII. Платные образовательные услуги",
+          "parent": 9,
           "elements": [
             {
               "name": "37",
@@ -10984,6 +11045,7 @@
         },
         {
           "title": "IX. Финансово-хозяйственная деятельность",
+          "parent": 9,
           "elements": [
             {
               "name": "38",
@@ -10995,7 +11057,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "39",
@@ -11007,12 +11069,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "X. Вакантные места для приема (перевода)",
+          "parent": 9,
           "elements": [
             {
               "name": "40",
@@ -11024,12 +11087,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "41",
@@ -11041,7 +11105,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "42",
@@ -11053,7 +11117,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "43",
@@ -11065,7 +11129,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "44",
@@ -11077,7 +11141,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "45",
@@ -11089,7 +11153,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "46",
@@ -11101,12 +11165,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "47",
@@ -11118,7 +11183,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "48",
@@ -11130,7 +11195,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "49",
@@ -11142,7 +11207,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "50",
@@ -11154,7 +11219,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "51",
@@ -11166,12 +11231,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "52",
@@ -11183,7 +11249,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "53",
@@ -11195,7 +11261,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "54",
@@ -11207,7 +11273,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "55",
@@ -11219,7 +11285,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "56",
@@ -11231,12 +11297,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "57",
@@ -11248,7 +11315,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "58",
@@ -11260,7 +11327,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "59",
@@ -11272,7 +11339,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "60",
@@ -11284,7 +11351,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "61",
@@ -11296,12 +11363,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -11563,10 +11631,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Основные сведения",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -11578,7 +11648,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -11590,7 +11660,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -11644,6 +11714,7 @@
         },
         {
           "title": "II. Структура и органы управления образовательной организацией",
+          "parent": 9,
           "elements": [
             {
               "name": "6",
@@ -11680,6 +11751,7 @@
         },
         {
           "title": "III. Документы (в виде копий)",
+          "parent": 9,
           "elements": [
             {
               "name": "8",
@@ -11691,7 +11763,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "9",
@@ -11722,7 +11794,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -11750,7 +11822,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "13",
@@ -11786,6 +11858,7 @@
         },
         {
           "title": "IV. Образование",
+          "parent": 9,
           "elements": [
             {
               "name": "15",
@@ -11797,7 +11870,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "16",
@@ -11809,7 +11882,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -11821,7 +11894,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -11833,7 +11906,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -11861,7 +11934,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -11873,7 +11946,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -11885,7 +11958,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -11897,7 +11970,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -11909,7 +11982,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "25",
@@ -11930,6 +12003,7 @@
         },
         {
           "title": "V. Руководство. Педагогический состав",
+          "parent": 9,
           "elements": [
             {
               "name": "26",
@@ -11957,12 +12031,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "VI. Материально-техническое обеспечении образовательной деятельности",
+          "parent": 9,
           "elements": [
             {
               "name": "28",
@@ -11974,7 +12049,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -11986,7 +12061,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -12014,7 +12089,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -12065,10 +12140,12 @@
         },
         {
           "title": "VII. Стипендии и иные виды материальной поддержки",
+          "parent": 9,
           "elements": []
         },
         {
           "title": "VIII. Платные образовательные услуги",
+          "parent": 9,
           "elements": [
             {
               "name": "35",
@@ -12093,6 +12170,7 @@
         },
         {
           "title": "IX. Финансово-хозяйственная деятельность",
+          "parent": 9,
           "elements": [
             {
               "name": "36",
@@ -12104,7 +12182,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "37",
@@ -12116,12 +12194,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "X. Вакантные места для приема (перевода)",
+          "parent": 9,
           "elements": [
             {
               "name": "38",
@@ -12133,12 +12212,13 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "39",
@@ -12150,7 +12230,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "40",
@@ -12162,7 +12242,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "41",
@@ -12174,7 +12254,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "42",
@@ -12186,7 +12266,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "43",
@@ -12198,7 +12278,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "44",
@@ -12210,12 +12290,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "45",
@@ -12227,7 +12308,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "46",
@@ -12239,7 +12320,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "47",
@@ -12251,7 +12332,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "48",
@@ -12263,7 +12344,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "49",
@@ -12275,12 +12356,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "50",
@@ -12292,7 +12374,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "51",
@@ -12304,7 +12386,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "52",
@@ -12316,7 +12398,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "53",
@@ -12328,7 +12410,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "54",
@@ -12340,12 +12422,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "55",
@@ -12357,7 +12440,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "56",
@@ -12369,7 +12452,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "57",
@@ -12381,7 +12464,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "58",
@@ -12393,7 +12476,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "59",
@@ -12405,12 +12488,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -12666,10 +12750,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Общая информация об организации культуры",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -12729,7 +12815,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -12767,6 +12853,7 @@
         },
         {
           "title": "II. Информация о деятельности организации культуры",
+          "parent": 9,
           "elements": [
             {
               "name": "7",
@@ -12813,7 +12900,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "10",
@@ -12825,7 +12912,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -12866,6 +12953,7 @@
         },
         {
           "title": "III. Информация о независимой оценке качества",
+          "parent": 9,
           "elements": [
             {
               "name": "13",
@@ -12887,6 +12975,7 @@
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "14",
@@ -12898,7 +12987,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "15",
@@ -12910,7 +12999,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "16",
@@ -12922,7 +13011,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -12934,7 +13023,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -12946,7 +13035,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -12958,12 +13047,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "20",
@@ -12975,7 +13065,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -12987,7 +13077,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -12999,7 +13089,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -13011,7 +13101,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -13023,7 +13113,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "25",
@@ -13035,12 +13125,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "26",
@@ -13052,7 +13143,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -13064,7 +13155,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -13076,7 +13167,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -13088,7 +13179,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -13100,7 +13191,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "31",
@@ -13112,7 +13203,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -13124,7 +13215,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "33",
@@ -13136,7 +13227,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "34",
@@ -13148,7 +13239,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "35",
@@ -13160,12 +13251,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "36",
@@ -13177,7 +13269,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "37",
@@ -13189,7 +13281,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "38",
@@ -13201,7 +13293,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "39",
@@ -13213,7 +13305,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "40",
@@ -13225,7 +13317,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "41",
@@ -13237,12 +13329,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
@@ -13444,10 +13537,12 @@
       "pages": [
         {
           "title": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
+          "parent": 25,
           "elements": []
         },
         {
           "title": "I. Общая информация об организации культуры",
+          "parent": 9,
           "elements": [
             {
               "name": "1",
@@ -13507,7 +13602,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -13545,6 +13640,7 @@
         },
         {
           "title": "II. Информация о деятельности организации культуры",
+          "parent": 9,
           "elements": [
             {
               "name": "7",
@@ -13591,7 +13687,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "10",
@@ -13603,7 +13699,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -13644,6 +13740,7 @@
         },
         {
           "title": "III. Информация о независимой оценке качества",
+          "parent": 9,
           "elements": [
             {
               "name": "13",
@@ -13665,6 +13762,7 @@
         },
         {
           "title": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
+          "parent": 25,
           "elements": [
             {
               "name": "14",
@@ -13676,7 +13774,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "15",
@@ -13688,7 +13786,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "16",
@@ -13700,7 +13798,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -13712,7 +13810,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -13724,7 +13822,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -13736,12 +13834,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "2.1. Наличие комфортных условий для предоставления услуг",
+          "parent": 26,
           "elements": [
             {
               "name": "20",
@@ -13753,7 +13852,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -13765,7 +13864,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -13777,7 +13876,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -13789,7 +13888,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -13801,7 +13900,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "25",
@@ -13813,12 +13912,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
+          "parent": 27,
           "elements": [
             {
               "name": "26",
@@ -13830,7 +13930,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -13842,7 +13942,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -13854,7 +13954,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -13866,7 +13966,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -13878,12 +13978,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
+          "parent": 27,
           "elements": [
             {
               "name": "31",
@@ -13895,7 +13996,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -13907,7 +14008,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "33",
@@ -13919,7 +14020,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "34",
@@ -13931,7 +14032,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "35",
@@ -13943,7 +14044,7 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "36",
@@ -13955,12 +14056,13 @@
                   "value": "1"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
         {
           "title": "Комментарий эксперта",
+          "parent": null,
           "elements": [
             {
               "name": "expert_1",
