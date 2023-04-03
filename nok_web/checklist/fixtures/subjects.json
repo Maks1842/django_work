@@ -279,499 +279,6 @@
   }
 },
 {
-  "model": "checklist.answers",
-  "pk": 3,
-  "fields": {
-    "organisations": 3,
-    "type_organisations": 10,
-    "checking": 2,
-    "answers_json": {
-      "1": [
-        "11"
-      ],
-      "2": [
-        "11"
-      ],
-      "3": [
-        "11",
-        "12"
-      ],
-      "4": [
-        "12"
-      ],
-      "5": [
-        "11"
-      ],
-      "6": [
-        "11",
-        "12"
-      ],
-      "7": [
-        "11"
-      ],
-      "8": [
-        "4"
-      ],
-      "9": [
-        "12"
-      ],
-      "10": [
-        "12"
-      ],
-      "11": [
-        "12"
-      ],
-      "12": [
-        "3"
-      ],
-      "13": [
-        "11",
-        "12"
-      ],
-      "14": [
-        "1"
-      ],
-      "15": [
-        "1"
-      ],
-      "16": [
-        "1"
-      ],
-      "17": [
-        "1"
-      ],
-      "18": [
-        "1"
-      ],
-      "19": [
-        "1"
-      ],
-      "20": [
-        "1"
-      ],
-      "21": [
-        "1"
-      ],
-      "22": [
-        "1"
-      ],
-      "23": [
-        "1"
-      ],
-      "24": [
-        "1"
-      ],
-      "25": [
-        "1"
-      ],
-      "26": [
-        "1"
-      ],
-      "27": [
-        "1"
-      ],
-      "28": [
-        "1"
-      ],
-      "29": [
-        "1"
-      ],
-      "30": [
-        "1"
-      ],
-      "31": [
-        "1"
-      ],
-      "32": [
-        "1"
-      ],
-      "33": [
-        "1"
-      ],
-      "34": [
-        "1"
-      ],
-      "35": [
-        "2"
-      ],
-      "36": [
-        "2"
-      ],
-      "expert_1": [
-        "11",
-        "12"
-      ]
-    },
-    "quota": 120,
-    "invalid_person": 10,
-    "comments": "Коммент 1",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.answers",
-  "pk": 11,
-  "fields": {
-    "organisations": 1,
-    "type_organisations": 1,
-    "checking": 2,
-    "answers_json": {
-      "1": [
-        "11"
-      ],
-      "2": [
-        "11"
-      ],
-      "3": [
-        "11",
-        "12"
-      ],
-      "4": [
-        "12"
-      ],
-      "5": [
-        "11",
-        "12"
-      ],
-      "6": [
-        "11"
-      ],
-      "7": [
-        "12"
-      ],
-      "8": [
-        "11"
-      ],
-      "9": [
-        "12"
-      ],
-      "10": [
-        "12"
-      ],
-      "11": [
-        "12"
-      ],
-      "12": [
-        "3"
-      ],
-      "13": [
-        "12"
-      ],
-      "14": [
-        "1"
-      ],
-      "15": [
-        "1"
-      ],
-      "16": [
-        "1"
-      ],
-      "17": [
-        "1"
-      ],
-      "18": [
-        "1"
-      ],
-      "19": [
-        "1"
-      ],
-      "20": [
-        "1"
-      ],
-      "21": [
-        "1"
-      ],
-      "22": [
-        "1"
-      ],
-      "23": [
-        "1"
-      ],
-      "24": [
-        "1"
-      ],
-      "25": [
-        "1"
-      ],
-      "26": [
-        "1"
-      ],
-      "27": [
-        "1"
-      ],
-      "28": [
-        "1"
-      ],
-      "29": [
-        "1"
-      ],
-      "30": [
-        "1"
-      ],
-      "31": [
-        "1"
-      ],
-      "32": [
-        "1"
-      ],
-      "33": [
-        "1"
-      ],
-      "34": [
-        "1"
-      ],
-      "36": [
-        "1"
-      ],
-      "37": [
-        "1"
-      ],
-      "38": [
-        "1"
-      ],
-      "39": [
-        "1"
-      ],
-      "40": [
-        "1"
-      ],
-      "41": [
-        "1"
-      ],
-      "expert_1": [
-        "12"
-      ]
-    },
-    "quota": 46,
-    "invalid_person": 3,
-    "comments": "Клммент 2",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.answers",
-  "pk": 14,
-  "fields": {
-    "organisations": 6,
-    "type_organisations": 5,
-    "checking": 4,
-    "answers_json": {
-      "1": [
-        "12"
-      ],
-      "2": [
-        "12"
-      ],
-      "3": [
-        "11"
-      ],
-      "4": [
-        "11",
-        "12"
-      ],
-      "5": [
-        "11",
-        "12"
-      ],
-      "6": [
-        "11",
-        "12"
-      ],
-      "7": [
-        "12",
-        "13"
-      ],
-      "8": [
-        "12"
-      ],
-      "9": [
-        "3"
-      ],
-      "10": [
-        "11",
-        "12"
-      ],
-      "11": [
-        "12"
-      ],
-      "12": [
-        "11"
-      ],
-      "13": [
-        "12"
-      ],
-      "14": [
-        "12"
-      ],
-      "15": [
-        "12"
-      ],
-      "16": [
-        "12"
-      ],
-      "17": [
-        "12"
-      ],
-      "18": [
-        "12"
-      ],
-      "19": [
-        "12"
-      ],
-      "20": [
-        "11",
-        "12"
-      ],
-      "21": [
-        "12"
-      ],
-      "22": [
-        "11"
-      ],
-      "23": [
-        "12"
-      ],
-      "24": [
-        "12"
-      ],
-      "25": [
-        "12"
-      ],
-      "26": [
-        "12"
-      ],
-      "27": [
-        "12"
-      ],
-      "28": [
-        "12"
-      ],
-      "29": [
-        "11"
-      ],
-      "30": [
-        "12"
-      ],
-      "31": [
-        "11",
-        "12"
-      ],
-      "32": [
-        "12"
-      ],
-      "33": [
-        "12"
-      ],
-      "34": [
-        "12"
-      ],
-      "35": [
-        "11"
-      ],
-      "36": [
-        "12"
-      ],
-      "37": [
-        "12"
-      ],
-      "38": [
-        "12"
-      ],
-      "39": [
-        "17"
-      ],
-      "40": [
-        "3"
-      ],
-      "41": [
-        "3"
-      ],
-      "42": [
-        "4"
-      ],
-      "43": [
-        "12"
-      ],
-      "44": [
-        "12"
-      ],
-      "45": [
-        "12"
-      ],
-      "46": [
-        "1"
-      ],
-      "47": [
-        "1"
-      ],
-      "48": [
-        "1"
-      ],
-      "49": [
-        "1"
-      ],
-      "50": [
-        "1"
-      ],
-      "51": [
-        "1"
-      ],
-      "52": [
-        "1"
-      ],
-      "53": [
-        "1"
-      ],
-      "54": [
-        "1"
-      ],
-      "55": [
-        "1"
-      ],
-      "56": [
-        "1"
-      ],
-      "57": [
-        "1"
-      ],
-      "58": [
-        "1"
-      ],
-      "59": [
-        "1"
-      ],
-      "60": [
-        "1"
-      ],
-      "61": [
-        "1"
-      ],
-      "62": [
-        "1"
-      ],
-      "63": [
-        "1"
-      ],
-      "64": [
-        "1"
-      ],
-      "65": [
-        "1"
-      ],
-      "66": [
-        "1"
-      ],
-      "expert_1": [
-        "11"
-      ]
-    },
-    "quota": 85,
-    "invalid_person": 5,
-    "comments": "Коммент 3",
-    "is_deleted": false
-  }
-},
-{
   "model": "checklist.checking",
   "pk": 1,
   "fields": {
@@ -779,42 +286,6 @@
     "date_checking": "2022-11-11",
     "region": 3,
     "department": 7,
-    "finished": false,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.checking",
-  "pk": 2,
-  "fields": {
-    "name": "Проверка 2",
-    "date_checking": "2022-11-12",
-    "region": 1,
-    "department": 1,
-    "finished": false,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.checking",
-  "pk": 3,
-  "fields": {
-    "name": "Проверка 3",
-    "date_checking": "2022-11-08",
-    "region": 6,
-    "department": 4,
-    "finished": false,
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.checking",
-  "pk": 4,
-  "fields": {
-    "name": "Проверка 5",
-    "date_checking": "2022-11-24",
-    "region": 2,
-    "department": 2,
     "finished": false,
     "is_deleted": false
   }
@@ -2333,7 +1804,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2347,7 +1818,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2361,7 +1832,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2375,7 +1846,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2389,7 +1860,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2403,7 +1874,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2417,7 +1888,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2431,7 +1902,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2445,7 +1916,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2459,7 +1930,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2473,7 +1944,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2487,7 +1958,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2501,7 +1972,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2515,7 +1986,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2529,7 +2000,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2543,7 +2014,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2557,7 +2028,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2571,7 +2042,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2585,7 +2056,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2599,7 +2070,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2613,7 +2084,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2627,7 +2098,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2641,7 +2112,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2655,7 +2126,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2669,7 +2140,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2683,7 +2154,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2697,7 +2168,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2711,7 +2182,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2725,7 +2196,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2739,7 +2210,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2753,7 +2224,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2767,7 +2238,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2781,7 +2252,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2795,7 +2266,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2809,7 +2280,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2823,7 +2294,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2837,7 +2308,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2851,7 +2322,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2865,7 +2336,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2879,7 +2350,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2893,7 +2364,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2907,7 +2378,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2921,7 +2392,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2935,7 +2406,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2949,7 +2420,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2963,7 +2434,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2977,7 +2448,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -2991,7 +2462,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3005,7 +2476,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3019,7 +2490,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3033,7 +2504,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3047,7 +2518,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3061,7 +2532,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3075,7 +2546,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3089,7 +2560,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3103,7 +2574,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3117,7 +2588,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3131,7 +2602,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3313,7 +2784,7 @@
     "type_answers": 5,
     "answer_variant": "5,6,7,8,9,10",
     "type_organisations": "2,3",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3495,7 +2966,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3509,7 +2980,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3523,7 +2994,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3537,7 +3008,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3551,7 +3022,7 @@
     "type_answers": 1,
     "answer_variant": "12,13",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3579,7 +3050,7 @@
     "type_answers": 1,
     "answer_variant": "11,12,3",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3593,7 +3064,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "5,6,7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3621,7 +3092,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3649,7 +3120,7 @@
     "type_answers": 1,
     "answer_variant": "12,4",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3663,7 +3134,7 @@
     "type_answers": 1,
     "answer_variant": "12,4",
     "type_organisations": "4,5,6,",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3677,7 +3148,7 @@
     "type_answers": 1,
     "answer_variant": "12,14",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3733,7 +3204,7 @@
     "type_answers": 1,
     "answer_variant": "11,12,3",
     "type_organisations": "5,6,7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3761,7 +3232,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3831,7 +3302,7 @@
     "type_answers": 1,
     "answer_variant": "12,3",
     "type_organisations": "5,6,7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3859,7 +3330,7 @@
     "type_answers": 1,
     "answer_variant": "11,12,3",
     "type_organisations": "5,6,7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3915,7 +3386,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3929,7 +3400,7 @@
     "type_answers": 1,
     "answer_variant": "12,3",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3943,7 +3414,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -3999,7 +3470,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4027,7 +3498,7 @@
     "type_answers": 1,
     "answer_variant": "12,15",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4041,7 +3512,7 @@
     "type_answers": 1,
     "answer_variant": "12,16",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4055,7 +3526,7 @@
     "type_answers": 1,
     "answer_variant": "12,17",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4069,7 +3540,7 @@
     "type_answers": 1,
     "answer_variant": "12,3",
     "type_organisations": "5,6,7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4083,7 +3554,7 @@
     "type_answers": 1,
     "answer_variant": "12,3",
     "type_organisations": "4,5,6,7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4097,7 +3568,7 @@
     "type_answers": 1,
     "answer_variant": "12,3",
     "type_organisations": "7,8",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4111,7 +3582,7 @@
     "type_answers": 1,
     "answer_variant": "11,12,4",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4209,7 +3680,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4223,7 +3694,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4237,7 +3708,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4265,7 +3736,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4279,7 +3750,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4293,7 +3764,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4307,7 +3778,7 @@
     "type_answers": 1,
     "answer_variant": "11,12,4",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4349,7 +3820,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4363,7 +3834,7 @@
     "type_answers": 1,
     "answer_variant": "11,12,3",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4377,7 +3848,7 @@
     "type_answers": 1,
     "answer_variant": "11,12",
     "type_organisations": "",
-    "required": true,
+    "required": false,
     "is_deleted": false
   }
 },
@@ -4674,7 +4145,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -4690,7 +4161,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -4706,7 +4177,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -4722,7 +4193,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -4738,7 +4209,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "6",
@@ -4754,7 +4225,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "7",
@@ -4770,7 +4241,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "8",
@@ -4786,7 +4257,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "9",
@@ -4802,7 +4273,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "10",
@@ -4818,7 +4289,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -4834,7 +4305,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -4850,7 +4321,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "13",
@@ -4866,7 +4337,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "14",
@@ -4882,7 +4353,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "15",
@@ -4898,7 +4369,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "16",
@@ -4914,7 +4385,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -4930,7 +4401,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -4946,7 +4417,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -4962,7 +4433,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "20",
@@ -4978,7 +4449,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -4994,7 +4465,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -5010,7 +4481,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -5026,7 +4497,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -5042,7 +4513,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -5064,7 +4535,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "26",
@@ -5080,7 +4551,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -5096,7 +4567,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -5112,7 +4583,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -5128,7 +4599,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -5144,7 +4615,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "31",
@@ -5160,7 +4631,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -5176,7 +4647,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "33",
@@ -5192,7 +4663,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "34",
@@ -5208,7 +4679,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "35",
@@ -5224,7 +4695,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "36",
@@ -5240,7 +4711,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "37",
@@ -5256,7 +4727,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "38",
@@ -5272,7 +4743,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "39",
@@ -5288,7 +4759,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "40",
@@ -5304,7 +4775,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "41",
@@ -5320,7 +4791,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "42",
@@ -5336,7 +4807,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "43",
@@ -5352,7 +4823,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "44",
@@ -5368,7 +4839,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "45",
@@ -5384,7 +4855,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "46",
@@ -5400,7 +4871,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "47",
@@ -5416,7 +4887,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "48",
@@ -5432,7 +4903,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "49",
@@ -5448,7 +4919,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "50",
@@ -5464,7 +4935,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "51",
@@ -5480,7 +4951,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "52",
@@ -5496,7 +4967,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "53",
@@ -5512,7 +4983,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "54",
@@ -5528,7 +4999,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -5550,7 +5021,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "56",
@@ -5566,7 +5037,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "57",
@@ -5582,7 +5053,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "58",
@@ -5598,7 +5069,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -5792,7 +5263,7 @@
                   "value": "10"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -6279,7 +5750,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -6295,7 +5766,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -6311,7 +5782,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -6327,7 +5798,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -6343,7 +5814,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "6",
@@ -6359,7 +5830,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "7",
@@ -6375,7 +5846,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "8",
@@ -6391,7 +5862,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "9",
@@ -6407,7 +5878,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "10",
@@ -6423,7 +5894,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -6439,7 +5910,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -6455,7 +5926,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "13",
@@ -6471,7 +5942,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "14",
@@ -6487,7 +5958,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "15",
@@ -6503,7 +5974,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "16",
@@ -6519,7 +5990,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "17",
@@ -6535,7 +6006,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "18",
@@ -6551,7 +6022,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "19",
@@ -6567,7 +6038,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "20",
@@ -6583,7 +6054,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -6599,7 +6070,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -6615,7 +6086,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -6631,7 +6102,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "24",
@@ -6647,7 +6118,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -6669,7 +6140,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "26",
@@ -6685,7 +6156,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -6701,7 +6172,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -6717,7 +6188,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -6733,7 +6204,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -6749,7 +6220,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "31",
@@ -6765,7 +6236,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -6781,7 +6252,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "33",
@@ -6797,7 +6268,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "34",
@@ -6813,7 +6284,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "35",
@@ -6829,7 +6300,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "36",
@@ -6845,7 +6316,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "37",
@@ -6861,7 +6332,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "38",
@@ -6877,7 +6348,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "39",
@@ -6893,7 +6364,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "40",
@@ -6909,7 +6380,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "41",
@@ -6925,7 +6396,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "42",
@@ -6941,7 +6412,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "43",
@@ -6957,7 +6428,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "44",
@@ -6973,7 +6444,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "45",
@@ -6989,7 +6460,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "46",
@@ -7005,7 +6476,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "47",
@@ -7021,7 +6492,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "48",
@@ -7037,7 +6508,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "49",
@@ -7053,7 +6524,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "50",
@@ -7069,7 +6540,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "51",
@@ -7085,7 +6556,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "52",
@@ -7101,7 +6572,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "53",
@@ -7117,7 +6588,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "54",
@@ -7133,7 +6604,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -7155,7 +6626,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "56",
@@ -7171,7 +6642,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "57",
@@ -7187,7 +6658,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "58",
@@ -7203,7 +6674,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -7397,7 +6868,7 @@
                   "value": "10"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -7908,7 +7379,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -7924,7 +7395,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -7940,7 +7411,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -7962,7 +7433,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "7",
@@ -7976,7 +7447,7 @@
               ],
               "noneText": "Структурные подразделения отсутствуют",
               "noneValue": "13",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -8013,7 +7484,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -8030,7 +7501,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -8058,7 +7529,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "13",
@@ -8084,7 +7555,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -8101,7 +7572,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "16",
@@ -8115,7 +7586,7 @@
               ],
               "noneText": "Предписания отсутствуют",
               "noneValue": "14",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -8178,7 +7649,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -8206,7 +7677,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "23",
@@ -8270,7 +7741,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -8302,7 +7773,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "30",
@@ -8316,7 +7787,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -8339,7 +7810,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -8397,7 +7868,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "36",
@@ -8423,7 +7894,7 @@
               ],
               "noneText": "Доступ отсутствует",
               "noneValue": "15",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -8438,7 +7909,7 @@
               ],
               "noneText": "ЭОР не применяются",
               "noneValue": "16",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -8453,7 +7924,7 @@
               ],
               "noneText": "Специальные технические средства отсутствуют",
               "noneValue": "17",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -8476,7 +7947,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "41",
@@ -8492,7 +7963,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -8516,7 +7987,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -9181,7 +8652,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -9197,7 +8668,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -9213,7 +8684,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -9235,7 +8706,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "7",
@@ -9249,7 +8720,7 @@
               ],
               "noneText": "Структурные подразделения отсутствуют",
               "noneValue": "13",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -9286,7 +8757,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -9303,7 +8774,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "11",
@@ -9331,7 +8802,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "13",
@@ -9357,7 +8828,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -9372,7 +8843,7 @@
               ],
               "noneText": "Предписания отсутствуют",
               "noneValue": "14",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -9435,7 +8906,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "20",
@@ -9463,7 +8934,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "22",
@@ -9527,7 +8998,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -9559,7 +9030,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "29",
@@ -9611,7 +9082,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "33",
@@ -9625,7 +9096,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -9648,7 +9119,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "35",
@@ -9706,7 +9177,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "39",
@@ -9732,7 +9203,7 @@
               ],
               "noneText": "Доступ отсутствует",
               "noneValue": "15",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -9747,7 +9218,7 @@
               ],
               "noneText": "ЭОР не применяются",
               "noneValue": "16",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -9762,7 +9233,7 @@
               ],
               "noneText": "Специальные технические средства отсутствуют",
               "noneValue": "17",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -9785,7 +9256,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "44",
@@ -9801,7 +9272,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "45",
@@ -9817,7 +9288,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -9841,7 +9312,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -10518,7 +9989,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -10534,7 +10005,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -10550,7 +10021,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -10572,7 +10043,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "7",
@@ -10586,7 +10057,7 @@
               ],
               "noneText": "Структурные подразделения отсутствуют",
               "noneValue": "13",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -10623,7 +10094,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -10652,7 +10123,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -10678,7 +10149,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -10695,7 +10166,7 @@
                   "value": "4"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "15",
@@ -10709,7 +10180,7 @@
               ],
               "noneText": "Предписания отсутствуют",
               "noneValue": "14",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -10780,7 +10251,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "21",
@@ -10854,7 +10325,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -10877,7 +10348,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "28",
@@ -10935,7 +10406,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "32",
@@ -10961,7 +10432,7 @@
               ],
               "noneText": "Доступ отсутствует",
               "noneValue": "15",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -10976,7 +10447,7 @@
               ],
               "noneText": "ЭОР не применяются",
               "noneValue": "16",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -10991,7 +10462,7 @@
               ],
               "noneText": "Специальные технические средства отсутствуют",
               "noneValue": "17",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -11014,7 +10485,7 @@
                   "value": "3"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -11038,7 +10509,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -11676,7 +11147,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -11692,7 +11163,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "5",
@@ -11708,7 +11179,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -11730,7 +11201,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "7",
@@ -11744,7 +11215,7 @@
               ],
               "noneText": "Структурные подразделения отсутствуют",
               "noneValue": "13",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -11781,7 +11252,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -11810,7 +11281,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -11836,7 +11307,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -11851,7 +11322,7 @@
               ],
               "noneText": "Предписания отсутствуют",
               "noneValue": "14",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -11922,7 +11393,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "20",
@@ -11996,7 +11467,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -12019,7 +11490,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "27",
@@ -12077,7 +11548,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "31",
@@ -12103,7 +11574,7 @@
               ],
               "noneText": "Доступ отсутствует",
               "noneValue": "15",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -12118,7 +11589,7 @@
               ],
               "noneText": "ЭОР не применяются",
               "noneValue": "16",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -12133,7 +11604,7 @@
               ],
               "noneText": "Специальные технические средства отсутствуют",
               "noneValue": "17",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -12163,7 +11634,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -12771,7 +12242,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -12787,7 +12258,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -12803,7 +12274,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -12831,7 +12302,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "6",
@@ -12847,7 +12318,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -12869,7 +12340,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "8",
@@ -12887,7 +12358,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -12928,7 +12399,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -12946,7 +12417,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -12969,7 +12440,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -13558,7 +13029,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "2",
@@ -13574,7 +13045,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "3",
@@ -13590,7 +13061,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "4",
@@ -13618,7 +13089,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "6",
@@ -13634,7 +13105,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -13656,7 +13127,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "8",
@@ -13674,7 +13145,7 @@
               ],
               "noneText": "Платные услуги отсутствуют",
               "noneValue": "4",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             },
             {
@@ -13715,7 +13186,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             },
             {
               "name": "12",
@@ -13733,7 +13204,7 @@
               ],
               "noneText": "Не предусмотрено",
               "noneValue": "3",
-              "isRequired": true,
+              "isRequired": false,
               "showNoneItem": "true"
             }
           ]
@@ -13756,7 +13227,7 @@
                   "value": "12"
                 }
               ],
-              "isRequired": true
+              "isRequired": false
             }
           ]
         },
@@ -14248,102 +13719,6 @@
     "person": 22,
     "user": 1,
     "date_check_org": "2022-12-07",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 2,
-  "fields": {
-    "checking": 2,
-    "organisation": 4,
-    "person": 7,
-    "user": 1,
-    "date_check_org": "2022-12-30",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 3,
-  "fields": {
-    "checking": 3,
-    "organisation": 2,
-    "person": 8,
-    "user": 1,
-    "date_check_org": "2022-06-08",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 6,
-  "fields": {
-    "checking": 3,
-    "organisation": 1,
-    "person": 1,
-    "user": 2,
-    "date_check_org": "2022-12-20",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 8,
-  "fields": {
-    "checking": 2,
-    "organisation": 3,
-    "person": 4,
-    "user": 1,
-    "date_check_org": "2022-12-12",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 10,
-  "fields": {
-    "checking": 4,
-    "organisation": 6,
-    "person": 9,
-    "user": 1,
-    "date_check_org": "2022-12-20",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 11,
-  "fields": {
-    "checking": 4,
-    "organisation": 7,
-    "person": 9,
-    "user": 1,
-    "date_check_org": "2022-09-15",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 12,
-  "fields": {
-    "checking": 4,
-    "organisation": 6,
-    "person": 10,
-    "user": 2,
-    "date_check_org": "2022-11-09",
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.list_checking",
-  "pk": 13,
-  "fields": {
-    "checking": 4,
-    "organisation": 9,
-    "person": 16,
-    "user": 2,
-    "date_check_org": "2022-12-15",
     "is_deleted": false
   }
 },
@@ -16201,833 +15576,6 @@
         "id": "45",
         "name": "Число удовлетворенных доступностью услуг для инвалидов",
         "value": 2,
-        "parent": "44",
-        "order_num": "29"
-      }
-    },
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.ratings",
-  "pk": 2,
-  "fields": {
-    "organisations": 1,
-    "type_organisations": 1,
-    "checking": 2,
-    "ratings_json": {
-      "quota": {
-        "id": "61",
-        "name": "Количество опрошенных респондентов",
-        "value": 46,
-        "parent": "None",
-        "order_num": "46"
-      },
-      "rating_1": {
-        "id": "25",
-        "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 82.0,
-        "parent": "None",
-        "order_num": "2"
-      },
-      "rating_2": {
-        "id": "26",
-        "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 89.0,
-        "parent": "None",
-        "order_num": "12"
-      },
-      "rating_3": {
-        "id": "27",
-        "name": "Критерий 3. Доступность услуг для инвалидов",
-        "value": 94.0,
-        "parent": "None",
-        "order_num": "20"
-      },
-      "rating_4": {
-        "id": "28",
-        "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 81.6,
-        "parent": "None",
-        "order_num": "30"
-      },
-      "rating_5": {
-        "id": "29",
-        "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 78.9,
-        "parent": "None",
-        "order_num": "37"
-      },
-      "rating_1_1": {
-        "id": "9",
-        "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
-        "value": 56.0,
-        "parent": "25",
-        "order_num": "3"
-      },
-      "rating_1_2": {
-        "id": "4",
-        "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": 100,
-        "parent": "25",
-        "order_num": "8"
-      },
-      "rating_1_3": {
-        "id": "31",
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
-        "value": 88.0,
-        "parent": "25",
-        "order_num": "9"
-      },
-      "rating_2_1": {
-        "id": "5",
-        "name": "2.1. Наличие комфортных условий для предоставления услуг",
-        "value": 100,
-        "parent": "26",
-        "order_num": "13"
-      },
-      "rating_2_3": {
-        "id": "37",
-        "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 78.0,
-        "parent": "26",
-        "order_num": "18"
-      },
-      "rating_3_1": {
-        "id": "7",
-        "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": 80,
-        "parent": "27",
-        "order_num": "21"
-      },
-      "rating_3_2": {
-        "id": "8",
-        "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": 100,
-        "parent": "27",
-        "order_num": "27"
-      },
-      "rating_3_3": {
-        "id": "44",
-        "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
-        "value": 100.0,
-        "parent": "27",
-        "order_num": "28"
-      },
-      "rating_4_1": {
-        "id": "46",
-        "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 83.0,
-        "parent": "28",
-        "order_num": "31"
-      },
-      "rating_4_2": {
-        "id": "48",
-        "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
-        "value": 85.0,
-        "parent": "28",
-        "order_num": "33"
-      },
-      "rating_4_3": {
-        "id": "50",
-        "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 72.0,
-        "parent": "28",
-        "order_num": "35"
-      },
-      "rating_5_1": {
-        "id": "52",
-        "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 85.0,
-        "parent": "29",
-        "order_num": "38"
-      },
-      "rating_5_2": {
-        "id": "56",
-        "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
-        "value": 72.0,
-        "parent": "29",
-        "order_num": "42"
-      },
-      "rating_5_3": {
-        "id": "58",
-        "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 78.0,
-        "parent": "29",
-        "order_num": "44"
-      },
-      "rating_3_1_1": {
-        "id": "39",
-        "name": "Оборудованных входных групп пандусами (подъемными платформами)",
-        "value": 20,
-        "parent": "44",
-        "order_num": "22"
-      },
-      "rating_3_1_2": {
-        "id": "40",
-        "name": "Наличие выделенных стоянок для автотранспортных средств инвалидов",
-        "value": 20,
-        "parent": "44",
-        "order_num": "23"
-      },
-      "rating_3_1_3": {
-        "id": "41",
-        "name": "Наличие адаптированных лифтов, поручней, расширенных дверных проемов",
-        "value": 20,
-        "parent": "44",
-        "order_num": "24"
-      },
-      "rating_total": {
-        "id": "60",
-        "name": "Итоговый балл, по результатам проверки",
-        "value": 85.1,
-        "parent": "None",
-        "order_num": "1"
-      },
-      "web_count_all": {
-        "id": "64",
-        "name": "Нормативное количество документов, на сайте",
-        "value": 14,
-        "parent": "9",
-        "order_num": "7"
-      },
-      "web_count_yes": {
-        "id": "66",
-        "name": "Фактическое количество документов, на сайте",
-        "value": 8,
-        "parent": "9",
-        "order_num": "6"
-      },
-      "invalid_person": {
-        "id": "62",
-        "name": "Количество инвалидов, получателей услуг",
-        "value": 3,
-        "parent": "None",
-        "order_num": "47"
-      },
-      "stend_count_all": {
-        "id": "63",
-        "name": "Нормативное количество документов, на стенде",
-        "value": 11,
-        "parent": "9",
-        "order_num": "5"
-      },
-      "stend_count_yes": {
-        "id": "65",
-        "name": "Фактическое количество документов, на стенде",
-        "value": 6,
-        "parent": "9",
-        "order_num": "4"
-      },
-      "count_person_2_3": {
-        "id": "38",
-        "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 36,
-        "parent": "37",
-        "order_num": "19"
-      },
-      "count_person_4_1": {
-        "id": "47",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 38,
-        "parent": "46",
-        "order_num": "32"
-      },
-      "count_person_4_2": {
-        "id": "49",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
-        "value": 39,
-        "parent": "48",
-        "order_num": "34"
-      },
-      "count_person_4_3": {
-        "id": "51",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 33,
-        "parent": "50",
-        "order_num": "36"
-      },
-      "count_person_5_1": {
-        "id": "53",
-        "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 39,
-        "parent": "52",
-        "order_num": "39"
-      },
-      "count_person_5_2": {
-        "id": "55",
-        "name": "Число получателей услуг, удовлетворенных графиком работы организации",
-        "value": 33,
-        "parent": "56",
-        "order_num": "43"
-      },
-      "count_person_5_3": {
-        "id": "59",
-        "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 36,
-        "parent": "58",
-        "order_num": "45"
-      },
-      "rating_3_1_chair": {
-        "id": "42",
-        "name": "Наличие сменных кресел-колясок",
-        "value": 20,
-        "parent": "44",
-        "order_num": "25"
-      },
-      "rating_3_1_toilet": {
-        "id": "43",
-        "name": "Наличие санитарно-гигиенических помещений",
-        "value": 0,
-        "parent": "44",
-        "order_num": "26"
-      },
-      "count_person_1_3_web": {
-        "id": "33",
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
-        "value": 40,
-        "parent": "31",
-        "order_num": "11"
-      },
-      "count_person_1_3_stend": {
-        "id": "32",
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 40,
-        "parent": "31",
-        "order_num": "10"
-      },
-      "count_invalid_person_3_3": {
-        "id": "45",
-        "name": "Число удовлетворенных доступностью услуг для инвалидов",
-        "value": 3,
-        "parent": "44",
-        "order_num": "29"
-      }
-    },
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.ratings",
-  "pk": 3,
-  "fields": {
-    "organisations": 3,
-    "type_organisations": 10,
-    "checking": 2,
-    "ratings_json": {
-      "quota": {
-        "id": "61",
-        "name": "Количество опрошенных респондентов",
-        "value": 120,
-        "parent": "None",
-        "order_num": "46"
-      },
-      "rating_1": {
-        "id": "25",
-        "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 81.5,
-        "parent": "None",
-        "order_num": "2"
-      },
-      "rating_2": {
-        "id": "26",
-        "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 93.0,
-        "parent": "None",
-        "order_num": "12"
-      },
-      "rating_3": {
-        "id": "27",
-        "name": "Критерий 3. Доступность услуг для инвалидов",
-        "value": 89.0,
-        "parent": "None",
-        "order_num": "20"
-      },
-      "rating_4": {
-        "id": "28",
-        "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 80.8,
-        "parent": "None",
-        "order_num": "30"
-      },
-      "rating_5": {
-        "id": "29",
-        "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 75.8,
-        "parent": "None",
-        "order_num": "37"
-      },
-      "rating_1_1": {
-        "id": "9",
-        "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
-        "value": 57.0,
-        "parent": "25",
-        "order_num": "3"
-      },
-      "rating_1_2": {
-        "id": "4",
-        "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": 100,
-        "parent": "25",
-        "order_num": "8"
-      },
-      "rating_1_3": {
-        "id": "31",
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
-        "value": 86.0,
-        "parent": "25",
-        "order_num": "9"
-      },
-      "rating_2_1": {
-        "id": "5",
-        "name": "2.1. Наличие комфортных условий для предоставления услуг",
-        "value": 100,
-        "parent": "26",
-        "order_num": "13"
-      },
-      "rating_2_3": {
-        "id": "37",
-        "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 86.0,
-        "parent": "26",
-        "order_num": "18"
-      },
-      "rating_3_1": {
-        "id": "7",
-        "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": 100,
-        "parent": "27",
-        "order_num": "21"
-      },
-      "rating_3_2": {
-        "id": "8",
-        "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": 80,
-        "parent": "27",
-        "order_num": "27"
-      },
-      "rating_3_3": {
-        "id": "44",
-        "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
-        "value": 90.0,
-        "parent": "27",
-        "order_num": "28"
-      },
-      "rating_4_1": {
-        "id": "46",
-        "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 74.0,
-        "parent": "28",
-        "order_num": "31"
-      },
-      "rating_4_2": {
-        "id": "48",
-        "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
-        "value": 90.0,
-        "parent": "28",
-        "order_num": "33"
-      },
-      "rating_4_3": {
-        "id": "50",
-        "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 76.0,
-        "parent": "28",
-        "order_num": "35"
-      },
-      "rating_5_1": {
-        "id": "52",
-        "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 74.0,
-        "parent": "29",
-        "order_num": "38"
-      },
-      "rating_5_2": {
-        "id": "56",
-        "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
-        "value": 88.0,
-        "parent": "29",
-        "order_num": "42"
-      },
-      "rating_5_3": {
-        "id": "58",
-        "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 72.0,
-        "parent": "29",
-        "order_num": "44"
-      },
-      "rating_total": {
-        "id": "60",
-        "name": "Итоговый балл, по результатам проверки",
-        "value": 84.02,
-        "parent": "None",
-        "order_num": "1"
-      },
-      "web_count_all": {
-        "id": "64",
-        "name": "Нормативное количество документов, на сайте",
-        "value": 14,
-        "parent": "9",
-        "order_num": "7"
-      },
-      "web_count_yes": {
-        "id": "66",
-        "name": "Фактическое количество документов, на сайте",
-        "value": 7,
-        "parent": "9",
-        "order_num": "6"
-      },
-      "invalid_person": {
-        "id": "62",
-        "name": "Количество инвалидов, получателей услуг",
-        "value": 10,
-        "parent": "None",
-        "order_num": "47"
-      },
-      "stend_count_all": {
-        "id": "63",
-        "name": "Нормативное количество документов, на стенде",
-        "value": 11,
-        "parent": "9",
-        "order_num": "5"
-      },
-      "stend_count_yes": {
-        "id": "65",
-        "name": "Фактическое количество документов, на стенде",
-        "value": 7,
-        "parent": "9",
-        "order_num": "4"
-      },
-      "count_person_2_3": {
-        "id": "38",
-        "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 103,
-        "parent": "37",
-        "order_num": "19"
-      },
-      "count_person_4_1": {
-        "id": "47",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 89,
-        "parent": "46",
-        "order_num": "32"
-      },
-      "count_person_4_2": {
-        "id": "49",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
-        "value": 108,
-        "parent": "48",
-        "order_num": "34"
-      },
-      "count_person_4_3": {
-        "id": "51",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 91,
-        "parent": "50",
-        "order_num": "36"
-      },
-      "count_person_5_1": {
-        "id": "53",
-        "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 89,
-        "parent": "52",
-        "order_num": "39"
-      },
-      "count_person_5_2": {
-        "id": "55",
-        "name": "Число получателей услуг, удовлетворенных графиком работы организации",
-        "value": 105,
-        "parent": "56",
-        "order_num": "43"
-      },
-      "count_person_5_3": {
-        "id": "59",
-        "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 86,
-        "parent": "58",
-        "order_num": "45"
-      },
-      "count_person_1_3_web": {
-        "id": "33",
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
-        "value": 103,
-        "parent": "31",
-        "order_num": "11"
-      },
-      "count_person_1_3_stend": {
-        "id": "32",
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 103,
-        "parent": "31",
-        "order_num": "10"
-      },
-      "count_invalid_person_3_3": {
-        "id": "45",
-        "name": "Число удовлетворенных доступностью услуг для инвалидов",
-        "value": 9,
-        "parent": "44",
-        "order_num": "29"
-      }
-    },
-    "is_deleted": false
-  }
-},
-{
-  "model": "checklist.ratings",
-  "pk": 4,
-  "fields": {
-    "organisations": 6,
-    "type_organisations": 5,
-    "checking": 4,
-    "ratings_json": {
-      "quota": {
-        "id": "61",
-        "name": "Количество опрошенных респондентов",
-        "value": 85,
-        "parent": "None",
-        "order_num": "46"
-      },
-      "rating_1": {
-        "id": "25",
-        "name": "Критерий 1. Открытость и доступность информации об организации",
-        "value": 82.7,
-        "parent": "None",
-        "order_num": "2"
-      },
-      "rating_2": {
-        "id": "26",
-        "name": "Критерий 2. Комфортность условий предоставления услуг",
-        "value": 93.0,
-        "parent": "None",
-        "order_num": "12"
-      },
-      "rating_3": {
-        "id": "27",
-        "name": "Критерий 3. Доступность услуг для инвалидов",
-        "value": 100.0,
-        "parent": "None",
-        "order_num": "20"
-      },
-      "rating_4": {
-        "id": "28",
-        "name": "Критерий 4. Доброжелательность, вежливость работников организации",
-        "value": 80.2,
-        "parent": "None",
-        "order_num": "30"
-      },
-      "rating_5": {
-        "id": "29",
-        "name": "Критерий 5. Удовлетворенность условиями оказания услуг",
-        "value": 83.6,
-        "parent": "None",
-        "order_num": "37"
-      },
-      "rating_1_1": {
-        "id": "9",
-        "name": "1.1. Соответствие информации о деятельности организации, размещенной на общедоступных информационных ресурсах, ее содержанию и порядку (форме) размещения, установленным нормативными правовыми актами",
-        "value": 77.0,
-        "parent": "25",
-        "order_num": "3"
-      },
-      "rating_1_2": {
-        "id": "4",
-        "name": "1.2. Обеспечение на официальном сайте организации наличия и функционирования дистанционных способов обратной связи и взаимодействия с получателями услуг",
-        "value": 100,
-        "parent": "25",
-        "order_num": "8"
-      },
-      "rating_1_3": {
-        "id": "31",
-        "name": "1.3. Доля получателей услуг, удовлетворенных открытостью, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещениях организации и на официальном сайте организации в информационно-телекоммуникационной сети Интернет",
-        "value": 74.0,
-        "parent": "25",
-        "order_num": "9"
-      },
-      "rating_2_1": {
-        "id": "5",
-        "name": "2.1. Наличие комфортных условий для предоставления услуг",
-        "value": 100,
-        "parent": "26",
-        "order_num": "13"
-      },
-      "rating_2_3": {
-        "id": "37",
-        "name": "2.3. Доля получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 86.0,
-        "parent": "26",
-        "order_num": "18"
-      },
-      "rating_3_1": {
-        "id": "7",
-        "name": "3.1. Оборудование территории, прилегающей к организации, и ее помещений с учетом доступности для инвалидов",
-        "value": 100,
-        "parent": "27",
-        "order_num": "21"
-      },
-      "rating_3_2": {
-        "id": "8",
-        "name": "3.2. Обеспечение в организации условий доступности, позволяющих инвалидам получать услуги наравне с другими",
-        "value": 100,
-        "parent": "27",
-        "order_num": "27"
-      },
-      "rating_3_3": {
-        "id": "44",
-        "name": "3.3. Доля получателей услуг, удовлетворенных доступностью услуг для инвалидов",
-        "value": 100.0,
-        "parent": "27",
-        "order_num": "28"
-      },
-      "rating_4_1": {
-        "id": "46",
-        "name": "4.1. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги (работники регистратуры, справочной, приемного отделения, сопровождающих работников и прочее) при непосредственном обращении в организацию",
-        "value": 75.0,
-        "parent": "28",
-        "order_num": "31"
-      },
-      "rating_4_2": {
-        "id": "48",
-        "name": "4.2. Доля получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуги при обращении в организацию",
-        "value": 81.0,
-        "parent": "28",
-        "order_num": "33"
-      },
-      "rating_4_3": {
-        "id": "50",
-        "name": "4.3. Удовлетворенность доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 89.0,
-        "parent": "28",
-        "order_num": "35"
-      },
-      "rating_5_1": {
-        "id": "52",
-        "name": "5.1. Готовность получателей услуг рекомендовать организацию родственникам и знакомым (могли бы ее рекомендовать, если бы была возможность выбора организации)",
-        "value": 86.0,
-        "parent": "29",
-        "order_num": "38"
-      },
-      "rating_5_2": {
-        "id": "56",
-        "name": "5.2. Удовлетворенность получателей услуг графиком работы организации",
-        "value": 89.0,
-        "parent": "29",
-        "order_num": "42"
-      },
-      "rating_5_3": {
-        "id": "58",
-        "name": "5.3. Удовлетворенность получателей услуг в целом условиями оказания услуг в организации",
-        "value": 80.0,
-        "parent": "29",
-        "order_num": "44"
-      },
-      "rating_total": {
-        "id": "60",
-        "name": "Итоговый балл, по результатам проверки",
-        "value": 87.9,
-        "parent": "None",
-        "order_num": "1"
-      },
-      "web_count_all": {
-        "id": "64",
-        "name": "Нормативное количество документов, на сайте",
-        "value": 46,
-        "parent": "9",
-        "order_num": "7"
-      },
-      "web_count_yes": {
-        "id": "66",
-        "name": "Фактическое количество документов, на сайте",
-        "value": 35,
-        "parent": "9",
-        "order_num": "6"
-      },
-      "invalid_person": {
-        "id": "62",
-        "name": "Количество инвалидов, получателей услуг",
-        "value": 5,
-        "parent": "None",
-        "order_num": "47"
-      },
-      "stend_count_all": {
-        "id": "63",
-        "name": "Нормативное количество документов, на стенде",
-        "value": 14,
-        "parent": "9",
-        "order_num": "5"
-      },
-      "stend_count_yes": {
-        "id": "65",
-        "name": "Фактическое количество документов, на стенде",
-        "value": 11,
-        "parent": "9",
-        "order_num": "4"
-      },
-      "count_person_2_3": {
-        "id": "38",
-        "name": "Число получателей услуг, удовлетворенных комфортностью условий предоставления услуг",
-        "value": 73,
-        "parent": "37",
-        "order_num": "19"
-      },
-      "count_person_4_1": {
-        "id": "47",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих первичный контакт и информирование получателя услуги",
-        "value": 64,
-        "parent": "46",
-        "order_num": "32"
-      },
-      "count_person_4_2": {
-        "id": "49",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации, обеспечивающих непосредственное оказание услуг",
-        "value": 69,
-        "parent": "48",
-        "order_num": "34"
-      },
-      "count_person_4_3": {
-        "id": "51",
-        "name": "Число получателей услуг, удовлетворенных доброжелательностью, вежливостью работников организации при использовании дистанционных форм взаимодействия",
-        "value": 76,
-        "parent": "50",
-        "order_num": "36"
-      },
-      "count_person_5_1": {
-        "id": "53",
-        "name": "Число получателей услуг, которые готовы рекомендовать организацию родственникам и знакомым",
-        "value": 73,
-        "parent": "52",
-        "order_num": "39"
-      },
-      "count_person_5_2": {
-        "id": "55",
-        "name": "Число получателей услуг, удовлетворенных графиком работы организации",
-        "value": 76,
-        "parent": "56",
-        "order_num": "43"
-      },
-      "count_person_5_3": {
-        "id": "59",
-        "name": "Число получателей услуг, в целом удовлетворенных условиями оказания услуг в организации",
-        "value": 68,
-        "parent": "58",
-        "order_num": "45"
-      },
-      "count_person_1_3_web": {
-        "id": "33",
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на официальном сайте организации в сети Интернет (численность опрошенных, ответивших положительно)",
-        "value": 61,
-        "parent": "31",
-        "order_num": "11"
-      },
-      "count_person_1_3_stend": {
-        "id": "32",
-        "name": "Удовлетворенность качеством, полнотой и доступностью информации о деятельности организации, размещенной на информационных стендах в помещении организации (численность опрошенных, ответивших положительно)",
-        "value": 61,
-        "parent": "31",
-        "order_num": "10"
-      },
-      "count_invalid_person_3_3": {
-        "id": "45",
-        "name": "Число удовлетворенных доступностью услуг для инвалидов",
-        "value": 5,
         "parent": "44",
         "order_num": "29"
       }
