@@ -36,10 +36,10 @@ from .app_models.coefficients import Coefficients
 # Настройка админки
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'phone', 'address', 'birthday', 'is_deleted')  # Указываю какие поля отображать
-    search_fields = ('user', 'address', 'birthday')  # Указываю по каким полям можно осуществлять поиск
-    list_editable = ('user', 'phone', 'address', 'birthday', 'is_deleted')  # Возможность редактирования поля
-    list_filter = ('user', 'address', 'birthday')  # Возможность фильтровать поля
+    list_display = ('id', 'user', 'phone', 'address', 'birthday', 'position', 'is_deleted')  # Указываю какие поля отображать
+    search_fields = ('user', 'address', 'birthday', 'position')  # Указываю по каким полям можно осуществлять поиск
+    list_editable = ('user', 'phone', 'address', 'birthday', 'position', 'is_deleted')  # Возможность редактирования поля
+    list_filter = ('user', 'address', 'birthday', 'position')  # Возможность фильтровать поля
 
 
 class Profile_PositionAdmin(admin.ModelAdmin):
