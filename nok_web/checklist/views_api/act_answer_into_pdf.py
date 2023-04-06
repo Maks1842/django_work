@@ -91,7 +91,7 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         answers = answer_in_the_act(comparison, query)
 
         user_set = User.objects.values().get(pk=list_check_set.user_id)
-        user_name = user_set['first_name']
+        user_name = f"{user_set['first_name']} {user_set['last_name']}"
 
         context = {'name_org': name_org,
                    'address_org': address_org,
