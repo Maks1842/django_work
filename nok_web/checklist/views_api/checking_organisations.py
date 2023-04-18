@@ -382,6 +382,10 @@ class GetCheckingCompletedAPIView(APIView):
             if len(queryset_completed) > 0:
                 for item_comp in queryset_completed:
                     # return Response(item_comp.checking.id)
+                    if item.person is not None:
+                        org_person = f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"
+                    else:
+                        org_person = ''
                     result.append({
                         'check_id': item_comp.checking.id,
                         'check_name': item_comp.checking.name,
@@ -391,7 +395,7 @@ class GetCheckingCompletedAPIView(APIView):
                         'type_org_id': item_comp.type_organisations.id,
                         'type_org_name': item_comp.type_organisations.type,
                         'org_check_date': item.date_check_org,
-                        'org_person': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}",
+                        'org_person': org_person,
                         'comment': item_comp.comments
 
                     })
