@@ -6,6 +6,8 @@ from rest_framework.decorators import action
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
+from rest_framework import status
+from django.db import IntegrityError
 
 from ..magic import do_some_magic
 from .culture_legacy import culture_legacy_rating
@@ -15,7 +17,7 @@ from .school import school_rating
 from .addeducation import addeducation_rating
 from .kindergarden import kindergarden_rating
 from .techcollege import techcollege_rating
-
+from ...app_serializers.ratings_serializer import RatingsSerializer
 
 '''
 Данный метод рассчитывает рейтинг с применением коэффициентов, при определении количества положительных 
@@ -23,40 +25,79 @@ from .techcollege import techcollege_rating
 Результаты рейтингов, по каждой организации (в разрезе проверок), хранятся в Модели Ratings. 
 !!! - CalculatingRatingAPIView только для тестов.
 !!! - def calculating_rating - для боевого режима
+
+Применяются коэффициенты установленные законом и рассчитанные рандомно (в соответствии с заданным диапазоном)
+
+Количество респондентов, удовлетворенных качеством услуг, рассчитывается на основе кастомных коэффициентов.
+Устанавливается диапазон коэффициента, который рассчитывается рандомно.
+
+В случае необходимости откорректировать рейтинг, нужное количество респондентов устанавливается вручную и применяется метод ChangeRatings
 '''
 
-
-# CalculatingRatingAPIView только для тестов. def calculating_rating - для боевого режима
 class CalculatingRatingAPIView(APIView):
+
+    permission_classes = [IsAdminUser]
     @swagger_auto_schema(
-        methods=['get'],
+        methods=['post'],
         tags=['Рейтинг'],
-        operation_description="Расчет рейтинга, с применением коэффициентов к респондентам",
-        manual_parameters=[
-            openapi.Parameter('id_checking', openapi.IN_QUERY, description="Идентификатор проверки",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
-                              type=openapi.TYPE_INTEGER),
-            openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
-                              type=openapi.TYPE_INTEGER),
+        operation_description="Рассчитать рейтинг",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
+                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
+                                                     description='Идентификатор типа организации'),
+                'quota': openapi.Schema(type=openapi.TYPE_INTEGER, description='Квота респондентов'),
+                'invalid_person': openapi.Schema(type=openapi.TYPE_INTEGER, description='Количество инвалидов'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
 
-        ])
-    @action(methods=['get'], detail=False)
-    def get(self, request):
+        serializers = AnswersSerializer(data=req_data)
+        serializers.is_valid(raise_exception=True)
+        try:
+            Answers.objects.update_or_create(
+                checking_id=req_data['checking'],
+                organisations_id=req_data['organisations'],
+                type_organisations_id=req_data['type_organisations'],
+                defaults={'quota': req_data['quota'], 'invalid_person': req_data['invalid_person']},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении Квоты респондентов и Инвалидов"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
 
-        checking = request.query_params.get('id_checking')
-        organisation = request.query_params.get('id_organisation')
-        type_organisation = request.query_params.get('id_type_organisation')
+        checking = str(req_data['checking'])
+        organisation = str(req_data['organisations'])
+        type_organisation = str(req_data['type_organisations'])
+        quota = req_data['quota']
+        invalid_person = req_data['invalid_person']
 
-        rating = calculating_rating(checking, organisation, type_organisation)
+        rating = calculating_rating(checking, organisation, type_organisation, quota, invalid_person)
 
-        return Response(rating)
-# Чтобы верхний блок не попадал в API, необходимо его отключить в urls.py
+        serializers = RatingsSerializer(data=rating)
+        serializers.is_valid(raise_exception=True)
+        try:
+            Ratings.objects.update_or_create(
+                checking_id=req_data['checking'],
+                organisations_id=req_data['organisations'],
+                type_organisations_id=req_data['type_organisations'],
+                defaults={'ratings_json': rating},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении рейтингов"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Рейтинг успешно сохранен',
+                         'ratings': rating
+                         })
 
 
-def calculating_rating(checking, organisation, type_organisation):
-
-    rating = {}
+def calculating_rating(checking, organisation, type_organisation, quota, invalid_person):
 
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
@@ -66,8 +107,6 @@ def calculating_rating(checking, organisation, type_organisation):
         return Response({'error': 'Не найдены данные о результатах запрашиваемой проверки.'})
 
     act_answer = answer_set.answers_json
-    quota = answer_set.quota
-    invalid_person = answer_set.invalid_person
 
     form_json = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json
     form_json_to_calculate = FormsAct.objects.get(type_organisations_id=queryset[0].type_organisations_id).act_json_to_calculate
@@ -81,8 +120,10 @@ def calculating_rating(checking, organisation, type_organisation):
             return culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         case '10':
             return culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
-        case ('2' | '3'):
-            return healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '2':
+            return healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate, 59, 59)  # Последние два значения - нормативное количество документов на Стенде и Сайте
+        case '3':
+            return healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate, 60, 60)
         case '4':
             return kindergarden_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         case '5':

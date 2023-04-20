@@ -69,8 +69,8 @@ urlpatterns = [
     path('api/v1/StatisticOrganisationList/', StatisticOrganisationListAPIView.as_view(), name='StatisticOrganisationList'),
     path('api/v1/StatisticUser/', StatisticUserAPIView.as_view(), name='StatisticUser'),
 
-    # Для рассчета бальной оценки
-    path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'), # Для тестовой проверки
+    # Для рассчета бальной оценки (рейтинги)
+    path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
     path('api/v1/ChangeRatings/', ChangeRatingsAPIView.as_view(), name='ChangeRatings'),
     path('api/v1/Ratings/', RatingsAPIView.as_view(), name='Ratings'),
     path('api/v1/RatingCheckingsList/', RatingCheckingsListAPIView.as_view(), name='RatingCheckingsList'),

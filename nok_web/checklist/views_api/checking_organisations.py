@@ -1,17 +1,15 @@
-from .calculating_rating.base_calculate_api import calculating_rating
 from ..app_models import *
 from ..app_serializers.answers_serializer import AnswersSerializer
-from rest_framework import generics, viewsets, status, mixins
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.decorators import action, permission_classes
-from drf_yasg2.utils import swagger_auto_schema, unset
+from rest_framework.decorators import action
+from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
-from django.db import IntegrityError, transaction
-from rest_framework.permissions import IsAdminUser
+from django.db import IntegrityError
 from django.contrib.auth.models import User
 
-from ..app_serializers.ratings_serializer import RatingsSerializer
+from ..app_serializers.list_checking_serializer import ListCheckingSerializer
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -72,8 +70,9 @@ class AnswersAPIView(APIView):
                 'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
                 'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
                                                      description='Идентификатор типа организации'),
+                'person': openapi.Schema(type=openapi.TYPE_INTEGER,
+                                                     description='Идентификатор представителя'),
                 'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
-                'invalid_person': openapi.Schema(type=openapi.TYPE_INTEGER, description='Количество инвалидов'),
             }
         ))
     @action(methods=['post'], detail=True)
@@ -87,38 +86,31 @@ class AnswersAPIView(APIView):
                 checking_id=req_data['checking'],
                 organisations_id=req_data['organisations'],
                 type_organisations_id=req_data['type_organisations'],
-                defaults={'answers_json': req_data['answers_json'], 'invalid_person': req_data['invalid_person']},
+                defaults={'answers_json': req_data['answers_json']},
             )
         except IntegrityError:
             return Response({"error": "Ошибка при добавлении/изменении данных"},
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
 
-        checking = str(req_data['checking'])
-        organisation = str(req_data['organisations'])
-        type_organisation = str(req_data['type_organisations'])
-        rating = calculating_rating(checking, organisation, type_organisation)
-
-        serializers = RatingsSerializer(data=rating)
-        serializers.is_valid(raise_exception=True)
-        try:
-            Ratings.objects.update_or_create(
-                checking_id=req_data['checking'],
-                organisations_id=req_data['organisations'],
-                type_organisations_id=req_data['type_organisations'],
-                defaults={'ratings_json': rating},
-            )
-        except IntegrityError:
-            return Response({"error": "Ошибка при добавлении/изменении данных"},
-                            status=status.HTTP_406_NOT_ACCEPTABLE,
-                            )
-
+        if req_data['person'] is not None and req_data['person'] != '':
+            data_person = {'person': req_data['person']}
+            serializers_person = ListCheckingSerializer(data=data_person)
+            serializers_person.is_valid(raise_exception=True)
+            try:
+                List_Checking.objects.update_or_create(
+                    checking_id=req_data['checking'],
+                    organisation_id=req_data['organisations'],
+                    defaults={'person_id': req_data['person']},
+                )
+            except IntegrityError:
+                return Response({"error": "Ошибка при добавлении/изменении ответственного"},
+                                status=status.HTTP_406_NOT_ACCEPTABLE,
+                                )
 
         return Response({'answer': 'Ответ успешно сохранен',
-                         'rating': 'Рейтинг успешно сохранен',
-                         'ratings': rating
+                         'person': 'Ответственный успешно добавлен',
                          })
-        # return Response(rating)
 
 
 class CommentsCheckingAPIView(APIView):

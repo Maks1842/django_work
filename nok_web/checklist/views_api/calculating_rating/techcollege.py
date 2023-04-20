@@ -30,17 +30,18 @@ def techcollege_rating(quota, invalid_person, answers, form_json, grouping_json)
     rating_3_2 = {}
     count_1_1_value = {}
 
-    stend_count_all = 0
-    web_count_all = 0
-    for page in form_json["pages"]:
-        for el in page["elements"]:
-            for choic in el["choices"]:
-                if choic["value"] == '11':
-                    stend_count_all += 1
-                elif choic["value"] == '12':
-                    web_count_all += 1
-                else:
-                    pass
+    # Нормативное количество документов на Стенде и Сайте
+    stend_count_all = 15
+    web_count_all = 49
+    # for page in form_json["pages"]:
+    #     for el in page["elements"]:
+    #         for choic in el["choices"]:
+    #             if choic["value"] == '11':
+    #                 stend_count_all += 1
+    #             elif choic["value"] == '12':
+    #                 web_count_all += 1
+    #             else:
+    #                 pass
 
     for section in grouping_json["pages"]:
 
@@ -143,8 +144,8 @@ def techcollege_rating(quota, invalid_person, answers, form_json, grouping_json)
 
     rating_respondents = respondents_stage(quota, invalid_person, count_1_1_value, comment_expert_1, coefficient)
 
-    rating_1 = round(rating_1_1 * float(cfcnt_main["k_1_1"]) + rating_1_2 * float(cfcnt_main["k_1_1"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
-    rating_2 = round((rating_2_1 + rating_respondents['rating_2_3'])/2, 1)
+    rating_1 = round(rating_1_1 * float(cfcnt_main["k_1_1"]) + rating_1_2 * float(cfcnt_main["k_1_2"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
+    rating_2 = round(rating_2_1 * float(cfcnt_main["k_2_1"]) + rating_respondents['rating_2_3'] * float(cfcnt_main["k_2_3"]), 1)
     rating_3 = round(rating_3_1 * float(cfcnt_main["k_3_1"]) + rating_3_2 * float(cfcnt_main["k_3_2"]) + rating_respondents['rating_3_3'] * float(cfcnt_main["k_3_3"]), 1)
     rating_4 = round(rating_respondents['rating_4_1'] * float(cfcnt_main["k_4_1"]) + rating_respondents['rating_4_2'] * float(cfcnt_main["k_4_2"]) + rating_respondents['rating_4_3'] * float(cfcnt_main["k_4_3"]), 1)
     rating_5 = round(rating_respondents['rating_5_1'] * float(cfcnt_main["k_5_1"]) + rating_respondents['rating_5_2'] * float(cfcnt_main["k_5_2"]) + rating_respondents['rating_5_3'] * float(cfcnt_main["k_5_3"]), 1)
