@@ -73,8 +73,8 @@ class CalculatingRatingAPIView(APIView):
         checking = str(req_data['checking'])
         organisation = str(req_data['organisations'])
         type_organisation = str(req_data['type_organisations'])
-        quota = req_data['quota']
-        invalid_person = req_data['invalid_person']
+        quota = int(req_data['quota'])
+        invalid_person = int(req_data['invalid_person'])
 
         rating = calculating_rating(checking, organisation, type_organisation, quota, invalid_person)
 
