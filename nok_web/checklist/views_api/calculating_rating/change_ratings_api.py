@@ -60,6 +60,34 @@ class ChangeRatingsAPIView(APIView):
         organisation = req_data['organisation_id']
         type_organisation = req_data['type_organisation_id']
 
+        try:
+            answer_set = Answers.objects.filter(checking_id=checking, type_organisations_id=type_organisation, organisations_id=organisation).values()
+            quota = answer_set[0]['quota']
+            invalid_person = answer_set[0]['invalid_person']
+
+            if req_data['count_person_1_3_stend'] > quota or req_data['count_person_1_3_web'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 1.3 не может превышать {quota}"})
+            if req_data['count_person_2_3'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 2.3 не может превышать {quota}"})
+            if req_data['count_invalid_person_3_3'] > invalid_person:
+                return Response({"error": f"Количество респондентов в Критерии 3.3 не может превышать {invalid_person}"})
+            if req_data['count_person_4_1'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 4.1 не может превышать {quota}"})
+            if req_data['count_person_4_2'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 4.2 не может превышать {quota}"})
+            if req_data['count_person_4_3'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 4.3 не может превышать {quota}"})
+            if req_data['count_person_5_1'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 5.1 не может превышать {quota}"})
+            if req_data['count_person_5_2'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 5.2 не может превышать {quota}"})
+            if req_data['count_person_5_3'] > quota:
+                return Response({"error": f"Количество респондентов в Критерии 5.3 не может превышать {quota}"})
+        except:
+            pass
+
+
+
         count_person = {
             "count_person_1_3_stend": req_data['count_person_1_3_stend'],
             "count_person_1_3_web": req_data['count_person_1_3_web'],
