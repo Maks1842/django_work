@@ -56,7 +56,7 @@ class AnswersAPIView(APIView):
         answer = ''
         if len(queryset) > 0:
             answer = queryset[0].answers_json
-            answer['invalidPerson'] = queryset[0].invalid_person
+            # answer['invalidPerson'] = queryset[0].invalid_person
         return Response(answer)
 
     @swagger_auto_schema(
