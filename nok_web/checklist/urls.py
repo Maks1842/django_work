@@ -13,6 +13,7 @@ from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAP
 from .views_api.calculating_rating.change_ratings_api import ChangeRatingsAPIView
 from .views_api.calculating_rating.ratings_api import RatingsAPIView, RatingCheckingsListAPIView
 from .views_api.calculating_rating.ratings_into_pdf import GetRatingsIntoPdfAPIView
+from .views_api.calculating_rating.ratings_to_excel import ExportRatingsToExcelAPIView
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
     GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, \
     InvalidPersonAPIView, CommentsCheckingAPIView
@@ -69,12 +70,13 @@ urlpatterns = [
     path('api/v1/StatisticOrganisationList/', StatisticOrganisationListAPIView.as_view(), name='StatisticOrganisationList'),
     path('api/v1/StatisticUser/', StatisticUserAPIView.as_view(), name='StatisticUser'),
 
-    # Для рассчета бальной оценки (рейтинги)
+    # Для Рейтингов
     path('api/v1/CalculatingRating/', CalculatingRatingAPIView.as_view(), name='CalculatingRating'),
     path('api/v1/ChangeRatings/', ChangeRatingsAPIView.as_view(), name='ChangeRatings'),
     path('api/v1/Ratings/', RatingsAPIView.as_view(), name='Ratings'),
     path('api/v1/RatingCheckingsList/', RatingCheckingsListAPIView.as_view(), name='RatingCheckingsList'),
     path('api/v1/getRatingsIntoPdf/', GetRatingsIntoPdfAPIView.as_view(), name='GetRatingsIntoPdf'),
+    path('api/v1/ExportRatingsToExcel/', ExportRatingsToExcelAPIView.as_view(), name='ExportRatingsToExcel'),
 
     # Для Админа
     path('api/v1/getActGrouping/', GetActGroupingAPIView.as_view(), name='GetActGrouping'),
