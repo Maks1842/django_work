@@ -3,8 +3,6 @@ from openpyxl.utils.cell import get_column_letter
 from openpyxl.styles import Font, NamedStyle, Side, Border, PatternFill, Alignment, GradientFill
 from datetime import date
 
-import logging
-
 from ...app_models import *
 
 from rest_framework.views import APIView
@@ -18,7 +16,6 @@ from django.http import HttpResponse
 '''
 Добавление всех рейтингов, по проверке, в сводную таблицу Excel.
 '''
-
 
 class ExportRatingsToExcelAPIView(APIView):
     permission_classes = [IsAdminUser]
@@ -40,7 +37,17 @@ class ExportRatingsToExcelAPIView(APIView):
 
         ratings_set = Ratings.objects.values().filter(checking_id=checking_id)
 
-        result = ratings_to_excel(ratings_set)
+        type_organisation_id = ratings_set[0]['type_organisations_id']
+
+        result = ''
+        match type_organisation_id:
+            case (1 | 10):
+                result = ratings_culture_to_excel(ratings_set)
+            case (2 | 3):
+                result = ratings_healthcare_to_excel(ratings_set)
+            case (4 | 5 | 7 | 9):
+                result = ratings_education_to_excel(ratings_set)
+
         file_pointer = open(result, "rb")
         response = HttpResponse(file_pointer, content_type='application/vnd.openxmlformats-officedocument'
                                                            '.spreadsheetml.sheet;')
@@ -49,7 +56,7 @@ class ExportRatingsToExcelAPIView(APIView):
         return response
 
 
-def ratings_to_excel(ratings_set):
+def ratings_culture_to_excel(ratings_set):
     # Стиль данных и ячеек
     style_main = NamedStyle(name="style_main")
     style_main.font = Font(bold=False, size=12, color="000000")
@@ -225,3 +232,11 @@ def ratings_to_excel(ratings_set):
     book_template.save(file)
 
     return file
+
+
+def ratings_healthcare_to_excel(ratings_set):
+    pass
+
+
+def ratings_education_to_excel(ratings_set):
+    pass
