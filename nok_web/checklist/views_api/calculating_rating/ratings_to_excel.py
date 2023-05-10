@@ -13,14 +13,16 @@ from rest_framework.response import Response
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
+from django.http import HttpResponse
 
 '''
 Добавление всех рейтингов, по проверке, в сводную таблицу Excel.
 '''
 
-class ExportRatingsToExcelAPIView(APIView):
 
+class ExportRatingsToExcelAPIView(APIView):
     permission_classes = [IsAdminUser]
+
     @swagger_auto_schema(
         method='get',
         tags=['Рейтинг'],
@@ -29,9 +31,8 @@ class ExportRatingsToExcelAPIView(APIView):
             openapi.Parameter('checking', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER)
         ])
-    @action(detail=False, methods=['get'],)
+    @action(detail=False, methods=['get'], )
     def get(self, request):
-
         checking_id = request.query_params.get('checking')
 
         if checking_id == None:
@@ -40,12 +41,15 @@ class ExportRatingsToExcelAPIView(APIView):
         ratings_set = Ratings.objects.values().filter(checking_id=checking_id)
 
         result = ratings_to_excel(ratings_set)
-
-        return Response({'message': result})
+        file_pointer = open(result, "rb")
+        response = HttpResponse(file_pointer, content_type='application/vnd.openxmlformats-officedocument'
+                                                           '.spreadsheetml.sheet;')
+        response['Content-Disposition'] = f'attachment; filename=download.xlsx'
+        response['Content-Transfer-Encoding'] = 'utf-8'
+        return response
 
 
 def ratings_to_excel(ratings_set):
-
     # Стиль данных и ячеек
     style_main = NamedStyle(name="style_main")
     style_main.font = Font(bold=False, size=12, color="000000")
@@ -217,6 +221,7 @@ def ratings_to_excel(ratings_set):
         sheet.cell(row, column).style = style_2
 
     current_date = date.today()
-    book_template.save(f'./checklist/templates/Сводный рейтинг_{current_date.strftime("%d.%m.%Y")}.xlsx')
+    file = f'./checklist/local_storage/totalrating_{current_date.strftime("%d.%m.%Y")}.xlsx'
+    book_template.save(file)
 
-    return 'Сводный файл, с рейтингами, успешно сформирован'
+    return file
