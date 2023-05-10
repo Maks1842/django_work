@@ -78,6 +78,7 @@ class RatingCheckingsListAPIView(APIView):
                 'dateCheck': item.date_checking,
                 'regionCheck': item.region.region_name,
                 'departmentCheck': item.department.department_name,
+                'departmentId': item.department.id,
             })
         return Response(result)
 
