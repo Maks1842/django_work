@@ -34,6 +34,7 @@ from ...app_serializers.ratings_serializer import RatingsSerializer
 В случае необходимости откорректировать рейтинг, нужное количество респондентов устанавливается вручную и применяется метод ChangeRatings
 '''
 
+
 class CalculatingRatingAPIView(APIView):
 
     permission_classes = [IsAdminUser]
@@ -102,7 +103,7 @@ def calculating_rating(checking, organisation, type_organisation, quota, invalid
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
 
     try:
-        answer_set = Answers.objects.filter(checking_id=checking).get(organisations_id=organisation)
+        answer_set = Answers.objects.filter(checking_id=checking, organisations_id=organisation).get(type_organisations_id=type_organisation)
     except:
         return Response({'error': 'Не найдены данные о результатах запрашиваемой проверки.'})
 
@@ -140,6 +141,7 @@ def calculating_rating(checking, organisation, type_organisation, quota, invalid
 Функция формирования текстовых ответов для HTML шаблона из json файла,
 который сформирован на основе сопоставления act_json и answer_json.
 '''
+
 
 def answer_in_the_act(comparison, query):
     list_dict = {}
