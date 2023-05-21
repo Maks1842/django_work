@@ -1,14 +1,13 @@
 from ..app_models import *
 from ..app_serializers.form_organisation_persons_serializer import Form_Organisation_PersonsSerializer
 from ..app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
-from rest_framework import generics, viewsets, status, mixins
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.decorators import action, permission_classes
-from drf_yasg2.utils import swagger_auto_schema, unset
+from rest_framework.decorators import action
+from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from django.db import IntegrityError, transaction
-from rest_framework.permissions import IsAdminUser
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -28,7 +27,7 @@ class OrganisationPersonsAPIView(APIView):
     # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Представитель организации'],
+        tags=['Организация'],
         operation_description="Получить представителя организации",
         manual_parameters=[
             openapi.Parameter('id_organisation', openapi.IN_QUERY, description="Идентификатор организации",
@@ -49,7 +48,7 @@ class OrganisationPersonsAPIView(APIView):
 
     @swagger_auto_schema(
         methods=['post'],
-        tags=['Представитель организации'],
+        tags=['Организация'],
         operation_description="Добавить представителя организации",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
@@ -64,7 +63,6 @@ class OrganisationPersonsAPIView(APIView):
             }
         ))
     @action(methods=['post'], detail=True)
-    # @transaction.atomic
     def post(self, request):
         req_data = request.data
 
@@ -91,7 +89,7 @@ class OrganisationPersonsAPIView(APIView):
 class FormOrganisationPersonsAPIView(APIView):
     @swagger_auto_schema(
         methods=['post'],
-        tags=['Представитель организации'],
+        tags=['Организация'],
         operation_description="Добавить сопоставление представителя и организации",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
@@ -114,7 +112,7 @@ class FormOrganisationPersonsAPIView(APIView):
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
 
-        return Response({'message': 'Сопоставлее успешно добавлено'})
+        return Response({'message': 'Сопоставление успешно добавлено'})
 
 
 class GetListTypeOrganizationsAPIView(APIView):
@@ -122,8 +120,8 @@ class GetListTypeOrganizationsAPIView(APIView):
     # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
-        tags=['Типы организаций'],
-        operation_description="Получить список типов оргнизаций",
+        tags=['Организация'],
+        operation_description="Получить список типов организаций",
         manual_parameters=[
             openapi.Parameter('id_type_department', openapi.IN_QUERY, description="Идентификатор типа департамента",
                               type=openapi.TYPE_INTEGER)

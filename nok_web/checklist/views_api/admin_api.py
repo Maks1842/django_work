@@ -4,16 +4,20 @@ from rest_framework.permissions import IsAdminUser
 from django.contrib.auth.models import User
 
 from ..app_models import *
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from ..app_serializers.checking_serializer import CheckingSerializer
+
+from ..app_serializers.departments_serializer import DepartmentsSerializer
+from ..app_serializers.list_checking_serializer import ListCheckingSerializer
+from ..app_serializers.organisations_serializer import OrganisationsSerializer
 from ..app_serializers.regions_serializer import RegionsSerializer
-from rest_framework import generics, viewsets, status, mixins
+from rest_framework import status, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.decorators import action, permission_classes
+from rest_framework.decorators import action
 from rest_framework.viewsets import GenericViewSet
-from drf_yasg2.utils import swagger_auto_schema, unset
+from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
+from django.db import IntegrityError
 
 
 '''ТЕСТОВЫЕ, ТРЕНИРОВОЧНЫЕ или ВРЕМЕННО НЕ ИСПОЛЬЗУЕМЫЕ ВЬЮХИ'''
@@ -107,7 +111,7 @@ class GetActAPIView(APIView):
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Для Админа'],
+        tags=['Админка'],
         operation_description="Создать форму Анкеты для проверки",
         manual_parameters=[
             openapi.Parameter('id_type_departments', openapi.IN_QUERY, description="Идентификатор типа департамента",
@@ -259,7 +263,7 @@ class GetActGroupingAPIView(APIView):
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         methods=['get'],
-        tags=['Для Админа'],
+        tags=['Админка'],
         operation_description="Создать форму Акта для расчета рейтинга",
         manual_parameters=[
             openapi.Parameter('id_type_departments', openapi.IN_QUERY, description="Идентификатор типа департамента",
@@ -322,7 +326,7 @@ class GetPositionUserAPIView(APIView):
     permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
-        tags=['Для Админа'],
+        tags=['Админка'],
         operation_description="Получить должность пользователя",
         manual_parameters=[
             openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор пользователя",
@@ -342,7 +346,7 @@ class GetProfileUserAPIView(APIView):
     # permission_classes = [IsAdminUser]
     @swagger_auto_schema(
         method='get',
-        tags=['Для Админа'],
+        tags=['Админка'],
         operation_description="Получить профиль пользователя",
         manual_parameters=[
             openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор пользователя",
@@ -384,3 +388,308 @@ class GetOrganisationTestAPIView(APIView):
     def post(self, request):
         organisation = Organisations.objects.values()
         return Response(organisation)
+
+
+class DepartmentsAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список департаментов",)
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+
+        departments_set = Departments.objects.values()
+
+        result = []
+        for item in departments_set:
+            result.append({
+                "name": item["department_name"],
+                "value": {"id": item["id"],
+                          "type_departments_id": item["type_departments_id"]}
+            })
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Добавить/изменить департамент",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'items_json': openapi.Schema(type=openapi.TYPE_OBJECT, description='Данные департамента'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        data = {"id": req_data['items_json']["id"],
+                "department_name": req_data['items_json']["department_name"],
+                "type_departments": req_data['items_json']["type_departments_id"],
+                "region": req_data['items_json']["region_id"],
+                "user": req_data['items_json']["user_id"]}
+
+        serializers = DepartmentsSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+
+        try:
+            Departments.objects.update_or_create(
+                pk=req_data["items_json"]["id"],
+                defaults={
+                    "department_name": req_data["items_json"]["department_name"],
+                    "address": req_data["items_json"]["address"],
+                    "phone": req_data["items_json"]["phone"],
+                    "website": req_data["items_json"]["website"],
+                    "email": req_data["items_json"]["email"],
+                    "parent_id": req_data["items_json"]["parent_id"],
+                    "region_id": req_data["items_json"]["region_id"],
+                    "type_departments_id": req_data["items_json"]["type_departments_id"],
+                    "user_id": req_data["items_json"]["user_id"],
+                },
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Департамент добавлен'})
+
+
+class OrganisationsAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список учреждений",
+        manual_parameters=[
+            openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        department_id = request.query_params.get('department_id')
+
+        if department_id:
+            organisations_set = Organisations.objects.values().filter(department_id=department_id)
+        else:
+            organisations_set = Organisations.objects.values()
+
+        result = []
+        for item in organisations_set:
+            result.append({
+                "name": item["organisation_name"],
+                "value": {"id": item["id"]}
+            })
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Добавить/изменить организацию",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'items_json': openapi.Schema(type=openapi.TYPE_OBJECT, description='Данные организации'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        data = {"id": req_data['items_json']["id"],
+                "organisation_name": req_data['items_json']["organisation_name"],
+                "department": req_data['items_json']["department_id"]}
+
+        serializers = OrganisationsSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+
+        try:
+            Organisations.objects.update_or_create(
+                pk=req_data["items_json"]["id"],
+                defaults={
+                    "organisation_name": req_data["items_json"]["organisation_name"],
+                    "address": req_data["items_json"]["address"],
+                    "phone": req_data["items_json"]["phone"],
+                    "website": req_data["items_json"]["website"],
+                    "email": req_data["items_json"]["email"],
+                    "parent_id": req_data["items_json"]["parent_id"],
+                    "department_id": req_data["items_json"]["department_id"],
+                    "inn": req_data["items_json"]["inn"],
+                    "kpp": req_data["items_json"]["kpp"],
+                    "ogrn": req_data["items_json"]["ogrn"],
+                },
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Организация добавлена'})
+
+
+class CheckingAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список Проверок",
+        manual_parameters=[
+            openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        department_id = request.query_params.get('department_id')
+
+        if department_id:
+            checking_set = Checking.objects.values().filter(department_id=department_id)
+        else:
+            checking_set = Checking.objects.values()
+
+        result = []
+        for item in checking_set:
+            result.append({
+                "name": item["name"],
+                "value": {"id": item["id"],
+                          "date_checking": item["date_checking"]}
+            })
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Добавить/изменить Проверку",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'items_json': openapi.Schema(type=openapi.TYPE_OBJECT, description='Данные проверки'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        data = {"id": req_data['items_json']["id"],
+                "name": req_data['items_json']["name"],
+                "date_checking": req_data['items_json']["date_checking"],
+                "region": req_data['items_json']["region_id"],
+                "department": req_data['items_json']["department_id"]}
+
+        serializers = CheckingSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+
+        try:
+            Checking.objects.update_or_create(
+                pk=req_data["items_json"]["id"],
+                defaults={
+                    "name": req_data["items_json"]["name"],
+                    "date_checking": req_data["items_json"]["date_checking"],
+                    "region_id": req_data["items_json"]["region_id"],
+                    "department_id": req_data["items_json"]["department_id"],
+                },
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Проверка добавлен'})
+
+
+
+class ListCheckingAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список проверяемых организаций",
+        manual_parameters=[
+            openapi.Parameter('checking_id', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        checking_id = request.query_params.get('checking_id')
+
+        if checking_id is None or checking_id == '':
+            return Response({"error": "Не выбрана проверка"})
+
+        list_checking_set = List_Checking.objects.values().filter(checking_id=checking_id)
+
+        result = []
+        for item in list_checking_set:
+            person_name = ''
+            user_name = ''
+
+            checking_name = Checking.objects.get(id=item["checking_id"]).name
+            organisation_name = Organisations.objects.get(id=item["organisation_id"]).organisation_name
+
+            if item["person_id"] is not None and item["person_id"] != '':
+                person = Organisation_Persons.objects.values().get(id=item["person_id"])
+                person_name = f"{person['last_name']  or ''} {person['first_name']} {person['second_name'] or ''}"
+
+            if item["user_id"] is not None and item["user_id"] != '':
+                user = User.objects.values().get(id=item["user_id"])
+                user_name = f"{user['last_name']  or ''} {user['first_name']}"
+
+            result.append({"id": item["id"],
+                          "checking_id": item["checking_id"],
+                          "checking_name": checking_name,
+                          "organisation_id": item["organisation_id"],
+                          "organisation_name": organisation_name,
+                          "person_id": item["person_id"],
+                          "person_name": person_name,
+                          "user_id": item["user_id"],
+                          "user_name": user_name,
+                          "date_check_org": item["date_check_org"],
+                          })
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Добавить/изменить проверяемую организацию",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'items_json': openapi.Schema(type=openapi.TYPE_OBJECT, description='Данные проверяемой организации'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        data = {"id": req_data['items_json']["id"],
+                "checking": req_data['items_json']["checking_id"],
+                "organisation": req_data['items_json']["organisation_id"],
+                "date_check_org": req_data['items_json']["date_check_org"],}
+
+        serializers = ListCheckingSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+
+        try:
+            List_Checking.objects.update_or_create(
+                pk=req_data["items_json"]["id"],
+                defaults={
+                    "checking_id": req_data["items_json"]["checking_id"],
+                    "organisation_id": req_data["items_json"]["organisation_id"],
+                    "person_id": req_data["items_json"]["person_id"],
+                    "user_id": req_data["items_json"]["user_id"],
+                    "date_check_org": req_data["items_json"]["date_check_org"],
+                },
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Проверяемая организация добавлен'})

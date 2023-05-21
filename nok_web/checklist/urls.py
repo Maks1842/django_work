@@ -21,7 +21,8 @@ from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisatio
     GetListTypeOrganizationsAPIView
 from .views_api.statistics import StatisticUserAPIView, StatisticCheckingsListAPIView, StatisticOrganisationListAPIView
 from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView, \
-    GetProfileUserAPIView, GetActGroupingAPIView
+    GetProfileUserAPIView, GetActGroupingAPIView, DepartmentsAPIView, CheckingAPIView, OrganisationsAPIView, \
+    ListCheckingAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -83,6 +84,10 @@ urlpatterns = [
     path('api/v1/getAct/', GetActAPIView.as_view(), name='GetAct'),
     path('api/v1/getPositionUser/', GetPositionUserAPIView.as_view(), name='GetPositionUser'),
     path('api/v1/getProfileUser/', GetProfileUserAPIView.as_view(), name='GetProfileUser'),
+    path('api/v1/Departments/', DepartmentsAPIView.as_view(), name='Departments'),
+    path('api/v1/Checking/', CheckingAPIView.as_view(), name='Checking'),
+    path('api/v1/Organisations/', OrganisationsAPIView.as_view(), name='Organisations'),
+    path('api/v1/ListChecking/', ListCheckingAPIView.as_view(), name='ListChecking'),
 
 
 
@@ -97,9 +102,6 @@ urlpatterns = [
     path('', organisation_view, name='home'),
     path('designer-act/', designer_act_view, name='designer-act'),
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
-    # path('get-act-answer/', get_act_answer, name='get-act-answer'),
-
-    # path('api/v1/TESTGetOrganisation/', GetOrganisationTestAPIView.as_view(), name='GetOrganisationTest'),
 
 
 
