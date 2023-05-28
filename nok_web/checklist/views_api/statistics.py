@@ -58,30 +58,29 @@ class StatisticOrganisationListAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         checking = request.query_params.get('checking_id')
-        # department = Checking.objects.values('department').get(pk=checking)
-        # queryset = Organisations.objects.filter(department=department['department'])
-        queryset = List_Checking.objects.filter(checking_id=checking)
+        queryset = Answers.objects.filter(checking_id=checking)
 
         result = []
         for item in queryset:
             rating_total = 0
-            type_organisation_id = ''
-            type_organisation = ''
-            if Ratings.objects.filter(checking_id=checking, organisations_id=item.organisation_id):
-                rating = Ratings.objects.filter(checking_id=checking).get(organisations_id=item.organisation_id)
+            date_check_org = List_Checking.objects.filter(checking_id=checking).get(organisation_id=item.organisations_id).date_check_org
+            type_organisation_id = item.type_organisations_id
+            type_organisation_name = Type_Organisations.objects.get(pk=type_organisation_id).type
+            if Ratings.objects.filter(checking_id=checking, organisations_id=item.organisations_id, type_organisations_id=type_organisation_id):
+                rating = Ratings.objects.filter(checking_id=checking, organisations_id=item.organisations_id).get(type_organisations_id=type_organisation_id)
                 rating_json = rating.ratings_json
                 rating_total = rating_json['rating_total']['value']
                 type_organisation_id = rating.type_organisations_id
                 if type_organisation_id is not None and type_organisation_id != '':
-                    type_organisation = Type_Organisations.objects.get(pk=type_organisation_id).type
+                    type_organisation_name = Type_Organisations.objects.get(pk=type_organisation_id).type
 
             result.append({
-                'id': item.organisation_id,
-                'name': item.organisation.organisation_name,
-                'date': item.date_check_org,
+                'id': item.organisations_id,
+                'name': item.organisations.organisation_name,
+                'date': date_check_org,
                 'rating': rating_total,
                 'type_organisation_id': type_organisation_id,
-                'type_organisation': type_organisation,
+                'type_organisation': type_organisation_name,
             })
         return Response(result)
 
@@ -120,7 +119,6 @@ class StatisticUserAPIView(APIView):
                 count_all += 1
                 org_id = org['organisation_id']
                 organisation = Organisations.objects.values().get(pk=org_id)
-
 
                 if Answers.objects.filter(checking_id=check_id, organisations_id=org_id).exists():
                     statusCheck = 'Завершена'

@@ -70,8 +70,6 @@ class AnswersAPIView(APIView):
                 'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
                 'type_organisations': openapi.Schema(type=openapi.TYPE_INTEGER,
                                                      description='Идентификатор типа организации'),
-                'person': openapi.Schema(type=openapi.TYPE_INTEGER,
-                                                     description='Идентификатор представителя'),
                 'answers_json': openapi.Schema(type=openapi.TYPE_STRING, description='Результаты ответов'),
             }
         ))
@@ -93,23 +91,42 @@ class AnswersAPIView(APIView):
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
 
-        if req_data['person'] is not None and req_data['person'] != '':
-            data_person = {'person': req_data['person']}
-            serializers_person = ListCheckingSerializer(data=data_person)
-            serializers_person.is_valid(raise_exception=True)
-            try:
-                List_Checking.objects.update_or_create(
-                    checking_id=req_data['checking'],
-                    organisation_id=req_data['organisations'],
-                    defaults={'person_id': req_data['person']},
-                )
-            except IntegrityError:
-                return Response({"error": "Ошибка при добавлении/изменении ответственного"},
-                                status=status.HTTP_406_NOT_ACCEPTABLE,
-                                )
+        return Response({'answer': 'Ответ успешно сохранен'})
 
-        return Response({'answer': 'Ответ успешно сохранен',
-                         'person': 'Ответственный успешно добавлен',
+
+class AddPersonToCheckingAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Проверка'],
+        operation_description="Добавить представителя организации в проверку",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'checking': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор проверки'),
+                'organisations': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
+                'person': openapi.Schema(type=openapi.TYPE_INTEGER,
+                                         description='Идентификатор представителя'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        data_person = {'person': req_data['person']}
+        serializers_person = ListCheckingSerializer(data=data_person)
+        serializers_person.is_valid(raise_exception=True)
+        try:
+            List_Checking.objects.update_or_create(
+                checking_id=req_data['checking'],
+                organisation_id=req_data['organisations'],
+                defaults={'person_id': req_data['person']},
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении ответственного"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'person': 'Ответственный успешно добавлен',
                          })
 
 
@@ -173,7 +190,6 @@ class CommentsCheckingAPIView(APIView):
             return Response({"error": "Ошибка при добавлении/изменении данных"},
                             status=status.HTTP_406_NOT_ACCEPTABLE,
                             )
-
 
         return Response({'result_comment': 'Комментарий успешно сохранен'})
 

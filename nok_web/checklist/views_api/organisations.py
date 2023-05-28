@@ -1,7 +1,5 @@
 from ..app_models import *
-from ..app_serializers.form_organisation_persons_serializer import Form_Organisation_PersonsSerializer
 from ..app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
-from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -36,13 +34,18 @@ class OrganisationPersonsAPIView(APIView):
     @action(methods=['get'], detail=False)
     def get(self, request):
         organisation = request.query_params.get('id_organisation')
-        persons = Form_Organisation_Persons.objects.filter(organisation_id=organisation)
+
+        if Organisation_Persons.objects.filter(organisation_id=organisation):
+            persons = Organisation_Persons.objects.filter(organisation_id=organisation).values()
+        else:
+            persons = Organisation_Persons.objects.filter(organisation_id__isnull=True).values()
+
         result = []
         if len(persons) > 0:
             for item in persons:
                 result.append({
-                    'id': item.person_id,
-                    'name': f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"
+                    'id': item['id'],
+                    'name': f"{item['last_name']} {item['first_name']} {item['second_name'] or ''}"
                 })
         return Response({'data': result})
 
@@ -67,52 +70,29 @@ class OrganisationPersonsAPIView(APIView):
         req_data = request.data
 
         # .pop()ищет указанный ключ (аналогично .get(), но), возвращает и удаляет его, если он найден, иначе генерируется исключение.
-        id_org = req_data.pop('id_organisation')
-        serializers = Organisation_PersonsSerializer(data=req_data)
-        fio = f"{req_data['last_name']} {req_data['first_name']} {req_data['second_name'] or ''}"
-        serializers.is_valid(raise_exception=True)
-        error = "Не удалось добавить представителя!"
-        try:
-            with transaction.atomic():
-                res = serializers.save()
-                data = {'organisation': id_org, 'person': res.pk}
-                serializers_person = Form_Organisation_PersonsSerializer(data=data)
-                serializers_person.is_valid(raise_exception=True)
-                serializers_person.save()
-                return Response({'data': {'id': res.pk, 'name': fio}})
-        except IntegrityError as exception:
-            if 'violates unique constraint' in exception.args[0]:
-                error = f"{error} Такой человек уже существует."
-            return Response({'error': error})
-
-
-class FormOrganisationPersonsAPIView(APIView):
-    @swagger_auto_schema(
-        methods=['post'],
-        tags=['Организация'],
-        operation_description="Добавить сопоставление представителя и организации",
-        request_body=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'organisation': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор организации'),
-                'person': openapi.Schema(type=openapi.TYPE_INTEGER, description='Идентификатор представителя'),
-            }
-        ))
-    @action(methods=['post'], detail=True)
-    def post(self, request):
-        req_data = request.data
-
-        serializers_person = Form_Organisation_PersonsSerializer(data=req_data)
-        serializers_person.is_valid(raise_exception=True)
+        # id_org = req_data.pop('id_organisation')
 
         try:
-            serializers_person.save()
-        except IntegrityError:
-            return Response({"error": "Такая запись уже существует"},
-                            status=status.HTTP_406_NOT_ACCEPTABLE,
-                            )
-
-        return Response({'message': 'Сопоставление успешно добавлено'})
+            serializers = Organisation_PersonsSerializer(data=req_data)
+            fio = f"{req_data['last_name']} {req_data['first_name']} {req_data['second_name'] or ''}"
+            serializers.is_valid(raise_exception=True)
+            res = serializers.save()
+            return Response({'data': {'id': res.pk, 'name': fio}})
+        except IntegrityError as ex:
+            return Response({'error': f"Не удалось добавить представителя! {ex}"})
+        # error = "Не удалось добавить представителя!"
+        # try:
+        #     with transaction.atomic():
+        #         res = serializers.save()
+        #         data = {'organisation': id_org, 'person': res.pk}
+        #         serializers_person = Form_Organisation_PersonsSerializer(data=data)
+        #         serializers_person.is_valid(raise_exception=True)
+        #         serializers_person.save()
+        #         return Response({'data': {'id': res.pk, 'name': fio}})
+        # except IntegrityError as exception:
+        #     if 'violates unique constraint' in exception.args[0]:
+        #         error = f"{error} Такой человек уже существует."
+        #     return Response({'error': error})
 
 
 class GetListTypeOrganizationsAPIView(APIView):

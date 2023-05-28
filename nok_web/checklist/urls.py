@@ -6,7 +6,6 @@ from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView, To
 
 from rest_framework import permissions
 from drf_yasg2.views import get_schema_view
-from drf_yasg2 import openapi
 
 from .views_api.act_answer_into_pdf import *
 from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAPIView
@@ -16,13 +15,12 @@ from .views_api.calculating_rating.ratings_into_pdf import GetRatingsIntoPdfAPIV
 from .views_api.calculating_rating.ratings_to_excel import ExportRatingsToExcelAPIView
 from .views_api.checking_organisations import AnswersAPIView, GetFormActByOrganizationTypeAPIView, \
     GetCheckListOrganizationsAPIView, GetListCheckingAPIView, GetCheckingCompletedAPIView, \
-    InvalidPersonAPIView, CommentsCheckingAPIView
-from .views_api.organisations import OrganisationPersonsAPIView, FormOrganisationPersonsAPIView, \
-    GetListTypeOrganizationsAPIView
+    InvalidPersonAPIView, CommentsCheckingAPIView, AddPersonToCheckingAPIView
+from .views_api.organisations import OrganisationPersonsAPIView, GetListTypeOrganizationsAPIView
 from .views_api.statistics import StatisticUserAPIView, StatisticCheckingsListAPIView, StatisticOrganisationListAPIView
-from .views_api.admin_api import RegionsViewSet, GetOrganisationTestAPIView, GetActAPIView, GetPositionUserAPIView, \
+from .views_api.admin_api import RegionsViewSet, GetActAPIView, GetPositionUserAPIView, \
     GetProfileUserAPIView, GetActGroupingAPIView, DepartmentsAPIView, CheckingAPIView, OrganisationsAPIView, \
-    ListCheckingAPIView
+    ListCheckingAPIView, RegionsAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -55,7 +53,6 @@ urlpatterns = [
     # Основные API проверки
     path('api/v1/Answers/', AnswersAPIView.as_view(), name='Answers'),
     path('api/v1/OrganisationPersons/', OrganisationPersonsAPIView.as_view(), name='OrganisationPersons'),
-    path('api/v1/FormOrganisationPersons/', FormOrganisationPersonsAPIView.as_view(), name='FormOrganisationPersons'),
     path('api/v1/getListTypeOrganizations/', GetListTypeOrganizationsAPIView.as_view(), name='GetListTypeOrganizations'),
     path('api/v1/getFormActByOrganizationType/', GetFormActByOrganizationTypeAPIView.as_view(), name='GetFormActByOrganizationType'),
     path('api/v1/getCheckListOrganizations/', GetCheckListOrganizationsAPIView.as_view(), name='GetCheckListOrganizations'),
@@ -65,6 +62,7 @@ urlpatterns = [
     path('api/v1/getCheckingCompleted/', GetCheckingCompletedAPIView.as_view(), name='GetResultCheckingIntoPdf'),
     path('api/v1/CommentsChecking/', CommentsCheckingAPIView.as_view(), name='CommentsChecking'),
     path('api/v1/InvalidPerson/', InvalidPersonAPIView.as_view(), name='InvalidPerson'),
+    path('api/v1/AddPersonToChecking/', AddPersonToCheckingAPIView.as_view(), name='AddPersonToChecking'),
 
     # Для Статистики
     path('api/v1/StatisticCheckingsList/', StatisticCheckingsListAPIView.as_view(), name='StatisticCheckingsList'),
@@ -84,6 +82,7 @@ urlpatterns = [
     path('api/v1/getAct/', GetActAPIView.as_view(), name='GetAct'),
     path('api/v1/getPositionUser/', GetPositionUserAPIView.as_view(), name='GetPositionUser'),
     path('api/v1/getProfileUser/', GetProfileUserAPIView.as_view(), name='GetProfileUser'),
+    path('api/v1/Regions/', RegionsAPIView.as_view(), name='Regions'),
     path('api/v1/Departments/', DepartmentsAPIView.as_view(), name='Departments'),
     path('api/v1/Checking/', CheckingAPIView.as_view(), name='Checking'),
     path('api/v1/Organisations/', OrganisationsAPIView.as_view(), name='Organisations'),
@@ -102,14 +101,4 @@ urlpatterns = [
     path('', organisation_view, name='home'),
     path('designer-act/', designer_act_view, name='designer-act'),
     path('forms-act-add/', forms_act_add, name='forms_act_add'),
-
-
-
-
-
-    # path('register/', register, name='register'),
-    # path('login/', user_login, name='login'),
-    # path('logout/', user_logout, name='logout'),
-    # path('api/v1/drf-auth/', include('res_framework.urls')),
-    # path(r'^auth/', include('djoser.urls')),
 ]

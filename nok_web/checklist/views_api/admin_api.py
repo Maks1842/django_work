@@ -374,20 +374,60 @@ class GetProfileUserAPIView(APIView):
         return Response({"profile": profile})
 
 
-class GetOrganisationTestAPIView(APIView):
-
+class RegionsAPIView(APIView):
     permission_classes = [IsAdminUser]
 
-    @action(methods=['get'], detail=False)
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список регионов",)
+    @action(detail=False, methods=['get'])
     def get(self, request):
-        organisation = Organisations.objects.values()
-        return Response(organisation)
 
+        regions_set = Regions.objects.values()
+
+        result = []
+        for item in regions_set:
+            result.append({
+                "name": item["region_name"],
+                "id": item["id"]
+            })
+
+        return Response(result)
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Добавить/изменить регион",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'items_json': openapi.Schema(type=openapi.TYPE_OBJECT, description='Данные региона'),
+            }
+        ))
     @action(methods=['post'], detail=True)
-    # @transaction.atomic
     def post(self, request):
-        organisation = Organisations.objects.values()
-        return Response(organisation)
+        req_data = request.data
+
+        data = {"id": req_data['items_json']["id"],
+                "region_name": req_data['items_json']["region_name"]}
+
+        serializers = RegionsSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+
+        try:
+            Regions.objects.update_or_create(
+                pk=req_data["items_json"]["id"],
+                defaults={
+                    "region_name": req_data["items_json"]["region_name"],
+                },
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Регион добавлен'})
 
 
 class DepartmentsAPIView(APIView):

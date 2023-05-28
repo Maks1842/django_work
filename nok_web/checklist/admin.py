@@ -9,7 +9,6 @@ from .app_models.checking import Checking
 from .app_models.comments import Comments
 from .app_models.department_persons import Department_Persons
 from .app_models.departments import Departments
-from .app_models.form_organisation_persons import Form_Organisation_Persons
 from .app_models.form_sections import Form_Sections
 from .app_models.form_sections_question import Form_Sections_Question
 from .app_models.form_type_organisation import Form_Type_Organisation
@@ -103,16 +102,10 @@ class Form_Type_OrganisationAdmin(admin.ModelAdmin):
 
 
 class Organisation_PersonsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'is_deleted')
-    search_fields = ('first_name', 'second_name', 'last_name', 'position', 'department')
-    list_editable = ('first_name', 'second_name', 'last_name', 'position')
+    list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted')
+    search_fields = ('first_name', 'second_name', 'last_name', 'position', 'organisation')
+    list_editable = ('first_name', 'second_name', 'last_name', 'position', 'organisation')
 
-
-class Form_Organisation_PersonsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation', 'person')
-    search_fields = ('organisation', 'person')
-    list_editable = ('organisation', 'person')
-    list_filter = ('organisation', 'person')
 
 
 class RatingsAdmin(admin.ModelAdmin):
@@ -260,7 +253,6 @@ admin.site.register(Type_Organisations, Type_OrganisationsAdmin)
 admin.site.register(Organisations, OrganisationsAdmin)
 admin.site.register(Form_Type_Organisation, Form_Type_OrganisationAdmin)
 admin.site.register(Organisation_Persons, Organisation_PersonsAdmin)
-admin.site.register(Form_Organisation_Persons, Form_Organisation_PersonsAdmin)
 admin.site.register(Ratings, RatingsAdmin)
 admin.site.register(Templates, TemplatesAdmin)
 admin.site.register(Form_Sections, Form_SectionsAdmin)

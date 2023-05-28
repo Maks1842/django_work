@@ -64,8 +64,6 @@ class GetResultCheckingIntoPdfAPIView(APIView):
         except:
             return Response({
                 'error': 'Данные о проверке или об организации неверны. Проверьте правильность сопоставления проверки и организации'})
-        # Получаю Представителя проверяемой организации
-        # person = Form_Organisation_Persons.objects.get(organisation_id=organisation).person
 
         queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
         if len(queryset) == 0:

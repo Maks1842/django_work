@@ -4,7 +4,6 @@ from .comments import Comments
 from .coefficients import Coefficients
 from .department_persons import Department_Persons
 from .departments import Departments
-from .form_organisation_persons import Form_Organisation_Persons
 from .form_sections import Form_Sections
 from .form_sections_question import Form_Sections_Question
 from .form_type_organisation import Form_Type_Organisation
