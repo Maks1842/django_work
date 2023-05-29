@@ -1,3 +1,5 @@
+import json
+
 from ..app_models import *
 from ..app_serializers.answers_serializer import AnswersSerializer
 from django.core.paginator import Paginator
@@ -59,11 +61,13 @@ class StatisticOrganisationListAPIView(APIView):
     def get(self, request):
         checking = request.query_params.get('checking_id')
         queryset = Answers.objects.filter(checking_id=checking)
-
         result = []
         for item in queryset:
             rating_total = 0
-            date_check_org = List_Checking.objects.filter(checking_id=checking).get(organisation_id=item.organisations_id).date_check_org
+            try:
+                date_check_org = List_Checking.objects.filter(checking_id=checking, organisation_id=item.organisations_id)[0].date_check_org
+            except:
+                continue
             type_organisation_id = item.type_organisations_id
             type_organisation_name = Type_Organisations.objects.get(pk=type_organisation_id).type
             if Ratings.objects.filter(checking_id=checking, organisations_id=item.organisations_id, type_organisations_id=type_organisation_id):
