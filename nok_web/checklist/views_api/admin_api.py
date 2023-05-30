@@ -18,11 +18,9 @@ from rest_framework.viewsets import GenericViewSet
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from django.db import IntegrityError
-
+from django.core.paginator import Paginator
 
 '''ТЕСТОВЫЕ, ТРЕНИРОВОЧНЫЕ или ВРЕМЕННО НЕ ИСПОЛЬЗУЕМЫЕ ВЬЮХИ'''
-
-
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -89,7 +87,6 @@ class RegionsViewSet(
         return Response({'post': serializers.data})
 
 
-
 """
 Предоставление API для данных из БД.
 1. Проверяю, какому типу департамента принадлежит раздел Анкеты:
@@ -101,14 +98,14 @@ class RegionsViewSet(
     если (например) 4 - то на каждой странице по 4 вопроса.
 """
 
-
-
 """
 Метод создания формы Анкеты для проверки
 """
-class GetActAPIView(APIView):
 
+
+class GetActAPIView(APIView):
     permission_classes = [IsAdminUser]
+
     @swagger_auto_schema(
         methods=['get'],
         tags=['Админка'],
@@ -119,7 +116,6 @@ class GetActAPIView(APIView):
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER),
         ])
-
     @action(methods=['get'], detail=False)
     def get(self, request):
         type_departments = request.query_params.get('id_type_departments')
@@ -254,13 +250,14 @@ class GetActAPIView(APIView):
         return Response({"pages": context})
 
 
-
 """
 Группирую вопросы по соответствующим разделам
 """
-class GetActGroupingAPIView(APIView):
 
+
+class GetActGroupingAPIView(APIView):
     permission_classes = [IsAdminUser]
+
     @swagger_auto_schema(
         methods=['get'],
         tags=['Админка'],
@@ -271,7 +268,6 @@ class GetActGroupingAPIView(APIView):
             openapi.Parameter('id_type_organisation', openapi.IN_QUERY, description="Идентификатор типа организации",
                               type=openapi.TYPE_INTEGER),
         ])
-
     @action(methods=['get'], detail=False)
     def get(self, request):
         type_departments = request.query_params.get('id_type_departments')
@@ -282,7 +278,9 @@ class GetActGroupingAPIView(APIView):
         count_criterion = 0
         block = []
 
-        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(parent=6, type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(type_departments=None)
+        block_form_sections = Form_Sections.objects.values().order_by('order_num').filter(parent=6,
+                                                                                          type_departments=type_departments) | Form_Sections.objects.values().order_by(
+            'order_num').filter(type_departments=None)
         form_sections_question = Form_Sections_Question.objects.values().order_by('order_num')
 
         for b in block_form_sections:
@@ -292,8 +290,9 @@ class GetActGroupingAPIView(APIView):
             pages = []
 
             form_sections = Form_Sections.objects.values().order_by('order_num').filter(parent=block_id,
-                type_departments=type_departments) | Form_Sections.objects.values().order_by('order_num').filter(parent=block_id,
-                type_departments=None)
+                                                                                        type_departments=type_departments) | Form_Sections.objects.values().order_by(
+                'order_num').filter(parent=block_id,
+                                    type_departments=None)
             for fs in form_sections:
                 fs_id = fs['id']
                 questions_id = form_sections_question.filter(form_sections=fs_id)
@@ -316,14 +315,14 @@ class GetActGroupingAPIView(APIView):
 
             block.append({'id': count_criterion,
                           'name': name,
-                         'criterion': pages})
+                          'criterion': pages})
 
         return Response({"pages": block})
 
 
 class GetPositionUserAPIView(APIView):
-
     permission_classes = [IsAdminUser]
+
     @swagger_auto_schema(
         method='get',
         tags=['Админка'],
@@ -380,7 +379,7 @@ class RegionsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
         tags=['Админка'],
-        operation_description="Получить список регионов",)
+        operation_description="Получить список регионов", )
     @action(detail=False, methods=['get'])
     def get(self, request):
 
@@ -436,7 +435,7 @@ class DepartmentsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
         tags=['Админка'],
-        operation_description="Получить список департаментов",)
+        operation_description="Получить список департаментов", )
     @action(detail=False, methods=['get'])
     def get(self, request):
 
@@ -643,7 +642,6 @@ class CheckingAPIView(APIView):
         return Response({'message': 'Проверка добавлен'})
 
 
-
 class ListCheckingAPIView(APIView):
     permission_classes = [IsAdminUser]
 
@@ -653,46 +651,52 @@ class ListCheckingAPIView(APIView):
         operation_description="Получить список проверяемых организаций",
         manual_parameters=[
             openapi.Parameter('checking_id', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         checking_id = request.query_params.get('checking_id')
-
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
         if checking_id is None or checking_id == '':
-            return Response({"error": "Не выбрана проверка"})
+            list_checking_set = List_Checking.objects.values().all()
+        else:
+            list_checking_set = List_Checking.objects.values().filter(checking_id=checking_id)
+        paginator = Paginator(list_checking_set, 20)
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                person_name = ''
+                user_name = ''
+                checking_name = Checking.objects.get(id=item["checking_id"]).name
+                organisation_name = Organisations.objects.get(id=item["organisation_id"]).organisation_name
 
-        list_checking_set = List_Checking.objects.values().filter(checking_id=checking_id)
+                if item["person_id"] is not None and item["person_id"] != '':
+                    person = Organisation_Persons.objects.values().get(id=item["person_id"])
+                    person_name = f"{person['last_name'] or ''} {person['first_name']} {person['second_name'] or ''}"
 
-        result = []
-        for item in list_checking_set:
-            person_name = ''
-            user_name = ''
+                if item["user_id"] is not None and item["user_id"] != '':
+                    user = User.objects.values().get(id=item["user_id"])
+                    user_name = f"{user['last_name'] or ''} {user['first_name']}"
 
-            checking_name = Checking.objects.get(id=item["checking_id"]).name
-            organisation_name = Organisations.objects.get(id=item["organisation_id"]).organisation_name
+                items.append({"id": item["id"],
+                               "checking_id": item["checking_id"],
+                               "checking_name": checking_name,
+                               "organisation_id": item["organisation_id"],
+                               "organisation_name": organisation_name,
+                               "person_id": item["person_id"],
+                               "person_name": person_name,
+                               "user_id": item["user_id"],
+                               "user_name": user_name,
+                               "date_check_org": item["date_check_org"],
+                               })
+        except Exception as e:
+            return Response({'error': f'{e}'})
 
-            if item["person_id"] is not None and item["person_id"] != '':
-                person = Organisation_Persons.objects.values().get(id=item["person_id"])
-                person_name = f"{person['last_name']  or ''} {person['first_name']} {person['second_name'] or ''}"
-
-            if item["user_id"] is not None and item["user_id"] != '':
-                user = User.objects.values().get(id=item["user_id"])
-                user_name = f"{user['last_name']  or ''} {user['first_name']}"
-
-            result.append({"id": item["id"],
-                          "checking_id": item["checking_id"],
-                          "checking_name": checking_name,
-                          "organisation_id": item["organisation_id"],
-                          "organisation_name": organisation_name,
-                          "person_id": item["person_id"],
-                          "person_name": person_name,
-                          "user_id": item["user_id"],
-                          "user_name": user_name,
-                          "date_check_org": item["date_check_org"],
-                          })
-
-        return Response(result)
+        return Response({'totalPages': len(list_checking_set), 'items': items})
 
     @swagger_auto_schema(
         methods=['post'],
@@ -711,7 +715,7 @@ class ListCheckingAPIView(APIView):
         data = {"id": req_data['items_json']["id"],
                 "checking": req_data['items_json']["checking_id"],
                 "organisation": req_data['items_json']["organisation_id"],
-                "date_check_org": req_data['items_json']["date_check_org"],}
+                "date_check_org": req_data['items_json']["date_check_org"], }
 
         serializers = ListCheckingSerializer(data=data)
         serializers.is_valid(raise_exception=True)

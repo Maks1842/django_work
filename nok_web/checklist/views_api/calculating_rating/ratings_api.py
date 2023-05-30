@@ -70,9 +70,9 @@ class RatingCheckingsListAPIView(APIView):
         queryset = Checking.objects.all()
         paginator = Paginator(queryset, 20)
 
-        result = []
+        items = []
         for item in paginator.page(page).object_list:
-            result.append({
+            items.append({
                 'id': item.id,
                 'nameCheck': item.name,
                 'dateCheck': item.date_checking,
@@ -80,5 +80,5 @@ class RatingCheckingsListAPIView(APIView):
                 'departmentCheck': item.department.department_name,
                 'departmentId': item.department.id,
             })
-        return Response(result)
+        return Response({'totalPages': len(queryset), 'items': items})
 
