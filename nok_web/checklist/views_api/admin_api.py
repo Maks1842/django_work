@@ -506,25 +506,53 @@ class OrganisationsAPIView(APIView):
         operation_description="Получить список учреждений",
         manual_parameters=[
             openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('organization_name', openapi.IN_QUERY, description="Название организации",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         department_id = request.query_params.get('department_id')
+        organization_name = request.query_params.get('organization_name')
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
 
         if department_id:
             organisations_set = Organisations.objects.values().filter(department_id=department_id)
         else:
             organisations_set = Organisations.objects.values()
 
-        result = []
-        for item in organisations_set:
-            result.append({
-                "name": item["organisation_name"],
-                "id": item["id"]
-            })
+        if organization_name and not department_id:
+            organisations_set = Organisations.objects.values().filter(organisation_name__icontains=organization_name)
+        elif organization_name and department_id:
+            organisations_set = Organisations.objects.values()\
+                .filter(organisation_name__icontains=organization_name, department_id=department_id)
 
-        return Response(result)
+        paginator = Paginator(organisations_set, 20)
+
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                items.append({
+                    "name": item["organisation_name"],
+                    "address": item["address"],
+                    "phone": item["phone"],
+                    "website": item["website"],
+                    "email": item["email"],
+                    "parent_id": item["parent_id"],
+                    "department_id": item["department_id"],
+                    "inn": item["inn"],
+                    "kpp": item["kpp"],
+                    "ogrn": item["ogrn"],
+                    "id": item["id"]
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
+
+        return Response({'totalPages': len(organisations_set), 'items': items})
 
     @swagger_auto_schema(
         methods=['post'],
@@ -673,6 +701,7 @@ class ListCheckingAPIView(APIView):
                 user_name = ''
                 checking_name = Checking.objects.get(id=item["checking_id"]).name
                 organisation_name = Organisations.objects.get(id=item["organisation_id"]).organisation_name
+                department_id = Organisations.objects.get(id=item["organisation_id"]).department_id
 
                 if item["person_id"] is not None and item["person_id"] != '':
                     person = Organisation_Persons.objects.values().get(id=item["person_id"])
@@ -692,6 +721,7 @@ class ListCheckingAPIView(APIView):
                                "user_id": item["user_id"],
                                "user_name": user_name,
                                "date_check_org": item["date_check_org"],
+                                "department_id": department_id
                                })
         except Exception as e:
             return Response({'error': f'{e}'})
