@@ -71,14 +71,17 @@ class RatingCheckingsListAPIView(APIView):
         paginator = Paginator(queryset, 20)
 
         items = []
-        for item in paginator.page(page).object_list:
-            items.append({
-                'id': item.id,
-                'nameCheck': item.name,
-                'dateCheck': item.date_checking,
-                'regionCheck': item.region.region_name,
-                'departmentCheck': item.department.department_name,
-                'departmentId': item.department.id,
-            })
+        try:
+            for item in paginator.page(page).object_list:
+                items.append({
+                    'id': item.id,
+                    'nameCheck': item.name,
+                    'dateCheck': item.date_checking,
+                    'regionCheck': item.region.region_name,
+                    'departmentCheck': item.department.department_name,
+                    'departmentId': item.department.id,
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
         return Response({'totalPages': len(queryset), 'items': items})
 
