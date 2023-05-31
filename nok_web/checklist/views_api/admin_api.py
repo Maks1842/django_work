@@ -521,7 +521,7 @@ class OrganisationsAPIView(APIView):
         for item in organisations_set:
             result.append({
                 "name": item["organisation_name"],
-                "value": {"id": item["id"]}
+                "id": item["id"]
             })
 
         return Response(result)
