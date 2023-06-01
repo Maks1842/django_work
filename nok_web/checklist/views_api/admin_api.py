@@ -9,6 +9,7 @@ from ..app_serializers.checking_serializer import CheckingSerializer
 from ..app_serializers.departments_serializer import DepartmentsSerializer
 from ..app_serializers.list_checking_serializer import ListCheckingSerializer
 from ..app_serializers.organisations_serializer import OrganisationsSerializer
+from ..app_serializers.organisation_persons_serializer import Organisation_PersonsSerializer
 from ..app_serializers.regions_serializer import RegionsSerializer
 from rest_framework import status, mixins
 from rest_framework.views import APIView
@@ -528,7 +529,7 @@ class OrganisationsAPIView(APIView):
         if organization_name and not department_id:
             organisations_set = Organisations.objects.values().filter(organisation_name__icontains=organization_name)
         elif organization_name and department_id:
-            organisations_set = Organisations.objects.values()\
+            organisations_set = Organisations.objects.values() \
                 .filter(organisation_name__icontains=organization_name, department_id=department_id)
 
         paginator = Paginator(organisations_set, 20)
@@ -712,17 +713,17 @@ class ListCheckingAPIView(APIView):
                     user_name = f"{user['last_name'] or ''} {user['first_name']}"
 
                 items.append({"id": item["id"],
-                               "checking_id": item["checking_id"],
-                               "checking_name": checking_name,
-                               "organisation_id": item["organisation_id"],
-                               "organisation_name": organisation_name,
-                               "person_id": item["person_id"],
-                               "person_name": person_name,
-                               "user_id": item["user_id"],
-                               "user_name": user_name,
-                               "date_check_org": item["date_check_org"],
-                                "department_id": department_id
-                               })
+                              "checking_id": item["checking_id"],
+                              "checking_name": checking_name,
+                              "organisation_id": item["organisation_id"],
+                              "organisation_name": organisation_name,
+                              "person_id": item["person_id"],
+                              "person_name": person_name,
+                              "user_id": item["user_id"],
+                              "user_name": user_name,
+                              "date_check_org": item["date_check_org"],
+                              "department_id": department_id
+                              })
         except Exception as e:
             return Response({'error': f'{e}'})
 
@@ -767,3 +768,131 @@ class ListCheckingAPIView(APIView):
                             )
 
         return Response({'message': 'Проверяемая организация добавлен'})
+
+
+class PersonsAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список представителей",
+        manual_parameters=[
+            openapi.Parameter('organization_id', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        organization_id = request.query_params.get('organization_id')
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
+
+        if organization_id:
+            persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id)
+        else:
+            persons_set = Organisation_Persons.objects.values()
+
+        paginator = Paginator(persons_set, 20)
+
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                items.append({
+                    "id": item["id"],
+                    "firstName": item["first_name"],
+                    "secondName": item["second_name"],
+                    "lastName": item["last_name"],
+                    "position": item["position"],
+                    "phone": item["phone"],
+                    "email": item["email"],
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
+
+        return Response({'totalPages': len(persons_set), 'items': items})
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Добавить/изменить представителя",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'items_json': openapi.Schema(type=openapi.TYPE_OBJECT, description='Данные представителя'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+
+        data = {"id": req_data['items_json']["id"],
+                "organisation_id": req_data['items_json']["organization_id"]}
+
+        serializers = Organisation_PersonsSerializer(data=data)
+        serializers.is_valid(raise_exception=True)
+
+        try:
+            Organisation_Persons.objects.update_or_create(
+                pk=req_data["items_json"]["id"],
+                defaults={
+                    "organisation_id": req_data["items_json"]["organization_id"],
+                    "first_name": req_data["items_json"]["firstName"],
+                    "second_name": req_data["items_json"]["secondName"],
+                    "last_name": req_data["items_json"]["lastName"],
+                    "position": req_data["items_json"]["position"],
+                    "phone": req_data["items_json"]["phone"],
+                    "email": req_data["items_json"]["email"]
+                },
+            )
+        except IntegrityError:
+            return Response({"error": "Ошибка при добавлении/изменении данных"},
+                            status=status.HTTP_406_NOT_ACCEPTABLE,
+                            )
+
+        return Response({'message': 'Представитель добавлен'})
+
+
+class UsersAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список пользователей",
+        manual_parameters=[
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
+                              type=openapi.TYPE_INTEGER)
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
+
+        users_set = User.objects.values()
+
+        paginator = Paginator(users_set, 20)
+
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                user_profile = Profile.objects.filter(user_id=item["id"]).get()
+                user_position = Profile_Position.objects.get(pk=user_profile.pk)
+                items.append({
+                    "id": item["id"],
+                    "username": item["username"],
+                    "firstName": item["first_name"],
+                    "lastName": item["last_name"],
+                    "email": item["email"],
+                    "phone": user_profile.phone,
+                    "address": user_profile.address,
+                    "position_id": user_profile.position_id,
+                    "positionName": user_position.position,
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
+
+        return Response({'totalPages': len(users_set), 'items': items})
