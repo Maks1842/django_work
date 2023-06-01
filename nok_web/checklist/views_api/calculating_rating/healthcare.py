@@ -176,7 +176,7 @@ def healthcare_rating(quota, invalid_person, answers, form_json, grouping_json, 
     rating_respondents = respondents_stage(quota, invalid_person, count_1_1_value, rating_2_2_1, comment_expert_1, coefficient)
 
     rating_1 = round(rating_1_1 * float(cfcnt_main["k_1_1"]) + rating_1_2 * float(cfcnt_main["k_1_2"]) + rating_respondents['rating_1_3'] * float(cfcnt_main["k_1_3"]), 1)
-    rating_2_2 = round(rating_2_2_1 * float(cfcnt_main["k_2_2_1"]) + rating_respondents['rating_2_2_2'] * float(cfcnt_main["k_2_2_2"]), 0)
+    rating_2_2 = round((rating_2_2_1 * float(cfcnt_main["k_2_2_1"]) + rating_respondents['rating_2_2_2'] * float(cfcnt_main["k_2_2_2"])/2), 0)
     rating_2 = round(rating_2_1 * float(cfcnt_main["k_2_1"]) + rating_2_2 * float(cfcnt_main["k_2_2"]) + rating_respondents['rating_2_3'] * float(cfcnt_main["k_2_3"]), 1)
     rating_3 = round(rating_3_1 * float(cfcnt_main["k_3_1"]) + rating_3_2 * float(cfcnt_main["k_3_2"]) + rating_respondents['rating_3_3'] * float(cfcnt_main["k_3_3"]), 1)
     rating_4 = round(rating_respondents['rating_4_1'] * float(cfcnt_main["k_4_1"]) + rating_respondents['rating_4_2'] * float(cfcnt_main["k_4_2"]) + rating_respondents['rating_4_3'] * float(cfcnt_main["k_4_3"]), 1)
