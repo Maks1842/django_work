@@ -11,8 +11,6 @@ from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 
 from weasyprint import HTML, CSS
-from django.shortcuts import render
-from rest_framework.renderers import TemplateHTMLRenderer
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
