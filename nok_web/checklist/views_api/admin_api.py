@@ -442,23 +442,38 @@ class DepartmentsAPIView(APIView):
         operation_description="Получить список департаментов",
         manual_parameters=[
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
-                              type=openapi.TYPE_INTEGER)
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('department_name', openapi.IN_QUERY, description="Название департамента",
+                              type=openapi.TYPE_STRING),
         ]
     )
     @action(detail=False, methods=['get'])
     def get(self, request):
         page = request.query_params.get('page')
+        department_name = request.query_params.get('department_name')
+
         if page is None:
             page = 1
-        departments_set = Departments.objects.values()
+
+        if department_name:
+            departments_set = Departments.objects.values().filter(department_name__icontains=department_name)
+        else:
+            departments_set = Departments.objects.values()
+
         paginator = Paginator(departments_set, 20)
         items = []
         try:
             for item in paginator.page(page).object_list:
                 items.append({
-                    "name": item["department_name"],
-                    "value": {"id": item["id"],
-                              "type_departments_id": item["type_departments_id"]}
+                    "id": item["id"],
+                    "department_name": item["department_name"],
+                    "address": item["address"],
+                    "phone": item["phone"],
+                    "website": item["website"],
+                    "email": item["email"],
+                    "parent_id": item["parent_id"],
+                    "region_id": item["region_id"],
+                    "type_departments_id": item["type_departments_id"]
                 })
         except Exception as e:
             return Response({'error': f'{e}'})
@@ -485,7 +500,7 @@ class DepartmentsAPIView(APIView):
                 "region": req_data['items_json']["region_id"],
                 "user": req_data['items_json']["user_id"]}
 
-        serializers = DepartmentsSerializer(data=data)
+        serializers = DepartmentsSerializer(data=data, context={'request': request})
         serializers.is_valid(raise_exception=True)
 
         try:
