@@ -386,14 +386,17 @@ class RegionsAPIView(APIView):
 
         regions_set = Regions.objects.values()
 
-        result = []
-        for item in regions_set:
-            result.append({
-                "name": item["region_name"],
-                "id": item["id"]
-            })
+        items = []
+        try:
+            for item in regions_set:
+                items.append({
+                    "name": item["region_name"],
+                    "id": item["id"]
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
 
-        return Response(result)
+        return Response({'items': items})
 
     @swagger_auto_schema(
         methods=['post'],
@@ -436,21 +439,31 @@ class DepartmentsAPIView(APIView):
     @swagger_auto_schema(
         method='get',
         tags=['Админка'],
-        operation_description="Получить список департаментов", )
+        operation_description="Получить список департаментов",
+        manual_parameters=[
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
+                              type=openapi.TYPE_INTEGER)
+        ]
+    )
     @action(detail=False, methods=['get'])
     def get(self, request):
-
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
         departments_set = Departments.objects.values()
+        paginator = Paginator(departments_set, 20)
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                items.append({
+                    "name": item["department_name"],
+                    "value": {"id": item["id"],
+                              "type_departments_id": item["type_departments_id"]}
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
 
-        result = []
-        for item in departments_set:
-            result.append({
-                "name": item["department_name"],
-                "value": {"id": item["id"],
-                          "type_departments_id": item["type_departments_id"]}
-            })
-
-        return Response(result)
+        return Response({'totalPages': len(departments_set), 'items': items})
 
     @swagger_auto_schema(
         methods=['post'],
@@ -896,3 +909,27 @@ class UsersAPIView(APIView):
             return Response({'error': f'{e}'})
 
         return Response({'totalPages': len(users_set), 'items': items})
+
+
+class DepartmentTypesAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список типов департаментов"
+        )
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        department_type_set = Type_Departments.objects.values().filter(is_deleted=False)
+        items = []
+        try:
+            for item in department_type_set:
+                items.append({
+                    "id": item["id"],
+                    "name": item["type"]
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
+
+        return Response({'items': items})

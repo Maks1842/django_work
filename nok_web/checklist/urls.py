@@ -20,7 +20,7 @@ from .views_api.organisations import OrganisationPersonsAPIView, GetListTypeOrga
 from .views_api.statistics import StatisticUserAPIView, StatisticCheckingsListAPIView, StatisticOrganisationListAPIView
 from .views_api.admin_api import RegionsViewSet, GetActAPIView, GetPositionUserAPIView, \
     GetProfileUserAPIView, GetActGroupingAPIView, DepartmentsAPIView, CheckingAPIView, OrganisationsAPIView, \
-    ListCheckingAPIView, RegionsAPIView, PersonsAPIView, UsersAPIView
+    ListCheckingAPIView, RegionsAPIView, PersonsAPIView, UsersAPIView, DepartmentTypesAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -89,6 +89,7 @@ urlpatterns = [
     path('api/v1/ListChecking/', ListCheckingAPIView.as_view(), name='ListChecking'),
     path('api/v1/Persons/', PersonsAPIView.as_view(), name='Persons'),
     path('api/v1/Users/', UsersAPIView.as_view(), name='Users'),
+    path('api/v1/DepartmentTypes/', DepartmentTypesAPIView.as_view(), name='DepartmentTypes'),
 
 
 

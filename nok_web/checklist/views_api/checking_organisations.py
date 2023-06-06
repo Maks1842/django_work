@@ -150,8 +150,11 @@ class CommentsCheckingAPIView(APIView):
         organisation = request.query_params.get('id_organisation')
         type_organisation = request.query_params.get('id_type_organisation')
 
-        queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
+        try:
+            queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
                                           type_organisations=type_organisation)
+        except Exception as e:
+            return Response('')
         result = ''
         if len(queryset) > 0:
             if queryset['comments'] is not None and queryset['comments'] != '':
@@ -213,9 +216,11 @@ class InvalidPersonAPIView(APIView):
         checking = request.query_params.get('id_checking')
         organisation = request.query_params.get('id_organisation')
         type_organisation = request.query_params.get('id_type_organisation')
-
-        queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
+        try:
+            queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
                                                 type_organisations=type_organisation)
+        except Exception as e:
+            return Response('')
         result = ''
         if len(queryset) > 0:
             if queryset['invalid_person'] is not None and queryset['invalid_person'] != '':
@@ -372,13 +377,20 @@ class GetCheckingCompletedAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         user = request.query_params.get('user_id')
-
-        user_admin = User.objects.get(pk=user).is_superuser
+        if user is None or user == '':
+            return Response([])
+        try:
+            user_admin = User.objects.get(pk=user).is_superuser
+        except Exception as e:
+            return Response('')
 
         if user_admin == True:
             queryset = List_Checking.objects.all()
         else:
-            queryset = List_Checking.objects.filter(user_id=user)
+            try:
+                queryset = List_Checking.objects.filter(user_id=user)
+            except Exception as e:
+                return Response('')
 
         if len(queryset) == 0:
             return Response({'error': 'У данного эксперта нет проверок'})
