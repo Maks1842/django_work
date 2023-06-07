@@ -20,6 +20,8 @@ from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from django.db import IntegrityError
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.db.models.functions import Concat
 
 '''ТЕСТОВЫЕ, ТРЕНИРОВОЧНЫЕ или ВРЕМЕННО НЕ ИСПОЛЬЗУЕМЫЕ ВЬЮХИ'''
 
@@ -808,12 +810,15 @@ class PersonsAPIView(APIView):
         manual_parameters=[
             openapi.Parameter('organization_id', openapi.IN_QUERY, description="Идентификатор организации",
                               type=openapi.TYPE_INTEGER),
+            openapi.Parameter('person_fio', openapi.IN_QUERY, description="Представитель организации",
+                              type=openapi.TYPE_STRING),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         organization_id = request.query_params.get('organization_id')
+        person_fio = request.query_params.get('person_fio')
         page = request.query_params.get('page')
         if page is None:
             page = 1
@@ -822,6 +827,16 @@ class PersonsAPIView(APIView):
             persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id)
         else:
             persons_set = Organisation_Persons.objects.values()
+
+        if person_fio:
+            persons_set = Organisation_Persons.objects.values().annotate(
+                full_name=Concat('first_name', 'second_name', 'last_name')
+            ).filter(
+                Q(full_name__icontains=person_fio) |
+                Q(first_name__icontains=person_fio) |
+                Q(last_name__icontains=person_fio) |
+                Q(second_name__icontains=person_fio)
+            )
 
         paginator = Paginator(persons_set, 20)
 
