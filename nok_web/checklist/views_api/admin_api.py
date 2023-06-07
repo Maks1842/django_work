@@ -443,6 +443,8 @@ class DepartmentsAPIView(APIView):
         tags=['Админка'],
         operation_description="Получить список департаментов",
         manual_parameters=[
+            openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('department_name', openapi.IN_QUERY, description="Название департамента",
@@ -451,16 +453,20 @@ class DepartmentsAPIView(APIView):
     )
     @action(detail=False, methods=['get'])
     def get(self, request):
+        department_id = request.query_params.get('department_id')
         page = request.query_params.get('page')
         department_name = request.query_params.get('department_name')
 
         if page is None:
             page = 1
 
-        if department_name:
-            departments_set = Departments.objects.values().filter(department_name__icontains=department_name)
+        if department_id:
+            departments_set = Departments.objects.values().filter(pk=department_id)
         else:
             departments_set = Departments.objects.values()
+
+        if department_name:
+            departments_set = Departments.objects.values().filter(department_name__icontains=department_name)
 
         paginator = Paginator(departments_set, 20)
         items = []
@@ -639,26 +645,36 @@ class CheckingAPIView(APIView):
         operation_description="Получить список Проверок",
         manual_parameters=[
             openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         department_id = request.query_params.get('department_id')
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
 
         if department_id:
             checking_set = Checking.objects.values().filter(department_id=department_id)
         else:
             checking_set = Checking.objects.values()
+        paginator = Paginator(checking_set, 20)
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                items.append({
+                    "id": item["id"],
+                    "checkName": item["name"],
+                    "dateChecking": item["date_checking"],
+                    "departmentId": item["department_id"],
+                    "regionId": item["region_id"]
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
 
-        result = []
-        for item in checking_set:
-            result.append({
-                "name": item["name"],
-                "value": {"id": item["id"],
-                          "date_checking": item["date_checking"]}
-            })
-
-        return Response(result)
+        return Response({'totalPages': len(checking_set), 'items': items})
 
     @swagger_auto_schema(
         methods=['post'],
