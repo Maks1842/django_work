@@ -542,6 +542,8 @@ class OrganisationsAPIView(APIView):
         tags=['Админка'],
         operation_description="Получить список учреждений",
         manual_parameters=[
+            openapi.Parameter('organisation_id', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
             openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('organization_name', openapi.IN_QUERY, description="Название организации",
@@ -551,16 +553,20 @@ class OrganisationsAPIView(APIView):
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
+        organisation_id = request.query_params.get('organisation_id')
         department_id = request.query_params.get('department_id')
         organization_name = request.query_params.get('organization_name')
         page = request.query_params.get('page')
         if page is None:
             page = 1
 
-        if department_id:
-            organisations_set = Organisations.objects.values().filter(department_id=department_id)
+        if organisation_id:
+            organisations_set = Organisations.objects.values().filter(pk=organisation_id)
         else:
             organisations_set = Organisations.objects.values()
+
+        if department_id:
+            organisations_set = Organisations.objects.values().filter(department_id=department_id)
 
         if organization_name and not department_id:
             organisations_set = Organisations.objects.values().filter(organisation_name__icontains=organization_name)
@@ -867,6 +873,7 @@ class PersonsAPIView(APIView):
                     "position": item["position"],
                     "phone": item["phone"],
                     "email": item["email"],
+                    "organizationId": item["organisation_id"],
                 })
         except Exception as e:
             return Response({'error': f'{e}'})
@@ -888,19 +895,21 @@ class PersonsAPIView(APIView):
         req_data = request.data
 
         data = {"id": req_data['items_json']["id"],
-                "organisation_id": req_data['items_json']["organization_id"]}
+                "organisation_id": req_data['items_json']["organization_id"],
+                "first_name": req_data['items_json']["first_name"],
+                "last_name": req_data['items_json']["last_name"]
+                }
 
         serializers = Organisation_PersonsSerializer(data=data)
         serializers.is_valid(raise_exception=True)
-
         try:
             Organisation_Persons.objects.update_or_create(
                 pk=req_data["items_json"]["id"],
                 defaults={
                     "organisation_id": req_data["items_json"]["organization_id"],
-                    "first_name": req_data["items_json"]["firstName"],
-                    "second_name": req_data["items_json"]["secondName"],
-                    "last_name": req_data["items_json"]["lastName"],
+                    "first_name": req_data["items_json"]["first_name"],
+                    "second_name": req_data["items_json"]["second_name"],
+                    "last_name": req_data["items_json"]["last_name"],
                     "position": req_data["items_json"]["position"],
                     "phone": req_data["items_json"]["phone"],
                     "email": req_data["items_json"]["email"]
