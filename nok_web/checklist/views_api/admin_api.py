@@ -650,6 +650,8 @@ class CheckingAPIView(APIView):
         tags=['Админка'],
         operation_description="Получить список Проверок",
         manual_parameters=[
+            openapi.Parameter('check_name', openapi.IN_QUERY, description="Идентификатор департамента",
+                              type=openapi.TYPE_STRING),
             openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
                               type=openapi.TYPE_INTEGER),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
@@ -657,15 +659,19 @@ class CheckingAPIView(APIView):
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
+        check_name = request.query_params.get('check_name')
         department_id = request.query_params.get('department_id')
         page = request.query_params.get('page')
+
         if page is None:
             page = 1
-
         if department_id:
             checking_set = Checking.objects.values().filter(department_id=department_id)
         else:
             checking_set = Checking.objects.values()
+        if check_name:
+            checking_set = Checking.objects.values().filter(name__icontains=check_name)
+
         paginator = Paginator(checking_set, 20)
         items = []
         try:
@@ -845,12 +851,19 @@ class PersonsAPIView(APIView):
         if page is None:
             page = 1
 
-        if organization_id:
+        if organization_id and not person_fio:
             persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id)
+        elif organization_id and person_fio:
+            persons_set = Organisation_Persons.objects.values().annotate(
+                full_name=Concat('first_name', 'second_name', 'last_name')
+            ).filter(organisation_id=organization_id).filter((Q(full_name__icontains=person_fio) |
+                                                              Q(first_name__icontains=person_fio) |
+                                                              Q(last_name__icontains=person_fio) |
+                                                              Q(second_name__icontains=person_fio)))
         else:
             persons_set = Organisation_Persons.objects.values()
 
-        if person_fio:
+        if person_fio and not organization_id:
             persons_set = Organisation_Persons.objects.values().annotate(
                 full_name=Concat('first_name', 'second_name', 'last_name')
             ).filter(
@@ -973,7 +986,7 @@ class DepartmentTypesAPIView(APIView):
         method='get',
         tags=['Админка'],
         operation_description="Получить список типов департаментов"
-        )
+    )
     @action(detail=False, methods=['get'])
     def get(self, request):
         department_type_set = Type_Departments.objects.values().filter(is_deleted=False)

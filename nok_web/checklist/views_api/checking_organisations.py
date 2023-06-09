@@ -351,7 +351,10 @@ class GetListCheckingAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         user = request.query_params.get('user_id')
-        queryset = List_Checking.objects.filter(user_id=user).distinct('checking')
+        if user:
+            queryset = List_Checking.objects.filter(user_id=user).distinct('checking')
+        else:
+            queryset = List_Checking.objects.all()
 
         result = []
         if len(queryset) > 0:
