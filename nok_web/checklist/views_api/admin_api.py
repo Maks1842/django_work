@@ -739,19 +739,47 @@ class ListCheckingAPIView(APIView):
         manual_parameters=[
             openapi.Parameter('checking_id', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
+            openapi.Parameter('checking_name', openapi.IN_QUERY, description="Наименование проверки",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('organization_name', openapi.IN_QUERY, description="Наименование учреждения",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('checking_dates', openapi.IN_QUERY, description="Даты проверки через запятую",
+                              type=openapi.TYPE_STRING),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         checking_id = request.query_params.get('checking_id')
+        check_name = request.query_params.get('checking_name')
+        org_name = request.query_params.get('organization_name')
+        dates = request.query_params.get('checking_dates')
         page = request.query_params.get('page')
         if page is None:
             page = 1
+
         if checking_id is None or checking_id == '':
             list_checking_set = List_Checking.objects.values().all()
         else:
             list_checking_set = List_Checking.objects.values().filter(checking_id=checking_id)
+
+        if check_name:
+            list_checking_set = List_Checking.objects.values().filter(checking__name__icontains=check_name)
+        if org_name:
+            list_checking_set = List_Checking.objects.values().filter(
+                organisation__organisation_name__icontains=org_name)
+        if dates:
+            range = dates.split(',')
+            date_from, date_to = None, None
+            if len(range):
+                date_from = range[0]
+                if len(range) > 1:
+                    date_to = range[1]
+                else:
+                    date_to = date_from
+            list_checking_set = List_Checking.objects.values().filter(
+                date_check_org__range=(date_from, date_to))
+
         paginator = Paginator(list_checking_set, 20)
         items = []
         try:
