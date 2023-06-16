@@ -650,10 +650,12 @@ class CheckingAPIView(APIView):
         tags=['Админка'],
         operation_description="Получить список Проверок",
         manual_parameters=[
-            openapi.Parameter('check_name', openapi.IN_QUERY, description="Идентификатор департамента",
+            openapi.Parameter('check_name', openapi.IN_QUERY, description="Имя проверки",
                               type=openapi.TYPE_STRING),
             openapi.Parameter('department_id', openapi.IN_QUERY, description="Идентификатор департамента",
                               type=openapi.TYPE_INTEGER),
+            openapi.Parameter('check_dates', openapi.IN_QUERY, description="Даты проверки через запятую",
+                              type=openapi.TYPE_STRING),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
@@ -661,16 +663,31 @@ class CheckingAPIView(APIView):
     def get(self, request):
         check_name = request.query_params.get('check_name')
         department_id = request.query_params.get('department_id')
+        check_dates = request.query_params.get('check_dates')
         page = request.query_params.get('page')
 
         if page is None:
             page = 1
+
         if department_id:
             checking_set = Checking.objects.values().filter(department_id=department_id)
         else:
             checking_set = Checking.objects.values()
+
         if check_name:
             checking_set = Checking.objects.values().filter(name__icontains=check_name)
+
+        if check_dates:
+            range = check_dates.split(',')
+            date_from, date_to = None, None
+            if len(range):
+                date_from = range[0]
+                if len(range) > 1:
+                    date_to = range[1]
+                else:
+                    date_to = date_from
+            checking_set = Checking.objects.values().filter(
+                date_checking__range=(date_from, date_to))
 
         paginator = Paginator(checking_set, 20)
         items = []
@@ -743,7 +760,7 @@ class ListCheckingAPIView(APIView):
                               type=openapi.TYPE_STRING),
             openapi.Parameter('organization_name', openapi.IN_QUERY, description="Наименование учреждения",
                               type=openapi.TYPE_STRING),
-            openapi.Parameter('checking_dates', openapi.IN_QUERY, description="Даты проверки через запятую",
+            openapi.Parameter('checking_dates', openapi.IN_QUERY, description="Даты проверки через запятую с и по",
                               type=openapi.TYPE_STRING),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
