@@ -103,9 +103,9 @@ class GetRatingsIntoPdfAPIView(APIView):
 
         content = render_to_string(f'ratings/{temp}', context)
 
-        HTML(string=content).write_pdf(f'./checklist/local_storage/Рейтинг_пр{checking}_{name_org}.pdf', stylesheets=[CSS("nok_web/static/css/style_checkings.css")])
+        HTML(string=content).write_pdf(f'./checklist/local_storage/Рейтинг_пр{checking}_download.pdf', stylesheets=[CSS("nok_web/static/css/style_checkings.css")])
         # отдаем сохраненный pdf в качестве ответа
-        file_pointer = open(f'./checklist/local_storage/Рейтинг_пр{checking}_{name_org}.pdf', "rb")
+        file_pointer = open(f'./checklist/local_storage/Рейтинг_пр{checking}_download.pdf', "rb")
         response = HttpResponse(file_pointer, content_type='application/pdf;')
         response['Content-Disposition'] = f'attachment; filename=download.pdf'
         response['Content-Transfer-Encoding'] = 'utf-8'
