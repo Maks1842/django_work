@@ -990,15 +990,21 @@ class UsersAPIView(APIView):
         operation_description="Получить список пользователей",
         manual_parameters=[
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
-                              type=openapi.TYPE_INTEGER)
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('userName', openapi.IN_QUERY, description="Имя пользователя",
+                              type=openapi.TYPE_STRING)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         page = request.query_params.get('page')
+        user_name = request.query_params.get('userName')
         if page is None:
             page = 1
 
         users_set = User.objects.values()
+
+        if user_name:
+            users_set = User.objects.values().filter(username=user_name)
 
         paginator = Paginator(users_set, 20)
 
