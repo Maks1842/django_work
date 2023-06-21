@@ -57,29 +57,57 @@ class RatingCheckingsListAPIView(APIView):
         tags=['Рейтинг'],
         operation_description="Получить список проверок. Если страница не указана, то получить первую страницу",
         manual_parameters=[
+            openapi.Parameter('checkName', openapi.IN_QUERY, description="Наименование проверки",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('departmentName', openapi.IN_QUERY, description="Наименование ведомства",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('checkingDates', openapi.IN_QUERY, description="Даты проверки через запятую с и по",
+                              type=openapi.TYPE_STRING),
             openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         page = request.query_params.get('page')
+        check_name = request.query_params.get('checkName')
+        department_name = request.query_params.get('departmentName')
+        dates = request.query_params.get('checkingDates')
 
         if page is None:
             page = 1
 
-        queryset = Checking.objects.all()
+        queryset = Checking.objects.values().all()
+        if check_name:
+            queryset = Checking.objects.values().filter(name__icontains=check_name)
+
+        if department_name:
+            queryset = Checking.objects.values().filter(
+                department__department_name__icontains=department_name)
+        if dates:
+            range = dates.split(',')
+            date_from, date_to = None, None
+            if len(range):
+                date_from = range[0]
+                if len(range) > 1:
+                    date_to = range[1]
+                else:
+                    date_to = date_from
+            queryset = Checking.objects.values().filter(
+                date_checking__range=(date_from, date_to))
         paginator = Paginator(queryset, 20)
 
         items = []
         try:
             for item in paginator.page(page).object_list:
+                region = Regions.objects.get(id=item["region_id"]).region_name
+                department = Departments.objects.get(id=item["department_id"])
                 items.append({
-                    'id': item.id,
-                    'nameCheck': item.name,
-                    'dateCheck': item.date_checking,
-                    'regionCheck': item.region.region_name,
-                    'departmentCheck': item.department.department_name,
-                    'departmentId': item.department.id,
+                    'id': item["id"],
+                    'nameCheck': item["name"],
+                    'dateCheck': item["date_checking"],
+                    'regionCheck': region,
+                    'departmentCheck': department.department_name,
+                    'departmentId': department.id,
                 })
         except Exception as e:
             return Response({'error': f'{e}'})

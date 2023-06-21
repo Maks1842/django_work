@@ -854,13 +854,18 @@ class ListCheckingAPIView(APIView):
         serializers = ListCheckingSerializer(data=data)
         serializers.is_valid(raise_exception=True)
 
+        if "person_id" not in req_data["items_json"]:
+            person_id = None
+        else:
+            person_id = req_data["items_json"]["person_id"]
+
         try:
             List_Checking.objects.update_or_create(
                 pk=req_data["items_json"]["id"],
                 defaults={
                     "checking_id": req_data["items_json"]["checking_id"],
                     "organisation_id": req_data["items_json"]["organisation_id"],
-                    "person_id": req_data["items_json"]["person_id"],
+                    "person_id": person_id,
                     "user_id": req_data["items_json"]["user_id"],
                     "date_check_org": req_data["items_json"]["date_check_org"],
                 },

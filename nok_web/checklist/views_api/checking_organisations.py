@@ -419,7 +419,7 @@ class GetCheckingCompletedAPIView(APIView):
                         'type_org_name': item_comp.type_organisations.type,
                         'org_check_date': item.date_check_org,
                         'org_person': org_person,
-                        'org_person_id': item.person.id,
+                        'org_person_id': item.person.id if item.person is not None else '',
                         'comment': item_comp.comments
 
                     })
