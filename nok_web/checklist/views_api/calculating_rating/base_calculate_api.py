@@ -12,6 +12,8 @@ from django.db import IntegrityError
 from ..magic import do_some_magic
 from .culture_legacy import culture_legacy_rating
 from .culture_standart import culture_standart_rating
+from .culture_theatre_legacy import culture_theatre_legacy_rating
+from .culture_theatre_standart import culture_theatre_standart_rating
 from .healthcare import healthcare_rating
 from .school import school_rating
 from .addeducation import addeducation_rating
@@ -78,6 +80,7 @@ class CalculatingRatingAPIView(APIView):
         invalid_person = int(req_data['invalid_person'])
 
         rating = calculating_rating(checking, organisation, type_organisation, quota, invalid_person)
+        # return Response(rating)
 
         serializers = RatingsSerializer(data=rating)
         serializers.is_valid(raise_exception=True)
@@ -101,6 +104,7 @@ class CalculatingRatingAPIView(APIView):
 def calculating_rating(checking, organisation, type_organisation, quota, invalid_person):
 
     queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
+    # return queryset['act_json']
 
     try:
         answer_set = Answers.objects.filter(checking_id=checking, organisations_id=organisation).get(type_organisations_id=type_organisation)
@@ -121,6 +125,10 @@ def calculating_rating(checking, organisation, type_organisation, quota, invalid
             return culture_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         case '10':
             return culture_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '8':
+            return culture_theatre_legacy_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
+        case '6':
+            return culture_theatre_standart_rating(quota, invalid_person, answers, form_json, form_json_to_calculate)
         case '2':
             return healthcare_rating(quota, invalid_person, answers, form_json, form_json_to_calculate, 59, 59)  # Последние два значения - нормативное количество документов на Стенде и Сайте
         case '3':

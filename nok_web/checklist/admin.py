@@ -81,10 +81,10 @@ class Department_PersonsAdmin(admin.ModelAdmin):
 
 
 class Type_OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'type', 'is_deleted')
-    search_fields = ('type',)
-    list_editable = ('type', 'is_deleted')
-    list_filter = ('type',)
+    list_display = ('id', 'type', 'type_departments', 'is_deleted')
+    search_fields = ('type', 'type_departments')
+    list_editable = ('type', 'type_departments', 'is_deleted')
+    list_filter = ('type', 'type_departments')
 
 
 class OrganisationsAdmin(admin.ModelAdmin):

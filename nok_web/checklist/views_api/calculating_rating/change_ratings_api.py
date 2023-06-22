@@ -8,6 +8,8 @@ from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from rest_framework.permissions import IsAdminUser
 from django.db import IntegrityError, transaction
+from .changes_to_culture_theatre_standart import culture_theatre_standart_rating
+from .changes_to_culture_theatre_legacy import culture_theatre_legacy_rating
 from .changes_to_culture_standart import culture_standart_rating
 from .changes_to_culture_legacy import culture_legacy_rating
 from .changes_to_healthcare import healthcare_rating
@@ -23,6 +25,7 @@ from ...app_serializers.ratings_serializer import RatingsSerializer
 
 В случае необходимости откорректировать рейтинг, нужное количество респондентов устанавливается вручную и применяется метод ChangeRatings
 '''
+
 
 class ChangeRatingsAPIView(APIView):
 
@@ -86,8 +89,6 @@ class ChangeRatingsAPIView(APIView):
         except:
             pass
 
-
-
         count_person = {
             "count_person_1_3_stend": req_data['count_person_1_3_stend'],
             "count_person_1_3_web": req_data['count_person_1_3_web'],
@@ -116,6 +117,10 @@ class ChangeRatingsAPIView(APIView):
                 rating = culture_legacy_rating(ratings, count_person)
             case 10:
                 rating = culture_standart_rating(ratings, count_person)
+            case 8:
+                rating = culture_theatre_legacy_rating(ratings, count_person)
+            case 6:
+                rating = culture_theatre_standart_rating(ratings, count_person)
             case (2 | 3):
                 rating = healthcare_rating(ratings, count_person)
             case (4 | 5 | 7 | 9):

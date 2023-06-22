@@ -60,7 +60,7 @@ class ExportRatingsToExcelAPIView(APIView):
 
         result = ''
         match type_organisation_id:
-            case (1 | 10):
+            case (1 | 10 | 6 | 8):
                 result = ratings_culture_to_excel(ratings_set, answers_list)
             case (2 | 3):
                 result = ratings_healthcare_to_excel(checking_id, answers_list)
