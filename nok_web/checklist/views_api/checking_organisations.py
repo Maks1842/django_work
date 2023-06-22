@@ -8,6 +8,7 @@ from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from django.db import IntegrityError
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 from ..app_serializers.list_checking_serializer import ListCheckingSerializer
 
@@ -375,11 +376,25 @@ class GetCheckingCompletedAPIView(APIView):
         operation_description="Получить список организаций, по которым завершенны проверки, в которых участвовал эксперт",
         manual_parameters=[
             openapi.Parameter('user_id', openapi.IN_QUERY, description="Идентификатор эксперта",
+                              type=openapi.TYPE_INTEGER),
+            openapi.Parameter('checking_name', openapi.IN_QUERY, description="Наименование проверки",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('organization_name', openapi.IN_QUERY, description="Наименование учреждения",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('checking_dates', openapi.IN_QUERY, description="Даты проверки через запятую с и по",
+                              type=openapi.TYPE_STRING),
+            openapi.Parameter('page', openapi.IN_QUERY, description="Страница",
                               type=openapi.TYPE_INTEGER)
         ])
     @action(detail=False, methods=['get'])
     def get(self, request):
         user = request.query_params.get('user_id')
+        check_name = request.query_params.get('checking_name')
+        org_name = request.query_params.get('organization_name')
+        dates = request.query_params.get('checking_dates')
+        page = request.query_params.get('page')
+        if page is None:
+            page = 1
         if user is None or user == '':
             return Response([])
         try:
@@ -390,38 +405,55 @@ class GetCheckingCompletedAPIView(APIView):
         if user_admin == True:
             queryset = List_Checking.objects.all()
         else:
-            try:
-                queryset = List_Checking.objects.filter(user_id=user)
-            except Exception as e:
-                return Response('')
+            queryset = List_Checking.objects.filter(user_id=user)
 
         if len(queryset) == 0:
             return Response({'error': 'У данного эксперта нет проверок'})
 
-        result = []
-        for item in queryset:
-            queryset_completed = Answers.objects.filter(checking_id=item.checking.id, organisations_id=item.organisation)
+        if check_name:
+            queryset = List_Checking.objects.filter(checking__name__icontains=check_name)
+        if org_name:
+            queryset = List_Checking.objects.filter(
+                organisation__organisation_name__icontains=org_name)
 
-            if len(queryset_completed) > 0:
-                for item_comp in queryset_completed:
-                    # return Response(item_comp.checking.id)
-                    if item.person is not None:
-                        org_person = f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"
-                    else:
-                        org_person = ''
-                    result.append({
-                        'check_id': item_comp.checking.id,
-                        'check_name': item_comp.checking.name,
-                        'check_date': item_comp.checking.date_checking,
-                        'org_id': item_comp.organisations.id,
-                        'org_name': item_comp.organisations.organisation_name,
-                        'type_org_id': item_comp.type_organisations.id,
-                        'type_org_name': item_comp.type_organisations.type,
-                        'org_check_date': item.date_check_org,
-                        'org_person': org_person,
-                        'org_person_id': item.person.id if item.person is not None else '',
-                        'comment': item_comp.comments
+        if dates:
+            range = dates.split(',')
+            date_from, date_to = None, None
+            if len(range):
+                date_from = range[0]
+                if len(range) > 1:
+                    date_to = range[1]
+                else:
+                    date_to = date_from
+            queryset = List_Checking.objects.filter(date_check_org__range=(date_from, date_to))
 
-                    })
-        return Response({'data': result})
+        paginator = Paginator(queryset, 20)
+        items = []
+        try:
+            for item in paginator.page(page).object_list:
+                queryset_completed = Answers.objects.filter(checking_id=item.checking.id, organisations_id=item.organisation)
+                if len(queryset_completed) > 0:
+                    for item_comp in queryset_completed:
+                        if item.person is not None:
+                            org_person = f"{item.person.last_name} {item.person.first_name} {item.person.second_name or ''}"
+                        else:
+                            org_person = ''
+                        items.append({
+                            'check_id': item_comp.checking.id,
+                            'check_name': item_comp.checking.name,
+                            'check_date': item_comp.checking.date_checking,
+                            'org_id': item_comp.organisations.id,
+                            'org_name': item_comp.organisations.organisation_name,
+                            'type_org_id': item_comp.type_organisations.id,
+                            'type_org_name': item_comp.type_organisations.type,
+                            'org_check_date': item.date_check_org,
+                            'org_person': org_person,
+                            'org_person_id': item.person.id if item.person is not None else '',
+                            'comment': item_comp.comments
+
+                        })
+        except Exception as e:
+            return Response({'error': f'{e}'})
+
+        return Response({'totalPages': len(queryset), 'items': items})
 
