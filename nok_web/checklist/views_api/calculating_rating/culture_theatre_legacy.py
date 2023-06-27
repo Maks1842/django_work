@@ -271,7 +271,7 @@ def culture_theatre_legacy_rating(quota, invalid_person, answers, form_json, gro
                                    "parent": name["count_person_1_3_stend"]["parent"],
                                    "order_num": name["count_person_1_3_stend"]["order_num"]},
         "count_person_1_3_web": {"id": name["count_person_1_3_web"]["id"],
-                                 "value": int(rating_respondents['count_person_1_3_stend']),
+                                 "value": int(rating_respondents['count_person_1_3_web']),
                                  "name": name["count_person_1_3_web"]["text"],
                                  "parent": name["count_person_1_3_web"]["parent"],
                                  "order_num": name["count_person_1_3_web"]["order_num"]},
