@@ -8,6 +8,7 @@ from rest_framework import permissions
 from drf_yasg2.views import get_schema_view
 
 from .views_api.act_answer_into_pdf import *
+from .views_api.map import *
 from .views_api.calculating_rating.base_calculate_api import CalculatingRatingAPIView
 from .views_api.calculating_rating.change_ratings_api import ChangeRatingsAPIView
 from .views_api.calculating_rating.ratings_api import RatingsAPIView, RatingCheckingsListAPIView
@@ -91,7 +92,8 @@ urlpatterns = [
     path('api/v1/Users/', UsersAPIView.as_view(), name='Users'),
     path('api/v1/DepartmentTypes/', DepartmentTypesAPIView.as_view(), name='DepartmentTypes'),
 
-
+    # Карта
+    path('api/v1/GetMapByCheckId', GetMapByCheckIdAPIView.as_view(), name='Maps'),
 
     # Для Авторизации аутентификации
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
