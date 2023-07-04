@@ -20,14 +20,24 @@ class GetMapByCheckIdAPIView(APIView):
         id_check = request.query_params.get('id_check')
         orgs = List_Checking.objects.filter(checking_id=id_check).values()
 
-        items = []
+        features = []
         if len(orgs) > 0:
             for org in orgs:
                 organisation = Organisations.objects.get(id=org["organisation_id"])
-                items.append({
-                    'id': organisation.id,
-                    'name': organisation.organisation_name,
-                    'longitude': organisation.longitude,
-                    'latitude': organisation.latitude
-                })
-        return Response({'items': items})
+                feature = {
+                    "type": "Feature",
+                    "id": organisation.id,
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            organisation.longitude,
+                            organisation.latitude
+                        ]
+                    },
+                    "geometry_name": "SHAPE",
+                    "properties": {
+                        "name": organisation.organisation_name
+                    }
+                }
+                features.append(feature)
+        return Response({"type": "FeatureCollection", "features": features})
