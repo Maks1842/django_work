@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
+from django.http import HttpResponse
 
 
 class GetMapByCheckIdAPIView(APIView):
@@ -41,3 +42,23 @@ class GetMapByCheckIdAPIView(APIView):
                 }
                 features.append(feature)
         return Response({"type": "FeatureCollection", "features": features})
+
+
+class GetRegionAreaByCheckIdAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Карты'],
+        operation_description="Получить границы региона в формате Feature GeoJson",
+        manual_parameters=[
+            openapi.Parameter('id_region', openapi.IN_QUERY, description="Идентификатор региона",
+                              type=openapi.TYPE_INTEGER),
+        ])
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        id_region = request.query_params.get('id_region')
+        region = Regions.objects.get(id=id_region)
+        file_pointer = open(f'./checklist/local_storage/geo/{region.area_geojson}', "rb")
+        response = HttpResponse(file_pointer, content_type='application/json;')
+        response['Content-Disposition'] = f'attachment; filename={region.area_geojson}'
+        response['Content-Transfer-Encoding'] = 'utf-8'
+        return response
