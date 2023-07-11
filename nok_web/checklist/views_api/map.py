@@ -27,17 +27,16 @@ class GetMapByCheckIdAPIView(APIView):
                 organisation = Organisations.objects.get(id=org["organisation_id"])
                 feature = {
                     "type": "Feature",
-                    "id": organisation.id,
+                    "properties": {
+                        "name": organisation.organisation_name,
+                        "id": organisation.id,
+                    },
                     "geometry": {
-                        "type": "Point",
                         "coordinates": [
                             organisation.longitude,
                             organisation.latitude
-                        ]
-                    },
-                    "geometry_name": "SHAPE",
-                    "properties": {
-                        "name": organisation.organisation_name
+                        ],
+                        "type": "Point"
                     }
                 }
                 features.append(feature)
