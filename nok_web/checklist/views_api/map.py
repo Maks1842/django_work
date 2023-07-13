@@ -61,3 +61,23 @@ class GetRegionAreaByCheckIdAPIView(APIView):
         response['Content-Disposition'] = f'attachment; filename={region.area_geojson}'
         response['Content-Transfer-Encoding'] = 'utf-8'
         return response
+
+
+class GetDistrictsAreaByCheckIdAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Карты'],
+        operation_description="Получить границы районов региона в формате Feature GeoJson",
+        manual_parameters=[
+            openapi.Parameter('id_region', openapi.IN_QUERY, description="Идентификатор региона",
+                              type=openapi.TYPE_INTEGER),
+        ])
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        id_region = request.query_params.get('id_region')
+        region = Regions.objects.get(id=id_region)
+        file_pointer = open(f'./checklist/local_storage/geo/{region.district_geojson}', "rb")
+        response = HttpResponse(file_pointer, content_type='application/json;')
+        response['Content-Disposition'] = f'attachment; filename={region.district_geojson}'
+        response['Content-Transfer-Encoding'] = 'utf-8'
+        return response
