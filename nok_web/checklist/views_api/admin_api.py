@@ -756,6 +756,8 @@ class ListCheckingAPIView(APIView):
         manual_parameters=[
             openapi.Parameter('checking_id', openapi.IN_QUERY, description="Идентификатор проверки",
                               type=openapi.TYPE_INTEGER),
+            openapi.Parameter('region_id', openapi.IN_QUERY, description="Идентификатор региона",
+                              type=openapi.TYPE_INTEGER),
             openapi.Parameter('checking_name', openapi.IN_QUERY, description="Наименование проверки",
                               type=openapi.TYPE_STRING),
             openapi.Parameter('organization_name', openapi.IN_QUERY, description="Наименование учреждения",
@@ -768,6 +770,7 @@ class ListCheckingAPIView(APIView):
     @action(detail=False, methods=['get'])
     def get(self, request):
         checking_id = request.query_params.get('checking_id')
+        region_id = request.query_params.get('region_id')
         check_name = request.query_params.get('checking_name')
         org_name = request.query_params.get('organization_name')
         dates = request.query_params.get('checking_dates')
@@ -780,8 +783,12 @@ class ListCheckingAPIView(APIView):
         else:
             list_checking_set = List_Checking.objects.values().filter(checking_id=checking_id)
 
+        if region_id:
+            list_checking_set = List_Checking.objects.values().filter(checking__region=region_id)
+
         if check_name:
             list_checking_set = List_Checking.objects.values().filter(checking__name__icontains=check_name)
+
         if org_name:
             list_checking_set = List_Checking.objects.values().filter(
                 organisation__organisation_name__icontains=org_name)
@@ -803,9 +810,8 @@ class ListCheckingAPIView(APIView):
             for item in paginator.page(page).object_list:
                 person_name = ''
                 user_name = ''
-                checking_name = Checking.objects.get(id=item["checking_id"]).name
-                organisation_name = Organisations.objects.get(id=item["organisation_id"]).organisation_name
-                department_id = Organisations.objects.get(id=item["organisation_id"]).department_id
+                checking = Checking.objects.get(id=item["checking_id"])
+                organization = Organisations.objects.get(id=item["organisation_id"])
 
                 if item["person_id"] is not None and item["person_id"] != '':
                     person = Organisation_Persons.objects.values().get(id=item["person_id"])
@@ -817,15 +823,16 @@ class ListCheckingAPIView(APIView):
 
                 items.append({"id": item["id"],
                               "checking_id": item["checking_id"],
-                              "checking_name": checking_name,
+                              "checking_name": checking.name,
                               "organisation_id": item["organisation_id"],
-                              "organisation_name": organisation_name,
+                              "organisation_name": organization.organisation_name,
                               "person_id": item["person_id"],
                               "person_name": person_name,
                               "user_id": item["user_id"],
                               "user_name": user_name,
                               "date_check_org": item["date_check_org"],
-                              "department_id": department_id
+                              "department_id": organization.department_id,
+                              "region_id": checking.region_id
                               })
         except Exception as e:
             return Response({'error': f'{e}'})
