@@ -85,6 +85,7 @@ class StatisticOrganisationListAPIView(APIView):
                 'rating': rating_total,
                 'type_organisation_id': type_organisation_id,
                 'type_organisation': type_organisation_name,
+                'organisation_id': item.organisations.id
             })
         return Response(result)
 

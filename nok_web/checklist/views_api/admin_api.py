@@ -590,6 +590,8 @@ class OrganisationsAPIView(APIView):
                     "inn": item["inn"],
                     "kpp": item["kpp"],
                     "ogrn": item["ogrn"],
+                    "longitude": item["longitude"],
+                    "latitude": item["latitude"],
                     "id": item["id"]
                 })
         except Exception as e:
@@ -632,6 +634,8 @@ class OrganisationsAPIView(APIView):
                     "inn": req_data["items_json"]["inn"],
                     "kpp": req_data["items_json"]["kpp"],
                     "ogrn": req_data["items_json"]["ogrn"],
+                    "longitude": req_data["items_json"]["longitude"],
+                    "latitude": req_data["items_json"]["latitude"],
                 },
             )
         except IntegrityError:
