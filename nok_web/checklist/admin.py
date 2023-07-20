@@ -49,9 +49,9 @@ class Profile_PositionAdmin(admin.ModelAdmin):
 
 
 class RegionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'region_name', 'is_deleted')  # Указываю какие поля отображать
+    list_display = ('id', 'region_name', 'area_geojson', 'district_geojson', 'is_deleted')  # Указываю какие поля отображать
     search_fields = ('region_name',)  # Указываю по каким полям можно осуществлять поиск
-    list_editable = ('region_name', 'is_deleted')  # Возможность редактирования поля
+    list_editable = ('region_name', 'area_geojson', 'district_geojson', 'is_deleted')  # Возможность редактирования поля
     list_filter = ('region_name',)  # Возможность фильтровать поля
 
 
@@ -88,9 +88,9 @@ class Type_OrganisationsAdmin(admin.ModelAdmin):
 
 
 class OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'is_deleted')
+    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
     search_fields = ('organisation_name', 'address', 'parent', 'department' 'inn', 'kpp', 'ogrn',)
-    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'is_deleted')
+    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
     list_filter = ('organisation_name', 'department')
 
 
