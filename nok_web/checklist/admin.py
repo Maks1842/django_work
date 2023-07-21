@@ -89,7 +89,7 @@ class Type_OrganisationsAdmin(admin.ModelAdmin):
 
 class OrganisationsAdmin(admin.ModelAdmin):
     list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
-    search_fields = ('organisation_name', 'address', 'parent', 'department' 'inn', 'kpp', 'ogrn',)
+    search_fields = ('organisation_name', 'address', 'parent__organisation_name', 'department__department_name', 'inn', 'kpp', 'ogrn')
     list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
     list_filter = ('organisation_name', 'department')
 
@@ -103,7 +103,7 @@ class Form_Type_OrganisationAdmin(admin.ModelAdmin):
 
 class Organisation_PersonsAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted')
-    search_fields = ('first_name', 'second_name', 'last_name', 'position', 'organisation')
+    search_fields = ('first_name', 'second_name', 'last_name', 'position', 'organisation__organisation_name')
     list_editable = ('first_name', 'second_name', 'last_name', 'position', 'organisation')
 
 

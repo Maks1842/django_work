@@ -13,8 +13,8 @@ class Organisations(models.Model):
     kpp = models.CharField(max_length=9, blank=True, verbose_name='КПП')
     ogrn = models.CharField(max_length=15, blank=True, verbose_name='ОГРН')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
-    latitude = models.FloatField(max_length=10, null=True, verbose_name='Широта')
-    longitude = models.FloatField(max_length=10, null=True, verbose_name='Долгота')
+    latitude = models.FloatField(max_length=10, blank=True, null=True, verbose_name='Широта')
+    longitude = models.FloatField(max_length=10, blank=True, null=True, verbose_name='Долгота')
 
     def __str__(self):
         return self.organisation_name
