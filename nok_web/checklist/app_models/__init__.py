@@ -27,3 +27,4 @@ from .type_organisations import Type_Organisations
 from .versions import Versions
 from .profile import Profile
 from .profile_position import Profile_Position
+from .districts import Districts
