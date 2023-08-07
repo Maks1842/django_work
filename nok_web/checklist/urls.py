@@ -96,6 +96,7 @@ urlpatterns = [
     path('api/v1/GetMapByCheckId/', GetMapByCheckIdAPIView.as_view(), name='Maps'),
     path('api/v1/GetRegionAreaByCheckId/', GetRegionAreaByCheckIdAPIView.as_view(), name='Maps'),
     path('api/v1/GetDistrictsAreaByCheckId/', GetDistrictsAreaByCheckIdAPIView.as_view(), name='Maps'),
+    path('api/v1/GetDistrictArea/', GetDistrictAreaAPIView.as_view(), name='Maps'),
 
     # Для Авторизации аутентификации
     path('api/v1/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

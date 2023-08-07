@@ -1,3 +1,5 @@
+import json
+
 from ..app_models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -5,6 +7,8 @@ from rest_framework.decorators import action
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
 from django.http import HttpResponse
+from django.db import connection
+import re
 
 
 class GetMapByCheckIdAPIView(APIView):
@@ -81,3 +85,37 @@ class GetDistrictsAreaByCheckIdAPIView(APIView):
         response['Content-Disposition'] = f'attachment; filename={region.district_geojson}'
         response['Content-Transfer-Encoding'] = 'utf-8'
         return response
+
+
+class GetDistrictAreaAPIView(APIView):
+    @swagger_auto_schema(
+        methods=['get'],
+        tags=['Карты'],
+        operation_description="Получить границы районов региона в формате Feature GeoJson",
+        manual_parameters=[
+            openapi.Parameter('okato', openapi.IN_QUERY, description="Идентификаторы региона через запятую",
+                              type=openapi.TYPE_STRING),
+        ])
+    @action(methods=['get'], detail=False)
+    def get(self, request):
+        okato = request.query_params.get('okato')
+        okato = re.sub("[\"\']", "", okato)
+        okatos = []
+        if "," in okato:
+            okatos = okato.split(',')
+        else:
+            okatos.append(okato)
+        codes = ''
+        for code in okatos:
+            if codes == '':
+                codes = f"'{code.strip()}'"
+            else:
+                codes = codes + f",'{code.strip()}'"
+        with connection.cursor() as cursor:
+            sql = f"""select obj from checklist_districtarea t, jsonb_array_elements(t.data -> 'features') obj where obj -> 'properties' -> 'OKATO_CODE'  ?| array[{codes}]"""
+            cursor.execute(sql)
+            rows = cursor.fetchall()
+        features = []
+        for row in rows:
+            features.append(json.loads(''.join(row)))
+        return Response({"type": "FeatureCollection", "features": features})

@@ -28,3 +28,4 @@ from .versions import Versions
 from .profile import Profile
 from .profile_position import Profile_Position
 from .districts import Districts
+from .district_area import DistrictArea
