@@ -8,7 +8,7 @@ from django.db import models
 class Regions(models.Model):
     region_name = models.CharField(max_length=100,
                                    verbose_name='Регион')  # verbose_name - Как поле будет отображаться в админке
-    code = models.IntegerField(null=True, blank=True, verbose_name='Код региона')
+    okato = models.CharField(max_length=11, blank=True, null=True, verbose_name='Район региона')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     area_geojson = models.CharField(max_length=100, blank=True, null=True, verbose_name='Административная граница объект в формате Feature GeoJson')
     district_geojson = models.CharField(max_length=100, blank=True, null=True, verbose_name='Районы региона в формате GeoJson')

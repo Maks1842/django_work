@@ -93,24 +93,21 @@ class GetDistrictAreaAPIView(APIView):
         tags=['Карты'],
         operation_description="Получить границы районов региона в формате Feature GeoJson",
         manual_parameters=[
-            openapi.Parameter('okato', openapi.IN_QUERY, description="Идентификаторы региона через запятую",
-                              type=openapi.TYPE_STRING),
+            openapi.Parameter('id_check', openapi.IN_QUERY, description="Идентификатор проверки",
+                              type=openapi.TYPE_INTEGER),
         ])
     @action(methods=['get'], detail=False)
     def get(self, request):
-        okato = request.query_params.get('okato')
-        okato = re.sub("[\"\']", "", okato)
-        okatos = []
-        if "," in okato:
-            okatos = okato.split(',')
-        else:
-            okatos.append(okato)
-        codes = ''
-        for code in okatos:
-            if codes == '':
-                codes = f"'{code.strip()}'"
-            else:
-                codes = codes + f",'{code.strip()}'"
+        id_check = request.query_params.get('id_check')
+        orgs = List_Checking.objects.filter(checking_id=id_check).values()
+
+        orgs_okato = set()
+        if len(orgs) > 0:
+            for org in orgs:
+                organisation = Organisations.objects.get(id=org["organisation_id"])
+                if organisation.okato not in orgs_okato:
+                    orgs_okato.add(f"'{organisation.okato}'")
+        codes = ','.join(orgs_okato)
         with connection.cursor() as cursor:
             sql = f"""select obj from checklist_districtarea t, jsonb_array_elements(t.data -> 'features') obj where obj -> 'properties' -> 'OKATO_CODE'  ?| array[{codes}]"""
             cursor.execute(sql)
