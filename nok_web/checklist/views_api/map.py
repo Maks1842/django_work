@@ -100,7 +100,6 @@ class GetDistrictAreaAPIView(APIView):
     def get(self, request):
         id_check = request.query_params.get('id_check')
         orgs = List_Checking.objects.filter(checking_id=id_check).values()
-
         orgs_okato = set()
         if len(orgs) > 0:
             for org in orgs:

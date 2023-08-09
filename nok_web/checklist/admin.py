@@ -88,9 +88,9 @@ class Type_OrganisationsAdmin(admin.ModelAdmin):
 
 
 class OrganisationsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
-    search_fields = ('organisation_name', 'address', 'parent__organisation_name', 'department__department_name', 'inn', 'kpp', 'ogrn')
-    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
+    list_display = ('id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'okato', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
+    search_fields = ('organisation_name', 'address', 'parent__organisation_name', 'department__department_name', 'okato', 'inn', 'kpp', 'ogrn')
+    list_editable = ('organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'okato', 'inn', 'kpp', 'ogrn', 'longitude', 'latitude', 'is_deleted')
     list_filter = ('organisation_name', 'department')
 
 
