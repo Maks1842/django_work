@@ -5,7 +5,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from drf_yasg2.utils import swagger_auto_schema
 from drf_yasg2 import openapi
-from django.db import IntegrityError, transaction
+from django.db import IntegrityError
+import pandas as pd
+import json
+
+from ..app_serializers.organisations_serializer import OrganisationsSerializer
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
 Дефолтные permissions:
@@ -18,7 +22,6 @@ IsAuthenticatedOrReadOnly - только для авторизованных и�
 IsAdminOrReadOnly - запись может просматривать любой, а удалять только Администратор;
 IsOwnerAndAdminOrReadOnly - запись может менять только пользователь который её создал и Админ, просматривать может любой.
 """
-
 
 
 class OrganisationPersonsAPIView(APIView):
@@ -80,19 +83,6 @@ class OrganisationPersonsAPIView(APIView):
             return Response({'data': {'id': res.pk, 'name': fio}})
         except IntegrityError as ex:
             return Response({'error': f"Не удалось добавить представителя! {ex}"})
-        # error = "Не удалось добавить представителя!"
-        # try:
-        #     with transaction.atomic():
-        #         res = serializers.save()
-        #         data = {'organisation': id_org, 'person': res.pk}
-        #         serializers_person = Form_Organisation_PersonsSerializer(data=data)
-        #         serializers_person.is_valid(raise_exception=True)
-        #         serializers_person.save()
-        #         return Response({'data': {'id': res.pk, 'name': fio}})
-        # except IntegrityError as exception:
-        #     if 'violates unique constraint' in exception.args[0]:
-        #         error = f"{error} Такой человек уже существует."
-        #     return Response({'error': error})
 
 
 class GetListTypeOrganizationsAPIView(APIView):
@@ -122,3 +112,61 @@ class GetListTypeOrganizationsAPIView(APIView):
                     'name': item.type,
                 })
         return Response({'data': result})
+
+
+class ImportRegistryExcelAPIView(APIView):
+    @swagger_auto_schema(
+        method='post',
+        tags=['Организация'],
+        operation_description="Импортирование реестра организаций в БД",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'file_object': openapi.Schema(type=openapi.TYPE_FILE, description='Файл'),
+            }))
+    @action(methods=['post'], detail=False)
+    def post(self, request):
+        file_object = request.data
+
+
+        with open(f'./media/organisations_file.xlsx', 'wb+') as f:
+            for chunk in file_object['organisations_file'].chunks():
+                f.write(chunk)
+
+        path_file = f'./media/organisations_file.xlsx'
+
+        organisations_json = extract_organisations(path_file)
+
+        count = 0
+        for org in organisations_json:
+            data = {'organisation_name': org['Name'],
+                    'address': org['address'],
+                    'phone': None,
+                    'website': None,
+                    'email': None,
+                    'parent': None,
+                    'department': None,
+                    'okato': org['okato'],
+                    'inn': org['inn'],
+                    'kpp': None,
+                    'ogrn': org['ogrn'],
+                    'latitude': org['geoLat'],
+                    'longitude': org['geoLon'],}
+            count += 1
+
+            try:
+                serializers = OrganisationsSerializer(data=data)
+                serializers.is_valid(raise_exception=True)
+            except Exception as ex:
+                return Response({"error": f'Ошибка при сохранении в модель Organisations, на строке {count}. {ex}', "data": data})
+
+        return Response({'message': f'Успешно загружено {count} организаций'})
+
+
+def extract_organisations(path_file):
+
+    excel_data = pd.read_excel(path_file)
+    json_str = excel_data.to_json(orient='records', date_format='iso')
+    parsed = json.loads(json_str)
+
+    return parsed

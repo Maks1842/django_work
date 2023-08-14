@@ -5,5 +5,5 @@ from ..app_models.organisations import Organisations
 class OrganisationsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organisations
-        fields = ['id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'inn',
-                  'kpp', 'ogrn', 'is_deleted']
+        fields = ['id', 'organisation_name', 'address', 'phone', 'website', 'email', 'parent', 'department', 'okato',
+                  'inn', 'kpp', 'ogrn', 'latitude', 'longitude', 'is_deleted']
