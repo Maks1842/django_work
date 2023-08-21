@@ -22,6 +22,9 @@ from django.db import IntegrityError
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models.functions import Concat
+import pandas as pd
+import json
+
 
 '''ТЕСТОВЫЕ, ТРЕНИРОВОЧНЫЕ или ВРЕМЕННО НЕ ИСПОЛЬЗУЕМЫЕ ВЬЮХИ'''
 
@@ -1070,3 +1073,62 @@ class DepartmentTypesAPIView(APIView):
             return Response({'error': f'{e}'})
 
         return Response({'items': items})
+
+
+class ImportRegistryExcelAPIView(APIView):
+    @swagger_auto_schema(
+        method='post',
+        tags=['Админка'],
+        operation_description="Импортирование реестра организаций в БД",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'file_object': openapi.Schema(type=openapi.TYPE_FILE, description='Файл'),
+            }))
+    @action(methods=['post'], detail=False)
+    def post(self, request):
+        file_object = request.data
+
+        with open(f'./media/organisations_file.xlsx', 'wb+') as f:
+            for chunk in file_object['organisations_file'].chunks():
+                f.write(chunk)
+
+        path_file = f'./media/organisations_file.xlsx'
+
+        organisations_json = extract_organisations(path_file)
+
+        count = 0
+        for org in organisations_json:
+            data = {'organisation_name': org['Name'],
+                    'address': org['address'],
+                    'phone': None,
+                    'website': None,
+                    'email': None,
+                    'parent_id': None,
+                    'department_id': org['department'],
+                    'okato': org['okato'],
+                    'inn': org['inn'],
+                    'kpp': None,
+                    'ogrn': org['ogrn'],
+                    'latitude': org['geoLat'],
+                    'longitude': org['geoLon'], }
+            count += 1
+
+            try:
+                serializers = OrganisationsSerializer(data=data)
+                serializers.is_valid(raise_exception=True)
+                org = Organisations(**data)
+                org.save()
+            except Exception as ex:
+                return Response(
+                    {"error": f'Ошибка при сохранении в модель Organisations, на строке {count}. {ex}', "data": data})
+
+        return Response({'message': f'Успешно загружено {count} организаций'})
+
+
+def extract_organisations(path_file):
+    excel_data = pd.read_excel(path_file)
+    json_str = excel_data.to_json(orient='records', date_format='iso')
+    parsed = json.loads(json_str)
+
+    return parsed

@@ -107,11 +107,12 @@ class GetDistrictAreaAPIView(APIView):
                 if organisation.okato not in orgs_okato:
                     orgs_okato.add(f"'{organisation.okato}'")
         codes = ','.join(orgs_okato)
-        with connection.cursor() as cursor:
-            sql = f"""select obj from checklist_districtarea t, jsonb_array_elements(t.data -> 'features') obj where obj -> 'properties' -> 'OKATO_CODE'  ?| array[{codes}]"""
-            cursor.execute(sql)
-            rows = cursor.fetchall()
         features = []
-        for row in rows:
-            features.append(json.loads(''.join(row)))
+        if len(codes) > 0:
+            with connection.cursor() as cursor:
+                sql = f"""select obj from checklist_districtarea t, jsonb_array_elements(t.data -> 'features') obj where obj -> 'properties' -> 'OKATO_CODE'  ?| array[{codes}]"""
+                cursor.execute(sql)
+                rows = cursor.fetchall()
+            for row in rows:
+                features.append(json.loads(''.join(row)))
         return Response({"type": "FeatureCollection", "features": features})
