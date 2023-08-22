@@ -11,7 +11,7 @@ class Organisations(models.Model):
     department = models.ForeignKey('Departments', on_delete=models.PROTECT, null=True, verbose_name='Департамент')
     okato = models.CharField(max_length=11, blank=True, null=True, verbose_name='ОКАТО')
     inn = models.CharField(max_length=12, blank=True, verbose_name='ИНН')
-    kpp = models.CharField(max_length=9, blank=True, verbose_name='КПП')
+    kpp = models.CharField(max_length=9, blank=True, verbose_name='КПП', null=True)
     ogrn = models.CharField(max_length=15, blank=True, verbose_name='ОГРН')
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
     latitude = models.FloatField(max_length=10, blank=True, null=True, verbose_name='Широта')

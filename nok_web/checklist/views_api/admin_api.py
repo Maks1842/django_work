@@ -1096,39 +1096,42 @@ class ImportRegistryExcelAPIView(APIView):
         path_file = f'./media/organisations_file.xlsx'
 
         organisations_json = extract_organisations(path_file)
-
         count = 0
         for org in organisations_json:
-            data = {'organisation_name': org['Name'],
+            data = {'organisation_name': org['name'],
                     'address': org['address'],
-                    'phone': None,
-                    'website': None,
-                    'email': None,
+                    'phone': org['phone'],
+                    'website': org['website'],
+                    'email': org['email'],
                     'parent_id': None,
                     'department_id': org['department'],
                     'okato': org['okato'],
                     'inn': org['inn'],
                     'kpp': None,
                     'ogrn': org['ogrn'],
-                    'latitude': org['geoLat'],
-                    'longitude': org['geoLon'], }
-            count += 1
-
+                    'latitude': org['geolat'],
+                    'longitude': org['geolon'], }
             try:
                 serializers = OrganisationsSerializer(data=data)
                 serializers.is_valid(raise_exception=True)
-                org = Organisations(**data)
-                org.save()
+                exist_org = Organisations.objects.filter(Q(organisation_name=org['name']) & Q(address=org['address'])).first()
+                if not exist_org:
+                    org = Organisations(**data)
+                    org.save()
+                    count += 1
             except Exception as ex:
                 return Response(
                     {"error": f'Ошибка при сохранении в модель Organisations, на строке {count}. {ex}', "data": data})
 
-        return Response({'message': f'Успешно загружено {count} организаций'})
+        return Response({'message': f'Успешно загружено {count} организации'})
 
 
 def extract_organisations(path_file):
     excel_data = pd.read_excel(path_file)
     json_str = excel_data.to_json(orient='records', date_format='iso')
     parsed = json.loads(json_str)
-
-    return parsed
+    # преобразуем ключи в нижний регистр, дабы избежать разночтений в названиях колонок при импорте
+    converted_org = []
+    for org in parsed:
+        converted_org.append({k.lower(): v for k, v in org.items()})
+    return converted_org
