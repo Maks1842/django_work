@@ -8,6 +8,7 @@ from django.db import models
 class Districts(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     code = models.IntegerField(null=True, blank=True, verbose_name='Код ОКАТО')
+    region_id = models.IntegerField(verbose_name='Код региона из модели регионов')
 
     def __str__(self):
         return self.name

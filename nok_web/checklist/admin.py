@@ -30,7 +30,7 @@ from .app_models.type_organisations import Type_Organisations
 from .app_models.versions import Versions
 from .app_models.recommendations import Recommendations
 from .app_models.coefficients import Coefficients
-
+from .app_models.districts import Districts
 
 # Настройка админки
 
@@ -241,6 +241,11 @@ class CoefficientsAdmin(admin.ModelAdmin):
     list_editable = ('type_departments', 'type_organisations', 'main_json', 'respondents_json', 'points_json', 'date', 'version')
     list_filter = ('type_departments', 'type_organisations', 'date', 'version')
 
+class DistrictsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'code', 'region_id')
+    search_fields = ('name', 'code', 'region_id')
+    list_editable = ('name', 'code', 'region_id')
+
 
 # !!!Важно соблюдать последовательность регистрации моделей
 admin.site.register(Profile, ProfileAdmin)
@@ -273,3 +278,4 @@ admin.site.register(FormsAct, FormsActAdmin)
 admin.site.register(Checking, CheckingAdmin)
 admin.site.register(List_Checking, ListCheckingAdmin)
 admin.site.register(Coefficients, CoefficientsAdmin)
+admin.site.register(Districts, DistrictsAdmin)
