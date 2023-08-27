@@ -1126,6 +1126,38 @@ class ImportRegistryExcelAPIView(APIView):
         return Response({'message': f'Успешно загружено {count} организации'})
 
 
+class DistrictsAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список типов департаментов",
+        manual_parameters=[
+            openapi.Parameter('name', openapi.IN_QUERY, description="Идентификатор региона",
+                              type=openapi.TYPE_STRING)
+        ]
+    )
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        name = request.query_params.get('name')
+        if name is not None:
+            districts_set = Districts.objects.values().filter(Q(name__icontains=name))
+        else:
+            districts_set = Districts.objects.values()
+        items = []
+        try:
+            for item in districts_set:
+                items.append({
+                    "code": item["code"],
+                    "name": item["name"]
+                })
+        except Exception as e:
+            return Response({'error': f'{e}'})
+
+        return Response({'items': items})
+
+
 def extract_organisations(path_file):
     excel_data = pd.read_excel(path_file)
     json_str = excel_data.to_json(orient='records', date_format='iso')

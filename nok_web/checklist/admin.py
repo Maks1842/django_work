@@ -242,9 +242,9 @@ class CoefficientsAdmin(admin.ModelAdmin):
     list_filter = ('type_departments', 'type_organisations', 'date', 'version')
 
 class DistrictsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'code', 'region_id')
-    search_fields = ('name', 'code', 'region_id')
-    list_editable = ('name', 'code', 'region_id')
+    list_display = ('id', 'name', 'code')
+    search_fields = ('name', 'code')
+    list_editable = ('name', 'code')
 
 
 # !!!Важно соблюдать последовательность регистрации моделей

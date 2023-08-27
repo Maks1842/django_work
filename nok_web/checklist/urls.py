@@ -22,7 +22,7 @@ from .views_api.statistics import StatisticUserAPIView, StatisticCheckingsListAP
 from .views_api.admin_api import RegionsViewSet, GetActAPIView, GetPositionUserAPIView, \
     GetProfileUserAPIView, GetActGroupingAPIView, DepartmentsAPIView, CheckingAPIView, OrganisationsAPIView, \
     ListCheckingAPIView, RegionsAPIView, PersonsAPIView, UsersAPIView, DepartmentTypesAPIView, \
-    ImportRegistryExcelAPIView
+    ImportRegistryExcelAPIView, DistrictsAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -93,6 +93,7 @@ urlpatterns = [
     path('api/v1/Users/', UsersAPIView.as_view(), name='Users'),
     path('api/v1/DepartmentTypes/', DepartmentTypesAPIView.as_view(), name='DepartmentTypes'),
     path('api/v1/ImportRegistryExcel/', ImportRegistryExcelAPIView.as_view(), name='ImportRegistryExcel'),
+    path('api/v1/Districts/', DistrictsAPIView.as_view(), name='Districts'),
 
     # Карта
     path('api/v1/GetMapByCheckId/', GetMapByCheckIdAPIView.as_view(), name='Maps'),
