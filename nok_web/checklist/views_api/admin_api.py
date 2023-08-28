@@ -952,6 +952,7 @@ class PersonsAPIView(APIView):
                     "position": item["position"],
                     "phone": item["phone"],
                     "email": item["email"],
+                    "useDefault": item["use_default"],
                     "organizationId": item["organisation_id"],
                 })
         except Exception as e:
@@ -991,7 +992,8 @@ class PersonsAPIView(APIView):
                     "last_name": req_data["items_json"]["last_name"],
                     "position": req_data["items_json"]["position"],
                     "phone": req_data["items_json"]["phone"],
-                    "email": req_data["items_json"]["email"]
+                    "email": req_data["items_json"]["email"],
+                    "use_default": req_data["items_json"]["useDefault"]
                 },
             )
         except IntegrityError:
@@ -1154,6 +1156,36 @@ class DistrictsAPIView(APIView):
                 })
         except Exception as e:
             return Response({'error': f'{e}'})
+
+        return Response({'items': items})
+
+
+class PersonAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        method='get',
+        tags=['Админка'],
+        operation_description="Получить список представителей",
+        manual_parameters=[
+            openapi.Parameter('organization_id', openapi.IN_QUERY, description="Идентификатор организации",
+                              type=openapi.TYPE_INTEGER),
+        ])
+    @action(detail=False, methods=['get'])
+    def get(self, request):
+        organization_id = request.query_params.get('organization_id')
+        items = []
+        if organization_id:
+            try:
+                person = Organisation_Persons.objects.get(organisation_id=organization_id, use_default=True)
+                items.append({
+                    "id": person.id,
+                    "firstName": person.first_name,
+                    "secondName": person.second_name,
+                    "lastName": person.last_name
+                })
+            finally:
+                return Response({'items': items})
 
         return Response({'items': items})
 

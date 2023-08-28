@@ -102,9 +102,9 @@ class Form_Type_OrganisationAdmin(admin.ModelAdmin):
 
 
 class Organisation_PersonsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'is_deleted')
+    list_display = ('id', 'first_name', 'second_name', 'last_name', 'position', 'phone', 'email', 'organisation', 'use_default', 'is_deleted')
     search_fields = ('first_name', 'second_name', 'last_name', 'position', 'organisation__organisation_name')
-    list_editable = ('first_name', 'second_name', 'last_name', 'position', 'organisation')
+    list_editable = ('first_name', 'second_name', 'last_name', 'position', 'organisation', 'use_default')
 
 
 

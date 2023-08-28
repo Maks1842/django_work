@@ -14,6 +14,7 @@ class Organisation_Persons(models.Model):
     phone = models.CharField(max_length=100, blank=True, verbose_name='Телефон')
     email = models.CharField(max_length=100, blank=True, verbose_name='Email')
     organisation = models.ForeignKey('Organisations', on_delete=models.PROTECT, null=True, verbose_name='Учреждение')
+    use_default = models.BooleanField(blank=True, null=True)
     is_deleted = models.BooleanField(default=False, verbose_name='Признак удаления')
 
     def __str__(self):
