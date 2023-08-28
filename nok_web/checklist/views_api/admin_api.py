@@ -918,16 +918,17 @@ class PersonsAPIView(APIView):
             page = 1
 
         if organization_id and not person_fio:
-            persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id)
+            persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id).order_by('last_name', 'first_name', 'second_name')
         elif organization_id and person_fio:
             persons_set = Organisation_Persons.objects.values().annotate(
                 full_name=Concat('first_name', 'second_name', 'last_name')
             ).filter(organisation_id=organization_id).filter((Q(full_name__icontains=person_fio) |
                                                               Q(first_name__icontains=person_fio) |
                                                               Q(last_name__icontains=person_fio) |
-                                                              Q(second_name__icontains=person_fio)))
+                                                              Q(second_name__icontains=person_fio)))\
+                .order_by('last_name', 'first_name', 'second_name')
         else:
-            persons_set = Organisation_Persons.objects.values()
+            persons_set = Organisation_Persons.objects.values().order_by('last_name', 'first_name', 'second_name')
 
         if person_fio and not organization_id:
             persons_set = Organisation_Persons.objects.values().annotate(
@@ -937,7 +938,7 @@ class PersonsAPIView(APIView):
                 Q(first_name__icontains=person_fio) |
                 Q(last_name__icontains=person_fio) |
                 Q(second_name__icontains=person_fio)
-            )
+            ).order_by('last_name', 'first_name', 'second_name')
 
         paginator = Paginator(persons_set, 20)
 

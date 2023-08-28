@@ -7,7 +7,7 @@ from django.db import models
 
 class Districts(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
-    code = models.IntegerField(null=True, blank=True, verbose_name='Код ОКАТО')
+    code = models.CharField(max_length=11, null=True, blank=True, verbose_name='Код ОКАТО')
 
     def __str__(self):
         return self.name
