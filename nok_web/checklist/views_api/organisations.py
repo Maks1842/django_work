@@ -45,7 +45,8 @@ class OrganisationPersonsAPIView(APIView):
             for item in persons:
                 result.append({
                     'id': item['id'],
-                    'name': f"{item['last_name']} {item['first_name']} {item['second_name'] or ''}"
+                    'name': f"{item['last_name']} {item['first_name']} {item['second_name'] or ''}",
+                    'useDefault': item['use_default']
                 })
         return Response({'data': result})
 
