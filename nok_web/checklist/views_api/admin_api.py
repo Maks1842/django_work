@@ -1121,6 +1121,46 @@ class ImportRegistryExcelAPIView(APIView):
                 if not exist_org:
                     org = Organisations(**data)
                     org.save()
+                    org_id = Organisations.objects.latest('id')
+                    pf = org['boss'].strip()
+                    person_fio = pf.split()
+                    person_data = {
+                        'first_name': person_fio[1],
+                        'last_name': person_fio[0],
+                        'second_name': person_fio[2],
+                        'position': 'Руководитель',
+                        'phone': org['phone'],
+                        'email': org['email'],
+                        'use_default': True,
+                        'organisation_id': org_id
+                    }
+                    exist_person = Organisation_Persons.objects.filter(
+                        Q(first_name=person_fio[1]) & Q(last_name=person_fio[0]) & Q(second_name=person_fio[2])
+                        & Q(position='Руководитель') & Q(phone=org['phone']) & Q(email=org['email'])
+                    ).first()
+                    if not exist_person:
+                        person = Organisation_Persons(**person_data)
+                        person.save()
+                elif exist_org:
+                    pf = org['boss'].strip()
+                    person_fio = pf.split()
+                    person_data = {
+                        'first_name': person_fio[1],
+                        'last_name': person_fio[0],
+                        'second_name': person_fio[2],
+                        'position': 'Руководитель',
+                        'phone': org['phone'],
+                        'email': org['email'],
+                        'use_default': True,
+                        'organisation_id': exist_org.id
+                    }
+                    exist_person = Organisation_Persons.objects.filter(
+                        Q(first_name=person_fio[1]) & Q(last_name=person_fio[0]) & Q(second_name=person_fio[2])
+                        & Q(position='Руководитель') & Q(phone=org['phone']) & Q(email=org['email'])
+                    ).first()
+                    if not exist_person:
+                        person = Organisation_Persons(**person_data)
+                        person.save()
                     count += 1
             except Exception as ex:
                 return Response(
