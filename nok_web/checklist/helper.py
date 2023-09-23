@@ -12,13 +12,13 @@ token = "1fd6b2895fd9a922bf0548395fb09aa1eb4565af"
 dadata = Dadata(token)
 def data_extract():
 
-    path_file = '/home/maks/Загрузки/inn_obr.xlsx'
+    path_file = '/home/maks/Загрузки/inn_organisation.xlsx'
 
     book = openpyxl.load_workbook(path_file)
     sheet = book.active
 
     list_inn = []
-    for row in range(1, sheet.max_row):
+    for row in range(1, sheet.max_row + 1):
         list_inn.append(str(sheet[row][0].value))
 
     # list_inn = ['2634026041', '2634026059', '2636015197']
@@ -42,15 +42,18 @@ def data_extract():
     sheet.title = "Реестр"
 
     # Заголовки
-    sheet["A1"].value = "Наименование сокращенное"
-    sheet["B1"].value = "Наименование полное"
-    sheet["C1"].value = "ИНН"
-    sheet["D1"].value = "ОГРН"
-    sheet["E1"].value = "ОКАТО"
-    sheet['F1'].value = "Адрес"
-    sheet['G1'].value = "Широта"
-    sheet['H1'].value = "Долгота"
-    sheet['I1'].value = "Директор"
+    sheet["A1"].value = "Name"
+    sheet["B1"].value = "NameFull"
+    sheet["C1"].value = "inn"
+    sheet["D1"].value = "ogrn"
+    sheet["E1"].value = "okato"
+    sheet['F1'].value = "address"
+    sheet['G1'].value = "geoLat"
+    sheet['H1'].value = "geoLon"
+    sheet['I1'].value = "boss"
+    sheet['J1'].value = "department_id"
+    sheet['K1'].value = "website"
+    sheet['L1'].value = "email"
 
     # Стили заголовков
     sheet['A1'].style = style['style_1']
@@ -62,11 +65,15 @@ def data_extract():
     sheet['G1'].style = style['style_1']
     sheet['H1'].style = style['style_1']
     sheet['I1'].style = style['style_1']
+    sheet['J1'].style = style['style_1']
+    sheet['K1'].style = style['style_1']
+    sheet['L1'].style = style['style_1']
 
     number_col = 1
     number_row = 2
     for item in result:
 
+        # print(item)
         # print(item[0]['data']['management']['name'])
 
         number_col += 1
@@ -91,47 +98,52 @@ def data_extract():
         sheet.column_dimensions["H"].width = 20
         sheet.column_dimensions["I"].width = 20
 
-        # Добавить данные в ячейку
-        column = 1
-        sheet.cell(row, column).value = item[0]['value']
-        sheet.cell(row, column).style = style['style_main']
+        try:
+            # Добавить данные в ячейку
+            column = 1
+            sheet.cell(row, column).value = item[0]['value']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 2
-        sheet.cell(row, column).value = item[0]['data']['name']['full_with_opf']
-        sheet.cell(row, column).style = style['style_main']
+            column = 2
+            sheet.cell(row, column).value = item[0]['data']['name']['full_with_opf']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 3
-        sheet.cell(row, column).value = item[0]['data']['inn']
-        sheet.cell(row, column).style = style['style_main']
+            column = 3
+            sheet.cell(row, column).value = item[0]['data']['inn']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 4
-        sheet.cell(row, column).value = item[0]['data']['ogrn']
-        sheet.cell(row, column).style = style['style_main']
+            column = 4
+            sheet.cell(row, column).value = item[0]['data']['ogrn']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 5
-        okato = item[0]['data']['okato'][:5] + '000'
-        sheet.cell(row, column).value = okato
-        sheet.cell(row, column).style = style['style_main']
+            column = 5
+            okato = item[0]['data']['okato'][:5] + '000'
+            sheet.cell(row, column).value = okato
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 6
-        sheet.cell(row, column).value = item[0]['data']['address']['unrestricted_value']
-        sheet.cell(row, column).style = style['style_main']
+            column = 6
+            sheet.cell(row, column).value = item[0]['data']['address']['unrestricted_value']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 7
-        sheet.cell(row, column).value = item[0]['data']['address']['data']['geo_lat']
-        sheet.cell(row, column).style = style['style_main']
+            column = 7
+            sheet.cell(row, column).value = item[0]['data']['address']['data']['geo_lat']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 8
-        sheet.cell(row, column).value = item[0]['data']['address']['data']['geo_lon']
-        sheet.cell(row, column).style = style['style_main']
+            column = 8
+            sheet.cell(row, column).value = item[0]['data']['address']['data']['geo_lon']
+            sheet.cell(row, column).style = style['style_main']
 
-        column = 9
-        sheet.cell(row, column).value = item[0]['data']['management']['name']
-        sheet.cell(row, column).style = style['style_main']
+            column = 9
+            sheet.cell(row, column).value = item[0]['data']['management']['name']
+            sheet.cell(row, column).style = style['style_main']
+        except:
+            column = 1
+            sheet.cell(row, column).value = 'Нет данных'
+            sheet.cell(row, column).style = style['style_main']
 
         number_row += 1
 
-    file = os.path.join('/home/maks/Загрузки', 'Реестр учреждений образования.xlsx')
+    file = os.path.join('/home/maks/Загрузки', 'Реестр учреждений.xlsx')
     book.save(file)
 
 def style_excel():
