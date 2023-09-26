@@ -1119,9 +1119,8 @@ class ImportRegistryExcelAPIView(APIView):
                 serializers.is_valid(raise_exception=True)
                 exist_org = Organisations.objects.filter(Q(organisation_name=org['name']) & Q(address=org['address'])).first()
                 if not exist_org:
-                    org = Organisations(**data)
-                    org.save()
-                    org_id = Organisations.objects.latest('id')
+                    org_add = Organisations.objects.create(**data)
+                    org_add.save()
                     pf = org['boss'].strip()
                     person_fio = pf.split()
                     person_data = {
@@ -1131,16 +1130,14 @@ class ImportRegistryExcelAPIView(APIView):
                         'position': 'Руководитель',
                         'phone': org['phone'],
                         'email': org['email'],
-                        'use_default': True,
-                        'organisation_id': org_id
+                        'use_default': True
                     }
-                    exist_person = Organisation_Persons.objects.filter(
+                    exist_person = org_add.organisation_persons_set.filter(
                         Q(first_name=person_fio[1]) & Q(last_name=person_fio[0]) & Q(second_name=person_fio[2])
                         & Q(position='Руководитель') & Q(phone=org['phone']) & Q(email=org['email'])
                     ).first()
                     if not exist_person:
-                        person = Organisation_Persons(**person_data)
-                        person.save()
+                        org_add.organisation_persons_set.create(**person_data)
                 elif exist_org:
                     pf = org['boss'].strip()
                     person_fio = pf.split()
@@ -1154,14 +1151,13 @@ class ImportRegistryExcelAPIView(APIView):
                         'use_default': True,
                         'organisation_id': exist_org.id
                     }
-                    exist_person = Organisation_Persons.objects.filter(
+                    exist_person = exist_org.organisation_persons_set.filter(
                         Q(first_name=person_fio[1]) & Q(last_name=person_fio[0]) & Q(second_name=person_fio[2])
                         & Q(position='Руководитель') & Q(phone=org['phone']) & Q(email=org['email'])
                     ).first()
                     if not exist_person:
-                        person = Organisation_Persons(**person_data)
-                        person.save()
-                    count += 1
+                        exist_org.organisation_persons_set.create(**person_data)
+                count += 1
             except Exception as ex:
                 return Response(
                     {"error": f'Ошибка при сохранении в модель Organisations, на строке {count}. {ex}', "data": data})
