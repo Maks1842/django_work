@@ -25,7 +25,6 @@ from django.db.models.functions import Concat
 import pandas as pd
 import json
 
-
 '''ТЕСТОВЫЕ, ТРЕНИРОВОЧНЫЕ или ВРЕМЕННО НЕ ИСПОЛЬЗУЕМЫЕ ВЬЮХИ'''
 
 """ОГРАНИЧЕНИЯ ДОСТУПА:
@@ -918,14 +917,15 @@ class PersonsAPIView(APIView):
             page = 1
 
         if organization_id and not person_fio:
-            persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id).order_by('last_name', 'first_name', 'second_name')
+            persons_set = Organisation_Persons.objects.values().filter(organisation_id=organization_id).order_by(
+                'last_name', 'first_name', 'second_name')
         elif organization_id and person_fio:
             persons_set = Organisation_Persons.objects.values().annotate(
                 full_name=Concat('first_name', 'second_name', 'last_name')
             ).filter(organisation_id=organization_id).filter((Q(full_name__icontains=person_fio) |
                                                               Q(first_name__icontains=person_fio) |
                                                               Q(last_name__icontains=person_fio) |
-                                                              Q(second_name__icontains=person_fio)))\
+                                                              Q(second_name__icontains=person_fio))) \
                 .order_by('last_name', 'first_name', 'second_name')
         else:
             persons_set = Organisation_Persons.objects.values().order_by('last_name', 'first_name', 'second_name')
@@ -1117,7 +1117,8 @@ class ImportRegistryExcelAPIView(APIView):
             try:
                 serializers = OrganisationsSerializer(data=data)
                 serializers.is_valid(raise_exception=True)
-                exist_org = Organisations.objects.filter(Q(organisation_name=org['name']) & Q(address=org['address'])).first()
+                exist_org = Organisations.objects.filter(
+                    Q(organisation_name=org['name']) & Q(address=org['address'])).first()
                 if not exist_org:
                     org_add = Organisations.objects.create(**data)
                     org_add.save()
@@ -1236,3 +1237,35 @@ def extract_organisations(path_file):
     for org in parsed:
         converted_org.append({k.lower(): v for k, v in org.items()})
     return converted_org
+
+
+class ListCheckingDeleteOrgAPIView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        methods=['post'],
+        tags=['Админка'],
+        operation_description="Удалить проверяемую организацию",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'params': openapi.Schema(type=openapi.TYPE_OBJECT, description='Параметры'),
+            }
+        ))
+    @action(methods=['post'], detail=True)
+    def post(self, request):
+        req_data = request.data
+        pk = req_data['params']["id"]
+        checking_id = req_data['params']["checkingId"]
+        org_id = req_data['params']["orgId"]
+        if pk:
+            try:
+                List_Checking.objects.filter(pk=pk).delete()
+            except Exception as e:
+                return Response({'error': f'{e}'})
+            if Answers.objects.filter(organisations_id=org_id, checking_id=checking_id).exists():
+                try:
+                    Answers.objects.filter(organisations_id=org_id, checking_id=checking_id).delete()
+                except Exception as e:
+                    return Response({'error': f'{e}'})
+        return Response({'message': 'Организация удалена из проверки'})
