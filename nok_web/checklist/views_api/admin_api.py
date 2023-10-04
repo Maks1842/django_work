@@ -1029,14 +1029,13 @@ class UsersAPIView(APIView):
 
         if user_name:
             users_set = User.objects.values().filter(username=user_name)
-
         paginator = Paginator(users_set, 20)
 
         items = []
         try:
             for item in paginator.page(page).object_list:
                 user_profile = Profile.objects.filter(user_id=item["id"]).get()
-                user_position = Profile_Position.objects.get(pk=user_profile.pk)
+                user_position = Profile_Position.objects.get(pk=user_profile.position_id)
                 items.append({
                     "id": item["id"],
                     "username": item["username"],
