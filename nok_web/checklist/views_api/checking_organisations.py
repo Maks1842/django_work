@@ -24,7 +24,6 @@ IsAdminOrReadOnly - запись может просматривать любо�
 IsOwnerAndAdminOrReadOnly - запись может менять только пользователь который её создал и Админ, просматривать может любой.
 """
 
-
 '''
 Представления ApiView. Основной вариант.
 '''
@@ -153,7 +152,7 @@ class CommentsCheckingAPIView(APIView):
 
         try:
             queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
-                                          type_organisations=type_organisation)
+                                                    type_organisations=type_organisation)
         except Exception as e:
             return Response('')
         result = ''
@@ -219,13 +218,13 @@ class InvalidPersonAPIView(APIView):
         type_organisation = request.query_params.get('id_type_organisation')
         try:
             queryset = Answers.objects.values().get(organisations_id=organisation, checking_id=checking,
-                                                type_organisations=type_organisation)
+                                                    type_organisations=type_organisation)
         except Exception as e:
             return Response('')
         result = ''
         if len(queryset) > 0:
             if queryset['invalid_person'] is not None and queryset['invalid_person'] != '':
-                result = {"invalid_person": queryset['invalid_person'],}
+                result = {"invalid_person": queryset['invalid_person'], }
 
         return Response(result)
 
@@ -258,7 +257,7 @@ class InvalidPersonAPIView(APIView):
             )
         except IntegrityError:
             return Response({"error": "Ошибка при добавлении/изменении данных"},
-                            status=status.HTTP_406_NOT_ACCEPTABLE,)
+                            status=status.HTTP_406_NOT_ACCEPTABLE, )
 
         return Response({'result_invalid_person': 'Количество инвалидов успешно сохранено'})
 
@@ -284,8 +283,8 @@ class GetFormActByOrganizationTypeAPIView(APIView):
         organisation = request.query_params.get('id_organisation')
         type_organisation = request.query_params.get('id_type_organisation')
 
-
-        if Answers.objects.filter(checking_id=checking, organisations_id=organisation, type_organisations=type_organisation).exists():
+        if Answers.objects.filter(checking_id=checking, organisations_id=organisation,
+                                  type_organisations=type_organisation).exists():
             return Response({"error": "Такая проверка уже создана"})
         else:
             queryset = FormsAct.objects.filter(type_organisations_id=type_organisation)
@@ -321,14 +320,15 @@ class GetCheckListOrganizationsAPIView(APIView):
         else:
             queryset = List_Checking.objects.filter(checking_id=check, user_id=user)
 
-
         result = []
         if len(queryset) > 0:
             for item in queryset:
-                if Answers.objects.filter(checking=check, organisations=item.organisation_id):
+                if Answers.objects.filter(checking=check, organisations=item.organisation_id,
+                                          type_organisations__gt=3, type_organisations__lt=2):
                     pass
                 else:
-                    department = Departments.objects.values('type_departments_id').get(pk=item.organisation.department_id)
+                    department = Departments.objects.values('type_departments_id').get(
+                        pk=item.organisation.department_id)
                     result.append({
                         'id': item.organisation_id,
                         'name': item.organisation.organisation_name,
@@ -431,7 +431,8 @@ class GetCheckingCompletedAPIView(APIView):
         items = []
         try:
             for item in paginator.page(page).object_list:
-                queryset_completed = Answers.objects.filter(checking_id=item.checking.id, organisations_id=item.organisation)
+                queryset_completed = Answers.objects.filter(checking_id=item.checking.id,
+                                                            organisations_id=item.organisation)
                 if len(queryset_completed) > 0:
                     for item_comp in queryset_completed:
                         if item.person is not None:
@@ -456,4 +457,3 @@ class GetCheckingCompletedAPIView(APIView):
             return Response({'error': f'{e}'})
 
         return Response({'totalPages': len(queryset), 'items': items})
-
