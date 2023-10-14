@@ -719,8 +719,7 @@ def ratings_education_to_excel(ratings_set, answers_list):
 
         answer = answers_list[count]
 
-
-        type_organisation_id = Form_Type_Organisation.objects.get(organisation_id=data['organisations_id']).type_organisation_id
+        type_organisation_id = data['type_organisations_id']
         type_organisation = Type_Organisations.objects.get(pk=type_organisation_id).type
 
         count += 1
@@ -857,12 +856,6 @@ def ratings_education_to_excel(ratings_set, answers_list):
         else:
             sheet.cell(row, column).value = answer['35'][0]
         sheet.cell(row, column).style = style['style_main']
-
-
-
-
-
-
 
         row = 22
         sheet.cell(row, column).value = data['ratings_json']['web_count_yes']['value']
