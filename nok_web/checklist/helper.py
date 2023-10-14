@@ -12,7 +12,7 @@ token = "1fd6b2895fd9a922bf0548395fb09aa1eb4565af"
 dadata = Dadata(token)
 def data_extract():
 
-    path_file = '/home/maks/Загрузки/inn_organisation.xlsx'
+    path_file = '/home/maks/Загрузки/ИНН организации проверки.xlsx'
 
     book = openpyxl.load_workbook(path_file)
     sheet = book.active
@@ -69,6 +69,24 @@ def data_extract():
     sheet['K1'].style = style['style_1']
     sheet['L1'].style = style['style_1']
 
+    # Ширина столбца
+    sheet.column_dimensions["A"].width = 80
+    sheet.column_dimensions["B"].width = 100
+    sheet.column_dimensions["C"].width = 20
+    sheet.column_dimensions["D"].width = 20
+    sheet.column_dimensions["E"].width = 20
+    sheet.column_dimensions["F"].width = 80
+    sheet.column_dimensions["G"].width = 20
+    sheet.column_dimensions["H"].width = 20
+    sheet.column_dimensions["I"].width = 20
+    sheet.column_dimensions["J"].width = 20
+    sheet.column_dimensions["K"].width = 20
+    sheet.column_dimensions["L"].width = 20
+
+    department_id = 27
+    website = 'www.default.ru'
+    email = 'default@def.ru'
+
     number_col = 1
     number_row = 2
     for item in result:
@@ -86,17 +104,6 @@ def data_extract():
 
         # Высота строки
         sheet.row_dimensions[row].height = 20
-
-        # Ширина столбца
-        sheet.column_dimensions["A"].width = 80
-        sheet.column_dimensions["B"].width = 100
-        sheet.column_dimensions["C"].width = 20
-        sheet.column_dimensions["D"].width = 20
-        sheet.column_dimensions["E"].width = 20
-        sheet.column_dimensions["F"].width = 80
-        sheet.column_dimensions["G"].width = 20
-        sheet.column_dimensions["H"].width = 20
-        sheet.column_dimensions["I"].width = 20
 
         try:
             # Добавить данные в ячейку
@@ -135,6 +142,18 @@ def data_extract():
 
             column = 9
             sheet.cell(row, column).value = item[0]['data']['management']['name']
+            sheet.cell(row, column).style = style['style_main']
+
+            column = 10
+            sheet.cell(row, column).value = department_id
+            sheet.cell(row, column).style = style['style_main']
+
+            column = 11
+            sheet.cell(row, column).value = website
+            sheet.cell(row, column).style = style['style_main']
+
+            column = 12
+            sheet.cell(row, column).value = email
             sheet.cell(row, column).style = style['style_main']
         except:
             column = 1
