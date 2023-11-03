@@ -31,8 +31,8 @@ def addeducation_rating(quota, invalid_person, answers, form_json, grouping_json
     count_1_1_value = {}
 
     # Нормативное количество документов на Стенде и Сайте
-    stend_count_all = 11
-    web_count_all = 39
+    stend_count_all = 10
+    web_count_all = 38
     # for page in form_json["pages"]:
     #     for el in page["elements"]:
     #         for choic in el["choices"]:
