@@ -37,17 +37,19 @@ def kindergarden_rating(quota, invalid_person, answers, form_json, grouping_json
     count_1_1_value = {}
 
     # Нормативное количество документов на Стенде и Сайте
-    stend_count_all = 11
-    web_count_all = 39
-    # for page in form_json["pages"]:
-    #     for el in page["elements"]:
-    #         for choic in el["choices"]:
-    #             if choic["value"] == '11':
-    #                 stend_count_all += 1
-    #             elif choic["value"] == '12':
-    #                 web_count_all += 1
-    #             else:
-    #                 pass
+    # stend_count_all = 11
+    # web_count_all = 39
+    stend_count_all = 0
+    web_count_all = 0
+    for page in form_json["pages"]:
+        for el in page["elements"]:
+            for choic in el["choices"]:
+                if choic["value"] == '11':
+                    stend_count_all += 1
+                elif choic["value"] == '12':
+                    web_count_all += 1
+                else:
+                    pass
 
     for section in grouping_json["pages"]:
 
