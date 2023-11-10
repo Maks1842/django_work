@@ -125,7 +125,8 @@ class GetRatingsIntoPdfAPIView(APIView):
             list_checking = List_Checking.objects.filter(checking_id=checking).values()
 
             result_path = f'./checklist/local_storage/result'
-
+            if not os.path.exists(result_path):
+                os.mkdir(result_path)
             for item in list_checking:
 
                 organisation_id = item['organisation_id']
@@ -135,12 +136,11 @@ class GetRatingsIntoPdfAPIView(APIView):
                 address_org = Organisations.objects.get(pk=organisation_id).address
                 inn_org = Organisations.objects.get(pk=organisation_id).inn
                 website_org = Organisations.objects.get(pk=organisation_id).website
-                type_organisations_list = Form_Type_Organisation.objects.filter(organisation_id=organisation_id).values(
-                    'type_organisation')
+                type_organisations_list = Answers.objects.filter(organisations_id=organisation_id).values('type_organisations_id')
 
                 for type in type_organisations_list:
 
-                    type_organisations_id = type['type_organisation']
+                    type_organisations_id = type['type_organisations_id']
 
                     queryset = FormsAct.objects.filter(type_organisations_id=type_organisations_id)
 
@@ -187,13 +187,8 @@ class GetRatingsIntoPdfAPIView(APIView):
                         test = slugify(name_org, allow_unicode=True)
                         file_name = f'Рейтинг_{test}.pdf'
 
-                        if not os.path.exists(result_path):
-                            os.mkdir(result_path)
-
                         path_file = f'./checklist/local_storage/result/{file_name}'
-
-                        HTML(string=content).write_pdf(path_file,
-                                                       stylesheets=[CSS("nok_web/static/css/style_checkings.css")])
+                        HTML(string=content).write_pdf(path_file, stylesheets=[CSS("nok_web/static/css/style_checkings.css")])
 
                     else:
                         pass
