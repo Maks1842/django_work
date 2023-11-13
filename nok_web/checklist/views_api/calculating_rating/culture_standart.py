@@ -31,15 +31,20 @@ def culture_standart_rating(quota, invalid_person, answers, form_json, grouping_
     count_1_1_value = {}
 
     # Нормативное количество документов на Стенде и Сайте
-    stend_count_all = 9
-    web_count_all = 12
-    # for page in form_json["pages"]:
-    #     for el in page["elements"]:
-    #         for choic in el["choices"]:
-    #             if choic["value"] == '11':
-    #                 stend_count_all += 1
-    #             elif choic["value"] == '12':
-    #                 web_count_all += 1
+    # stend_count_all = 9
+    # web_count_all = 12
+    stend_count_all = 0
+    web_count_all = 0
+    for page in form_json["pages"]:
+        for el in page["elements"]:
+            if el["name"] != "expert_1":
+                for choic in el["choices"]:
+                    if choic["value"] == '11':
+                        stend_count_all += 1
+                    elif choic["value"] == '12':
+                        web_count_all += 1
+                    else:
+                        pass
 
     for section in grouping_json["pages"]:
 
