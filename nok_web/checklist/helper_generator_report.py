@@ -12,32 +12,35 @@ import json
 
 def import_registry_organisations():
 
-    excel_data = pd.read_excel('/home/maks/Документы/НОК/2023/Ставрополь образование/Реестр учреждений образования.xlsx')
+    excel_data = pd.read_csv('/home/maks/Документы/НОК/2024/Культура Шпаковский рн/Рейтинг для шаблонов.csv')
     json_str = excel_data.to_json(orient='records', date_format='iso')
     parsed = json.loads(json_str)
 
     context_dict = {}
+    count = 0
     for data in parsed:
-        name_doc = data["Name"]
+        print(f'{data=}')
+        count += 1
 
-        date_check = datetime.strptime(data["date_check"], '%Y-%m-%dT00:00:00.000').strftime("%d.%m.%Y")
+        date_check = datetime.strptime(str(data["date_check"]), '%Y-%m-%d').strftime("%d.%m.%Y")
 
-        context = { f'Организация': f'{data["NameFull"]}',
-                    f'Адрес': f'{data["address"]}',
-                    f'Сайт': f'{data["website"]}',
-                    f'Дата_проверки': f'{date_check}',
+        context = { f'Организация': data["NameFull"],
+                    f'Адрес': data["address"],
+                    f'Дата_проверки': date_check,
+                    f'Квота': data["quota"],
+                    f'Балл': data["ball"],
                     }
         context_dict.update(context)
-        doc_pattern(context_dict, name_doc)
+        doc_pattern(context_dict, count)
 
     return
 
 
 def doc_pattern(context_dict, name_doc):
     try:
-        template_path = '/home/maks/Документы/НОК/2023/Ставрополь образование/Шаблон отчета Минкульт СК.docx'
+        template_path = '/home/maks/Документы/НОК/2024/Культура Шпаковский рн/Шаблон отчета Шпаковский МР культ.docx'
         doc = DocxTemplate(template_path)
-        result_path = '/home/maks/Документы/НОК/2023/Ставрополь образование/result'
+        result_path = '/home/maks/Документы/НОК/2024/Культура Шпаковский рн/Отчеты Шпаковский культура'
 
         if not os.path.exists(result_path):
             os.mkdir(result_path)
